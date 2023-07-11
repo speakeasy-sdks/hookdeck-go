@@ -1,0 +1,11 @@
+# IssueTriggerTransformationConfigs
+
+Configurations for a 'Transformation' issue trigger
+
+
+## Fields
+
+| Field                                                                                                                       | Type                                                                                                                        | Required                                                                                                                    | Description                                                                                                                 |
+| --------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
+| `LogLevel`                                                                                                                  | [TransformationExecutionLogLevel](../../models/shared/transformationexecutionloglevel.md)                                   | :heavy_check_mark:                                                                                                          | The minimum log level to open the issue on                                                                                  |
+| `Transformations`                                                                                                           | [IssueTriggerTransformationConfigsTransformations](../../models/shared/issuetriggertransformationconfigstransformations.md) | :heavy_check_mark:                                                                                                          | A pattern to match on the transformation name or array of transformation IDs. Use `*` as wildcard.                          |

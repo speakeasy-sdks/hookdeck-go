@@ -1,4 +1,9 @@
 configVersion: 1.0.0
+management:
+  docChecksum: 7ce33d19563494dcc372d24fb1a8638f
+  docVersion: 1.0.0
+  speakeasyVersion: 1.56.2
+  generationVersion: 2.61.3
 generation:
   comments:
     disableComments: false
@@ -8,6 +13,6 @@ generation:
   singleTagPerOp: false
   tagNamespacingDisabled: false
 go:
-  version: 0.0.1
+  version: 1.0.0
   maxMethodParams: 0
   packageName: hookdeck

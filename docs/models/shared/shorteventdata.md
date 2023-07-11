@@ -1,0 +1,13 @@
+# ShortEventData
+
+
+## Fields
+
+| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `Body`                                                                         | [*ShortEventDataBody](../../models/shared/shorteventdatabody.md)               | :heavy_minus_sign:                                                             | N/A                                                                            |
+| `Headers`                                                                      | [*ShortEventDataHeaders](../../models/shared/shorteventdataheaders.md)         | :heavy_minus_sign:                                                             | N/A                                                                            |
+| `IsLargePayload`                                                               | **bool*                                                                        | :heavy_minus_sign:                                                             | N/A                                                                            |
+| `ParsedQuery`                                                                  | [*ShortEventDataParsedQuery](../../models/shared/shorteventdataparsedquery.md) | :heavy_minus_sign:                                                             | N/A                                                                            |
+| `Path`                                                                         | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
+| `Query`                                                                        | **string*                                                                      | :heavy_minus_sign:                                                             | N/A                                                                            |

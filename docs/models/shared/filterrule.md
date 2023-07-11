@@ -1,0 +1,12 @@
+# FilterRule
+
+
+## Fields
+
+| Field                                                                        | Type                                                                         | Required                                                                     | Description                                                                  |
+| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| `Body`                                                                       | [*ConnectionFilterProperty](../../models/shared/connectionfilterproperty.md) | :heavy_minus_sign:                                                           | JSON using our filter syntax to filter on request headers                    |
+| `Headers`                                                                    | [*ConnectionFilterProperty](../../models/shared/connectionfilterproperty.md) | :heavy_minus_sign:                                                           | JSON using our filter syntax to filter on request headers                    |
+| `Path`                                                                       | [*ConnectionFilterProperty](../../models/shared/connectionfilterproperty.md) | :heavy_minus_sign:                                                           | JSON using our filter syntax to filter on request headers                    |
+| `Query`                                                                      | [*ConnectionFilterProperty](../../models/shared/connectionfilterproperty.md) | :heavy_minus_sign:                                                           | JSON using our filter syntax to filter on request headers                    |
+| `Type`                                                                       | [FilterRuleType](../../models/shared/filterruletype.md)                      | :heavy_check_mark:                                                           | A filter rule must be of type `filter`                                       |

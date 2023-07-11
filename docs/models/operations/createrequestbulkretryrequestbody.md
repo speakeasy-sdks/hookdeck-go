@@ -1,0 +1,8 @@
+# CreateRequestBulkRetryRequestBody
+
+
+## Fields
+
+| Field                                                                                                            | Type                                                                                                             | Required                                                                                                         | Description                                                                                                      |
+| ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| `Query`                                                                                                          | [*CreateRequestBulkRetryRequestBodyQuery](../../models/operations/createrequestbulkretryrequestbodyquery.md)     | :heavy_minus_sign:                                                                                               | Filter properties for the events to be included in the bulk retry, use query parameters of [Requests](#requests) |

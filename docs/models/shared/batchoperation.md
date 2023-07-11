@@ -1,0 +1,24 @@
+# BatchOperation
+
+A single events bulk retry
+
+
+## Fields
+
+| Field                                                              | Type                                                               | Required                                                           | Description                                                        |
+| ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ |
+| `CancelledAt`                                                      | [*time.Time](https://pkg.go.dev/time#Time)                         | :heavy_minus_sign:                                                 | Date the bulk retry was cancelled                                  |
+| `CompletedAt`                                                      | [*time.Time](https://pkg.go.dev/time#Time)                         | :heavy_minus_sign:                                                 | Date the bulk retry was completed                                  |
+| `CompletedCount`                                                   | **int64*                                                           | :heavy_minus_sign:                                                 | Number of events that were successfully delivered                  |
+| `CreatedAt`                                                        | [time.Time](https://pkg.go.dev/time#Time)                          | :heavy_check_mark:                                                 | Date the bulk retry was created                                    |
+| `EstimatedBatch`                                                   | **int64*                                                           | :heavy_minus_sign:                                                 | Number of batches required to complete the bulk retry              |
+| `EstimatedCount`                                                   | **int64*                                                           | :heavy_minus_sign:                                                 | Number of estimated events to be retried                           |
+| `FailedCount`                                                      | **int64*                                                           | :heavy_minus_sign:                                                 | Number of events that failed to be delivered                       |
+| `ID`                                                               | *string*                                                           | :heavy_check_mark:                                                 | ID of the bulk retry                                               |
+| `InProgress`                                                       | *bool*                                                             | :heavy_check_mark:                                                 | Indicates if the bulk retry is currently in progress               |
+| `Number`                                                           | **float32*                                                         | :heavy_minus_sign:                                                 | N/A                                                                |
+| `ProcessedBatch`                                                   | **int64*                                                           | :heavy_minus_sign:                                                 | Number of batches currently processed                              |
+| `Progress`                                                         | **float32*                                                         | :heavy_minus_sign:                                                 | Progression of the batch operations, values 0 - 1                  |
+| `Query`                                                            | [*BatchOperationQuery](../../models/shared/batchoperationquery.md) | :heavy_minus_sign:                                                 | Query object to filter records                                     |
+| `TeamID`                                                           | *string*                                                           | :heavy_check_mark:                                                 | ID of the workspace                                                |
+| `UpdatedAt`                                                        | [time.Time](https://pkg.go.dev/time#Time)                          | :heavy_check_mark:                                                 | Last time the bulk retry was updated                               |
