@@ -1,4 +1,24 @@
-# hookdeck
+<div align="center">
+    <picture>
+        <img src="https://github.com/speakeasy-sdks/hookdeck-go/assets/68016351/16cab688-a0e2-4444-82aa-ea3a8dd87956" width="500">
+    </picture>
+    <h1>Go SDK</h1>
+   <p>Never miss a webhook</p>
+   <a href="https://hookdeck.com/api-ref#getting-started"><img src="https://img.shields.io/static/v1?label=Docs&message=API Ref&color=000000&style=for-the-badge" /></a>
+  <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-blue.svg?style=for-the-badge" /></a>
+  <a href="https://github.com/speakeasy-sdks/hookdeck-go/releases"><img src="https://img.shields.io/github/v/release/speakeasy-sdks/hookdeck-go?sort=semver&style=for-the-badge" /></a>
+</div>
+
+## Authentication
+
+### Get an API key
+
+You'll need to include an API key in every API request. If you do not yet have a Hookdeck account, please [sign up](https://dashboard.hookdeck.com/signup) for a free account. Your API key is located in your workspace settings.
+
+To include your API key in requests, use either Bearer Token Authentication or Basic Authentication.
+
+**Bearer Token Authentication**: Include the header Authorization: Bearer `$API_KEY`, replacing `$API_KEY` with your personal key
+**Basic Authentication** : Set the username as your API key, and supply an empty password
 
 <!-- Start SDK Installation -->
 ## SDK Installation
