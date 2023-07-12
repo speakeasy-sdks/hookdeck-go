@@ -12,7 +12,7 @@ import (
 	"strings"
 	"time"
 
-	"hookdeck-go/pkg/types"
+	"github.com/speakeasy-sdks/hookdeck-go/pkg/types"
 )
 
 const (
