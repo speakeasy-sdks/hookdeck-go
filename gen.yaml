@@ -15,4 +15,4 @@ generation:
 go:
   version: 1.0.4
   maxMethodParams: 0
-  packageName: hookdeck-go
+  packageName: github.com/speakeasy-sdks/hookdeck-go 
