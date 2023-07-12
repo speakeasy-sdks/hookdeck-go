@@ -23,7 +23,7 @@ jobs:
       openapi_docs: |
         - https://raw.githubusercontent.com/speakeasy-sdks/hookdeck-oas/main/openapi.yaml
       speakeasy_version: latest
-      create_release: true
+      publish_go: true
     secrets:
       github_access_token: ${{ secrets.GITHUB_TOKEN }}
       speakeasy_api_key: ${{ secrets.SPEAKEASY_API_KEY }}
