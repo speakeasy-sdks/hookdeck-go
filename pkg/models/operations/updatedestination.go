@@ -5,7 +5,7 @@ package operations
 import (
 	"encoding/json"
 	"fmt"
-	"hookdeck-go/pkg/models/shared"
+	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
 	"net/http"
 )
 

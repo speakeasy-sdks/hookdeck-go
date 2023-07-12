@@ -36,8 +36,8 @@ package main
 import(
 	"context"
 	"log"
-	"hookdeck-go"
-	"hookdeck-go/pkg/models/operations"
+	"github.com/speakeasy-sdks/hookdeck-go"
+	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 )
 
 func main() {
