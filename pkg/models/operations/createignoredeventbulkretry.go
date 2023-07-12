@@ -6,7 +6,7 @@ import (
 	"bytes"
 	"encoding/json"
 	"errors"
-	"hookdeck/pkg/models/shared"
+	"hookdeck-go/pkg/models/shared"
 	"net/http"
 )
 

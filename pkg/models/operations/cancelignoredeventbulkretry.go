@@ -3,7 +3,7 @@
 package operations
 
 import (
-	"hookdeck/pkg/models/shared"
+	"hookdeck-go/pkg/models/shared"
 	"net/http"
 )
 

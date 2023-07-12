@@ -5,8 +5,8 @@ package main
 import(
 	"context"
 	"log"
-	"hookdeck"
-	"hookdeck/pkg/models/operations"
+	"hookdeck-go"
+	"hookdeck-go/pkg/models/operations"
 )
 
 func main() {

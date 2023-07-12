@@ -7,7 +7,7 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
-	"hookdeck/pkg/models/shared"
+	"hookdeck-go/pkg/models/shared"
 	"net/http"
 	"time"
 )

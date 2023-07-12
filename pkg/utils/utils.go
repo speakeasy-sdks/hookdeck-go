@@ -12,7 +12,7 @@ import (
 	"strings"
 	"time"
 
-	"hookdeck/pkg/types"
+	"hookdeck-go/pkg/types"
 )
 
 const (

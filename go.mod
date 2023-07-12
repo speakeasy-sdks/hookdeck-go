@@ -1,4 +1,4 @@
-module hookdeck
+module hookdeck-go
 
 go 1.14
 

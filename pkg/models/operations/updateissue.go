@@ -5,7 +5,7 @@ package operations
 import (
 	"encoding/json"
 	"fmt"
-	"hookdeck/pkg/models/shared"
+	"hookdeck-go/pkg/models/shared"
 	"net/http"
 )
 

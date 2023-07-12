@@ -25,8 +25,8 @@ package main
 import(
 	"context"
 	"log"
-	"hookdeck"
-	"hookdeck/pkg/models/operations"
+	"hookdeck-go"
+	"hookdeck-go/pkg/models/operations"
 )
 
 func main() {
@@ -78,10 +78,10 @@ package main
 import(
 	"context"
 	"log"
-	"hookdeck"
-	"hookdeck/pkg/models/operations"
-	"hookdeck/pkg/types"
-	"hookdeck/pkg/models/shared"
+	"hookdeck-go"
+	"hookdeck-go/pkg/models/operations"
+	"hookdeck-go/pkg/types"
+	"hookdeck-go/pkg/models/shared"
 )
 
 func main() {
@@ -160,8 +160,8 @@ package main
 import(
 	"context"
 	"log"
-	"hookdeck"
-	"hookdeck/pkg/models/operations"
+	"hookdeck-go"
+	"hookdeck-go/pkg/models/operations"
 )
 
 func main() {
@@ -219,8 +219,8 @@ package main
 import(
 	"context"
 	"log"
-	"hookdeck"
-	"hookdeck/pkg/models/operations"
+	"hookdeck-go"
+	"hookdeck-go/pkg/models/operations"
 )
 
 func main() {
@@ -272,10 +272,10 @@ package main
 import(
 	"context"
 	"log"
-	"hookdeck"
-	"hookdeck/pkg/models/operations"
-	"hookdeck/pkg/types"
-	"hookdeck/pkg/models/shared"
+	"hookdeck-go"
+	"hookdeck-go/pkg/models/operations"
+	"hookdeck-go/pkg/types"
+	"hookdeck-go/pkg/models/shared"
 )
 
 func main() {
@@ -347,8 +347,8 @@ package main
 import(
 	"context"
 	"log"
-	"hookdeck"
-	"hookdeck/pkg/models/operations"
+	"hookdeck-go"
+	"hookdeck-go/pkg/models/operations"
 )
 
 func main() {
