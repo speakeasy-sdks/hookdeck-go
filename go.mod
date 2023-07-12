@@ -1,4 +1,4 @@
-module https://github.com/speakeasy-sdks/hookdeck-go
+module github.com/speakeasy-sdks/hookdeck-go
 
 go 1.14
 
