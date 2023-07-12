@@ -24,8 +24,8 @@ package main
 import(
 	"context"
 	"log"
-	"hookdeck-go"
-	"hookdeck-go/pkg/models/operations"
+	"github.com/speakeasy-sdks/hookdeck-go"
+	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 )
 
 func main() {
@@ -77,8 +77,8 @@ package main
 import(
 	"context"
 	"log"
-	"hookdeck-go"
-	"hookdeck-go/pkg/models/operations"
+	"github.com/speakeasy-sdks/hookdeck-go"
+	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 )
 
 func main() {
@@ -130,10 +130,10 @@ package main
 import(
 	"context"
 	"log"
-	"hookdeck-go"
-	"hookdeck-go/pkg/models/operations"
-	"hookdeck-go/pkg/types"
-	"hookdeck-go/pkg/models/shared"
+	"github.com/speakeasy-sdks/hookdeck-go"
+	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
+	"github.com/speakeasy-sdks/hookdeck-go/pkg/types"
+	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
 )
 
 func main() {
@@ -211,8 +211,8 @@ package main
 import(
 	"context"
 	"log"
-	"hookdeck-go"
-	"hookdeck-go/pkg/models/operations"
+	"github.com/speakeasy-sdks/hookdeck-go"
+	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 )
 
 func main() {
@@ -264,8 +264,8 @@ package main
 import(
 	"context"
 	"log"
-	"hookdeck-go"
-	"hookdeck-go/pkg/models/operations"
+	"github.com/speakeasy-sdks/hookdeck-go"
+	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 )
 
 func main() {

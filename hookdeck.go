@@ -5,8 +5,8 @@ package hookdeck
 import (
 	"encoding/json"
 	"fmt"
-	"hookdeck-go/pkg/models/shared"
-	"hookdeck-go/pkg/utils"
+	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
+	"github.com/speakeasy-sdks/hookdeck-go/pkg/utils"
 	"net/http"
 	"time"
 )
@@ -201,8 +201,8 @@ func New(opts ...SDKOption) *Hookdeck {
 		sdkConfiguration: sdkConfiguration{
 			Language:          "go",
 			OpenAPIDocVersion: "1.0.0",
-			SDKVersion:        "1.0.4",
-			GenVersion:        "2.61.5",
+			SDKVersion:        "1.1.0",
+			GenVersion:        "2.62.1",
 			ServerDefaults: []map[string]string{
 				{
 					"version": "2023-01-01",
