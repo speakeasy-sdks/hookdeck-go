@@ -14,5 +14,5 @@ generation:
   tagNamespacingDisabled: false
 go:
   version: 1.1.0
-  maxMethodParams: 0
+  maxMethodParams: 5
   packageName: github.com/speakeasy-sdks/hookdeck-go
