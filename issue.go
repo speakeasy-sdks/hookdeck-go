@@ -11,28 +11,31 @@ import (
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/utils"
 	"io"
 	"net/http"
-	"strings"
 )
 
-type bulkRetryEvents struct {
+type issue struct {
 	sdkConfiguration sdkConfiguration
 }
 
-func newBulkRetryEvents(sdkConfig sdkConfiguration) *bulkRetryEvents {
-	return &bulkRetryEvents{
+func newIssue(sdkConfig sdkConfiguration) *issue {
+	return &issue{
 		sdkConfiguration: sdkConfig,
 	}
 }
 
-// CancelEventBulkRetry - Cancel an events bulk retry
-func (s *bulkRetryEvents) CancelEventBulkRetry(ctx context.Context, request operations.CancelEventBulkRetryRequest) (*operations.CancelEventBulkRetryResponse, error) {
+// Dismiss - Dismiss an issue
+func (s *issue) Dismiss(ctx context.Context, id string) (*operations.DismissIssueResponse, error) {
+	request := operations.DismissIssueRequest{
+		ID: id,
+	}
+
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
-	url, err := utils.GenerateURL(ctx, baseURL, "/bulk/events/retry/{id}/cancel", request, nil)
+	url, err := utils.GenerateURL(ctx, baseURL, "/issues/{id}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
 
-	req, err := http.NewRequestWithContext(ctx, "POST", url, nil)
+	req, err := http.NewRequestWithContext(ctx, "DELETE", url, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
@@ -58,7 +61,7 @@ func (s *bulkRetryEvents) CancelEventBulkRetry(ctx context.Context, request oper
 
 	contentType := httpRes.Header.Get("Content-Type")
 
-	res := &operations.CancelEventBulkRetryResponse{
+	res := &operations.DismissIssueResponse{
 		StatusCode:  httpRes.StatusCode,
 		ContentType: contentType,
 		RawResponse: httpRes,
@@ -67,12 +70,12 @@ func (s *bulkRetryEvents) CancelEventBulkRetry(ctx context.Context, request oper
 	case httpRes.StatusCode == 200:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
-			var out *shared.BatchOperation
+			var out interface{}
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
-			res.BatchOperation = out
+			res.Issue = out
 		}
 	case httpRes.StatusCode == 404:
 		switch {
@@ -89,84 +92,14 @@ func (s *bulkRetryEvents) CancelEventBulkRetry(ctx context.Context, request oper
 	return res, nil
 }
 
-// CreateEventBulkRetry - Create an events bulk retry
-func (s *bulkRetryEvents) CreateEventBulkRetry(ctx context.Context, request operations.CreateEventBulkRetryRequestBody) (*operations.CreateEventBulkRetryResponse, error) {
+// Get - Get a single issue
+func (s *issue) Get(ctx context.Context, id string) (*operations.GetIssueResponse, error) {
+	request := operations.GetIssueRequest{
+		ID: id,
+	}
+
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
-	url := strings.TrimSuffix(baseURL, "/") + "/bulk/events/retry"
-
-	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, "Request", "json")
-	if err != nil {
-		return nil, fmt.Errorf("error serializing request body: %w", err)
-	}
-	if bodyReader == nil {
-		return nil, fmt.Errorf("request body is required")
-	}
-
-	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
-	if err != nil {
-		return nil, fmt.Errorf("error creating request: %w", err)
-	}
-	req.Header.Set("Accept", "application/json;q=1, application/json;q=0")
-	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
-
-	req.Header.Set("Content-Type", reqContentType)
-
-	client := s.sdkConfiguration.SecurityClient
-
-	httpRes, err := client.Do(req)
-	if err != nil {
-		return nil, fmt.Errorf("error sending request: %w", err)
-	}
-	if httpRes == nil {
-		return nil, fmt.Errorf("error sending request: no response")
-	}
-
-	rawBody, err := io.ReadAll(httpRes.Body)
-	if err != nil {
-		return nil, fmt.Errorf("error reading response body: %w", err)
-	}
-	httpRes.Body.Close()
-	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
-
-	contentType := httpRes.Header.Get("Content-Type")
-
-	res := &operations.CreateEventBulkRetryResponse{
-		StatusCode:  httpRes.StatusCode,
-		ContentType: contentType,
-		RawResponse: httpRes,
-	}
-	switch {
-	case httpRes.StatusCode == 200:
-		switch {
-		case utils.MatchContentType(contentType, `application/json`):
-			var out *shared.BatchOperation
-			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
-				return nil, err
-			}
-
-			res.BatchOperation = out
-		}
-	case httpRes.StatusCode == 400:
-		fallthrough
-	case httpRes.StatusCode == 422:
-		switch {
-		case utils.MatchContentType(contentType, `application/json`):
-			var out *shared.APIErrorResponse
-			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
-				return nil, err
-			}
-
-			res.APIErrorResponse = out
-		}
-	}
-
-	return res, nil
-}
-
-// GetEventBulkRetry - Get an events bulk retry
-func (s *bulkRetryEvents) GetEventBulkRetry(ctx context.Context, request operations.GetEventBulkRetryRequest) (*operations.GetEventBulkRetryResponse, error) {
-	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
-	url, err := utils.GenerateURL(ctx, baseURL, "/bulk/events/retry/{id}", request, nil)
+	url, err := utils.GenerateURL(ctx, baseURL, "/issues/{id}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -197,7 +130,7 @@ func (s *bulkRetryEvents) GetEventBulkRetry(ctx context.Context, request operati
 
 	contentType := httpRes.Header.Get("Content-Type")
 
-	res := &operations.GetEventBulkRetryResponse{
+	res := &operations.GetIssueResponse{
 		StatusCode:  httpRes.StatusCode,
 		ContentType: contentType,
 		RawResponse: httpRes,
@@ -206,14 +139,96 @@ func (s *bulkRetryEvents) GetEventBulkRetry(ctx context.Context, request operati
 	case httpRes.StatusCode == 200:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
-			var out *shared.BatchOperation
+			var out interface{}
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
-			res.BatchOperation = out
+			res.IssueWithData = out
 		}
 	case httpRes.StatusCode == 404:
+		switch {
+		case utils.MatchContentType(contentType, `application/json`):
+			var out *shared.APIErrorResponse
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
+				return nil, err
+			}
+
+			res.APIErrorResponse = out
+		}
+	}
+
+	return res, nil
+}
+
+// Update - Update issue
+func (s *issue) Update(ctx context.Context, requestBody operations.UpdateIssueRequestBody, id string) (*operations.UpdateIssueResponse, error) {
+	request := operations.UpdateIssueRequest{
+		RequestBody: requestBody,
+		ID:          id,
+	}
+
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
+	url, err := utils.GenerateURL(ctx, baseURL, "/issues/{id}", request, nil)
+	if err != nil {
+		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
+
+	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, "RequestBody", "json")
+	if err != nil {
+		return nil, fmt.Errorf("error serializing request body: %w", err)
+	}
+	if bodyReader == nil {
+		return nil, fmt.Errorf("request body is required")
+	}
+
+	req, err := http.NewRequestWithContext(ctx, "PUT", url, bodyReader)
+	if err != nil {
+		return nil, fmt.Errorf("error creating request: %w", err)
+	}
+	req.Header.Set("Accept", "application/json;q=1, application/json;q=0")
+	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
+
+	req.Header.Set("Content-Type", reqContentType)
+
+	client := s.sdkConfiguration.SecurityClient
+
+	httpRes, err := client.Do(req)
+	if err != nil {
+		return nil, fmt.Errorf("error sending request: %w", err)
+	}
+	if httpRes == nil {
+		return nil, fmt.Errorf("error sending request: no response")
+	}
+
+	rawBody, err := io.ReadAll(httpRes.Body)
+	if err != nil {
+		return nil, fmt.Errorf("error reading response body: %w", err)
+	}
+	httpRes.Body.Close()
+	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+
+	contentType := httpRes.Header.Get("Content-Type")
+
+	res := &operations.UpdateIssueResponse{
+		StatusCode:  httpRes.StatusCode,
+		ContentType: contentType,
+		RawResponse: httpRes,
+	}
+	switch {
+	case httpRes.StatusCode == 200:
+		switch {
+		case utils.MatchContentType(contentType, `application/json`):
+			var out interface{}
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
+				return nil, err
+			}
+
+			res.Issue = out
+		}
+	case httpRes.StatusCode == 400:
+		fallthrough
+	case httpRes.StatusCode == 422:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.APIErrorResponse

@@ -63,34 +63,56 @@ func (c *sdkConfiguration) GetServerDetails() (string, map[string]string) {
 
 // Hookdeck
 type Hookdeck struct {
+	Attempt *attempt
 	// Attempts - An attempt is any request that Hookdeck makes on behalf of an event.
 	Attempts *attempts
+	Bookmark *bookmark
 	// Bookmarks - A bookmark lets you conveniently store and replay a specific request.
 	Bookmarks              *bookmarks
-	BulkRetryEvents        *bulkRetryEvents
+	BulkRetryEvent         *bulkRetryEvent
+	BulkRetryIgnoredEvent  *bulkRetryIgnoredEvent
 	BulkRetryIgnoredEvents *bulkRetryIgnoredEvents
 	BulkRetryRequests      *bulkRetryRequests
+	Connection             *connection
 	// Connections - A connection lets you route webhooks from a source to a destination, using a ruleset.
-	Connections *connections
+	Connections   *connections
+	CustomDomain  *customDomain
+	CustomDomains *customDomains
+	Destination   *destination
 	// Destinations - A destination is any endpoint to which your webhooks can be routed.
 	Destinations *destinations
+	Event        *event
+	EventRawBody *eventRawBody
 	// Events - An event is any request that Hookdeck receives from a source.
-	Events *events
+	Events      *events
+	Integration *integration
 	// Integrations - An integration configures platform-specific behaviors, such as signature verification.
 	Integrations  *integrations
+	Issue         *issue
+	IssueTrigger  *issueTrigger
 	IssueTriggers *issueTriggers
 	// Issues - Issues lets you track problems in your workspace and communicate resolution steps with your team.
-	Issues *issues
-	// Notifications - Notifications let your team receive alerts anytime an issue changes.
-	Notifications *notifications
+	Issues               *issues
+	IssuesCount          *issuesCount
+	Request              *request
+	RequestBulkRetry     *requestBulkRetry
+	RequestEvents        *requestEvents
+	RequestIgnoredEvents *requestIgnoredEvents
+	RequestRawBody       *requestRawBody
 	// Requests - A request represent a webhook received by Hookdeck.
 	Requests *requests
+	Ruleset  *ruleset
 	// Rulesets - A ruleset defines a group of rules that can be used across many connections.
 	Rulesets *rulesets
+	Source   *source
 	// Sources - A source represents any third party that sends webhooks to Hookdeck.
-	Sources *sources
+	Sources                  *sources
+	Transformation           *transformation
+	TransformationExecution  *transformationExecution
+	TransformationExecutions *transformationExecutions
 	// Transformations - A transformation represents JavaScript code that will be executed on a connection's requests. Transformations are applied to connections using Rules.
-	Transformations *transformations
+	Transformations      *transformations
+	WebhookNotifications *webhookNotifications
 
 	sdkConfiguration sdkConfiguration
 }
@@ -201,8 +223,8 @@ func New(opts ...SDKOption) *Hookdeck {
 		sdkConfiguration: sdkConfiguration{
 			Language:          "go",
 			OpenAPIDocVersion: "1.0.0",
-			SDKVersion:        "1.1.0",
-			GenVersion:        "2.62.1",
+			SDKVersion:        "1.2.0",
+			GenVersion:        "2.65.0",
 			ServerDefaults: []map[string]string{
 				{
 					"version": "2023-01-01",
@@ -226,37 +248,83 @@ func New(opts ...SDKOption) *Hookdeck {
 		}
 	}
 
+	sdk.Attempt = newAttempt(sdk.sdkConfiguration)
+
 	sdk.Attempts = newAttempts(sdk.sdkConfiguration)
+
+	sdk.Bookmark = newBookmark(sdk.sdkConfiguration)
 
 	sdk.Bookmarks = newBookmarks(sdk.sdkConfiguration)
 
-	sdk.BulkRetryEvents = newBulkRetryEvents(sdk.sdkConfiguration)
+	sdk.BulkRetryEvent = newBulkRetryEvent(sdk.sdkConfiguration)
+
+	sdk.BulkRetryIgnoredEvent = newBulkRetryIgnoredEvent(sdk.sdkConfiguration)
 
 	sdk.BulkRetryIgnoredEvents = newBulkRetryIgnoredEvents(sdk.sdkConfiguration)
 
 	sdk.BulkRetryRequests = newBulkRetryRequests(sdk.sdkConfiguration)
 
+	sdk.Connection = newConnection(sdk.sdkConfiguration)
+
 	sdk.Connections = newConnections(sdk.sdkConfiguration)
+
+	sdk.CustomDomain = newCustomDomain(sdk.sdkConfiguration)
+
+	sdk.CustomDomains = newCustomDomains(sdk.sdkConfiguration)
+
+	sdk.Destination = newDestination(sdk.sdkConfiguration)
 
 	sdk.Destinations = newDestinations(sdk.sdkConfiguration)
 
+	sdk.Event = newEvent(sdk.sdkConfiguration)
+
+	sdk.EventRawBody = newEventRawBody(sdk.sdkConfiguration)
+
 	sdk.Events = newEvents(sdk.sdkConfiguration)
 
+	sdk.Integration = newIntegration(sdk.sdkConfiguration)
+
 	sdk.Integrations = newIntegrations(sdk.sdkConfiguration)
+
+	sdk.Issue = newIssue(sdk.sdkConfiguration)
+
+	sdk.IssueTrigger = newIssueTrigger(sdk.sdkConfiguration)
 
 	sdk.IssueTriggers = newIssueTriggers(sdk.sdkConfiguration)
 
 	sdk.Issues = newIssues(sdk.sdkConfiguration)
 
-	sdk.Notifications = newNotifications(sdk.sdkConfiguration)
+	sdk.IssuesCount = newIssuesCount(sdk.sdkConfiguration)
+
+	sdk.Request = newRequest(sdk.sdkConfiguration)
+
+	sdk.RequestBulkRetry = newRequestBulkRetry(sdk.sdkConfiguration)
+
+	sdk.RequestEvents = newRequestEvents(sdk.sdkConfiguration)
+
+	sdk.RequestIgnoredEvents = newRequestIgnoredEvents(sdk.sdkConfiguration)
+
+	sdk.RequestRawBody = newRequestRawBody(sdk.sdkConfiguration)
 
 	sdk.Requests = newRequests(sdk.sdkConfiguration)
 
+	sdk.Ruleset = newRuleset(sdk.sdkConfiguration)
+
 	sdk.Rulesets = newRulesets(sdk.sdkConfiguration)
+
+	sdk.Source = newSource(sdk.sdkConfiguration)
 
 	sdk.Sources = newSources(sdk.sdkConfiguration)
 
+	sdk.Transformation = newTransformation(sdk.sdkConfiguration)
+
+	sdk.TransformationExecution = newTransformationExecution(sdk.sdkConfiguration)
+
+	sdk.TransformationExecutions = newTransformationExecutions(sdk.sdkConfiguration)
+
 	sdk.Transformations = newTransformations(sdk.sdkConfiguration)
+
+	sdk.WebhookNotifications = newWebhookNotifications(sdk.sdkConfiguration)
 
 	return sdk
 }
