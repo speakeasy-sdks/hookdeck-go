@@ -1,12 +1,12 @@
-# BulkRetryEvents
+# BulkRetryEvent
 
 ### Available Operations
 
-* [CancelEventBulkRetry](#canceleventbulkretry) - Cancel an events bulk retry
-* [CreateEventBulkRetry](#createeventbulkretry) - Create an events bulk retry
-* [GetEventBulkRetry](#geteventbulkretry) - Get an events bulk retry
+* [Cancel](#cancel) - Cancel an events bulk retry
+* [Create](#create) - Create an events bulk retry
+* [Get](#get) - Get an events bulk retry
 
-## CancelEventBulkRetry
+## Cancel
 
 Cancel an events bulk retry
 
@@ -19,6 +19,7 @@ import(
 	"context"
 	"log"
 	"github.com/speakeasy-sdks/hookdeck-go"
+	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 )
 
@@ -33,9 +34,7 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.BulkRetryEvents.CancelEventBulkRetry(ctx, operations.CancelEventBulkRetryRequest{
-        ID: "c969e9a3-efa7-47df-b14c-d66ae395efb9",
-    })
+    res, err := s.BulkRetryEvent.Cancel(ctx, "quis")
     if err != nil {
         log.Fatal(err)
     }
@@ -48,10 +47,10 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                                        | Type                                                                                             | Required                                                                                         | Description                                                                                      |
-| ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
-| `ctx`                                                                                            | [context.Context](https://pkg.go.dev/context#Context)                                            | :heavy_check_mark:                                                                               | The context to use for the request.                                                              |
-| `request`                                                                                        | [operations.CancelEventBulkRetryRequest](../../models/operations/canceleventbulkretryrequest.md) | :heavy_check_mark:                                                                               | The request object to use for the request.                                                       |
+| Parameter                                             | Type                                                  | Required                                              | Description                                           |
+| ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
+| `ctx`                                                 | [context.Context](https://pkg.go.dev/context#Context) | :heavy_check_mark:                                    | The context to use for the request.                   |
+| `id`                                                  | *string*                                              | :heavy_check_mark:                                    | N/A                                                   |
 
 
 ### Response
@@ -59,7 +58,7 @@ func main() {
 **[*operations.CancelEventBulkRetryResponse](../../models/operations/canceleventbulkretryresponse.md), error**
 
 
-## CreateEventBulkRetry
+## Create
 
 Create an events bulk retry
 
@@ -72,9 +71,9 @@ import(
 	"context"
 	"log"
 	"github.com/speakeasy-sdks/hookdeck-go"
+	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/types"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
 )
 
 func main() {
@@ -88,7 +87,7 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.BulkRetryEvents.CreateEventBulkRetry(ctx, operations.CreateEventBulkRetryRequestBody{
+    res, err := s.BulkRetryEvent.Create(ctx, operations.CreateEventBulkRetryRequestBody{
         Query: &operations.CreateEventBulkRetryRequestBodyQuery{
             Attempts: &operations.CreateEventBulkRetryRequestBodyQueryAttempts{},
             Body: &operations.CreateEventBulkRetryRequestBodyQueryBody{},
@@ -104,9 +103,9 @@ func main() {
             IssueID: &operations.CreateEventBulkRetryRequestBodyQueryIssueID{},
             LastAttemptAt: &operations.CreateEventBulkRetryRequestBodyQueryLastAttemptAt{},
             ParsedQuery: &operations.CreateEventBulkRetryRequestBodyQueryParsedQuery{},
-            Path: hookdeck.String("nam"),
+            Path: hookdeck.String("veritatis"),
             ResponseStatus: &operations.CreateEventBulkRetryRequestBodyQueryResponseStatus{},
-            SearchTerm: hookdeck.String("id"),
+            SearchTerm: hookdeck.String("deserunt"),
             SourceID: &operations.CreateEventBulkRetryRequestBodyQuerySourceID{},
             Status: &operations.CreateEventBulkRetryRequestBodyQueryStatus{},
             SuccessfulAt: &operations.CreateEventBulkRetryRequestBodyQuerySuccessfulAt{},
@@ -136,7 +135,7 @@ func main() {
 **[*operations.CreateEventBulkRetryResponse](../../models/operations/createeventbulkretryresponse.md), error**
 
 
-## GetEventBulkRetry
+## Get
 
 Get an events bulk retry
 
@@ -149,6 +148,7 @@ import(
 	"context"
 	"log"
 	"github.com/speakeasy-sdks/hookdeck-go"
+	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 )
 
@@ -163,9 +163,7 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.BulkRetryEvents.GetEventBulkRetry(ctx, operations.GetEventBulkRetryRequest{
-        ID: "88f3a669-9707-44ba-8469-b6e214195989",
-    })
+    res, err := s.BulkRetryEvent.Get(ctx, "perferendis")
     if err != nil {
         log.Fatal(err)
     }
@@ -178,10 +176,10 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                                  | Type                                                                                       | Required                                                                                   | Description                                                                                |
-| ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
-| `ctx`                                                                                      | [context.Context](https://pkg.go.dev/context#Context)                                      | :heavy_check_mark:                                                                         | The context to use for the request.                                                        |
-| `request`                                                                                  | [operations.GetEventBulkRetryRequest](../../models/operations/geteventbulkretryrequest.md) | :heavy_check_mark:                                                                         | The request object to use for the request.                                                 |
+| Parameter                                             | Type                                                  | Required                                              | Description                                           |
+| ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
+| `ctx`                                                 | [context.Context](https://pkg.go.dev/context#Context) | :heavy_check_mark:                                    | The context to use for the request.                   |
+| `id`                                                  | *string*                                              | :heavy_check_mark:                                    | N/A                                                   |
 
 
 ### Response

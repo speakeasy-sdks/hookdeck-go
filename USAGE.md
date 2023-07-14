@@ -1,4 +1,6 @@
 <!-- Start SDK Example Usage -->
+
+
 ```go
 package main
 
@@ -6,6 +8,7 @@ import(
 	"context"
 	"log"
 	"github.com/speakeasy-sdks/hookdeck-go"
+	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 )
 
@@ -20,9 +23,7 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.Attempts.GetAttempt(ctx, operations.GetAttemptRequest{
-        ID: "89bd9d8d-69a6-474e-8f46-7cc8796ed151",
-    })
+    res, err := s.Attempt.Get(ctx, "corrupti")
     if err != nil {
         log.Fatal(err)
     }

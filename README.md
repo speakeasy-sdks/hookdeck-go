@@ -30,6 +30,8 @@ go get github.com/speakeasy-sdks/hookdeck-go
 
 ## SDK Example Usage
 <!-- Start SDK Example Usage -->
+
+
 ```go
 package main
 
@@ -37,6 +39,7 @@ import(
 	"context"
 	"log"
 	"github.com/speakeasy-sdks/hookdeck-go"
+	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 )
 
@@ -51,9 +54,7 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.Attempts.GetAttempt(ctx, operations.GetAttemptRequest{
-        ID: "89bd9d8d-69a6-474e-8f46-7cc8796ed151",
-    })
+    res, err := s.Attempt.Get(ctx, "corrupti")
     if err != nil {
         log.Fatal(err)
     }
@@ -69,148 +70,217 @@ func main() {
 ## Available Resources and Operations
 
 
+### [Attempt](docs/sdks/attempt/README.md)
+
+* [Get](docs/sdks/attempt/README.md#get) - Get a Single Attempt
+
 ### [Attempts](docs/sdks/attempts/README.md)
 
-* [GetAttempt](docs/sdks/attempts/README.md#getattempt) - Get a Single Attempt
-* [GetAttempts](docs/sdks/attempts/README.md#getattempts) - Get Attempts
+* [Get](docs/sdks/attempts/README.md#get) - Get Attempts
+
+### [Bookmark](docs/sdks/bookmark/README.md)
+
+* [Create](docs/sdks/bookmark/README.md#create) - Create a Bookmark
+* [Delete](docs/sdks/bookmark/README.md#delete) - Delete a Bookmark
+* [Get](docs/sdks/bookmark/README.md#get) - Get a Single Bookmark
+* [Trigger](docs/sdks/bookmark/README.md#trigger) - Trigger a Bookmark
+* [Update](docs/sdks/bookmark/README.md#update) - Update a Bookmark
 
 ### [Bookmarks](docs/sdks/bookmarks/README.md)
 
-* [CreateBookmark](docs/sdks/bookmarks/README.md#createbookmark) - Create a Bookmark
-* [DeleteBookmark](docs/sdks/bookmarks/README.md#deletebookmark) - Delete a Bookmark
-* [GetBookmark](docs/sdks/bookmarks/README.md#getbookmark) - Get a Single Bookmark
-* [GetBookmarks](docs/sdks/bookmarks/README.md#getbookmarks) - Get Bookmarks
-* [TriggerBookmark](docs/sdks/bookmarks/README.md#triggerbookmark) - Trigger a Bookmark
-* [UpdateBookmark](docs/sdks/bookmarks/README.md#updatebookmark) - Update a Bookmark
+* [Get](docs/sdks/bookmarks/README.md#get) - Get Bookmarks
 
-### [BulkRetryEvents](docs/sdks/bulkretryevents/README.md)
+### [BulkRetryEvent](docs/sdks/bulkretryevent/README.md)
 
-* [CancelEventBulkRetry](docs/sdks/bulkretryevents/README.md#canceleventbulkretry) - Cancel an events bulk retry
-* [CreateEventBulkRetry](docs/sdks/bulkretryevents/README.md#createeventbulkretry) - Create an events bulk retry
-* [GetEventBulkRetry](docs/sdks/bulkretryevents/README.md#geteventbulkretry) - Get an events bulk retry
+* [Cancel](docs/sdks/bulkretryevent/README.md#cancel) - Cancel an events bulk retry
+* [Create](docs/sdks/bulkretryevent/README.md#create) - Create an events bulk retry
+* [Get](docs/sdks/bulkretryevent/README.md#get) - Get an events bulk retry
+
+### [BulkRetryIgnoredEvent](docs/sdks/bulkretryignoredevent/README.md)
+
+* [Cancel](docs/sdks/bulkretryignoredevent/README.md#cancel) - Cancel an ignored events bulk retry
+* [Create](docs/sdks/bulkretryignoredevent/README.md#create) - Create an ignored events bulk retry
+* [Generate](docs/sdks/bulkretryignoredevent/README.md#generate) - Generate an ignored events bulk retry plan
+* [Get](docs/sdks/bulkretryignoredevent/README.md#get) - Get an ignored events bulk retry
 
 ### [BulkRetryIgnoredEvents](docs/sdks/bulkretryignoredevents/README.md)
 
-* [CancelIgnoredEventBulkRetry](docs/sdks/bulkretryignoredevents/README.md#cancelignoredeventbulkretry) - Cancel an ignored events bulk retry
-* [CreateIgnoredEventBulkRetry](docs/sdks/bulkretryignoredevents/README.md#createignoredeventbulkretry) - Create an ignored events bulk retry
-* [GenerateIgnoredEventBulkRetryPlan](docs/sdks/bulkretryignoredevents/README.md#generateignoredeventbulkretryplan) - Generate an ignored events bulk retry plan
-* [GetIgnoredEventBulkRetries](docs/sdks/bulkretryignoredevents/README.md#getignoredeventbulkretries) - Get ignored events bulk retries
-* [GetIgnoredEventBulkRetry](docs/sdks/bulkretryignoredevents/README.md#getignoredeventbulkretry) - Get an ignored events bulk retry
+* [Get](docs/sdks/bulkretryignoredevents/README.md#get) - Get ignored events bulk retries
 
 ### [BulkRetryRequests](docs/sdks/bulkretryrequests/README.md)
 
-* [CancelRequestBulkRetry](docs/sdks/bulkretryrequests/README.md#cancelrequestbulkretry) - Cancel a requests bulk retry
-* [CreateRequestBulkRetry](docs/sdks/bulkretryrequests/README.md#createrequestbulkretry) - Create a requests bulk retry
-* [GetRequestBulkRetry](docs/sdks/bulkretryrequests/README.md#getrequestbulkretry) - Get a requests bulk retry
+* [Create](docs/sdks/bulkretryrequests/README.md#create) - Create a requests bulk retry
+
+### [Connection](docs/sdks/connection/README.md)
+
+* [Archive](docs/sdks/connection/README.md#archive) - Archive a connection
+* [Create](docs/sdks/connection/README.md#create) - Create a connection
+* [Delete](docs/sdks/connection/README.md#delete) - Delete a connection
+* [Get](docs/sdks/connection/README.md#get) - Get a single connection
+* [Pause](docs/sdks/connection/README.md#pause) - Pause a connection
+* [Unarchive](docs/sdks/connection/README.md#unarchive) - Unarchive a connection
+* [Unpause](docs/sdks/connection/README.md#unpause) - Unpause a connection
+* [Update](docs/sdks/connection/README.md#update) - Update a connection
+* [Upsert](docs/sdks/connection/README.md#upsert) - Update or create a connection
 
 ### [Connections](docs/sdks/connections/README.md)
 
-* [ArchiveConnection](docs/sdks/connections/README.md#archiveconnection) - Archive a connection
-* [CreateConnection](docs/sdks/connections/README.md#createconnection) - Create a connection
-* [DeleteConnection](docs/sdks/connections/README.md#deleteconnection) - Delete a connection
-* [GetConnection](docs/sdks/connections/README.md#getconnection) - Get a single connection
-* [GetConnections](docs/sdks/connections/README.md#getconnections) - Get connections
-* [PauseConnection](docs/sdks/connections/README.md#pauseconnection) - Pause a connection
-* [UnarchiveConnection](docs/sdks/connections/README.md#unarchiveconnection) - Unarchive a connection
-* [UnpauseConnection](docs/sdks/connections/README.md#unpauseconnection) - Unpause a connection
-* [UpdateConnection](docs/sdks/connections/README.md#updateconnection) - Update a connection
-* [UpsertConnection](docs/sdks/connections/README.md#upsertconnection) - Update or create a connection
+* [Get](docs/sdks/connections/README.md#get) - Get connections
+
+### [CustomDomain](docs/sdks/customdomain/README.md)
+
+* [Add](docs/sdks/customdomain/README.md#add) - Add a custom domain to the workspace
+* [Delete](docs/sdks/customdomain/README.md#delete) - Removes a custom domain from the workspace
+
+### [CustomDomains](docs/sdks/customdomains/README.md)
+
+* [List](docs/sdks/customdomains/README.md#list) - List all custom domains and their verification statuses for the workspace
+
+### [Destination](docs/sdks/destination/README.md)
+
+* [Archive](docs/sdks/destination/README.md#archive) - Archive a Destination
+* [Create](docs/sdks/destination/README.md#create) - Create a Destination
+* [Delete](docs/sdks/destination/README.md#delete) - Delete a Destination
+* [Get](docs/sdks/destination/README.md#get) - Get a Destination
+* [Unarchive](docs/sdks/destination/README.md#unarchive) - Unarchive a Destination
+* [Update](docs/sdks/destination/README.md#update) - Update a Destination
+* [Upsert](docs/sdks/destination/README.md#upsert) - Update or Create a Destination
 
 ### [Destinations](docs/sdks/destinations/README.md)
 
-* [ArchiveDestination](docs/sdks/destinations/README.md#archivedestination) - Archive a Destination
-* [CreateDestination](docs/sdks/destinations/README.md#createdestination) - Create a Destination
-* [DeleteDestination](docs/sdks/destinations/README.md#deletedestination) - Delete a Destination
-* [GetDestination](docs/sdks/destinations/README.md#getdestination) - Get a Destination
-* [GetDestinations](docs/sdks/destinations/README.md#getdestinations) - Get Destinations
-* [UnarchiveDestination](docs/sdks/destinations/README.md#unarchivedestination) - Unarchive a Destination
-* [UpdateDestination](docs/sdks/destinations/README.md#updatedestination) - Update a Destination
-* [UpsertDestination](docs/sdks/destinations/README.md#upsertdestination) - Update or Create a Destination
+* [Get](docs/sdks/destinations/README.md#get) - Get Destinations
+
+### [Event](docs/sdks/event/README.md)
+
+* [Get](docs/sdks/event/README.md#get) - Get an Event
+* [MuteEvent](docs/sdks/event/README.md#muteevent) - Mute an Event
+* [Retry](docs/sdks/event/README.md#retry) - Retry an Event
+
+### [EventRawBody](docs/sdks/eventrawbody/README.md)
+
+* [Get](docs/sdks/eventrawbody/README.md#get) - Get an Event Raw Body Data
 
 ### [Events](docs/sdks/events/README.md)
 
-* [GetEvent](docs/sdks/events/README.md#getevent) - Get an Event
-* [GetEventRawBody](docs/sdks/events/README.md#geteventrawbody) - Get an Event Raw Body Data
-* [GetEvents](docs/sdks/events/README.md#getevents) - Get Events
-* [MuteEvent](docs/sdks/events/README.md#muteevent) - Mute an Event
-* [RetryEvent](docs/sdks/events/README.md#retryevent) - Retry an Event
+* [Get](docs/sdks/events/README.md#get) - Get Events
+
+### [Integration](docs/sdks/integration/README.md)
+
+* [AttachIntegrationToSource](docs/sdks/integration/README.md#attachintegrationtosource) - Attach an integration to a source
+* [Create](docs/sdks/integration/README.md#create) - Create an integration
+* [Delete](docs/sdks/integration/README.md#delete) - Delete an integration
+* [DetachIntegrationToSource](docs/sdks/integration/README.md#detachintegrationtosource) - Detach an integration from a source
+* [Get](docs/sdks/integration/README.md#get) - Get an integration
+* [Update](docs/sdks/integration/README.md#update) - Update an integration
 
 ### [Integrations](docs/sdks/integrations/README.md)
 
-* [AttachIntegrationToSource](docs/sdks/integrations/README.md#attachintegrationtosource) - Attach an integration to a source
-* [CreateIntegration](docs/sdks/integrations/README.md#createintegration) - Create an integration
-* [DeleteIntegration](docs/sdks/integrations/README.md#deleteintegration) - Delete an integration
-* [DetachIntegrationToSource](docs/sdks/integrations/README.md#detachintegrationtosource) - Detach an integration from a source
-* [GetIntegration](docs/sdks/integrations/README.md#getintegration) - Get an integration
-* [GetIntegrations](docs/sdks/integrations/README.md#getintegrations) - Get integrations
-* [UpdateIntegration](docs/sdks/integrations/README.md#updateintegration) - Update an integration
+* [Get](docs/sdks/integrations/README.md#get) - Get integrations
+
+### [Issue](docs/sdks/issue/README.md)
+
+* [Dismiss](docs/sdks/issue/README.md#dismiss) - Dismiss an issue
+* [Get](docs/sdks/issue/README.md#get) - Get a single issue
+* [Update](docs/sdks/issue/README.md#update) - Update issue
+
+### [IssueTrigger](docs/sdks/issuetrigger/README.md)
+
+* [Create](docs/sdks/issuetrigger/README.md#create) - Create an Issue Trigger
+* [Delete](docs/sdks/issuetrigger/README.md#delete) - Delete an Issue Trigger
+* [Disable](docs/sdks/issuetrigger/README.md#disable) - Disable an Issue Trigger
+* [Enable](docs/sdks/issuetrigger/README.md#enable) - Enable an Issue Trigger
+* [Get](docs/sdks/issuetrigger/README.md#get) - Get an Issue Trigger
+* [Update](docs/sdks/issuetrigger/README.md#update) - Update an Issue Trigger
+* [Upsert](docs/sdks/issuetrigger/README.md#upsert) - Create or Update an Issue Trigger
 
 ### [IssueTriggers](docs/sdks/issuetriggers/README.md)
 
-* [CreateIssueTrigger](docs/sdks/issuetriggers/README.md#createissuetrigger) - Create an Issue Trigger
-* [DeleteIssueTrigger](docs/sdks/issuetriggers/README.md#deleteissuetrigger) - Delete an Issue Trigger
-* [DisableIssueTrigger](docs/sdks/issuetriggers/README.md#disableissuetrigger) - Disable an Issue Trigger
-* [EnableIssueTrigger](docs/sdks/issuetriggers/README.md#enableissuetrigger) - Enable an Issue Trigger
-* [GetIssueTrigger](docs/sdks/issuetriggers/README.md#getissuetrigger) - Get an Issue Trigger
-* [GetIssueTriggers](docs/sdks/issuetriggers/README.md#getissuetriggers) - Get Issue Triggers
-* [UpdateIssueTrigger](docs/sdks/issuetriggers/README.md#updateissuetrigger) - Update an Issue Trigger
-* [UpsertIssueTrigger](docs/sdks/issuetriggers/README.md#upsertissuetrigger) - Create or Update an Issue Trigger
+* [Get](docs/sdks/issuetriggers/README.md#get) - Get Issue Triggers
 
 ### [Issues](docs/sdks/issues/README.md)
 
-* [DismissIssue](docs/sdks/issues/README.md#dismississue) - Dismiss an issue
-* [GetIssue](docs/sdks/issues/README.md#getissue) - Get a single issue
-* [GetIssueCount](docs/sdks/issues/README.md#getissuecount) - Get the number of issues
-* [GetIssues](docs/sdks/issues/README.md#getissues) - Get issues
-* [UpdateIssue](docs/sdks/issues/README.md#updateissue) - Update issue
+* [Get](docs/sdks/issues/README.md#get) - Get issues
 
-### [Notifications](docs/sdks/notifications/README.md)
+### [IssuesCount](docs/sdks/issuescount/README.md)
 
-* [AddCustomDomain](docs/sdks/notifications/README.md#addcustomdomain) - Add a custom domain to the workspace
-* [DeleteCustomDomain](docs/sdks/notifications/README.md#deletecustomdomain) - Removes a custom domain from the workspace
-* [ListCustomDomains](docs/sdks/notifications/README.md#listcustomdomains) - List all custom domains and their verification statuses for the workspace
-* [ToggleWebhookNotifications](docs/sdks/notifications/README.md#togglewebhooknotifications) - Toggle webhook notifications for the workspace
+* [Get](docs/sdks/issuescount/README.md#get) - Get the number of issues
+
+### [Request](docs/sdks/request/README.md)
+
+* [Get](docs/sdks/request/README.md#get) - Get a request
+* [Retry](docs/sdks/request/README.md#retry) - Retry a request
+
+### [RequestBulkRetry](docs/sdks/requestbulkretry/README.md)
+
+* [Cancel](docs/sdks/requestbulkretry/README.md#cancel) - Cancel a requests bulk retry
+* [Get](docs/sdks/requestbulkretry/README.md#get) - Get a requests bulk retry
+
+### [RequestEvents](docs/sdks/requestevents/README.md)
+
+* [Get](docs/sdks/requestevents/README.md#get) - Get request events
+
+### [RequestIgnoredEvents](docs/sdks/requestignoredevents/README.md)
+
+* [Get](docs/sdks/requestignoredevents/README.md#get) - Get request ignored events
+
+### [RequestRawBody](docs/sdks/requestrawbody/README.md)
+
+* [Get](docs/sdks/requestrawbody/README.md#get) - Get a request raw body data
 
 ### [Requests](docs/sdks/requests/README.md)
 
-* [GetRequest](docs/sdks/requests/README.md#getrequest) - Get a request
-* [GetRequestEvents](docs/sdks/requests/README.md#getrequestevents) - Get request events
-* [GetRequestIgnoredEvents](docs/sdks/requests/README.md#getrequestignoredevents) - Get request ignored events
-* [GetRequestRawBody](docs/sdks/requests/README.md#getrequestrawbody) - Get a request raw body data
-* [GetRequests](docs/sdks/requests/README.md#getrequests) - Get requests
-* [RetryRequest](docs/sdks/requests/README.md#retryrequest) - Retry a request
+* [Get](docs/sdks/requests/README.md#get) - Get requests
+
+### [Ruleset](docs/sdks/ruleset/README.md)
+
+* [Archive](docs/sdks/ruleset/README.md#archive) - Archive a ruleset
+* [Create](docs/sdks/ruleset/README.md#create) - Create a ruleset
+* [Get](docs/sdks/ruleset/README.md#get) - Get a ruleset
+* [Unarchive](docs/sdks/ruleset/README.md#unarchive) - Unarchive a ruleset
+* [Update](docs/sdks/ruleset/README.md#update) - Update a ruleset
+* [Upsert](docs/sdks/ruleset/README.md#upsert) - Update or create a ruleset
 
 ### [Rulesets](docs/sdks/rulesets/README.md)
 
-* [ArchiveRuleset](docs/sdks/rulesets/README.md#archiveruleset) - Archive a ruleset
-* [CreateRuleset](docs/sdks/rulesets/README.md#createruleset) - Create a ruleset
-* [GetRuleset](docs/sdks/rulesets/README.md#getruleset) - Get a ruleset
-* [GetRulesets](docs/sdks/rulesets/README.md#getrulesets) - Get rulesets
-* [UnarchiveRuleset](docs/sdks/rulesets/README.md#unarchiveruleset) - Unarchive a ruleset
-* [UpdateRuleset](docs/sdks/rulesets/README.md#updateruleset) - Update a ruleset
-* [UpsertRuleset](docs/sdks/rulesets/README.md#upsertruleset) - Update or create a ruleset
+* [Get](docs/sdks/rulesets/README.md#get) - Get rulesets
+
+### [Source](docs/sdks/source/README.md)
+
+* [Archive](docs/sdks/source/README.md#archive) - Archive a source
+* [Create](docs/sdks/source/README.md#create) - Create a source
+* [Delete](docs/sdks/source/README.md#delete) - Delete a source
+* [Get](docs/sdks/source/README.md#get) - Get a source
+* [Unarchive](docs/sdks/source/README.md#unarchive) - Unarchive a source
+* [Update](docs/sdks/source/README.md#update) - Update a source
+* [Upsert](docs/sdks/source/README.md#upsert) - Update or create a source
 
 ### [Sources](docs/sdks/sources/README.md)
 
-* [ArchiveSource](docs/sdks/sources/README.md#archivesource) - Archive a source
-* [CreateSource](docs/sdks/sources/README.md#createsource) - Create a source
-* [DeleteSource](docs/sdks/sources/README.md#deletesource) - Delete a source
-* [GetSource](docs/sdks/sources/README.md#getsource) - Get a source
-* [GetSources](docs/sdks/sources/README.md#getsources) - Get sources
-* [UnarchiveSource](docs/sdks/sources/README.md#unarchivesource) - Unarchive a source
-* [UpdateSource](docs/sdks/sources/README.md#updatesource) - Update a source
-* [UpsertSource](docs/sdks/sources/README.md#upsertsource) - Update or create a source
+* [Get](docs/sdks/sources/README.md#get) - Get sources
+
+### [Transformation](docs/sdks/transformation/README.md)
+
+* [Create](docs/sdks/transformation/README.md#create) - Create a transformation
+* [Get](docs/sdks/transformation/README.md#get) - Get a transformation
+* [Test](docs/sdks/transformation/README.md#test) - Test a transformation code
+* [Update](docs/sdks/transformation/README.md#update) - Update a transformation
+* [Upsert](docs/sdks/transformation/README.md#upsert) - Update or create a transformation
+
+### [TransformationExecution](docs/sdks/transformationexecution/README.md)
+
+* [Get](docs/sdks/transformationexecution/README.md#get) - Get a transformation execution
+
+### [TransformationExecutions](docs/sdks/transformationexecutions/README.md)
+
+* [Get](docs/sdks/transformationexecutions/README.md#get) - Get transformation executions
 
 ### [Transformations](docs/sdks/transformations/README.md)
 
-* [CreateTransformation](docs/sdks/transformations/README.md#createtransformation) - Create a transformation
-* [GetTransformation](docs/sdks/transformations/README.md#gettransformation) - Get a transformation
-* [GetTransformationExecution](docs/sdks/transformations/README.md#gettransformationexecution) - Get a transformation execution
-* [GetTransformationExecutions](docs/sdks/transformations/README.md#gettransformationexecutions) - Get transformation executions
-* [GetTransformations](docs/sdks/transformations/README.md#gettransformations) - Get transformations
-* [TestTransformation](docs/sdks/transformations/README.md#testtransformation) - Test a transformation code
-* [UpdateTransformation](docs/sdks/transformations/README.md#updatetransformation) - Update a transformation
-* [UpsertTransformation](docs/sdks/transformations/README.md#upserttransformation) - Update or create a transformation
+* [Get](docs/sdks/transformations/README.md#get) - Get transformations
+
+### [WebhookNotifications](docs/sdks/webhooknotifications/README.md)
+
+* [Toggle](docs/sdks/webhooknotifications/README.md#toggle) - Toggle webhook notifications for the workspace
 <!-- End SDK Available Operations -->
 
 ### Maturity
