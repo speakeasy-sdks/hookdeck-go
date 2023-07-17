@@ -34,9 +34,12 @@ func main() {
     ctx := context.Background()
     res, err := s.WebhookNotifications.Toggle(ctx, operations.ToggleWebhookNotificationsRequestBody{
         Enabled: hookdeck.Bool(false),
-        SourceID: hookdeck.String("impedit"),
+        SourceID: hookdeck.String("consectetur"),
         Topics: []shared.TopicsValue{
             shared.TopicsValueEventSuccessful,
+            shared.TopicsValueIssueUpdated,
+            shared.TopicsValueEventSuccessful,
+            shared.TopicsValueDeprecatedAttemptFailed,
         },
     })
     if err != nil {

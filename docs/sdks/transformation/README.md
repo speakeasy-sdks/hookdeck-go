@@ -37,13 +37,12 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Transformation.Create(ctx, operations.CreateTransformationRequestBody{
-        Code: "laborum",
+        Code: "numquam",
         Env: map[string]interface{}{
-            "incidunt": "aspernatur",
-            "dolores": "distinctio",
-            "facilis": "aliquid",
+            "dolorem": "sapiente",
+            "totam": "nihil",
         },
-        Name: "Felicia Spencer",
+        Name: "Mamie Durgan",
     })
     if err != nil {
         log.Fatal(err)
@@ -96,7 +95,7 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.Transformation.Get(ctx, "fugit")
+    res, err := s.Transformation.Get(ctx, "libero")
     if err != nil {
         log.Fatal(err)
     }
@@ -149,20 +148,21 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Transformation.Test(ctx, operations.TestTransformationRequestBody{
-        Code: hookdeck.String("magni"),
+        Code: hookdeck.String("voluptas"),
         Env: &operations.TestTransformationRequestBodyEnv{},
-        EventID: hookdeck.String("odio"),
+        EventID: hookdeck.String("deserunt"),
         Request: &operations.TestTransformationRequestBodyRequest{
             Body: &operations.TestTransformationRequestBodyRequestBody{},
             Headers: map[string]string{
-                "ullam": "nam",
+                "ipsum": "incidunt",
+                "qui": "cupiditate",
             },
             ParsedQuery: &operations.TestTransformationRequestBodyRequestParsedQuery{},
-            Path: hookdeck.String("hic"),
-            Query: hookdeck.String("voluptatem"),
+            Path: hookdeck.String("maxime"),
+            Query: hookdeck.String("pariatur"),
         },
-        TransformationID: hookdeck.String("cumque"),
-        WebhookID: hookdeck.String("soluta"),
+        TransformationID: hookdeck.String("soluta"),
+        WebhookID: hookdeck.String("dicta"),
     })
     if err != nil {
         log.Fatal(err)
@@ -216,12 +216,14 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Transformation.Update(ctx, operations.UpdateTransformationRequestBody{
-        Code: hookdeck.String("nobis"),
+        Code: hookdeck.String("laborum"),
         Env: map[string]interface{}{
-            "saepe": "ipsum",
+            "incidunt": "aspernatur",
+            "dolores": "distinctio",
+            "facilis": "aliquid",
         },
-        Name: hookdeck.String("Gayle Lueilwitz"),
-    }, "aperiam")
+        Name: hookdeck.String("Felicia Spencer"),
+    }, "fugit")
     if err != nil {
         log.Fatal(err)
     }
@@ -275,11 +277,12 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Transformation.Upsert(ctx, operations.UpsertTransformationRequestBody{
-        Code: "delectus",
+        Code: "magni",
         Env: map[string]interface{}{
-            "dolore": "labore",
+            "sunt": "ullam",
+            "nam": "hic",
         },
-        Name: "Mr. Sonya Bradtke",
+        Name: "Erma Rogahn PhD",
     })
     if err != nil {
         log.Fatal(err)

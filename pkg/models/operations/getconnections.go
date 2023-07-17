@@ -807,7 +807,6 @@ type GetConnectionsRequest struct {
 	Dir           *GetConnectionsDir           `queryParam:"style=form,explode=true,name=dir"`
 	FullName      *string                      `queryParam:"style=form,explode=true,name=full_name"`
 	ID            *GetConnectionsID            `queryParam:"style=form,explode=true,name=id"`
-	Limit         *int64                       `queryParam:"style=form,explode=true,name=limit"`
 	Name          *GetConnectionsName          `queryParam:"style=form,explode=true,name=name"`
 	Next          *string                      `queryParam:"style=form,explode=true,name=next"`
 	OrderBy       *GetConnectionsOrderBy       `queryParam:"style=form,explode=true,name=order_by"`
@@ -856,13 +855,6 @@ func (o *GetConnectionsRequest) GetID() *GetConnectionsID {
 		return nil
 	}
 	return o.ID
-}
-
-func (o *GetConnectionsRequest) GetLimit() *int64 {
-	if o == nil {
-		return nil
-	}
-	return o.Limit
 }
 
 func (o *GetConnectionsRequest) GetName() *GetConnectionsName {

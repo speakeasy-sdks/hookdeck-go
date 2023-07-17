@@ -74,6 +74,7 @@ type Hookdeck struct {
 	BulkRetryIgnoredEvents *bulkRetryIgnoredEvents
 	BulkRetryRequests      *bulkRetryRequests
 	Connection             *connection
+	ConnectionNumberUpdate *connectionNumberUpdate
 	// Connections - A connection lets you route webhooks from a source to a destination, using a ruleset.
 	Connections   *connections
 	CustomDomain  *customDomain
@@ -223,7 +224,7 @@ func New(opts ...SDKOption) *Hookdeck {
 		sdkConfiguration: sdkConfiguration{
 			Language:          "go",
 			OpenAPIDocVersion: "1.0.0",
-			SDKVersion:        "1.4.2",
+			SDKVersion:        "1.4.3",
 			GenVersion:        "2.70.0",
 			ServerDefaults: []map[string]string{
 				{
@@ -265,6 +266,8 @@ func New(opts ...SDKOption) *Hookdeck {
 	sdk.BulkRetryRequests = newBulkRetryRequests(sdk.sdkConfiguration)
 
 	sdk.Connection = newConnection(sdk.sdkConfiguration)
+
+	sdk.ConnectionNumberUpdate = newConnectionNumberUpdate(sdk.sdkConfiguration)
 
 	sdk.Connections = newConnections(sdk.sdkConfiguration)
 

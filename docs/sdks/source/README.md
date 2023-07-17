@@ -38,7 +38,7 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.Source.Archive(ctx, "at")
+    res, err := s.Source.Archive(ctx, "ipsum")
     if err != nil {
         log.Fatal(err)
     }
@@ -92,14 +92,14 @@ func main() {
     ctx := context.Background()
     res, err := s.Source.Create(ctx, operations.CreateSourceRequestBody{
         AllowedHTTPMethods: []shared.SourceAllowedHTTPMethod{
-            shared.SourceAllowedHTTPMethodPost,
-            shared.SourceAllowedHTTPMethodPut,
+            shared.SourceAllowedHTTPMethodPatch,
+            shared.SourceAllowedHTTPMethodDelete,
         },
         CustomResponse: &shared.SourceCustomResponse{
-            Body: "quod",
-            ContentType: shared.SourceCustomResponseContentTypeXML,
+            Body: "eius",
+            ContentType: shared.SourceCustomResponseContentTypeJSON,
         },
-        Name: "Jan Wilderman",
+        Name: "Wendy Rosenbaum",
     })
     if err != nil {
         log.Fatal(err)
@@ -152,7 +152,7 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.Source.Delete(ctx, "iusto")
+    res, err := s.Source.Delete(ctx, "saepe")
     if err != nil {
         log.Fatal(err)
     }
@@ -204,7 +204,7 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.Source.Get(ctx, "ipsum")
+    res, err := s.Source.Get(ctx, "suscipit")
     if err != nil {
         log.Fatal(err)
     }
@@ -256,7 +256,7 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.Source.Unarchive(ctx, "quisquam")
+    res, err := s.Source.Unarchive(ctx, "deserunt")
     if err != nil {
         log.Fatal(err)
     }
@@ -311,16 +311,15 @@ func main() {
     res, err := s.Source.Update(ctx, operations.UpdateSourceRequestBody{
         AllowedHTTPMethods: []shared.SourceAllowedHTTPMethod{
             shared.SourceAllowedHTTPMethodPost,
-            shared.SourceAllowedHTTPMethodPatch,
             shared.SourceAllowedHTTPMethodDelete,
-            shared.SourceAllowedHTTPMethodPost,
+            shared.SourceAllowedHTTPMethodPut,
         },
         CustomResponse: &shared.SourceCustomResponse{
-            Body: "enim",
+            Body: "similique",
             ContentType: shared.SourceCustomResponseContentTypeJSON,
         },
-        Name: hookdeck.String("Miss Jimmie Kozey"),
-    }, "sed")
+        Name: hookdeck.String("Alex Goodwin"),
+    }, "officiis")
     if err != nil {
         log.Fatal(err)
     }
@@ -376,13 +375,12 @@ func main() {
     res, err := s.Source.Upsert(ctx, operations.UpsertSourceRequestBody{
         AllowedHTTPMethods: []shared.SourceAllowedHTTPMethod{
             shared.SourceAllowedHTTPMethodPatch,
-            shared.SourceAllowedHTTPMethodPost,
         },
         CustomResponse: &shared.SourceCustomResponse{
-            Body: "deserunt",
+            Body: "a",
             ContentType: shared.SourceCustomResponseContentTypeText,
         },
-        Name: "Amber Dibbert",
+        Name: "Tyrone Emard",
     })
     if err != nil {
         log.Fatal(err)

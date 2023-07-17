@@ -42,15 +42,18 @@ func main() {
         ArchivedAt: &operations.GetRulesetsArchivedAt{},
         Dir: &operations.GetRulesetsDir{},
         ID: &operations.GetRulesetsID{},
-        Limit: hookdeck.Int64(904425),
-        Name: []string{
-            "minima",
-            "repellendus",
-            "totam",
+        Limit: hookdeck.Int64(896672),
+        Name: &operations.GetRulesetsName2{
+            Any: hookdeck.Bool(false),
+            Contains: &operations.GetRulesetsName2Contains{},
+            Gt: &operations.GetRulesetsName2Gt{},
+            Gte: &operations.GetRulesetsName2Gte{},
+            Le: &operations.GetRulesetsName2Le{},
+            Lte: &operations.GetRulesetsName2Lte{},
         },
-        Next: hookdeck.String("similique"),
+        Next: hookdeck.String("asperiores"),
         OrderBy: &operations.GetRulesetsOrderBy{},
-        Prev: hookdeck.String("alias"),
+        Prev: hookdeck.String("nihil"),
     })
     if err != nil {
         log.Fatal(err)

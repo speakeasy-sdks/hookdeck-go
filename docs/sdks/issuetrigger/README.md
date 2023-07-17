@@ -43,15 +43,15 @@ func main() {
             Email: &shared.IssueTriggerEmailChannel{},
             Opsgenie: &shared.IssueTriggerIntegrationChannel{},
             Slack: &shared.IssueTriggerSlackChannel{
-                ChannelName: "repudiandae",
+                ChannelName: "odit",
             },
         },
         Configs: &shared.IssueTriggerTransformationConfigs{
-            LogLevel: shared.TransformationExecutionLogLevelError,
+            LogLevel: shared.TransformationExecutionLogLevelDebug,
             Transformations: shared.IssueTriggerTransformationConfigsTransformations{},
         },
-        Name: hookdeck.String("Kristie Spencer"),
-        Type: shared.IssueTypeBackpressure,
+        Name: hookdeck.String("Melba Toy"),
+        Type: shared.IssueTypeTransformation,
     })
     if err != nil {
         log.Fatal(err)
@@ -104,7 +104,7 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.IssueTrigger.Delete(ctx, "accusantium")
+    res, err := s.IssueTrigger.Delete(ctx, "facilis")
     if err != nil {
         log.Fatal(err)
     }
@@ -156,7 +156,7 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.IssueTrigger.Disable(ctx, "consequuntur")
+    res, err := s.IssueTrigger.Disable(ctx, "in")
     if err != nil {
         log.Fatal(err)
     }
@@ -208,7 +208,7 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.IssueTrigger.Enable(ctx, "praesentium")
+    res, err := s.IssueTrigger.Enable(ctx, "architecto")
     if err != nil {
         log.Fatal(err)
     }
@@ -260,7 +260,7 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.IssueTrigger.Get(ctx, "natus")
+    res, err := s.IssueTrigger.Get(ctx, "architecto")
     if err != nil {
         log.Fatal(err)
     }
@@ -318,16 +318,16 @@ func main() {
             Email: &shared.IssueTriggerEmailChannel{},
             Opsgenie: &shared.IssueTriggerIntegrationChannel{},
             Slack: &shared.IssueTriggerSlackChannel{
-                ChannelName: "magni",
+                ChannelName: "repudiandae",
             },
         },
-        Configs: &shared.IssueTriggerDeliveryConfigs{
-            Connections: shared.IssueTriggerDeliveryConfigsConnections{},
-            Strategy: shared.IssueTriggerStrategyFinalAttempt,
+        Configs: &shared.IssueTriggerTransformationConfigs{
+            LogLevel: shared.TransformationExecutionLogLevelError,
+            Transformations: shared.IssueTriggerTransformationConfigsTransformations{},
         },
-        DisabledAt: types.MustTimeFromString("2020-05-28T21:33:10.895Z"),
-        Name: hookdeck.String("Nathaniel Marks"),
-    }, "accusantium")
+        DisabledAt: types.MustTimeFromString("2022-01-01T10:06:00.916Z"),
+        Name: hookdeck.String("Louis Turner Sr."),
+    }, "praesentium")
     if err != nil {
         log.Fatal(err)
     }
@@ -385,14 +385,14 @@ func main() {
             Email: &shared.IssueTriggerEmailChannel{},
             Opsgenie: &shared.IssueTriggerIntegrationChannel{},
             Slack: &shared.IssueTriggerSlackChannel{
-                ChannelName: "ab",
+                ChannelName: "natus",
             },
         },
-        Configs: &shared.IssueTriggerBackpressureConfigs{
-            Delay: 697429,
-            Destinations: shared.IssueTriggerBackpressureConfigsDestinations{},
+        Configs: &shared.IssueTriggerDeliveryConfigs{
+            Connections: shared.IssueTriggerDeliveryConfigsConnections{},
+            Strategy: shared.IssueTriggerStrategyFirstAttempt,
         },
-        Name: "Colleen Johnston PhD",
+        Name: "Gilberto Streich",
         Type: shared.IssueTypeTransformation,
     })
     if err != nil {

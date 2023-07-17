@@ -44,12 +44,11 @@ func main() {
         Dir: &operations.GetConnectionsDir{},
         FullName: hookdeck.String("deserunt"),
         ID: &operations.GetConnectionsID{},
-        Limit: hookdeck.Int64(716327),
         Name: &operations.GetConnectionsName{},
-        Next: hookdeck.String("quibusdam"),
+        Next: hookdeck.String("distinctio"),
         OrderBy: &operations.GetConnectionsOrderBy{},
         PausedAt: &operations.GetConnectionsPausedAt{},
-        Prev: hookdeck.String("labore"),
+        Prev: hookdeck.String("quibusdam"),
         SourceID: &operations.GetConnectionsSourceID{},
     })
     if err != nil {

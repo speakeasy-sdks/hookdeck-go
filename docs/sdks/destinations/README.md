@@ -43,11 +43,11 @@ func main() {
         CliPath: &operations.GetDestinationsCliPath{},
         Dir: &operations.GetDestinationsDir{},
         ID: &operations.GetDestinationsID{},
-        Limit: hookdeck.Int64(474867),
+        Limit: hookdeck.Int64(501324),
         Name: &operations.GetDestinationsName{},
-        Next: hookdeck.String("perferendis"),
+        Next: hookdeck.String("deleniti"),
         OrderBy: &operations.GetDestinationsOrderBy{},
-        Prev: hookdeck.String("nihil"),
+        Prev: hookdeck.String("sapiente"),
         URL: &operations.GetDestinationsURL{},
     })
     if err != nil {

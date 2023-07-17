@@ -34,8 +34,8 @@ func main() {
 
     ctx := context.Background()
     res, err := s.CustomDomain.Add(ctx, shared.AddCustomHostname{
-        Hostname: "familiar-combination.info",
-    }, "cupiditate")
+        Hostname: "flat-directive.biz",
+    }, "aliquid")
     if err != nil {
         log.Fatal(err)
     }
@@ -88,7 +88,7 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.CustomDomain.Delete(ctx, "quos", "perferendis")
+    res, err := s.CustomDomain.Delete(ctx, "cupiditate", "quos")
     if err != nil {
         log.Fatal(err)
     }

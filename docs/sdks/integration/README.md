@@ -37,7 +37,7 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.Integration.AttachIntegrationToSource(ctx, "vero", "aspernatur")
+    res, err := s.Integration.AttachIntegrationToSource(ctx, "magnam", "distinctio")
     if err != nil {
         log.Fatal(err)
     }
@@ -91,13 +91,15 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Integration.Create(ctx, operations.CreateIntegrationRequestBody{
-        Configs: &operations.CreateIntegrationRequestBodyConfigs1{},
+        Configs: &shared.HandledHMACConfigs{
+            WebhookSecretKey: "labore",
+        },
         Features: []shared.IntegrationFeature{
-            shared.IntegrationFeatureVerification,
+            shared.IntegrationFeatureHandshake,
             shared.IntegrationFeatureHandshake,
         },
-        Label: hookdeck.String("ullam"),
-        Provider: shared.IntegrationProviderGitlab.ToPointer(),
+        Label: hookdeck.String("nobis"),
+        Provider: shared.IntegrationProviderSvix.ToPointer(),
     })
     if err != nil {
         log.Fatal(err)
@@ -150,7 +152,7 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.Integration.Delete(ctx, "quos")
+    res, err := s.Integration.Delete(ctx, "vero")
     if err != nil {
         log.Fatal(err)
     }
@@ -202,7 +204,7 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.Integration.DetachIntegrationToSource(ctx, "sint", "accusantium")
+    res, err := s.Integration.DetachIntegrationToSource(ctx, "aspernatur", "architecto")
     if err != nil {
         log.Fatal(err)
     }
@@ -255,7 +257,7 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.Integration.Get(ctx, "mollitia")
+    res, err := s.Integration.Get(ctx, "magnam")
     if err != nil {
         log.Fatal(err)
     }
@@ -308,21 +310,15 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Integration.Update(ctx, operations.UpdateIntegrationRequestBody{
-        Configs: &shared.ShopifyIntegrationConfigs{
-            APIKey: hookdeck.String("mollitia"),
-            APISecret: hookdeck.String("ad"),
-            RateLimit: hookdeck.Float32(4314.18),
-            RateLimitPeriod: shared.ShopifyIntegrationConfigsRateLimitPeriodLessThanNilGreaterThan.ToPointer(),
-            Shop: hookdeck.String("necessitatibus"),
-            WebhookSecretKey: "odit",
-        },
+        Configs: &operations.UpdateIntegrationRequestBodyConfigs1{},
         Features: []shared.IntegrationFeature{
-            shared.IntegrationFeatureVerification,
+            shared.IntegrationFeatureHandshake,
+            shared.IntegrationFeatureHandshake,
             shared.IntegrationFeatureHandshake,
         },
-        Label: hookdeck.String("doloribus"),
-        Provider: shared.IntegrationProviderWorkos.ToPointer(),
-    }, "eius")
+        Label: hookdeck.String("sint"),
+        Provider: shared.IntegrationProviderTwitter.ToPointer(),
+    }, "mollitia")
     if err != nil {
         log.Fatal(err)
     }

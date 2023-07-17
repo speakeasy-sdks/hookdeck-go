@@ -37,7 +37,7 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.Ruleset.Archive(ctx, "asperiores")
+    res, err := s.Ruleset.Archive(ctx, "hic")
     if err != nil {
         log.Fatal(err)
     }
@@ -91,34 +91,8 @@ func main() {
     ctx := context.Background()
     res, err := s.Ruleset.Create(ctx, operations.CreateRulesetRequestBody{
         IsTeamDefault: hookdeck.Bool(false),
-        Name: "Edwin Morar",
+        Name: "Alejandro Purdy DDS",
         Rules: []interface{}{
-            shared.FilterRule{
-                Body: &shared.ConnectionFilterProperty{},
-                Headers: &shared.ConnectionFilterProperty{},
-                Path: &shared.ConnectionFilterProperty{},
-                Query: &shared.ConnectionFilterProperty{},
-                Type: shared.FilterRuleTypeFilter,
-            },
-            shared.TransformFull{
-                Transformation: &shared.TransformFullTransformation{
-                    Code: "delectus",
-                    Env: map[string]string{
-                        "quos": "aliquid",
-                        "dolorem": "dolorem",
-                    },
-                    Name: "Norma Erdman",
-                },
-                TransformationID: hookdeck.String("cum"),
-                Type: shared.TransformFullTypeTransform,
-            },
-            shared.FilterRule{
-                Body: &shared.ConnectionFilterProperty{},
-                Headers: &shared.ConnectionFilterProperty{},
-                Path: &shared.ConnectionFilterProperty{},
-                Query: &shared.ConnectionFilterProperty{},
-                Type: shared.FilterRuleTypeFilter,
-            },
             shared.FilterRule{
                 Body: &shared.ConnectionFilterProperty{},
                 Headers: &shared.ConnectionFilterProperty{},
@@ -179,7 +153,7 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.Ruleset.Get(ctx, "reiciendis")
+    res, err := s.Ruleset.Get(ctx, "error")
     if err != nil {
         log.Fatal(err)
     }
@@ -231,7 +205,7 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.Ruleset.Unarchive(ctx, "amet")
+    res, err := s.Ruleset.Unarchive(ctx, "eaque")
     if err != nil {
         log.Fatal(err)
     }
@@ -285,27 +259,28 @@ func main() {
     ctx := context.Background()
     res, err := s.Ruleset.Update(ctx, operations.UpdateRulesetRequestBody{
         IsTeamDefault: hookdeck.Bool(false),
-        Name: hookdeck.String("Mr. Bradley Bogan"),
+        Name: hookdeck.String("Jean Ferry"),
         Rules: []interface{}{
-            shared.AlertRule{
-                Strategy: shared.AlertStrategyLastAttempt,
-                Type: shared.AlertRuleTypeAlert,
-            },
             shared.TransformFull{
                 Transformation: &shared.TransformFullTransformation{
-                    Code: "voluptas",
+                    Code: "deleniti",
                     Env: map[string]string{
-                        "eos": "atque",
-                        "sit": "fugiat",
-                        "ab": "soluta",
+                        "provident": "nobis",
+                        "libero": "delectus",
+                        "quaerat": "quos",
+                        "aliquid": "dolorem",
                     },
-                    Name: "Ted Kling",
+                    Name: "Rosa Dibbert",
                 },
-                TransformationID: hookdeck.String("omnis"),
+                TransformationID: hookdeck.String("excepturi"),
                 Type: shared.TransformFullTypeTransform,
             },
+            shared.TransformReference{
+                TransformationID: "dignissimos",
+                Type: shared.TransformReferenceTypeTransform,
+            },
         },
-    }, "necessitatibus")
+    }, "reiciendis")
     if err != nil {
         log.Fatal(err)
     }
@@ -360,21 +335,24 @@ func main() {
     ctx := context.Background()
     res, err := s.Ruleset.Upsert(ctx, operations.UpsertRulesetRequestBody{
         IsTeamDefault: hookdeck.Bool(false),
-        Name: "Emmett Kovacek",
+        Name: "Mr. Lee Funk III",
         Rules: []interface{}{
-            shared.DelayRule{
-                Delay: 263322,
-                Type: shared.DelayRuleTypeDelay,
+            shared.AlertRule{
+                Strategy: shared.AlertStrategyLastAttempt,
+                Type: shared.AlertRuleTypeAlert,
             },
-            shared.RetryRule{
-                Count: hookdeck.Int64(20651),
-                Interval: hookdeck.Int64(229219),
-                Strategy: shared.RetryStrategyExponential,
-                Type: shared.RetryRuleTypeRetry,
-            },
-            shared.DelayRule{
-                Delay: 320017,
-                Type: shared.DelayRuleTypeDelay,
+            shared.TransformFull{
+                Transformation: &shared.TransformFullTransformation{
+                    Code: "voluptas",
+                    Env: map[string]string{
+                        "eos": "atque",
+                        "sit": "fugiat",
+                        "ab": "soluta",
+                    },
+                    Name: "Ted Kling",
+                },
+                TransformationID: hookdeck.String("omnis"),
+                Type: shared.TransformFullTypeTransform,
             },
         },
     })
