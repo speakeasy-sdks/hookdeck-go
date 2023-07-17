@@ -7,6 +7,7 @@ import (
 	"context"
 	"fmt"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
+	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/sdkerrors"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/utils"
 	"io"
@@ -77,6 +78,8 @@ func (s *connection) Archive(ctx context.Context, id string) (*operations.Archiv
 			}
 
 			res.Connection = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	case httpRes.StatusCode == 404:
 		switch {
@@ -87,6 +90,8 @@ func (s *connection) Archive(ctx context.Context, id string) (*operations.Archiv
 			}
 
 			res.APIErrorResponse = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 
@@ -149,6 +154,8 @@ func (s *connection) Create(ctx context.Context, request operations.CreateConnec
 			}
 
 			res.Connection = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	case httpRes.StatusCode == 400:
 		fallthrough
@@ -161,6 +168,8 @@ func (s *connection) Create(ctx context.Context, request operations.CreateConnec
 			}
 
 			res.APIErrorResponse = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 
@@ -220,6 +229,8 @@ func (s *connection) Delete(ctx context.Context, id string) (*operations.DeleteC
 			}
 
 			res.DeleteConnection200ApplicationJSONObject = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	case httpRes.StatusCode == 404:
 		switch {
@@ -230,6 +241,8 @@ func (s *connection) Delete(ctx context.Context, id string) (*operations.DeleteC
 			}
 
 			res.APIErrorResponse = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 
@@ -289,6 +302,8 @@ func (s *connection) Get(ctx context.Context, id string) (*operations.GetConnect
 			}
 
 			res.Connection = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	case httpRes.StatusCode == 404:
 		fallthrough
@@ -301,6 +316,8 @@ func (s *connection) Get(ctx context.Context, id string) (*operations.GetConnect
 			}
 
 			res.APIErrorResponse = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 
@@ -360,6 +377,8 @@ func (s *connection) Pause(ctx context.Context, id string) (*operations.PauseCon
 			}
 
 			res.Connection = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	case httpRes.StatusCode == 404:
 		switch {
@@ -370,6 +389,8 @@ func (s *connection) Pause(ctx context.Context, id string) (*operations.PauseCon
 			}
 
 			res.APIErrorResponse = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 
@@ -429,6 +450,8 @@ func (s *connection) Unarchive(ctx context.Context, id string) (*operations.Unar
 			}
 
 			res.Connection = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	case httpRes.StatusCode == 404:
 		switch {
@@ -439,6 +462,8 @@ func (s *connection) Unarchive(ctx context.Context, id string) (*operations.Unar
 			}
 
 			res.APIErrorResponse = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 
@@ -498,6 +523,8 @@ func (s *connection) Unpause(ctx context.Context, id string) (*operations.Unpaus
 			}
 
 			res.Connection = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	case httpRes.StatusCode == 404:
 		switch {
@@ -508,6 +535,8 @@ func (s *connection) Unpause(ctx context.Context, id string) (*operations.Unpaus
 			}
 
 			res.APIErrorResponse = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 
@@ -578,6 +607,8 @@ func (s *connection) Update(ctx context.Context, requestBody operations.UpdateCo
 			}
 
 			res.Connection = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	case httpRes.StatusCode == 400:
 		fallthrough
@@ -592,6 +623,8 @@ func (s *connection) Update(ctx context.Context, requestBody operations.UpdateCo
 			}
 
 			res.APIErrorResponse = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 
@@ -654,6 +687,8 @@ func (s *connection) Upsert(ctx context.Context, request operations.UpsertConnec
 			}
 
 			res.Connection = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	case httpRes.StatusCode == 400:
 		fallthrough
@@ -666,6 +701,8 @@ func (s *connection) Upsert(ctx context.Context, request operations.UpsertConnec
 			}
 
 			res.APIErrorResponse = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 

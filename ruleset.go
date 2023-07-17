@@ -7,6 +7,7 @@ import (
 	"context"
 	"fmt"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
+	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/sdkerrors"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/utils"
 	"io"
@@ -77,6 +78,8 @@ func (s *ruleset) Archive(ctx context.Context, id string) (*operations.ArchiveRu
 			}
 
 			res.Ruleset = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	case httpRes.StatusCode == 404:
 		switch {
@@ -87,6 +90,8 @@ func (s *ruleset) Archive(ctx context.Context, id string) (*operations.ArchiveRu
 			}
 
 			res.APIErrorResponse = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 
@@ -149,6 +154,8 @@ func (s *ruleset) Create(ctx context.Context, request operations.CreateRulesetRe
 			}
 
 			res.Ruleset = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	case httpRes.StatusCode == 400:
 		fallthrough
@@ -161,6 +168,8 @@ func (s *ruleset) Create(ctx context.Context, request operations.CreateRulesetRe
 			}
 
 			res.APIErrorResponse = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 
@@ -220,6 +229,8 @@ func (s *ruleset) Get(ctx context.Context, id string) (*operations.GetRulesetRes
 			}
 
 			res.Ruleset = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	case httpRes.StatusCode == 404:
 		switch {
@@ -230,6 +241,8 @@ func (s *ruleset) Get(ctx context.Context, id string) (*operations.GetRulesetRes
 			}
 
 			res.APIErrorResponse = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 
@@ -289,6 +302,8 @@ func (s *ruleset) Unarchive(ctx context.Context, id string) (*operations.Unarchi
 			}
 
 			res.Ruleset = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	case httpRes.StatusCode == 404:
 		switch {
@@ -299,6 +314,8 @@ func (s *ruleset) Unarchive(ctx context.Context, id string) (*operations.Unarchi
 			}
 
 			res.APIErrorResponse = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 
@@ -369,6 +386,8 @@ func (s *ruleset) Update(ctx context.Context, requestBody operations.UpdateRules
 			}
 
 			res.Ruleset = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	case httpRes.StatusCode == 400:
 		fallthrough
@@ -383,6 +402,8 @@ func (s *ruleset) Update(ctx context.Context, requestBody operations.UpdateRules
 			}
 
 			res.APIErrorResponse = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 
@@ -445,6 +466,8 @@ func (s *ruleset) Upsert(ctx context.Context, request operations.UpsertRulesetRe
 			}
 
 			res.Ruleset = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	case httpRes.StatusCode == 400:
 		fallthrough
@@ -457,6 +480,8 @@ func (s *ruleset) Upsert(ctx context.Context, request operations.UpsertRulesetRe
 			}
 
 			res.APIErrorResponse = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 

@@ -7,6 +7,7 @@ import (
 	"context"
 	"fmt"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
+	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/sdkerrors"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/utils"
 	"io"
@@ -77,6 +78,8 @@ func (s *event) Get(ctx context.Context, id string) (*operations.GetEventRespons
 			}
 
 			res.Event = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	case httpRes.StatusCode == 404:
 		switch {
@@ -87,6 +90,8 @@ func (s *event) Get(ctx context.Context, id string) (*operations.GetEventRespons
 			}
 
 			res.APIErrorResponse = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 
@@ -147,6 +152,8 @@ func (s *event) MuteEvent(ctx context.Context, id string) (*operations.MuteEvent
 			}
 
 			res.Event = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	case httpRes.StatusCode == 404:
 		switch {
@@ -157,6 +164,8 @@ func (s *event) MuteEvent(ctx context.Context, id string) (*operations.MuteEvent
 			}
 
 			res.APIErrorResponse = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 
@@ -217,6 +226,8 @@ func (s *event) Retry(ctx context.Context, id string) (*operations.RetryEventRes
 			}
 
 			res.RetriedEvent = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	case httpRes.StatusCode == 404:
 		switch {
@@ -227,6 +238,8 @@ func (s *event) Retry(ctx context.Context, id string) (*operations.RetryEventRes
 			}
 
 			res.APIErrorResponse = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 

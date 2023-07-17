@@ -7,6 +7,7 @@ import (
 	"context"
 	"fmt"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
+	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/sdkerrors"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/utils"
 	"io"
@@ -77,6 +78,8 @@ func (s *source) Archive(ctx context.Context, id string) (*operations.ArchiveSou
 			}
 
 			res.Source = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	case httpRes.StatusCode == 404:
 		switch {
@@ -87,6 +90,8 @@ func (s *source) Archive(ctx context.Context, id string) (*operations.ArchiveSou
 			}
 
 			res.APIErrorResponse = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 
@@ -149,6 +154,8 @@ func (s *source) Create(ctx context.Context, request operations.CreateSourceRequ
 			}
 
 			res.Source = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	case httpRes.StatusCode == 400:
 		fallthrough
@@ -161,6 +168,8 @@ func (s *source) Create(ctx context.Context, request operations.CreateSourceRequ
 			}
 
 			res.APIErrorResponse = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 
@@ -220,6 +229,8 @@ func (s *source) Delete(ctx context.Context, id string) (*operations.DeleteSourc
 			}
 
 			res.DeleteSource200ApplicationJSONObject = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	case httpRes.StatusCode == 404:
 		switch {
@@ -230,6 +241,8 @@ func (s *source) Delete(ctx context.Context, id string) (*operations.DeleteSourc
 			}
 
 			res.APIErrorResponse = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 
@@ -289,6 +302,8 @@ func (s *source) Get(ctx context.Context, id string) (*operations.GetSourceRespo
 			}
 
 			res.Source = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	case httpRes.StatusCode == 404:
 		switch {
@@ -299,6 +314,8 @@ func (s *source) Get(ctx context.Context, id string) (*operations.GetSourceRespo
 			}
 
 			res.APIErrorResponse = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 
@@ -358,6 +375,8 @@ func (s *source) Unarchive(ctx context.Context, id string) (*operations.Unarchiv
 			}
 
 			res.Source = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	case httpRes.StatusCode == 404:
 		switch {
@@ -368,6 +387,8 @@ func (s *source) Unarchive(ctx context.Context, id string) (*operations.Unarchiv
 			}
 
 			res.APIErrorResponse = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 
@@ -438,6 +459,8 @@ func (s *source) Update(ctx context.Context, requestBody operations.UpdateSource
 			}
 
 			res.Source = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	case httpRes.StatusCode == 400:
 		fallthrough
@@ -452,6 +475,8 @@ func (s *source) Update(ctx context.Context, requestBody operations.UpdateSource
 			}
 
 			res.APIErrorResponse = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 
@@ -514,6 +539,8 @@ func (s *source) Upsert(ctx context.Context, request operations.UpsertSourceRequ
 			}
 
 			res.Source = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	case httpRes.StatusCode == 400:
 		fallthrough
@@ -526,6 +553,8 @@ func (s *source) Upsert(ctx context.Context, request operations.UpsertSourceRequ
 			}
 
 			res.APIErrorResponse = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 

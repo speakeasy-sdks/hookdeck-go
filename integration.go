@@ -7,6 +7,7 @@ import (
 	"context"
 	"fmt"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
+	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/sdkerrors"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/utils"
 	"io"
@@ -78,6 +79,8 @@ func (s *integration) AttachIntegrationToSource(ctx context.Context, id string, 
 			}
 
 			res.AttachedIntegrationToSource = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	case httpRes.StatusCode == 400:
 		fallthrough
@@ -90,6 +93,8 @@ func (s *integration) AttachIntegrationToSource(ctx context.Context, id string, 
 			}
 
 			res.APIErrorResponse = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 
@@ -152,6 +157,8 @@ func (s *integration) Create(ctx context.Context, request operations.CreateInteg
 			}
 
 			res.Integration = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	case httpRes.StatusCode == 400:
 		fallthrough
@@ -164,6 +171,8 @@ func (s *integration) Create(ctx context.Context, request operations.CreateInteg
 			}
 
 			res.APIErrorResponse = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 
@@ -223,6 +232,8 @@ func (s *integration) Delete(ctx context.Context, id string) (*operations.Delete
 			}
 
 			res.DeletedIntegration = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	case httpRes.StatusCode == 404:
 		switch {
@@ -233,6 +244,8 @@ func (s *integration) Delete(ctx context.Context, id string) (*operations.Delete
 			}
 
 			res.APIErrorResponse = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 
@@ -293,6 +306,8 @@ func (s *integration) DetachIntegrationToSource(ctx context.Context, id string, 
 			}
 
 			res.DetachedIntegrationFromSource = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	case httpRes.StatusCode == 400:
 		fallthrough
@@ -305,6 +320,8 @@ func (s *integration) DetachIntegrationToSource(ctx context.Context, id string, 
 			}
 
 			res.APIErrorResponse = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 
@@ -364,6 +381,8 @@ func (s *integration) Get(ctx context.Context, id string) (*operations.GetIntegr
 			}
 
 			res.Integration = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	case httpRes.StatusCode == 404:
 		switch {
@@ -374,6 +393,8 @@ func (s *integration) Get(ctx context.Context, id string) (*operations.GetIntegr
 			}
 
 			res.APIErrorResponse = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 
@@ -444,6 +465,8 @@ func (s *integration) Update(ctx context.Context, requestBody operations.UpdateI
 			}
 
 			res.Integration = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	case httpRes.StatusCode == 400:
 		fallthrough
@@ -458,6 +481,8 @@ func (s *integration) Update(ctx context.Context, requestBody operations.UpdateI
 			}
 
 			res.APIErrorResponse = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 

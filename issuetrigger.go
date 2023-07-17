@@ -7,6 +7,7 @@ import (
 	"context"
 	"fmt"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
+	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/sdkerrors"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/utils"
 	"io"
@@ -81,6 +82,8 @@ func (s *issueTrigger) Create(ctx context.Context, request operations.CreateIssu
 			}
 
 			res.IssueTrigger = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	case httpRes.StatusCode == 400:
 		fallthrough
@@ -93,6 +96,8 @@ func (s *issueTrigger) Create(ctx context.Context, request operations.CreateIssu
 			}
 
 			res.APIErrorResponse = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 
@@ -153,6 +158,8 @@ func (s *issueTrigger) Delete(ctx context.Context, id string) (*operations.Delet
 			}
 
 			res.DeletedIssueTriggerResponse = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	case httpRes.StatusCode == 404:
 		switch {
@@ -163,6 +170,8 @@ func (s *issueTrigger) Delete(ctx context.Context, id string) (*operations.Delet
 			}
 
 			res.APIErrorResponse = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 
@@ -223,6 +232,8 @@ func (s *issueTrigger) Disable(ctx context.Context, id string) (*operations.Disa
 			}
 
 			res.IssueTrigger = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	case httpRes.StatusCode == 404:
 		switch {
@@ -233,6 +244,8 @@ func (s *issueTrigger) Disable(ctx context.Context, id string) (*operations.Disa
 			}
 
 			res.APIErrorResponse = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 
@@ -293,6 +306,8 @@ func (s *issueTrigger) Enable(ctx context.Context, id string) (*operations.Enabl
 			}
 
 			res.IssueTrigger = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	case httpRes.StatusCode == 404:
 		switch {
@@ -303,6 +318,8 @@ func (s *issueTrigger) Enable(ctx context.Context, id string) (*operations.Enabl
 			}
 
 			res.APIErrorResponse = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 
@@ -363,6 +380,8 @@ func (s *issueTrigger) Get(ctx context.Context, id string) (*operations.GetIssue
 			}
 
 			res.IssueTrigger = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	case httpRes.StatusCode == 404:
 		switch {
@@ -373,6 +392,8 @@ func (s *issueTrigger) Get(ctx context.Context, id string) (*operations.GetIssue
 			}
 
 			res.APIErrorResponse = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 
@@ -444,6 +465,8 @@ func (s *issueTrigger) Update(ctx context.Context, requestBody operations.Update
 			}
 
 			res.IssueTrigger = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	case httpRes.StatusCode == 400:
 		fallthrough
@@ -456,6 +479,8 @@ func (s *issueTrigger) Update(ctx context.Context, requestBody operations.Update
 			}
 
 			res.APIErrorResponse = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 
@@ -519,6 +544,8 @@ func (s *issueTrigger) Upsert(ctx context.Context, request operations.UpsertIssu
 			}
 
 			res.IssueTrigger = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	case httpRes.StatusCode == 400:
 		fallthrough
@@ -531,6 +558,8 @@ func (s *issueTrigger) Upsert(ctx context.Context, request operations.UpsertIssu
 			}
 
 			res.APIErrorResponse = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 
