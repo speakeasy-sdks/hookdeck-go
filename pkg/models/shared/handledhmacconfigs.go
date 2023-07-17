@@ -6,3 +6,10 @@ package shared
 type HandledHMACConfigs struct {
 	WebhookSecretKey string `json:"webhook_secret_key"`
 }
+
+func (o *HandledHMACConfigs) GetWebhookSecretKey() string {
+	if o == nil {
+		return ""
+	}
+	return o.WebhookSecretKey
+}

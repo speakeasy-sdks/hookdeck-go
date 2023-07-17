@@ -25,3 +25,59 @@ type Ruleset struct {
 	// Date the ruleset was last updated
 	UpdatedAt time.Time `json:"updated_at"`
 }
+
+func (o *Ruleset) GetArchivedAt() *time.Time {
+	if o == nil {
+		return nil
+	}
+	return o.ArchivedAt
+}
+
+func (o *Ruleset) GetCreatedAt() time.Time {
+	if o == nil {
+		return time.Time{}
+	}
+	return o.CreatedAt
+}
+
+func (o *Ruleset) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
+}
+
+func (o *Ruleset) GetIsTeamDefault() bool {
+	if o == nil {
+		return false
+	}
+	return o.IsTeamDefault
+}
+
+func (o *Ruleset) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+func (o *Ruleset) GetRules() []interface{} {
+	if o == nil {
+		return []interface{}{}
+	}
+	return o.Rules
+}
+
+func (o *Ruleset) GetTeamID() string {
+	if o == nil {
+		return ""
+	}
+	return o.TeamID
+}
+
+func (o *Ruleset) GetUpdatedAt() time.Time {
+	if o == nil {
+		return time.Time{}
+	}
+	return o.UpdatedAt
+}

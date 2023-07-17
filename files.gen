@@ -40,6 +40,7 @@ webhooknotifications.go
 hookdeck.go
 go.mod
 go.sum
+pkg/models/sdkerrors/sdkerror.go
 pkg/types/bigint.go
 pkg/types/date.go
 pkg/types/datetime.go
@@ -152,7 +153,6 @@ pkg/models/shared/attempttrigger.go
 pkg/models/shared/attemptstatus.go
 pkg/models/shared/attemptstate.go
 pkg/models/shared/attempterrorcode.go
-pkg/models/shared/apierrorresponse.go
 pkg/models/shared/eventattemptpaginatedresult.go
 pkg/models/shared/seekpagination.go
 pkg/models/shared/orderbydirection.go
@@ -260,6 +260,7 @@ pkg/models/shared/transformationpaginatedresult.go
 pkg/models/shared/togglewebhooknotifications.go
 pkg/models/shared/topicsvalue.go
 pkg/models/shared/security.go
+pkg/models/sdkerrors/apierrorresponse.go
 docs/sdks/hookdeck/README.md
 docs/sdks/attempt/README.md
 docs/sdks/attempts/README.md
@@ -870,8 +871,6 @@ docs/models/shared/attempttrigger.md
 docs/models/shared/attemptstatus.md
 docs/models/shared/attemptstate.md
 docs/models/shared/attempterrorcode.md
-docs/models/shared/apierrorresponsedata.md
-docs/models/shared/apierrorresponse.md
 docs/models/shared/eventattemptpaginatedresult.md
 docs/models/shared/seekpaginationdir.md
 docs/models/shared/seekpaginationorderby.md
@@ -1044,3 +1043,5 @@ docs/models/shared/togglewebhooknotifications.md
 docs/models/shared/topicsvalue.md
 docs/models/shared/schemebasicauth.md
 docs/models/shared/security.md
+docs/models/errors/apierrorresponsedata.md
+docs/models/errors/apierrorresponse.md

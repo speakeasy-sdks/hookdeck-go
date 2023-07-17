@@ -29,3 +29,73 @@ type IssueTrigger struct {
 	// ISO timestamp for when the issue trigger was last updated
 	UpdatedAt time.Time `json:"updated_at"`
 }
+
+func (o *IssueTrigger) GetChannels() *IssueTriggerChannels {
+	if o == nil {
+		return nil
+	}
+	return o.Channels
+}
+
+func (o *IssueTrigger) GetConfigs() interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.Configs
+}
+
+func (o *IssueTrigger) GetCreatedAt() time.Time {
+	if o == nil {
+		return time.Time{}
+	}
+	return o.CreatedAt
+}
+
+func (o *IssueTrigger) GetDeletedAt() *time.Time {
+	if o == nil {
+		return nil
+	}
+	return o.DeletedAt
+}
+
+func (o *IssueTrigger) GetDisabledAt() *time.Time {
+	if o == nil {
+		return nil
+	}
+	return o.DisabledAt
+}
+
+func (o *IssueTrigger) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
+}
+
+func (o *IssueTrigger) GetName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Name
+}
+
+func (o *IssueTrigger) GetTeamID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.TeamID
+}
+
+func (o *IssueTrigger) GetType() IssueType {
+	if o == nil {
+		return IssueType("")
+	}
+	return o.Type
+}
+
+func (o *IssueTrigger) GetUpdatedAt() time.Time {
+	if o == nil {
+		return time.Time{}
+	}
+	return o.UpdatedAt
+}

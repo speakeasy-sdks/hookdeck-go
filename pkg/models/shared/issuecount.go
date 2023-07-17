@@ -7,3 +7,10 @@ type IssueCount struct {
 	// Number of issues
 	Count int64 `json:"count"`
 }
+
+func (o *IssueCount) GetCount() int64 {
+	if o == nil {
+		return 0
+	}
+	return o.Count
+}

@@ -156,17 +156,71 @@ type CreateIgnoredEventBulkRetryRequestBodyQuery struct {
 	WebhookID *CreateIgnoredEventBulkRetryRequestBodyQueryWebhookID `json:"webhook_id,omitempty"`
 }
 
+func (o *CreateIgnoredEventBulkRetryRequestBodyQuery) GetCause() *CreateIgnoredEventBulkRetryRequestBodyQueryCause {
+	if o == nil {
+		return nil
+	}
+	return o.Cause
+}
+
+func (o *CreateIgnoredEventBulkRetryRequestBodyQuery) GetTransformationID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.TransformationID
+}
+
+func (o *CreateIgnoredEventBulkRetryRequestBodyQuery) GetWebhookID() *CreateIgnoredEventBulkRetryRequestBodyQueryWebhookID {
+	if o == nil {
+		return nil
+	}
+	return o.WebhookID
+}
+
 type CreateIgnoredEventBulkRetryRequestBody struct {
 	// Filter by the bulk retry ignored event query object
 	Query *CreateIgnoredEventBulkRetryRequestBodyQuery `json:"query,omitempty"`
 }
 
+func (o *CreateIgnoredEventBulkRetryRequestBody) GetQuery() *CreateIgnoredEventBulkRetryRequestBodyQuery {
+	if o == nil {
+		return nil
+	}
+	return o.Query
+}
+
 type CreateIgnoredEventBulkRetryResponse struct {
-	// Bad Request
-	APIErrorResponse *shared.APIErrorResponse
 	// A single ignored events bulk retry
 	BatchOperation *shared.BatchOperation
 	ContentType    string
 	StatusCode     int
 	RawResponse    *http.Response
+}
+
+func (o *CreateIgnoredEventBulkRetryResponse) GetBatchOperation() *shared.BatchOperation {
+	if o == nil {
+		return nil
+	}
+	return o.BatchOperation
+}
+
+func (o *CreateIgnoredEventBulkRetryResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *CreateIgnoredEventBulkRetryResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *CreateIgnoredEventBulkRetryResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
 }

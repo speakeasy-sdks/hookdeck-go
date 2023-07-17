@@ -18,12 +18,66 @@ type CreateIssueTriggerRequestBody struct {
 	Type shared.IssueType `json:"type"`
 }
 
+func (o *CreateIssueTriggerRequestBody) GetChannels() shared.IssueTriggerChannels {
+	if o == nil {
+		return shared.IssueTriggerChannels{}
+	}
+	return o.Channels
+}
+
+func (o *CreateIssueTriggerRequestBody) GetConfigs() interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.Configs
+}
+
+func (o *CreateIssueTriggerRequestBody) GetName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Name
+}
+
+func (o *CreateIssueTriggerRequestBody) GetType() shared.IssueType {
+	if o == nil {
+		return IssueType("")
+	}
+	return o.Type
+}
+
 type CreateIssueTriggerResponse struct {
-	// Bad Request
-	APIErrorResponse *shared.APIErrorResponse
-	ContentType      string
+	ContentType string
 	// A single issue trigger
 	IssueTrigger *shared.IssueTrigger
 	StatusCode   int
 	RawResponse  *http.Response
+}
+
+func (o *CreateIssueTriggerResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *CreateIssueTriggerResponse) GetIssueTrigger() *shared.IssueTrigger {
+	if o == nil {
+		return nil
+	}
+	return o.IssueTrigger
+}
+
+func (o *CreateIssueTriggerResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *CreateIssueTriggerResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
 }

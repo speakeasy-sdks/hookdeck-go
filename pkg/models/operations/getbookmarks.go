@@ -352,6 +352,41 @@ type GetBookmarksLastUsedAt2 struct {
 	Lte *time.Time `queryParam:"name=lte"`
 }
 
+func (o *GetBookmarksLastUsedAt2) GetAny() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Any
+}
+
+func (o *GetBookmarksLastUsedAt2) GetGt() *time.Time {
+	if o == nil {
+		return nil
+	}
+	return o.Gt
+}
+
+func (o *GetBookmarksLastUsedAt2) GetGte() *time.Time {
+	if o == nil {
+		return nil
+	}
+	return o.Gte
+}
+
+func (o *GetBookmarksLastUsedAt2) GetLe() *time.Time {
+	if o == nil {
+		return nil
+	}
+	return o.Le
+}
+
+func (o *GetBookmarksLastUsedAt2) GetLte() *time.Time {
+	if o == nil {
+		return nil
+	}
+	return o.Lte
+}
+
 type GetBookmarksLastUsedAtType string
 
 const (
@@ -687,12 +722,115 @@ type GetBookmarksRequest struct {
 	WebhookID   *GetBookmarksWebhookID   `queryParam:"style=form,explode=true,name=webhook_id"`
 }
 
+func (o *GetBookmarksRequest) GetDir() *GetBookmarksDir {
+	if o == nil {
+		return nil
+	}
+	return o.Dir
+}
+
+func (o *GetBookmarksRequest) GetEventDataID() *GetBookmarksEventDataID {
+	if o == nil {
+		return nil
+	}
+	return o.EventDataID
+}
+
+func (o *GetBookmarksRequest) GetID() *GetBookmarksID {
+	if o == nil {
+		return nil
+	}
+	return o.ID
+}
+
+func (o *GetBookmarksRequest) GetLabel() *GetBookmarksLabel {
+	if o == nil {
+		return nil
+	}
+	return o.Label
+}
+
+func (o *GetBookmarksRequest) GetLastUsedAt() *GetBookmarksLastUsedAt {
+	if o == nil {
+		return nil
+	}
+	return o.LastUsedAt
+}
+
+func (o *GetBookmarksRequest) GetLimit() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Limit
+}
+
+func (o *GetBookmarksRequest) GetName() *GetBookmarksName {
+	if o == nil {
+		return nil
+	}
+	return o.Name
+}
+
+func (o *GetBookmarksRequest) GetNext() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Next
+}
+
+func (o *GetBookmarksRequest) GetOrderBy() *GetBookmarksOrderBy {
+	if o == nil {
+		return nil
+	}
+	return o.OrderBy
+}
+
+func (o *GetBookmarksRequest) GetPrev() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Prev
+}
+
+func (o *GetBookmarksRequest) GetWebhookID() *GetBookmarksWebhookID {
+	if o == nil {
+		return nil
+	}
+	return o.WebhookID
+}
+
 type GetBookmarksResponse struct {
-	// Bad Request
-	APIErrorResponse *shared.APIErrorResponse
 	// List of bookmarks
 	BookmarkPaginatedResult *shared.BookmarkPaginatedResult
 	ContentType             string
 	StatusCode              int
 	RawResponse             *http.Response
+}
+
+func (o *GetBookmarksResponse) GetBookmarkPaginatedResult() *shared.BookmarkPaginatedResult {
+	if o == nil {
+		return nil
+	}
+	return o.BookmarkPaginatedResult
+}
+
+func (o *GetBookmarksResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *GetBookmarksResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *GetBookmarksResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
 }

@@ -62,3 +62,108 @@ type DeliveryIssue struct {
 	// ISO timestamp for when the issue was last updated
 	UpdatedAt string `json:"updated_at"`
 }
+
+func (o *DeliveryIssue) GetAggregationKeys() DeliveryIssueAggregationKeys {
+	if o == nil {
+		return DeliveryIssueAggregationKeys{}
+	}
+	return o.AggregationKeys
+}
+
+func (o *DeliveryIssue) GetAutoResolvedAt() *time.Time {
+	if o == nil {
+		return nil
+	}
+	return o.AutoResolvedAt
+}
+
+func (o *DeliveryIssue) GetCreatedAt() string {
+	if o == nil {
+		return ""
+	}
+	return o.CreatedAt
+}
+
+func (o *DeliveryIssue) GetDismissedAt() *time.Time {
+	if o == nil {
+		return nil
+	}
+	return o.DismissedAt
+}
+
+func (o *DeliveryIssue) GetFirstSeenAt() time.Time {
+	if o == nil {
+		return time.Time{}
+	}
+	return o.FirstSeenAt
+}
+
+func (o *DeliveryIssue) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
+}
+
+func (o *DeliveryIssue) GetLastSeenAt() time.Time {
+	if o == nil {
+		return time.Time{}
+	}
+	return o.LastSeenAt
+}
+
+func (o *DeliveryIssue) GetLastUpdatedBy() *string {
+	if o == nil {
+		return nil
+	}
+	return o.LastUpdatedBy
+}
+
+func (o *DeliveryIssue) GetMergedWith() *string {
+	if o == nil {
+		return nil
+	}
+	return o.MergedWith
+}
+
+func (o *DeliveryIssue) GetOpenedAt() time.Time {
+	if o == nil {
+		return time.Time{}
+	}
+	return o.OpenedAt
+}
+
+func (o *DeliveryIssue) GetReference() DeliveryIssueReference {
+	if o == nil {
+		return DeliveryIssueReference{}
+	}
+	return o.Reference
+}
+
+func (o *DeliveryIssue) GetStatus() IssueStatus {
+	if o == nil {
+		return IssueStatus("")
+	}
+	return o.Status
+}
+
+func (o *DeliveryIssue) GetTeamID() string {
+	if o == nil {
+		return ""
+	}
+	return o.TeamID
+}
+
+func (o *DeliveryIssue) GetType() DeliveryIssueType {
+	if o == nil {
+		return DeliveryIssueType("")
+	}
+	return o.Type
+}
+
+func (o *DeliveryIssue) GetUpdatedAt() string {
+	if o == nil {
+		return ""
+	}
+	return o.UpdatedAt
+}

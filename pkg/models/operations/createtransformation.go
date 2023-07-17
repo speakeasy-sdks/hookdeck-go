@@ -16,12 +16,59 @@ type CreateTransformationRequestBody struct {
 	Name string `json:"name"`
 }
 
+func (o *CreateTransformationRequestBody) GetCode() string {
+	if o == nil {
+		return ""
+	}
+	return o.Code
+}
+
+func (o *CreateTransformationRequestBody) GetEnv() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.Env
+}
+
+func (o *CreateTransformationRequestBody) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
 type CreateTransformationResponse struct {
-	// Bad Request
-	APIErrorResponse *shared.APIErrorResponse
-	ContentType      string
-	StatusCode       int
-	RawResponse      *http.Response
+	ContentType string
+	StatusCode  int
+	RawResponse *http.Response
 	// A single transformation
 	Transformation *shared.Transformation
+}
+
+func (o *CreateTransformationResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *CreateTransformationResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *CreateTransformationResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
+}
+
+func (o *CreateTransformationResponse) GetTransformation() *shared.Transformation {
+	if o == nil {
+		return nil
+	}
+	return o.Transformation
 }

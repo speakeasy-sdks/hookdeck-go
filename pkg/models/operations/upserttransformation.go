@@ -16,12 +16,59 @@ type UpsertTransformationRequestBody struct {
 	Name string `json:"name"`
 }
 
+func (o *UpsertTransformationRequestBody) GetCode() string {
+	if o == nil {
+		return ""
+	}
+	return o.Code
+}
+
+func (o *UpsertTransformationRequestBody) GetEnv() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.Env
+}
+
+func (o *UpsertTransformationRequestBody) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
 type UpsertTransformationResponse struct {
-	// Bad Request
-	APIErrorResponse *shared.APIErrorResponse
-	ContentType      string
-	StatusCode       int
-	RawResponse      *http.Response
+	ContentType string
+	StatusCode  int
+	RawResponse *http.Response
 	// A single transformation
 	Transformation *shared.Transformation
+}
+
+func (o *UpsertTransformationResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *UpsertTransformationResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *UpsertTransformationResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
+}
+
+func (o *UpsertTransformationResponse) GetTransformation() *shared.Transformation {
+	if o == nil {
+		return nil
+	}
+	return o.Transformation
 }

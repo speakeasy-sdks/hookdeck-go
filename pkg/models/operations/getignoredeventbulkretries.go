@@ -21,6 +21,41 @@ type GetIgnoredEventBulkRetriesCancelledAt2 struct {
 	Lte *time.Time `queryParam:"name=lte"`
 }
 
+func (o *GetIgnoredEventBulkRetriesCancelledAt2) GetAny() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Any
+}
+
+func (o *GetIgnoredEventBulkRetriesCancelledAt2) GetGt() *time.Time {
+	if o == nil {
+		return nil
+	}
+	return o.Gt
+}
+
+func (o *GetIgnoredEventBulkRetriesCancelledAt2) GetGte() *time.Time {
+	if o == nil {
+		return nil
+	}
+	return o.Gte
+}
+
+func (o *GetIgnoredEventBulkRetriesCancelledAt2) GetLe() *time.Time {
+	if o == nil {
+		return nil
+	}
+	return o.Le
+}
+
+func (o *GetIgnoredEventBulkRetriesCancelledAt2) GetLte() *time.Time {
+	if o == nil {
+		return nil
+	}
+	return o.Lte
+}
+
 type GetIgnoredEventBulkRetriesCancelledAtType string
 
 const (
@@ -98,6 +133,41 @@ type GetIgnoredEventBulkRetriesCompletedAt2 struct {
 	Lte *time.Time `queryParam:"name=lte"`
 }
 
+func (o *GetIgnoredEventBulkRetriesCompletedAt2) GetAny() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Any
+}
+
+func (o *GetIgnoredEventBulkRetriesCompletedAt2) GetGt() *time.Time {
+	if o == nil {
+		return nil
+	}
+	return o.Gt
+}
+
+func (o *GetIgnoredEventBulkRetriesCompletedAt2) GetGte() *time.Time {
+	if o == nil {
+		return nil
+	}
+	return o.Gte
+}
+
+func (o *GetIgnoredEventBulkRetriesCompletedAt2) GetLe() *time.Time {
+	if o == nil {
+		return nil
+	}
+	return o.Le
+}
+
+func (o *GetIgnoredEventBulkRetriesCompletedAt2) GetLte() *time.Time {
+	if o == nil {
+		return nil
+	}
+	return o.Lte
+}
+
 type GetIgnoredEventBulkRetriesCompletedAtType string
 
 const (
@@ -173,6 +243,41 @@ type GetIgnoredEventBulkRetriesCreatedAt2 struct {
 	Gte *time.Time `queryParam:"name=gte"`
 	Le  *time.Time `queryParam:"name=le"`
 	Lte *time.Time `queryParam:"name=lte"`
+}
+
+func (o *GetIgnoredEventBulkRetriesCreatedAt2) GetAny() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Any
+}
+
+func (o *GetIgnoredEventBulkRetriesCreatedAt2) GetGt() *time.Time {
+	if o == nil {
+		return nil
+	}
+	return o.Gt
+}
+
+func (o *GetIgnoredEventBulkRetriesCreatedAt2) GetGte() *time.Time {
+	if o == nil {
+		return nil
+	}
+	return o.Gte
+}
+
+func (o *GetIgnoredEventBulkRetriesCreatedAt2) GetLe() *time.Time {
+	if o == nil {
+		return nil
+	}
+	return o.Le
+}
+
+func (o *GetIgnoredEventBulkRetriesCreatedAt2) GetLte() *time.Time {
+	if o == nil {
+		return nil
+	}
+	return o.Lte
 }
 
 type GetIgnoredEventBulkRetriesCreatedAtType string
@@ -697,6 +802,27 @@ type GetIgnoredEventBulkRetriesQuery struct {
 	WebhookID *GetIgnoredEventBulkRetriesQueryWebhookID `queryParam:"name=webhook_id"`
 }
 
+func (o *GetIgnoredEventBulkRetriesQuery) GetCause() *GetIgnoredEventBulkRetriesQueryCause {
+	if o == nil {
+		return nil
+	}
+	return o.Cause
+}
+
+func (o *GetIgnoredEventBulkRetriesQuery) GetTransformationID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.TransformationID
+}
+
+func (o *GetIgnoredEventBulkRetriesQuery) GetWebhookID() *GetIgnoredEventBulkRetriesQueryWebhookID {
+	if o == nil {
+		return nil
+	}
+	return o.WebhookID
+}
+
 type GetIgnoredEventBulkRetriesRequest struct {
 	CancelledAt *GetIgnoredEventBulkRetriesCancelledAt `queryParam:"style=form,explode=true,name=cancelled_at"`
 	CompletedAt *GetIgnoredEventBulkRetriesCompletedAt `queryParam:"style=form,explode=true,name=completed_at"`
@@ -713,12 +839,122 @@ type GetIgnoredEventBulkRetriesRequest struct {
 	QueryPartialMatch *bool                            `queryParam:"style=form,explode=true,name=query_partial_match"`
 }
 
+func (o *GetIgnoredEventBulkRetriesRequest) GetCancelledAt() *GetIgnoredEventBulkRetriesCancelledAt {
+	if o == nil {
+		return nil
+	}
+	return o.CancelledAt
+}
+
+func (o *GetIgnoredEventBulkRetriesRequest) GetCompletedAt() *GetIgnoredEventBulkRetriesCompletedAt {
+	if o == nil {
+		return nil
+	}
+	return o.CompletedAt
+}
+
+func (o *GetIgnoredEventBulkRetriesRequest) GetCreatedAt() *GetIgnoredEventBulkRetriesCreatedAt {
+	if o == nil {
+		return nil
+	}
+	return o.CreatedAt
+}
+
+func (o *GetIgnoredEventBulkRetriesRequest) GetDir() *GetIgnoredEventBulkRetriesDir {
+	if o == nil {
+		return nil
+	}
+	return o.Dir
+}
+
+func (o *GetIgnoredEventBulkRetriesRequest) GetID() *GetIgnoredEventBulkRetriesID {
+	if o == nil {
+		return nil
+	}
+	return o.ID
+}
+
+func (o *GetIgnoredEventBulkRetriesRequest) GetInProgress() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.InProgress
+}
+
+func (o *GetIgnoredEventBulkRetriesRequest) GetLimit() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Limit
+}
+
+func (o *GetIgnoredEventBulkRetriesRequest) GetNext() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Next
+}
+
+func (o *GetIgnoredEventBulkRetriesRequest) GetOrderBy() *GetIgnoredEventBulkRetriesOrderBy {
+	if o == nil {
+		return nil
+	}
+	return o.OrderBy
+}
+
+func (o *GetIgnoredEventBulkRetriesRequest) GetPrev() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Prev
+}
+
+func (o *GetIgnoredEventBulkRetriesRequest) GetQuery() *GetIgnoredEventBulkRetriesQuery {
+	if o == nil {
+		return nil
+	}
+	return o.Query
+}
+
+func (o *GetIgnoredEventBulkRetriesRequest) GetQueryPartialMatch() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.QueryPartialMatch
+}
+
 type GetIgnoredEventBulkRetriesResponse struct {
-	// Bad Request
-	APIErrorResponse *shared.APIErrorResponse
 	// List of ignored events bulk retries
 	BatchOperationPaginatedResult *shared.BatchOperationPaginatedResult
 	ContentType                   string
 	StatusCode                    int
 	RawResponse                   *http.Response
+}
+
+func (o *GetIgnoredEventBulkRetriesResponse) GetBatchOperationPaginatedResult() *shared.BatchOperationPaginatedResult {
+	if o == nil {
+		return nil
+	}
+	return o.BatchOperationPaginatedResult
+}
+
+func (o *GetIgnoredEventBulkRetriesResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *GetIgnoredEventBulkRetriesResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *GetIgnoredEventBulkRetriesResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
 }

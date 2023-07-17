@@ -22,6 +22,48 @@ type GetEventsAttempts2 struct {
 	Lte      *int64 `queryParam:"name=lte"`
 }
 
+func (o *GetEventsAttempts2) GetAny() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Any
+}
+
+func (o *GetEventsAttempts2) GetContains() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Contains
+}
+
+func (o *GetEventsAttempts2) GetGt() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Gt
+}
+
+func (o *GetEventsAttempts2) GetGte() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Gte
+}
+
+func (o *GetEventsAttempts2) GetLe() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Le
+}
+
+func (o *GetEventsAttempts2) GetLte() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Lte
+}
+
 type GetEventsAttemptsType string
 
 const (
@@ -235,6 +277,13 @@ type GetEventsCliID2 struct {
 	Any *bool `queryParam:"name=any"`
 }
 
+func (o *GetEventsCliID2) GetAny() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Any
+}
+
 type GetEventsCliIDType string
 
 const (
@@ -402,6 +451,41 @@ type GetEventsCreatedAt2 struct {
 	Gte *time.Time `queryParam:"name=gte"`
 	Le  *time.Time `queryParam:"name=le"`
 	Lte *time.Time `queryParam:"name=lte"`
+}
+
+func (o *GetEventsCreatedAt2) GetAny() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Any
+}
+
+func (o *GetEventsCreatedAt2) GetGt() *time.Time {
+	if o == nil {
+		return nil
+	}
+	return o.Gt
+}
+
+func (o *GetEventsCreatedAt2) GetGte() *time.Time {
+	if o == nil {
+		return nil
+	}
+	return o.Gte
+}
+
+func (o *GetEventsCreatedAt2) GetLe() *time.Time {
+	if o == nil {
+		return nil
+	}
+	return o.Le
+}
+
+func (o *GetEventsCreatedAt2) GetLte() *time.Time {
+	if o == nil {
+		return nil
+	}
+	return o.Lte
 }
 
 type GetEventsCreatedAtType string
@@ -1041,6 +1125,41 @@ type GetEventsLastAttemptAt2 struct {
 	Lte *time.Time `queryParam:"name=lte"`
 }
 
+func (o *GetEventsLastAttemptAt2) GetAny() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Any
+}
+
+func (o *GetEventsLastAttemptAt2) GetGt() *time.Time {
+	if o == nil {
+		return nil
+	}
+	return o.Gt
+}
+
+func (o *GetEventsLastAttemptAt2) GetGte() *time.Time {
+	if o == nil {
+		return nil
+	}
+	return o.Gte
+}
+
+func (o *GetEventsLastAttemptAt2) GetLe() *time.Time {
+	if o == nil {
+		return nil
+	}
+	return o.Le
+}
+
+func (o *GetEventsLastAttemptAt2) GetLte() *time.Time {
+	if o == nil {
+		return nil
+	}
+	return o.Lte
+}
+
 type GetEventsLastAttemptAtType string
 
 const (
@@ -1320,6 +1439,48 @@ type GetEventsResponseStatus2 struct {
 	Lte      *int64 `queryParam:"name=lte"`
 }
 
+func (o *GetEventsResponseStatus2) GetAny() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Any
+}
+
+func (o *GetEventsResponseStatus2) GetContains() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Contains
+}
+
+func (o *GetEventsResponseStatus2) GetGt() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Gt
+}
+
+func (o *GetEventsResponseStatus2) GetGte() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Gte
+}
+
+func (o *GetEventsResponseStatus2) GetLe() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Le
+}
+
+func (o *GetEventsResponseStatus2) GetLte() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Lte
+}
+
 type GetEventsResponseStatusType string
 
 const (
@@ -1557,6 +1718,41 @@ type GetEventsSuccessfulAt2 struct {
 	Lte *time.Time `queryParam:"name=lte"`
 }
 
+func (o *GetEventsSuccessfulAt2) GetAny() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Any
+}
+
+func (o *GetEventsSuccessfulAt2) GetGt() *time.Time {
+	if o == nil {
+		return nil
+	}
+	return o.Gt
+}
+
+func (o *GetEventsSuccessfulAt2) GetGte() *time.Time {
+	if o == nil {
+		return nil
+	}
+	return o.Gte
+}
+
+func (o *GetEventsSuccessfulAt2) GetLe() *time.Time {
+	if o == nil {
+		return nil
+	}
+	return o.Le
+}
+
+func (o *GetEventsSuccessfulAt2) GetLte() *time.Time {
+	if o == nil {
+		return nil
+	}
+	return o.Lte
+}
+
 type GetEventsSuccessfulAtType string
 
 const (
@@ -1724,12 +1920,227 @@ type GetEventsRequest struct {
 	WebhookID      *GetEventsWebhookID      `queryParam:"style=form,explode=true,name=webhook_id"`
 }
 
+func (o *GetEventsRequest) GetAttempts() *GetEventsAttempts {
+	if o == nil {
+		return nil
+	}
+	return o.Attempts
+}
+
+func (o *GetEventsRequest) GetBody() *GetEventsBody {
+	if o == nil {
+		return nil
+	}
+	return o.Body
+}
+
+func (o *GetEventsRequest) GetBulkRetryID() *GetEventsBulkRetryID {
+	if o == nil {
+		return nil
+	}
+	return o.BulkRetryID
+}
+
+func (o *GetEventsRequest) GetCliID() *GetEventsCliID {
+	if o == nil {
+		return nil
+	}
+	return o.CliID
+}
+
+func (o *GetEventsRequest) GetCliUserID() *GetEventsCliUserID {
+	if o == nil {
+		return nil
+	}
+	return o.CliUserID
+}
+
+func (o *GetEventsRequest) GetCreatedAt() *GetEventsCreatedAt {
+	if o == nil {
+		return nil
+	}
+	return o.CreatedAt
+}
+
+func (o *GetEventsRequest) GetDestinationID() *GetEventsDestinationID {
+	if o == nil {
+		return nil
+	}
+	return o.DestinationID
+}
+
+func (o *GetEventsRequest) GetDir() *GetEventsDir {
+	if o == nil {
+		return nil
+	}
+	return o.Dir
+}
+
+func (o *GetEventsRequest) GetErrorCode() *GetEventsErrorCode {
+	if o == nil {
+		return nil
+	}
+	return o.ErrorCode
+}
+
+func (o *GetEventsRequest) GetEventDataID() *GetEventsEventDataID {
+	if o == nil {
+		return nil
+	}
+	return o.EventDataID
+}
+
+func (o *GetEventsRequest) GetHeaders() *GetEventsHeaders {
+	if o == nil {
+		return nil
+	}
+	return o.Headers
+}
+
+func (o *GetEventsRequest) GetID() *GetEventsID {
+	if o == nil {
+		return nil
+	}
+	return o.ID
+}
+
+func (o *GetEventsRequest) GetInclude() *GetEventsInclude {
+	if o == nil {
+		return nil
+	}
+	return o.Include
+}
+
+func (o *GetEventsRequest) GetIssueID() *GetEventsIssueID {
+	if o == nil {
+		return nil
+	}
+	return o.IssueID
+}
+
+func (o *GetEventsRequest) GetLastAttemptAt() *GetEventsLastAttemptAt {
+	if o == nil {
+		return nil
+	}
+	return o.LastAttemptAt
+}
+
+func (o *GetEventsRequest) GetLimit() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Limit
+}
+
+func (o *GetEventsRequest) GetNext() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Next
+}
+
+func (o *GetEventsRequest) GetOrderBy() *GetEventsOrderBy {
+	if o == nil {
+		return nil
+	}
+	return o.OrderBy
+}
+
+func (o *GetEventsRequest) GetParsedQuery() *GetEventsParsedQuery {
+	if o == nil {
+		return nil
+	}
+	return o.ParsedQuery
+}
+
+func (o *GetEventsRequest) GetPath() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Path
+}
+
+func (o *GetEventsRequest) GetPrev() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Prev
+}
+
+func (o *GetEventsRequest) GetResponseStatus() *GetEventsResponseStatus {
+	if o == nil {
+		return nil
+	}
+	return o.ResponseStatus
+}
+
+func (o *GetEventsRequest) GetSearchTerm() *string {
+	if o == nil {
+		return nil
+	}
+	return o.SearchTerm
+}
+
+func (o *GetEventsRequest) GetSourceID() *GetEventsSourceID {
+	if o == nil {
+		return nil
+	}
+	return o.SourceID
+}
+
+func (o *GetEventsRequest) GetStatus() *GetEventsStatus {
+	if o == nil {
+		return nil
+	}
+	return o.Status
+}
+
+func (o *GetEventsRequest) GetSuccessfulAt() *GetEventsSuccessfulAt {
+	if o == nil {
+		return nil
+	}
+	return o.SuccessfulAt
+}
+
+func (o *GetEventsRequest) GetWebhookID() *GetEventsWebhookID {
+	if o == nil {
+		return nil
+	}
+	return o.WebhookID
+}
+
 type GetEventsResponse struct {
-	// Bad Request
-	APIErrorResponse *shared.APIErrorResponse
-	ContentType      string
+	ContentType string
 	// List of events
 	EventPaginatedResult *shared.EventPaginatedResult
 	StatusCode           int
 	RawResponse          *http.Response
+}
+
+func (o *GetEventsResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *GetEventsResponse) GetEventPaginatedResult() *shared.EventPaginatedResult {
+	if o == nil {
+		return nil
+	}
+	return o.EventPaginatedResult
+}
+
+func (o *GetEventsResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *GetEventsResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
 }

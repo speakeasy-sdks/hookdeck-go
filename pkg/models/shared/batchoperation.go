@@ -109,3 +109,108 @@ type BatchOperation struct {
 	// Last time the bulk retry was updated
 	UpdatedAt time.Time `json:"updated_at"`
 }
+
+func (o *BatchOperation) GetCancelledAt() *time.Time {
+	if o == nil {
+		return nil
+	}
+	return o.CancelledAt
+}
+
+func (o *BatchOperation) GetCompletedAt() *time.Time {
+	if o == nil {
+		return nil
+	}
+	return o.CompletedAt
+}
+
+func (o *BatchOperation) GetCompletedCount() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.CompletedCount
+}
+
+func (o *BatchOperation) GetCreatedAt() time.Time {
+	if o == nil {
+		return time.Time{}
+	}
+	return o.CreatedAt
+}
+
+func (o *BatchOperation) GetEstimatedBatch() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.EstimatedBatch
+}
+
+func (o *BatchOperation) GetEstimatedCount() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.EstimatedCount
+}
+
+func (o *BatchOperation) GetFailedCount() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.FailedCount
+}
+
+func (o *BatchOperation) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
+}
+
+func (o *BatchOperation) GetInProgress() bool {
+	if o == nil {
+		return false
+	}
+	return o.InProgress
+}
+
+func (o *BatchOperation) GetNumber() *float32 {
+	if o == nil {
+		return nil
+	}
+	return o.Number
+}
+
+func (o *BatchOperation) GetProcessedBatch() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.ProcessedBatch
+}
+
+func (o *BatchOperation) GetProgress() *float32 {
+	if o == nil {
+		return nil
+	}
+	return o.Progress
+}
+
+func (o *BatchOperation) GetQuery() *BatchOperationQuery {
+	if o == nil {
+		return nil
+	}
+	return o.Query
+}
+
+func (o *BatchOperation) GetTeamID() string {
+	if o == nil {
+		return ""
+	}
+	return o.TeamID
+}
+
+func (o *BatchOperation) GetUpdatedAt() time.Time {
+	if o == nil {
+		return time.Time{}
+	}
+	return o.UpdatedAt
+}

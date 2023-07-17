@@ -21,6 +21,41 @@ type GetTransformationExecutionsCreatedAt2 struct {
 	Lte *time.Time `queryParam:"name=lte"`
 }
 
+func (o *GetTransformationExecutionsCreatedAt2) GetAny() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Any
+}
+
+func (o *GetTransformationExecutionsCreatedAt2) GetGt() *time.Time {
+	if o == nil {
+		return nil
+	}
+	return o.Gt
+}
+
+func (o *GetTransformationExecutionsCreatedAt2) GetGte() *time.Time {
+	if o == nil {
+		return nil
+	}
+	return o.Gte
+}
+
+func (o *GetTransformationExecutionsCreatedAt2) GetLe() *time.Time {
+	if o == nil {
+		return nil
+	}
+	return o.Le
+}
+
+func (o *GetTransformationExecutionsCreatedAt2) GetLte() *time.Time {
+	if o == nil {
+		return nil
+	}
+	return o.Lte
+}
+
 type GetTransformationExecutionsCreatedAtType string
 
 const (
@@ -625,12 +660,108 @@ type GetTransformationExecutionsRequest struct {
 	WebhookID *GetTransformationExecutionsWebhookID `queryParam:"style=form,explode=true,name=webhook_id"`
 }
 
+func (o *GetTransformationExecutionsRequest) GetCreatedAt() *GetTransformationExecutionsCreatedAt {
+	if o == nil {
+		return nil
+	}
+	return o.CreatedAt
+}
+
+func (o *GetTransformationExecutionsRequest) GetDir() *GetTransformationExecutionsDir {
+	if o == nil {
+		return nil
+	}
+	return o.Dir
+}
+
+func (o *GetTransformationExecutionsRequest) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
+}
+
+func (o *GetTransformationExecutionsRequest) GetIssueID() *GetTransformationExecutionsIssueID {
+	if o == nil {
+		return nil
+	}
+	return o.IssueID
+}
+
+func (o *GetTransformationExecutionsRequest) GetLimit() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Limit
+}
+
+func (o *GetTransformationExecutionsRequest) GetLogLevel() *GetTransformationExecutionsLogLevel {
+	if o == nil {
+		return nil
+	}
+	return o.LogLevel
+}
+
+func (o *GetTransformationExecutionsRequest) GetNext() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Next
+}
+
+func (o *GetTransformationExecutionsRequest) GetOrderBy() *GetTransformationExecutionsOrderBy {
+	if o == nil {
+		return nil
+	}
+	return o.OrderBy
+}
+
+func (o *GetTransformationExecutionsRequest) GetPrev() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Prev
+}
+
+func (o *GetTransformationExecutionsRequest) GetWebhookID() *GetTransformationExecutionsWebhookID {
+	if o == nil {
+		return nil
+	}
+	return o.WebhookID
+}
+
 type GetTransformationExecutionsResponse struct {
-	// Bad Request
-	APIErrorResponse *shared.APIErrorResponse
-	ContentType      string
-	StatusCode       int
-	RawResponse      *http.Response
+	ContentType string
+	StatusCode  int
+	RawResponse *http.Response
 	// List of transformation executions
 	TransformationExecutionPaginatedResult *shared.TransformationExecutionPaginatedResult
+}
+
+func (o *GetTransformationExecutionsResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *GetTransformationExecutionsResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *GetTransformationExecutionsResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
+}
+
+func (o *GetTransformationExecutionsResponse) GetTransformationExecutionPaginatedResult() *shared.TransformationExecutionPaginatedResult {
+	if o == nil {
+		return nil
+	}
+	return o.TransformationExecutionPaginatedResult
 }

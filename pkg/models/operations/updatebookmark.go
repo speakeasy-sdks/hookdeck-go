@@ -18,17 +18,85 @@ type UpdateBookmarkRequestBody struct {
 	WebhookID *string `json:"webhook_id,omitempty"`
 }
 
+func (o *UpdateBookmarkRequestBody) GetEventDataID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.EventDataID
+}
+
+func (o *UpdateBookmarkRequestBody) GetLabel() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Label
+}
+
+func (o *UpdateBookmarkRequestBody) GetName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Name
+}
+
+func (o *UpdateBookmarkRequestBody) GetWebhookID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.WebhookID
+}
+
 type UpdateBookmarkRequest struct {
 	RequestBody UpdateBookmarkRequestBody `request:"mediaType=application/json"`
 	ID          string                    `pathParam:"style=simple,explode=false,name=id"`
 }
 
+func (o *UpdateBookmarkRequest) GetRequestBody() UpdateBookmarkRequestBody {
+	if o == nil {
+		return UpdateBookmarkRequestBody{}
+	}
+	return o.RequestBody
+}
+
+func (o *UpdateBookmarkRequest) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
+}
+
 type UpdateBookmarkResponse struct {
-	// Bad Request
-	APIErrorResponse *shared.APIErrorResponse
 	// A single bookmark
 	Bookmark    *shared.Bookmark
 	ContentType string
 	StatusCode  int
 	RawResponse *http.Response
+}
+
+func (o *UpdateBookmarkResponse) GetBookmark() *shared.Bookmark {
+	if o == nil {
+		return nil
+	}
+	return o.Bookmark
+}
+
+func (o *UpdateBookmarkResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *UpdateBookmarkResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *UpdateBookmarkResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
 }

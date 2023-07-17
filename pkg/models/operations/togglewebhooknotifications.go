@@ -16,10 +16,59 @@ type ToggleWebhookNotificationsRequestBody struct {
 	Topics []shared.TopicsValue `json:"topics,omitempty"`
 }
 
+func (o *ToggleWebhookNotificationsRequestBody) GetEnabled() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Enabled
+}
+
+func (o *ToggleWebhookNotificationsRequestBody) GetSourceID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.SourceID
+}
+
+func (o *ToggleWebhookNotificationsRequestBody) GetTopics() []shared.TopicsValue {
+	if o == nil {
+		return nil
+	}
+	return o.Topics
+}
+
 type ToggleWebhookNotificationsResponse struct {
 	ContentType string
 	StatusCode  int
 	RawResponse *http.Response
 	// Toggle operation status response
 	ToggleWebhookNotifications *shared.ToggleWebhookNotifications
+}
+
+func (o *ToggleWebhookNotificationsResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *ToggleWebhookNotificationsResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *ToggleWebhookNotificationsResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
+}
+
+func (o *ToggleWebhookNotificationsResponse) GetToggleWebhookNotifications() *shared.ToggleWebhookNotifications {
+	if o == nil {
+		return nil
+	}
+	return o.ToggleWebhookNotifications
 }

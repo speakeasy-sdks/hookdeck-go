@@ -253,6 +253,48 @@ type RequestData struct {
 	Query          *string                 `json:"query,omitempty"`
 }
 
+func (o *RequestData) GetBody() *RequestDataBody {
+	if o == nil {
+		return nil
+	}
+	return o.Body
+}
+
+func (o *RequestData) GetHeaders() *RequestDataHeaders {
+	if o == nil {
+		return nil
+	}
+	return o.Headers
+}
+
+func (o *RequestData) GetIsLargePayload() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.IsLargePayload
+}
+
+func (o *RequestData) GetParsedQuery() *RequestDataParsedQuery {
+	if o == nil {
+		return nil
+	}
+	return o.ParsedQuery
+}
+
+func (o *RequestData) GetPath() string {
+	if o == nil {
+		return ""
+	}
+	return o.Path
+}
+
+func (o *RequestData) GetQuery() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Query
+}
+
 // RequestIngestPriority - The priority attributed to the request when received
 type RequestIngestPriority string
 
@@ -316,4 +358,123 @@ type Request struct {
 	UpdatedAt time.Time `json:"updated_at"`
 	// Whether or not the request was verified when received
 	Verified *bool `json:"verified,omitempty"`
+}
+
+func (o *Request) GetCliEventsCount() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.CliEventsCount
+}
+
+func (o *Request) GetCreatedAt() time.Time {
+	if o == nil {
+		return time.Time{}
+	}
+	return o.CreatedAt
+}
+
+func (o *Request) GetData() *RequestData {
+	if o == nil {
+		return nil
+	}
+	return o.Data
+}
+
+func (o *Request) GetDuplicateHash() *string {
+	if o == nil {
+		return nil
+	}
+	return o.DuplicateHash
+}
+
+func (o *Request) GetDuplicateHits() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.DuplicateHits
+}
+
+func (o *Request) GetEventsCount() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.EventsCount
+}
+
+func (o *Request) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
+}
+
+func (o *Request) GetIgnoredCount() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.IgnoredCount
+}
+
+func (o *Request) GetIngestPriority() *RequestIngestPriority {
+	if o == nil {
+		return nil
+	}
+	return o.IngestPriority
+}
+
+func (o *Request) GetIngestedAt() *time.Time {
+	if o == nil {
+		return nil
+	}
+	return o.IngestedAt
+}
+
+func (o *Request) GetIngestedAtID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.IngestedAtID
+}
+
+func (o *Request) GetOriginalEventDataID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.OriginalEventDataID
+}
+
+func (o *Request) GetRejectionCause() *RequestRejectionCause {
+	if o == nil {
+		return nil
+	}
+	return o.RejectionCause
+}
+
+func (o *Request) GetSourceID() string {
+	if o == nil {
+		return ""
+	}
+	return o.SourceID
+}
+
+func (o *Request) GetTeamID() string {
+	if o == nil {
+		return ""
+	}
+	return o.TeamID
+}
+
+func (o *Request) GetUpdatedAt() time.Time {
+	if o == nil {
+		return time.Time{}
+	}
+	return o.UpdatedAt
+}
+
+func (o *Request) GetVerified() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Verified
 }

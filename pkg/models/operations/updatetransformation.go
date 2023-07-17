@@ -16,17 +16,78 @@ type UpdateTransformationRequestBody struct {
 	Name *string `json:"name,omitempty"`
 }
 
+func (o *UpdateTransformationRequestBody) GetCode() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Code
+}
+
+func (o *UpdateTransformationRequestBody) GetEnv() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.Env
+}
+
+func (o *UpdateTransformationRequestBody) GetName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Name
+}
+
 type UpdateTransformationRequest struct {
 	RequestBody UpdateTransformationRequestBody `request:"mediaType=application/json"`
 	ID          string                          `pathParam:"style=simple,explode=false,name=id"`
 }
 
+func (o *UpdateTransformationRequest) GetRequestBody() UpdateTransformationRequestBody {
+	if o == nil {
+		return UpdateTransformationRequestBody{}
+	}
+	return o.RequestBody
+}
+
+func (o *UpdateTransformationRequest) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
+}
+
 type UpdateTransformationResponse struct {
-	// Bad Request
-	APIErrorResponse *shared.APIErrorResponse
-	ContentType      string
-	StatusCode       int
-	RawResponse      *http.Response
+	ContentType string
+	StatusCode  int
+	RawResponse *http.Response
 	// A single transformation
 	Transformation *shared.Transformation
+}
+
+func (o *UpdateTransformationResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *UpdateTransformationResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *UpdateTransformationResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
+}
+
+func (o *UpdateTransformationResponse) GetTransformation() *shared.Transformation {
+	if o == nil {
+		return nil
+	}
+	return o.Transformation
 }

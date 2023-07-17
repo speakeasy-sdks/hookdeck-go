@@ -11,12 +11,45 @@ type CancelRequestBulkRetryRequest struct {
 	ID string `pathParam:"style=simple,explode=false,name=id"`
 }
 
+func (o *CancelRequestBulkRetryRequest) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
+}
+
 type CancelRequestBulkRetryResponse struct {
-	// Not Found
-	APIErrorResponse *shared.APIErrorResponse
 	// A single requests bulk retry
 	BatchOperation *shared.BatchOperation
 	ContentType    string
 	StatusCode     int
 	RawResponse    *http.Response
+}
+
+func (o *CancelRequestBulkRetryResponse) GetBatchOperation() *shared.BatchOperation {
+	if o == nil {
+		return nil
+	}
+	return o.BatchOperation
+}
+
+func (o *CancelRequestBulkRetryResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *CancelRequestBulkRetryResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *CancelRequestBulkRetryResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
 }

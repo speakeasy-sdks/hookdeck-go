@@ -11,12 +11,45 @@ type ArchiveConnectionRequest struct {
 	ID string `pathParam:"style=simple,explode=false,name=id"`
 }
 
+func (o *ArchiveConnectionRequest) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
+}
+
 type ArchiveConnectionResponse struct {
-	// Not Found
-	APIErrorResponse *shared.APIErrorResponse
 	// A single connection
 	Connection  *shared.Connection
 	ContentType string
 	StatusCode  int
 	RawResponse *http.Response
+}
+
+func (o *ArchiveConnectionResponse) GetConnection() *shared.Connection {
+	if o == nil {
+		return nil
+	}
+	return o.Connection
+}
+
+func (o *ArchiveConnectionResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *ArchiveConnectionResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *ArchiveConnectionResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
 }

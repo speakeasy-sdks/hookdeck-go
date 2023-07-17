@@ -44,3 +44,24 @@ type DestinationAuthMethodAPIKeyConfig struct {
 	// Whether the API key should be sent as a header or a query parameter
 	To *DestinationAuthMethodAPIKeyConfigTo `json:"to,omitempty"`
 }
+
+func (o *DestinationAuthMethodAPIKeyConfig) GetAPIKey() string {
+	if o == nil {
+		return ""
+	}
+	return o.APIKey
+}
+
+func (o *DestinationAuthMethodAPIKeyConfig) GetKey() string {
+	if o == nil {
+		return ""
+	}
+	return o.Key
+}
+
+func (o *DestinationAuthMethodAPIKeyConfig) GetTo() *DestinationAuthMethodAPIKeyConfigTo {
+	if o == nil {
+		return nil
+	}
+	return o.To
+}

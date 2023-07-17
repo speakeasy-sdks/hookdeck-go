@@ -21,6 +21,41 @@ type GetDestinationsArchivedAt2 struct {
 	Lte *time.Time `queryParam:"name=lte"`
 }
 
+func (o *GetDestinationsArchivedAt2) GetAny() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Any
+}
+
+func (o *GetDestinationsArchivedAt2) GetGt() *time.Time {
+	if o == nil {
+		return nil
+	}
+	return o.Gt
+}
+
+func (o *GetDestinationsArchivedAt2) GetGte() *time.Time {
+	if o == nil {
+		return nil
+	}
+	return o.Gte
+}
+
+func (o *GetDestinationsArchivedAt2) GetLe() *time.Time {
+	if o == nil {
+		return nil
+	}
+	return o.Le
+}
+
+func (o *GetDestinationsArchivedAt2) GetLte() *time.Time {
+	if o == nil {
+		return nil
+	}
+	return o.Lte
+}
+
 type GetDestinationsArchivedAtType string
 
 const (
@@ -92,6 +127,13 @@ func (u GetDestinationsArchivedAt) MarshalJSON() ([]byte, error) {
 // GetDestinationsCliPath2 - Path for the CLI destination
 type GetDestinationsCliPath2 struct {
 	Any *bool `queryParam:"name=any"`
+}
+
+func (o *GetDestinationsCliPath2) GetAny() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Any
 }
 
 type GetDestinationsCliPathType string
@@ -387,6 +429,48 @@ type GetDestinationsName2 struct {
 	Lte      *string `queryParam:"name=lte"`
 }
 
+func (o *GetDestinationsName2) GetAny() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Any
+}
+
+func (o *GetDestinationsName2) GetContains() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Contains
+}
+
+func (o *GetDestinationsName2) GetGt() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Gt
+}
+
+func (o *GetDestinationsName2) GetGte() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Gte
+}
+
+func (o *GetDestinationsName2) GetLe() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Le
+}
+
+func (o *GetDestinationsName2) GetLte() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Lte
+}
+
 type GetDestinationsNameType string
 
 const (
@@ -654,12 +738,115 @@ type GetDestinationsRequest struct {
 	URL        *GetDestinationsURL        `queryParam:"style=form,explode=true,name=url"`
 }
 
+func (o *GetDestinationsRequest) GetArchived() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Archived
+}
+
+func (o *GetDestinationsRequest) GetArchivedAt() *GetDestinationsArchivedAt {
+	if o == nil {
+		return nil
+	}
+	return o.ArchivedAt
+}
+
+func (o *GetDestinationsRequest) GetCliPath() *GetDestinationsCliPath {
+	if o == nil {
+		return nil
+	}
+	return o.CliPath
+}
+
+func (o *GetDestinationsRequest) GetDir() *GetDestinationsDir {
+	if o == nil {
+		return nil
+	}
+	return o.Dir
+}
+
+func (o *GetDestinationsRequest) GetID() *GetDestinationsID {
+	if o == nil {
+		return nil
+	}
+	return o.ID
+}
+
+func (o *GetDestinationsRequest) GetLimit() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Limit
+}
+
+func (o *GetDestinationsRequest) GetName() *GetDestinationsName {
+	if o == nil {
+		return nil
+	}
+	return o.Name
+}
+
+func (o *GetDestinationsRequest) GetNext() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Next
+}
+
+func (o *GetDestinationsRequest) GetOrderBy() *GetDestinationsOrderBy {
+	if o == nil {
+		return nil
+	}
+	return o.OrderBy
+}
+
+func (o *GetDestinationsRequest) GetPrev() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Prev
+}
+
+func (o *GetDestinationsRequest) GetURL() *GetDestinationsURL {
+	if o == nil {
+		return nil
+	}
+	return o.URL
+}
+
 type GetDestinationsResponse struct {
-	// Bad Request
-	APIErrorResponse *shared.APIErrorResponse
-	ContentType      string
+	ContentType string
 	// List of destinations
 	DestinationPaginatedResult *shared.DestinationPaginatedResult
 	StatusCode                 int
 	RawResponse                *http.Response
+}
+
+func (o *GetDestinationsResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *GetDestinationsResponse) GetDestinationPaginatedResult() *shared.DestinationPaginatedResult {
+	if o == nil {
+		return nil
+	}
+	return o.DestinationPaginatedResult
+}
+
+func (o *GetDestinationsResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *GetDestinationsResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
 }

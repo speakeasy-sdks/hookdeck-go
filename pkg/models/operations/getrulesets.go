@@ -21,6 +21,41 @@ type GetRulesetsArchivedAt2 struct {
 	Lte *time.Time `queryParam:"name=lte"`
 }
 
+func (o *GetRulesetsArchivedAt2) GetAny() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Any
+}
+
+func (o *GetRulesetsArchivedAt2) GetGt() *time.Time {
+	if o == nil {
+		return nil
+	}
+	return o.Gt
+}
+
+func (o *GetRulesetsArchivedAt2) GetGte() *time.Time {
+	if o == nil {
+		return nil
+	}
+	return o.Gte
+}
+
+func (o *GetRulesetsArchivedAt2) GetLe() *time.Time {
+	if o == nil {
+		return nil
+	}
+	return o.Le
+}
+
+func (o *GetRulesetsArchivedAt2) GetLte() *time.Time {
+	if o == nil {
+		return nil
+	}
+	return o.Lte
+}
+
 type GetRulesetsArchivedAtType string
 
 const (
@@ -630,6 +665,48 @@ type GetRulesetsName2 struct {
 	Lte      *GetRulesetsName2Lte      `queryParam:"name=lte"`
 }
 
+func (o *GetRulesetsName2) GetAny() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Any
+}
+
+func (o *GetRulesetsName2) GetContains() *GetRulesetsName2Contains {
+	if o == nil {
+		return nil
+	}
+	return o.Contains
+}
+
+func (o *GetRulesetsName2) GetGt() *GetRulesetsName2Gt {
+	if o == nil {
+		return nil
+	}
+	return o.Gt
+}
+
+func (o *GetRulesetsName2) GetGte() *GetRulesetsName2Gte {
+	if o == nil {
+		return nil
+	}
+	return o.Gte
+}
+
+func (o *GetRulesetsName2) GetLe() *GetRulesetsName2Le {
+	if o == nil {
+		return nil
+	}
+	return o.Le
+}
+
+func (o *GetRulesetsName2) GetLte() *GetRulesetsName2Lte {
+	if o == nil {
+		return nil
+	}
+	return o.Lte
+}
+
 type GetRulesetsOrderBy2 string
 
 const (
@@ -759,12 +836,101 @@ type GetRulesetsRequest struct {
 	Prev       *string                `queryParam:"style=form,explode=true,name=prev"`
 }
 
+func (o *GetRulesetsRequest) GetArchived() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Archived
+}
+
+func (o *GetRulesetsRequest) GetArchivedAt() *GetRulesetsArchivedAt {
+	if o == nil {
+		return nil
+	}
+	return o.ArchivedAt
+}
+
+func (o *GetRulesetsRequest) GetDir() *GetRulesetsDir {
+	if o == nil {
+		return nil
+	}
+	return o.Dir
+}
+
+func (o *GetRulesetsRequest) GetID() *GetRulesetsID {
+	if o == nil {
+		return nil
+	}
+	return o.ID
+}
+
+func (o *GetRulesetsRequest) GetLimit() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Limit
+}
+
+func (o *GetRulesetsRequest) GetName() interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.Name
+}
+
+func (o *GetRulesetsRequest) GetNext() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Next
+}
+
+func (o *GetRulesetsRequest) GetOrderBy() *GetRulesetsOrderBy {
+	if o == nil {
+		return nil
+	}
+	return o.OrderBy
+}
+
+func (o *GetRulesetsRequest) GetPrev() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Prev
+}
+
 type GetRulesetsResponse struct {
-	// Bad Request
-	APIErrorResponse *shared.APIErrorResponse
-	ContentType      string
+	ContentType string
 	// List of rulesets
 	RulesetPaginatedResult *shared.RulesetPaginatedResult
 	StatusCode             int
 	RawResponse            *http.Response
+}
+
+func (o *GetRulesetsResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *GetRulesetsResponse) GetRulesetPaginatedResult() *shared.RulesetPaginatedResult {
+	if o == nil {
+		return nil
+	}
+	return o.RulesetPaginatedResult
+}
+
+func (o *GetRulesetsResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *GetRulesetsResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
 }

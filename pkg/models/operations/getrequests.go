@@ -160,6 +160,41 @@ type GetRequestsCreatedAt2 struct {
 	Lte *time.Time `queryParam:"name=lte"`
 }
 
+func (o *GetRequestsCreatedAt2) GetAny() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Any
+}
+
+func (o *GetRequestsCreatedAt2) GetGt() *time.Time {
+	if o == nil {
+		return nil
+	}
+	return o.Gt
+}
+
+func (o *GetRequestsCreatedAt2) GetGte() *time.Time {
+	if o == nil {
+		return nil
+	}
+	return o.Gte
+}
+
+func (o *GetRequestsCreatedAt2) GetLe() *time.Time {
+	if o == nil {
+		return nil
+	}
+	return o.Le
+}
+
+func (o *GetRequestsCreatedAt2) GetLte() *time.Time {
+	if o == nil {
+		return nil
+	}
+	return o.Lte
+}
+
 type GetRequestsCreatedAtType string
 
 const (
@@ -358,6 +393,48 @@ type GetRequestsEventsCount2 struct {
 	Gte      *int64 `queryParam:"name=gte"`
 	Le       *int64 `queryParam:"name=le"`
 	Lte      *int64 `queryParam:"name=lte"`
+}
+
+func (o *GetRequestsEventsCount2) GetAny() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Any
+}
+
+func (o *GetRequestsEventsCount2) GetContains() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Contains
+}
+
+func (o *GetRequestsEventsCount2) GetGt() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Gt
+}
+
+func (o *GetRequestsEventsCount2) GetGte() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Gte
+}
+
+func (o *GetRequestsEventsCount2) GetLe() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Le
+}
+
+func (o *GetRequestsEventsCount2) GetLte() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Lte
 }
 
 type GetRequestsEventsCountType string
@@ -601,6 +678,48 @@ type GetRequestsIgnoredCount2 struct {
 	Lte      *int64 `queryParam:"name=lte"`
 }
 
+func (o *GetRequestsIgnoredCount2) GetAny() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Any
+}
+
+func (o *GetRequestsIgnoredCount2) GetContains() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Contains
+}
+
+func (o *GetRequestsIgnoredCount2) GetGt() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Gt
+}
+
+func (o *GetRequestsIgnoredCount2) GetGte() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Gte
+}
+
+func (o *GetRequestsIgnoredCount2) GetLe() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Le
+}
+
+func (o *GetRequestsIgnoredCount2) GetLte() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Lte
+}
+
 type GetRequestsIgnoredCountType string
 
 const (
@@ -724,6 +843,41 @@ type GetRequestsIngestedAt2 struct {
 	Gte *time.Time `queryParam:"name=gte"`
 	Le  *time.Time `queryParam:"name=le"`
 	Lte *time.Time `queryParam:"name=lte"`
+}
+
+func (o *GetRequestsIngestedAt2) GetAny() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Any
+}
+
+func (o *GetRequestsIngestedAt2) GetGt() *time.Time {
+	if o == nil {
+		return nil
+	}
+	return o.Gt
+}
+
+func (o *GetRequestsIngestedAt2) GetGte() *time.Time {
+	if o == nil {
+		return nil
+	}
+	return o.Gte
+}
+
+func (o *GetRequestsIngestedAt2) GetLe() *time.Time {
+	if o == nil {
+		return nil
+	}
+	return o.Le
+}
+
+func (o *GetRequestsIngestedAt2) GetLte() *time.Time {
+	if o == nil {
+		return nil
+	}
+	return o.Lte
 }
 
 type GetRequestsIngestedAtType string
@@ -999,6 +1153,48 @@ type GetRequestsRejectionCause2 struct {
 	Lte      *shared.RequestRejectionCause `queryParam:"name=lte"`
 }
 
+func (o *GetRequestsRejectionCause2) GetAny() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Any
+}
+
+func (o *GetRequestsRejectionCause2) GetContains() *shared.RequestRejectionCause {
+	if o == nil {
+		return nil
+	}
+	return o.Contains
+}
+
+func (o *GetRequestsRejectionCause2) GetGt() *shared.RequestRejectionCause {
+	if o == nil {
+		return nil
+	}
+	return o.Gt
+}
+
+func (o *GetRequestsRejectionCause2) GetGte() *shared.RequestRejectionCause {
+	if o == nil {
+		return nil
+	}
+	return o.Gte
+}
+
+func (o *GetRequestsRejectionCause2) GetLe() *shared.RequestRejectionCause {
+	if o == nil {
+		return nil
+	}
+	return o.Le
+}
+
+func (o *GetRequestsRejectionCause2) GetLte() *shared.RequestRejectionCause {
+	if o == nil {
+		return nil
+	}
+	return o.Lte
+}
+
 type GetRequestsRejectionCauseType string
 
 const (
@@ -1211,12 +1407,185 @@ type GetRequestsRequest struct {
 	Verified       *bool                      `queryParam:"style=form,explode=true,name=verified"`
 }
 
+func (o *GetRequestsRequest) GetBody() *GetRequestsBody {
+	if o == nil {
+		return nil
+	}
+	return o.Body
+}
+
+func (o *GetRequestsRequest) GetBulkRetryID() *GetRequestsBulkRetryID {
+	if o == nil {
+		return nil
+	}
+	return o.BulkRetryID
+}
+
+func (o *GetRequestsRequest) GetCreatedAt() *GetRequestsCreatedAt {
+	if o == nil {
+		return nil
+	}
+	return o.CreatedAt
+}
+
+func (o *GetRequestsRequest) GetDir() *GetRequestsDir {
+	if o == nil {
+		return nil
+	}
+	return o.Dir
+}
+
+func (o *GetRequestsRequest) GetEventsCount() *GetRequestsEventsCount {
+	if o == nil {
+		return nil
+	}
+	return o.EventsCount
+}
+
+func (o *GetRequestsRequest) GetHeaders() *GetRequestsHeaders {
+	if o == nil {
+		return nil
+	}
+	return o.Headers
+}
+
+func (o *GetRequestsRequest) GetID() *GetRequestsID {
+	if o == nil {
+		return nil
+	}
+	return o.ID
+}
+
+func (o *GetRequestsRequest) GetIgnoredCount() *GetRequestsIgnoredCount {
+	if o == nil {
+		return nil
+	}
+	return o.IgnoredCount
+}
+
+func (o *GetRequestsRequest) GetInclude() *GetRequestsInclude {
+	if o == nil {
+		return nil
+	}
+	return o.Include
+}
+
+func (o *GetRequestsRequest) GetIngestedAt() *GetRequestsIngestedAt {
+	if o == nil {
+		return nil
+	}
+	return o.IngestedAt
+}
+
+func (o *GetRequestsRequest) GetLimit() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Limit
+}
+
+func (o *GetRequestsRequest) GetNext() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Next
+}
+
+func (o *GetRequestsRequest) GetOrderBy() *GetRequestsOrderBy {
+	if o == nil {
+		return nil
+	}
+	return o.OrderBy
+}
+
+func (o *GetRequestsRequest) GetParsedQuery() *GetRequestsParsedQuery {
+	if o == nil {
+		return nil
+	}
+	return o.ParsedQuery
+}
+
+func (o *GetRequestsRequest) GetPath() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Path
+}
+
+func (o *GetRequestsRequest) GetPrev() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Prev
+}
+
+func (o *GetRequestsRequest) GetRejectionCause() *GetRequestsRejectionCause {
+	if o == nil {
+		return nil
+	}
+	return o.RejectionCause
+}
+
+func (o *GetRequestsRequest) GetSearchTerm() *string {
+	if o == nil {
+		return nil
+	}
+	return o.SearchTerm
+}
+
+func (o *GetRequestsRequest) GetSourceID() *GetRequestsSourceID {
+	if o == nil {
+		return nil
+	}
+	return o.SourceID
+}
+
+func (o *GetRequestsRequest) GetStatus() *GetRequestsStatus {
+	if o == nil {
+		return nil
+	}
+	return o.Status
+}
+
+func (o *GetRequestsRequest) GetVerified() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Verified
+}
+
 type GetRequestsResponse struct {
-	// Bad Request
-	APIErrorResponse *shared.APIErrorResponse
-	ContentType      string
+	ContentType string
 	// List of requests
 	RequestPaginatedResult *shared.RequestPaginatedResult
 	StatusCode             int
 	RawResponse            *http.Response
+}
+
+func (o *GetRequestsResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *GetRequestsResponse) GetRequestPaginatedResult() *shared.RequestPaginatedResult {
+	if o == nil {
+		return nil
+	}
+	return o.RequestPaginatedResult
+}
+
+func (o *GetRequestsResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *GetRequestsResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
 }

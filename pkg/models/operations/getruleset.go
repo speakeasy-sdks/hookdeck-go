@@ -11,12 +11,45 @@ type GetRulesetRequest struct {
 	ID string `pathParam:"style=simple,explode=false,name=id"`
 }
 
+func (o *GetRulesetRequest) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
+}
+
 type GetRulesetResponse struct {
-	// Not Found
-	APIErrorResponse *shared.APIErrorResponse
-	ContentType      string
+	ContentType string
 	// A single ruleset
 	Ruleset     *shared.Ruleset
 	StatusCode  int
 	RawResponse *http.Response
+}
+
+func (o *GetRulesetResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *GetRulesetResponse) GetRuleset() *shared.Ruleset {
+	if o == nil {
+		return nil
+	}
+	return o.Ruleset
+}
+
+func (o *GetRulesetResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *GetRulesetResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
 }

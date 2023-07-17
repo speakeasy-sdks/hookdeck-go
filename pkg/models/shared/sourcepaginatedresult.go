@@ -8,3 +8,24 @@ type SourcePaginatedResult struct {
 	Models     []Source        `json:"models,omitempty"`
 	Pagination *SeekPagination `json:"pagination,omitempty"`
 }
+
+func (o *SourcePaginatedResult) GetCount() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Count
+}
+
+func (o *SourcePaginatedResult) GetModels() []Source {
+	if o == nil {
+		return nil
+	}
+	return o.Models
+}
+
+func (o *SourcePaginatedResult) GetPagination() *SeekPagination {
+	if o == nil {
+		return nil
+	}
+	return o.Pagination
+}

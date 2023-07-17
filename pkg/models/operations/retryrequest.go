@@ -12,17 +12,64 @@ type RetryRequestRequestBody struct {
 	WebhookIds []string `json:"webhook_ids"`
 }
 
+func (o *RetryRequestRequestBody) GetWebhookIds() []string {
+	if o == nil {
+		return []string{}
+	}
+	return o.WebhookIds
+}
+
 type RetryRequestRequest struct {
 	RequestBody RetryRequestRequestBody `request:"mediaType=application/json"`
 	ID          string                  `pathParam:"style=simple,explode=false,name=id"`
 }
 
+func (o *RetryRequestRequest) GetRequestBody() RetryRequestRequestBody {
+	if o == nil {
+		return RetryRequestRequestBody{}
+	}
+	return o.RequestBody
+}
+
+func (o *RetryRequestRequest) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
+}
+
 type RetryRequestResponse struct {
-	// Bad Request
-	APIErrorResponse *shared.APIErrorResponse
-	ContentType      string
+	ContentType string
 	// Retry request operation result
 	RetryRequest *shared.RetryRequest
 	StatusCode   int
 	RawResponse  *http.Response
+}
+
+func (o *RetryRequestResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *RetryRequestResponse) GetRetryRequest() *shared.RetryRequest {
+	if o == nil {
+		return nil
+	}
+	return o.RetryRequest
+}
+
+func (o *RetryRequestResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *RetryRequestResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
 }

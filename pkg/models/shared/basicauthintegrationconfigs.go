@@ -7,3 +7,17 @@ type BasicAuthIntegrationConfigs struct {
 	Name     string `json:"name"`
 	Password string `json:"password"`
 }
+
+func (o *BasicAuthIntegrationConfigs) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+func (o *BasicAuthIntegrationConfigs) GetPassword() string {
+	if o == nil {
+		return ""
+	}
+	return o.Password
+}

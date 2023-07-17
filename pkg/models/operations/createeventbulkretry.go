@@ -21,6 +21,48 @@ type CreateEventBulkRetryRequestBodyQueryAttempts2 struct {
 	Lte      *int64 `json:"lte,omitempty"`
 }
 
+func (o *CreateEventBulkRetryRequestBodyQueryAttempts2) GetAny() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Any
+}
+
+func (o *CreateEventBulkRetryRequestBodyQueryAttempts2) GetContains() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Contains
+}
+
+func (o *CreateEventBulkRetryRequestBodyQueryAttempts2) GetGt() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Gt
+}
+
+func (o *CreateEventBulkRetryRequestBodyQueryAttempts2) GetGte() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Gte
+}
+
+func (o *CreateEventBulkRetryRequestBodyQueryAttempts2) GetLe() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Le
+}
+
+func (o *CreateEventBulkRetryRequestBodyQueryAttempts2) GetLte() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Lte
+}
+
 type CreateEventBulkRetryRequestBodyQueryAttemptsType string
 
 const (
@@ -234,6 +276,13 @@ type CreateEventBulkRetryRequestBodyQueryCliID2 struct {
 	Any *bool `json:"any,omitempty"`
 }
 
+func (o *CreateEventBulkRetryRequestBodyQueryCliID2) GetAny() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Any
+}
+
 type CreateEventBulkRetryRequestBodyQueryCliIDType string
 
 const (
@@ -401,6 +450,41 @@ type CreateEventBulkRetryRequestBodyQueryCreatedAt2 struct {
 	Gte *time.Time `json:"gte,omitempty"`
 	Le  *time.Time `json:"le,omitempty"`
 	Lte *time.Time `json:"lte,omitempty"`
+}
+
+func (o *CreateEventBulkRetryRequestBodyQueryCreatedAt2) GetAny() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Any
+}
+
+func (o *CreateEventBulkRetryRequestBodyQueryCreatedAt2) GetGt() *time.Time {
+	if o == nil {
+		return nil
+	}
+	return o.Gt
+}
+
+func (o *CreateEventBulkRetryRequestBodyQueryCreatedAt2) GetGte() *time.Time {
+	if o == nil {
+		return nil
+	}
+	return o.Gte
+}
+
+func (o *CreateEventBulkRetryRequestBodyQueryCreatedAt2) GetLe() *time.Time {
+	if o == nil {
+		return nil
+	}
+	return o.Le
+}
+
+func (o *CreateEventBulkRetryRequestBodyQueryCreatedAt2) GetLte() *time.Time {
+	if o == nil {
+		return nil
+	}
+	return o.Lte
 }
 
 type CreateEventBulkRetryRequestBodyQueryCreatedAtType string
@@ -892,6 +976,41 @@ type CreateEventBulkRetryRequestBodyQueryLastAttemptAt2 struct {
 	Lte *time.Time `json:"lte,omitempty"`
 }
 
+func (o *CreateEventBulkRetryRequestBodyQueryLastAttemptAt2) GetAny() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Any
+}
+
+func (o *CreateEventBulkRetryRequestBodyQueryLastAttemptAt2) GetGt() *time.Time {
+	if o == nil {
+		return nil
+	}
+	return o.Gt
+}
+
+func (o *CreateEventBulkRetryRequestBodyQueryLastAttemptAt2) GetGte() *time.Time {
+	if o == nil {
+		return nil
+	}
+	return o.Gte
+}
+
+func (o *CreateEventBulkRetryRequestBodyQueryLastAttemptAt2) GetLe() *time.Time {
+	if o == nil {
+		return nil
+	}
+	return o.Le
+}
+
+func (o *CreateEventBulkRetryRequestBodyQueryLastAttemptAt2) GetLte() *time.Time {
+	if o == nil {
+		return nil
+	}
+	return o.Lte
+}
+
 type CreateEventBulkRetryRequestBodyQueryLastAttemptAtType string
 
 const (
@@ -1040,6 +1159,48 @@ type CreateEventBulkRetryRequestBodyQueryResponseStatus2 struct {
 	Gte      *int64 `json:"gte,omitempty"`
 	Le       *int64 `json:"le,omitempty"`
 	Lte      *int64 `json:"lte,omitempty"`
+}
+
+func (o *CreateEventBulkRetryRequestBodyQueryResponseStatus2) GetAny() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Any
+}
+
+func (o *CreateEventBulkRetryRequestBodyQueryResponseStatus2) GetContains() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Contains
+}
+
+func (o *CreateEventBulkRetryRequestBodyQueryResponseStatus2) GetGt() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Gt
+}
+
+func (o *CreateEventBulkRetryRequestBodyQueryResponseStatus2) GetGte() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Gte
+}
+
+func (o *CreateEventBulkRetryRequestBodyQueryResponseStatus2) GetLe() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Le
+}
+
+func (o *CreateEventBulkRetryRequestBodyQueryResponseStatus2) GetLte() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Lte
 }
 
 type CreateEventBulkRetryRequestBodyQueryResponseStatusType string
@@ -1279,6 +1440,41 @@ type CreateEventBulkRetryRequestBodyQuerySuccessfulAt2 struct {
 	Lte *time.Time `json:"lte,omitempty"`
 }
 
+func (o *CreateEventBulkRetryRequestBodyQuerySuccessfulAt2) GetAny() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Any
+}
+
+func (o *CreateEventBulkRetryRequestBodyQuerySuccessfulAt2) GetGt() *time.Time {
+	if o == nil {
+		return nil
+	}
+	return o.Gt
+}
+
+func (o *CreateEventBulkRetryRequestBodyQuerySuccessfulAt2) GetGte() *time.Time {
+	if o == nil {
+		return nil
+	}
+	return o.Gte
+}
+
+func (o *CreateEventBulkRetryRequestBodyQuerySuccessfulAt2) GetLe() *time.Time {
+	if o == nil {
+		return nil
+	}
+	return o.Le
+}
+
+func (o *CreateEventBulkRetryRequestBodyQuerySuccessfulAt2) GetLte() *time.Time {
+	if o == nil {
+		return nil
+	}
+	return o.Lte
+}
+
 type CreateEventBulkRetryRequestBodyQuerySuccessfulAtType string
 
 const (
@@ -1456,17 +1652,197 @@ type CreateEventBulkRetryRequestBodyQuery struct {
 	WebhookID *CreateEventBulkRetryRequestBodyQueryWebhookID `json:"webhook_id,omitempty"`
 }
 
+func (o *CreateEventBulkRetryRequestBodyQuery) GetAttempts() *CreateEventBulkRetryRequestBodyQueryAttempts {
+	if o == nil {
+		return nil
+	}
+	return o.Attempts
+}
+
+func (o *CreateEventBulkRetryRequestBodyQuery) GetBody() *CreateEventBulkRetryRequestBodyQueryBody {
+	if o == nil {
+		return nil
+	}
+	return o.Body
+}
+
+func (o *CreateEventBulkRetryRequestBodyQuery) GetBulkRetryID() *CreateEventBulkRetryRequestBodyQueryBulkRetryID {
+	if o == nil {
+		return nil
+	}
+	return o.BulkRetryID
+}
+
+func (o *CreateEventBulkRetryRequestBodyQuery) GetCliID() *CreateEventBulkRetryRequestBodyQueryCliID {
+	if o == nil {
+		return nil
+	}
+	return o.CliID
+}
+
+func (o *CreateEventBulkRetryRequestBodyQuery) GetCliUserID() *CreateEventBulkRetryRequestBodyQueryCliUserID {
+	if o == nil {
+		return nil
+	}
+	return o.CliUserID
+}
+
+func (o *CreateEventBulkRetryRequestBodyQuery) GetCreatedAt() *CreateEventBulkRetryRequestBodyQueryCreatedAt {
+	if o == nil {
+		return nil
+	}
+	return o.CreatedAt
+}
+
+func (o *CreateEventBulkRetryRequestBodyQuery) GetDestinationID() *CreateEventBulkRetryRequestBodyQueryDestinationID {
+	if o == nil {
+		return nil
+	}
+	return o.DestinationID
+}
+
+func (o *CreateEventBulkRetryRequestBodyQuery) GetErrorCode() *CreateEventBulkRetryRequestBodyQueryErrorCode {
+	if o == nil {
+		return nil
+	}
+	return o.ErrorCode
+}
+
+func (o *CreateEventBulkRetryRequestBodyQuery) GetEventDataID() *CreateEventBulkRetryRequestBodyQueryEventDataID {
+	if o == nil {
+		return nil
+	}
+	return o.EventDataID
+}
+
+func (o *CreateEventBulkRetryRequestBodyQuery) GetHeaders() *CreateEventBulkRetryRequestBodyQueryHeaders {
+	if o == nil {
+		return nil
+	}
+	return o.Headers
+}
+
+func (o *CreateEventBulkRetryRequestBodyQuery) GetID() *CreateEventBulkRetryRequestBodyQueryID {
+	if o == nil {
+		return nil
+	}
+	return o.ID
+}
+
+func (o *CreateEventBulkRetryRequestBodyQuery) GetIssueID() *CreateEventBulkRetryRequestBodyQueryIssueID {
+	if o == nil {
+		return nil
+	}
+	return o.IssueID
+}
+
+func (o *CreateEventBulkRetryRequestBodyQuery) GetLastAttemptAt() *CreateEventBulkRetryRequestBodyQueryLastAttemptAt {
+	if o == nil {
+		return nil
+	}
+	return o.LastAttemptAt
+}
+
+func (o *CreateEventBulkRetryRequestBodyQuery) GetParsedQuery() *CreateEventBulkRetryRequestBodyQueryParsedQuery {
+	if o == nil {
+		return nil
+	}
+	return o.ParsedQuery
+}
+
+func (o *CreateEventBulkRetryRequestBodyQuery) GetPath() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Path
+}
+
+func (o *CreateEventBulkRetryRequestBodyQuery) GetResponseStatus() *CreateEventBulkRetryRequestBodyQueryResponseStatus {
+	if o == nil {
+		return nil
+	}
+	return o.ResponseStatus
+}
+
+func (o *CreateEventBulkRetryRequestBodyQuery) GetSearchTerm() *string {
+	if o == nil {
+		return nil
+	}
+	return o.SearchTerm
+}
+
+func (o *CreateEventBulkRetryRequestBodyQuery) GetSourceID() *CreateEventBulkRetryRequestBodyQuerySourceID {
+	if o == nil {
+		return nil
+	}
+	return o.SourceID
+}
+
+func (o *CreateEventBulkRetryRequestBodyQuery) GetStatus() *CreateEventBulkRetryRequestBodyQueryStatus {
+	if o == nil {
+		return nil
+	}
+	return o.Status
+}
+
+func (o *CreateEventBulkRetryRequestBodyQuery) GetSuccessfulAt() *CreateEventBulkRetryRequestBodyQuerySuccessfulAt {
+	if o == nil {
+		return nil
+	}
+	return o.SuccessfulAt
+}
+
+func (o *CreateEventBulkRetryRequestBodyQuery) GetWebhookID() *CreateEventBulkRetryRequestBodyQueryWebhookID {
+	if o == nil {
+		return nil
+	}
+	return o.WebhookID
+}
+
 type CreateEventBulkRetryRequestBody struct {
 	// Filter properties for the events to be included in the bulk retry
 	Query *CreateEventBulkRetryRequestBodyQuery `json:"query,omitempty"`
 }
 
+func (o *CreateEventBulkRetryRequestBody) GetQuery() *CreateEventBulkRetryRequestBodyQuery {
+	if o == nil {
+		return nil
+	}
+	return o.Query
+}
+
 type CreateEventBulkRetryResponse struct {
-	// Bad Request
-	APIErrorResponse *shared.APIErrorResponse
 	// A single events bulk retry
 	BatchOperation *shared.BatchOperation
 	ContentType    string
 	StatusCode     int
 	RawResponse    *http.Response
+}
+
+func (o *CreateEventBulkRetryResponse) GetBatchOperation() *shared.BatchOperation {
+	if o == nil {
+		return nil
+	}
+	return o.BatchOperation
+}
+
+func (o *CreateEventBulkRetryResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *CreateEventBulkRetryResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *CreateEventBulkRetryResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
 }

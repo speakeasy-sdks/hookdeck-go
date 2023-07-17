@@ -329,12 +329,87 @@ type GetRequestIgnoredEventsRequest struct {
 	Prev             *string                         `queryParam:"style=form,explode=true,name=prev"`
 }
 
+func (o *GetRequestIgnoredEventsRequest) GetDir() *GetRequestIgnoredEventsDir {
+	if o == nil {
+		return nil
+	}
+	return o.Dir
+}
+
+func (o *GetRequestIgnoredEventsRequest) GetIDPathParameter() string {
+	if o == nil {
+		return ""
+	}
+	return o.IDPathParameter
+}
+
+func (o *GetRequestIgnoredEventsRequest) GetIDQueryParameter() *GetRequestIgnoredEventsID {
+	if o == nil {
+		return nil
+	}
+	return o.IDQueryParameter
+}
+
+func (o *GetRequestIgnoredEventsRequest) GetLimit() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Limit
+}
+
+func (o *GetRequestIgnoredEventsRequest) GetNext() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Next
+}
+
+func (o *GetRequestIgnoredEventsRequest) GetOrderBy() *GetRequestIgnoredEventsOrderBy {
+	if o == nil {
+		return nil
+	}
+	return o.OrderBy
+}
+
+func (o *GetRequestIgnoredEventsRequest) GetPrev() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Prev
+}
+
 type GetRequestIgnoredEventsResponse struct {
-	// Bad Request
-	APIErrorResponse *shared.APIErrorResponse
-	ContentType      string
+	ContentType string
 	// List of ignored events
 	IgnoredEventPaginatedResult *shared.IgnoredEventPaginatedResult
 	StatusCode                  int
 	RawResponse                 *http.Response
+}
+
+func (o *GetRequestIgnoredEventsResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *GetRequestIgnoredEventsResponse) GetIgnoredEventPaginatedResult() *shared.IgnoredEventPaginatedResult {
+	if o == nil {
+		return nil
+	}
+	return o.IgnoredEventPaginatedResult
+}
+
+func (o *GetRequestIgnoredEventsResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *GetRequestIgnoredEventsResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
 }

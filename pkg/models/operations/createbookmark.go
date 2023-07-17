@@ -18,12 +18,66 @@ type CreateBookmarkRequestBody struct {
 	WebhookID string `json:"webhook_id"`
 }
 
+func (o *CreateBookmarkRequestBody) GetEventDataID() string {
+	if o == nil {
+		return ""
+	}
+	return o.EventDataID
+}
+
+func (o *CreateBookmarkRequestBody) GetLabel() string {
+	if o == nil {
+		return ""
+	}
+	return o.Label
+}
+
+func (o *CreateBookmarkRequestBody) GetName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Name
+}
+
+func (o *CreateBookmarkRequestBody) GetWebhookID() string {
+	if o == nil {
+		return ""
+	}
+	return o.WebhookID
+}
+
 type CreateBookmarkResponse struct {
-	// Bad Request
-	APIErrorResponse *shared.APIErrorResponse
 	// A single bookmark
 	Bookmark    *shared.Bookmark
 	ContentType string
 	StatusCode  int
 	RawResponse *http.Response
+}
+
+func (o *CreateBookmarkResponse) GetBookmark() *shared.Bookmark {
+	if o == nil {
+		return nil
+	}
+	return o.Bookmark
+}
+
+func (o *CreateBookmarkResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *CreateBookmarkResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *CreateBookmarkResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
 }

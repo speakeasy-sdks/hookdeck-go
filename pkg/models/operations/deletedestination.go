@@ -3,12 +3,18 @@
 package operations
 
 import (
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
 	"net/http"
 )
 
 type DeleteDestinationRequest struct {
 	ID string `pathParam:"style=simple,explode=false,name=id"`
+}
+
+func (o *DeleteDestinationRequest) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
 }
 
 // DeleteDestination200ApplicationJSON - A single destination
@@ -17,12 +23,45 @@ type DeleteDestination200ApplicationJSON struct {
 	ID string `json:"id"`
 }
 
+func (o *DeleteDestination200ApplicationJSON) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
+}
+
 type DeleteDestinationResponse struct {
-	// Not Found
-	APIErrorResponse *shared.APIErrorResponse
-	ContentType      string
-	StatusCode       int
-	RawResponse      *http.Response
+	ContentType string
+	StatusCode  int
+	RawResponse *http.Response
 	// A single destination
 	DeleteDestination200ApplicationJSONObject *DeleteDestination200ApplicationJSON
+}
+
+func (o *DeleteDestinationResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *DeleteDestinationResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *DeleteDestinationResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
+}
+
+func (o *DeleteDestinationResponse) GetDeleteDestination200ApplicationJSONObject() *DeleteDestination200ApplicationJSON {
+	if o == nil {
+		return nil
+	}
+	return o.DeleteDestination200ApplicationJSONObject
 }

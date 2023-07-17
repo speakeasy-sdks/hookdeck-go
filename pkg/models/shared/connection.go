@@ -33,3 +33,87 @@ type Connection struct {
 	// Date the connection was last updated
 	UpdatedAt time.Time `json:"updated_at"`
 }
+
+func (o *Connection) GetArchivedAt() *time.Time {
+	if o == nil {
+		return nil
+	}
+	return o.ArchivedAt
+}
+
+func (o *Connection) GetCreatedAt() time.Time {
+	if o == nil {
+		return time.Time{}
+	}
+	return o.CreatedAt
+}
+
+func (o *Connection) GetDestination() Destination {
+	if o == nil {
+		return Destination{}
+	}
+	return o.Destination
+}
+
+func (o *Connection) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
+}
+
+func (o *Connection) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+func (o *Connection) GetPausedAt() *time.Time {
+	if o == nil {
+		return nil
+	}
+	return o.PausedAt
+}
+
+func (o *Connection) GetResolvedRules() []interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.ResolvedRules
+}
+
+func (o *Connection) GetRules() []interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.Rules
+}
+
+func (o *Connection) GetRuleset() *Ruleset {
+	if o == nil {
+		return nil
+	}
+	return o.Ruleset
+}
+
+func (o *Connection) GetSource() Source {
+	if o == nil {
+		return Source{}
+	}
+	return o.Source
+}
+
+func (o *Connection) GetTeamID() string {
+	if o == nil {
+		return ""
+	}
+	return o.TeamID
+}
+
+func (o *Connection) GetUpdatedAt() time.Time {
+	if o == nil {
+		return time.Time{}
+	}
+	return o.UpdatedAt
+}

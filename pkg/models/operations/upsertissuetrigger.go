@@ -18,12 +18,66 @@ type UpsertIssueTriggerRequestBody struct {
 	Type shared.IssueType `json:"type"`
 }
 
+func (o *UpsertIssueTriggerRequestBody) GetChannels() shared.IssueTriggerChannels {
+	if o == nil {
+		return shared.IssueTriggerChannels{}
+	}
+	return o.Channels
+}
+
+func (o *UpsertIssueTriggerRequestBody) GetConfigs() interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.Configs
+}
+
+func (o *UpsertIssueTriggerRequestBody) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+func (o *UpsertIssueTriggerRequestBody) GetType() shared.IssueType {
+	if o == nil {
+		return IssueType("")
+	}
+	return o.Type
+}
+
 type UpsertIssueTriggerResponse struct {
-	// Bad Request
-	APIErrorResponse *shared.APIErrorResponse
-	ContentType      string
+	ContentType string
 	// A single issue trigger
 	IssueTrigger *shared.IssueTrigger
 	StatusCode   int
 	RawResponse  *http.Response
+}
+
+func (o *UpsertIssueTriggerResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *UpsertIssueTriggerResponse) GetIssueTrigger() *shared.IssueTrigger {
+	if o == nil {
+		return nil
+	}
+	return o.IssueTrigger
+}
+
+func (o *UpsertIssueTriggerResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *UpsertIssueTriggerResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
 }

@@ -6,3 +6,10 @@ package shared
 type AttachedIntegrationToSource struct {
 	Success bool `json:"success"`
 }
+
+func (o *AttachedIntegrationToSource) GetSuccess() bool {
+	if o == nil {
+		return false
+	}
+	return o.Success
+}
