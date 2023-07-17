@@ -121,7 +121,10 @@ func main() {
 * [Unarchive](docs/sdks/connection/README.md#unarchive) - Unarchive a connection
 * [Unpause](docs/sdks/connection/README.md#unpause) - Unpause a connection
 * [Update](docs/sdks/connection/README.md#update) - Update a connection
-* [Upsert](docs/sdks/connection/README.md#upsert) - Update or create a connection
+
+### [ConnectionNumberUpdate](docs/sdks/connectionnumberupdate/README.md)
+
+* [Upsert](docs/sdks/connectionnumberupdate/README.md#upsert) - Update or create a connection
 
 ### [Connections](docs/sdks/connections/README.md)
 
