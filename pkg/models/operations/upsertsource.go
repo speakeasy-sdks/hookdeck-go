@@ -16,12 +16,59 @@ type UpsertSourceRequestBody struct {
 	Name string `json:"name"`
 }
 
+func (o *UpsertSourceRequestBody) GetAllowedHTTPMethods() []shared.SourceAllowedHTTPMethod {
+	if o == nil {
+		return nil
+	}
+	return o.AllowedHTTPMethods
+}
+
+func (o *UpsertSourceRequestBody) GetCustomResponse() *shared.SourceCustomResponse {
+	if o == nil {
+		return nil
+	}
+	return o.CustomResponse
+}
+
+func (o *UpsertSourceRequestBody) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
 type UpsertSourceResponse struct {
-	// Bad Request
-	APIErrorResponse *shared.APIErrorResponse
-	ContentType      string
+	ContentType string
 	// A single source
 	Source      *shared.Source
 	StatusCode  int
 	RawResponse *http.Response
+}
+
+func (o *UpsertSourceResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *UpsertSourceResponse) GetSource() *shared.Source {
+	if o == nil {
+		return nil
+	}
+	return o.Source
+}
+
+func (o *UpsertSourceResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *UpsertSourceResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
 }

@@ -7,3 +7,10 @@ type AddCustomHostname struct {
 	// The custom hostname to attach to the workspace
 	Hostname string `json:"hostname"`
 }
+
+func (o *AddCustomHostname) GetHostname() string {
+	if o == nil {
+		return ""
+	}
+	return o.Hostname
+}

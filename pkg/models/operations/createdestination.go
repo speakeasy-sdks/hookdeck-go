@@ -58,12 +58,94 @@ type CreateDestinationRequestBody struct {
 	URL *string `json:"url,omitempty"`
 }
 
+func (o *CreateDestinationRequestBody) GetAuthMethod() interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AuthMethod
+}
+
+func (o *CreateDestinationRequestBody) GetCliPath() *string {
+	if o == nil {
+		return nil
+	}
+	return o.CliPath
+}
+
+func (o *CreateDestinationRequestBody) GetHTTPMethod() *shared.DestinationHTTPMethod {
+	if o == nil {
+		return nil
+	}
+	return o.HTTPMethod
+}
+
+func (o *CreateDestinationRequestBody) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+func (o *CreateDestinationRequestBody) GetPathForwardingDisabled() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.PathForwardingDisabled
+}
+
+func (o *CreateDestinationRequestBody) GetRateLimit() interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.RateLimit
+}
+
+func (o *CreateDestinationRequestBody) GetRateLimitPeriod() *CreateDestinationRequestBodyRateLimitPeriod {
+	if o == nil {
+		return nil
+	}
+	return o.RateLimitPeriod
+}
+
+func (o *CreateDestinationRequestBody) GetURL() *string {
+	if o == nil {
+		return nil
+	}
+	return o.URL
+}
+
 type CreateDestinationResponse struct {
-	// Bad Request
-	APIErrorResponse *shared.APIErrorResponse
-	ContentType      string
+	ContentType string
 	// A single destination
 	Destination *shared.Destination
 	StatusCode  int
 	RawResponse *http.Response
+}
+
+func (o *CreateDestinationResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *CreateDestinationResponse) GetDestination() *shared.Destination {
+	if o == nil {
+		return nil
+	}
+	return o.Destination
+}
+
+func (o *CreateDestinationResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *CreateDestinationResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
 }

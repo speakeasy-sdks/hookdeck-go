@@ -328,12 +328,80 @@ type GetAttemptsRequest struct {
 	Prev    *string             `queryParam:"style=form,explode=true,name=prev"`
 }
 
+func (o *GetAttemptsRequest) GetDir() *GetAttemptsDir {
+	if o == nil {
+		return nil
+	}
+	return o.Dir
+}
+
+func (o *GetAttemptsRequest) GetEventID() *GetAttemptsEventID {
+	if o == nil {
+		return nil
+	}
+	return o.EventID
+}
+
+func (o *GetAttemptsRequest) GetLimit() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Limit
+}
+
+func (o *GetAttemptsRequest) GetNext() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Next
+}
+
+func (o *GetAttemptsRequest) GetOrderBy() *GetAttemptsOrderBy {
+	if o == nil {
+		return nil
+	}
+	return o.OrderBy
+}
+
+func (o *GetAttemptsRequest) GetPrev() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Prev
+}
+
 type GetAttemptsResponse struct {
-	// Bad Request
-	APIErrorResponse *shared.APIErrorResponse
-	ContentType      string
+	ContentType string
 	// List of attempts
 	EventAttemptPaginatedResult *shared.EventAttemptPaginatedResult
 	StatusCode                  int
 	RawResponse                 *http.Response
+}
+
+func (o *GetAttemptsResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *GetAttemptsResponse) GetEventAttemptPaginatedResult() *shared.EventAttemptPaginatedResult {
+	if o == nil {
+		return nil
+	}
+	return o.EventAttemptPaginatedResult
+}
+
+func (o *GetAttemptsResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *GetAttemptsResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
 }

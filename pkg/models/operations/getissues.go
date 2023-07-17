@@ -223,6 +223,27 @@ type GetIssuesAggregationKeys struct {
 	WebhookID      *GetIssuesAggregationKeysWebhookID      `queryParam:"name=webhook_id"`
 }
 
+func (o *GetIssuesAggregationKeys) GetErrorCode() *GetIssuesAggregationKeysErrorCode {
+	if o == nil {
+		return nil
+	}
+	return o.ErrorCode
+}
+
+func (o *GetIssuesAggregationKeys) GetResponseStatus() *GetIssuesAggregationKeysResponseStatus {
+	if o == nil {
+		return nil
+	}
+	return o.ResponseStatus
+}
+
+func (o *GetIssuesAggregationKeys) GetWebhookID() *GetIssuesAggregationKeysWebhookID {
+	if o == nil {
+		return nil
+	}
+	return o.WebhookID
+}
+
 // GetIssuesCreatedAt2 - Filter by created dates
 type GetIssuesCreatedAt2 struct {
 	Any *bool      `queryParam:"name=any"`
@@ -230,6 +251,41 @@ type GetIssuesCreatedAt2 struct {
 	Gte *time.Time `queryParam:"name=gte"`
 	Le  *time.Time `queryParam:"name=le"`
 	Lte *time.Time `queryParam:"name=lte"`
+}
+
+func (o *GetIssuesCreatedAt2) GetAny() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Any
+}
+
+func (o *GetIssuesCreatedAt2) GetGt() *time.Time {
+	if o == nil {
+		return nil
+	}
+	return o.Gt
+}
+
+func (o *GetIssuesCreatedAt2) GetGte() *time.Time {
+	if o == nil {
+		return nil
+	}
+	return o.Gte
+}
+
+func (o *GetIssuesCreatedAt2) GetLe() *time.Time {
+	if o == nil {
+		return nil
+	}
+	return o.Le
+}
+
+func (o *GetIssuesCreatedAt2) GetLte() *time.Time {
+	if o == nil {
+		return nil
+	}
+	return o.Lte
 }
 
 type GetIssuesCreatedAtType string
@@ -432,6 +488,41 @@ type GetIssuesDismissedAt2 struct {
 	Lte *time.Time `queryParam:"name=lte"`
 }
 
+func (o *GetIssuesDismissedAt2) GetAny() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Any
+}
+
+func (o *GetIssuesDismissedAt2) GetGt() *time.Time {
+	if o == nil {
+		return nil
+	}
+	return o.Gt
+}
+
+func (o *GetIssuesDismissedAt2) GetGte() *time.Time {
+	if o == nil {
+		return nil
+	}
+	return o.Gte
+}
+
+func (o *GetIssuesDismissedAt2) GetLe() *time.Time {
+	if o == nil {
+		return nil
+	}
+	return o.Le
+}
+
+func (o *GetIssuesDismissedAt2) GetLte() *time.Time {
+	if o == nil {
+		return nil
+	}
+	return o.Lte
+}
+
 type GetIssuesDismissedAtType string
 
 const (
@@ -507,6 +598,41 @@ type GetIssuesFirstSeenAt2 struct {
 	Gte *time.Time `queryParam:"name=gte"`
 	Le  *time.Time `queryParam:"name=le"`
 	Lte *time.Time `queryParam:"name=lte"`
+}
+
+func (o *GetIssuesFirstSeenAt2) GetAny() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Any
+}
+
+func (o *GetIssuesFirstSeenAt2) GetGt() *time.Time {
+	if o == nil {
+		return nil
+	}
+	return o.Gt
+}
+
+func (o *GetIssuesFirstSeenAt2) GetGte() *time.Time {
+	if o == nil {
+		return nil
+	}
+	return o.Gte
+}
+
+func (o *GetIssuesFirstSeenAt2) GetLe() *time.Time {
+	if o == nil {
+		return nil
+	}
+	return o.Le
+}
+
+func (o *GetIssuesFirstSeenAt2) GetLte() *time.Time {
+	if o == nil {
+		return nil
+	}
+	return o.Lte
 }
 
 type GetIssuesFirstSeenAtType string
@@ -720,6 +846,41 @@ type GetIssuesLastSeenAt2 struct {
 	Gte *time.Time `queryParam:"name=gte"`
 	Le  *time.Time `queryParam:"name=le"`
 	Lte *time.Time `queryParam:"name=lte"`
+}
+
+func (o *GetIssuesLastSeenAt2) GetAny() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Any
+}
+
+func (o *GetIssuesLastSeenAt2) GetGt() *time.Time {
+	if o == nil {
+		return nil
+	}
+	return o.Gt
+}
+
+func (o *GetIssuesLastSeenAt2) GetGte() *time.Time {
+	if o == nil {
+		return nil
+	}
+	return o.Gte
+}
+
+func (o *GetIssuesLastSeenAt2) GetLe() *time.Time {
+	if o == nil {
+		return nil
+	}
+	return o.Le
+}
+
+func (o *GetIssuesLastSeenAt2) GetLte() *time.Time {
+	if o == nil {
+		return nil
+	}
+	return o.Lte
 }
 
 type GetIssuesLastSeenAtType string
@@ -1284,12 +1445,143 @@ type GetIssuesRequest struct {
 	Type            *GetIssuesType            `queryParam:"style=form,explode=true,name=type"`
 }
 
+func (o *GetIssuesRequest) GetAggregationKeys() *GetIssuesAggregationKeys {
+	if o == nil {
+		return nil
+	}
+	return o.AggregationKeys
+}
+
+func (o *GetIssuesRequest) GetCreatedAt() *GetIssuesCreatedAt {
+	if o == nil {
+		return nil
+	}
+	return o.CreatedAt
+}
+
+func (o *GetIssuesRequest) GetDir() *GetIssuesDir {
+	if o == nil {
+		return nil
+	}
+	return o.Dir
+}
+
+func (o *GetIssuesRequest) GetDismissedAt() *GetIssuesDismissedAt {
+	if o == nil {
+		return nil
+	}
+	return o.DismissedAt
+}
+
+func (o *GetIssuesRequest) GetFirstSeenAt() *GetIssuesFirstSeenAt {
+	if o == nil {
+		return nil
+	}
+	return o.FirstSeenAt
+}
+
+func (o *GetIssuesRequest) GetID() *GetIssuesID {
+	if o == nil {
+		return nil
+	}
+	return o.ID
+}
+
+func (o *GetIssuesRequest) GetIssueTriggerID() *GetIssuesIssueTriggerID {
+	if o == nil {
+		return nil
+	}
+	return o.IssueTriggerID
+}
+
+func (o *GetIssuesRequest) GetLastSeenAt() *GetIssuesLastSeenAt {
+	if o == nil {
+		return nil
+	}
+	return o.LastSeenAt
+}
+
+func (o *GetIssuesRequest) GetLimit() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Limit
+}
+
+func (o *GetIssuesRequest) GetMergedWith() *GetIssuesMergedWith {
+	if o == nil {
+		return nil
+	}
+	return o.MergedWith
+}
+
+func (o *GetIssuesRequest) GetNext() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Next
+}
+
+func (o *GetIssuesRequest) GetOrderBy() *GetIssuesOrderBy {
+	if o == nil {
+		return nil
+	}
+	return o.OrderBy
+}
+
+func (o *GetIssuesRequest) GetPrev() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Prev
+}
+
+func (o *GetIssuesRequest) GetStatus() *GetIssuesStatus {
+	if o == nil {
+		return nil
+	}
+	return o.Status
+}
+
+func (o *GetIssuesRequest) GetType() *GetIssuesType {
+	if o == nil {
+		return nil
+	}
+	return o.Type
+}
+
 type GetIssuesResponse struct {
-	// Bad Request
-	APIErrorResponse *shared.APIErrorResponse
-	ContentType      string
+	ContentType string
 	// List of issues
 	IssueWithDataPaginatedResult *shared.IssueWithDataPaginatedResult
 	StatusCode                   int
 	RawResponse                  *http.Response
+}
+
+func (o *GetIssuesResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *GetIssuesResponse) GetIssueWithDataPaginatedResult() *shared.IssueWithDataPaginatedResult {
+	if o == nil {
+		return nil
+	}
+	return o.IssueWithDataPaginatedResult
+}
+
+func (o *GetIssuesResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *GetIssuesResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
 }

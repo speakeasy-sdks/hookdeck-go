@@ -12,6 +12,13 @@ type SeekPaginationDir struct {
 	Schema *OrderByDirection `json:"schema,omitempty"`
 }
 
+func (o *SeekPaginationDir) GetSchema() *OrderByDirection {
+	if o == nil {
+		return nil
+	}
+	return o.Schema
+}
+
 type SeekPaginationOrderByType string
 
 const (
@@ -86,4 +93,39 @@ type SeekPagination struct {
 	Next    *string                `json:"next,omitempty"`
 	OrderBy *SeekPaginationOrderBy `json:"order_by,omitempty"`
 	Prev    *string                `json:"prev,omitempty"`
+}
+
+func (o *SeekPagination) GetDir() *SeekPaginationDir {
+	if o == nil {
+		return nil
+	}
+	return o.Dir
+}
+
+func (o *SeekPagination) GetLimit() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Limit
+}
+
+func (o *SeekPagination) GetNext() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Next
+}
+
+func (o *SeekPagination) GetOrderBy() *SeekPaginationOrderBy {
+	if o == nil {
+		return nil
+	}
+	return o.OrderBy
+}
+
+func (o *SeekPagination) GetPrev() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Prev
 }

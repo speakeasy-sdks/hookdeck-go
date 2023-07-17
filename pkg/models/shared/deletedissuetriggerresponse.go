@@ -6,3 +6,10 @@ package shared
 type DeletedIssueTriggerResponse struct {
 	ID string `json:"id"`
 }
+
+func (o *DeletedIssueTriggerResponse) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
+}

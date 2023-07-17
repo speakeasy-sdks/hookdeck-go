@@ -6,3 +6,10 @@ package shared
 type DeletedIntegration struct {
 	ID string `json:"id"`
 }
+
+func (o *DeletedIntegration) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
+}

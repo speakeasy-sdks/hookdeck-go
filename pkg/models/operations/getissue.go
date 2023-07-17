@@ -3,7 +3,6 @@
 package operations
 
 import (
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
 	"net/http"
 )
 
@@ -11,12 +10,45 @@ type GetIssueRequest struct {
 	ID string `pathParam:"style=simple,explode=false,name=id"`
 }
 
+func (o *GetIssueRequest) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
+}
+
 type GetIssueResponse struct {
-	// Not Found
-	APIErrorResponse *shared.APIErrorResponse
-	ContentType      string
+	ContentType string
 	// A single issue
 	IssueWithData interface{}
 	StatusCode    int
 	RawResponse   *http.Response
+}
+
+func (o *GetIssueResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *GetIssueResponse) GetIssueWithData() interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.IssueWithData
+}
+
+func (o *GetIssueResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *GetIssueResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
 }

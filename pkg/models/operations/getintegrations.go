@@ -13,12 +13,52 @@ type GetIntegrationsRequest struct {
 	Provider *shared.IntegrationProvider `queryParam:"style=form,explode=true,name=provider"`
 }
 
+func (o *GetIntegrationsRequest) GetLabel() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Label
+}
+
+func (o *GetIntegrationsRequest) GetProvider() *shared.IntegrationProvider {
+	if o == nil {
+		return nil
+	}
+	return o.Provider
+}
+
 type GetIntegrationsResponse struct {
-	// Bad Request
-	APIErrorResponse *shared.APIErrorResponse
-	ContentType      string
+	ContentType string
 	// List of integrations
 	IntegrationPaginatedResult *shared.IntegrationPaginatedResult
 	StatusCode                 int
 	RawResponse                *http.Response
+}
+
+func (o *GetIntegrationsResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *GetIntegrationsResponse) GetIntegrationPaginatedResult() *shared.IntegrationPaginatedResult {
+	if o == nil {
+		return nil
+	}
+	return o.IntegrationPaginatedResult
+}
+
+func (o *GetIntegrationsResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *GetIntegrationsResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
 }

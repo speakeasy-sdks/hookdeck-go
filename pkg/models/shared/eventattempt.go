@@ -166,3 +166,157 @@ type EventAttempt struct {
 	// Date the attempt was last updated
 	UpdatedAt time.Time `json:"updated_at"`
 }
+
+func (o *EventAttempt) GetArchivedAt() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ArchivedAt
+}
+
+func (o *EventAttempt) GetAttemptNumber() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.AttemptNumber
+}
+
+func (o *EventAttempt) GetBody() *EventAttemptBody {
+	if o == nil {
+		return nil
+	}
+	return o.Body
+}
+
+func (o *EventAttempt) GetBulkRetryID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.BulkRetryID
+}
+
+func (o *EventAttempt) GetCreatedAt() time.Time {
+	if o == nil {
+		return time.Time{}
+	}
+	return o.CreatedAt
+}
+
+func (o *EventAttempt) GetDeliveredAt() *time.Time {
+	if o == nil {
+		return nil
+	}
+	return o.DeliveredAt
+}
+
+func (o *EventAttempt) GetDeliveryLatency() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.DeliveryLatency
+}
+
+func (o *EventAttempt) GetDestinationID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.DestinationID
+}
+
+func (o *EventAttempt) GetErrorCode() *AttemptErrorCode {
+	if o == nil {
+		return nil
+	}
+	return o.ErrorCode
+}
+
+func (o *EventAttempt) GetEventID() string {
+	if o == nil {
+		return ""
+	}
+	return o.EventID
+}
+
+func (o *EventAttempt) GetHTTPMethod() *EventAttemptHTTPMethod {
+	if o == nil {
+		return nil
+	}
+	return o.HTTPMethod
+}
+
+func (o *EventAttempt) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
+}
+
+func (o *EventAttempt) GetRequestedURL() *string {
+	if o == nil {
+		return nil
+	}
+	return o.RequestedURL
+}
+
+func (o *EventAttempt) GetRespondedAt() *time.Time {
+	if o == nil {
+		return nil
+	}
+	return o.RespondedAt
+}
+
+func (o *EventAttempt) GetResponseLatency() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.ResponseLatency
+}
+
+func (o *EventAttempt) GetResponseStatus() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.ResponseStatus
+}
+
+func (o *EventAttempt) GetState() *AttemptState {
+	if o == nil {
+		return nil
+	}
+	return o.State
+}
+
+func (o *EventAttempt) GetStatus() AttemptStatus {
+	if o == nil {
+		return AttemptStatus("")
+	}
+	return o.Status
+}
+
+func (o *EventAttempt) GetSuccessfulAt() *time.Time {
+	if o == nil {
+		return nil
+	}
+	return o.SuccessfulAt
+}
+
+func (o *EventAttempt) GetTeamID() string {
+	if o == nil {
+		return ""
+	}
+	return o.TeamID
+}
+
+func (o *EventAttempt) GetTrigger() *AttemptTrigger {
+	if o == nil {
+		return nil
+	}
+	return o.Trigger
+}
+
+func (o *EventAttempt) GetUpdatedAt() time.Time {
+	if o == nil {
+		return time.Time{}
+	}
+	return o.UpdatedAt
+}

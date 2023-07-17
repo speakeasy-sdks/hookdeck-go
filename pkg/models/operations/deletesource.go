@@ -3,12 +3,18 @@
 package operations
 
 import (
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
 	"net/http"
 )
 
 type DeleteSourceRequest struct {
 	ID string `pathParam:"style=simple,explode=false,name=id"`
+}
+
+func (o *DeleteSourceRequest) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
 }
 
 // DeleteSource200ApplicationJSON - A single source
@@ -17,12 +23,45 @@ type DeleteSource200ApplicationJSON struct {
 	ID string `json:"id"`
 }
 
+func (o *DeleteSource200ApplicationJSON) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
+}
+
 type DeleteSourceResponse struct {
-	// Not Found
-	APIErrorResponse *shared.APIErrorResponse
-	ContentType      string
-	StatusCode       int
-	RawResponse      *http.Response
+	ContentType string
+	StatusCode  int
+	RawResponse *http.Response
 	// A single source
 	DeleteSource200ApplicationJSONObject *DeleteSource200ApplicationJSON
+}
+
+func (o *DeleteSourceResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *DeleteSourceResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *DeleteSourceResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
+}
+
+func (o *DeleteSourceResponse) GetDeleteSource200ApplicationJSONObject() *DeleteSource200ApplicationJSON {
+	if o == nil {
+		return nil
+	}
+	return o.DeleteSource200ApplicationJSONObject
 }

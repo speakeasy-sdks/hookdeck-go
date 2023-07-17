@@ -34,3 +34,94 @@ type Destination struct {
 	// HTTP endpoint of the destination
 	URL *string `json:"url,omitempty"`
 }
+
+func (o *Destination) GetArchivedAt() *time.Time {
+	if o == nil {
+		return nil
+	}
+	return o.ArchivedAt
+}
+
+func (o *Destination) GetAuthMethod() interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AuthMethod
+}
+
+func (o *Destination) GetCliPath() *string {
+	if o == nil {
+		return nil
+	}
+	return o.CliPath
+}
+
+func (o *Destination) GetCreatedAt() time.Time {
+	if o == nil {
+		return time.Time{}
+	}
+	return o.CreatedAt
+}
+
+func (o *Destination) GetHTTPMethod() *DestinationHTTPMethod {
+	if o == nil {
+		return nil
+	}
+	return o.HTTPMethod
+}
+
+func (o *Destination) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
+}
+
+func (o *Destination) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+func (o *Destination) GetPathForwardingDisabled() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.PathForwardingDisabled
+}
+
+func (o *Destination) GetRateLimit() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.RateLimit
+}
+
+func (o *Destination) GetRateLimitPeriod() *DestinationRateLimitPeriod {
+	if o == nil {
+		return nil
+	}
+	return o.RateLimitPeriod
+}
+
+func (o *Destination) GetTeamID() string {
+	if o == nil {
+		return ""
+	}
+	return o.TeamID
+}
+
+func (o *Destination) GetUpdatedAt() time.Time {
+	if o == nil {
+		return time.Time{}
+	}
+	return o.UpdatedAt
+}
+
+func (o *Destination) GetURL() *string {
+	if o == nil {
+		return nil
+	}
+	return o.URL
+}

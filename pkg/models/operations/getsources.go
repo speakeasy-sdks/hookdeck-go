@@ -21,6 +21,41 @@ type GetSourcesArchivedAt2 struct {
 	Lte *time.Time `queryParam:"name=lte"`
 }
 
+func (o *GetSourcesArchivedAt2) GetAny() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Any
+}
+
+func (o *GetSourcesArchivedAt2) GetGt() *time.Time {
+	if o == nil {
+		return nil
+	}
+	return o.Gt
+}
+
+func (o *GetSourcesArchivedAt2) GetGte() *time.Time {
+	if o == nil {
+		return nil
+	}
+	return o.Gte
+}
+
+func (o *GetSourcesArchivedAt2) GetLe() *time.Time {
+	if o == nil {
+		return nil
+	}
+	return o.Le
+}
+
+func (o *GetSourcesArchivedAt2) GetLte() *time.Time {
+	if o == nil {
+		return nil
+	}
+	return o.Lte
+}
+
 type GetSourcesArchivedAtType string
 
 const (
@@ -285,6 +320,13 @@ type GetSourcesIntegrationID2 struct {
 	Any *bool `queryParam:"name=any"`
 }
 
+func (o *GetSourcesIntegrationID2) GetAny() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Any
+}
+
 type GetSourcesIntegrationIDType string
 
 const (
@@ -361,6 +403,48 @@ type GetSourcesName2 struct {
 	Gte      *string `queryParam:"name=gte"`
 	Le       *string `queryParam:"name=le"`
 	Lte      *string `queryParam:"name=lte"`
+}
+
+func (o *GetSourcesName2) GetAny() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Any
+}
+
+func (o *GetSourcesName2) GetContains() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Contains
+}
+
+func (o *GetSourcesName2) GetGt() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Gt
+}
+
+func (o *GetSourcesName2) GetGte() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Gte
+}
+
+func (o *GetSourcesName2) GetLe() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Le
+}
+
+func (o *GetSourcesName2) GetLte() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Lte
 }
 
 type GetSourcesNameType string
@@ -561,12 +645,108 @@ type GetSourcesRequest struct {
 	Prev          *string                  `queryParam:"style=form,explode=true,name=prev"`
 }
 
+func (o *GetSourcesRequest) GetArchived() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Archived
+}
+
+func (o *GetSourcesRequest) GetArchivedAt() *GetSourcesArchivedAt {
+	if o == nil {
+		return nil
+	}
+	return o.ArchivedAt
+}
+
+func (o *GetSourcesRequest) GetDir() *GetSourcesDir {
+	if o == nil {
+		return nil
+	}
+	return o.Dir
+}
+
+func (o *GetSourcesRequest) GetID() *GetSourcesID {
+	if o == nil {
+		return nil
+	}
+	return o.ID
+}
+
+func (o *GetSourcesRequest) GetIntegrationID() *GetSourcesIntegrationID {
+	if o == nil {
+		return nil
+	}
+	return o.IntegrationID
+}
+
+func (o *GetSourcesRequest) GetLimit() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Limit
+}
+
+func (o *GetSourcesRequest) GetName() *GetSourcesName {
+	if o == nil {
+		return nil
+	}
+	return o.Name
+}
+
+func (o *GetSourcesRequest) GetNext() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Next
+}
+
+func (o *GetSourcesRequest) GetOrderBy() *GetSourcesOrderBy {
+	if o == nil {
+		return nil
+	}
+	return o.OrderBy
+}
+
+func (o *GetSourcesRequest) GetPrev() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Prev
+}
+
 type GetSourcesResponse struct {
-	// Bad Request
-	APIErrorResponse *shared.APIErrorResponse
-	ContentType      string
+	ContentType string
 	// List of sources
 	SourcePaginatedResult *shared.SourcePaginatedResult
 	StatusCode            int
 	RawResponse           *http.Response
+}
+
+func (o *GetSourcesResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *GetSourcesResponse) GetSourcePaginatedResult() *shared.SourcePaginatedResult {
+	if o == nil {
+		return nil
+	}
+	return o.SourcePaginatedResult
+}
+
+func (o *GetSourcesResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *GetSourcesResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
 }

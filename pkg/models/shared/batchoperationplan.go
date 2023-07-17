@@ -11,3 +11,24 @@ type BatchOperationPlan struct {
 	// Progression of the batch operations, values 0 - 1
 	Progress *float32 `json:"progress,omitempty"`
 }
+
+func (o *BatchOperationPlan) GetEstimatedBatch() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.EstimatedBatch
+}
+
+func (o *BatchOperationPlan) GetEstimatedCount() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.EstimatedCount
+}
+
+func (o *BatchOperationPlan) GetProgress() *float32 {
+	if o == nil {
+		return nil
+	}
+	return o.Progress
+}

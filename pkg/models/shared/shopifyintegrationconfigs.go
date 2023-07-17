@@ -46,3 +46,45 @@ type ShopifyIntegrationConfigs struct {
 	Shop             *string                                   `json:"shop,omitempty"`
 	WebhookSecretKey string                                    `json:"webhook_secret_key"`
 }
+
+func (o *ShopifyIntegrationConfigs) GetAPIKey() *string {
+	if o == nil {
+		return nil
+	}
+	return o.APIKey
+}
+
+func (o *ShopifyIntegrationConfigs) GetAPISecret() *string {
+	if o == nil {
+		return nil
+	}
+	return o.APISecret
+}
+
+func (o *ShopifyIntegrationConfigs) GetRateLimit() *float32 {
+	if o == nil {
+		return nil
+	}
+	return o.RateLimit
+}
+
+func (o *ShopifyIntegrationConfigs) GetRateLimitPeriod() *ShopifyIntegrationConfigsRateLimitPeriod {
+	if o == nil {
+		return nil
+	}
+	return o.RateLimitPeriod
+}
+
+func (o *ShopifyIntegrationConfigs) GetShop() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Shop
+}
+
+func (o *ShopifyIntegrationConfigs) GetWebhookSecretKey() string {
+	if o == nil {
+		return ""
+	}
+	return o.WebhookSecretKey
+}

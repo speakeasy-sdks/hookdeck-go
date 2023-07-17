@@ -62,3 +62,108 @@ type TransformationIssue struct {
 	// ISO timestamp for when the issue was last updated
 	UpdatedAt string `json:"updated_at"`
 }
+
+func (o *TransformationIssue) GetAggregationKeys() TransformationIssueAggregationKeys {
+	if o == nil {
+		return TransformationIssueAggregationKeys{}
+	}
+	return o.AggregationKeys
+}
+
+func (o *TransformationIssue) GetAutoResolvedAt() *time.Time {
+	if o == nil {
+		return nil
+	}
+	return o.AutoResolvedAt
+}
+
+func (o *TransformationIssue) GetCreatedAt() string {
+	if o == nil {
+		return ""
+	}
+	return o.CreatedAt
+}
+
+func (o *TransformationIssue) GetDismissedAt() *time.Time {
+	if o == nil {
+		return nil
+	}
+	return o.DismissedAt
+}
+
+func (o *TransformationIssue) GetFirstSeenAt() time.Time {
+	if o == nil {
+		return time.Time{}
+	}
+	return o.FirstSeenAt
+}
+
+func (o *TransformationIssue) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
+}
+
+func (o *TransformationIssue) GetLastSeenAt() time.Time {
+	if o == nil {
+		return time.Time{}
+	}
+	return o.LastSeenAt
+}
+
+func (o *TransformationIssue) GetLastUpdatedBy() *string {
+	if o == nil {
+		return nil
+	}
+	return o.LastUpdatedBy
+}
+
+func (o *TransformationIssue) GetMergedWith() *string {
+	if o == nil {
+		return nil
+	}
+	return o.MergedWith
+}
+
+func (o *TransformationIssue) GetOpenedAt() time.Time {
+	if o == nil {
+		return time.Time{}
+	}
+	return o.OpenedAt
+}
+
+func (o *TransformationIssue) GetReference() TransformationIssueReference {
+	if o == nil {
+		return TransformationIssueReference{}
+	}
+	return o.Reference
+}
+
+func (o *TransformationIssue) GetStatus() IssueStatus {
+	if o == nil {
+		return IssueStatus("")
+	}
+	return o.Status
+}
+
+func (o *TransformationIssue) GetTeamID() string {
+	if o == nil {
+		return ""
+	}
+	return o.TeamID
+}
+
+func (o *TransformationIssue) GetType() TransformationIssueType {
+	if o == nil {
+		return TransformationIssueType("")
+	}
+	return o.Type
+}
+
+func (o *TransformationIssue) GetUpdatedAt() string {
+	if o == nil {
+		return ""
+	}
+	return o.UpdatedAt
+}

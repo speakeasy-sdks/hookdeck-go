@@ -11,12 +11,45 @@ type GetEventRawBodyRequest struct {
 	ID string `pathParam:"style=simple,explode=false,name=id"`
 }
 
+func (o *GetEventRawBodyRequest) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
+}
+
 type GetEventRawBodyResponse struct {
-	// Not Found
-	APIErrorResponse *shared.APIErrorResponse
-	ContentType      string
+	ContentType string
 	// A request raw body data
 	RawBody     *shared.RawBody
 	StatusCode  int
 	RawResponse *http.Response
+}
+
+func (o *GetEventRawBodyResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *GetEventRawBodyResponse) GetRawBody() *shared.RawBody {
+	if o == nil {
+		return nil
+	}
+	return o.RawBody
+}
+
+func (o *GetEventRawBodyResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *GetEventRawBodyResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
 }

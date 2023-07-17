@@ -252,6 +252,48 @@ type EventData struct {
 	Query          *string               `json:"query,omitempty"`
 }
 
+func (o *EventData) GetBody() *EventDataBody {
+	if o == nil {
+		return nil
+	}
+	return o.Body
+}
+
+func (o *EventData) GetHeaders() *EventDataHeaders {
+	if o == nil {
+		return nil
+	}
+	return o.Headers
+}
+
+func (o *EventData) GetIsLargePayload() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.IsLargePayload
+}
+
+func (o *EventData) GetParsedQuery() *EventDataParsedQuery {
+	if o == nil {
+		return nil
+	}
+	return o.ParsedQuery
+}
+
+func (o *EventData) GetPath() string {
+	if o == nil {
+		return ""
+	}
+	return o.Path
+}
+
+func (o *EventData) GetQuery() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Query
+}
+
 // Event - A single event
 type Event struct {
 	// Number of delivery attempts made
@@ -288,4 +330,137 @@ type Event struct {
 	UpdatedAt time.Time `json:"updated_at"`
 	// ID of the associated connection
 	WebhookID string `json:"webhook_id"`
+}
+
+func (o *Event) GetAttempts() int64 {
+	if o == nil {
+		return 0
+	}
+	return o.Attempts
+}
+
+func (o *Event) GetCliID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.CliID
+}
+
+func (o *Event) GetCreatedAt() time.Time {
+	if o == nil {
+		return time.Time{}
+	}
+	return o.CreatedAt
+}
+
+func (o *Event) GetCreatedAtID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.CreatedAtID
+}
+
+func (o *Event) GetData() *EventData {
+	if o == nil {
+		return nil
+	}
+	return o.Data
+}
+
+func (o *Event) GetDestinationID() string {
+	if o == nil {
+		return ""
+	}
+	return o.DestinationID
+}
+
+func (o *Event) GetEventDataID() string {
+	if o == nil {
+		return ""
+	}
+	return o.EventDataID
+}
+
+func (o *Event) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
+}
+
+func (o *Event) GetLastAttemptAt() *time.Time {
+	if o == nil {
+		return nil
+	}
+	return o.LastAttemptAt
+}
+
+func (o *Event) GetLastAttemptAtID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.LastAttemptAtID
+}
+
+func (o *Event) GetNextAttemptAt() *time.Time {
+	if o == nil {
+		return nil
+	}
+	return o.NextAttemptAt
+}
+
+func (o *Event) GetRequestID() string {
+	if o == nil {
+		return ""
+	}
+	return o.RequestID
+}
+
+func (o *Event) GetResponseStatus() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.ResponseStatus
+}
+
+func (o *Event) GetSourceID() string {
+	if o == nil {
+		return ""
+	}
+	return o.SourceID
+}
+
+func (o *Event) GetStatus() EventStatus {
+	if o == nil {
+		return EventStatus("")
+	}
+	return o.Status
+}
+
+func (o *Event) GetSuccessfulAt() *time.Time {
+	if o == nil {
+		return nil
+	}
+	return o.SuccessfulAt
+}
+
+func (o *Event) GetTeamID() string {
+	if o == nil {
+		return ""
+	}
+	return o.TeamID
+}
+
+func (o *Event) GetUpdatedAt() time.Time {
+	if o == nil {
+		return time.Time{}
+	}
+	return o.UpdatedAt
+}
+
+func (o *Event) GetWebhookID() string {
+	if o == nil {
+		return ""
+	}
+	return o.WebhookID
 }

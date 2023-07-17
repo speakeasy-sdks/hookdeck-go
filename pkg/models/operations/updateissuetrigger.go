@@ -19,17 +19,85 @@ type UpdateIssueTriggerRequestBody struct {
 	Name *string `json:"name,omitempty"`
 }
 
+func (o *UpdateIssueTriggerRequestBody) GetChannels() *shared.IssueTriggerChannels {
+	if o == nil {
+		return nil
+	}
+	return o.Channels
+}
+
+func (o *UpdateIssueTriggerRequestBody) GetConfigs() interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.Configs
+}
+
+func (o *UpdateIssueTriggerRequestBody) GetDisabledAt() *time.Time {
+	if o == nil {
+		return nil
+	}
+	return o.DisabledAt
+}
+
+func (o *UpdateIssueTriggerRequestBody) GetName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Name
+}
+
 type UpdateIssueTriggerRequest struct {
 	RequestBody UpdateIssueTriggerRequestBody `request:"mediaType=application/json"`
 	ID          string                        `pathParam:"style=simple,explode=false,name=id"`
 }
 
+func (o *UpdateIssueTriggerRequest) GetRequestBody() UpdateIssueTriggerRequestBody {
+	if o == nil {
+		return UpdateIssueTriggerRequestBody{}
+	}
+	return o.RequestBody
+}
+
+func (o *UpdateIssueTriggerRequest) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
+}
+
 type UpdateIssueTriggerResponse struct {
-	// Bad Request
-	APIErrorResponse *shared.APIErrorResponse
-	ContentType      string
+	ContentType string
 	// A single issue trigger
 	IssueTrigger *shared.IssueTrigger
 	StatusCode   int
 	RawResponse  *http.Response
+}
+
+func (o *UpdateIssueTriggerResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *UpdateIssueTriggerResponse) GetIssueTrigger() *shared.IssueTrigger {
+	if o == nil {
+		return nil
+	}
+	return o.IssueTrigger
+}
+
+func (o *UpdateIssueTriggerResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *UpdateIssueTriggerResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
 }

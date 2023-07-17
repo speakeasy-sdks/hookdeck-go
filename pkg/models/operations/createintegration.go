@@ -22,12 +22,66 @@ type CreateIntegrationRequestBody struct {
 	Provider *shared.IntegrationProvider `json:"provider,omitempty"`
 }
 
+func (o *CreateIntegrationRequestBody) GetConfigs() interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.Configs
+}
+
+func (o *CreateIntegrationRequestBody) GetFeatures() []shared.IntegrationFeature {
+	if o == nil {
+		return nil
+	}
+	return o.Features
+}
+
+func (o *CreateIntegrationRequestBody) GetLabel() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Label
+}
+
+func (o *CreateIntegrationRequestBody) GetProvider() *shared.IntegrationProvider {
+	if o == nil {
+		return nil
+	}
+	return o.Provider
+}
+
 type CreateIntegrationResponse struct {
-	// Bad Request
-	APIErrorResponse *shared.APIErrorResponse
-	ContentType      string
+	ContentType string
 	// A single integration
 	Integration *shared.Integration
 	StatusCode  int
 	RawResponse *http.Response
+}
+
+func (o *CreateIntegrationResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *CreateIntegrationResponse) GetIntegration() *shared.Integration {
+	if o == nil {
+		return nil
+	}
+	return o.Integration
+}
+
+func (o *CreateIntegrationResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *CreateIntegrationResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
 }

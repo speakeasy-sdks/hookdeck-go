@@ -8,3 +8,24 @@ type IntegrationPaginatedResult struct {
 	Models     []Integration   `json:"models,omitempty"`
 	Pagination *SeekPagination `json:"pagination,omitempty"`
 }
+
+func (o *IntegrationPaginatedResult) GetCount() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Count
+}
+
+func (o *IntegrationPaginatedResult) GetModels() []Integration {
+	if o == nil {
+		return nil
+	}
+	return o.Models
+}
+
+func (o *IntegrationPaginatedResult) GetPagination() *SeekPagination {
+	if o == nil {
+		return nil
+	}
+	return o.Pagination
+}

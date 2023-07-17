@@ -83,3 +83,17 @@ type IssueTriggerTransformationConfigs struct {
 	// A pattern to match on the transformation name or array of transformation IDs. Use `*` as wildcard.
 	Transformations IssueTriggerTransformationConfigsTransformations `json:"transformations"`
 }
+
+func (o *IssueTriggerTransformationConfigs) GetLogLevel() TransformationExecutionLogLevel {
+	if o == nil {
+		return TransformationExecutionLogLevel("")
+	}
+	return o.LogLevel
+}
+
+func (o *IssueTriggerTransformationConfigs) GetTransformations() IssueTriggerTransformationConfigsTransformations {
+	if o == nil {
+		return IssueTriggerTransformationConfigsTransformations{}
+	}
+	return o.Transformations
+}

@@ -104,6 +104,41 @@ type TestTransformationRequestBodyRequest struct {
 	Query *string `json:"query,omitempty"`
 }
 
+func (o *TestTransformationRequestBodyRequest) GetBody() *TestTransformationRequestBodyRequestBody {
+	if o == nil {
+		return nil
+	}
+	return o.Body
+}
+
+func (o *TestTransformationRequestBodyRequest) GetHeaders() map[string]string {
+	if o == nil {
+		return map[string]string{}
+	}
+	return o.Headers
+}
+
+func (o *TestTransformationRequestBodyRequest) GetParsedQuery() *TestTransformationRequestBodyRequestParsedQuery {
+	if o == nil {
+		return nil
+	}
+	return o.ParsedQuery
+}
+
+func (o *TestTransformationRequestBodyRequest) GetPath() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Path
+}
+
+func (o *TestTransformationRequestBodyRequest) GetQuery() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Query
+}
+
 type TestTransformationRequestBody struct {
 	// JavaScript code to be executed
 	Code *string `json:"code,omitempty"`
@@ -118,12 +153,80 @@ type TestTransformationRequestBody struct {
 	WebhookID *string `json:"webhook_id,omitempty"`
 }
 
+func (o *TestTransformationRequestBody) GetCode() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Code
+}
+
+func (o *TestTransformationRequestBody) GetEnv() *TestTransformationRequestBodyEnv {
+	if o == nil {
+		return nil
+	}
+	return o.Env
+}
+
+func (o *TestTransformationRequestBody) GetEventID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.EventID
+}
+
+func (o *TestTransformationRequestBody) GetRequest() *TestTransformationRequestBodyRequest {
+	if o == nil {
+		return nil
+	}
+	return o.Request
+}
+
+func (o *TestTransformationRequestBody) GetTransformationID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.TransformationID
+}
+
+func (o *TestTransformationRequestBody) GetWebhookID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.WebhookID
+}
+
 type TestTransformationResponse struct {
-	// Bad Request
-	APIErrorResponse *shared.APIErrorResponse
-	ContentType      string
-	StatusCode       int
-	RawResponse      *http.Response
+	ContentType string
+	StatusCode  int
+	RawResponse *http.Response
 	// Transformation run output
 	TransformationExecutorOutput *shared.TransformationExecutorOutput
+}
+
+func (o *TestTransformationResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *TestTransformationResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *TestTransformationResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
+}
+
+func (o *TestTransformationResponse) GetTransformationExecutorOutput() *shared.TransformationExecutorOutput {
+	if o == nil {
+		return nil
+	}
+	return o.TransformationExecutorOutput
 }

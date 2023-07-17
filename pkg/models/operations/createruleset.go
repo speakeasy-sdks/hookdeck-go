@@ -15,12 +15,59 @@ type CreateRulesetRequestBody struct {
 	Rules []interface{} `json:"rules,omitempty"`
 }
 
+func (o *CreateRulesetRequestBody) GetIsTeamDefault() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.IsTeamDefault
+}
+
+func (o *CreateRulesetRequestBody) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+func (o *CreateRulesetRequestBody) GetRules() []interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.Rules
+}
+
 type CreateRulesetResponse struct {
-	// Bad Request
-	APIErrorResponse *shared.APIErrorResponse
-	ContentType      string
+	ContentType string
 	// A single ruleset
 	Ruleset     *shared.Ruleset
 	StatusCode  int
 	RawResponse *http.Response
+}
+
+func (o *CreateRulesetResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *CreateRulesetResponse) GetRuleset() *shared.Ruleset {
+	if o == nil {
+		return nil
+	}
+	return o.Ruleset
+}
+
+func (o *CreateRulesetResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *CreateRulesetResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
 }

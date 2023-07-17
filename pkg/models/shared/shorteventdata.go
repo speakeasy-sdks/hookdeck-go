@@ -250,3 +250,45 @@ type ShortEventData struct {
 	Path           string                     `json:"path"`
 	Query          *string                    `json:"query,omitempty"`
 }
+
+func (o *ShortEventData) GetBody() *ShortEventDataBody {
+	if o == nil {
+		return nil
+	}
+	return o.Body
+}
+
+func (o *ShortEventData) GetHeaders() *ShortEventDataHeaders {
+	if o == nil {
+		return nil
+	}
+	return o.Headers
+}
+
+func (o *ShortEventData) GetIsLargePayload() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.IsLargePayload
+}
+
+func (o *ShortEventData) GetParsedQuery() *ShortEventDataParsedQuery {
+	if o == nil {
+		return nil
+	}
+	return o.ParsedQuery
+}
+
+func (o *ShortEventData) GetPath() string {
+	if o == nil {
+		return ""
+	}
+	return o.Path
+}
+
+func (o *ShortEventData) GetQuery() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Query
+}

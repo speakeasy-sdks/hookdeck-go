@@ -297,6 +297,41 @@ type TransformationExecutorOutputRequest struct {
 	Query       *TransformationExecutorOutputRequestQuery       `json:"query,omitempty"`
 }
 
+func (o *TransformationExecutorOutputRequest) GetBody() *TransformationExecutorOutputRequestBody {
+	if o == nil {
+		return nil
+	}
+	return o.Body
+}
+
+func (o *TransformationExecutorOutputRequest) GetHeaders() *TransformationExecutorOutputRequestHeaders {
+	if o == nil {
+		return nil
+	}
+	return o.Headers
+}
+
+func (o *TransformationExecutorOutputRequest) GetParsedQuery() *TransformationExecutorOutputRequestParsedQuery {
+	if o == nil {
+		return nil
+	}
+	return o.ParsedQuery
+}
+
+func (o *TransformationExecutorOutputRequest) GetPath() string {
+	if o == nil {
+		return ""
+	}
+	return o.Path
+}
+
+func (o *TransformationExecutorOutputRequest) GetQuery() *TransformationExecutorOutputRequestQuery {
+	if o == nil {
+		return nil
+	}
+	return o.Query
+}
+
 // TransformationExecutorOutput - Transformation run output
 type TransformationExecutorOutput struct {
 	Console     []ConsoleLine `json:"console,omitempty"`
@@ -306,4 +341,46 @@ type TransformationExecutorOutput struct {
 	Request          *TransformationExecutorOutputRequest `json:"request,omitempty"`
 	RequestID        *string                              `json:"request_id,omitempty"`
 	TransformationID *string                              `json:"transformation_id,omitempty"`
+}
+
+func (o *TransformationExecutorOutput) GetConsole() []ConsoleLine {
+	if o == nil {
+		return nil
+	}
+	return o.Console
+}
+
+func (o *TransformationExecutorOutput) GetExecutionID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ExecutionID
+}
+
+func (o *TransformationExecutorOutput) GetLogLevel() TransformationExecutionLogLevel {
+	if o == nil {
+		return TransformationExecutionLogLevel("")
+	}
+	return o.LogLevel
+}
+
+func (o *TransformationExecutorOutput) GetRequest() *TransformationExecutorOutputRequest {
+	if o == nil {
+		return nil
+	}
+	return o.Request
+}
+
+func (o *TransformationExecutorOutput) GetRequestID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.RequestID
+}
+
+func (o *TransformationExecutorOutput) GetTransformationID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.TransformationID
 }

@@ -21,6 +21,41 @@ type GetConnectionsArchivedAt2 struct {
 	Lte *time.Time `queryParam:"name=lte"`
 }
 
+func (o *GetConnectionsArchivedAt2) GetAny() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Any
+}
+
+func (o *GetConnectionsArchivedAt2) GetGt() *time.Time {
+	if o == nil {
+		return nil
+	}
+	return o.Gt
+}
+
+func (o *GetConnectionsArchivedAt2) GetGte() *time.Time {
+	if o == nil {
+		return nil
+	}
+	return o.Gte
+}
+
+func (o *GetConnectionsArchivedAt2) GetLe() *time.Time {
+	if o == nil {
+		return nil
+	}
+	return o.Le
+}
+
+func (o *GetConnectionsArchivedAt2) GetLte() *time.Time {
+	if o == nil {
+		return nil
+	}
+	return o.Lte
+}
+
 type GetConnectionsArchivedAtType string
 
 const (
@@ -358,6 +393,48 @@ type GetConnectionsName2 struct {
 	Lte      *string `queryParam:"name=lte"`
 }
 
+func (o *GetConnectionsName2) GetAny() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Any
+}
+
+func (o *GetConnectionsName2) GetContains() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Contains
+}
+
+func (o *GetConnectionsName2) GetGt() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Gt
+}
+
+func (o *GetConnectionsName2) GetGte() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Gte
+}
+
+func (o *GetConnectionsName2) GetLe() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Le
+}
+
+func (o *GetConnectionsName2) GetLte() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Lte
+}
+
 type GetConnectionsNameType string
 
 const (
@@ -552,6 +629,41 @@ type GetConnectionsPausedAt2 struct {
 	Lte *time.Time `queryParam:"name=lte"`
 }
 
+func (o *GetConnectionsPausedAt2) GetAny() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Any
+}
+
+func (o *GetConnectionsPausedAt2) GetGt() *time.Time {
+	if o == nil {
+		return nil
+	}
+	return o.Gt
+}
+
+func (o *GetConnectionsPausedAt2) GetGte() *time.Time {
+	if o == nil {
+		return nil
+	}
+	return o.Gte
+}
+
+func (o *GetConnectionsPausedAt2) GetLe() *time.Time {
+	if o == nil {
+		return nil
+	}
+	return o.Le
+}
+
+func (o *GetConnectionsPausedAt2) GetLte() *time.Time {
+	if o == nil {
+		return nil
+	}
+	return o.Lte
+}
+
 type GetConnectionsPausedAtType string
 
 const (
@@ -704,12 +816,129 @@ type GetConnectionsRequest struct {
 	SourceID      *GetConnectionsSourceID      `queryParam:"style=form,explode=true,name=source_id"`
 }
 
+func (o *GetConnectionsRequest) GetArchived() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Archived
+}
+
+func (o *GetConnectionsRequest) GetArchivedAt() *GetConnectionsArchivedAt {
+	if o == nil {
+		return nil
+	}
+	return o.ArchivedAt
+}
+
+func (o *GetConnectionsRequest) GetDestinationID() *GetConnectionsDestinationID {
+	if o == nil {
+		return nil
+	}
+	return o.DestinationID
+}
+
+func (o *GetConnectionsRequest) GetDir() *GetConnectionsDir {
+	if o == nil {
+		return nil
+	}
+	return o.Dir
+}
+
+func (o *GetConnectionsRequest) GetFullName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.FullName
+}
+
+func (o *GetConnectionsRequest) GetID() *GetConnectionsID {
+	if o == nil {
+		return nil
+	}
+	return o.ID
+}
+
+func (o *GetConnectionsRequest) GetLimit() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Limit
+}
+
+func (o *GetConnectionsRequest) GetName() *GetConnectionsName {
+	if o == nil {
+		return nil
+	}
+	return o.Name
+}
+
+func (o *GetConnectionsRequest) GetNext() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Next
+}
+
+func (o *GetConnectionsRequest) GetOrderBy() *GetConnectionsOrderBy {
+	if o == nil {
+		return nil
+	}
+	return o.OrderBy
+}
+
+func (o *GetConnectionsRequest) GetPausedAt() *GetConnectionsPausedAt {
+	if o == nil {
+		return nil
+	}
+	return o.PausedAt
+}
+
+func (o *GetConnectionsRequest) GetPrev() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Prev
+}
+
+func (o *GetConnectionsRequest) GetSourceID() *GetConnectionsSourceID {
+	if o == nil {
+		return nil
+	}
+	return o.SourceID
+}
+
 type GetConnectionsResponse struct {
-	// Bad Request
-	APIErrorResponse *shared.APIErrorResponse
 	// List of connections
 	ConnectionPaginatedResult *shared.ConnectionPaginatedResult
 	ContentType               string
 	StatusCode                int
 	RawResponse               *http.Response
+}
+
+func (o *GetConnectionsResponse) GetConnectionPaginatedResult() *shared.ConnectionPaginatedResult {
+	if o == nil {
+		return nil
+	}
+	return o.ConnectionPaginatedResult
+}
+
+func (o *GetConnectionsResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *GetConnectionsResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *GetConnectionsResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
 }

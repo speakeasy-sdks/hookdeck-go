@@ -397,12 +397,87 @@ type GetTransformationsRequest struct {
 	Prev    *string                    `queryParam:"style=form,explode=true,name=prev"`
 }
 
+func (o *GetTransformationsRequest) GetDir() *GetTransformationsDir {
+	if o == nil {
+		return nil
+	}
+	return o.Dir
+}
+
+func (o *GetTransformationsRequest) GetID() *GetTransformationsID {
+	if o == nil {
+		return nil
+	}
+	return o.ID
+}
+
+func (o *GetTransformationsRequest) GetLimit() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Limit
+}
+
+func (o *GetTransformationsRequest) GetName() *GetTransformationsName {
+	if o == nil {
+		return nil
+	}
+	return o.Name
+}
+
+func (o *GetTransformationsRequest) GetNext() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Next
+}
+
+func (o *GetTransformationsRequest) GetOrderBy() *GetTransformationsOrderBy {
+	if o == nil {
+		return nil
+	}
+	return o.OrderBy
+}
+
+func (o *GetTransformationsRequest) GetPrev() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Prev
+}
+
 type GetTransformationsResponse struct {
-	// Bad Request
-	APIErrorResponse *shared.APIErrorResponse
-	ContentType      string
-	StatusCode       int
-	RawResponse      *http.Response
+	ContentType string
+	StatusCode  int
+	RawResponse *http.Response
 	// List of transformations
 	TransformationPaginatedResult *shared.TransformationPaginatedResult
+}
+
+func (o *GetTransformationsResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *GetTransformationsResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *GetTransformationsResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
+}
+
+func (o *GetTransformationsResponse) GetTransformationPaginatedResult() *shared.TransformationPaginatedResult {
+	if o == nil {
+		return nil
+	}
+	return o.TransformationPaginatedResult
 }

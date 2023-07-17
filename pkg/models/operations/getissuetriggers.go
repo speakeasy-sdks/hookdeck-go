@@ -144,6 +144,41 @@ type GetIssueTriggersDisabledAt2 struct {
 	Lte *time.Time `queryParam:"name=lte"`
 }
 
+func (o *GetIssueTriggersDisabledAt2) GetAny() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Any
+}
+
+func (o *GetIssueTriggersDisabledAt2) GetGt() *time.Time {
+	if o == nil {
+		return nil
+	}
+	return o.Gt
+}
+
+func (o *GetIssueTriggersDisabledAt2) GetGte() *time.Time {
+	if o == nil {
+		return nil
+	}
+	return o.Gte
+}
+
+func (o *GetIssueTriggersDisabledAt2) GetLe() *time.Time {
+	if o == nil {
+		return nil
+	}
+	return o.Le
+}
+
+func (o *GetIssueTriggersDisabledAt2) GetLte() *time.Time {
+	if o == nil {
+		return nil
+	}
+	return o.Lte
+}
+
 type GetIssueTriggersDisabledAtType string
 
 const (
@@ -347,12 +382,94 @@ type GetIssueTriggersRequest struct {
 	Type *shared.IssueType `queryParam:"style=form,explode=true,name=type"`
 }
 
+func (o *GetIssueTriggersRequest) GetDir() *GetIssueTriggersDir {
+	if o == nil {
+		return nil
+	}
+	return o.Dir
+}
+
+func (o *GetIssueTriggersRequest) GetDisabledAt() *GetIssueTriggersDisabledAt {
+	if o == nil {
+		return nil
+	}
+	return o.DisabledAt
+}
+
+func (o *GetIssueTriggersRequest) GetLimit() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Limit
+}
+
+func (o *GetIssueTriggersRequest) GetName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Name
+}
+
+func (o *GetIssueTriggersRequest) GetNext() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Next
+}
+
+func (o *GetIssueTriggersRequest) GetOrderBy() *GetIssueTriggersOrderBy {
+	if o == nil {
+		return nil
+	}
+	return o.OrderBy
+}
+
+func (o *GetIssueTriggersRequest) GetPrev() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Prev
+}
+
+func (o *GetIssueTriggersRequest) GetType() *shared.IssueType {
+	if o == nil {
+		return nil
+	}
+	return o.Type
+}
+
 type GetIssueTriggersResponse struct {
-	// Bad Request
-	APIErrorResponse *shared.APIErrorResponse
-	ContentType      string
+	ContentType string
 	// List of issue triggers
 	IssueTriggerPaginatedResult *shared.IssueTriggerPaginatedResult
 	StatusCode                  int
 	RawResponse                 *http.Response
+}
+
+func (o *GetIssueTriggersResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *GetIssueTriggersResponse) GetIssueTriggerPaginatedResult() *shared.IssueTriggerPaginatedResult {
+	if o == nil {
+		return nil
+	}
+	return o.IssueTriggerPaginatedResult
+}
+
+func (o *GetIssueTriggersResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *GetIssueTriggersResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
 }

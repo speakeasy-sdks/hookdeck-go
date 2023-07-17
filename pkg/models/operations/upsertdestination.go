@@ -58,12 +58,94 @@ type UpsertDestinationRequestBody struct {
 	URL *string `json:"url,omitempty"`
 }
 
+func (o *UpsertDestinationRequestBody) GetAuthMethod() interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AuthMethod
+}
+
+func (o *UpsertDestinationRequestBody) GetCliPath() *string {
+	if o == nil {
+		return nil
+	}
+	return o.CliPath
+}
+
+func (o *UpsertDestinationRequestBody) GetHTTPMethod() *shared.DestinationHTTPMethod {
+	if o == nil {
+		return nil
+	}
+	return o.HTTPMethod
+}
+
+func (o *UpsertDestinationRequestBody) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+func (o *UpsertDestinationRequestBody) GetPathForwardingDisabled() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.PathForwardingDisabled
+}
+
+func (o *UpsertDestinationRequestBody) GetRateLimit() interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.RateLimit
+}
+
+func (o *UpsertDestinationRequestBody) GetRateLimitPeriod() *UpsertDestinationRequestBodyRateLimitPeriod {
+	if o == nil {
+		return nil
+	}
+	return o.RateLimitPeriod
+}
+
+func (o *UpsertDestinationRequestBody) GetURL() *string {
+	if o == nil {
+		return nil
+	}
+	return o.URL
+}
+
 type UpsertDestinationResponse struct {
-	// Bad Request
-	APIErrorResponse *shared.APIErrorResponse
-	ContentType      string
+	ContentType string
 	// A single destination
 	Destination *shared.Destination
 	StatusCode  int
 	RawResponse *http.Response
+}
+
+func (o *UpsertDestinationResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *UpsertDestinationResponse) GetDestination() *shared.Destination {
+	if o == nil {
+		return nil
+	}
+	return o.Destination
+}
+
+func (o *UpsertDestinationResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *UpsertDestinationResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
 }

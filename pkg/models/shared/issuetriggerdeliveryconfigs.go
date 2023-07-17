@@ -83,3 +83,17 @@ type IssueTriggerDeliveryConfigs struct {
 	// The strategy uses to open the issue
 	Strategy IssueTriggerStrategy `json:"strategy"`
 }
+
+func (o *IssueTriggerDeliveryConfigs) GetConnections() IssueTriggerDeliveryConfigsConnections {
+	if o == nil {
+		return IssueTriggerDeliveryConfigsConnections{}
+	}
+	return o.Connections
+}
+
+func (o *IssueTriggerDeliveryConfigs) GetStrategy() IssueTriggerStrategy {
+	if o == nil {
+		return IssueTriggerStrategy("")
+	}
+	return o.Strategy
+}

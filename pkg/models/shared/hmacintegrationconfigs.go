@@ -41,3 +41,31 @@ type HMACIntegrationConfigs struct {
 	HeaderKey        string                         `json:"header_key"`
 	WebhookSecretKey string                         `json:"webhook_secret_key"`
 }
+
+func (o *HMACIntegrationConfigs) GetAlgorithm() HMACAlgorithms {
+	if o == nil {
+		return HMACAlgorithms("")
+	}
+	return o.Algorithm
+}
+
+func (o *HMACIntegrationConfigs) GetEncoding() HMACIntegrationConfigsEncoding {
+	if o == nil {
+		return HMACIntegrationConfigsEncoding("")
+	}
+	return o.Encoding
+}
+
+func (o *HMACIntegrationConfigs) GetHeaderKey() string {
+	if o == nil {
+		return ""
+	}
+	return o.HeaderKey
+}
+
+func (o *HMACIntegrationConfigs) GetWebhookSecretKey() string {
+	if o == nil {
+		return ""
+	}
+	return o.WebhookSecretKey
+}

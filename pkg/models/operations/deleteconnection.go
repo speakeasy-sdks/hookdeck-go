@@ -3,12 +3,18 @@
 package operations
 
 import (
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
 	"net/http"
 )
 
 type DeleteConnectionRequest struct {
 	ID string `pathParam:"style=simple,explode=false,name=id"`
+}
+
+func (o *DeleteConnectionRequest) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
 }
 
 // DeleteConnection200ApplicationJSON - A single connection
@@ -17,12 +23,45 @@ type DeleteConnection200ApplicationJSON struct {
 	ID string `json:"id"`
 }
 
+func (o *DeleteConnection200ApplicationJSON) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
+}
+
 type DeleteConnectionResponse struct {
-	// Not Found
-	APIErrorResponse *shared.APIErrorResponse
-	ContentType      string
-	StatusCode       int
-	RawResponse      *http.Response
+	ContentType string
+	StatusCode  int
+	RawResponse *http.Response
 	// A single connection
 	DeleteConnection200ApplicationJSONObject *DeleteConnection200ApplicationJSON
+}
+
+func (o *DeleteConnectionResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *DeleteConnectionResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *DeleteConnectionResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
+}
+
+func (o *DeleteConnectionResponse) GetDeleteConnection200ApplicationJSONObject() *DeleteConnection200ApplicationJSON {
+	if o == nil {
+		return nil
+	}
+	return o.DeleteConnection200ApplicationJSONObject
 }

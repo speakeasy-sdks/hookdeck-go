@@ -16,6 +16,27 @@ type UpdateConnectionRequestBodyRuleset struct {
 	Rules []interface{} `json:"rules,omitempty"`
 }
 
+func (o *UpdateConnectionRequestBodyRuleset) GetIsTeamDefault() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.IsTeamDefault
+}
+
+func (o *UpdateConnectionRequestBodyRuleset) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+func (o *UpdateConnectionRequestBodyRuleset) GetRules() []interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.Rules
+}
+
 type UpdateConnectionRequestBody struct {
 	// Unique name of the connection for the source
 	Name *string `json:"name,omitempty"`
@@ -27,17 +48,85 @@ type UpdateConnectionRequestBody struct {
 	RulesetID *string `json:"ruleset_id,omitempty"`
 }
 
+func (o *UpdateConnectionRequestBody) GetName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Name
+}
+
+func (o *UpdateConnectionRequestBody) GetRules() []interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.Rules
+}
+
+func (o *UpdateConnectionRequestBody) GetRuleset() *UpdateConnectionRequestBodyRuleset {
+	if o == nil {
+		return nil
+	}
+	return o.Ruleset
+}
+
+func (o *UpdateConnectionRequestBody) GetRulesetID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.RulesetID
+}
+
 type UpdateConnectionRequest struct {
 	RequestBody UpdateConnectionRequestBody `request:"mediaType=application/json"`
 	ID          string                      `pathParam:"style=simple,explode=false,name=id"`
 }
 
+func (o *UpdateConnectionRequest) GetRequestBody() UpdateConnectionRequestBody {
+	if o == nil {
+		return UpdateConnectionRequestBody{}
+	}
+	return o.RequestBody
+}
+
+func (o *UpdateConnectionRequest) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
+}
+
 type UpdateConnectionResponse struct {
-	// Bad Request
-	APIErrorResponse *shared.APIErrorResponse
 	// A single connection
 	Connection  *shared.Connection
 	ContentType string
 	StatusCode  int
 	RawResponse *http.Response
+}
+
+func (o *UpdateConnectionResponse) GetConnection() *shared.Connection {
+	if o == nil {
+		return nil
+	}
+	return o.Connection
+}
+
+func (o *UpdateConnectionResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *UpdateConnectionResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *UpdateConnectionResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
 }

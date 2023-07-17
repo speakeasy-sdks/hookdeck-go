@@ -31,3 +31,66 @@ type Integration struct {
 	// Date the integration was last updated
 	UpdatedAt time.Time `json:"updated_at"`
 }
+
+func (o *Integration) GetConfigs() interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.Configs
+}
+
+func (o *Integration) GetCreatedAt() time.Time {
+	if o == nil {
+		return time.Time{}
+	}
+	return o.CreatedAt
+}
+
+func (o *Integration) GetFeatures() []IntegrationFeature {
+	if o == nil {
+		return []IntegrationFeature{}
+	}
+	return o.Features
+}
+
+func (o *Integration) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
+}
+
+func (o *Integration) GetLabel() string {
+	if o == nil {
+		return ""
+	}
+	return o.Label
+}
+
+func (o *Integration) GetProvider() IntegrationProvider {
+	if o == nil {
+		return IntegrationProvider("")
+	}
+	return o.Provider
+}
+
+func (o *Integration) GetSources() []string {
+	if o == nil {
+		return []string{}
+	}
+	return o.Sources
+}
+
+func (o *Integration) GetTeamID() string {
+	if o == nil {
+		return ""
+	}
+	return o.TeamID
+}
+
+func (o *Integration) GetUpdatedAt() time.Time {
+	if o == nil {
+		return time.Time{}
+	}
+	return o.UpdatedAt
+}

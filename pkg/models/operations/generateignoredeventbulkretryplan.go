@@ -156,17 +156,71 @@ type GenerateIgnoredEventBulkRetryPlanQuery struct {
 	WebhookID *GenerateIgnoredEventBulkRetryPlanQueryWebhookID `queryParam:"name=webhook_id"`
 }
 
+func (o *GenerateIgnoredEventBulkRetryPlanQuery) GetCause() *GenerateIgnoredEventBulkRetryPlanQueryCause {
+	if o == nil {
+		return nil
+	}
+	return o.Cause
+}
+
+func (o *GenerateIgnoredEventBulkRetryPlanQuery) GetTransformationID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.TransformationID
+}
+
+func (o *GenerateIgnoredEventBulkRetryPlanQuery) GetWebhookID() *GenerateIgnoredEventBulkRetryPlanQueryWebhookID {
+	if o == nil {
+		return nil
+	}
+	return o.WebhookID
+}
+
 type GenerateIgnoredEventBulkRetryPlanRequest struct {
 	// Filter by the bulk retry ignored event query object
 	Query *GenerateIgnoredEventBulkRetryPlanQuery `queryParam:"style=form,explode=true,name=query"`
 }
 
+func (o *GenerateIgnoredEventBulkRetryPlanRequest) GetQuery() *GenerateIgnoredEventBulkRetryPlanQuery {
+	if o == nil {
+		return nil
+	}
+	return o.Query
+}
+
 type GenerateIgnoredEventBulkRetryPlanResponse struct {
-	// Bad Request
-	APIErrorResponse *shared.APIErrorResponse
 	// Ignored events bulk retry plan
 	BatchOperationPlan *shared.BatchOperationPlan
 	ContentType        string
 	StatusCode         int
 	RawResponse        *http.Response
+}
+
+func (o *GenerateIgnoredEventBulkRetryPlanResponse) GetBatchOperationPlan() *shared.BatchOperationPlan {
+	if o == nil {
+		return nil
+	}
+	return o.BatchOperationPlan
+}
+
+func (o *GenerateIgnoredEventBulkRetryPlanResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *GenerateIgnoredEventBulkRetryPlanResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *GenerateIgnoredEventBulkRetryPlanResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
 }

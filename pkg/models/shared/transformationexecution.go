@@ -23,3 +23,94 @@ type TransformationExecution struct {
 	UpdatedAt              time.Time                       `json:"updated_at"`
 	WebhookID              string                          `json:"webhook_id"`
 }
+
+func (o *TransformationExecution) GetCreatedAt() time.Time {
+	if o == nil {
+		return time.Time{}
+	}
+	return o.CreatedAt
+}
+
+func (o *TransformationExecution) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
+}
+
+func (o *TransformationExecution) GetIssueID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.IssueID
+}
+
+func (o *TransformationExecution) GetLogLevel() TransformationExecutionLogLevel {
+	if o == nil {
+		return TransformationExecutionLogLevel("")
+	}
+	return o.LogLevel
+}
+
+func (o *TransformationExecution) GetLogs() []ConsoleLine {
+	if o == nil {
+		return []ConsoleLine{}
+	}
+	return o.Logs
+}
+
+func (o *TransformationExecution) GetOriginalEventData() *ShortEventData {
+	if o == nil {
+		return nil
+	}
+	return o.OriginalEventData
+}
+
+func (o *TransformationExecution) GetOriginalEventDataID() string {
+	if o == nil {
+		return ""
+	}
+	return o.OriginalEventDataID
+}
+
+func (o *TransformationExecution) GetTeamID() string {
+	if o == nil {
+		return ""
+	}
+	return o.TeamID
+}
+
+func (o *TransformationExecution) GetTransformationID() string {
+	if o == nil {
+		return ""
+	}
+	return o.TransformationID
+}
+
+func (o *TransformationExecution) GetTransformedEventData() *ShortEventData {
+	if o == nil {
+		return nil
+	}
+	return o.TransformedEventData
+}
+
+func (o *TransformationExecution) GetTransformedEventDataID() string {
+	if o == nil {
+		return ""
+	}
+	return o.TransformedEventDataID
+}
+
+func (o *TransformationExecution) GetUpdatedAt() time.Time {
+	if o == nil {
+		return time.Time{}
+	}
+	return o.UpdatedAt
+}
+
+func (o *TransformationExecution) GetWebhookID() string {
+	if o == nil {
+		return ""
+	}
+	return o.WebhookID
+}

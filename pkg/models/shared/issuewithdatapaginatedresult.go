@@ -8,3 +8,24 @@ type IssueWithDataPaginatedResult struct {
 	Models     []interface{}   `json:"models,omitempty"`
 	Pagination *SeekPagination `json:"pagination,omitempty"`
 }
+
+func (o *IssueWithDataPaginatedResult) GetCount() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Count
+}
+
+func (o *IssueWithDataPaginatedResult) GetModels() []interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.Models
+}
+
+func (o *IssueWithDataPaginatedResult) GetPagination() *SeekPagination {
+	if o == nil {
+		return nil
+	}
+	return o.Pagination
+}

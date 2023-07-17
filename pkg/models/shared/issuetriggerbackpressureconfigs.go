@@ -83,3 +83,17 @@ type IssueTriggerBackpressureConfigs struct {
 	// A pattern to match on the destination name or array of destination IDs. Use `*` as wildcard.
 	Destinations IssueTriggerBackpressureConfigsDestinations `json:"destinations"`
 }
+
+func (o *IssueTriggerBackpressureConfigs) GetDelay() int64 {
+	if o == nil {
+		return 0
+	}
+	return o.Delay
+}
+
+func (o *IssueTriggerBackpressureConfigs) GetDestinations() IssueTriggerBackpressureConfigsDestinations {
+	if o == nil {
+		return IssueTriggerBackpressureConfigsDestinations{}
+	}
+	return o.Destinations
+}

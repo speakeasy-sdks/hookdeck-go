@@ -223,8 +223,8 @@ func New(opts ...SDKOption) *Hookdeck {
 		sdkConfiguration: sdkConfiguration{
 			Language:          "go",
 			OpenAPIDocVersion: "1.0.0",
-			SDKVersion:        "1.3.0",
-			GenVersion:        "2.66.0",
+			SDKVersion:        "1.4.0",
+			GenVersion:        "2.70.0",
 			ServerDefaults: []map[string]string{
 				{
 					"version": "2023-01-01",
