@@ -33,7 +33,7 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.Request.Get(ctx, "nesciunt")
+    res, err := s.Request.Get(ctx, "amet")
     if err != nil {
         log.Fatal(err)
     }
@@ -87,9 +87,9 @@ func main() {
     ctx := context.Background()
     res, err := s.Request.Retry(ctx, operations.RetryRequestRequestBody{
         WebhookIds: []string{
-            "perferendis",
+            "cumque",
         },
-    }, "dolores")
+    }, "corporis")
     if err != nil {
         log.Fatal(err)
     }

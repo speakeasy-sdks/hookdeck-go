@@ -807,12 +807,9 @@ type GetConnectionsRequest struct {
 	Dir           *GetConnectionsDir           `queryParam:"style=form,explode=true,name=dir"`
 	FullName      *string                      `queryParam:"style=form,explode=true,name=full_name"`
 	ID            *GetConnectionsID            `queryParam:"style=form,explode=true,name=id"`
-	Limit         *int64                       `queryParam:"style=form,explode=true,name=limit"`
 	Name          *GetConnectionsName          `queryParam:"style=form,explode=true,name=name"`
-	Next          *string                      `queryParam:"style=form,explode=true,name=next"`
 	OrderBy       *GetConnectionsOrderBy       `queryParam:"style=form,explode=true,name=order_by"`
 	PausedAt      *GetConnectionsPausedAt      `queryParam:"style=form,explode=true,name=paused_at"`
-	Prev          *string                      `queryParam:"style=form,explode=true,name=prev"`
 	SourceID      *GetConnectionsSourceID      `queryParam:"style=form,explode=true,name=source_id"`
 }
 
@@ -858,25 +855,11 @@ func (o *GetConnectionsRequest) GetID() *GetConnectionsID {
 	return o.ID
 }
 
-func (o *GetConnectionsRequest) GetLimit() *int64 {
-	if o == nil {
-		return nil
-	}
-	return o.Limit
-}
-
 func (o *GetConnectionsRequest) GetName() *GetConnectionsName {
 	if o == nil {
 		return nil
 	}
 	return o.Name
-}
-
-func (o *GetConnectionsRequest) GetNext() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Next
 }
 
 func (o *GetConnectionsRequest) GetOrderBy() *GetConnectionsOrderBy {
@@ -891,13 +874,6 @@ func (o *GetConnectionsRequest) GetPausedAt() *GetConnectionsPausedAt {
 		return nil
 	}
 	return o.PausedAt
-}
-
-func (o *GetConnectionsRequest) GetPrev() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Prev
 }
 
 func (o *GetConnectionsRequest) GetSourceID() *GetConnectionsSourceID {

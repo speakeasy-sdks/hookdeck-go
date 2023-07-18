@@ -32,7 +32,7 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.TransformationExecution.Get(ctx, "itaque", "consequatur")
+    res, err := s.TransformationExecution.Get(ctx, "nam", "hic")
     if err != nil {
         log.Fatal(err)
     }

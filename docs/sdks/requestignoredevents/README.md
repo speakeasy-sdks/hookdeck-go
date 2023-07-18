@@ -34,12 +34,12 @@ func main() {
     ctx := context.Background()
     res, err := s.RequestIgnoredEvents.Get(ctx, operations.GetRequestIgnoredEventsRequest{
         Dir: &operations.GetRequestIgnoredEventsDir{},
-        IDPathParameter: "facilis",
+        IDPathParameter: "quis",
         IDQueryParameter: &operations.GetRequestIgnoredEventsID{},
-        Limit: hookdeck.Int64(596656),
-        Next: hookdeck.String("voluptatem"),
+        Limit: hookdeck.Int64(199996),
+        Next: hookdeck.String("eos"),
         OrderBy: &operations.GetRequestIgnoredEventsOrderBy{},
-        Prev: hookdeck.String("porro"),
+        Prev: hookdeck.String("perferendis"),
     })
     if err != nil {
         log.Fatal(err)

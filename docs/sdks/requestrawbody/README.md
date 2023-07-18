@@ -32,7 +32,7 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.RequestRawBody.Get(ctx, "consequuntur")
+    res, err := s.RequestRawBody.Get(ctx, "dolores")
     if err != nil {
         log.Fatal(err)
     }

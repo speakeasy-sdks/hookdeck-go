@@ -34,7 +34,7 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.Issue.Dismiss(ctx, "facilis")
+    res, err := s.Issue.Dismiss(ctx, "dolor")
     if err != nil {
         log.Fatal(err)
     }
@@ -86,7 +86,7 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.Issue.Get(ctx, "in")
+    res, err := s.Issue.Get(ctx, "necessitatibus")
     if err != nil {
         log.Fatal(err)
     }
@@ -140,7 +140,7 @@ func main() {
     ctx := context.Background()
     res, err := s.Issue.Update(ctx, operations.UpdateIssueRequestBody{
         Status: operations.UpdateIssueRequestBodyStatusOpened,
-    }, "architecto")
+    }, "nemo")
     if err != nil {
         log.Fatal(err)
     }

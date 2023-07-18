@@ -36,7 +36,7 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.Integrations.Get(ctx, "maxime", shared.IntegrationProviderAkeneo)
+    res, err := s.Integrations.Get(ctx, "ad", shared.IntegrationProviderSvix)
     if err != nil {
         log.Fatal(err)
     }

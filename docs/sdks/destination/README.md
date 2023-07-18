@@ -38,7 +38,7 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.Destination.Archive(ctx, "assumenda")
+    res, err := s.Destination.Archive(ctx, "quos")
     if err != nil {
         log.Fatal(err)
     }
@@ -91,20 +91,17 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Destination.Create(ctx, operations.CreateDestinationRequestBody{
-        AuthMethod: &shared.BasicAuth{
-            Config: &shared.DestinationAuthMethodBasicAuthConfig{
-                Password: "alias",
-                Username: "Caden.Pagac",
-            },
-            Type: shared.BasicAuthTypeBasicAuth,
+        AuthMethod: &shared.HookdeckSignature{
+            Config: &shared.DestinationAuthMethodSignatureConfig{},
+            Type: shared.HookdeckSignatureTypeHookdeckSignature,
         },
-        CliPath: hookdeck.String("facilis"),
+        CliPath: hookdeck.String("magni"),
         HTTPMethod: shared.DestinationHTTPMethodPatch.ToPointer(),
-        Name: "Lucia Kemmer",
+        Name: "Linda Corkery",
         PathForwardingDisabled: hookdeck.Bool(false),
-        RateLimit: hookdeck.Int64(396098),
-        RateLimitPeriod: operations.CreateDestinationRequestBodyRateLimitPeriodMinute.ToPointer(),
-        URL: hookdeck.String("necessitatibus"),
+        RateLimit: hookdeck.Int64(703737),
+        RateLimitPeriod: operations.CreateDestinationRequestBodyRateLimitPeriodHour.ToPointer(),
+        URL: hookdeck.String("labore"),
     })
     if err != nil {
         log.Fatal(err)
@@ -157,7 +154,7 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.Destination.Delete(ctx, "sint")
+    res, err := s.Destination.Delete(ctx, "delectus")
     if err != nil {
         log.Fatal(err)
     }
@@ -209,7 +206,7 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.Destination.Get(ctx, "officia")
+    res, err := s.Destination.Get(ctx, "eum")
     if err != nil {
         log.Fatal(err)
     }
@@ -261,7 +258,7 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.Destination.Unarchive(ctx, "dolor")
+    res, err := s.Destination.Unarchive(ctx, "non")
     if err != nil {
         log.Fatal(err)
     }
@@ -314,21 +311,20 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Destination.Update(ctx, operations.UpdateDestinationRequestBody{
-        AuthMethod: &shared.CustomSignature{
-            Config: shared.DestinationAuthMethodCustomSignatureConfig{
-                Key: "a",
-                SigningSecret: hookdeck.String("dolorum"),
+        AuthMethod: &shared.BearerToken{
+            Config: &shared.DestinationAuthMethodBearerTokenConfig{
+                Token: "sint",
             },
-            Type: shared.CustomSignatureTypeCustomSignature,
+            Type: shared.BearerTokenTypeBearerToken,
         },
-        CliPath: hookdeck.String("in"),
-        HTTPMethod: shared.DestinationHTTPMethodPost.ToPointer(),
-        Name: hookdeck.String("Mrs. Emilio Price"),
+        CliPath: hookdeck.String("aliquid"),
+        HTTPMethod: shared.DestinationHTTPMethodPut.ToPointer(),
+        Name: hookdeck.String("Perry Nikolaus"),
         PathForwardingDisabled: hookdeck.Bool(false),
-        RateLimit: hookdeck.Int64(411820),
+        RateLimit: hookdeck.Int64(680056),
         RateLimitPeriod: operations.UpdateDestinationRequestBodyRateLimitPeriodMinute.ToPointer(),
-        URL: hookdeck.String("laborum"),
-    }, "accusamus")
+        URL: hookdeck.String("in"),
+    }, "illum")
     if err != nil {
         log.Fatal(err)
     }
@@ -382,20 +378,20 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Destination.Upsert(ctx, operations.UpsertDestinationRequestBody{
-        AuthMethod: &shared.BasicAuth{
-            Config: &shared.DestinationAuthMethodBasicAuthConfig{
-                Password: "occaecati",
-                Username: "Elyssa_Tillman58",
+        AuthMethod: &shared.CustomSignature{
+            Config: shared.DestinationAuthMethodCustomSignatureConfig{
+                Key: "rerum",
+                SigningSecret: hookdeck.String("dicta"),
             },
-            Type: shared.BasicAuthTypeBasicAuth,
+            Type: shared.CustomSignatureTypeCustomSignature,
         },
-        CliPath: hookdeck.String("nam"),
-        HTTPMethod: shared.DestinationHTTPMethodPut.ToPointer(),
-        Name: "Jaime Will",
+        CliPath: hookdeck.String("magnam"),
+        HTTPMethod: shared.DestinationHTTPMethodPatch.ToPointer(),
+        Name: "Nathaniel Hyatt",
         PathForwardingDisabled: hookdeck.Bool(false),
-        RateLimit: hookdeck.Int64(423855),
-        RateLimitPeriod: operations.UpsertDestinationRequestBodyRateLimitPeriodMinute.ToPointer(),
-        URL: hookdeck.String("omnis"),
+        RateLimit: hookdeck.Int64(581273),
+        RateLimitPeriod: operations.UpsertDestinationRequestBodyRateLimitPeriodSecond.ToPointer(),
+        URL: hookdeck.String("accusamus"),
     })
     if err != nil {
         log.Fatal(err)

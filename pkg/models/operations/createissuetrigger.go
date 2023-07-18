@@ -41,7 +41,7 @@ func (o *CreateIssueTriggerRequestBody) GetName() *string {
 
 func (o *CreateIssueTriggerRequestBody) GetType() shared.IssueType {
 	if o == nil {
-		return shared.IssueType("")
+		return IssueType("")
 	}
 	return o.Type
 }
