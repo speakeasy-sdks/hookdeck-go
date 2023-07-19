@@ -32,7 +32,7 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.EventRawBody.Get(ctx, "labore")
+    res, err := s.EventRawBody.Get(ctx, "deleniti")
     if err != nil {
         log.Fatal(err)
     }

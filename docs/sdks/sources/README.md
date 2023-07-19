@@ -43,11 +43,11 @@ func main() {
         Dir: &operations.GetSourcesDir{},
         ID: &operations.GetSourcesID{},
         IntegrationID: &operations.GetSourcesIntegrationID{},
-        Limit: hookdeck.Int64(863856),
+        Limit: hookdeck.Int64(311860),
         Name: &operations.GetSourcesName{},
-        Next: hookdeck.String("soluta"),
+        Next: hookdeck.String("tempora"),
         OrderBy: &operations.GetSourcesOrderBy{},
-        Prev: hookdeck.String("dicta"),
+        Prev: hookdeck.String("vel"),
     })
     if err != nil {
         log.Fatal(err)

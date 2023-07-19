@@ -34,7 +34,7 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.Event.Get(ctx, "magnam")
+    res, err := s.Event.Get(ctx, "nam")
     if err != nil {
         log.Fatal(err)
     }
@@ -86,7 +86,7 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.Event.MuteEvent(ctx, "distinctio")
+    res, err := s.Event.MuteEvent(ctx, "id")
     if err != nil {
         log.Fatal(err)
     }
@@ -138,7 +138,7 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.Event.Retry(ctx, "id")
+    res, err := s.Event.Retry(ctx, "blanditiis")
     if err != nil {
         log.Fatal(err)
     }
