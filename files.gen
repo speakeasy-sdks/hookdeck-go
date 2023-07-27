@@ -7,6 +7,7 @@ bulkretryignoredevent.go
 bulkretryignoredevents.go
 bulkretryrequests.go
 connection.go
+connectionnumberupdate.go
 connections.go
 customdomain.go
 customdomains.go
@@ -271,6 +272,7 @@ docs/sdks/bulkretryignoredevent/README.md
 docs/sdks/bulkretryignoredevents/README.md
 docs/sdks/bulkretryrequests/README.md
 docs/sdks/connection/README.md
+docs/sdks/connectionnumberupdate/README.md
 docs/sdks/connections/README.md
 docs/sdks/customdomain/README.md
 docs/sdks/customdomains/README.md

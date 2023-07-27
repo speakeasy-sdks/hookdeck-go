@@ -32,7 +32,7 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.CustomDomains.List(ctx, "magni")
+    res, err := s.CustomDomains.List(ctx, "cupiditate")
     if err != nil {
         log.Fatal(err)
     }
