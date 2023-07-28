@@ -37,9 +37,10 @@ func main() {
             },
         }),
     )
+    id := "esse"
 
     ctx := context.Background()
-    res, err := s.Connection.Archive(ctx, "esse")
+    res, err := s.Connection.Archive(ctx, id)
     if err != nil {
         log.Fatal(err)
     }
@@ -209,9 +210,10 @@ func main() {
             },
         }),
     )
+    id := "iure"
 
     ctx := context.Background()
-    res, err := s.Connection.Delete(ctx, "iure")
+    res, err := s.Connection.Delete(ctx, id)
     if err != nil {
         log.Fatal(err)
     }
@@ -261,9 +263,10 @@ func main() {
             },
         }),
     )
+    id := "culpa"
 
     ctx := context.Background()
-    res, err := s.Connection.Get(ctx, "culpa")
+    res, err := s.Connection.Get(ctx, id)
     if err != nil {
         log.Fatal(err)
     }
@@ -313,9 +316,10 @@ func main() {
             },
         }),
     )
+    id := "doloribus"
 
     ctx := context.Background()
-    res, err := s.Connection.Pause(ctx, "doloribus")
+    res, err := s.Connection.Pause(ctx, id)
     if err != nil {
         log.Fatal(err)
     }
@@ -365,9 +369,10 @@ func main() {
             },
         }),
     )
+    id := "sapiente"
 
     ctx := context.Background()
-    res, err := s.Connection.Unarchive(ctx, "sapiente")
+    res, err := s.Connection.Unarchive(ctx, id)
     if err != nil {
         log.Fatal(err)
     }
@@ -417,9 +422,10 @@ func main() {
             },
         }),
     )
+    id := "architecto"
 
     ctx := context.Background()
-    res, err := s.Connection.Unpause(ctx, "architecto")
+    res, err := s.Connection.Unpause(ctx, id)
     if err != nil {
         log.Fatal(err)
     }
@@ -469,9 +475,7 @@ func main() {
             },
         }),
     )
-
-    ctx := context.Background()
-    res, err := s.Connection.Update(ctx, operations.UpdateConnectionRequestBody{
+    requestBody := operations.UpdateConnectionRequestBody{
         Name: hookdeck.String("Mike Nicolas"),
         Rules: []interface{}{
             shared.FilterRule{
@@ -511,7 +515,11 @@ func main() {
             },
         },
         RulesetID: hookdeck.String("temporibus"),
-    }, "laborum")
+    }
+    id := "laborum"
+
+    ctx := context.Background()
+    res, err := s.Connection.Update(ctx, requestBody, id)
     if err != nil {
         log.Fatal(err)
     }

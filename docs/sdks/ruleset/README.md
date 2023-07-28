@@ -35,9 +35,10 @@ func main() {
             },
         }),
     )
+    id := "recusandae"
 
     ctx := context.Background()
-    res, err := s.Ruleset.Archive(ctx, "recusandae")
+    res, err := s.Ruleset.Archive(ctx, id)
     if err != nil {
         log.Fatal(err)
     }
@@ -156,9 +157,10 @@ func main() {
             },
         }),
     )
+    id := "iste"
 
     ctx := context.Background()
-    res, err := s.Ruleset.Get(ctx, "iste")
+    res, err := s.Ruleset.Get(ctx, id)
     if err != nil {
         log.Fatal(err)
     }
@@ -208,9 +210,10 @@ func main() {
             },
         }),
     )
+    id := "dolorum"
 
     ctx := context.Background()
-    res, err := s.Ruleset.Unarchive(ctx, "dolorum")
+    res, err := s.Ruleset.Unarchive(ctx, id)
     if err != nil {
         log.Fatal(err)
     }
@@ -260,9 +263,7 @@ func main() {
             },
         }),
     )
-
-    ctx := context.Background()
-    res, err := s.Ruleset.Update(ctx, operations.UpdateRulesetRequestBody{
+    requestBody := operations.UpdateRulesetRequestBody{
         IsTeamDefault: hookdeck.Bool(false),
         Name: hookdeck.String("Ervin McLaughlin"),
         Rules: []interface{}{
@@ -285,7 +286,11 @@ func main() {
                 Type: shared.RetryRuleTypeRetry,
             },
         },
-    }, "cum")
+    }
+    id := "cum"
+
+    ctx := context.Background()
+    res, err := s.Ruleset.Update(ctx, requestBody, id)
     if err != nil {
         log.Fatal(err)
     }

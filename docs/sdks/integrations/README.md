@@ -34,9 +34,11 @@ func main() {
             },
         }),
     )
+    label := "ad"
+    provider := shared.IntegrationProviderSvix
 
     ctx := context.Background()
-    res, err := s.Integrations.Get(ctx, "ad", shared.IntegrationProviderSvix)
+    res, err := s.Integrations.Get(ctx, label, provider)
     if err != nil {
         log.Fatal(err)
     }

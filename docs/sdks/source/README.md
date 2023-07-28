@@ -36,9 +36,10 @@ func main() {
             },
         }),
     )
+    id := "voluptas"
 
     ctx := context.Background()
-    res, err := s.Source.Archive(ctx, "voluptas")
+    res, err := s.Source.Archive(ctx, id)
     if err != nil {
         log.Fatal(err)
     }
@@ -151,9 +152,10 @@ func main() {
             },
         }),
     )
+    id := "deleniti"
 
     ctx := context.Background()
-    res, err := s.Source.Delete(ctx, "deleniti")
+    res, err := s.Source.Delete(ctx, id)
     if err != nil {
         log.Fatal(err)
     }
@@ -203,9 +205,10 @@ func main() {
             },
         }),
     )
+    id := "omnis"
 
     ctx := context.Background()
-    res, err := s.Source.Get(ctx, "omnis")
+    res, err := s.Source.Get(ctx, id)
     if err != nil {
         log.Fatal(err)
     }
@@ -255,9 +258,10 @@ func main() {
             },
         }),
     )
+    id := "necessitatibus"
 
     ctx := context.Background()
-    res, err := s.Source.Unarchive(ctx, "necessitatibus")
+    res, err := s.Source.Unarchive(ctx, id)
     if err != nil {
         log.Fatal(err)
     }
@@ -307,9 +311,7 @@ func main() {
             },
         }),
     )
-
-    ctx := context.Background()
-    res, err := s.Source.Update(ctx, operations.UpdateSourceRequestBody{
+    requestBody := operations.UpdateSourceRequestBody{
         AllowedHTTPMethods: []shared.SourceAllowedHTTPMethod{
             shared.SourceAllowedHTTPMethodDelete,
             shared.SourceAllowedHTTPMethodPut,
@@ -320,7 +322,11 @@ func main() {
             ContentType: shared.SourceCustomResponseContentTypeText,
         },
         Name: hookdeck.String("Mrs. Ray Collins"),
-    }, "accusamus")
+    }
+    id := "accusamus"
+
+    ctx := context.Background()
+    res, err := s.Source.Update(ctx, requestBody, id)
     if err != nil {
         log.Fatal(err)
     }

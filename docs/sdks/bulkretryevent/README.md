@@ -32,9 +32,10 @@ func main() {
             },
         }),
     )
+    id := "quis"
 
     ctx := context.Background()
-    res, err := s.BulkRetryEvent.Cancel(ctx, "quis")
+    res, err := s.BulkRetryEvent.Cancel(ctx, id)
     if err != nil {
         log.Fatal(err)
     }
@@ -161,9 +162,10 @@ func main() {
             },
         }),
     )
+    id := "perferendis"
 
     ctx := context.Background()
-    res, err := s.BulkRetryEvent.Get(ctx, "perferendis")
+    res, err := s.BulkRetryEvent.Get(ctx, id)
     if err != nil {
         log.Fatal(err)
     }

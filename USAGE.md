@@ -21,9 +21,10 @@ func main() {
             },
         }),
     )
+    id := "corrupti"
 
     ctx := context.Background()
-    res, err := s.Attempt.Get(ctx, "corrupti")
+    res, err := s.Attempt.Get(ctx, id)
     if err != nil {
         log.Fatal(err)
     }

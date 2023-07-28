@@ -31,9 +31,10 @@ func main() {
             },
         }),
     )
+    id := "hic"
 
     ctx := context.Background()
-    res, err := s.RequestBulkRetry.Cancel(ctx, "hic")
+    res, err := s.RequestBulkRetry.Cancel(ctx, id)
     if err != nil {
         log.Fatal(err)
     }
@@ -83,9 +84,10 @@ func main() {
             },
         }),
     )
+    id := "libero"
 
     ctx := context.Background()
-    res, err := s.RequestBulkRetry.Get(ctx, "libero")
+    res, err := s.RequestBulkRetry.Get(ctx, id)
     if err != nil {
         log.Fatal(err)
     }

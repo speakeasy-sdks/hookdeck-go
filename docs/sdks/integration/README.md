@@ -35,9 +35,11 @@ func main() {
             },
         }),
     )
+    id := "natus"
+    sourceID := "omnis"
 
     ctx := context.Background()
-    res, err := s.Integration.AttachIntegrationToSource(ctx, "natus", "omnis")
+    res, err := s.Integration.AttachIntegrationToSource(ctx, id, sourceID)
     if err != nil {
         log.Fatal(err)
     }
@@ -151,9 +153,10 @@ func main() {
             },
         }),
     )
+    id := "suscipit"
 
     ctx := context.Background()
-    res, err := s.Integration.Delete(ctx, "suscipit")
+    res, err := s.Integration.Delete(ctx, id)
     if err != nil {
         log.Fatal(err)
     }
@@ -203,9 +206,11 @@ func main() {
             },
         }),
     )
+    id := "natus"
+    sourceID := "nobis"
 
     ctx := context.Background()
-    res, err := s.Integration.DetachIntegrationToSource(ctx, "natus", "nobis")
+    res, err := s.Integration.DetachIntegrationToSource(ctx, id, sourceID)
     if err != nil {
         log.Fatal(err)
     }
@@ -256,9 +261,10 @@ func main() {
             },
         }),
     )
+    id := "eum"
 
     ctx := context.Background()
-    res, err := s.Integration.Get(ctx, "eum")
+    res, err := s.Integration.Get(ctx, id)
     if err != nil {
         log.Fatal(err)
     }
@@ -308,9 +314,7 @@ func main() {
             },
         }),
     )
-
-    ctx := context.Background()
-    res, err := s.Integration.Update(ctx, operations.UpdateIntegrationRequestBody{
+    requestBody := operations.UpdateIntegrationRequestBody{
         Configs: &shared.ShopifyIntegrationConfigs{
             APIKey: hookdeck.String("aspernatur"),
             APISecret: hookdeck.String("architecto"),
@@ -326,7 +330,11 @@ func main() {
         },
         Label: hookdeck.String("mollitia"),
         Provider: shared.IntegrationProviderAwsSns.ToPointer(),
-    }, "mollitia")
+    }
+    id := "mollitia"
+
+    ctx := context.Background()
+    res, err := s.Integration.Update(ctx, requestBody, id)
     if err != nil {
         log.Fatal(err)
     }

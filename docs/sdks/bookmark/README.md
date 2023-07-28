@@ -91,9 +91,10 @@ func main() {
             },
         }),
     )
+    id := "magnam"
 
     ctx := context.Background()
-    res, err := s.Bookmark.Delete(ctx, "magnam")
+    res, err := s.Bookmark.Delete(ctx, id)
     if err != nil {
         log.Fatal(err)
     }
@@ -143,9 +144,10 @@ func main() {
             },
         }),
     )
+    id := "debitis"
 
     ctx := context.Background()
-    res, err := s.Bookmark.Get(ctx, "debitis")
+    res, err := s.Bookmark.Get(ctx, id)
     if err != nil {
         log.Fatal(err)
     }
@@ -195,11 +197,13 @@ func main() {
             },
         }),
     )
+    requestBody := operations.TriggerBookmarkRequestBody{
+        Target: operations.TriggerBookmarkRequestBodyTargetHTTP.ToPointer(),
+    }
+    id := "delectus"
 
     ctx := context.Background()
-    res, err := s.Bookmark.Trigger(ctx, operations.TriggerBookmarkRequestBody{
-        Target: operations.TriggerBookmarkRequestBodyTargetHTTP.ToPointer(),
-    }, "delectus")
+    res, err := s.Bookmark.Trigger(ctx, requestBody, id)
     if err != nil {
         log.Fatal(err)
     }
@@ -250,14 +254,16 @@ func main() {
             },
         }),
     )
-
-    ctx := context.Background()
-    res, err := s.Bookmark.Update(ctx, operations.UpdateBookmarkRequestBody{
+    requestBody := operations.UpdateBookmarkRequestBody{
         EventDataID: hookdeck.String("tempora"),
         Label: hookdeck.String("suscipit"),
         Name: hookdeck.String("Alexandra Schulist"),
         WebhookID: hookdeck.String("excepturi"),
-    }, "nisi")
+    }
+    id := "nisi"
+
+    ctx := context.Background()
+    res, err := s.Bookmark.Update(ctx, requestBody, id)
     if err != nil {
         log.Fatal(err)
     }

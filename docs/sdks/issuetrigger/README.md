@@ -102,9 +102,10 @@ func main() {
             },
         }),
     )
+    id := "architecto"
 
     ctx := context.Background()
-    res, err := s.IssueTrigger.Delete(ctx, "architecto")
+    res, err := s.IssueTrigger.Delete(ctx, id)
     if err != nil {
         log.Fatal(err)
     }
@@ -154,9 +155,10 @@ func main() {
             },
         }),
     )
+    id := "architecto"
 
     ctx := context.Background()
-    res, err := s.IssueTrigger.Disable(ctx, "architecto")
+    res, err := s.IssueTrigger.Disable(ctx, id)
     if err != nil {
         log.Fatal(err)
     }
@@ -206,9 +208,10 @@ func main() {
             },
         }),
     )
+    id := "repudiandae"
 
     ctx := context.Background()
-    res, err := s.IssueTrigger.Enable(ctx, "repudiandae")
+    res, err := s.IssueTrigger.Enable(ctx, id)
     if err != nil {
         log.Fatal(err)
     }
@@ -258,9 +261,10 @@ func main() {
             },
         }),
     )
+    id := "ullam"
 
     ctx := context.Background()
-    res, err := s.IssueTrigger.Get(ctx, "ullam")
+    res, err := s.IssueTrigger.Get(ctx, id)
     if err != nil {
         log.Fatal(err)
     }
@@ -311,9 +315,7 @@ func main() {
             },
         }),
     )
-
-    ctx := context.Background()
-    res, err := s.IssueTrigger.Update(ctx, operations.UpdateIssueTriggerRequestBody{
+    requestBody := operations.UpdateIssueTriggerRequestBody{
         Channels: &shared.IssueTriggerChannels{
             Email: &shared.IssueTriggerEmailChannel{},
             Opsgenie: &shared.IssueTriggerIntegrationChannel{},
@@ -327,7 +329,11 @@ func main() {
         },
         DisabledAt: types.MustTimeFromString("2022-07-21T08:29:53.942Z"),
         Name: hookdeck.String("Al Bashirian"),
-    }, "natus")
+    }
+    id := "natus"
+
+    ctx := context.Background()
+    res, err := s.IssueTrigger.Update(ctx, requestBody, id)
     if err != nil {
         log.Fatal(err)
     }

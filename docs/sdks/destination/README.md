@@ -36,9 +36,10 @@ func main() {
             },
         }),
     )
+    id := "quos"
 
     ctx := context.Background()
-    res, err := s.Destination.Archive(ctx, "quos")
+    res, err := s.Destination.Archive(ctx, id)
     if err != nil {
         log.Fatal(err)
     }
@@ -152,9 +153,10 @@ func main() {
             },
         }),
     )
+    id := "delectus"
 
     ctx := context.Background()
-    res, err := s.Destination.Delete(ctx, "delectus")
+    res, err := s.Destination.Delete(ctx, id)
     if err != nil {
         log.Fatal(err)
     }
@@ -204,9 +206,10 @@ func main() {
             },
         }),
     )
+    id := "eum"
 
     ctx := context.Background()
-    res, err := s.Destination.Get(ctx, "eum")
+    res, err := s.Destination.Get(ctx, id)
     if err != nil {
         log.Fatal(err)
     }
@@ -256,9 +259,10 @@ func main() {
             },
         }),
     )
+    id := "non"
 
     ctx := context.Background()
-    res, err := s.Destination.Unarchive(ctx, "non")
+    res, err := s.Destination.Unarchive(ctx, id)
     if err != nil {
         log.Fatal(err)
     }
@@ -308,9 +312,7 @@ func main() {
             },
         }),
     )
-
-    ctx := context.Background()
-    res, err := s.Destination.Update(ctx, operations.UpdateDestinationRequestBody{
+    requestBody := operations.UpdateDestinationRequestBody{
         AuthMethod: &shared.BearerToken{
             Config: &shared.DestinationAuthMethodBearerTokenConfig{
                 Token: "sint",
@@ -324,7 +326,11 @@ func main() {
         RateLimit: hookdeck.Int64(680056),
         RateLimitPeriod: operations.UpdateDestinationRequestBodyRateLimitPeriodMinute.ToPointer(),
         URL: hookdeck.String("in"),
-    }, "illum")
+    }
+    id := "illum"
+
+    ctx := context.Background()
+    res, err := s.Destination.Update(ctx, requestBody, id)
     if err != nil {
         log.Fatal(err)
     }

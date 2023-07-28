@@ -30,9 +30,10 @@ func main() {
             },
         }),
     )
+    id := "deleniti"
 
     ctx := context.Background()
-    res, err := s.EventRawBody.Get(ctx, "deleniti")
+    res, err := s.EventRawBody.Get(ctx, id)
     if err != nil {
         log.Fatal(err)
     }

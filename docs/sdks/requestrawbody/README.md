@@ -30,9 +30,10 @@ func main() {
             },
         }),
     )
+    id := "dolores"
 
     ctx := context.Background()
-    res, err := s.RequestRawBody.Get(ctx, "dolores")
+    res, err := s.RequestRawBody.Get(ctx, id)
     if err != nil {
         log.Fatal(err)
     }

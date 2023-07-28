@@ -33,9 +33,10 @@ func main() {
             },
         }),
     )
+    id := "ipsam"
 
     ctx := context.Background()
-    res, err := s.BulkRetryIgnoredEvent.Cancel(ctx, "ipsam")
+    res, err := s.BulkRetryIgnoredEvent.Cancel(ctx, id)
     if err != nil {
         log.Fatal(err)
     }
@@ -143,13 +144,14 @@ func main() {
             },
         }),
     )
-
-    ctx := context.Background()
-    res, err := s.BulkRetryIgnoredEvent.Generate(ctx, &operations.GenerateIgnoredEventBulkRetryPlanQuery{
+    query := &operations.GenerateIgnoredEventBulkRetryPlanQuery{
         Cause: &operations.GenerateIgnoredEventBulkRetryPlanQueryCause{},
         TransformationID: hookdeck.String("sapiente"),
         WebhookID: &operations.GenerateIgnoredEventBulkRetryPlanQueryWebhookID{},
-    })
+    }
+
+    ctx := context.Background()
+    res, err := s.BulkRetryIgnoredEvent.Generate(ctx, query)
     if err != nil {
         log.Fatal(err)
     }
@@ -199,9 +201,10 @@ func main() {
             },
         }),
     )
+    id := "quo"
 
     ctx := context.Background()
-    res, err := s.BulkRetryIgnoredEvent.Get(ctx, "quo")
+    res, err := s.BulkRetryIgnoredEvent.Get(ctx, id)
     if err != nil {
         log.Fatal(err)
     }
