@@ -30,9 +30,10 @@ func main() {
             },
         }),
     )
+    teamID := "cupiditate"
 
     ctx := context.Background()
-    res, err := s.CustomDomains.List(ctx, "cupiditate")
+    res, err := s.CustomDomains.List(ctx, teamID)
     if err != nil {
         log.Fatal(err)
     }

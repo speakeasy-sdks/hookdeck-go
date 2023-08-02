@@ -31,9 +31,10 @@ func main() {
             },
         }),
     )
+    id := "amet"
 
     ctx := context.Background()
-    res, err := s.Request.Get(ctx, "amet")
+    res, err := s.Request.Get(ctx, id)
     if err != nil {
         log.Fatal(err)
     }
@@ -83,13 +84,15 @@ func main() {
             },
         }),
     )
-
-    ctx := context.Background()
-    res, err := s.Request.Retry(ctx, operations.RetryRequestRequestBody{
+    requestBody := operations.RetryRequestRequestBody{
         WebhookIds: []string{
             "cumque",
         },
-    }, "corporis")
+    }
+    id := "corporis"
+
+    ctx := context.Background()
+    res, err := s.Request.Retry(ctx, requestBody, id)
     if err != nil {
         log.Fatal(err)
     }

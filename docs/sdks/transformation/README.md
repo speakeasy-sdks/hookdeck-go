@@ -95,9 +95,10 @@ func main() {
             },
         }),
     )
+    id := "enim"
 
     ctx := context.Background()
-    res, err := s.Transformation.Get(ctx, "enim")
+    res, err := s.Transformation.Get(ctx, id)
     if err != nil {
         log.Fatal(err)
     }
@@ -216,16 +217,18 @@ func main() {
             },
         }),
     )
-
-    ctx := context.Background()
-    res, err := s.Transformation.Update(ctx, operations.UpdateTransformationRequestBody{
+    requestBody := operations.UpdateTransformationRequestBody{
         Code: hookdeck.String("ipsum"),
         Env: map[string]interface{}{
             "qui": "cupiditate",
             "maxime": "pariatur",
         },
         Name: hookdeck.String("Keith Padberg"),
-    }, "aspernatur")
+    }
+    id := "aspernatur"
+
+    ctx := context.Background()
+    res, err := s.Transformation.Update(ctx, requestBody, id)
     if err != nil {
         log.Fatal(err)
     }

@@ -30,9 +30,10 @@ func main() {
             },
         }),
     )
+    id := "provident"
 
     ctx := context.Background()
-    res, err := s.Attempt.Get(ctx, "provident")
+    res, err := s.Attempt.Get(ctx, id)
     if err != nil {
         log.Fatal(err)
     }

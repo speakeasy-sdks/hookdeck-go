@@ -30,9 +30,11 @@ func main() {
             },
         }),
     )
+    executionID := "nam"
+    id := "hic"
 
     ctx := context.Background()
-    res, err := s.TransformationExecution.Get(ctx, "nam", "hic")
+    res, err := s.TransformationExecution.Get(ctx, executionID, id)
     if err != nil {
         log.Fatal(err)
     }

@@ -2,8 +2,8 @@ configVersion: 1.0.0
 management:
   docChecksum: f5f85e261a0dc111ffa34c18736669e6
   docVersion: 1.0.0
-  speakeasyVersion: 1.62.1
-  generationVersion: 2.70.2
+  speakeasyVersion: 1.65.2
+  generationVersion: 2.75.1
 generation:
   comments:
     disableComments: false
@@ -13,6 +13,6 @@ generation:
   singleTagPerOp: false
   tagNamespacingDisabled: false
 go:
-  version: 1.4.3
+  version: 1.5.0
   maxMethodParams: 5
   packageName: github.com/speakeasy-sdks/hookdeck-go
