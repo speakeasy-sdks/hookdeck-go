@@ -1047,3 +1047,4 @@ docs/models/shared/schemebasicauth.md
 docs/models/shared/security.md
 docs/models/errors/apierrorresponsedata.md
 docs/models/errors/apierrorresponse.md
+.gitattributes

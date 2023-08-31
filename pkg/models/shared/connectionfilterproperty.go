@@ -78,11 +78,11 @@ func (u *ConnectionFilterProperty) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
-	float32T := new(float32)
+	float32Var := new(float32)
 	d = json.NewDecoder(bytes.NewReader(data))
 	d.DisallowUnknownFields()
-	if err := d.Decode(&float32T); err == nil {
-		u.Float32 = float32T
+	if err := d.Decode(&float32Var); err == nil {
+		u.Float32 = float32Var
 		u.Type = ConnectionFilterPropertyTypeFloat32
 		return nil
 	}
