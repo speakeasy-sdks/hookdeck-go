@@ -32,9 +32,9 @@ func main() {
         }),
     )
     addCustomHostname := shared.AddCustomHostname{
-        Hostname: "sandy-spruce.biz",
+        Hostname: "utilized-bank.biz",
     }
-    teamID := "modi"
+    teamID := "quidem"
 
     ctx := context.Background()
     res, err := s.CustomDomain.Add(ctx, addCustomHostname, teamID)
@@ -88,8 +88,8 @@ func main() {
             },
         }),
     )
-    domainID := "qui"
-    teamID := "aliquid"
+    domainID := "molestias"
+    teamID := "excepturi"
 
     ctx := context.Background()
     res, err := s.CustomDomain.Delete(ctx, domainID, teamID)

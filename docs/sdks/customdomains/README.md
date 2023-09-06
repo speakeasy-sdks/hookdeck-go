@@ -30,7 +30,7 @@ func main() {
             },
         }),
     )
-    teamID := "cupiditate"
+    teamID := "pariatur"
 
     ctx := context.Background()
     res, err := s.CustomDomains.List(ctx, teamID)

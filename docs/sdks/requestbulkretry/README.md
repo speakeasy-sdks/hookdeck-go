@@ -31,7 +31,7 @@ func main() {
             },
         }),
     )
-    id := "hic"
+    id := "sunt"
 
     ctx := context.Background()
     res, err := s.RequestBulkRetry.Cancel(ctx, id)
@@ -84,7 +84,7 @@ func main() {
             },
         }),
     )
-    id := "libero"
+    id := "quo"
 
     ctx := context.Background()
     res, err := s.RequestBulkRetry.Get(ctx, id)

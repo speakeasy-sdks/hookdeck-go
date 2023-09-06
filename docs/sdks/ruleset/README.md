@@ -35,7 +35,7 @@ func main() {
             },
         }),
     )
-    id := "recusandae"
+    id := "nemo"
 
     ctx := context.Background()
     res, err := s.Ruleset.Archive(ctx, id)
@@ -92,19 +92,11 @@ func main() {
     ctx := context.Background()
     res, err := s.Ruleset.Create(ctx, operations.CreateRulesetRequestBody{
         IsTeamDefault: hookdeck.Bool(false),
-        Name: "Miss Cesar Metz",
+        Name: "Joseph Steuber DDS",
         Rules: []interface{}{
-            shared.TransformReference{
-                TransformationID: "occaecati",
-                Type: shared.TransformReferenceTypeTransform,
-            },
-            shared.TransformReference{
-                TransformationID: "asperiores",
-                Type: shared.TransformReferenceTypeTransform,
-            },
-            shared.DelayRule{
-                Delay: 267262,
-                Type: shared.DelayRuleTypeDelay,
+            shared.AlertRule{
+                Strategy: shared.AlertStrategyLastAttempt,
+                Type: shared.AlertRuleTypeAlert,
             },
         },
     })
@@ -157,7 +149,7 @@ func main() {
             },
         }),
     )
-    id := "iste"
+    id := "libero"
 
     ctx := context.Background()
     res, err := s.Ruleset.Get(ctx, id)
@@ -210,7 +202,7 @@ func main() {
             },
         }),
     )
-    id := "dolorum"
+    id := "nobis"
 
     ctx := context.Background()
     res, err := s.Ruleset.Unarchive(ctx, id)
@@ -265,29 +257,17 @@ func main() {
     )
     requestBody := operations.UpdateRulesetRequestBody{
         IsTeamDefault: hookdeck.Bool(false),
-        Name: hookdeck.String("Ervin McLaughlin"),
+        Name: hookdeck.String("Beatrice Lebsack II"),
         Rules: []interface{}{
-            shared.AlertRule{
-                Strategy: shared.AlertStrategyLastAttempt,
-                Type: shared.AlertRuleTypeAlert,
-            },
-            shared.AlertRule{
-                Strategy: shared.AlertStrategyEachAttempt,
-                Type: shared.AlertRuleTypeAlert,
-            },
-            shared.AlertRule{
-                Strategy: shared.AlertStrategyEachAttempt,
-                Type: shared.AlertRuleTypeAlert,
-            },
             shared.RetryRule{
-                Count: hookdeck.Int64(218749),
-                Interval: hookdeck.Int64(944373),
-                Strategy: shared.RetryStrategyExponential,
+                Count: hookdeck.Int64(179490),
+                Interval: hookdeck.Int64(18521),
+                Strategy: shared.RetryStrategyLinear,
                 Type: shared.RetryRuleTypeRetry,
             },
         },
     }
-    id := "cum"
+    id := "minus"
 
     ctx := context.Background()
     res, err := s.Ruleset.Update(ctx, requestBody, id)
@@ -345,20 +325,11 @@ func main() {
     ctx := context.Background()
     res, err := s.Ruleset.Upsert(ctx, operations.UpsertRulesetRequestBody{
         IsTeamDefault: hookdeck.Bool(false),
-        Name: "Marian Wisozk",
+        Name: "Rosa Swift",
         Rules: []interface{}{
-            shared.RetryRule{
-                Count: hookdeck.Int64(58029),
-                Interval: hookdeck.Int64(56418),
-                Strategy: shared.RetryStrategyLinear,
-                Type: shared.RetryRuleTypeRetry,
-            },
-            shared.FilterRule{
-                Body: &shared.ConnectionFilterProperty{},
-                Headers: &shared.ConnectionFilterProperty{},
-                Path: &shared.ConnectionFilterProperty{},
-                Query: &shared.ConnectionFilterProperty{},
-                Type: shared.FilterRuleTypeFilter,
+            shared.DelayRule{
+                Delay: 608253,
+                Type: shared.DelayRuleTypeDelay,
             },
         },
     })

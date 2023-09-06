@@ -36,11 +36,11 @@ func main() {
     res, err := s.IssueTriggers.Get(ctx, operations.GetIssueTriggersRequest{
         Dir: &operations.GetIssueTriggersDir{},
         DisabledAt: &operations.GetIssueTriggersDisabledAt{},
-        Limit: hookdeck.Int64(407183),
-        Name: hookdeck.String("Virginia Wunsch"),
-        Next: hookdeck.String("voluptate"),
+        Limit: hookdeck.Int64(703889),
+        Name: hookdeck.String("Alice Bradtke"),
+        Next: hookdeck.String("expedita"),
         OrderBy: &operations.GetIssueTriggersOrderBy{},
-        Prev: hookdeck.String("autem"),
+        Prev: hookdeck.String("nihil"),
         Type: shared.IssueTypeBackpressure.ToPointer(),
     })
     if err != nil {

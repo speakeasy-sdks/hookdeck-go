@@ -34,8 +34,8 @@ func main() {
             },
         }),
     )
-    label := "ad"
-    provider := shared.IntegrationProviderSvix
+    label := "molestiae"
+    provider := shared.IntegrationProviderTwitter
 
     ctx := context.Background()
     res, err := s.Integrations.Get(ctx, label, provider)

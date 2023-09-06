@@ -113,53 +113,36 @@ func main() {
         DestinationID: hookdeck.String("modi"),
         Name: "Krista Rippin",
         Rules: []interface{}{
-            shared.RetryRule{
-                Count: hookdeck.Int64(18789),
-                Interval: hookdeck.Int64(324141),
-                Strategy: shared.RetryStrategyExponential,
-                Type: shared.RetryRuleTypeRetry,
-            },
-            shared.RetryRule{
-                Count: hookdeck.Int64(612096),
-                Interval: hookdeck.Int64(222321),
-                Strategy: shared.RetryStrategyExponential,
-                Type: shared.RetryRuleTypeRetry,
-            },
-            shared.AlertRule{
-                Strategy: shared.AlertStrategyLastAttempt,
-                Type: shared.AlertRuleTypeAlert,
+            shared.FilterRule{
+                Body: &shared.ConnectionFilterProperty{},
+                Headers: &shared.ConnectionFilterProperty{},
+                Path: &shared.ConnectionFilterProperty{},
+                Query: &shared.ConnectionFilterProperty{},
+                Type: shared.FilterRuleTypeFilter,
             },
         },
         Ruleset: &operations.CreateConnectionRequestBodyRuleset{
             IsTeamDefault: hookdeck.Bool(false),
-            Name: "Wilbur Kirlin",
+            Name: "Dorothy Hane",
             Rules: []interface{}{
-                shared.DelayRule{
-                    Delay: 697631,
-                    Type: shared.DelayRuleTypeDelay,
-                },
-                shared.RetryRule{
-                    Count: hookdeck.Int64(60225),
-                    Interval: hookdeck.Int64(969810),
-                    Strategy: shared.RetryStrategyExponential,
-                    Type: shared.RetryRuleTypeRetry,
+                shared.TransformReference{
+                    TransformationID: "natus",
+                    Type: shared.TransformReferenceTypeTransform,
                 },
             },
         },
-        RulesetID: hookdeck.String("mollitia"),
+        RulesetID: hookdeck.String("laboriosam"),
         Source: &operations.CreateConnectionRequestBodySource{
             AllowedHTTPMethods: []shared.SourceAllowedHTTPMethod{
-                shared.SourceAllowedHTTPMethodGet,
-                shared.SourceAllowedHTTPMethodPost,
-                shared.SourceAllowedHTTPMethodPost,
+                shared.SourceAllowedHTTPMethodDelete,
             },
             CustomResponse: &shared.SourceCustomResponse{
-                Body: "explicabo",
+                Body: "saepe",
                 ContentType: shared.SourceCustomResponseContentTypeXML,
             },
-            Name: "Guadalupe Hickle",
+            Name: "Stacy Moore",
         },
-        SourceID: hookdeck.String("accusantium"),
+        SourceID: hookdeck.String("quidem"),
     })
     if err != nil {
         log.Fatal(err)
@@ -210,7 +193,7 @@ func main() {
             },
         }),
     )
-    id := "iure"
+    id := "architecto"
 
     ctx := context.Background()
     res, err := s.Connection.Delete(ctx, id)
@@ -263,7 +246,7 @@ func main() {
             },
         }),
     )
-    id := "culpa"
+    id := "ipsa"
 
     ctx := context.Background()
     res, err := s.Connection.Get(ctx, id)
@@ -316,7 +299,7 @@ func main() {
             },
         }),
     )
-    id := "doloribus"
+    id := "reiciendis"
 
     ctx := context.Background()
     res, err := s.Connection.Pause(ctx, id)
@@ -369,7 +352,7 @@ func main() {
             },
         }),
     )
-    id := "sapiente"
+    id := "est"
 
     ctx := context.Background()
     res, err := s.Connection.Unarchive(ctx, id)
@@ -422,7 +405,7 @@ func main() {
             },
         }),
     )
-    id := "architecto"
+    id := "mollitia"
 
     ctx := context.Background()
     res, err := s.Connection.Unpause(ctx, id)
@@ -476,47 +459,26 @@ func main() {
         }),
     )
     requestBody := operations.UpdateConnectionRequestBody{
-        Name: hookdeck.String("Mike Nicolas"),
+        Name: hookdeck.String("Ernest Ebert"),
         Rules: []interface{}{
-            shared.FilterRule{
-                Body: &shared.ConnectionFilterProperty{},
-                Headers: &shared.ConnectionFilterProperty{},
-                Path: &shared.ConnectionFilterProperty{},
-                Query: &shared.ConnectionFilterProperty{},
-                Type: shared.FilterRuleTypeFilter,
-            },
-            shared.AlertRule{
-                Strategy: shared.AlertStrategyEachAttempt,
-                Type: shared.AlertRuleTypeAlert,
-            },
-            shared.FilterRule{
-                Body: &shared.ConnectionFilterProperty{},
-                Headers: &shared.ConnectionFilterProperty{},
-                Path: &shared.ConnectionFilterProperty{},
-                Query: &shared.ConnectionFilterProperty{},
-                Type: shared.FilterRuleTypeFilter,
+            shared.TransformReference{
+                TransformationID: "omnis",
+                Type: shared.TransformReferenceTypeTransform,
             },
         },
         Ruleset: &operations.UpdateConnectionRequestBodyRuleset{
             IsTeamDefault: hookdeck.Bool(false),
-            Name: "Shannon Mueller",
+            Name: "Ms. Cathy Marks",
             Rules: []interface{}{
-                shared.TransformFull{
-                    Transformation: &shared.TransformFullTransformation{
-                        Code: "enim",
-                        Env: map[string]string{
-                            "quo": "sequi",
-                        },
-                        Name: "Vernon Ondricka Sr.",
-                    },
-                    TransformationID: hookdeck.String("error"),
-                    Type: shared.TransformFullTypeTransform,
+                shared.DelayRule{
+                    Delay: 958950,
+                    Type: shared.DelayRuleTypeDelay,
                 },
             },
         },
-        RulesetID: hookdeck.String("temporibus"),
+        RulesetID: hookdeck.String("architecto"),
     }
-    id := "laborum"
+    id := "mollitia"
 
     ctx := context.Background()
     res, err := s.Connection.Update(ctx, requestBody, id)

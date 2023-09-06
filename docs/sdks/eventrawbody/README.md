@@ -30,7 +30,7 @@ func main() {
             },
         }),
     )
-    id := "deleniti"
+    id := "illum"
 
     ctx := context.Background()
     res, err := s.EventRawBody.Get(ctx, id)

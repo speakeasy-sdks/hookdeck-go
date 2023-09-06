@@ -31,7 +31,7 @@ func main() {
             },
         }),
     )
-    id := "amet"
+    id := "praesentium"
 
     ctx := context.Background()
     res, err := s.Request.Get(ctx, id)
@@ -86,10 +86,10 @@ func main() {
     )
     requestBody := operations.RetryRequestRequestBody{
         WebhookIds: []string{
-            "cumque",
+            "natus",
         },
     }
-    id := "corporis"
+    id := "magni"
 
     ctx := context.Background()
     res, err := s.Request.Retry(ctx, requestBody, id)

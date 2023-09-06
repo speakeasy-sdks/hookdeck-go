@@ -37,14 +37,11 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Transformation.Create(ctx, operations.CreateTransformationRequestBody{
-        Code: "quod",
+        Code: "amet",
         Env: map[string]interface{}{
-            "qui": "dolorum",
-            "a": "esse",
-            "harum": "iusto",
-            "ipsum": "quisquam",
+            "dolorum": "numquam",
         },
-        Name: "Marvin Renner",
+        Name: "Melissa Bednar",
     })
     if err != nil {
         log.Fatal(err)
@@ -95,7 +92,7 @@ func main() {
             },
         }),
     )
-    id := "enim"
+    id := "quaerat"
 
     ctx := context.Background()
     res, err := s.Transformation.Get(ctx, id)
@@ -151,22 +148,20 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Transformation.Test(ctx, operations.TestTransformationRequestBody{
-        Code: hookdeck.String("dolorem"),
+        Code: hookdeck.String("accusamus"),
         Env: &operations.TestTransformationRequestBodyEnv{},
-        EventID: hookdeck.String("sapiente"),
+        EventID: hookdeck.String("quidem"),
         Request: &operations.TestTransformationRequestBodyRequest{
             Body: &operations.TestTransformationRequestBodyRequestBody{},
             Headers: map[string]string{
-                "nihil": "sit",
-                "expedita": "neque",
-                "sed": "vel",
+                "voluptatibus": "voluptas",
             },
             ParsedQuery: &operations.TestTransformationRequestBodyRequestParsedQuery{},
-            Path: hookdeck.String("libero"),
-            Query: hookdeck.String("voluptas"),
+            Path: hookdeck.String("natus"),
+            Query: hookdeck.String("eos"),
         },
-        TransformationID: hookdeck.String("deserunt"),
-        WebhookID: hookdeck.String("quam"),
+        TransformationID: hookdeck.String("atque"),
+        WebhookID: hookdeck.String("sit"),
     })
     if err != nil {
         log.Fatal(err)
@@ -218,14 +213,13 @@ func main() {
         }),
     )
     requestBody := operations.UpdateTransformationRequestBody{
-        Code: hookdeck.String("ipsum"),
+        Code: hookdeck.String("fugiat"),
         Env: map[string]interface{}{
-            "qui": "cupiditate",
-            "maxime": "pariatur",
+            "ab": "soluta",
         },
-        Name: hookdeck.String("Keith Padberg"),
+        Name: hookdeck.String("Ted Kling"),
     }
-    id := "aspernatur"
+    id := "omnis"
 
     ctx := context.Background()
     res, err := s.Transformation.Update(ctx, requestBody, id)
@@ -282,13 +276,11 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Transformation.Upsert(ctx, operations.UpsertTransformationRequestBody{
-        Code: "dolores",
+        Code: "necessitatibus",
         Env: map[string]interface{}{
-            "facilis": "aliquid",
-            "quam": "molestias",
-            "temporibus": "qui",
+            "distinctio": "asperiores",
         },
-        Name: "Beverly Cummerata II",
+        Name: "Edna Klocko",
     })
     if err != nil {
         log.Fatal(err)

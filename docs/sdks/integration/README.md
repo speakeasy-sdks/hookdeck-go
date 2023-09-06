@@ -35,8 +35,8 @@ func main() {
             },
         }),
     )
-    id := "natus"
-    sourceID := "omnis"
+    id := "facere"
+    sourceID := "ea"
 
     ctx := context.Background()
     res, err := s.Integration.AttachIntegrationToSource(ctx, id, sourceID)
@@ -94,15 +94,14 @@ func main() {
     ctx := context.Background()
     res, err := s.Integration.Create(ctx, operations.CreateIntegrationRequestBody{
         Configs: &shared.APIKeyIntegrationConfigs{
-            APIKey: "perferendis",
-            HeaderKey: "nihil",
+            APIKey: "laborum",
+            HeaderKey: "accusamus",
         },
         Features: []shared.IntegrationFeature{
-            shared.IntegrationFeaturePolling,
-            shared.IntegrationFeatureHandshake,
+            shared.IntegrationFeatureVerification,
         },
-        Label: hookdeck.String("labore"),
-        Provider: shared.IntegrationProviderHmac.ToPointer(),
+        Label: hookdeck.String("occaecati"),
+        Provider: shared.IntegrationProviderBasicAuth.ToPointer(),
     })
     if err != nil {
         log.Fatal(err)
@@ -153,7 +152,7 @@ func main() {
             },
         }),
     )
-    id := "suscipit"
+    id := "accusamus"
 
     ctx := context.Background()
     res, err := s.Integration.Delete(ctx, id)
@@ -206,8 +205,8 @@ func main() {
             },
         }),
     )
-    id := "natus"
-    sourceID := "nobis"
+    id := "delectus"
+    sourceID := "quidem"
 
     ctx := context.Background()
     res, err := s.Integration.DetachIntegrationToSource(ctx, id, sourceID)
@@ -261,7 +260,7 @@ func main() {
             },
         }),
     )
-    id := "eum"
+    id := "provident"
 
     ctx := context.Background()
     res, err := s.Integration.Get(ctx, id)
@@ -315,23 +314,17 @@ func main() {
         }),
     )
     requestBody := operations.UpdateIntegrationRequestBody{
-        Configs: &shared.ShopifyIntegrationConfigs{
-            APIKey: hookdeck.String("aspernatur"),
-            APISecret: hookdeck.String("architecto"),
-            RateLimit: hookdeck.Float32(2982.82),
-            RateLimitPeriod: shared.ShopifyIntegrationConfigsRateLimitPeriodLessThanNilGreaterThan.ToPointer(),
-            Shop: hookdeck.String("excepturi"),
-            WebhookSecretKey: "ullam",
+        Configs: &shared.BasicAuthIntegrationConfigs{
+            Name: "Nelson Lesch",
+            Password: "deserunt",
         },
         Features: []shared.IntegrationFeature{
             shared.IntegrationFeatureHandshake,
-            shared.IntegrationFeatureHandshake,
-            shared.IntegrationFeatureVerification,
         },
-        Label: hookdeck.String("mollitia"),
-        Provider: shared.IntegrationProviderAwsSns.ToPointer(),
+        Label: hookdeck.String("vel"),
+        Provider: shared.IntegrationProviderPropertyFinder.ToPointer(),
     }
-    id := "mollitia"
+    id := "omnis"
 
     ctx := context.Background()
     res, err := s.Integration.Update(ctx, requestBody, id)

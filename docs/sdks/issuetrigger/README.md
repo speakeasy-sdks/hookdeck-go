@@ -43,15 +43,15 @@ func main() {
             Email: &shared.IssueTriggerEmailChannel{},
             Opsgenie: &shared.IssueTriggerIntegrationChannel{},
             Slack: &shared.IssueTriggerSlackChannel{
-                ChannelName: "quasi",
+                ChannelName: "labore",
             },
         },
-        Configs: &shared.IssueTriggerTransformationConfigs{
-            LogLevel: shared.TransformationExecutionLogLevelFatal,
-            Transformations: shared.IssueTriggerTransformationConfigsTransformations{},
+        Configs: &shared.IssueTriggerDeliveryConfigs{
+            Connections: shared.IssueTriggerDeliveryConfigsConnections{},
+            Strategy: shared.IssueTriggerStrategyFirstAttempt,
         },
-        Name: hookdeck.String("Frederick Schoen"),
-        Type: shared.IssueTypeTransformation,
+        Name: hookdeck.String("Robin Keebler"),
+        Type: shared.IssueTypeDelivery,
     })
     if err != nil {
         log.Fatal(err)
@@ -102,7 +102,7 @@ func main() {
             },
         }),
     )
-    id := "architecto"
+    id := "magnam"
 
     ctx := context.Background()
     res, err := s.IssueTrigger.Delete(ctx, id)
@@ -155,7 +155,7 @@ func main() {
             },
         }),
     )
-    id := "architecto"
+    id := "et"
 
     ctx := context.Background()
     res, err := s.IssueTrigger.Disable(ctx, id)
@@ -208,7 +208,7 @@ func main() {
             },
         }),
     )
-    id := "repudiandae"
+    id := "excepturi"
 
     ctx := context.Background()
     res, err := s.IssueTrigger.Enable(ctx, id)
@@ -320,17 +320,17 @@ func main() {
             Email: &shared.IssueTriggerEmailChannel{},
             Opsgenie: &shared.IssueTriggerIntegrationChannel{},
             Slack: &shared.IssueTriggerSlackChannel{
-                ChannelName: "expedita",
+                ChannelName: "provident",
             },
         },
         Configs: &shared.IssueTriggerTransformationConfigs{
-            LogLevel: shared.TransformationExecutionLogLevelFatal,
+            LogLevel: shared.TransformationExecutionLogLevelWarn,
             Transformations: shared.IssueTriggerTransformationConfigsTransformations{},
         },
-        DisabledAt: types.MustTimeFromString("2022-07-21T08:29:53.942Z"),
-        Name: hookdeck.String("Al Bashirian"),
+        DisabledAt: types.MustTimeFromString("2022-05-07T13:57:38.738Z"),
+        Name: hookdeck.String("Shaun Hammes"),
     }
-    id := "natus"
+    id := "necessitatibus"
 
     ctx := context.Background()
     res, err := s.IssueTrigger.Update(ctx, requestBody, id)
@@ -391,15 +391,15 @@ func main() {
             Email: &shared.IssueTriggerEmailChannel{},
             Opsgenie: &shared.IssueTriggerIntegrationChannel{},
             Slack: &shared.IssueTriggerSlackChannel{
-                ChannelName: "magni",
+                ChannelName: "odit",
             },
         },
-        Configs: &shared.IssueTriggerDeliveryConfigs{
-            Connections: shared.IssueTriggerDeliveryConfigsConnections{},
-            Strategy: shared.IssueTriggerStrategyFinalAttempt,
+        Configs: &shared.IssueTriggerTransformationConfigs{
+            LogLevel: shared.TransformationExecutionLogLevelDebug,
+            Transformations: shared.IssueTriggerTransformationConfigsTransformations{},
         },
-        Name: "Ervin Schoen",
-        Type: shared.IssueTypeDelivery,
+        Name: "Melba Toy",
+        Type: shared.IssueTypeTransformation,
     })
     if err != nil {
         log.Fatal(err)

@@ -42,7 +42,7 @@ func main() {
         ArchivedAt: &operations.GetRulesetsArchivedAt{},
         Dir: &operations.GetRulesetsDir{},
         ID: &operations.GetRulesetsID{},
-        Limit: hookdeck.Int64(311796),
+        Limit: hookdeck.Int64(704415),
         Name: &operations.GetRulesetsName2{
             Any: hookdeck.Bool(false),
             Contains: &operations.GetRulesetsName2Contains{},
@@ -51,9 +51,9 @@ func main() {
             Le: &operations.GetRulesetsName2Le{},
             Lte: &operations.GetRulesetsName2Lte{},
         },
-        Next: hookdeck.String("quidem"),
+        Next: hookdeck.String("voluptatem"),
         OrderBy: &operations.GetRulesetsOrderBy{},
-        Prev: hookdeck.String("voluptatibus"),
+        Prev: hookdeck.String("porro"),
     })
     if err != nil {
         log.Fatal(err)

@@ -39,11 +39,11 @@ func main() {
     res, err := s.Transformations.Get(ctx, operations.GetTransformationsRequest{
         Dir: &operations.GetTransformationsDir{},
         ID: &operations.GetTransformationsID{},
-        Limit: hookdeck.Int64(512393),
+        Limit: hookdeck.Int64(213312),
         Name: &operations.GetTransformationsName{},
-        Next: hookdeck.String("odio"),
+        Next: hookdeck.String("sapiente"),
         OrderBy: &operations.GetTransformationsOrderBy{},
-        Prev: hookdeck.String("occaecati"),
+        Prev: hookdeck.String("totam"),
     })
     if err != nil {
         log.Fatal(err)

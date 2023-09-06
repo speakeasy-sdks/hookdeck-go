@@ -30,8 +30,8 @@ func main() {
             },
         }),
     )
-    executionID := "nam"
-    id := "hic"
+    executionID := "eius"
+    id := "aspernatur"
 
     ctx := context.Background()
     res, err := s.TransformationExecution.Get(ctx, executionID, id)

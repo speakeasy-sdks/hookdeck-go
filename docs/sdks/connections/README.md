@@ -42,7 +42,7 @@ func main() {
         ArchivedAt: &operations.GetConnectionsArchivedAt{},
         DestinationID: &operations.GetConnectionsDestinationID{},
         Dir: &operations.GetConnectionsDir{},
-        FullName: hookdeck.String("deserunt"),
+        FullName: hookdeck.String("commodi"),
         ID: &operations.GetConnectionsID{},
         Name: &operations.GetConnectionsName{},
         OrderBy: &operations.GetConnectionsOrderBy{},

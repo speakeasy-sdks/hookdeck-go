@@ -32,7 +32,7 @@ func main() {
             },
         }),
     )
-    id := "nam"
+    id := "dolorum"
 
     ctx := context.Background()
     res, err := s.Event.Get(ctx, id)
@@ -85,7 +85,7 @@ func main() {
             },
         }),
     )
-    id := "id"
+    id := "in"
 
     ctx := context.Background()
     res, err := s.Event.MuteEvent(ctx, id)
@@ -138,7 +138,7 @@ func main() {
             },
         }),
     )
-    id := "blanditiis"
+    id := "in"
 
     ctx := context.Background()
     res, err := s.Event.Retry(ctx, id)

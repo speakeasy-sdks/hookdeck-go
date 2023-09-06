@@ -32,7 +32,7 @@ func main() {
             },
         }),
     )
-    id := "dolor"
+    id := "nihil"
 
     ctx := context.Background()
     res, err := s.Issue.Dismiss(ctx, id)
@@ -85,7 +85,7 @@ func main() {
             },
         }),
     )
-    id := "necessitatibus"
+    id := "magnam"
 
     ctx := context.Background()
     res, err := s.Issue.Get(ctx, id)
@@ -139,9 +139,9 @@ func main() {
         }),
     )
     requestBody := operations.UpdateIssueRequestBody{
-        Status: operations.UpdateIssueRequestBodyStatusOpened,
+        Status: operations.UpdateIssueRequestBodyStatusAcknowledged,
     }
-    id := "nemo"
+    id := "id"
 
     ctx := context.Background()
     res, err := s.Issue.Update(ctx, requestBody, id)
