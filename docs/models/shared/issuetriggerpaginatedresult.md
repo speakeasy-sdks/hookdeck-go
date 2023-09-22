@@ -1,7 +1,5 @@
 # IssueTriggerPaginatedResult
 
-List of issue triggers
-
 
 ## Fields
 

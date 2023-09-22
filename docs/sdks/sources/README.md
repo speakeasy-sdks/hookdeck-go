@@ -20,15 +20,15 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/types"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
                 Password: "",
                 Username: "",
@@ -38,16 +38,16 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Sources.Get(ctx, operations.GetSourcesRequest{
-        Archived: hookdeck.Bool(false),
+        Archived: hookdeckgo.Bool(false),
         ArchivedAt: &operations.GetSourcesArchivedAt{},
         Dir: &operations.GetSourcesDir{},
         ID: &operations.GetSourcesID{},
         IntegrationID: &operations.GetSourcesIntegrationID{},
-        Limit: hookdeck.Int64(311860),
+        Limit: hookdeckgo.Int64(975522),
         Name: &operations.GetSourcesName{},
-        Next: hookdeck.String("tempora"),
+        Next: hookdeckgo.String("perferendis"),
         OrderBy: &operations.GetSourcesOrderBy{},
-        Prev: hookdeck.String("vel"),
+        Prev: hookdeckgo.String("fugiat"),
     })
     if err != nil {
         log.Fatal(err)

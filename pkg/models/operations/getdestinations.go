@@ -3,11 +3,11 @@
 package operations
 
 import (
-	"bytes"
 	"encoding/json"
 	"errors"
 	"fmt"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
+	"github.com/speakeasy-sdks/hookdeck-go/pkg/utils"
 	"net/http"
 	"time"
 )
@@ -19,6 +19,17 @@ type GetDestinationsArchivedAt2 struct {
 	Gte *time.Time `queryParam:"name=gte"`
 	Le  *time.Time `queryParam:"name=le"`
 	Lte *time.Time `queryParam:"name=lte"`
+}
+
+func (g GetDestinationsArchivedAt2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetDestinationsArchivedAt2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, true); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *GetDestinationsArchivedAt2) GetAny() *bool {
@@ -89,23 +100,18 @@ func CreateGetDestinationsArchivedAtGetDestinationsArchivedAt2(getDestinationsAr
 }
 
 func (u *GetDestinationsArchivedAt) UnmarshalJSON(data []byte) error {
-	var d *json.Decoder
 
-	dateTime := new(time.Time)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&dateTime); err == nil {
-		u.DateTime = dateTime
-		u.Type = GetDestinationsArchivedAtTypeDateTime
+	getDestinationsArchivedAt2 := new(GetDestinationsArchivedAt2)
+	if err := utils.UnmarshalJSON(data, &getDestinationsArchivedAt2, "", true, true); err == nil {
+		u.GetDestinationsArchivedAt2 = getDestinationsArchivedAt2
+		u.Type = GetDestinationsArchivedAtTypeGetDestinationsArchivedAt2
 		return nil
 	}
 
-	getDestinationsArchivedAt2 := new(GetDestinationsArchivedAt2)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&getDestinationsArchivedAt2); err == nil {
-		u.GetDestinationsArchivedAt2 = getDestinationsArchivedAt2
-		u.Type = GetDestinationsArchivedAtTypeGetDestinationsArchivedAt2
+	dateTime := new(time.Time)
+	if err := utils.UnmarshalJSON(data, &dateTime, "", true, true); err == nil {
+		u.DateTime = dateTime
+		u.Type = GetDestinationsArchivedAtTypeDateTime
 		return nil
 	}
 
@@ -114,14 +120,14 @@ func (u *GetDestinationsArchivedAt) UnmarshalJSON(data []byte) error {
 
 func (u GetDestinationsArchivedAt) MarshalJSON() ([]byte, error) {
 	if u.DateTime != nil {
-		return json.Marshal(u.DateTime)
+		return utils.MarshalJSON(u.DateTime, "", true)
 	}
 
 	if u.GetDestinationsArchivedAt2 != nil {
-		return json.Marshal(u.GetDestinationsArchivedAt2)
+		return utils.MarshalJSON(u.GetDestinationsArchivedAt2, "", true)
 	}
 
-	return nil, nil
+	return nil, errors.New("could not marshal union type: all fields are null")
 }
 
 // GetDestinationsCliPath2 - Path for the CLI destination
@@ -180,30 +186,23 @@ func CreateGetDestinationsCliPathArrayOfstr(arrayOfstr []string) GetDestinations
 }
 
 func (u *GetDestinationsCliPath) UnmarshalJSON(data []byte) error {
-	var d *json.Decoder
-
-	str := new(string)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&str); err == nil {
-		u.Str = str
-		u.Type = GetDestinationsCliPathTypeStr
-		return nil
-	}
 
 	getDestinationsCliPath2 := new(GetDestinationsCliPath2)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&getDestinationsCliPath2); err == nil {
+	if err := utils.UnmarshalJSON(data, &getDestinationsCliPath2, "", true, true); err == nil {
 		u.GetDestinationsCliPath2 = getDestinationsCliPath2
 		u.Type = GetDestinationsCliPathTypeGetDestinationsCliPath2
 		return nil
 	}
 
+	str := new(string)
+	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
+		u.Str = str
+		u.Type = GetDestinationsCliPathTypeStr
+		return nil
+	}
+
 	arrayOfstr := []string{}
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&arrayOfstr); err == nil {
+	if err := utils.UnmarshalJSON(data, &arrayOfstr, "", true, true); err == nil {
 		u.ArrayOfstr = arrayOfstr
 		u.Type = GetDestinationsCliPathTypeArrayOfstr
 		return nil
@@ -214,18 +213,18 @@ func (u *GetDestinationsCliPath) UnmarshalJSON(data []byte) error {
 
 func (u GetDestinationsCliPath) MarshalJSON() ([]byte, error) {
 	if u.Str != nil {
-		return json.Marshal(u.Str)
+		return utils.MarshalJSON(u.Str, "", true)
 	}
 
 	if u.GetDestinationsCliPath2 != nil {
-		return json.Marshal(u.GetDestinationsCliPath2)
+		return utils.MarshalJSON(u.GetDestinationsCliPath2, "", true)
 	}
 
 	if u.ArrayOfstr != nil {
-		return json.Marshal(u.ArrayOfstr)
+		return utils.MarshalJSON(u.ArrayOfstr, "", true)
 	}
 
-	return nil, nil
+	return nil, errors.New("could not marshal union type: all fields are null")
 }
 
 type GetDestinationsDir2 string
@@ -316,21 +315,16 @@ func CreateGetDestinationsDirArrayOfgetDestinationsDir2(arrayOfgetDestinationsDi
 }
 
 func (u *GetDestinationsDir) UnmarshalJSON(data []byte) error {
-	var d *json.Decoder
 
 	getDestinationsDir1 := new(GetDestinationsDir1)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&getDestinationsDir1); err == nil {
+	if err := utils.UnmarshalJSON(data, &getDestinationsDir1, "", true, true); err == nil {
 		u.GetDestinationsDir1 = getDestinationsDir1
 		u.Type = GetDestinationsDirTypeGetDestinationsDir1
 		return nil
 	}
 
 	arrayOfgetDestinationsDir2 := []GetDestinationsDir2{}
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&arrayOfgetDestinationsDir2); err == nil {
+	if err := utils.UnmarshalJSON(data, &arrayOfgetDestinationsDir2, "", true, true); err == nil {
 		u.ArrayOfgetDestinationsDir2 = arrayOfgetDestinationsDir2
 		u.Type = GetDestinationsDirTypeArrayOfgetDestinationsDir2
 		return nil
@@ -341,14 +335,14 @@ func (u *GetDestinationsDir) UnmarshalJSON(data []byte) error {
 
 func (u GetDestinationsDir) MarshalJSON() ([]byte, error) {
 	if u.GetDestinationsDir1 != nil {
-		return json.Marshal(u.GetDestinationsDir1)
+		return utils.MarshalJSON(u.GetDestinationsDir1, "", true)
 	}
 
 	if u.ArrayOfgetDestinationsDir2 != nil {
-		return json.Marshal(u.ArrayOfgetDestinationsDir2)
+		return utils.MarshalJSON(u.ArrayOfgetDestinationsDir2, "", true)
 	}
 
-	return nil, nil
+	return nil, errors.New("could not marshal union type: all fields are null")
 }
 
 type GetDestinationsIDType string
@@ -384,21 +378,16 @@ func CreateGetDestinationsIDArrayOfstr(arrayOfstr []string) GetDestinationsID {
 }
 
 func (u *GetDestinationsID) UnmarshalJSON(data []byte) error {
-	var d *json.Decoder
 
 	str := new(string)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&str); err == nil {
+	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
 		u.Str = str
 		u.Type = GetDestinationsIDTypeStr
 		return nil
 	}
 
 	arrayOfstr := []string{}
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&arrayOfstr); err == nil {
+	if err := utils.UnmarshalJSON(data, &arrayOfstr, "", true, true); err == nil {
 		u.ArrayOfstr = arrayOfstr
 		u.Type = GetDestinationsIDTypeArrayOfstr
 		return nil
@@ -409,14 +398,14 @@ func (u *GetDestinationsID) UnmarshalJSON(data []byte) error {
 
 func (u GetDestinationsID) MarshalJSON() ([]byte, error) {
 	if u.Str != nil {
-		return json.Marshal(u.Str)
+		return utils.MarshalJSON(u.Str, "", true)
 	}
 
 	if u.ArrayOfstr != nil {
-		return json.Marshal(u.ArrayOfstr)
+		return utils.MarshalJSON(u.ArrayOfstr, "", true)
 	}
 
-	return nil, nil
+	return nil, errors.New("could not marshal union type: all fields are null")
 }
 
 // GetDestinationsName2 - The destination name
@@ -504,23 +493,18 @@ func CreateGetDestinationsNameGetDestinationsName2(getDestinationsName2 GetDesti
 }
 
 func (u *GetDestinationsName) UnmarshalJSON(data []byte) error {
-	var d *json.Decoder
 
-	str := new(string)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&str); err == nil {
-		u.Str = str
-		u.Type = GetDestinationsNameTypeStr
+	getDestinationsName2 := new(GetDestinationsName2)
+	if err := utils.UnmarshalJSON(data, &getDestinationsName2, "", true, true); err == nil {
+		u.GetDestinationsName2 = getDestinationsName2
+		u.Type = GetDestinationsNameTypeGetDestinationsName2
 		return nil
 	}
 
-	getDestinationsName2 := new(GetDestinationsName2)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&getDestinationsName2); err == nil {
-		u.GetDestinationsName2 = getDestinationsName2
-		u.Type = GetDestinationsNameTypeGetDestinationsName2
+	str := new(string)
+	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
+		u.Str = str
+		u.Type = GetDestinationsNameTypeStr
 		return nil
 	}
 
@@ -529,115 +513,61 @@ func (u *GetDestinationsName) UnmarshalJSON(data []byte) error {
 
 func (u GetDestinationsName) MarshalJSON() ([]byte, error) {
 	if u.Str != nil {
-		return json.Marshal(u.Str)
+		return utils.MarshalJSON(u.Str, "", true)
 	}
 
 	if u.GetDestinationsName2 != nil {
-		return json.Marshal(u.GetDestinationsName2)
+		return utils.MarshalJSON(u.GetDestinationsName2, "", true)
 	}
 
-	return nil, nil
-}
-
-type GetDestinationsOrderBy2 string
-
-const (
-	GetDestinationsOrderBy2CreatedAt GetDestinationsOrderBy2 = "created_at"
-)
-
-func (e GetDestinationsOrderBy2) ToPointer() *GetDestinationsOrderBy2 {
-	return &e
-}
-
-func (e *GetDestinationsOrderBy2) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "created_at":
-		*e = GetDestinationsOrderBy2(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for GetDestinationsOrderBy2: %v", v)
-	}
-}
-
-// GetDestinationsOrderBy1 - Sort key(s)
-type GetDestinationsOrderBy1 string
-
-const (
-	GetDestinationsOrderBy1CreatedAt GetDestinationsOrderBy1 = "created_at"
-)
-
-func (e GetDestinationsOrderBy1) ToPointer() *GetDestinationsOrderBy1 {
-	return &e
-}
-
-func (e *GetDestinationsOrderBy1) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "created_at":
-		*e = GetDestinationsOrderBy1(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for GetDestinationsOrderBy1: %v", v)
-	}
+	return nil, errors.New("could not marshal union type: all fields are null")
 }
 
 type GetDestinationsOrderByType string
 
 const (
-	GetDestinationsOrderByTypeGetDestinationsOrderBy1        GetDestinationsOrderByType = "getDestinationsOrderBy_1"
-	GetDestinationsOrderByTypeArrayOfgetDestinationsOrderBy2 GetDestinationsOrderByType = "arrayOfgetDestinationsOrderBy_2"
+	GetDestinationsOrderByTypeStr        GetDestinationsOrderByType = "str"
+	GetDestinationsOrderByTypeArrayOfstr GetDestinationsOrderByType = "arrayOfstr"
 )
 
 type GetDestinationsOrderBy struct {
-	GetDestinationsOrderBy1        *GetDestinationsOrderBy1
-	ArrayOfgetDestinationsOrderBy2 []GetDestinationsOrderBy2
+	Str        *string
+	ArrayOfstr []string
 
 	Type GetDestinationsOrderByType
 }
 
-func CreateGetDestinationsOrderByGetDestinationsOrderBy1(getDestinationsOrderBy1 GetDestinationsOrderBy1) GetDestinationsOrderBy {
-	typ := GetDestinationsOrderByTypeGetDestinationsOrderBy1
+func CreateGetDestinationsOrderByStr(str string) GetDestinationsOrderBy {
+	typ := GetDestinationsOrderByTypeStr
 
 	return GetDestinationsOrderBy{
-		GetDestinationsOrderBy1: &getDestinationsOrderBy1,
-		Type:                    typ,
+		Str:  &str,
+		Type: typ,
 	}
 }
 
-func CreateGetDestinationsOrderByArrayOfgetDestinationsOrderBy2(arrayOfgetDestinationsOrderBy2 []GetDestinationsOrderBy2) GetDestinationsOrderBy {
-	typ := GetDestinationsOrderByTypeArrayOfgetDestinationsOrderBy2
+func CreateGetDestinationsOrderByArrayOfstr(arrayOfstr []string) GetDestinationsOrderBy {
+	typ := GetDestinationsOrderByTypeArrayOfstr
 
 	return GetDestinationsOrderBy{
-		ArrayOfgetDestinationsOrderBy2: arrayOfgetDestinationsOrderBy2,
-		Type:                           typ,
+		ArrayOfstr: arrayOfstr,
+		Type:       typ,
 	}
 }
 
 func (u *GetDestinationsOrderBy) UnmarshalJSON(data []byte) error {
-	var d *json.Decoder
 
-	getDestinationsOrderBy1 := new(GetDestinationsOrderBy1)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&getDestinationsOrderBy1); err == nil {
-		u.GetDestinationsOrderBy1 = getDestinationsOrderBy1
-		u.Type = GetDestinationsOrderByTypeGetDestinationsOrderBy1
+	str := new(string)
+	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
+		u.Str = str
+		u.Type = GetDestinationsOrderByTypeStr
 		return nil
 	}
 
-	arrayOfgetDestinationsOrderBy2 := []GetDestinationsOrderBy2{}
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&arrayOfgetDestinationsOrderBy2); err == nil {
-		u.ArrayOfgetDestinationsOrderBy2 = arrayOfgetDestinationsOrderBy2
-		u.Type = GetDestinationsOrderByTypeArrayOfgetDestinationsOrderBy2
+	arrayOfstr := []string{}
+	if err := utils.UnmarshalJSON(data, &arrayOfstr, "", true, true); err == nil {
+		u.ArrayOfstr = arrayOfstr
+		u.Type = GetDestinationsOrderByTypeArrayOfstr
 		return nil
 	}
 
@@ -645,15 +575,15 @@ func (u *GetDestinationsOrderBy) UnmarshalJSON(data []byte) error {
 }
 
 func (u GetDestinationsOrderBy) MarshalJSON() ([]byte, error) {
-	if u.GetDestinationsOrderBy1 != nil {
-		return json.Marshal(u.GetDestinationsOrderBy1)
+	if u.Str != nil {
+		return utils.MarshalJSON(u.Str, "", true)
 	}
 
-	if u.ArrayOfgetDestinationsOrderBy2 != nil {
-		return json.Marshal(u.ArrayOfgetDestinationsOrderBy2)
+	if u.ArrayOfstr != nil {
+		return utils.MarshalJSON(u.ArrayOfstr, "", true)
 	}
 
-	return nil, nil
+	return nil, errors.New("could not marshal union type: all fields are null")
 }
 
 type GetDestinationsURLType string
@@ -689,21 +619,16 @@ func CreateGetDestinationsURLArrayOfstr(arrayOfstr []string) GetDestinationsURL 
 }
 
 func (u *GetDestinationsURL) UnmarshalJSON(data []byte) error {
-	var d *json.Decoder
 
 	str := new(string)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&str); err == nil {
+	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
 		u.Str = str
 		u.Type = GetDestinationsURLTypeStr
 		return nil
 	}
 
 	arrayOfstr := []string{}
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&arrayOfstr); err == nil {
+	if err := utils.UnmarshalJSON(data, &arrayOfstr, "", true, true); err == nil {
 		u.ArrayOfstr = arrayOfstr
 		u.Type = GetDestinationsURLTypeArrayOfstr
 		return nil
@@ -714,14 +639,14 @@ func (u *GetDestinationsURL) UnmarshalJSON(data []byte) error {
 
 func (u GetDestinationsURL) MarshalJSON() ([]byte, error) {
 	if u.Str != nil {
-		return json.Marshal(u.Str)
+		return utils.MarshalJSON(u.Str, "", true)
 	}
 
 	if u.ArrayOfstr != nil {
-		return json.Marshal(u.ArrayOfstr)
+		return utils.MarshalJSON(u.ArrayOfstr, "", true)
 	}
 
-	return nil, nil
+	return nil, errors.New("could not marshal union type: all fields are null")
 }
 
 type GetDestinationsRequest struct {

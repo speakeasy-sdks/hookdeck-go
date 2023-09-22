@@ -3,41 +3,26 @@
 package shared
 
 import (
-	"encoding/json"
-	"fmt"
+	"github.com/speakeasy-sdks/hookdeck-go/pkg/utils"
 )
-
-// HookdeckSignatureType - Type of auth method
-type HookdeckSignatureType string
-
-const (
-	HookdeckSignatureTypeHookdeckSignature HookdeckSignatureType = "HOOKDECK_SIGNATURE"
-)
-
-func (e HookdeckSignatureType) ToPointer() *HookdeckSignatureType {
-	return &e
-}
-
-func (e *HookdeckSignatureType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "HOOKDECK_SIGNATURE":
-		*e = HookdeckSignatureType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for HookdeckSignatureType: %v", v)
-	}
-}
 
 // HookdeckSignature - Hookdeck Signature
 type HookdeckSignature struct {
 	// Empty config for the destination's auth method
 	Config *DestinationAuthMethodSignatureConfig `json:"config,omitempty"`
 	// Type of auth method
-	Type HookdeckSignatureType `json:"type"`
+	type_ string `const:"HOOKDECK_SIGNATURE" json:"type"`
+}
+
+func (h HookdeckSignature) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(h, "", false)
+}
+
+func (h *HookdeckSignature) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &h, "", false, true); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *HookdeckSignature) GetConfig() *DestinationAuthMethodSignatureConfig {
@@ -47,9 +32,6 @@ func (o *HookdeckSignature) GetConfig() *DestinationAuthMethodSignatureConfig {
 	return o.Config
 }
 
-func (o *HookdeckSignature) GetType() HookdeckSignatureType {
-	if o == nil {
-		return HookdeckSignatureType("")
-	}
-	return o.Type
+func (o *HookdeckSignature) GetType() string {
+	return "HOOKDECK_SIGNATURE"
 }

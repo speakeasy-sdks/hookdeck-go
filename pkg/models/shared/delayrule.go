@@ -3,40 +3,25 @@
 package shared
 
 import (
-	"encoding/json"
-	"fmt"
+	"github.com/speakeasy-sdks/hookdeck-go/pkg/utils"
 )
-
-// DelayRuleType - A delay rule must be of type `delay`
-type DelayRuleType string
-
-const (
-	DelayRuleTypeDelay DelayRuleType = "delay"
-)
-
-func (e DelayRuleType) ToPointer() *DelayRuleType {
-	return &e
-}
-
-func (e *DelayRuleType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "delay":
-		*e = DelayRuleType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for DelayRuleType: %v", v)
-	}
-}
 
 type DelayRule struct {
 	// Delay to introduce in MS
 	Delay int64 `json:"delay"`
 	// A delay rule must be of type `delay`
-	Type DelayRuleType `json:"type"`
+	type_ string `const:"delay" json:"type"`
+}
+
+func (d DelayRule) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(d, "", false)
+}
+
+func (d *DelayRule) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &d, "", false, true); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *DelayRule) GetDelay() int64 {
@@ -46,9 +31,6 @@ func (o *DelayRule) GetDelay() int64 {
 	return o.Delay
 }
 
-func (o *DelayRule) GetType() DelayRuleType {
-	if o == nil {
-		return DelayRuleType("")
-	}
-	return o.Type
+func (o *DelayRule) GetType() string {
+	return "delay"
 }

@@ -16,15 +16,15 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/types"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
                 Password: "",
                 Username: "",
@@ -46,11 +46,11 @@ func main() {
         ID: &operations.GetIssueCountID{},
         IssueTriggerID: &operations.GetIssueCountIssueTriggerID{},
         LastSeenAt: &operations.GetIssueCountLastSeenAt{},
-        Limit: hookdeck.Int64(975522),
+        Limit: hookdeckgo.Int64(423855),
         MergedWith: &operations.GetIssueCountMergedWith{},
-        Next: hookdeck.String("perferendis"),
+        Next: hookdeckgo.String("natus"),
         OrderBy: &operations.GetIssueCountOrderBy{},
-        Prev: hookdeck.String("fugiat"),
+        Prev: hookdeckgo.String("omnis"),
         Status: &operations.GetIssueCountStatus{},
         Type: &operations.GetIssueCountType{},
     })

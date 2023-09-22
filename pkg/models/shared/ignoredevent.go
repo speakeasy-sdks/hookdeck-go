@@ -3,18 +3,94 @@
 package shared
 
 import (
+	"errors"
+	"github.com/speakeasy-sdks/hookdeck-go/pkg/utils"
 	"time"
 )
+
+type IgnoredEventMetaType string
+
+const (
+	IgnoredEventMetaTypeFilteredMeta             IgnoredEventMetaType = "FilteredMeta"
+	IgnoredEventMetaTypeTransformationFailedMeta IgnoredEventMetaType = "TransformationFailedMeta"
+)
+
+type IgnoredEventMeta struct {
+	FilteredMeta             *FilteredMeta
+	TransformationFailedMeta *TransformationFailedMeta
+
+	Type IgnoredEventMetaType
+}
+
+func CreateIgnoredEventMetaFilteredMeta(filteredMeta FilteredMeta) IgnoredEventMeta {
+	typ := IgnoredEventMetaTypeFilteredMeta
+
+	return IgnoredEventMeta{
+		FilteredMeta: &filteredMeta,
+		Type:         typ,
+	}
+}
+
+func CreateIgnoredEventMetaTransformationFailedMeta(transformationFailedMeta TransformationFailedMeta) IgnoredEventMeta {
+	typ := IgnoredEventMetaTypeTransformationFailedMeta
+
+	return IgnoredEventMeta{
+		TransformationFailedMeta: &transformationFailedMeta,
+		Type:                     typ,
+	}
+}
+
+func (u *IgnoredEventMeta) UnmarshalJSON(data []byte) error {
+
+	transformationFailedMeta := new(TransformationFailedMeta)
+	if err := utils.UnmarshalJSON(data, &transformationFailedMeta, "", true, true); err == nil {
+		u.TransformationFailedMeta = transformationFailedMeta
+		u.Type = IgnoredEventMetaTypeTransformationFailedMeta
+		return nil
+	}
+
+	filteredMeta := new(FilteredMeta)
+	if err := utils.UnmarshalJSON(data, &filteredMeta, "", true, true); err == nil {
+		u.FilteredMeta = filteredMeta
+		u.Type = IgnoredEventMetaTypeFilteredMeta
+		return nil
+	}
+
+	return errors.New("could not unmarshal into supported union types")
+}
+
+func (u IgnoredEventMeta) MarshalJSON() ([]byte, error) {
+	if u.FilteredMeta != nil {
+		return utils.MarshalJSON(u.FilteredMeta, "", true)
+	}
+
+	if u.TransformationFailedMeta != nil {
+		return utils.MarshalJSON(u.TransformationFailedMeta, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type: all fields are null")
+}
 
 type IgnoredEvent struct {
 	Cause     IgnoredEventCause `json:"cause"`
 	CreatedAt time.Time         `json:"created_at"`
 	ID        string            `json:"id"`
-	Meta      interface{}       `json:"meta,omitempty"`
+	Meta      *IgnoredEventMeta `json:"meta,omitempty"`
 	RequestID string            `json:"request_id"`
 	TeamID    string            `json:"team_id"`
 	UpdatedAt time.Time         `json:"updated_at"`
 	WebhookID string            `json:"webhook_id"`
+}
+
+func (i IgnoredEvent) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(i, "", false)
+}
+
+func (i *IgnoredEvent) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &i, "", false, false); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *IgnoredEvent) GetCause() IgnoredEventCause {
@@ -38,7 +114,7 @@ func (o *IgnoredEvent) GetID() string {
 	return o.ID
 }
 
-func (o *IgnoredEvent) GetMeta() interface{} {
+func (o *IgnoredEvent) GetMeta() *IgnoredEventMeta {
 	if o == nil {
 		return nil
 	}
