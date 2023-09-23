@@ -3,10 +3,9 @@
 package operations
 
 import (
-	"bytes"
-	"encoding/json"
 	"errors"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
+	"github.com/speakeasy-sdks/hookdeck-go/pkg/utils"
 	"net/http"
 )
 
@@ -51,21 +50,16 @@ func CreateTestTransformationRequestBodyRequestBodyStr(str string) TestTransform
 }
 
 func (u *TestTransformationRequestBodyRequestBody) UnmarshalJSON(data []byte) error {
-	var d *json.Decoder
 
 	testTransformationRequestBodyRequestBody1 := new(TestTransformationRequestBodyRequestBody1)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&testTransformationRequestBodyRequestBody1); err == nil {
+	if err := utils.UnmarshalJSON(data, &testTransformationRequestBodyRequestBody1, "", true, true); err == nil {
 		u.TestTransformationRequestBodyRequestBody1 = testTransformationRequestBodyRequestBody1
 		u.Type = TestTransformationRequestBodyRequestBodyTypeTestTransformationRequestBodyRequestBody1
 		return nil
 	}
 
 	str := new(string)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&str); err == nil {
+	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
 		u.Str = str
 		u.Type = TestTransformationRequestBodyRequestBodyTypeStr
 		return nil
@@ -76,14 +70,14 @@ func (u *TestTransformationRequestBodyRequestBody) UnmarshalJSON(data []byte) er
 
 func (u TestTransformationRequestBodyRequestBody) MarshalJSON() ([]byte, error) {
 	if u.TestTransformationRequestBodyRequestBody1 != nil {
-		return json.Marshal(u.TestTransformationRequestBodyRequestBody1)
+		return utils.MarshalJSON(u.TestTransformationRequestBodyRequestBody1, "", true)
 	}
 
 	if u.Str != nil {
-		return json.Marshal(u.Str)
+		return utils.MarshalJSON(u.Str, "", true)
 	}
 
-	return nil, nil
+	return nil, errors.New("could not marshal union type: all fields are null")
 }
 
 // TestTransformationRequestBodyRequestParsedQuery - JSON representation of the query params

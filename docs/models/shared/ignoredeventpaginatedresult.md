@@ -1,7 +1,5 @@
 # IgnoredEventPaginatedResult
 
-List of ignored events
-
 
 ## Fields
 

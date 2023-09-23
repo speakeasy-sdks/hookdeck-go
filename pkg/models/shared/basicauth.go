@@ -3,41 +3,26 @@
 package shared
 
 import (
-	"encoding/json"
-	"fmt"
+	"github.com/speakeasy-sdks/hookdeck-go/pkg/utils"
 )
-
-// BasicAuthType - Type of auth method
-type BasicAuthType string
-
-const (
-	BasicAuthTypeBasicAuth BasicAuthType = "BASIC_AUTH"
-)
-
-func (e BasicAuthType) ToPointer() *BasicAuthType {
-	return &e
-}
-
-func (e *BasicAuthType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "BASIC_AUTH":
-		*e = BasicAuthType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for BasicAuthType: %v", v)
-	}
-}
 
 // BasicAuth - Basic Auth
 type BasicAuth struct {
 	// Basic auth config for the destination's auth method
 	Config *DestinationAuthMethodBasicAuthConfig `json:"config,omitempty"`
 	// Type of auth method
-	Type BasicAuthType `json:"type"`
+	type_ string `const:"BASIC_AUTH" json:"type"`
+}
+
+func (b BasicAuth) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(b, "", false)
+}
+
+func (b *BasicAuth) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &b, "", false, true); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *BasicAuth) GetConfig() *DestinationAuthMethodBasicAuthConfig {
@@ -47,9 +32,6 @@ func (o *BasicAuth) GetConfig() *DestinationAuthMethodBasicAuthConfig {
 	return o.Config
 }
 
-func (o *BasicAuth) GetType() BasicAuthType {
-	if o == nil {
-		return BasicAuthType("")
-	}
-	return o.Type
+func (o *BasicAuth) GetType() string {
+	return "BASIC_AUTH"
 }

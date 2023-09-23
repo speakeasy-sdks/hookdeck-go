@@ -2,15 +2,14 @@
 
 package shared
 
-// RetriedEvent - Retried event with event attempt
 type RetriedEvent struct {
-	Attempt EventAttempt `json:"attempt"`
-	Event   Event        `json:"event"`
+	Attempt *EventAttempt `json:"attempt"`
+	Event   Event         `json:"event"`
 }
 
-func (o *RetriedEvent) GetAttempt() EventAttempt {
+func (o *RetriedEvent) GetAttempt() *EventAttempt {
 	if o == nil {
-		return EventAttempt{}
+		return nil
 	}
 	return o.Attempt
 }

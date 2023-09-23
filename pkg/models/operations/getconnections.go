@@ -3,11 +3,11 @@
 package operations
 
 import (
-	"bytes"
 	"encoding/json"
 	"errors"
 	"fmt"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
+	"github.com/speakeasy-sdks/hookdeck-go/pkg/utils"
 	"net/http"
 	"time"
 )
@@ -19,6 +19,17 @@ type GetConnectionsArchivedAt2 struct {
 	Gte *time.Time `queryParam:"name=gte"`
 	Le  *time.Time `queryParam:"name=le"`
 	Lte *time.Time `queryParam:"name=lte"`
+}
+
+func (g GetConnectionsArchivedAt2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetConnectionsArchivedAt2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, true); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *GetConnectionsArchivedAt2) GetAny() *bool {
@@ -89,23 +100,18 @@ func CreateGetConnectionsArchivedAtGetConnectionsArchivedAt2(getConnectionsArchi
 }
 
 func (u *GetConnectionsArchivedAt) UnmarshalJSON(data []byte) error {
-	var d *json.Decoder
 
-	dateTime := new(time.Time)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&dateTime); err == nil {
-		u.DateTime = dateTime
-		u.Type = GetConnectionsArchivedAtTypeDateTime
+	getConnectionsArchivedAt2 := new(GetConnectionsArchivedAt2)
+	if err := utils.UnmarshalJSON(data, &getConnectionsArchivedAt2, "", true, true); err == nil {
+		u.GetConnectionsArchivedAt2 = getConnectionsArchivedAt2
+		u.Type = GetConnectionsArchivedAtTypeGetConnectionsArchivedAt2
 		return nil
 	}
 
-	getConnectionsArchivedAt2 := new(GetConnectionsArchivedAt2)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&getConnectionsArchivedAt2); err == nil {
-		u.GetConnectionsArchivedAt2 = getConnectionsArchivedAt2
-		u.Type = GetConnectionsArchivedAtTypeGetConnectionsArchivedAt2
+	dateTime := new(time.Time)
+	if err := utils.UnmarshalJSON(data, &dateTime, "", true, true); err == nil {
+		u.DateTime = dateTime
+		u.Type = GetConnectionsArchivedAtTypeDateTime
 		return nil
 	}
 
@@ -114,14 +120,14 @@ func (u *GetConnectionsArchivedAt) UnmarshalJSON(data []byte) error {
 
 func (u GetConnectionsArchivedAt) MarshalJSON() ([]byte, error) {
 	if u.DateTime != nil {
-		return json.Marshal(u.DateTime)
+		return utils.MarshalJSON(u.DateTime, "", true)
 	}
 
 	if u.GetConnectionsArchivedAt2 != nil {
-		return json.Marshal(u.GetConnectionsArchivedAt2)
+		return utils.MarshalJSON(u.GetConnectionsArchivedAt2, "", true)
 	}
 
-	return nil, nil
+	return nil, errors.New("could not marshal union type: all fields are null")
 }
 
 type GetConnectionsDestinationIDType string
@@ -157,21 +163,16 @@ func CreateGetConnectionsDestinationIDArrayOfstr(arrayOfstr []string) GetConnect
 }
 
 func (u *GetConnectionsDestinationID) UnmarshalJSON(data []byte) error {
-	var d *json.Decoder
 
 	str := new(string)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&str); err == nil {
+	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
 		u.Str = str
 		u.Type = GetConnectionsDestinationIDTypeStr
 		return nil
 	}
 
 	arrayOfstr := []string{}
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&arrayOfstr); err == nil {
+	if err := utils.UnmarshalJSON(data, &arrayOfstr, "", true, true); err == nil {
 		u.ArrayOfstr = arrayOfstr
 		u.Type = GetConnectionsDestinationIDTypeArrayOfstr
 		return nil
@@ -182,14 +183,14 @@ func (u *GetConnectionsDestinationID) UnmarshalJSON(data []byte) error {
 
 func (u GetConnectionsDestinationID) MarshalJSON() ([]byte, error) {
 	if u.Str != nil {
-		return json.Marshal(u.Str)
+		return utils.MarshalJSON(u.Str, "", true)
 	}
 
 	if u.ArrayOfstr != nil {
-		return json.Marshal(u.ArrayOfstr)
+		return utils.MarshalJSON(u.ArrayOfstr, "", true)
 	}
 
-	return nil, nil
+	return nil, errors.New("could not marshal union type: all fields are null")
 }
 
 type GetConnectionsDir2 string
@@ -280,21 +281,16 @@ func CreateGetConnectionsDirArrayOfgetConnectionsDir2(arrayOfgetConnectionsDir2 
 }
 
 func (u *GetConnectionsDir) UnmarshalJSON(data []byte) error {
-	var d *json.Decoder
 
 	getConnectionsDir1 := new(GetConnectionsDir1)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&getConnectionsDir1); err == nil {
+	if err := utils.UnmarshalJSON(data, &getConnectionsDir1, "", true, true); err == nil {
 		u.GetConnectionsDir1 = getConnectionsDir1
 		u.Type = GetConnectionsDirTypeGetConnectionsDir1
 		return nil
 	}
 
 	arrayOfgetConnectionsDir2 := []GetConnectionsDir2{}
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&arrayOfgetConnectionsDir2); err == nil {
+	if err := utils.UnmarshalJSON(data, &arrayOfgetConnectionsDir2, "", true, true); err == nil {
 		u.ArrayOfgetConnectionsDir2 = arrayOfgetConnectionsDir2
 		u.Type = GetConnectionsDirTypeArrayOfgetConnectionsDir2
 		return nil
@@ -305,14 +301,14 @@ func (u *GetConnectionsDir) UnmarshalJSON(data []byte) error {
 
 func (u GetConnectionsDir) MarshalJSON() ([]byte, error) {
 	if u.GetConnectionsDir1 != nil {
-		return json.Marshal(u.GetConnectionsDir1)
+		return utils.MarshalJSON(u.GetConnectionsDir1, "", true)
 	}
 
 	if u.ArrayOfgetConnectionsDir2 != nil {
-		return json.Marshal(u.ArrayOfgetConnectionsDir2)
+		return utils.MarshalJSON(u.ArrayOfgetConnectionsDir2, "", true)
 	}
 
-	return nil, nil
+	return nil, errors.New("could not marshal union type: all fields are null")
 }
 
 type GetConnectionsIDType string
@@ -348,21 +344,16 @@ func CreateGetConnectionsIDArrayOfstr(arrayOfstr []string) GetConnectionsID {
 }
 
 func (u *GetConnectionsID) UnmarshalJSON(data []byte) error {
-	var d *json.Decoder
 
 	str := new(string)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&str); err == nil {
+	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
 		u.Str = str
 		u.Type = GetConnectionsIDTypeStr
 		return nil
 	}
 
 	arrayOfstr := []string{}
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&arrayOfstr); err == nil {
+	if err := utils.UnmarshalJSON(data, &arrayOfstr, "", true, true); err == nil {
 		u.ArrayOfstr = arrayOfstr
 		u.Type = GetConnectionsIDTypeArrayOfstr
 		return nil
@@ -373,14 +364,14 @@ func (u *GetConnectionsID) UnmarshalJSON(data []byte) error {
 
 func (u GetConnectionsID) MarshalJSON() ([]byte, error) {
 	if u.Str != nil {
-		return json.Marshal(u.Str)
+		return utils.MarshalJSON(u.Str, "", true)
 	}
 
 	if u.ArrayOfstr != nil {
-		return json.Marshal(u.ArrayOfstr)
+		return utils.MarshalJSON(u.ArrayOfstr, "", true)
 	}
 
-	return nil, nil
+	return nil, errors.New("could not marshal union type: all fields are null")
 }
 
 // GetConnectionsName2 - Filter by connection name
@@ -468,23 +459,18 @@ func CreateGetConnectionsNameGetConnectionsName2(getConnectionsName2 GetConnecti
 }
 
 func (u *GetConnectionsName) UnmarshalJSON(data []byte) error {
-	var d *json.Decoder
 
-	str := new(string)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&str); err == nil {
-		u.Str = str
-		u.Type = GetConnectionsNameTypeStr
+	getConnectionsName2 := new(GetConnectionsName2)
+	if err := utils.UnmarshalJSON(data, &getConnectionsName2, "", true, true); err == nil {
+		u.GetConnectionsName2 = getConnectionsName2
+		u.Type = GetConnectionsNameTypeGetConnectionsName2
 		return nil
 	}
 
-	getConnectionsName2 := new(GetConnectionsName2)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&getConnectionsName2); err == nil {
-		u.GetConnectionsName2 = getConnectionsName2
-		u.Type = GetConnectionsNameTypeGetConnectionsName2
+	str := new(string)
+	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
+		u.Str = str
+		u.Type = GetConnectionsNameTypeStr
 		return nil
 	}
 
@@ -493,115 +479,61 @@ func (u *GetConnectionsName) UnmarshalJSON(data []byte) error {
 
 func (u GetConnectionsName) MarshalJSON() ([]byte, error) {
 	if u.Str != nil {
-		return json.Marshal(u.Str)
+		return utils.MarshalJSON(u.Str, "", true)
 	}
 
 	if u.GetConnectionsName2 != nil {
-		return json.Marshal(u.GetConnectionsName2)
+		return utils.MarshalJSON(u.GetConnectionsName2, "", true)
 	}
 
-	return nil, nil
-}
-
-type GetConnectionsOrderBy2 string
-
-const (
-	GetConnectionsOrderBy2CreatedAt GetConnectionsOrderBy2 = "created_at"
-)
-
-func (e GetConnectionsOrderBy2) ToPointer() *GetConnectionsOrderBy2 {
-	return &e
-}
-
-func (e *GetConnectionsOrderBy2) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "created_at":
-		*e = GetConnectionsOrderBy2(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for GetConnectionsOrderBy2: %v", v)
-	}
-}
-
-// GetConnectionsOrderBy1 - Sort key(s)
-type GetConnectionsOrderBy1 string
-
-const (
-	GetConnectionsOrderBy1CreatedAt GetConnectionsOrderBy1 = "created_at"
-)
-
-func (e GetConnectionsOrderBy1) ToPointer() *GetConnectionsOrderBy1 {
-	return &e
-}
-
-func (e *GetConnectionsOrderBy1) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "created_at":
-		*e = GetConnectionsOrderBy1(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for GetConnectionsOrderBy1: %v", v)
-	}
+	return nil, errors.New("could not marshal union type: all fields are null")
 }
 
 type GetConnectionsOrderByType string
 
 const (
-	GetConnectionsOrderByTypeGetConnectionsOrderBy1        GetConnectionsOrderByType = "getConnectionsOrderBy_1"
-	GetConnectionsOrderByTypeArrayOfgetConnectionsOrderBy2 GetConnectionsOrderByType = "arrayOfgetConnectionsOrderBy_2"
+	GetConnectionsOrderByTypeStr        GetConnectionsOrderByType = "str"
+	GetConnectionsOrderByTypeArrayOfstr GetConnectionsOrderByType = "arrayOfstr"
 )
 
 type GetConnectionsOrderBy struct {
-	GetConnectionsOrderBy1        *GetConnectionsOrderBy1
-	ArrayOfgetConnectionsOrderBy2 []GetConnectionsOrderBy2
+	Str        *string
+	ArrayOfstr []string
 
 	Type GetConnectionsOrderByType
 }
 
-func CreateGetConnectionsOrderByGetConnectionsOrderBy1(getConnectionsOrderBy1 GetConnectionsOrderBy1) GetConnectionsOrderBy {
-	typ := GetConnectionsOrderByTypeGetConnectionsOrderBy1
+func CreateGetConnectionsOrderByStr(str string) GetConnectionsOrderBy {
+	typ := GetConnectionsOrderByTypeStr
 
 	return GetConnectionsOrderBy{
-		GetConnectionsOrderBy1: &getConnectionsOrderBy1,
-		Type:                   typ,
+		Str:  &str,
+		Type: typ,
 	}
 }
 
-func CreateGetConnectionsOrderByArrayOfgetConnectionsOrderBy2(arrayOfgetConnectionsOrderBy2 []GetConnectionsOrderBy2) GetConnectionsOrderBy {
-	typ := GetConnectionsOrderByTypeArrayOfgetConnectionsOrderBy2
+func CreateGetConnectionsOrderByArrayOfstr(arrayOfstr []string) GetConnectionsOrderBy {
+	typ := GetConnectionsOrderByTypeArrayOfstr
 
 	return GetConnectionsOrderBy{
-		ArrayOfgetConnectionsOrderBy2: arrayOfgetConnectionsOrderBy2,
-		Type:                          typ,
+		ArrayOfstr: arrayOfstr,
+		Type:       typ,
 	}
 }
 
 func (u *GetConnectionsOrderBy) UnmarshalJSON(data []byte) error {
-	var d *json.Decoder
 
-	getConnectionsOrderBy1 := new(GetConnectionsOrderBy1)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&getConnectionsOrderBy1); err == nil {
-		u.GetConnectionsOrderBy1 = getConnectionsOrderBy1
-		u.Type = GetConnectionsOrderByTypeGetConnectionsOrderBy1
+	str := new(string)
+	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
+		u.Str = str
+		u.Type = GetConnectionsOrderByTypeStr
 		return nil
 	}
 
-	arrayOfgetConnectionsOrderBy2 := []GetConnectionsOrderBy2{}
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&arrayOfgetConnectionsOrderBy2); err == nil {
-		u.ArrayOfgetConnectionsOrderBy2 = arrayOfgetConnectionsOrderBy2
-		u.Type = GetConnectionsOrderByTypeArrayOfgetConnectionsOrderBy2
+	arrayOfstr := []string{}
+	if err := utils.UnmarshalJSON(data, &arrayOfstr, "", true, true); err == nil {
+		u.ArrayOfstr = arrayOfstr
+		u.Type = GetConnectionsOrderByTypeArrayOfstr
 		return nil
 	}
 
@@ -609,15 +541,15 @@ func (u *GetConnectionsOrderBy) UnmarshalJSON(data []byte) error {
 }
 
 func (u GetConnectionsOrderBy) MarshalJSON() ([]byte, error) {
-	if u.GetConnectionsOrderBy1 != nil {
-		return json.Marshal(u.GetConnectionsOrderBy1)
+	if u.Str != nil {
+		return utils.MarshalJSON(u.Str, "", true)
 	}
 
-	if u.ArrayOfgetConnectionsOrderBy2 != nil {
-		return json.Marshal(u.ArrayOfgetConnectionsOrderBy2)
+	if u.ArrayOfstr != nil {
+		return utils.MarshalJSON(u.ArrayOfstr, "", true)
 	}
 
-	return nil, nil
+	return nil, errors.New("could not marshal union type: all fields are null")
 }
 
 // GetConnectionsPausedAt2 - Date the connection was paused
@@ -627,6 +559,17 @@ type GetConnectionsPausedAt2 struct {
 	Gte *time.Time `queryParam:"name=gte"`
 	Le  *time.Time `queryParam:"name=le"`
 	Lte *time.Time `queryParam:"name=lte"`
+}
+
+func (g GetConnectionsPausedAt2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetConnectionsPausedAt2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, true); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *GetConnectionsPausedAt2) GetAny() *bool {
@@ -697,23 +640,18 @@ func CreateGetConnectionsPausedAtGetConnectionsPausedAt2(getConnectionsPausedAt2
 }
 
 func (u *GetConnectionsPausedAt) UnmarshalJSON(data []byte) error {
-	var d *json.Decoder
 
-	dateTime := new(time.Time)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&dateTime); err == nil {
-		u.DateTime = dateTime
-		u.Type = GetConnectionsPausedAtTypeDateTime
+	getConnectionsPausedAt2 := new(GetConnectionsPausedAt2)
+	if err := utils.UnmarshalJSON(data, &getConnectionsPausedAt2, "", true, true); err == nil {
+		u.GetConnectionsPausedAt2 = getConnectionsPausedAt2
+		u.Type = GetConnectionsPausedAtTypeGetConnectionsPausedAt2
 		return nil
 	}
 
-	getConnectionsPausedAt2 := new(GetConnectionsPausedAt2)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&getConnectionsPausedAt2); err == nil {
-		u.GetConnectionsPausedAt2 = getConnectionsPausedAt2
-		u.Type = GetConnectionsPausedAtTypeGetConnectionsPausedAt2
+	dateTime := new(time.Time)
+	if err := utils.UnmarshalJSON(data, &dateTime, "", true, true); err == nil {
+		u.DateTime = dateTime
+		u.Type = GetConnectionsPausedAtTypeDateTime
 		return nil
 	}
 
@@ -722,14 +660,14 @@ func (u *GetConnectionsPausedAt) UnmarshalJSON(data []byte) error {
 
 func (u GetConnectionsPausedAt) MarshalJSON() ([]byte, error) {
 	if u.DateTime != nil {
-		return json.Marshal(u.DateTime)
+		return utils.MarshalJSON(u.DateTime, "", true)
 	}
 
 	if u.GetConnectionsPausedAt2 != nil {
-		return json.Marshal(u.GetConnectionsPausedAt2)
+		return utils.MarshalJSON(u.GetConnectionsPausedAt2, "", true)
 	}
 
-	return nil, nil
+	return nil, errors.New("could not marshal union type: all fields are null")
 }
 
 type GetConnectionsSourceIDType string
@@ -765,21 +703,16 @@ func CreateGetConnectionsSourceIDArrayOfstr(arrayOfstr []string) GetConnectionsS
 }
 
 func (u *GetConnectionsSourceID) UnmarshalJSON(data []byte) error {
-	var d *json.Decoder
 
 	str := new(string)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&str); err == nil {
+	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
 		u.Str = str
 		u.Type = GetConnectionsSourceIDTypeStr
 		return nil
 	}
 
 	arrayOfstr := []string{}
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&arrayOfstr); err == nil {
+	if err := utils.UnmarshalJSON(data, &arrayOfstr, "", true, true); err == nil {
 		u.ArrayOfstr = arrayOfstr
 		u.Type = GetConnectionsSourceIDTypeArrayOfstr
 		return nil
@@ -790,14 +723,14 @@ func (u *GetConnectionsSourceID) UnmarshalJSON(data []byte) error {
 
 func (u GetConnectionsSourceID) MarshalJSON() ([]byte, error) {
 	if u.Str != nil {
-		return json.Marshal(u.Str)
+		return utils.MarshalJSON(u.Str, "", true)
 	}
 
 	if u.ArrayOfstr != nil {
-		return json.Marshal(u.ArrayOfstr)
+		return utils.MarshalJSON(u.ArrayOfstr, "", true)
 	}
 
-	return nil, nil
+	return nil, errors.New("could not marshal union type: all fields are null")
 }
 
 type GetConnectionsRequest struct {

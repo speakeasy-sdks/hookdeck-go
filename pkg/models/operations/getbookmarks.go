@@ -3,11 +3,11 @@
 package operations
 
 import (
-	"bytes"
 	"encoding/json"
 	"errors"
 	"fmt"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
+	"github.com/speakeasy-sdks/hookdeck-go/pkg/utils"
 	"net/http"
 	"time"
 )
@@ -100,21 +100,16 @@ func CreateGetBookmarksDirArrayOfgetBookmarksDir2(arrayOfgetBookmarksDir2 []GetB
 }
 
 func (u *GetBookmarksDir) UnmarshalJSON(data []byte) error {
-	var d *json.Decoder
 
 	getBookmarksDir1 := new(GetBookmarksDir1)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&getBookmarksDir1); err == nil {
+	if err := utils.UnmarshalJSON(data, &getBookmarksDir1, "", true, true); err == nil {
 		u.GetBookmarksDir1 = getBookmarksDir1
 		u.Type = GetBookmarksDirTypeGetBookmarksDir1
 		return nil
 	}
 
 	arrayOfgetBookmarksDir2 := []GetBookmarksDir2{}
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&arrayOfgetBookmarksDir2); err == nil {
+	if err := utils.UnmarshalJSON(data, &arrayOfgetBookmarksDir2, "", true, true); err == nil {
 		u.ArrayOfgetBookmarksDir2 = arrayOfgetBookmarksDir2
 		u.Type = GetBookmarksDirTypeArrayOfgetBookmarksDir2
 		return nil
@@ -125,14 +120,14 @@ func (u *GetBookmarksDir) UnmarshalJSON(data []byte) error {
 
 func (u GetBookmarksDir) MarshalJSON() ([]byte, error) {
 	if u.GetBookmarksDir1 != nil {
-		return json.Marshal(u.GetBookmarksDir1)
+		return utils.MarshalJSON(u.GetBookmarksDir1, "", true)
 	}
 
 	if u.ArrayOfgetBookmarksDir2 != nil {
-		return json.Marshal(u.ArrayOfgetBookmarksDir2)
+		return utils.MarshalJSON(u.ArrayOfgetBookmarksDir2, "", true)
 	}
 
-	return nil, nil
+	return nil, errors.New("could not marshal union type: all fields are null")
 }
 
 type GetBookmarksEventDataIDType string
@@ -168,21 +163,16 @@ func CreateGetBookmarksEventDataIDArrayOfstr(arrayOfstr []string) GetBookmarksEv
 }
 
 func (u *GetBookmarksEventDataID) UnmarshalJSON(data []byte) error {
-	var d *json.Decoder
 
 	str := new(string)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&str); err == nil {
+	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
 		u.Str = str
 		u.Type = GetBookmarksEventDataIDTypeStr
 		return nil
 	}
 
 	arrayOfstr := []string{}
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&arrayOfstr); err == nil {
+	if err := utils.UnmarshalJSON(data, &arrayOfstr, "", true, true); err == nil {
 		u.ArrayOfstr = arrayOfstr
 		u.Type = GetBookmarksEventDataIDTypeArrayOfstr
 		return nil
@@ -193,14 +183,14 @@ func (u *GetBookmarksEventDataID) UnmarshalJSON(data []byte) error {
 
 func (u GetBookmarksEventDataID) MarshalJSON() ([]byte, error) {
 	if u.Str != nil {
-		return json.Marshal(u.Str)
+		return utils.MarshalJSON(u.Str, "", true)
 	}
 
 	if u.ArrayOfstr != nil {
-		return json.Marshal(u.ArrayOfstr)
+		return utils.MarshalJSON(u.ArrayOfstr, "", true)
 	}
 
-	return nil, nil
+	return nil, errors.New("could not marshal union type: all fields are null")
 }
 
 type GetBookmarksIDType string
@@ -236,21 +226,16 @@ func CreateGetBookmarksIDArrayOfstr(arrayOfstr []string) GetBookmarksID {
 }
 
 func (u *GetBookmarksID) UnmarshalJSON(data []byte) error {
-	var d *json.Decoder
 
 	str := new(string)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&str); err == nil {
+	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
 		u.Str = str
 		u.Type = GetBookmarksIDTypeStr
 		return nil
 	}
 
 	arrayOfstr := []string{}
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&arrayOfstr); err == nil {
+	if err := utils.UnmarshalJSON(data, &arrayOfstr, "", true, true); err == nil {
 		u.ArrayOfstr = arrayOfstr
 		u.Type = GetBookmarksIDTypeArrayOfstr
 		return nil
@@ -261,14 +246,14 @@ func (u *GetBookmarksID) UnmarshalJSON(data []byte) error {
 
 func (u GetBookmarksID) MarshalJSON() ([]byte, error) {
 	if u.Str != nil {
-		return json.Marshal(u.Str)
+		return utils.MarshalJSON(u.Str, "", true)
 	}
 
 	if u.ArrayOfstr != nil {
-		return json.Marshal(u.ArrayOfstr)
+		return utils.MarshalJSON(u.ArrayOfstr, "", true)
 	}
 
-	return nil, nil
+	return nil, errors.New("could not marshal union type: all fields are null")
 }
 
 type GetBookmarksLabelType string
@@ -304,21 +289,16 @@ func CreateGetBookmarksLabelArrayOfstr(arrayOfstr []string) GetBookmarksLabel {
 }
 
 func (u *GetBookmarksLabel) UnmarshalJSON(data []byte) error {
-	var d *json.Decoder
 
 	str := new(string)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&str); err == nil {
+	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
 		u.Str = str
 		u.Type = GetBookmarksLabelTypeStr
 		return nil
 	}
 
 	arrayOfstr := []string{}
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&arrayOfstr); err == nil {
+	if err := utils.UnmarshalJSON(data, &arrayOfstr, "", true, true); err == nil {
 		u.ArrayOfstr = arrayOfstr
 		u.Type = GetBookmarksLabelTypeArrayOfstr
 		return nil
@@ -329,14 +309,14 @@ func (u *GetBookmarksLabel) UnmarshalJSON(data []byte) error {
 
 func (u GetBookmarksLabel) MarshalJSON() ([]byte, error) {
 	if u.Str != nil {
-		return json.Marshal(u.Str)
+		return utils.MarshalJSON(u.Str, "", true)
 	}
 
 	if u.ArrayOfstr != nil {
-		return json.Marshal(u.ArrayOfstr)
+		return utils.MarshalJSON(u.ArrayOfstr, "", true)
 	}
 
-	return nil, nil
+	return nil, errors.New("could not marshal union type: all fields are null")
 }
 
 // GetBookmarksLastUsedAt2 - Filter by last used date
@@ -350,6 +330,17 @@ type GetBookmarksLastUsedAt2 struct {
 	Le *time.Time `queryParam:"name=le"`
 	// Last used date
 	Lte *time.Time `queryParam:"name=lte"`
+}
+
+func (g GetBookmarksLastUsedAt2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetBookmarksLastUsedAt2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, true); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *GetBookmarksLastUsedAt2) GetAny() *bool {
@@ -420,23 +411,18 @@ func CreateGetBookmarksLastUsedAtGetBookmarksLastUsedAt2(getBookmarksLastUsedAt2
 }
 
 func (u *GetBookmarksLastUsedAt) UnmarshalJSON(data []byte) error {
-	var d *json.Decoder
 
-	dateTime := new(time.Time)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&dateTime); err == nil {
-		u.DateTime = dateTime
-		u.Type = GetBookmarksLastUsedAtTypeDateTime
+	getBookmarksLastUsedAt2 := new(GetBookmarksLastUsedAt2)
+	if err := utils.UnmarshalJSON(data, &getBookmarksLastUsedAt2, "", true, true); err == nil {
+		u.GetBookmarksLastUsedAt2 = getBookmarksLastUsedAt2
+		u.Type = GetBookmarksLastUsedAtTypeGetBookmarksLastUsedAt2
 		return nil
 	}
 
-	getBookmarksLastUsedAt2 := new(GetBookmarksLastUsedAt2)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&getBookmarksLastUsedAt2); err == nil {
-		u.GetBookmarksLastUsedAt2 = getBookmarksLastUsedAt2
-		u.Type = GetBookmarksLastUsedAtTypeGetBookmarksLastUsedAt2
+	dateTime := new(time.Time)
+	if err := utils.UnmarshalJSON(data, &dateTime, "", true, true); err == nil {
+		u.DateTime = dateTime
+		u.Type = GetBookmarksLastUsedAtTypeDateTime
 		return nil
 	}
 
@@ -445,14 +431,14 @@ func (u *GetBookmarksLastUsedAt) UnmarshalJSON(data []byte) error {
 
 func (u GetBookmarksLastUsedAt) MarshalJSON() ([]byte, error) {
 	if u.DateTime != nil {
-		return json.Marshal(u.DateTime)
+		return utils.MarshalJSON(u.DateTime, "", true)
 	}
 
 	if u.GetBookmarksLastUsedAt2 != nil {
-		return json.Marshal(u.GetBookmarksLastUsedAt2)
+		return utils.MarshalJSON(u.GetBookmarksLastUsedAt2, "", true)
 	}
 
-	return nil, nil
+	return nil, errors.New("could not marshal union type: all fields are null")
 }
 
 type GetBookmarksNameType string
@@ -488,21 +474,16 @@ func CreateGetBookmarksNameArrayOfstr(arrayOfstr []string) GetBookmarksName {
 }
 
 func (u *GetBookmarksName) UnmarshalJSON(data []byte) error {
-	var d *json.Decoder
 
 	str := new(string)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&str); err == nil {
+	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
 		u.Str = str
 		u.Type = GetBookmarksNameTypeStr
 		return nil
 	}
 
 	arrayOfstr := []string{}
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&arrayOfstr); err == nil {
+	if err := utils.UnmarshalJSON(data, &arrayOfstr, "", true, true); err == nil {
 		u.ArrayOfstr = arrayOfstr
 		u.Type = GetBookmarksNameTypeArrayOfstr
 		return nil
@@ -513,115 +494,61 @@ func (u *GetBookmarksName) UnmarshalJSON(data []byte) error {
 
 func (u GetBookmarksName) MarshalJSON() ([]byte, error) {
 	if u.Str != nil {
-		return json.Marshal(u.Str)
+		return utils.MarshalJSON(u.Str, "", true)
 	}
 
 	if u.ArrayOfstr != nil {
-		return json.Marshal(u.ArrayOfstr)
+		return utils.MarshalJSON(u.ArrayOfstr, "", true)
 	}
 
-	return nil, nil
-}
-
-type GetBookmarksOrderBy2 string
-
-const (
-	GetBookmarksOrderBy2CreatedAt GetBookmarksOrderBy2 = "created_at"
-)
-
-func (e GetBookmarksOrderBy2) ToPointer() *GetBookmarksOrderBy2 {
-	return &e
-}
-
-func (e *GetBookmarksOrderBy2) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "created_at":
-		*e = GetBookmarksOrderBy2(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for GetBookmarksOrderBy2: %v", v)
-	}
-}
-
-// GetBookmarksOrderBy1 - Sort key(s)
-type GetBookmarksOrderBy1 string
-
-const (
-	GetBookmarksOrderBy1CreatedAt GetBookmarksOrderBy1 = "created_at"
-)
-
-func (e GetBookmarksOrderBy1) ToPointer() *GetBookmarksOrderBy1 {
-	return &e
-}
-
-func (e *GetBookmarksOrderBy1) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "created_at":
-		*e = GetBookmarksOrderBy1(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for GetBookmarksOrderBy1: %v", v)
-	}
+	return nil, errors.New("could not marshal union type: all fields are null")
 }
 
 type GetBookmarksOrderByType string
 
 const (
-	GetBookmarksOrderByTypeGetBookmarksOrderBy1        GetBookmarksOrderByType = "getBookmarksOrderBy_1"
-	GetBookmarksOrderByTypeArrayOfgetBookmarksOrderBy2 GetBookmarksOrderByType = "arrayOfgetBookmarksOrderBy_2"
+	GetBookmarksOrderByTypeStr        GetBookmarksOrderByType = "str"
+	GetBookmarksOrderByTypeArrayOfstr GetBookmarksOrderByType = "arrayOfstr"
 )
 
 type GetBookmarksOrderBy struct {
-	GetBookmarksOrderBy1        *GetBookmarksOrderBy1
-	ArrayOfgetBookmarksOrderBy2 []GetBookmarksOrderBy2
+	Str        *string
+	ArrayOfstr []string
 
 	Type GetBookmarksOrderByType
 }
 
-func CreateGetBookmarksOrderByGetBookmarksOrderBy1(getBookmarksOrderBy1 GetBookmarksOrderBy1) GetBookmarksOrderBy {
-	typ := GetBookmarksOrderByTypeGetBookmarksOrderBy1
+func CreateGetBookmarksOrderByStr(str string) GetBookmarksOrderBy {
+	typ := GetBookmarksOrderByTypeStr
 
 	return GetBookmarksOrderBy{
-		GetBookmarksOrderBy1: &getBookmarksOrderBy1,
-		Type:                 typ,
+		Str:  &str,
+		Type: typ,
 	}
 }
 
-func CreateGetBookmarksOrderByArrayOfgetBookmarksOrderBy2(arrayOfgetBookmarksOrderBy2 []GetBookmarksOrderBy2) GetBookmarksOrderBy {
-	typ := GetBookmarksOrderByTypeArrayOfgetBookmarksOrderBy2
+func CreateGetBookmarksOrderByArrayOfstr(arrayOfstr []string) GetBookmarksOrderBy {
+	typ := GetBookmarksOrderByTypeArrayOfstr
 
 	return GetBookmarksOrderBy{
-		ArrayOfgetBookmarksOrderBy2: arrayOfgetBookmarksOrderBy2,
-		Type:                        typ,
+		ArrayOfstr: arrayOfstr,
+		Type:       typ,
 	}
 }
 
 func (u *GetBookmarksOrderBy) UnmarshalJSON(data []byte) error {
-	var d *json.Decoder
 
-	getBookmarksOrderBy1 := new(GetBookmarksOrderBy1)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&getBookmarksOrderBy1); err == nil {
-		u.GetBookmarksOrderBy1 = getBookmarksOrderBy1
-		u.Type = GetBookmarksOrderByTypeGetBookmarksOrderBy1
+	str := new(string)
+	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
+		u.Str = str
+		u.Type = GetBookmarksOrderByTypeStr
 		return nil
 	}
 
-	arrayOfgetBookmarksOrderBy2 := []GetBookmarksOrderBy2{}
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&arrayOfgetBookmarksOrderBy2); err == nil {
-		u.ArrayOfgetBookmarksOrderBy2 = arrayOfgetBookmarksOrderBy2
-		u.Type = GetBookmarksOrderByTypeArrayOfgetBookmarksOrderBy2
+	arrayOfstr := []string{}
+	if err := utils.UnmarshalJSON(data, &arrayOfstr, "", true, true); err == nil {
+		u.ArrayOfstr = arrayOfstr
+		u.Type = GetBookmarksOrderByTypeArrayOfstr
 		return nil
 	}
 
@@ -629,15 +556,15 @@ func (u *GetBookmarksOrderBy) UnmarshalJSON(data []byte) error {
 }
 
 func (u GetBookmarksOrderBy) MarshalJSON() ([]byte, error) {
-	if u.GetBookmarksOrderBy1 != nil {
-		return json.Marshal(u.GetBookmarksOrderBy1)
+	if u.Str != nil {
+		return utils.MarshalJSON(u.Str, "", true)
 	}
 
-	if u.ArrayOfgetBookmarksOrderBy2 != nil {
-		return json.Marshal(u.ArrayOfgetBookmarksOrderBy2)
+	if u.ArrayOfstr != nil {
+		return utils.MarshalJSON(u.ArrayOfstr, "", true)
 	}
 
-	return nil, nil
+	return nil, errors.New("could not marshal union type: all fields are null")
 }
 
 type GetBookmarksWebhookIDType string
@@ -673,21 +600,16 @@ func CreateGetBookmarksWebhookIDArrayOfstr(arrayOfstr []string) GetBookmarksWebh
 }
 
 func (u *GetBookmarksWebhookID) UnmarshalJSON(data []byte) error {
-	var d *json.Decoder
 
 	str := new(string)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&str); err == nil {
+	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
 		u.Str = str
 		u.Type = GetBookmarksWebhookIDTypeStr
 		return nil
 	}
 
 	arrayOfstr := []string{}
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&arrayOfstr); err == nil {
+	if err := utils.UnmarshalJSON(data, &arrayOfstr, "", true, true); err == nil {
 		u.ArrayOfstr = arrayOfstr
 		u.Type = GetBookmarksWebhookIDTypeArrayOfstr
 		return nil
@@ -698,14 +620,14 @@ func (u *GetBookmarksWebhookID) UnmarshalJSON(data []byte) error {
 
 func (u GetBookmarksWebhookID) MarshalJSON() ([]byte, error) {
 	if u.Str != nil {
-		return json.Marshal(u.Str)
+		return utils.MarshalJSON(u.Str, "", true)
 	}
 
 	if u.ArrayOfstr != nil {
-		return json.Marshal(u.ArrayOfstr)
+		return utils.MarshalJSON(u.ArrayOfstr, "", true)
 	}
 
-	return nil, nil
+	return nil, errors.New("could not marshal union type: all fields are null")
 }
 
 type GetBookmarksRequest struct {

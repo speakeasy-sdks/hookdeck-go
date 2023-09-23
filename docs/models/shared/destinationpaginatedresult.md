@@ -1,7 +1,5 @@
 # DestinationPaginatedResult
 
-List of destinations
-
 
 ## Fields
 

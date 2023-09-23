@@ -1,7 +1,5 @@
 # RawBody
 
-A request raw body data
-
 
 ## Fields
 

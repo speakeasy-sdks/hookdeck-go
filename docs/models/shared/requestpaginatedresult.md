@@ -1,7 +1,5 @@
 # RequestPaginatedResult
 
-List of requests
-
 
 ## Fields
 
