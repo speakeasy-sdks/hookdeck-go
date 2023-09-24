@@ -3,40 +3,25 @@
 package shared
 
 import (
-	"encoding/json"
-	"fmt"
+	"github.com/speakeasy-sdks/hookdeck-go/pkg/utils"
 )
-
-// AlertRuleType - An alert rule must be of type `alert`
-type AlertRuleType string
-
-const (
-	AlertRuleTypeAlert AlertRuleType = "alert"
-)
-
-func (e AlertRuleType) ToPointer() *AlertRuleType {
-	return &e
-}
-
-func (e *AlertRuleType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "alert":
-		*e = AlertRuleType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for AlertRuleType: %v", v)
-	}
-}
 
 type AlertRule struct {
 	// Alert strategy to use
 	Strategy AlertStrategy `json:"strategy"`
 	// An alert rule must be of type `alert`
-	Type AlertRuleType `json:"type"`
+	type_ string `const:"alert" json:"type"`
+}
+
+func (a AlertRule) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(a, "", false)
+}
+
+func (a *AlertRule) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &a, "", false, true); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *AlertRule) GetStrategy() AlertStrategy {
@@ -46,9 +31,6 @@ func (o *AlertRule) GetStrategy() AlertStrategy {
 	return o.Strategy
 }
 
-func (o *AlertRule) GetType() AlertRuleType {
-	if o == nil {
-		return AlertRuleType("")
-	}
-	return o.Type
+func (o *AlertRule) GetType() string {
+	return "alert"
 }

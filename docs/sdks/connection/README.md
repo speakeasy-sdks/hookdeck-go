@@ -23,21 +23,21 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
                 Password: "",
                 Username: "",
             },
         }),
     )
-    id := "esse"
+    id := "totam"
 
     ctx := context.Background()
     res, err := s.Connection.Archive(ctx, id)
@@ -76,14 +76,14 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
                 Password: "",
                 Username: "",
@@ -94,72 +94,39 @@ func main() {
     ctx := context.Background()
     res, err := s.Connection.Create(ctx, operations.CreateConnectionRequestBody{
         Destination: &operations.CreateConnectionRequestBodyDestination{
-            AuthMethod: &shared.APIKey{
-                Config: &shared.DestinationAuthMethodAPIKeyConfig{
-                    APIKey: "porro",
-                    Key: "dolorum",
-                    To: shared.DestinationAuthMethodAPIKeyConfigToHeader.ToPointer(),
-                },
-                Type: shared.APIKeyTypeAPIKey,
-            },
-            CliPath: hookdeck.String("nam"),
-            HTTPMethod: shared.DestinationHTTPMethodPut.ToPointer(),
-            Name: "Wayne Lind",
-            PathForwardingDisabled: hookdeck.Bool(false),
-            RateLimit: hookdeck.Int64(105907),
-            RateLimitPeriod: operations.CreateConnectionRequestBodyDestinationRateLimitPeriodMinute.ToPointer(),
-            URL: hookdeck.String("molestiae"),
+            AuthMethod: &shared.DestinationAuthMethodConfig{},
+            CliPath: hookdeckgo.String("porro"),
+            HTTPMethod: shared.DestinationHTTPMethodPatch.ToPointer(),
+            Name: "Antoinette Nikolaus",
+            PathForwardingDisabled: hookdeckgo.Bool(false),
+            RateLimit: hookdeckgo.Int64(944669),
+            RateLimitPeriod: operations.CreateConnectionRequestBodyDestinationRateLimitPeriodHour.ToPointer(),
+            URL: hookdeckgo.String("totam"),
         },
-        DestinationID: hookdeck.String("modi"),
-        Name: "Krista Rippin",
-        Rules: []interface{}{
-            shared.RetryRule{
-                Count: hookdeck.Int64(18789),
-                Interval: hookdeck.Int64(324141),
-                Strategy: shared.RetryStrategyExponential,
-                Type: shared.RetryRuleTypeRetry,
-            },
-            shared.RetryRule{
-                Count: hookdeck.Int64(612096),
-                Interval: hookdeck.Int64(222321),
-                Strategy: shared.RetryStrategyExponential,
-                Type: shared.RetryRuleTypeRetry,
-            },
-            shared.AlertRule{
-                Strategy: shared.AlertStrategyLastAttempt,
-                Type: shared.AlertRuleTypeAlert,
-            },
+        DestinationID: hookdeckgo.String("beatae"),
+        Name: "Tanya Gleason",
+        Rules: []shared.Rule{
+            shared.Rule{},
         },
         Ruleset: &operations.CreateConnectionRequestBodyRuleset{
-            IsTeamDefault: hookdeck.Bool(false),
-            Name: "Wilbur Kirlin",
-            Rules: []interface{}{
-                shared.DelayRule{
-                    Delay: 697631,
-                    Type: shared.DelayRuleTypeDelay,
-                },
-                shared.RetryRule{
-                    Count: hookdeck.Int64(60225),
-                    Interval: hookdeck.Int64(969810),
-                    Strategy: shared.RetryStrategyExponential,
-                    Type: shared.RetryRuleTypeRetry,
-                },
+            IsTeamDefault: hookdeckgo.Bool(false),
+            Name: "Cory Emmerich",
+            Rules: []shared.Rule{
+                shared.Rule{},
             },
         },
-        RulesetID: hookdeck.String("mollitia"),
+        RulesetID: hookdeckgo.String("perferendis"),
         Source: &operations.CreateConnectionRequestBodySource{
             AllowedHTTPMethods: []shared.SourceAllowedHTTPMethod{
-                shared.SourceAllowedHTTPMethodGet,
-                shared.SourceAllowedHTTPMethodPost,
                 shared.SourceAllowedHTTPMethodPost,
             },
             CustomResponse: &shared.SourceCustomResponse{
-                Body: "explicabo",
-                ContentType: shared.SourceCustomResponseContentTypeXML,
+                Body: "natus",
+                ContentType: shared.SourceCustomResponseContentTypeJSON,
             },
-            Name: "Guadalupe Hickle",
+            Name: "Curtis Morissette",
         },
-        SourceID: hookdeck.String("accusantium"),
+        SourceID: hookdeckgo.String("saepe"),
     })
     if err != nil {
         log.Fatal(err)
@@ -196,21 +163,21 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
                 Password: "",
                 Username: "",
             },
         }),
     )
-    id := "iure"
+    id := "fuga"
 
     ctx := context.Background()
     res, err := s.Connection.Delete(ctx, id)
@@ -249,21 +216,21 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
                 Password: "",
                 Username: "",
             },
         }),
     )
-    id := "culpa"
+    id := "in"
 
     ctx := context.Background()
     res, err := s.Connection.Get(ctx, id)
@@ -302,21 +269,21 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
                 Password: "",
                 Username: "",
             },
         }),
     )
-    id := "doloribus"
+    id := "corporis"
 
     ctx := context.Background()
     res, err := s.Connection.Pause(ctx, id)
@@ -355,21 +322,21 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
                 Password: "",
                 Username: "",
             },
         }),
     )
-    id := "sapiente"
+    id := "iste"
 
     ctx := context.Background()
     res, err := s.Connection.Unarchive(ctx, id)
@@ -408,21 +375,21 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
                 Password: "",
                 Username: "",
             },
         }),
     )
-    id := "architecto"
+    id := "iure"
 
     ctx := context.Background()
     res, err := s.Connection.Unpause(ctx, id)
@@ -461,14 +428,14 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
                 Password: "",
                 Username: "",
@@ -476,47 +443,20 @@ func main() {
         }),
     )
     requestBody := operations.UpdateConnectionRequestBody{
-        Name: hookdeck.String("Mike Nicolas"),
-        Rules: []interface{}{
-            shared.FilterRule{
-                Body: &shared.ConnectionFilterProperty{},
-                Headers: &shared.ConnectionFilterProperty{},
-                Path: &shared.ConnectionFilterProperty{},
-                Query: &shared.ConnectionFilterProperty{},
-                Type: shared.FilterRuleTypeFilter,
-            },
-            shared.AlertRule{
-                Strategy: shared.AlertStrategyEachAttempt,
-                Type: shared.AlertRuleTypeAlert,
-            },
-            shared.FilterRule{
-                Body: &shared.ConnectionFilterProperty{},
-                Headers: &shared.ConnectionFilterProperty{},
-                Path: &shared.ConnectionFilterProperty{},
-                Query: &shared.ConnectionFilterProperty{},
-                Type: shared.FilterRuleTypeFilter,
-            },
+        Name: hookdeckgo.String("Dr. Rickey Boyle"),
+        Rules: []shared.Rule{
+            shared.Rule{},
         },
         Ruleset: &operations.UpdateConnectionRequestBodyRuleset{
-            IsTeamDefault: hookdeck.Bool(false),
-            Name: "Shannon Mueller",
-            Rules: []interface{}{
-                shared.TransformFull{
-                    Transformation: &shared.TransformFullTransformation{
-                        Code: "enim",
-                        Env: map[string]string{
-                            "quo": "sequi",
-                        },
-                        Name: "Vernon Ondricka Sr.",
-                    },
-                    TransformationID: hookdeck.String("error"),
-                    Type: shared.TransformFullTypeTransform,
-                },
+            IsTeamDefault: hookdeckgo.Bool(false),
+            Name: "Cameron Dach",
+            Rules: []shared.Rule{
+                shared.Rule{},
             },
         },
-        RulesetID: hookdeck.String("temporibus"),
+        RulesetID: hookdeckgo.String("explicabo"),
     }
-    id := "laborum"
+    id := "nobis"
 
     ctx := context.Background()
     res, err := s.Connection.Update(ctx, requestBody, id)

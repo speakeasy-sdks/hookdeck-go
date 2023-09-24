@@ -3,11 +3,11 @@
 package operations
 
 import (
-	"bytes"
 	"encoding/json"
 	"errors"
 	"fmt"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
+	"github.com/speakeasy-sdks/hookdeck-go/pkg/utils"
 	"net/http"
 )
 
@@ -99,21 +99,16 @@ func CreateGetTransformationsDirArrayOfgetTransformationsDir2(arrayOfgetTransfor
 }
 
 func (u *GetTransformationsDir) UnmarshalJSON(data []byte) error {
-	var d *json.Decoder
 
 	getTransformationsDir1 := new(GetTransformationsDir1)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&getTransformationsDir1); err == nil {
+	if err := utils.UnmarshalJSON(data, &getTransformationsDir1, "", true, true); err == nil {
 		u.GetTransformationsDir1 = getTransformationsDir1
 		u.Type = GetTransformationsDirTypeGetTransformationsDir1
 		return nil
 	}
 
 	arrayOfgetTransformationsDir2 := []GetTransformationsDir2{}
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&arrayOfgetTransformationsDir2); err == nil {
+	if err := utils.UnmarshalJSON(data, &arrayOfgetTransformationsDir2, "", true, true); err == nil {
 		u.ArrayOfgetTransformationsDir2 = arrayOfgetTransformationsDir2
 		u.Type = GetTransformationsDirTypeArrayOfgetTransformationsDir2
 		return nil
@@ -124,14 +119,14 @@ func (u *GetTransformationsDir) UnmarshalJSON(data []byte) error {
 
 func (u GetTransformationsDir) MarshalJSON() ([]byte, error) {
 	if u.GetTransformationsDir1 != nil {
-		return json.Marshal(u.GetTransformationsDir1)
+		return utils.MarshalJSON(u.GetTransformationsDir1, "", true)
 	}
 
 	if u.ArrayOfgetTransformationsDir2 != nil {
-		return json.Marshal(u.ArrayOfgetTransformationsDir2)
+		return utils.MarshalJSON(u.ArrayOfgetTransformationsDir2, "", true)
 	}
 
-	return nil, nil
+	return nil, errors.New("could not marshal union type: all fields are null")
 }
 
 type GetTransformationsIDType string
@@ -167,21 +162,16 @@ func CreateGetTransformationsIDArrayOfstr(arrayOfstr []string) GetTransformation
 }
 
 func (u *GetTransformationsID) UnmarshalJSON(data []byte) error {
-	var d *json.Decoder
 
 	str := new(string)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&str); err == nil {
+	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
 		u.Str = str
 		u.Type = GetTransformationsIDTypeStr
 		return nil
 	}
 
 	arrayOfstr := []string{}
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&arrayOfstr); err == nil {
+	if err := utils.UnmarshalJSON(data, &arrayOfstr, "", true, true); err == nil {
 		u.ArrayOfstr = arrayOfstr
 		u.Type = GetTransformationsIDTypeArrayOfstr
 		return nil
@@ -192,14 +182,14 @@ func (u *GetTransformationsID) UnmarshalJSON(data []byte) error {
 
 func (u GetTransformationsID) MarshalJSON() ([]byte, error) {
 	if u.Str != nil {
-		return json.Marshal(u.Str)
+		return utils.MarshalJSON(u.Str, "", true)
 	}
 
 	if u.ArrayOfstr != nil {
-		return json.Marshal(u.ArrayOfstr)
+		return utils.MarshalJSON(u.ArrayOfstr, "", true)
 	}
 
-	return nil, nil
+	return nil, errors.New("could not marshal union type: all fields are null")
 }
 
 type GetTransformationsNameType string
@@ -235,21 +225,16 @@ func CreateGetTransformationsNameArrayOfstr(arrayOfstr []string) GetTransformati
 }
 
 func (u *GetTransformationsName) UnmarshalJSON(data []byte) error {
-	var d *json.Decoder
 
 	str := new(string)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&str); err == nil {
+	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
 		u.Str = str
 		u.Type = GetTransformationsNameTypeStr
 		return nil
 	}
 
 	arrayOfstr := []string{}
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&arrayOfstr); err == nil {
+	if err := utils.UnmarshalJSON(data, &arrayOfstr, "", true, true); err == nil {
 		u.ArrayOfstr = arrayOfstr
 		u.Type = GetTransformationsNameTypeArrayOfstr
 		return nil
@@ -260,115 +245,61 @@ func (u *GetTransformationsName) UnmarshalJSON(data []byte) error {
 
 func (u GetTransformationsName) MarshalJSON() ([]byte, error) {
 	if u.Str != nil {
-		return json.Marshal(u.Str)
+		return utils.MarshalJSON(u.Str, "", true)
 	}
 
 	if u.ArrayOfstr != nil {
-		return json.Marshal(u.ArrayOfstr)
+		return utils.MarshalJSON(u.ArrayOfstr, "", true)
 	}
 
-	return nil, nil
-}
-
-type GetTransformationsOrderBy2 string
-
-const (
-	GetTransformationsOrderBy2CreatedAt GetTransformationsOrderBy2 = "created_at"
-)
-
-func (e GetTransformationsOrderBy2) ToPointer() *GetTransformationsOrderBy2 {
-	return &e
-}
-
-func (e *GetTransformationsOrderBy2) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "created_at":
-		*e = GetTransformationsOrderBy2(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for GetTransformationsOrderBy2: %v", v)
-	}
-}
-
-// GetTransformationsOrderBy1 - Sort key(s)
-type GetTransformationsOrderBy1 string
-
-const (
-	GetTransformationsOrderBy1CreatedAt GetTransformationsOrderBy1 = "created_at"
-)
-
-func (e GetTransformationsOrderBy1) ToPointer() *GetTransformationsOrderBy1 {
-	return &e
-}
-
-func (e *GetTransformationsOrderBy1) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "created_at":
-		*e = GetTransformationsOrderBy1(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for GetTransformationsOrderBy1: %v", v)
-	}
+	return nil, errors.New("could not marshal union type: all fields are null")
 }
 
 type GetTransformationsOrderByType string
 
 const (
-	GetTransformationsOrderByTypeGetTransformationsOrderBy1        GetTransformationsOrderByType = "getTransformationsOrderBy_1"
-	GetTransformationsOrderByTypeArrayOfgetTransformationsOrderBy2 GetTransformationsOrderByType = "arrayOfgetTransformationsOrderBy_2"
+	GetTransformationsOrderByTypeStr        GetTransformationsOrderByType = "str"
+	GetTransformationsOrderByTypeArrayOfstr GetTransformationsOrderByType = "arrayOfstr"
 )
 
 type GetTransformationsOrderBy struct {
-	GetTransformationsOrderBy1        *GetTransformationsOrderBy1
-	ArrayOfgetTransformationsOrderBy2 []GetTransformationsOrderBy2
+	Str        *string
+	ArrayOfstr []string
 
 	Type GetTransformationsOrderByType
 }
 
-func CreateGetTransformationsOrderByGetTransformationsOrderBy1(getTransformationsOrderBy1 GetTransformationsOrderBy1) GetTransformationsOrderBy {
-	typ := GetTransformationsOrderByTypeGetTransformationsOrderBy1
+func CreateGetTransformationsOrderByStr(str string) GetTransformationsOrderBy {
+	typ := GetTransformationsOrderByTypeStr
 
 	return GetTransformationsOrderBy{
-		GetTransformationsOrderBy1: &getTransformationsOrderBy1,
-		Type:                       typ,
+		Str:  &str,
+		Type: typ,
 	}
 }
 
-func CreateGetTransformationsOrderByArrayOfgetTransformationsOrderBy2(arrayOfgetTransformationsOrderBy2 []GetTransformationsOrderBy2) GetTransformationsOrderBy {
-	typ := GetTransformationsOrderByTypeArrayOfgetTransformationsOrderBy2
+func CreateGetTransformationsOrderByArrayOfstr(arrayOfstr []string) GetTransformationsOrderBy {
+	typ := GetTransformationsOrderByTypeArrayOfstr
 
 	return GetTransformationsOrderBy{
-		ArrayOfgetTransformationsOrderBy2: arrayOfgetTransformationsOrderBy2,
-		Type:                              typ,
+		ArrayOfstr: arrayOfstr,
+		Type:       typ,
 	}
 }
 
 func (u *GetTransformationsOrderBy) UnmarshalJSON(data []byte) error {
-	var d *json.Decoder
 
-	getTransformationsOrderBy1 := new(GetTransformationsOrderBy1)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&getTransformationsOrderBy1); err == nil {
-		u.GetTransformationsOrderBy1 = getTransformationsOrderBy1
-		u.Type = GetTransformationsOrderByTypeGetTransformationsOrderBy1
+	str := new(string)
+	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
+		u.Str = str
+		u.Type = GetTransformationsOrderByTypeStr
 		return nil
 	}
 
-	arrayOfgetTransformationsOrderBy2 := []GetTransformationsOrderBy2{}
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&arrayOfgetTransformationsOrderBy2); err == nil {
-		u.ArrayOfgetTransformationsOrderBy2 = arrayOfgetTransformationsOrderBy2
-		u.Type = GetTransformationsOrderByTypeArrayOfgetTransformationsOrderBy2
+	arrayOfstr := []string{}
+	if err := utils.UnmarshalJSON(data, &arrayOfstr, "", true, true); err == nil {
+		u.ArrayOfstr = arrayOfstr
+		u.Type = GetTransformationsOrderByTypeArrayOfstr
 		return nil
 	}
 
@@ -376,15 +307,15 @@ func (u *GetTransformationsOrderBy) UnmarshalJSON(data []byte) error {
 }
 
 func (u GetTransformationsOrderBy) MarshalJSON() ([]byte, error) {
-	if u.GetTransformationsOrderBy1 != nil {
-		return json.Marshal(u.GetTransformationsOrderBy1)
+	if u.Str != nil {
+		return utils.MarshalJSON(u.Str, "", true)
 	}
 
-	if u.ArrayOfgetTransformationsOrderBy2 != nil {
-		return json.Marshal(u.ArrayOfgetTransformationsOrderBy2)
+	if u.ArrayOfstr != nil {
+		return utils.MarshalJSON(u.ArrayOfstr, "", true)
 	}
 
-	return nil, nil
+	return nil, errors.New("could not marshal union type: all fields are null")
 }
 
 type GetTransformationsRequest struct {

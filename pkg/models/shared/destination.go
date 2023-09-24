@@ -3,6 +3,7 @@
 package shared
 
 import (
+	"github.com/speakeasy-sdks/hookdeck-go/pkg/utils"
 	"time"
 )
 
@@ -11,7 +12,7 @@ type Destination struct {
 	// Date the destination was archived
 	ArchivedAt *time.Time `json:"archived_at,omitempty"`
 	// Config for the destination's auth method
-	AuthMethod interface{} `json:"auth_method,omitempty"`
+	AuthMethod *DestinationAuthMethodConfig `json:"auth_method,omitempty"`
 	// Path for the CLI destination
 	CliPath *string `json:"cli_path,omitempty"`
 	// Date the destination was created
@@ -26,13 +27,24 @@ type Destination struct {
 	// Limit event attempts to receive per period. Max value is workspace plan's max attempts thoughput.
 	RateLimit *int64 `json:"rate_limit,omitempty"`
 	// Period to rate limit attempts
-	RateLimitPeriod *DestinationRateLimitPeriod `json:"rate_limit_period,omitempty"`
+	RateLimitPeriod *DestinationRateLimitPeriod `default:"second" json:"rate_limit_period"`
 	// ID of the workspace
 	TeamID string `json:"team_id"`
 	// Date the destination was last updated
 	UpdatedAt time.Time `json:"updated_at"`
 	// HTTP endpoint of the destination
 	URL *string `json:"url,omitempty"`
+}
+
+func (d Destination) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(d, "", false)
+}
+
+func (d *Destination) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &d, "", false, false); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *Destination) GetArchivedAt() *time.Time {
@@ -42,7 +54,7 @@ func (o *Destination) GetArchivedAt() *time.Time {
 	return o.ArchivedAt
 }
 
-func (o *Destination) GetAuthMethod() interface{} {
+func (o *Destination) GetAuthMethod() *DestinationAuthMethodConfig {
 	if o == nil {
 		return nil
 	}

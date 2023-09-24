@@ -1,7 +1,5 @@
 # Bookmark
 
-A single bookmark
-
 
 ## Fields
 

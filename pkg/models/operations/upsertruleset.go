@@ -12,7 +12,7 @@ type UpsertRulesetRequestBody struct {
 	// Name for the ruleset
 	Name string `json:"name"`
 	// Array of rules to apply
-	Rules []interface{} `json:"rules,omitempty"`
+	Rules []shared.Rule `json:"rules,omitempty"`
 }
 
 func (o *UpsertRulesetRequestBody) GetIsTeamDefault() *bool {
@@ -29,7 +29,7 @@ func (o *UpsertRulesetRequestBody) GetName() string {
 	return o.Name
 }
 
-func (o *UpsertRulesetRequestBody) GetRules() []interface{} {
+func (o *UpsertRulesetRequestBody) GetRules() []shared.Rule {
 	if o == nil {
 		return nil
 	}

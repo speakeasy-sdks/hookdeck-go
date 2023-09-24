@@ -3,11 +3,11 @@
 package operations
 
 import (
-	"bytes"
 	"encoding/json"
 	"errors"
 	"fmt"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
+	"github.com/speakeasy-sdks/hookdeck-go/pkg/utils"
 	"net/http"
 )
 
@@ -99,21 +99,16 @@ func CreateGetAttemptsDirArrayOfgetAttemptsDir2(arrayOfgetAttemptsDir2 []GetAtte
 }
 
 func (u *GetAttemptsDir) UnmarshalJSON(data []byte) error {
-	var d *json.Decoder
 
 	getAttemptsDir1 := new(GetAttemptsDir1)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&getAttemptsDir1); err == nil {
+	if err := utils.UnmarshalJSON(data, &getAttemptsDir1, "", true, true); err == nil {
 		u.GetAttemptsDir1 = getAttemptsDir1
 		u.Type = GetAttemptsDirTypeGetAttemptsDir1
 		return nil
 	}
 
 	arrayOfgetAttemptsDir2 := []GetAttemptsDir2{}
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&arrayOfgetAttemptsDir2); err == nil {
+	if err := utils.UnmarshalJSON(data, &arrayOfgetAttemptsDir2, "", true, true); err == nil {
 		u.ArrayOfgetAttemptsDir2 = arrayOfgetAttemptsDir2
 		u.Type = GetAttemptsDirTypeArrayOfgetAttemptsDir2
 		return nil
@@ -124,14 +119,14 @@ func (u *GetAttemptsDir) UnmarshalJSON(data []byte) error {
 
 func (u GetAttemptsDir) MarshalJSON() ([]byte, error) {
 	if u.GetAttemptsDir1 != nil {
-		return json.Marshal(u.GetAttemptsDir1)
+		return utils.MarshalJSON(u.GetAttemptsDir1, "", true)
 	}
 
 	if u.ArrayOfgetAttemptsDir2 != nil {
-		return json.Marshal(u.ArrayOfgetAttemptsDir2)
+		return utils.MarshalJSON(u.ArrayOfgetAttemptsDir2, "", true)
 	}
 
-	return nil, nil
+	return nil, errors.New("could not marshal union type: all fields are null")
 }
 
 type GetAttemptsEventIDType string
@@ -167,21 +162,16 @@ func CreateGetAttemptsEventIDArrayOfstr(arrayOfstr []string) GetAttemptsEventID 
 }
 
 func (u *GetAttemptsEventID) UnmarshalJSON(data []byte) error {
-	var d *json.Decoder
 
 	str := new(string)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&str); err == nil {
+	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
 		u.Str = str
 		u.Type = GetAttemptsEventIDTypeStr
 		return nil
 	}
 
 	arrayOfstr := []string{}
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&arrayOfstr); err == nil {
+	if err := utils.UnmarshalJSON(data, &arrayOfstr, "", true, true); err == nil {
 		u.ArrayOfstr = arrayOfstr
 		u.Type = GetAttemptsEventIDTypeArrayOfstr
 		return nil
@@ -192,115 +182,61 @@ func (u *GetAttemptsEventID) UnmarshalJSON(data []byte) error {
 
 func (u GetAttemptsEventID) MarshalJSON() ([]byte, error) {
 	if u.Str != nil {
-		return json.Marshal(u.Str)
+		return utils.MarshalJSON(u.Str, "", true)
 	}
 
 	if u.ArrayOfstr != nil {
-		return json.Marshal(u.ArrayOfstr)
+		return utils.MarshalJSON(u.ArrayOfstr, "", true)
 	}
 
-	return nil, nil
-}
-
-type GetAttemptsOrderBy2 string
-
-const (
-	GetAttemptsOrderBy2CreatedAt GetAttemptsOrderBy2 = "created_at"
-)
-
-func (e GetAttemptsOrderBy2) ToPointer() *GetAttemptsOrderBy2 {
-	return &e
-}
-
-func (e *GetAttemptsOrderBy2) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "created_at":
-		*e = GetAttemptsOrderBy2(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for GetAttemptsOrderBy2: %v", v)
-	}
-}
-
-// GetAttemptsOrderBy1 - Sort key(s)
-type GetAttemptsOrderBy1 string
-
-const (
-	GetAttemptsOrderBy1CreatedAt GetAttemptsOrderBy1 = "created_at"
-)
-
-func (e GetAttemptsOrderBy1) ToPointer() *GetAttemptsOrderBy1 {
-	return &e
-}
-
-func (e *GetAttemptsOrderBy1) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "created_at":
-		*e = GetAttemptsOrderBy1(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for GetAttemptsOrderBy1: %v", v)
-	}
+	return nil, errors.New("could not marshal union type: all fields are null")
 }
 
 type GetAttemptsOrderByType string
 
 const (
-	GetAttemptsOrderByTypeGetAttemptsOrderBy1        GetAttemptsOrderByType = "getAttemptsOrderBy_1"
-	GetAttemptsOrderByTypeArrayOfgetAttemptsOrderBy2 GetAttemptsOrderByType = "arrayOfgetAttemptsOrderBy_2"
+	GetAttemptsOrderByTypeStr        GetAttemptsOrderByType = "str"
+	GetAttemptsOrderByTypeArrayOfstr GetAttemptsOrderByType = "arrayOfstr"
 )
 
 type GetAttemptsOrderBy struct {
-	GetAttemptsOrderBy1        *GetAttemptsOrderBy1
-	ArrayOfgetAttemptsOrderBy2 []GetAttemptsOrderBy2
+	Str        *string
+	ArrayOfstr []string
 
 	Type GetAttemptsOrderByType
 }
 
-func CreateGetAttemptsOrderByGetAttemptsOrderBy1(getAttemptsOrderBy1 GetAttemptsOrderBy1) GetAttemptsOrderBy {
-	typ := GetAttemptsOrderByTypeGetAttemptsOrderBy1
+func CreateGetAttemptsOrderByStr(str string) GetAttemptsOrderBy {
+	typ := GetAttemptsOrderByTypeStr
 
 	return GetAttemptsOrderBy{
-		GetAttemptsOrderBy1: &getAttemptsOrderBy1,
-		Type:                typ,
+		Str:  &str,
+		Type: typ,
 	}
 }
 
-func CreateGetAttemptsOrderByArrayOfgetAttemptsOrderBy2(arrayOfgetAttemptsOrderBy2 []GetAttemptsOrderBy2) GetAttemptsOrderBy {
-	typ := GetAttemptsOrderByTypeArrayOfgetAttemptsOrderBy2
+func CreateGetAttemptsOrderByArrayOfstr(arrayOfstr []string) GetAttemptsOrderBy {
+	typ := GetAttemptsOrderByTypeArrayOfstr
 
 	return GetAttemptsOrderBy{
-		ArrayOfgetAttemptsOrderBy2: arrayOfgetAttemptsOrderBy2,
-		Type:                       typ,
+		ArrayOfstr: arrayOfstr,
+		Type:       typ,
 	}
 }
 
 func (u *GetAttemptsOrderBy) UnmarshalJSON(data []byte) error {
-	var d *json.Decoder
 
-	getAttemptsOrderBy1 := new(GetAttemptsOrderBy1)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&getAttemptsOrderBy1); err == nil {
-		u.GetAttemptsOrderBy1 = getAttemptsOrderBy1
-		u.Type = GetAttemptsOrderByTypeGetAttemptsOrderBy1
+	str := new(string)
+	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
+		u.Str = str
+		u.Type = GetAttemptsOrderByTypeStr
 		return nil
 	}
 
-	arrayOfgetAttemptsOrderBy2 := []GetAttemptsOrderBy2{}
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&arrayOfgetAttemptsOrderBy2); err == nil {
-		u.ArrayOfgetAttemptsOrderBy2 = arrayOfgetAttemptsOrderBy2
-		u.Type = GetAttemptsOrderByTypeArrayOfgetAttemptsOrderBy2
+	arrayOfstr := []string{}
+	if err := utils.UnmarshalJSON(data, &arrayOfstr, "", true, true); err == nil {
+		u.ArrayOfstr = arrayOfstr
+		u.Type = GetAttemptsOrderByTypeArrayOfstr
 		return nil
 	}
 
@@ -308,15 +244,15 @@ func (u *GetAttemptsOrderBy) UnmarshalJSON(data []byte) error {
 }
 
 func (u GetAttemptsOrderBy) MarshalJSON() ([]byte, error) {
-	if u.GetAttemptsOrderBy1 != nil {
-		return json.Marshal(u.GetAttemptsOrderBy1)
+	if u.Str != nil {
+		return utils.MarshalJSON(u.Str, "", true)
 	}
 
-	if u.ArrayOfgetAttemptsOrderBy2 != nil {
-		return json.Marshal(u.ArrayOfgetAttemptsOrderBy2)
+	if u.ArrayOfstr != nil {
+		return utils.MarshalJSON(u.ArrayOfstr, "", true)
 	}
 
-	return nil, nil
+	return nil, errors.New("could not marshal union type: all fields are null")
 }
 
 type GetAttemptsRequest struct {
