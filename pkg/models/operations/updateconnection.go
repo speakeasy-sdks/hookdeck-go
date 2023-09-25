@@ -13,7 +13,7 @@ type UpdateConnectionRequestBodyRuleset struct {
 	// Name for the ruleset
 	Name string `json:"name"`
 	// Array of rules to apply
-	Rules []interface{} `json:"rules,omitempty"`
+	Rules []shared.Rule `json:"rules,omitempty"`
 }
 
 func (o *UpdateConnectionRequestBodyRuleset) GetIsTeamDefault() *bool {
@@ -30,7 +30,7 @@ func (o *UpdateConnectionRequestBodyRuleset) GetName() string {
 	return o.Name
 }
 
-func (o *UpdateConnectionRequestBodyRuleset) GetRules() []interface{} {
+func (o *UpdateConnectionRequestBodyRuleset) GetRules() []shared.Rule {
 	if o == nil {
 		return nil
 	}
@@ -41,7 +41,7 @@ type UpdateConnectionRequestBody struct {
 	// Unique name of the connection for the source
 	Name *string `json:"name,omitempty"`
 	// Array of rules to apply
-	Rules []interface{} `json:"rules,omitempty"`
+	Rules []shared.Rule `json:"rules,omitempty"`
 	// Ruleset input object
 	Ruleset *UpdateConnectionRequestBodyRuleset `json:"ruleset,omitempty"`
 	// ID of a rule to bind to the connection. Default to the Workspace default ruleset
@@ -55,7 +55,7 @@ func (o *UpdateConnectionRequestBody) GetName() *string {
 	return o.Name
 }
 
-func (o *UpdateConnectionRequestBody) GetRules() []interface{} {
+func (o *UpdateConnectionRequestBody) GetRules() []shared.Rule {
 	if o == nil {
 		return nil
 	}

@@ -3,7 +3,9 @@
 package operations
 
 import (
+	"errors"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
+	"github.com/speakeasy-sdks/hookdeck-go/pkg/utils"
 	"net/http"
 )
 
@@ -11,9 +13,160 @@ import (
 type CreateIntegrationRequestBodyConfigs1 struct {
 }
 
+type CreateIntegrationRequestBodyConfigsType string
+
+const (
+	CreateIntegrationRequestBodyConfigsTypeCreateIntegrationRequestBodyConfigs1 CreateIntegrationRequestBodyConfigsType = "createIntegration_requestBody_configs_1"
+	CreateIntegrationRequestBodyConfigsTypeHMACIntegrationConfigs               CreateIntegrationRequestBodyConfigsType = "HMACIntegrationConfigs"
+	CreateIntegrationRequestBodyConfigsTypeAPIKeyIntegrationConfigs             CreateIntegrationRequestBodyConfigsType = "APIKeyIntegrationConfigs"
+	CreateIntegrationRequestBodyConfigsTypeHandledHMACConfigs                   CreateIntegrationRequestBodyConfigsType = "HandledHMACConfigs"
+	CreateIntegrationRequestBodyConfigsTypeBasicAuthIntegrationConfigs          CreateIntegrationRequestBodyConfigsType = "BasicAuthIntegrationConfigs"
+	CreateIntegrationRequestBodyConfigsTypeShopifyIntegrationConfigs            CreateIntegrationRequestBodyConfigsType = "ShopifyIntegrationConfigs"
+)
+
+type CreateIntegrationRequestBodyConfigs struct {
+	CreateIntegrationRequestBodyConfigs1 *CreateIntegrationRequestBodyConfigs1
+	HMACIntegrationConfigs               *shared.HMACIntegrationConfigs
+	APIKeyIntegrationConfigs             *shared.APIKeyIntegrationConfigs
+	HandledHMACConfigs                   *shared.HandledHMACConfigs
+	BasicAuthIntegrationConfigs          *shared.BasicAuthIntegrationConfigs
+	ShopifyIntegrationConfigs            *shared.ShopifyIntegrationConfigs
+
+	Type CreateIntegrationRequestBodyConfigsType
+}
+
+func CreateCreateIntegrationRequestBodyConfigsCreateIntegrationRequestBodyConfigs1(createIntegrationRequestBodyConfigs1 CreateIntegrationRequestBodyConfigs1) CreateIntegrationRequestBodyConfigs {
+	typ := CreateIntegrationRequestBodyConfigsTypeCreateIntegrationRequestBodyConfigs1
+
+	return CreateIntegrationRequestBodyConfigs{
+		CreateIntegrationRequestBodyConfigs1: &createIntegrationRequestBodyConfigs1,
+		Type:                                 typ,
+	}
+}
+
+func CreateCreateIntegrationRequestBodyConfigsHMACIntegrationConfigs(hmacIntegrationConfigs shared.HMACIntegrationConfigs) CreateIntegrationRequestBodyConfigs {
+	typ := CreateIntegrationRequestBodyConfigsTypeHMACIntegrationConfigs
+
+	return CreateIntegrationRequestBodyConfigs{
+		HMACIntegrationConfigs: &hmacIntegrationConfigs,
+		Type:                   typ,
+	}
+}
+
+func CreateCreateIntegrationRequestBodyConfigsAPIKeyIntegrationConfigs(apiKeyIntegrationConfigs shared.APIKeyIntegrationConfigs) CreateIntegrationRequestBodyConfigs {
+	typ := CreateIntegrationRequestBodyConfigsTypeAPIKeyIntegrationConfigs
+
+	return CreateIntegrationRequestBodyConfigs{
+		APIKeyIntegrationConfigs: &apiKeyIntegrationConfigs,
+		Type:                     typ,
+	}
+}
+
+func CreateCreateIntegrationRequestBodyConfigsHandledHMACConfigs(handledHMACConfigs shared.HandledHMACConfigs) CreateIntegrationRequestBodyConfigs {
+	typ := CreateIntegrationRequestBodyConfigsTypeHandledHMACConfigs
+
+	return CreateIntegrationRequestBodyConfigs{
+		HandledHMACConfigs: &handledHMACConfigs,
+		Type:               typ,
+	}
+}
+
+func CreateCreateIntegrationRequestBodyConfigsBasicAuthIntegrationConfigs(basicAuthIntegrationConfigs shared.BasicAuthIntegrationConfigs) CreateIntegrationRequestBodyConfigs {
+	typ := CreateIntegrationRequestBodyConfigsTypeBasicAuthIntegrationConfigs
+
+	return CreateIntegrationRequestBodyConfigs{
+		BasicAuthIntegrationConfigs: &basicAuthIntegrationConfigs,
+		Type:                        typ,
+	}
+}
+
+func CreateCreateIntegrationRequestBodyConfigsShopifyIntegrationConfigs(shopifyIntegrationConfigs shared.ShopifyIntegrationConfigs) CreateIntegrationRequestBodyConfigs {
+	typ := CreateIntegrationRequestBodyConfigsTypeShopifyIntegrationConfigs
+
+	return CreateIntegrationRequestBodyConfigs{
+		ShopifyIntegrationConfigs: &shopifyIntegrationConfigs,
+		Type:                      typ,
+	}
+}
+
+func (u *CreateIntegrationRequestBodyConfigs) UnmarshalJSON(data []byte) error {
+
+	createIntegrationRequestBodyConfigs1 := new(CreateIntegrationRequestBodyConfigs1)
+	if err := utils.UnmarshalJSON(data, &createIntegrationRequestBodyConfigs1, "", true, true); err == nil {
+		u.CreateIntegrationRequestBodyConfigs1 = createIntegrationRequestBodyConfigs1
+		u.Type = CreateIntegrationRequestBodyConfigsTypeCreateIntegrationRequestBodyConfigs1
+		return nil
+	}
+
+	handledHMACConfigs := new(shared.HandledHMACConfigs)
+	if err := utils.UnmarshalJSON(data, &handledHMACConfigs, "", true, true); err == nil {
+		u.HandledHMACConfigs = handledHMACConfigs
+		u.Type = CreateIntegrationRequestBodyConfigsTypeHandledHMACConfigs
+		return nil
+	}
+
+	apiKeyIntegrationConfigs := new(shared.APIKeyIntegrationConfigs)
+	if err := utils.UnmarshalJSON(data, &apiKeyIntegrationConfigs, "", true, true); err == nil {
+		u.APIKeyIntegrationConfigs = apiKeyIntegrationConfigs
+		u.Type = CreateIntegrationRequestBodyConfigsTypeAPIKeyIntegrationConfigs
+		return nil
+	}
+
+	basicAuthIntegrationConfigs := new(shared.BasicAuthIntegrationConfigs)
+	if err := utils.UnmarshalJSON(data, &basicAuthIntegrationConfigs, "", true, true); err == nil {
+		u.BasicAuthIntegrationConfigs = basicAuthIntegrationConfigs
+		u.Type = CreateIntegrationRequestBodyConfigsTypeBasicAuthIntegrationConfigs
+		return nil
+	}
+
+	hmacIntegrationConfigs := new(shared.HMACIntegrationConfigs)
+	if err := utils.UnmarshalJSON(data, &hmacIntegrationConfigs, "", true, true); err == nil {
+		u.HMACIntegrationConfigs = hmacIntegrationConfigs
+		u.Type = CreateIntegrationRequestBodyConfigsTypeHMACIntegrationConfigs
+		return nil
+	}
+
+	shopifyIntegrationConfigs := new(shared.ShopifyIntegrationConfigs)
+	if err := utils.UnmarshalJSON(data, &shopifyIntegrationConfigs, "", true, true); err == nil {
+		u.ShopifyIntegrationConfigs = shopifyIntegrationConfigs
+		u.Type = CreateIntegrationRequestBodyConfigsTypeShopifyIntegrationConfigs
+		return nil
+	}
+
+	return errors.New("could not unmarshal into supported union types")
+}
+
+func (u CreateIntegrationRequestBodyConfigs) MarshalJSON() ([]byte, error) {
+	if u.CreateIntegrationRequestBodyConfigs1 != nil {
+		return utils.MarshalJSON(u.CreateIntegrationRequestBodyConfigs1, "", true)
+	}
+
+	if u.HMACIntegrationConfigs != nil {
+		return utils.MarshalJSON(u.HMACIntegrationConfigs, "", true)
+	}
+
+	if u.APIKeyIntegrationConfigs != nil {
+		return utils.MarshalJSON(u.APIKeyIntegrationConfigs, "", true)
+	}
+
+	if u.HandledHMACConfigs != nil {
+		return utils.MarshalJSON(u.HandledHMACConfigs, "", true)
+	}
+
+	if u.BasicAuthIntegrationConfigs != nil {
+		return utils.MarshalJSON(u.BasicAuthIntegrationConfigs, "", true)
+	}
+
+	if u.ShopifyIntegrationConfigs != nil {
+		return utils.MarshalJSON(u.ShopifyIntegrationConfigs, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type: all fields are null")
+}
+
 type CreateIntegrationRequestBody struct {
 	// Decrypted Key/Value object of the associated configuration for that provider
-	Configs interface{} `json:"configs,omitempty"`
+	Configs *CreateIntegrationRequestBodyConfigs `json:"configs,omitempty"`
 	// List of features to enable (see features list above)
 	Features []shared.IntegrationFeature `json:"features,omitempty"`
 	// Label of the integration
@@ -22,7 +175,7 @@ type CreateIntegrationRequestBody struct {
 	Provider *shared.IntegrationProvider `json:"provider,omitempty"`
 }
 
-func (o *CreateIntegrationRequestBody) GetConfigs() interface{} {
+func (o *CreateIntegrationRequestBody) GetConfigs() *CreateIntegrationRequestBodyConfigs {
 	if o == nil {
 		return nil
 	}

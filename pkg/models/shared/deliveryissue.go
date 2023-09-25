@@ -3,34 +3,9 @@
 package shared
 
 import (
-	"encoding/json"
-	"fmt"
+	"github.com/speakeasy-sdks/hookdeck-go/pkg/utils"
 	"time"
 )
-
-type DeliveryIssueType string
-
-const (
-	DeliveryIssueTypeDelivery DeliveryIssueType = "delivery"
-)
-
-func (e DeliveryIssueType) ToPointer() *DeliveryIssueType {
-	return &e
-}
-
-func (e *DeliveryIssueType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "delivery":
-		*e = DeliveryIssueType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for DeliveryIssueType: %v", v)
-	}
-}
 
 // DeliveryIssue - Delivery issue
 type DeliveryIssue struct {
@@ -57,10 +32,21 @@ type DeliveryIssue struct {
 	// Issue status
 	Status IssueStatus `json:"status"`
 	// ID of the workspace
-	TeamID string            `json:"team_id"`
-	Type   DeliveryIssueType `json:"type"`
+	TeamID string `json:"team_id"`
+	type_  string `const:"delivery" json:"type"`
 	// ISO timestamp for when the issue was last updated
 	UpdatedAt string `json:"updated_at"`
+}
+
+func (d DeliveryIssue) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(d, "", false)
+}
+
+func (d *DeliveryIssue) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &d, "", false, true); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *DeliveryIssue) GetAggregationKeys() DeliveryIssueAggregationKeys {
@@ -154,11 +140,8 @@ func (o *DeliveryIssue) GetTeamID() string {
 	return o.TeamID
 }
 
-func (o *DeliveryIssue) GetType() DeliveryIssueType {
-	if o == nil {
-		return DeliveryIssueType("")
-	}
-	return o.Type
+func (o *DeliveryIssue) GetType() string {
+	return "delivery"
 }
 
 func (o *DeliveryIssue) GetUpdatedAt() string {
