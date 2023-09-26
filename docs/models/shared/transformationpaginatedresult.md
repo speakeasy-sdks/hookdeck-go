@@ -1,7 +1,5 @@
 # TransformationPaginatedResult
 
-List of transformations
-
 
 ## Fields
 

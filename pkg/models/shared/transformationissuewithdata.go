@@ -3,34 +3,9 @@
 package shared
 
 import (
-	"encoding/json"
-	"fmt"
+	"github.com/speakeasy-sdks/hookdeck-go/pkg/utils"
 	"time"
 )
-
-type TransformationIssueWithDataType string
-
-const (
-	TransformationIssueWithDataTypeTransformation TransformationIssueWithDataType = "transformation"
-)
-
-func (e TransformationIssueWithDataType) ToPointer() *TransformationIssueWithDataType {
-	return &e
-}
-
-func (e *TransformationIssueWithDataType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "transformation":
-		*e = TransformationIssueWithDataType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for TransformationIssueWithDataType: %v", v)
-	}
-}
 
 // TransformationIssueWithData - Transformation issue
 type TransformationIssueWithData struct {
@@ -59,10 +34,21 @@ type TransformationIssueWithData struct {
 	// Issue status
 	Status IssueStatus `json:"status"`
 	// ID of the workspace
-	TeamID string                          `json:"team_id"`
-	Type   TransformationIssueWithDataType `json:"type"`
+	TeamID string `json:"team_id"`
+	type_  string `const:"transformation" json:"type"`
 	// ISO timestamp for when the issue was last updated
 	UpdatedAt string `json:"updated_at"`
+}
+
+func (t TransformationIssueWithData) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(t, "", false)
+}
+
+func (t *TransformationIssueWithData) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &t, "", false, true); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *TransformationIssueWithData) GetAggregationKeys() TransformationIssueAggregationKeys {
@@ -163,11 +149,8 @@ func (o *TransformationIssueWithData) GetTeamID() string {
 	return o.TeamID
 }
 
-func (o *TransformationIssueWithData) GetType() TransformationIssueWithDataType {
-	if o == nil {
-		return TransformationIssueWithDataType("")
-	}
-	return o.Type
+func (o *TransformationIssueWithData) GetType() string {
+	return "transformation"
 }
 
 func (o *TransformationIssueWithData) GetUpdatedAt() string {

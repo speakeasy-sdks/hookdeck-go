@@ -12,6 +12,6 @@ Associated [Ruleset](#ruleset-object) object
 | `ID`                                       | *string*                                   | :heavy_check_mark:                         | ID of the ruleset                          |
 | `IsTeamDefault`                            | *bool*                                     | :heavy_check_mark:                         | Default ruleset of Workspace               |
 | `Name`                                     | *string*                                   | :heavy_check_mark:                         | A unique name for the ruleset              |
-| `Rules`                                    | []*interface{}*                            | :heavy_check_mark:                         | Array of rules to apply                    |
+| `Rules`                                    | [][Rule](../../models/shared/rule.md)      | :heavy_check_mark:                         | Array of rules to apply                    |
 | `TeamID`                                   | *string*                                   | :heavy_check_mark:                         | ID of the workspace                        |
 | `UpdatedAt`                                | [time.Time](https://pkg.go.dev/time#Time)  | :heavy_check_mark:                         | Date the ruleset was last updated          |

@@ -3,34 +3,8 @@
 package shared
 
 import (
-	"encoding/json"
-	"fmt"
+	"github.com/speakeasy-sdks/hookdeck-go/pkg/utils"
 )
-
-// FilterRuleType - A filter rule must be of type `filter`
-type FilterRuleType string
-
-const (
-	FilterRuleTypeFilter FilterRuleType = "filter"
-)
-
-func (e FilterRuleType) ToPointer() *FilterRuleType {
-	return &e
-}
-
-func (e *FilterRuleType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "filter":
-		*e = FilterRuleType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for FilterRuleType: %v", v)
-	}
-}
 
 type FilterRule struct {
 	// JSON using our filter syntax to filter on request headers
@@ -42,7 +16,18 @@ type FilterRule struct {
 	// JSON using our filter syntax to filter on request headers
 	Query *ConnectionFilterProperty `json:"query,omitempty"`
 	// A filter rule must be of type `filter`
-	Type FilterRuleType `json:"type"`
+	type_ string `const:"filter" json:"type"`
+}
+
+func (f FilterRule) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(f, "", false)
+}
+
+func (f *FilterRule) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &f, "", false, true); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *FilterRule) GetBody() *ConnectionFilterProperty {
@@ -73,9 +58,6 @@ func (o *FilterRule) GetQuery() *ConnectionFilterProperty {
 	return o.Query
 }
 
-func (o *FilterRule) GetType() FilterRuleType {
-	if o == nil {
-		return FilterRuleType("")
-	}
-	return o.Type
+func (o *FilterRule) GetType() string {
+	return "filter"
 }

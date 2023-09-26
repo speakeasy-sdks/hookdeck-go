@@ -16,15 +16,15 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/types"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
                 Password: "",
                 Username: "",
@@ -39,17 +39,17 @@ func main() {
         CreatedAt: &operations.GetIgnoredEventBulkRetriesCreatedAt{},
         Dir: &operations.GetIgnoredEventBulkRetriesDir{},
         ID: &operations.GetIgnoredEventBulkRetriesID{},
-        InProgress: hookdeck.Bool(false),
-        Limit: hookdeck.Int64(140350),
-        Next: hookdeck.String("at"),
+        InProgress: hookdeckgo.Bool(false),
+        Limit: hookdeckgo.Int64(870013),
+        Next: hookdeckgo.String("at"),
         OrderBy: &operations.GetIgnoredEventBulkRetriesOrderBy{},
-        Prev: hookdeck.String("at"),
+        Prev: hookdeckgo.String("maiores"),
         Query: &operations.GetIgnoredEventBulkRetriesQuery{
             Cause: &operations.GetIgnoredEventBulkRetriesQueryCause{},
-            TransformationID: hookdeck.String("maiores"),
+            TransformationID: hookdeckgo.String("molestiae"),
             WebhookID: &operations.GetIgnoredEventBulkRetriesQueryWebhookID{},
         },
-        QueryPartialMatch: hookdeck.Bool(false),
+        QueryPartialMatch: hookdeckgo.Bool(false),
     })
     if err != nil {
         log.Fatal(err)
