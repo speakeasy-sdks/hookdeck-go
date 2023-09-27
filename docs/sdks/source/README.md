@@ -1,4 +1,5 @@
 # Source
+(*Source*)
 
 ### Available Operations
 
@@ -22,21 +23,21 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
                 Password: "",
                 Username: "",
             },
         }),
     )
-    id := "voluptas"
+    id := "repellat"
 
     ctx := context.Background()
     res, err := s.Source.Archive(ctx, id)
@@ -75,14 +76,14 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
                 Password: "",
                 Username: "",
@@ -93,15 +94,13 @@ func main() {
     ctx := context.Background()
     res, err := s.Source.Create(ctx, operations.CreateSourceRequestBody{
         AllowedHTTPMethods: []shared.SourceAllowedHTTPMethod{
-            shared.SourceAllowedHTTPMethodGet,
-            shared.SourceAllowedHTTPMethodPut,
-            shared.SourceAllowedHTTPMethodGet,
+            shared.SourceAllowedHTTPMethodDelete,
         },
         CustomResponse: &shared.SourceCustomResponse{
-            Body: "fugiat",
-            ContentType: shared.SourceCustomResponseContentTypeJSON,
+            Body: "sed",
+            ContentType: shared.SourceCustomResponseContentTypeXML,
         },
-        Name: "Omar Kris",
+        Name: "Edward Crooks",
     })
     if err != nil {
         log.Fatal(err)
@@ -138,21 +137,21 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
                 Password: "",
                 Username: "",
             },
         }),
     )
-    id := "deleniti"
+    id := "magni"
 
     ctx := context.Background()
     res, err := s.Source.Delete(ctx, id)
@@ -191,21 +190,21 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
                 Password: "",
                 Username: "",
             },
         }),
     )
-    id := "omnis"
+    id := "sunt"
 
     ctx := context.Background()
     res, err := s.Source.Get(ctx, id)
@@ -244,21 +243,21 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
                 Password: "",
                 Username: "",
             },
         }),
     )
-    id := "necessitatibus"
+    id := "quo"
 
     ctx := context.Background()
     res, err := s.Source.Unarchive(ctx, id)
@@ -297,14 +296,14 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
                 Password: "",
                 Username: "",
@@ -314,16 +313,14 @@ func main() {
     requestBody := operations.UpdateSourceRequestBody{
         AllowedHTTPMethods: []shared.SourceAllowedHTTPMethod{
             shared.SourceAllowedHTTPMethodDelete,
-            shared.SourceAllowedHTTPMethodPut,
-            shared.SourceAllowedHTTPMethodPost,
         },
         CustomResponse: &shared.SourceCustomResponse{
-            Body: "voluptate",
-            ContentType: shared.SourceCustomResponseContentTypeText,
+            Body: "pariatur",
+            ContentType: shared.SourceCustomResponseContentTypeXML,
         },
-        Name: hookdeck.String("Mrs. Ray Collins"),
+        Name: hookdeckgo.String("Miriam Connelly Jr."),
     }
-    id := "accusamus"
+    id := "maiores"
 
     ctx := context.Background()
     res, err := s.Source.Update(ctx, requestBody, id)
@@ -363,14 +360,14 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
                 Password: "",
                 Username: "",
@@ -381,14 +378,13 @@ func main() {
     ctx := context.Background()
     res, err := s.Source.Upsert(ctx, operations.UpsertSourceRequestBody{
         AllowedHTTPMethods: []shared.SourceAllowedHTTPMethod{
-            shared.SourceAllowedHTTPMethodDelete,
-            shared.SourceAllowedHTTPMethodPost,
+            shared.SourceAllowedHTTPMethodPatch,
         },
         CustomResponse: &shared.SourceCustomResponse{
-            Body: "deserunt",
+            Body: "ipsam",
             ContentType: shared.SourceCustomResponseContentTypeText,
         },
-        Name: "Kari Leannon PhD",
+        Name: "Candice Beatty",
     })
     if err != nil {
         log.Fatal(err)

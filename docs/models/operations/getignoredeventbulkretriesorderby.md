@@ -3,15 +3,15 @@
 
 ## Supported Types
 
-### GetIgnoredEventBulkRetriesOrderBy1
+### 
 
 ```go
-getIgnoredEventBulkRetriesOrderBy := operations.CreateGetIgnoredEventBulkRetriesOrderByGetIgnoredEventBulkRetriesOrderBy1(operations.GetIgnoredEventBulkRetriesOrderBy1{/* values here */})
+getIgnoredEventBulkRetriesOrderBy := operations.CreateGetIgnoredEventBulkRetriesOrderByStr(string{/* values here */})
 ```
 
 ### 
 
 ```go
-getIgnoredEventBulkRetriesOrderBy := operations.CreateGetIgnoredEventBulkRetriesOrderByArrayOfgetIgnoredEventBulkRetriesOrderBy2([]operations.GetIgnoredEventBulkRetriesOrderBy2{/* values here */})
+getIgnoredEventBulkRetriesOrderBy := operations.CreateGetIgnoredEventBulkRetriesOrderByArrayOfstr([]string{/* values here */})
 ```
 

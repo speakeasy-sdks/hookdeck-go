@@ -42,7 +42,7 @@ func (e *CreateDestinationRequestBodyRateLimitPeriod) UnmarshalJSON(data []byte)
 
 type CreateDestinationRequestBody struct {
 	// Config for the destination's auth method
-	AuthMethod interface{} `json:"auth_method,omitempty"`
+	AuthMethod *shared.DestinationAuthMethodConfig `json:"auth_method,omitempty"`
 	// Path for the CLI destination
 	CliPath *string `json:"cli_path,omitempty"`
 	// HTTP method used on requests sent to the destination, overrides the method used on requests sent to the source.
@@ -58,7 +58,7 @@ type CreateDestinationRequestBody struct {
 	URL *string `json:"url,omitempty"`
 }
 
-func (o *CreateDestinationRequestBody) GetAuthMethod() interface{} {
+func (o *CreateDestinationRequestBody) GetAuthMethod() *shared.DestinationAuthMethodConfig {
 	if o == nil {
 		return nil
 	}
@@ -115,10 +115,13 @@ func (o *CreateDestinationRequestBody) GetURL() *string {
 }
 
 type CreateDestinationResponse struct {
+	// HTTP response content type for this operation
 	ContentType string
 	// A single destination
 	Destination *shared.Destination
-	StatusCode  int
+	// HTTP response status code for this operation
+	StatusCode int
+	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
 }
 

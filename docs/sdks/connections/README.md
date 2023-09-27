@@ -1,4 +1,5 @@
 # Connections
+(*Connections*)
 
 ## Overview
 
@@ -20,15 +21,15 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/types"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
                 Password: "",
                 Username: "",
@@ -38,11 +39,11 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Connections.Get(ctx, operations.GetConnectionsRequest{
-        Archived: hookdeck.Bool(false),
+        Archived: hookdeckgo.Bool(false),
         ArchivedAt: &operations.GetConnectionsArchivedAt{},
         DestinationID: &operations.GetConnectionsDestinationID{},
         Dir: &operations.GetConnectionsDir{},
-        FullName: hookdeck.String("deserunt"),
+        FullName: hookdeckgo.String("tenetur"),
         ID: &operations.GetConnectionsID{},
         Name: &operations.GetConnectionsName{},
         OrderBy: &operations.GetConnectionsOrderBy{},

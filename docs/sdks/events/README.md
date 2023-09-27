@@ -1,4 +1,5 @@
 # Events
+(*Events*)
 
 ## Overview
 
@@ -20,15 +21,15 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/types"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
                 Password: "",
                 Username: "",
@@ -50,17 +51,17 @@ func main() {
         EventDataID: &operations.GetEventsEventDataID{},
         Headers: &operations.GetEventsHeaders{},
         ID: &operations.GetEventsID{},
-        Include: operations.GetEventsIncludeData.ToPointer(),
+        Include: hookdeckgo.String("quibusdam"),
         IssueID: &operations.GetEventsIssueID{},
         LastAttemptAt: &operations.GetEventsLastAttemptAt{},
-        Limit: hookdeck.Int64(956084),
-        Next: hookdeck.String("amet"),
+        Limit: hookdeckgo.Int64(131797),
+        Next: hookdeckgo.String("deserunt"),
         OrderBy: &operations.GetEventsOrderBy{},
         ParsedQuery: &operations.GetEventsParsedQuery{},
-        Path: hookdeck.String("deserunt"),
-        Prev: hookdeck.String("nisi"),
+        Path: hookdeckgo.String("distinctio"),
+        Prev: hookdeckgo.String("quibusdam"),
         ResponseStatus: &operations.GetEventsResponseStatus{},
-        SearchTerm: hookdeck.String("vel"),
+        SearchTerm: hookdeckgo.String("labore"),
         SourceID: &operations.GetEventsSourceID{},
         Status: &operations.GetEventsStatus{},
         SuccessfulAt: &operations.GetEventsSuccessfulAt{},

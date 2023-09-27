@@ -1,4 +1,5 @@
 # IssueTriggers
+(*IssueTriggers*)
 
 ### Available Operations
 
@@ -16,15 +17,15 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/types"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
                 Password: "",
                 Username: "",
@@ -36,11 +37,11 @@ func main() {
     res, err := s.IssueTriggers.Get(ctx, operations.GetIssueTriggersRequest{
         Dir: &operations.GetIssueTriggersDir{},
         DisabledAt: &operations.GetIssueTriggersDisabledAt{},
-        Limit: hookdeck.Int64(407183),
-        Name: hookdeck.String("Virginia Wunsch"),
-        Next: hookdeck.String("voluptate"),
+        Limit: hookdeckgo.Int64(881736),
+        Name: hookdeckgo.String("Abraham McKenzie"),
+        Next: hookdeckgo.String("blanditiis"),
         OrderBy: &operations.GetIssueTriggersOrderBy{},
-        Prev: hookdeck.String("autem"),
+        Prev: hookdeckgo.String("deleniti"),
         Type: shared.IssueTypeBackpressure.ToPointer(),
     })
     if err != nil {

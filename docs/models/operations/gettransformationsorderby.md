@@ -3,15 +3,15 @@
 
 ## Supported Types
 
-### GetTransformationsOrderBy1
+### 
 
 ```go
-getTransformationsOrderBy := operations.CreateGetTransformationsOrderByGetTransformationsOrderBy1(operations.GetTransformationsOrderBy1{/* values here */})
+getTransformationsOrderBy := operations.CreateGetTransformationsOrderByStr(string{/* values here */})
 ```
 
 ### 
 
 ```go
-getTransformationsOrderBy := operations.CreateGetTransformationsOrderByArrayOfgetTransformationsOrderBy2([]operations.GetTransformationsOrderBy2{/* values here */})
+getTransformationsOrderBy := operations.CreateGetTransformationsOrderByArrayOfstr([]string{/* values here */})
 ```
 

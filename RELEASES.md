@@ -103,3 +103,13 @@ Based on:
 - Speakeasy CLI 1.65.2 (2.75.1) https://github.com/speakeasy-api/speakeasy
 ### Releases
 - [Go v1.5.0] https://github.com/speakeasy-sdks/hookdeck-go/releases/tag/v1.5.0 - .
+
+## 2023-09-27 00:58:03
+### Changes
+Based on:
+- OpenAPI Doc 1.0.0 
+- Speakeasy CLI 1.91.2 (2.131.1) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [go v1.6.0] .
+### Releases
+- [Go v1.6.0] https://github.com/speakeasy-sdks/hookdeck-go/releases/tag/v1.6.0 - .
