@@ -1,4 +1,5 @@
 # Destinations
+(*Destinations*)
 
 ## Overview
 
@@ -20,15 +21,15 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/types"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
                 Password: "",
                 Username: "",
@@ -38,16 +39,16 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Destinations.Get(ctx, operations.GetDestinationsRequest{
-        Archived: hookdeck.Bool(false),
+        Archived: hookdeckgo.Bool(false),
         ArchivedAt: &operations.GetDestinationsArchivedAt{},
         CliPath: &operations.GetDestinationsCliPath{},
         Dir: &operations.GetDestinationsDir{},
         ID: &operations.GetDestinationsID{},
-        Limit: hookdeck.Int64(965417),
+        Limit: hookdeckgo.Int64(575947),
         Name: &operations.GetDestinationsName{},
-        Next: hookdeck.String("quidem"),
+        Next: hookdeckgo.String("veritatis"),
         OrderBy: &operations.GetDestinationsOrderBy{},
-        Prev: hookdeck.String("provident"),
+        Prev: hookdeckgo.String("itaque"),
         URL: &operations.GetDestinationsURL{},
     })
     if err != nil {

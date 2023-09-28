@@ -1,4 +1,5 @@
 # Rulesets
+(*Rulesets*)
 
 ## Overview
 
@@ -20,15 +21,15 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/types"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
                 Password: "",
                 Username: "",
@@ -38,22 +39,22 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Rulesets.Get(ctx, operations.GetRulesetsRequest{
-        Archived: hookdeck.Bool(false),
+        Archived: hookdeckgo.Bool(false),
         ArchivedAt: &operations.GetRulesetsArchivedAt{},
         Dir: &operations.GetRulesetsDir{},
         ID: &operations.GetRulesetsID{},
-        Limit: hookdeck.Int64(311796),
-        Name: &operations.GetRulesetsName2{
-            Any: hookdeck.Bool(false),
-            Contains: &operations.GetRulesetsName2Contains{},
-            Gt: &operations.GetRulesetsName2Gt{},
-            Gte: &operations.GetRulesetsName2Gte{},
-            Le: &operations.GetRulesetsName2Le{},
-            Lte: &operations.GetRulesetsName2Lte{},
+        Limit: hookdeckgo.Int64(352312),
+        Name: &operations.GetRulesetsName{
+            Any: hookdeckgo.Bool(false),
+            Contains: &operations.GetRulesetsNameContains{},
+            Gt: &operations.GetRulesetsNameGt{},
+            Gte: &operations.GetRulesetsNameGte{},
+            Le: &operations.GetRulesetsNameLe{},
+            Lte: &operations.GetRulesetsNameLte{},
         },
-        Next: hookdeck.String("quidem"),
+        Next: hookdeckgo.String("expedita"),
         OrderBy: &operations.GetRulesetsOrderBy{},
-        Prev: hookdeck.String("voluptatibus"),
+        Prev: hookdeckgo.String("nihil"),
     })
     if err != nil {
         log.Fatal(err)

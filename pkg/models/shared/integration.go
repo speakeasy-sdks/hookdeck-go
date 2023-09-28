@@ -3,6 +3,8 @@
 package shared
 
 import (
+	"errors"
+	"github.com/speakeasy-sdks/hookdeck-go/pkg/utils"
 	"time"
 )
 
@@ -10,10 +12,160 @@ import (
 type IntegrationConfigs1 struct {
 }
 
-// Integration - A single integration
+type IntegrationConfigsType string
+
+const (
+	IntegrationConfigsTypeIntegrationConfigs1         IntegrationConfigsType = "Integration_configs_1"
+	IntegrationConfigsTypeHMACIntegrationConfigs      IntegrationConfigsType = "HMACIntegrationConfigs"
+	IntegrationConfigsTypeAPIKeyIntegrationConfigs    IntegrationConfigsType = "APIKeyIntegrationConfigs"
+	IntegrationConfigsTypeHandledHMACConfigs          IntegrationConfigsType = "HandledHMACConfigs"
+	IntegrationConfigsTypeBasicAuthIntegrationConfigs IntegrationConfigsType = "BasicAuthIntegrationConfigs"
+	IntegrationConfigsTypeShopifyIntegrationConfigs   IntegrationConfigsType = "ShopifyIntegrationConfigs"
+)
+
+type IntegrationConfigs struct {
+	IntegrationConfigs1         *IntegrationConfigs1
+	HMACIntegrationConfigs      *HMACIntegrationConfigs
+	APIKeyIntegrationConfigs    *APIKeyIntegrationConfigs
+	HandledHMACConfigs          *HandledHMACConfigs
+	BasicAuthIntegrationConfigs *BasicAuthIntegrationConfigs
+	ShopifyIntegrationConfigs   *ShopifyIntegrationConfigs
+
+	Type IntegrationConfigsType
+}
+
+func CreateIntegrationConfigsIntegrationConfigs1(integrationConfigs1 IntegrationConfigs1) IntegrationConfigs {
+	typ := IntegrationConfigsTypeIntegrationConfigs1
+
+	return IntegrationConfigs{
+		IntegrationConfigs1: &integrationConfigs1,
+		Type:                typ,
+	}
+}
+
+func CreateIntegrationConfigsHMACIntegrationConfigs(hmacIntegrationConfigs HMACIntegrationConfigs) IntegrationConfigs {
+	typ := IntegrationConfigsTypeHMACIntegrationConfigs
+
+	return IntegrationConfigs{
+		HMACIntegrationConfigs: &hmacIntegrationConfigs,
+		Type:                   typ,
+	}
+}
+
+func CreateIntegrationConfigsAPIKeyIntegrationConfigs(apiKeyIntegrationConfigs APIKeyIntegrationConfigs) IntegrationConfigs {
+	typ := IntegrationConfigsTypeAPIKeyIntegrationConfigs
+
+	return IntegrationConfigs{
+		APIKeyIntegrationConfigs: &apiKeyIntegrationConfigs,
+		Type:                     typ,
+	}
+}
+
+func CreateIntegrationConfigsHandledHMACConfigs(handledHMACConfigs HandledHMACConfigs) IntegrationConfigs {
+	typ := IntegrationConfigsTypeHandledHMACConfigs
+
+	return IntegrationConfigs{
+		HandledHMACConfigs: &handledHMACConfigs,
+		Type:               typ,
+	}
+}
+
+func CreateIntegrationConfigsBasicAuthIntegrationConfigs(basicAuthIntegrationConfigs BasicAuthIntegrationConfigs) IntegrationConfigs {
+	typ := IntegrationConfigsTypeBasicAuthIntegrationConfigs
+
+	return IntegrationConfigs{
+		BasicAuthIntegrationConfigs: &basicAuthIntegrationConfigs,
+		Type:                        typ,
+	}
+}
+
+func CreateIntegrationConfigsShopifyIntegrationConfigs(shopifyIntegrationConfigs ShopifyIntegrationConfigs) IntegrationConfigs {
+	typ := IntegrationConfigsTypeShopifyIntegrationConfigs
+
+	return IntegrationConfigs{
+		ShopifyIntegrationConfigs: &shopifyIntegrationConfigs,
+		Type:                      typ,
+	}
+}
+
+func (u *IntegrationConfigs) UnmarshalJSON(data []byte) error {
+
+	integrationConfigs1 := new(IntegrationConfigs1)
+	if err := utils.UnmarshalJSON(data, &integrationConfigs1, "", true, true); err == nil {
+		u.IntegrationConfigs1 = integrationConfigs1
+		u.Type = IntegrationConfigsTypeIntegrationConfigs1
+		return nil
+	}
+
+	handledHMACConfigs := new(HandledHMACConfigs)
+	if err := utils.UnmarshalJSON(data, &handledHMACConfigs, "", true, true); err == nil {
+		u.HandledHMACConfigs = handledHMACConfigs
+		u.Type = IntegrationConfigsTypeHandledHMACConfigs
+		return nil
+	}
+
+	apiKeyIntegrationConfigs := new(APIKeyIntegrationConfigs)
+	if err := utils.UnmarshalJSON(data, &apiKeyIntegrationConfigs, "", true, true); err == nil {
+		u.APIKeyIntegrationConfigs = apiKeyIntegrationConfigs
+		u.Type = IntegrationConfigsTypeAPIKeyIntegrationConfigs
+		return nil
+	}
+
+	basicAuthIntegrationConfigs := new(BasicAuthIntegrationConfigs)
+	if err := utils.UnmarshalJSON(data, &basicAuthIntegrationConfigs, "", true, true); err == nil {
+		u.BasicAuthIntegrationConfigs = basicAuthIntegrationConfigs
+		u.Type = IntegrationConfigsTypeBasicAuthIntegrationConfigs
+		return nil
+	}
+
+	hmacIntegrationConfigs := new(HMACIntegrationConfigs)
+	if err := utils.UnmarshalJSON(data, &hmacIntegrationConfigs, "", true, true); err == nil {
+		u.HMACIntegrationConfigs = hmacIntegrationConfigs
+		u.Type = IntegrationConfigsTypeHMACIntegrationConfigs
+		return nil
+	}
+
+	shopifyIntegrationConfigs := new(ShopifyIntegrationConfigs)
+	if err := utils.UnmarshalJSON(data, &shopifyIntegrationConfigs, "", true, true); err == nil {
+		u.ShopifyIntegrationConfigs = shopifyIntegrationConfigs
+		u.Type = IntegrationConfigsTypeShopifyIntegrationConfigs
+		return nil
+	}
+
+	return errors.New("could not unmarshal into supported union types")
+}
+
+func (u IntegrationConfigs) MarshalJSON() ([]byte, error) {
+	if u.IntegrationConfigs1 != nil {
+		return utils.MarshalJSON(u.IntegrationConfigs1, "", true)
+	}
+
+	if u.HMACIntegrationConfigs != nil {
+		return utils.MarshalJSON(u.HMACIntegrationConfigs, "", true)
+	}
+
+	if u.APIKeyIntegrationConfigs != nil {
+		return utils.MarshalJSON(u.APIKeyIntegrationConfigs, "", true)
+	}
+
+	if u.HandledHMACConfigs != nil {
+		return utils.MarshalJSON(u.HandledHMACConfigs, "", true)
+	}
+
+	if u.BasicAuthIntegrationConfigs != nil {
+		return utils.MarshalJSON(u.BasicAuthIntegrationConfigs, "", true)
+	}
+
+	if u.ShopifyIntegrationConfigs != nil {
+		return utils.MarshalJSON(u.ShopifyIntegrationConfigs, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type: all fields are null")
+}
+
 type Integration struct {
 	// Decrypted Key/Value object of the associated configuration for that provider
-	Configs interface{} `json:"configs"`
+	Configs IntegrationConfigs `json:"configs"`
 	// Date the integration was created
 	CreatedAt time.Time `json:"created_at"`
 	// List of features to enable (see features list below)
@@ -32,9 +184,20 @@ type Integration struct {
 	UpdatedAt time.Time `json:"updated_at"`
 }
 
-func (o *Integration) GetConfigs() interface{} {
+func (i Integration) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(i, "", false)
+}
+
+func (i *Integration) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &i, "", false, false); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *Integration) GetConfigs() IntegrationConfigs {
 	if o == nil {
-		return nil
+		return IntegrationConfigs{}
 	}
 	return o.Configs
 }

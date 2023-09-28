@@ -1,4 +1,5 @@
 # Destination
+(*Destination*)
 
 ### Available Operations
 
@@ -22,21 +23,21 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
                 Password: "",
                 Username: "",
             },
         }),
     )
-    id := "quos"
+    id := "laborum"
 
     ctx := context.Background()
     res, err := s.Destination.Archive(ctx, id)
@@ -75,14 +76,14 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
                 Password: "",
                 Username: "",
@@ -92,17 +93,14 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Destination.Create(ctx, operations.CreateDestinationRequestBody{
-        AuthMethod: &shared.HookdeckSignature{
-            Config: &shared.DestinationAuthMethodSignatureConfig{},
-            Type: shared.HookdeckSignatureTypeHookdeckSignature,
-        },
-        CliPath: hookdeck.String("magni"),
-        HTTPMethod: shared.DestinationHTTPMethodPatch.ToPointer(),
-        Name: "Linda Corkery",
-        PathForwardingDisabled: hookdeck.Bool(false),
-        RateLimit: hookdeck.Int64(703737),
-        RateLimitPeriod: operations.CreateDestinationRequestBodyRateLimitPeriodHour.ToPointer(),
-        URL: hookdeck.String("labore"),
+        AuthMethod: &shared.DestinationAuthMethodConfig{},
+        CliPath: hookdeckgo.String("quasi"),
+        HTTPMethod: shared.DestinationHTTPMethodDelete.ToPointer(),
+        Name: "Caleb Koss",
+        PathForwardingDisabled: hookdeckgo.Bool(false),
+        RateLimit: hookdeckgo.Int64(604846),
+        RateLimitPeriod: operations.CreateDestinationRequestBodyRateLimitPeriodMinute.ToPointer(),
+        URL: hookdeckgo.String("cum"),
     })
     if err != nil {
         log.Fatal(err)
@@ -139,21 +137,21 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
                 Password: "",
                 Username: "",
             },
         }),
     )
-    id := "delectus"
+    id := "perferendis"
 
     ctx := context.Background()
     res, err := s.Destination.Delete(ctx, id)
@@ -192,21 +190,21 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
                 Password: "",
                 Username: "",
             },
         }),
     )
-    id := "eum"
+    id := "doloremque"
 
     ctx := context.Background()
     res, err := s.Destination.Get(ctx, id)
@@ -245,21 +243,21 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
                 Password: "",
                 Username: "",
             },
         }),
     )
-    id := "non"
+    id := "reprehenderit"
 
     ctx := context.Background()
     res, err := s.Destination.Unarchive(ctx, id)
@@ -298,14 +296,14 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
                 Password: "",
                 Username: "",
@@ -313,21 +311,16 @@ func main() {
         }),
     )
     requestBody := operations.UpdateDestinationRequestBody{
-        AuthMethod: &shared.BearerToken{
-            Config: &shared.DestinationAuthMethodBearerTokenConfig{
-                Token: "sint",
-            },
-            Type: shared.BearerTokenTypeBearerToken,
-        },
-        CliPath: hookdeck.String("aliquid"),
-        HTTPMethod: shared.DestinationHTTPMethodPut.ToPointer(),
-        Name: hookdeck.String("Perry Nikolaus"),
-        PathForwardingDisabled: hookdeck.Bool(false),
-        RateLimit: hookdeck.Int64(680056),
+        AuthMethod: &shared.DestinationAuthMethodConfig{},
+        CliPath: hookdeckgo.String("ut"),
+        HTTPMethod: shared.DestinationHTTPMethodDelete.ToPointer(),
+        Name: hookdeckgo.String("Stacy Gulgowski MD"),
+        PathForwardingDisabled: hookdeckgo.Bool(false),
+        RateLimit: hookdeckgo.Int64(880476),
         RateLimitPeriod: operations.UpdateDestinationRequestBodyRateLimitPeriodMinute.ToPointer(),
-        URL: hookdeck.String("in"),
+        URL: hookdeckgo.String("repudiandae"),
     }
-    id := "illum"
+    id := "quae"
 
     ctx := context.Background()
     res, err := s.Destination.Update(ctx, requestBody, id)
@@ -367,14 +360,14 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
                 Password: "",
                 Username: "",
@@ -384,20 +377,14 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Destination.Upsert(ctx, operations.UpsertDestinationRequestBody{
-        AuthMethod: &shared.CustomSignature{
-            Config: shared.DestinationAuthMethodCustomSignatureConfig{
-                Key: "rerum",
-                SigningSecret: hookdeck.String("dicta"),
-            },
-            Type: shared.CustomSignatureTypeCustomSignature,
-        },
-        CliPath: hookdeck.String("magnam"),
+        AuthMethod: &shared.DestinationAuthMethodConfig{},
+        CliPath: hookdeckgo.String("ipsum"),
         HTTPMethod: shared.DestinationHTTPMethodPatch.ToPointer(),
-        Name: "Nathaniel Hyatt",
-        PathForwardingDisabled: hookdeck.Bool(false),
-        RateLimit: hookdeck.Int64(581273),
+        Name: "Andy Streich",
+        PathForwardingDisabled: hookdeckgo.Bool(false),
+        RateLimit: hookdeckgo.Int64(916723),
         RateLimitPeriod: operations.UpsertDestinationRequestBodyRateLimitPeriodSecond.ToPointer(),
-        URL: hookdeck.String("accusamus"),
+        URL: hookdeckgo.String("repudiandae"),
     })
     if err != nil {
         log.Fatal(err)

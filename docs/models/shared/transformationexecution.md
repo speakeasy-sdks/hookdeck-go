@@ -1,7 +1,5 @@
 # TransformationExecution
 
-A single transformation execution
-
 
 ## Fields
 

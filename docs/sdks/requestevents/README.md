@@ -1,4 +1,5 @@
 # RequestEvents
+(*RequestEvents*)
 
 ### Available Operations
 
@@ -16,15 +17,15 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/types"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
                 Password: "",
                 Username: "",
@@ -45,19 +46,19 @@ func main() {
         ErrorCode: &operations.GetRequestEventsErrorCode{},
         EventDataID: &operations.GetRequestEventsEventDataID{},
         Headers: &operations.GetRequestEventsHeaders{},
-        IDPathParameter: "nobis",
+        IDPathParameter: "id",
         IDQueryParameter: &operations.GetRequestEventsID{},
-        Include: operations.GetRequestEventsIncludeData.ToPointer(),
+        Include: hookdeckgo.String("labore"),
         IssueID: &operations.GetRequestEventsIssueID{},
         LastAttemptAt: &operations.GetRequestEventsLastAttemptAt{},
-        Limit: hookdeck.Int64(171629),
-        Next: hookdeck.String("quis"),
+        Limit: hookdeckgo.Int64(290077),
+        Next: hookdeckgo.String("suscipit"),
         OrderBy: &operations.GetRequestEventsOrderBy{},
         ParsedQuery: &operations.GetRequestEventsParsedQuery{},
-        Path: hookdeck.String("totam"),
-        Prev: hookdeck.String("dignissimos"),
+        Path: hookdeckgo.String("natus"),
+        Prev: hookdeckgo.String("nobis"),
         ResponseStatus: &operations.GetRequestEventsResponseStatus{},
-        SearchTerm: hookdeck.String("eaque"),
+        SearchTerm: hookdeckgo.String("eum"),
         SourceID: &operations.GetRequestEventsSourceID{},
         Status: &operations.GetRequestEventsStatus{},
         SuccessfulAt: &operations.GetRequestEventsSuccessfulAt{},

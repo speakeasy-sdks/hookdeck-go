@@ -43,7 +43,7 @@ func (e *UpsertConnectionRequestBodyDestinationRateLimitPeriod) UnmarshalJSON(da
 // UpsertConnectionRequestBodyDestination - Destination input object
 type UpsertConnectionRequestBodyDestination struct {
 	// Config for the destination's auth method
-	AuthMethod interface{} `json:"auth_method,omitempty"`
+	AuthMethod *shared.DestinationAuthMethodConfig `json:"auth_method,omitempty"`
 	// Path for the CLI destination
 	CliPath *string `json:"cli_path,omitempty"`
 	// HTTP method used on requests sent to the destination, overrides the method used on requests sent to the source.
@@ -59,7 +59,7 @@ type UpsertConnectionRequestBodyDestination struct {
 	URL *string `json:"url,omitempty"`
 }
 
-func (o *UpsertConnectionRequestBodyDestination) GetAuthMethod() interface{} {
+func (o *UpsertConnectionRequestBodyDestination) GetAuthMethod() *shared.DestinationAuthMethodConfig {
 	if o == nil {
 		return nil
 	}
@@ -121,7 +121,7 @@ type UpsertConnectionRequestBodyRuleset struct {
 	// Name for the ruleset
 	Name string `json:"name"`
 	// Array of rules to apply
-	Rules []interface{} `json:"rules,omitempty"`
+	Rules []shared.Rule `json:"rules,omitempty"`
 }
 
 func (o *UpsertConnectionRequestBodyRuleset) GetIsTeamDefault() *bool {
@@ -138,7 +138,7 @@ func (o *UpsertConnectionRequestBodyRuleset) GetName() string {
 	return o.Name
 }
 
-func (o *UpsertConnectionRequestBodyRuleset) GetRules() []interface{} {
+func (o *UpsertConnectionRequestBodyRuleset) GetRules() []shared.Rule {
 	if o == nil {
 		return nil
 	}
@@ -184,7 +184,7 @@ type UpsertConnectionRequestBody struct {
 	// A unique name of the connection for the source
 	Name string `json:"name"`
 	// Array of rules to apply
-	Rules []interface{} `json:"rules,omitempty"`
+	Rules []shared.Rule `json:"rules,omitempty"`
 	// Ruleset input object
 	Ruleset *UpsertConnectionRequestBodyRuleset `json:"ruleset,omitempty"`
 	// ID of a rule to bind to the connection. Default to the Workspace default ruleset
@@ -216,7 +216,7 @@ func (o *UpsertConnectionRequestBody) GetName() string {
 	return o.Name
 }
 
-func (o *UpsertConnectionRequestBody) GetRules() []interface{} {
+func (o *UpsertConnectionRequestBody) GetRules() []shared.Rule {
 	if o == nil {
 		return nil
 	}
@@ -253,9 +253,12 @@ func (o *UpsertConnectionRequestBody) GetSourceID() *string {
 
 type UpsertConnectionResponse struct {
 	// A single connection
-	Connection  *shared.Connection
+	Connection *shared.Connection
+	// HTTP response content type for this operation
 	ContentType string
-	StatusCode  int
+	// HTTP response status code for this operation
+	StatusCode int
+	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
 }
 

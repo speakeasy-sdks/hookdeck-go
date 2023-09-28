@@ -1,4 +1,5 @@
 # Ruleset
+(*Ruleset*)
 
 ### Available Operations
 
@@ -21,21 +22,21 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
                 Password: "",
                 Username: "",
             },
         }),
     )
-    id := "recusandae"
+    id := "reiciendis"
 
     ctx := context.Background()
     res, err := s.Ruleset.Archive(ctx, id)
@@ -74,14 +75,14 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
                 Password: "",
                 Username: "",
@@ -91,21 +92,10 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Ruleset.Create(ctx, operations.CreateRulesetRequestBody{
-        IsTeamDefault: hookdeck.Bool(false),
-        Name: "Miss Cesar Metz",
-        Rules: []interface{}{
-            shared.TransformReference{
-                TransformationID: "occaecati",
-                Type: shared.TransformReferenceTypeTransform,
-            },
-            shared.TransformReference{
-                TransformationID: "asperiores",
-                Type: shared.TransformReferenceTypeTransform,
-            },
-            shared.DelayRule{
-                Delay: 267262,
-                Type: shared.DelayRuleTypeDelay,
-            },
+        IsTeamDefault: hookdeckgo.Bool(false),
+        Name: "Tommy Kemmer",
+        Rules: []shared.Rule{
+            shared.Rule{},
         },
     })
     if err != nil {
@@ -143,21 +133,21 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
                 Password: "",
                 Username: "",
             },
         }),
     )
-    id := "iste"
+    id := "odit"
 
     ctx := context.Background()
     res, err := s.Ruleset.Get(ctx, id)
@@ -196,21 +186,21 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
                 Password: "",
                 Username: "",
             },
         }),
     )
-    id := "dolorum"
+    id := "nemo"
 
     ctx := context.Background()
     res, err := s.Ruleset.Unarchive(ctx, id)
@@ -249,14 +239,14 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
                 Password: "",
                 Username: "",
@@ -264,30 +254,13 @@ func main() {
         }),
     )
     requestBody := operations.UpdateRulesetRequestBody{
-        IsTeamDefault: hookdeck.Bool(false),
-        Name: hookdeck.String("Ervin McLaughlin"),
-        Rules: []interface{}{
-            shared.AlertRule{
-                Strategy: shared.AlertStrategyLastAttempt,
-                Type: shared.AlertRuleTypeAlert,
-            },
-            shared.AlertRule{
-                Strategy: shared.AlertStrategyEachAttempt,
-                Type: shared.AlertRuleTypeAlert,
-            },
-            shared.AlertRule{
-                Strategy: shared.AlertStrategyEachAttempt,
-                Type: shared.AlertRuleTypeAlert,
-            },
-            shared.RetryRule{
-                Count: hookdeck.Int64(218749),
-                Interval: hookdeck.Int64(944373),
-                Strategy: shared.RetryStrategyExponential,
-                Type: shared.RetryRuleTypeRetry,
-            },
+        IsTeamDefault: hookdeckgo.Bool(false),
+        Name: hookdeckgo.String("Vera Wyman"),
+        Rules: []shared.Rule{
+            shared.Rule{},
         },
     }
-    id := "cum"
+    id := "maxime"
 
     ctx := context.Background()
     res, err := s.Ruleset.Update(ctx, requestBody, id)
@@ -327,14 +300,14 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
                 Password: "",
                 Username: "",
@@ -344,22 +317,10 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Ruleset.Upsert(ctx, operations.UpsertRulesetRequestBody{
-        IsTeamDefault: hookdeck.Bool(false),
-        Name: "Marian Wisozk",
-        Rules: []interface{}{
-            shared.RetryRule{
-                Count: hookdeck.Int64(58029),
-                Interval: hookdeck.Int64(56418),
-                Strategy: shared.RetryStrategyLinear,
-                Type: shared.RetryRuleTypeRetry,
-            },
-            shared.FilterRule{
-                Body: &shared.ConnectionFilterProperty{},
-                Headers: &shared.ConnectionFilterProperty{},
-                Path: &shared.ConnectionFilterProperty{},
-                Query: &shared.ConnectionFilterProperty{},
-                Type: shared.FilterRuleTypeFilter,
-            },
+        IsTeamDefault: hookdeckgo.Bool(false),
+        Name: "Mr. Andres King",
+        Rules: []shared.Rule{
+            shared.Rule{},
         },
     })
     if err != nil {
