@@ -3,34 +3,9 @@
 package shared
 
 import (
-	"encoding/json"
-	"fmt"
+	"github.com/speakeasy-sdks/hookdeck-go/pkg/utils"
 	"time"
 )
-
-type TransformationIssueType string
-
-const (
-	TransformationIssueTypeTransformation TransformationIssueType = "transformation"
-)
-
-func (e TransformationIssueType) ToPointer() *TransformationIssueType {
-	return &e
-}
-
-func (e *TransformationIssueType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "transformation":
-		*e = TransformationIssueType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for TransformationIssueType: %v", v)
-	}
-}
 
 // TransformationIssue - Transformation issue
 type TransformationIssue struct {
@@ -57,10 +32,21 @@ type TransformationIssue struct {
 	// Issue status
 	Status IssueStatus `json:"status"`
 	// ID of the workspace
-	TeamID string                  `json:"team_id"`
-	Type   TransformationIssueType `json:"type"`
+	TeamID string `json:"team_id"`
+	type_  string `const:"transformation" json:"type"`
 	// ISO timestamp for when the issue was last updated
 	UpdatedAt string `json:"updated_at"`
+}
+
+func (t TransformationIssue) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(t, "", false)
+}
+
+func (t *TransformationIssue) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &t, "", false, true); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *TransformationIssue) GetAggregationKeys() TransformationIssueAggregationKeys {
@@ -154,11 +140,8 @@ func (o *TransformationIssue) GetTeamID() string {
 	return o.TeamID
 }
 
-func (o *TransformationIssue) GetType() TransformationIssueType {
-	if o == nil {
-		return TransformationIssueType("")
-	}
-	return o.Type
+func (o *TransformationIssue) GetType() string {
+	return "transformation"
 }
 
 func (o *TransformationIssue) GetUpdatedAt() string {

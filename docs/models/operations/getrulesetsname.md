@@ -1,0 +1,13 @@
+# GetRulesetsName
+
+
+## Fields
+
+| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `Any`                                                                          | **bool*                                                                        | :heavy_minus_sign:                                                             | N/A                                                                            |
+| `Contains`                                                                     | [*GetRulesetsNameContains](../../models/operations/getrulesetsnamecontains.md) | :heavy_minus_sign:                                                             | N/A                                                                            |
+| `Gt`                                                                           | [*GetRulesetsNameGt](../../models/operations/getrulesetsnamegt.md)             | :heavy_minus_sign:                                                             | N/A                                                                            |
+| `Gte`                                                                          | [*GetRulesetsNameGte](../../models/operations/getrulesetsnamegte.md)           | :heavy_minus_sign:                                                             | N/A                                                                            |
+| `Le`                                                                           | [*GetRulesetsNameLe](../../models/operations/getrulesetsnamele.md)             | :heavy_minus_sign:                                                             | N/A                                                                            |
+| `Lte`                                                                          | [*GetRulesetsNameLte](../../models/operations/getrulesetsnamelte.md)           | :heavy_minus_sign:                                                             | N/A                                                                            |
