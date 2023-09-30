@@ -1,4 +1,5 @@
 # BulkRetryRequests
+(*BulkRetryRequests*)
 
 ### Available Operations
 
@@ -16,15 +17,15 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/types"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
                 Password: "",
                 Username: "",
@@ -44,12 +45,12 @@ func main() {
             IgnoredCount: &operations.CreateRequestBulkRetryRequestBodyQueryIgnoredCount{},
             IngestedAt: &operations.CreateRequestBulkRetryRequestBodyQueryIngestedAt{},
             ParsedQuery: &operations.CreateRequestBulkRetryRequestBodyQueryParsedQuery{},
-            Path: hookdeck.String("molestiae"),
+            Path: hookdeckgo.String("/private/var"),
             RejectionCause: &operations.CreateRequestBulkRetryRequestBodyQueryRejectionCause{},
-            SearchTerm: hookdeck.String("quod"),
+            SearchTerm: hookdeckgo.String("Configuration Money"),
             SourceID: &operations.CreateRequestBulkRetryRequestBodyQuerySourceID{},
             Status: operations.CreateRequestBulkRetryRequestBodyQueryStatusRejected.ToPointer(),
-            Verified: hookdeck.Bool(false),
+            Verified: hookdeckgo.Bool(false),
         },
     })
     if err != nil {

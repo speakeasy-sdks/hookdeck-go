@@ -3,11 +3,11 @@
 package operations
 
 import (
-	"bytes"
 	"encoding/json"
 	"errors"
 	"fmt"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
+	"github.com/speakeasy-sdks/hookdeck-go/pkg/utils"
 	"net/http"
 	"time"
 )
@@ -19,6 +19,17 @@ type GetRulesetsArchivedAt2 struct {
 	Gte *time.Time `queryParam:"name=gte"`
 	Le  *time.Time `queryParam:"name=le"`
 	Lte *time.Time `queryParam:"name=lte"`
+}
+
+func (g GetRulesetsArchivedAt2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetRulesetsArchivedAt2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, true); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *GetRulesetsArchivedAt2) GetAny() *bool {
@@ -89,23 +100,18 @@ func CreateGetRulesetsArchivedAtGetRulesetsArchivedAt2(getRulesetsArchivedAt2 Ge
 }
 
 func (u *GetRulesetsArchivedAt) UnmarshalJSON(data []byte) error {
-	var d *json.Decoder
 
-	dateTime := new(time.Time)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&dateTime); err == nil {
-		u.DateTime = dateTime
-		u.Type = GetRulesetsArchivedAtTypeDateTime
+	getRulesetsArchivedAt2 := new(GetRulesetsArchivedAt2)
+	if err := utils.UnmarshalJSON(data, &getRulesetsArchivedAt2, "", true, true); err == nil {
+		u.GetRulesetsArchivedAt2 = getRulesetsArchivedAt2
+		u.Type = GetRulesetsArchivedAtTypeGetRulesetsArchivedAt2
 		return nil
 	}
 
-	getRulesetsArchivedAt2 := new(GetRulesetsArchivedAt2)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&getRulesetsArchivedAt2); err == nil {
-		u.GetRulesetsArchivedAt2 = getRulesetsArchivedAt2
-		u.Type = GetRulesetsArchivedAtTypeGetRulesetsArchivedAt2
+	dateTime := new(time.Time)
+	if err := utils.UnmarshalJSON(data, &dateTime, "", true, true); err == nil {
+		u.DateTime = dateTime
+		u.Type = GetRulesetsArchivedAtTypeDateTime
 		return nil
 	}
 
@@ -114,14 +120,14 @@ func (u *GetRulesetsArchivedAt) UnmarshalJSON(data []byte) error {
 
 func (u GetRulesetsArchivedAt) MarshalJSON() ([]byte, error) {
 	if u.DateTime != nil {
-		return json.Marshal(u.DateTime)
+		return utils.MarshalJSON(u.DateTime, "", true)
 	}
 
 	if u.GetRulesetsArchivedAt2 != nil {
-		return json.Marshal(u.GetRulesetsArchivedAt2)
+		return utils.MarshalJSON(u.GetRulesetsArchivedAt2, "", true)
 	}
 
-	return nil, nil
+	return nil, errors.New("could not marshal union type: all fields are null")
 }
 
 type GetRulesetsDir2 string
@@ -212,21 +218,16 @@ func CreateGetRulesetsDirArrayOfgetRulesetsDir2(arrayOfgetRulesetsDir2 []GetRule
 }
 
 func (u *GetRulesetsDir) UnmarshalJSON(data []byte) error {
-	var d *json.Decoder
 
 	getRulesetsDir1 := new(GetRulesetsDir1)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&getRulesetsDir1); err == nil {
+	if err := utils.UnmarshalJSON(data, &getRulesetsDir1, "", true, true); err == nil {
 		u.GetRulesetsDir1 = getRulesetsDir1
 		u.Type = GetRulesetsDirTypeGetRulesetsDir1
 		return nil
 	}
 
 	arrayOfgetRulesetsDir2 := []GetRulesetsDir2{}
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&arrayOfgetRulesetsDir2); err == nil {
+	if err := utils.UnmarshalJSON(data, &arrayOfgetRulesetsDir2, "", true, true); err == nil {
 		u.ArrayOfgetRulesetsDir2 = arrayOfgetRulesetsDir2
 		u.Type = GetRulesetsDirTypeArrayOfgetRulesetsDir2
 		return nil
@@ -237,14 +238,14 @@ func (u *GetRulesetsDir) UnmarshalJSON(data []byte) error {
 
 func (u GetRulesetsDir) MarshalJSON() ([]byte, error) {
 	if u.GetRulesetsDir1 != nil {
-		return json.Marshal(u.GetRulesetsDir1)
+		return utils.MarshalJSON(u.GetRulesetsDir1, "", true)
 	}
 
 	if u.ArrayOfgetRulesetsDir2 != nil {
-		return json.Marshal(u.ArrayOfgetRulesetsDir2)
+		return utils.MarshalJSON(u.ArrayOfgetRulesetsDir2, "", true)
 	}
 
-	return nil, nil
+	return nil, errors.New("could not marshal union type: all fields are null")
 }
 
 type GetRulesetsIDType string
@@ -280,21 +281,16 @@ func CreateGetRulesetsIDArrayOfstr(arrayOfstr []string) GetRulesetsID {
 }
 
 func (u *GetRulesetsID) UnmarshalJSON(data []byte) error {
-	var d *json.Decoder
 
 	str := new(string)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&str); err == nil {
+	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
 		u.Str = str
 		u.Type = GetRulesetsIDTypeStr
 		return nil
 	}
 
 	arrayOfstr := []string{}
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&arrayOfstr); err == nil {
+	if err := utils.UnmarshalJSON(data, &arrayOfstr, "", true, true); err == nil {
 		u.ArrayOfstr = arrayOfstr
 		u.Type = GetRulesetsIDTypeArrayOfstr
 		return nil
@@ -305,507 +301,427 @@ func (u *GetRulesetsID) UnmarshalJSON(data []byte) error {
 
 func (u GetRulesetsID) MarshalJSON() ([]byte, error) {
 	if u.Str != nil {
-		return json.Marshal(u.Str)
+		return utils.MarshalJSON(u.Str, "", true)
 	}
 
 	if u.ArrayOfstr != nil {
-		return json.Marshal(u.ArrayOfstr)
+		return utils.MarshalJSON(u.ArrayOfstr, "", true)
 	}
 
-	return nil, nil
+	return nil, errors.New("could not marshal union type: all fields are null")
 }
 
-type GetRulesetsName2ContainsType string
+type GetRulesetsNameContainsType string
 
 const (
-	GetRulesetsName2ContainsTypeStr        GetRulesetsName2ContainsType = "str"
-	GetRulesetsName2ContainsTypeArrayOfstr GetRulesetsName2ContainsType = "arrayOfstr"
+	GetRulesetsNameContainsTypeStr        GetRulesetsNameContainsType = "str"
+	GetRulesetsNameContainsTypeArrayOfstr GetRulesetsNameContainsType = "arrayOfstr"
 )
 
-type GetRulesetsName2Contains struct {
+type GetRulesetsNameContains struct {
 	Str        *string
 	ArrayOfstr []string
 
-	Type GetRulesetsName2ContainsType
+	Type GetRulesetsNameContainsType
 }
 
-func CreateGetRulesetsName2ContainsStr(str string) GetRulesetsName2Contains {
-	typ := GetRulesetsName2ContainsTypeStr
+func CreateGetRulesetsNameContainsStr(str string) GetRulesetsNameContains {
+	typ := GetRulesetsNameContainsTypeStr
 
-	return GetRulesetsName2Contains{
+	return GetRulesetsNameContains{
 		Str:  &str,
 		Type: typ,
 	}
 }
 
-func CreateGetRulesetsName2ContainsArrayOfstr(arrayOfstr []string) GetRulesetsName2Contains {
-	typ := GetRulesetsName2ContainsTypeArrayOfstr
+func CreateGetRulesetsNameContainsArrayOfstr(arrayOfstr []string) GetRulesetsNameContains {
+	typ := GetRulesetsNameContainsTypeArrayOfstr
 
-	return GetRulesetsName2Contains{
+	return GetRulesetsNameContains{
 		ArrayOfstr: arrayOfstr,
 		Type:       typ,
 	}
 }
 
-func (u *GetRulesetsName2Contains) UnmarshalJSON(data []byte) error {
-	var d *json.Decoder
+func (u *GetRulesetsNameContains) UnmarshalJSON(data []byte) error {
 
 	str := new(string)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&str); err == nil {
+	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
 		u.Str = str
-		u.Type = GetRulesetsName2ContainsTypeStr
+		u.Type = GetRulesetsNameContainsTypeStr
 		return nil
 	}
 
 	arrayOfstr := []string{}
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&arrayOfstr); err == nil {
+	if err := utils.UnmarshalJSON(data, &arrayOfstr, "", true, true); err == nil {
 		u.ArrayOfstr = arrayOfstr
-		u.Type = GetRulesetsName2ContainsTypeArrayOfstr
+		u.Type = GetRulesetsNameContainsTypeArrayOfstr
 		return nil
 	}
 
 	return errors.New("could not unmarshal into supported union types")
 }
 
-func (u GetRulesetsName2Contains) MarshalJSON() ([]byte, error) {
+func (u GetRulesetsNameContains) MarshalJSON() ([]byte, error) {
 	if u.Str != nil {
-		return json.Marshal(u.Str)
+		return utils.MarshalJSON(u.Str, "", true)
 	}
 
 	if u.ArrayOfstr != nil {
-		return json.Marshal(u.ArrayOfstr)
+		return utils.MarshalJSON(u.ArrayOfstr, "", true)
 	}
 
-	return nil, nil
+	return nil, errors.New("could not marshal union type: all fields are null")
 }
 
-type GetRulesetsName2GtType string
+type GetRulesetsNameGtType string
 
 const (
-	GetRulesetsName2GtTypeStr        GetRulesetsName2GtType = "str"
-	GetRulesetsName2GtTypeArrayOfstr GetRulesetsName2GtType = "arrayOfstr"
+	GetRulesetsNameGtTypeStr        GetRulesetsNameGtType = "str"
+	GetRulesetsNameGtTypeArrayOfstr GetRulesetsNameGtType = "arrayOfstr"
 )
 
-type GetRulesetsName2Gt struct {
+type GetRulesetsNameGt struct {
 	Str        *string
 	ArrayOfstr []string
 
-	Type GetRulesetsName2GtType
+	Type GetRulesetsNameGtType
 }
 
-func CreateGetRulesetsName2GtStr(str string) GetRulesetsName2Gt {
-	typ := GetRulesetsName2GtTypeStr
+func CreateGetRulesetsNameGtStr(str string) GetRulesetsNameGt {
+	typ := GetRulesetsNameGtTypeStr
 
-	return GetRulesetsName2Gt{
+	return GetRulesetsNameGt{
 		Str:  &str,
 		Type: typ,
 	}
 }
 
-func CreateGetRulesetsName2GtArrayOfstr(arrayOfstr []string) GetRulesetsName2Gt {
-	typ := GetRulesetsName2GtTypeArrayOfstr
+func CreateGetRulesetsNameGtArrayOfstr(arrayOfstr []string) GetRulesetsNameGt {
+	typ := GetRulesetsNameGtTypeArrayOfstr
 
-	return GetRulesetsName2Gt{
+	return GetRulesetsNameGt{
 		ArrayOfstr: arrayOfstr,
 		Type:       typ,
 	}
 }
 
-func (u *GetRulesetsName2Gt) UnmarshalJSON(data []byte) error {
-	var d *json.Decoder
+func (u *GetRulesetsNameGt) UnmarshalJSON(data []byte) error {
 
 	str := new(string)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&str); err == nil {
+	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
 		u.Str = str
-		u.Type = GetRulesetsName2GtTypeStr
+		u.Type = GetRulesetsNameGtTypeStr
 		return nil
 	}
 
 	arrayOfstr := []string{}
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&arrayOfstr); err == nil {
+	if err := utils.UnmarshalJSON(data, &arrayOfstr, "", true, true); err == nil {
 		u.ArrayOfstr = arrayOfstr
-		u.Type = GetRulesetsName2GtTypeArrayOfstr
+		u.Type = GetRulesetsNameGtTypeArrayOfstr
 		return nil
 	}
 
 	return errors.New("could not unmarshal into supported union types")
 }
 
-func (u GetRulesetsName2Gt) MarshalJSON() ([]byte, error) {
+func (u GetRulesetsNameGt) MarshalJSON() ([]byte, error) {
 	if u.Str != nil {
-		return json.Marshal(u.Str)
+		return utils.MarshalJSON(u.Str, "", true)
 	}
 
 	if u.ArrayOfstr != nil {
-		return json.Marshal(u.ArrayOfstr)
+		return utils.MarshalJSON(u.ArrayOfstr, "", true)
 	}
 
-	return nil, nil
+	return nil, errors.New("could not marshal union type: all fields are null")
 }
 
-type GetRulesetsName2GteType string
+type GetRulesetsNameGteType string
 
 const (
-	GetRulesetsName2GteTypeStr        GetRulesetsName2GteType = "str"
-	GetRulesetsName2GteTypeArrayOfstr GetRulesetsName2GteType = "arrayOfstr"
+	GetRulesetsNameGteTypeStr        GetRulesetsNameGteType = "str"
+	GetRulesetsNameGteTypeArrayOfstr GetRulesetsNameGteType = "arrayOfstr"
 )
 
-type GetRulesetsName2Gte struct {
+type GetRulesetsNameGte struct {
 	Str        *string
 	ArrayOfstr []string
 
-	Type GetRulesetsName2GteType
+	Type GetRulesetsNameGteType
 }
 
-func CreateGetRulesetsName2GteStr(str string) GetRulesetsName2Gte {
-	typ := GetRulesetsName2GteTypeStr
+func CreateGetRulesetsNameGteStr(str string) GetRulesetsNameGte {
+	typ := GetRulesetsNameGteTypeStr
 
-	return GetRulesetsName2Gte{
+	return GetRulesetsNameGte{
 		Str:  &str,
 		Type: typ,
 	}
 }
 
-func CreateGetRulesetsName2GteArrayOfstr(arrayOfstr []string) GetRulesetsName2Gte {
-	typ := GetRulesetsName2GteTypeArrayOfstr
+func CreateGetRulesetsNameGteArrayOfstr(arrayOfstr []string) GetRulesetsNameGte {
+	typ := GetRulesetsNameGteTypeArrayOfstr
 
-	return GetRulesetsName2Gte{
+	return GetRulesetsNameGte{
 		ArrayOfstr: arrayOfstr,
 		Type:       typ,
 	}
 }
 
-func (u *GetRulesetsName2Gte) UnmarshalJSON(data []byte) error {
-	var d *json.Decoder
+func (u *GetRulesetsNameGte) UnmarshalJSON(data []byte) error {
 
 	str := new(string)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&str); err == nil {
+	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
 		u.Str = str
-		u.Type = GetRulesetsName2GteTypeStr
+		u.Type = GetRulesetsNameGteTypeStr
 		return nil
 	}
 
 	arrayOfstr := []string{}
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&arrayOfstr); err == nil {
+	if err := utils.UnmarshalJSON(data, &arrayOfstr, "", true, true); err == nil {
 		u.ArrayOfstr = arrayOfstr
-		u.Type = GetRulesetsName2GteTypeArrayOfstr
+		u.Type = GetRulesetsNameGteTypeArrayOfstr
 		return nil
 	}
 
 	return errors.New("could not unmarshal into supported union types")
 }
 
-func (u GetRulesetsName2Gte) MarshalJSON() ([]byte, error) {
+func (u GetRulesetsNameGte) MarshalJSON() ([]byte, error) {
 	if u.Str != nil {
-		return json.Marshal(u.Str)
+		return utils.MarshalJSON(u.Str, "", true)
 	}
 
 	if u.ArrayOfstr != nil {
-		return json.Marshal(u.ArrayOfstr)
+		return utils.MarshalJSON(u.ArrayOfstr, "", true)
 	}
 
-	return nil, nil
+	return nil, errors.New("could not marshal union type: all fields are null")
 }
 
-type GetRulesetsName2LeType string
+type GetRulesetsNameLeType string
 
 const (
-	GetRulesetsName2LeTypeStr        GetRulesetsName2LeType = "str"
-	GetRulesetsName2LeTypeArrayOfstr GetRulesetsName2LeType = "arrayOfstr"
+	GetRulesetsNameLeTypeStr        GetRulesetsNameLeType = "str"
+	GetRulesetsNameLeTypeArrayOfstr GetRulesetsNameLeType = "arrayOfstr"
 )
 
-type GetRulesetsName2Le struct {
+type GetRulesetsNameLe struct {
 	Str        *string
 	ArrayOfstr []string
 
-	Type GetRulesetsName2LeType
+	Type GetRulesetsNameLeType
 }
 
-func CreateGetRulesetsName2LeStr(str string) GetRulesetsName2Le {
-	typ := GetRulesetsName2LeTypeStr
+func CreateGetRulesetsNameLeStr(str string) GetRulesetsNameLe {
+	typ := GetRulesetsNameLeTypeStr
 
-	return GetRulesetsName2Le{
+	return GetRulesetsNameLe{
 		Str:  &str,
 		Type: typ,
 	}
 }
 
-func CreateGetRulesetsName2LeArrayOfstr(arrayOfstr []string) GetRulesetsName2Le {
-	typ := GetRulesetsName2LeTypeArrayOfstr
+func CreateGetRulesetsNameLeArrayOfstr(arrayOfstr []string) GetRulesetsNameLe {
+	typ := GetRulesetsNameLeTypeArrayOfstr
 
-	return GetRulesetsName2Le{
+	return GetRulesetsNameLe{
 		ArrayOfstr: arrayOfstr,
 		Type:       typ,
 	}
 }
 
-func (u *GetRulesetsName2Le) UnmarshalJSON(data []byte) error {
-	var d *json.Decoder
+func (u *GetRulesetsNameLe) UnmarshalJSON(data []byte) error {
 
 	str := new(string)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&str); err == nil {
+	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
 		u.Str = str
-		u.Type = GetRulesetsName2LeTypeStr
+		u.Type = GetRulesetsNameLeTypeStr
 		return nil
 	}
 
 	arrayOfstr := []string{}
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&arrayOfstr); err == nil {
+	if err := utils.UnmarshalJSON(data, &arrayOfstr, "", true, true); err == nil {
 		u.ArrayOfstr = arrayOfstr
-		u.Type = GetRulesetsName2LeTypeArrayOfstr
+		u.Type = GetRulesetsNameLeTypeArrayOfstr
 		return nil
 	}
 
 	return errors.New("could not unmarshal into supported union types")
 }
 
-func (u GetRulesetsName2Le) MarshalJSON() ([]byte, error) {
+func (u GetRulesetsNameLe) MarshalJSON() ([]byte, error) {
 	if u.Str != nil {
-		return json.Marshal(u.Str)
+		return utils.MarshalJSON(u.Str, "", true)
 	}
 
 	if u.ArrayOfstr != nil {
-		return json.Marshal(u.ArrayOfstr)
+		return utils.MarshalJSON(u.ArrayOfstr, "", true)
 	}
 
-	return nil, nil
+	return nil, errors.New("could not marshal union type: all fields are null")
 }
 
-type GetRulesetsName2LteType string
+type GetRulesetsNameLteType string
 
 const (
-	GetRulesetsName2LteTypeStr        GetRulesetsName2LteType = "str"
-	GetRulesetsName2LteTypeArrayOfstr GetRulesetsName2LteType = "arrayOfstr"
+	GetRulesetsNameLteTypeStr        GetRulesetsNameLteType = "str"
+	GetRulesetsNameLteTypeArrayOfstr GetRulesetsNameLteType = "arrayOfstr"
 )
 
-type GetRulesetsName2Lte struct {
+type GetRulesetsNameLte struct {
 	Str        *string
 	ArrayOfstr []string
 
-	Type GetRulesetsName2LteType
+	Type GetRulesetsNameLteType
 }
 
-func CreateGetRulesetsName2LteStr(str string) GetRulesetsName2Lte {
-	typ := GetRulesetsName2LteTypeStr
+func CreateGetRulesetsNameLteStr(str string) GetRulesetsNameLte {
+	typ := GetRulesetsNameLteTypeStr
 
-	return GetRulesetsName2Lte{
+	return GetRulesetsNameLte{
 		Str:  &str,
 		Type: typ,
 	}
 }
 
-func CreateGetRulesetsName2LteArrayOfstr(arrayOfstr []string) GetRulesetsName2Lte {
-	typ := GetRulesetsName2LteTypeArrayOfstr
+func CreateGetRulesetsNameLteArrayOfstr(arrayOfstr []string) GetRulesetsNameLte {
+	typ := GetRulesetsNameLteTypeArrayOfstr
 
-	return GetRulesetsName2Lte{
+	return GetRulesetsNameLte{
 		ArrayOfstr: arrayOfstr,
 		Type:       typ,
 	}
 }
 
-func (u *GetRulesetsName2Lte) UnmarshalJSON(data []byte) error {
-	var d *json.Decoder
+func (u *GetRulesetsNameLte) UnmarshalJSON(data []byte) error {
 
 	str := new(string)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&str); err == nil {
+	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
 		u.Str = str
-		u.Type = GetRulesetsName2LteTypeStr
+		u.Type = GetRulesetsNameLteTypeStr
 		return nil
 	}
 
 	arrayOfstr := []string{}
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&arrayOfstr); err == nil {
+	if err := utils.UnmarshalJSON(data, &arrayOfstr, "", true, true); err == nil {
 		u.ArrayOfstr = arrayOfstr
-		u.Type = GetRulesetsName2LteTypeArrayOfstr
+		u.Type = GetRulesetsNameLteTypeArrayOfstr
 		return nil
 	}
 
 	return errors.New("could not unmarshal into supported union types")
 }
 
-func (u GetRulesetsName2Lte) MarshalJSON() ([]byte, error) {
+func (u GetRulesetsNameLte) MarshalJSON() ([]byte, error) {
 	if u.Str != nil {
-		return json.Marshal(u.Str)
+		return utils.MarshalJSON(u.Str, "", true)
 	}
 
 	if u.ArrayOfstr != nil {
-		return json.Marshal(u.ArrayOfstr)
+		return utils.MarshalJSON(u.ArrayOfstr, "", true)
 	}
 
-	return nil, nil
+	return nil, errors.New("could not marshal union type: all fields are null")
 }
 
-// GetRulesetsName2 - The ruleset name
-type GetRulesetsName2 struct {
-	Any      *bool                     `queryParam:"name=any"`
-	Contains *GetRulesetsName2Contains `queryParam:"name=contains"`
-	Gt       *GetRulesetsName2Gt       `queryParam:"name=gt"`
-	Gte      *GetRulesetsName2Gte      `queryParam:"name=gte"`
-	Le       *GetRulesetsName2Le       `queryParam:"name=le"`
-	Lte      *GetRulesetsName2Lte      `queryParam:"name=lte"`
+type GetRulesetsName struct {
+	Any      *bool                    `queryParam:"name=any"`
+	Contains *GetRulesetsNameContains `queryParam:"name=contains"`
+	Gt       *GetRulesetsNameGt       `queryParam:"name=gt"`
+	Gte      *GetRulesetsNameGte      `queryParam:"name=gte"`
+	Le       *GetRulesetsNameLe       `queryParam:"name=le"`
+	Lte      *GetRulesetsNameLte      `queryParam:"name=lte"`
 }
 
-func (o *GetRulesetsName2) GetAny() *bool {
+func (o *GetRulesetsName) GetAny() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.Any
 }
 
-func (o *GetRulesetsName2) GetContains() *GetRulesetsName2Contains {
+func (o *GetRulesetsName) GetContains() *GetRulesetsNameContains {
 	if o == nil {
 		return nil
 	}
 	return o.Contains
 }
 
-func (o *GetRulesetsName2) GetGt() *GetRulesetsName2Gt {
+func (o *GetRulesetsName) GetGt() *GetRulesetsNameGt {
 	if o == nil {
 		return nil
 	}
 	return o.Gt
 }
 
-func (o *GetRulesetsName2) GetGte() *GetRulesetsName2Gte {
+func (o *GetRulesetsName) GetGte() *GetRulesetsNameGte {
 	if o == nil {
 		return nil
 	}
 	return o.Gte
 }
 
-func (o *GetRulesetsName2) GetLe() *GetRulesetsName2Le {
+func (o *GetRulesetsName) GetLe() *GetRulesetsNameLe {
 	if o == nil {
 		return nil
 	}
 	return o.Le
 }
 
-func (o *GetRulesetsName2) GetLte() *GetRulesetsName2Lte {
+func (o *GetRulesetsName) GetLte() *GetRulesetsNameLte {
 	if o == nil {
 		return nil
 	}
 	return o.Lte
 }
 
-type GetRulesetsOrderBy2 string
-
-const (
-	GetRulesetsOrderBy2CreatedAt GetRulesetsOrderBy2 = "created_at"
-)
-
-func (e GetRulesetsOrderBy2) ToPointer() *GetRulesetsOrderBy2 {
-	return &e
-}
-
-func (e *GetRulesetsOrderBy2) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "created_at":
-		*e = GetRulesetsOrderBy2(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for GetRulesetsOrderBy2: %v", v)
-	}
-}
-
-// GetRulesetsOrderBy1 - Sort key(s)
-type GetRulesetsOrderBy1 string
-
-const (
-	GetRulesetsOrderBy1CreatedAt GetRulesetsOrderBy1 = "created_at"
-)
-
-func (e GetRulesetsOrderBy1) ToPointer() *GetRulesetsOrderBy1 {
-	return &e
-}
-
-func (e *GetRulesetsOrderBy1) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "created_at":
-		*e = GetRulesetsOrderBy1(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for GetRulesetsOrderBy1: %v", v)
-	}
-}
-
 type GetRulesetsOrderByType string
 
 const (
-	GetRulesetsOrderByTypeGetRulesetsOrderBy1        GetRulesetsOrderByType = "getRulesetsOrderBy_1"
-	GetRulesetsOrderByTypeArrayOfgetRulesetsOrderBy2 GetRulesetsOrderByType = "arrayOfgetRulesetsOrderBy_2"
+	GetRulesetsOrderByTypeStr        GetRulesetsOrderByType = "str"
+	GetRulesetsOrderByTypeArrayOfstr GetRulesetsOrderByType = "arrayOfstr"
 )
 
 type GetRulesetsOrderBy struct {
-	GetRulesetsOrderBy1        *GetRulesetsOrderBy1
-	ArrayOfgetRulesetsOrderBy2 []GetRulesetsOrderBy2
+	Str        *string
+	ArrayOfstr []string
 
 	Type GetRulesetsOrderByType
 }
 
-func CreateGetRulesetsOrderByGetRulesetsOrderBy1(getRulesetsOrderBy1 GetRulesetsOrderBy1) GetRulesetsOrderBy {
-	typ := GetRulesetsOrderByTypeGetRulesetsOrderBy1
+func CreateGetRulesetsOrderByStr(str string) GetRulesetsOrderBy {
+	typ := GetRulesetsOrderByTypeStr
 
 	return GetRulesetsOrderBy{
-		GetRulesetsOrderBy1: &getRulesetsOrderBy1,
-		Type:                typ,
+		Str:  &str,
+		Type: typ,
 	}
 }
 
-func CreateGetRulesetsOrderByArrayOfgetRulesetsOrderBy2(arrayOfgetRulesetsOrderBy2 []GetRulesetsOrderBy2) GetRulesetsOrderBy {
-	typ := GetRulesetsOrderByTypeArrayOfgetRulesetsOrderBy2
+func CreateGetRulesetsOrderByArrayOfstr(arrayOfstr []string) GetRulesetsOrderBy {
+	typ := GetRulesetsOrderByTypeArrayOfstr
 
 	return GetRulesetsOrderBy{
-		ArrayOfgetRulesetsOrderBy2: arrayOfgetRulesetsOrderBy2,
-		Type:                       typ,
+		ArrayOfstr: arrayOfstr,
+		Type:       typ,
 	}
 }
 
 func (u *GetRulesetsOrderBy) UnmarshalJSON(data []byte) error {
-	var d *json.Decoder
 
-	getRulesetsOrderBy1 := new(GetRulesetsOrderBy1)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&getRulesetsOrderBy1); err == nil {
-		u.GetRulesetsOrderBy1 = getRulesetsOrderBy1
-		u.Type = GetRulesetsOrderByTypeGetRulesetsOrderBy1
+	str := new(string)
+	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
+		u.Str = str
+		u.Type = GetRulesetsOrderByTypeStr
 		return nil
 	}
 
-	arrayOfgetRulesetsOrderBy2 := []GetRulesetsOrderBy2{}
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&arrayOfgetRulesetsOrderBy2); err == nil {
-		u.ArrayOfgetRulesetsOrderBy2 = arrayOfgetRulesetsOrderBy2
-		u.Type = GetRulesetsOrderByTypeArrayOfgetRulesetsOrderBy2
+	arrayOfstr := []string{}
+	if err := utils.UnmarshalJSON(data, &arrayOfstr, "", true, true); err == nil {
+		u.ArrayOfstr = arrayOfstr
+		u.Type = GetRulesetsOrderByTypeArrayOfstr
 		return nil
 	}
 
@@ -813,15 +729,15 @@ func (u *GetRulesetsOrderBy) UnmarshalJSON(data []byte) error {
 }
 
 func (u GetRulesetsOrderBy) MarshalJSON() ([]byte, error) {
-	if u.GetRulesetsOrderBy1 != nil {
-		return json.Marshal(u.GetRulesetsOrderBy1)
+	if u.Str != nil {
+		return utils.MarshalJSON(u.Str, "", true)
 	}
 
-	if u.ArrayOfgetRulesetsOrderBy2 != nil {
-		return json.Marshal(u.ArrayOfgetRulesetsOrderBy2)
+	if u.ArrayOfstr != nil {
+		return utils.MarshalJSON(u.ArrayOfstr, "", true)
 	}
 
-	return nil, nil
+	return nil, errors.New("could not marshal union type: all fields are null")
 }
 
 type GetRulesetsRequest struct {
@@ -830,7 +746,7 @@ type GetRulesetsRequest struct {
 	Dir        *GetRulesetsDir        `queryParam:"style=form,explode=true,name=dir"`
 	ID         *GetRulesetsID         `queryParam:"style=form,explode=true,name=id"`
 	Limit      *int64                 `queryParam:"style=form,explode=true,name=limit"`
-	Name       interface{}            `queryParam:"style=form,explode=true,name=name"`
+	Name       *GetRulesetsName       `queryParam:"style=form,explode=true,name=name"`
 	Next       *string                `queryParam:"style=form,explode=true,name=next"`
 	OrderBy    *GetRulesetsOrderBy    `queryParam:"style=form,explode=true,name=order_by"`
 	Prev       *string                `queryParam:"style=form,explode=true,name=prev"`
@@ -871,7 +787,7 @@ func (o *GetRulesetsRequest) GetLimit() *int64 {
 	return o.Limit
 }
 
-func (o *GetRulesetsRequest) GetName() interface{} {
+func (o *GetRulesetsRequest) GetName() *GetRulesetsName {
 	if o == nil {
 		return nil
 	}
@@ -900,11 +816,14 @@ func (o *GetRulesetsRequest) GetPrev() *string {
 }
 
 type GetRulesetsResponse struct {
+	// HTTP response content type for this operation
 	ContentType string
 	// List of rulesets
 	RulesetPaginatedResult *shared.RulesetPaginatedResult
-	StatusCode             int
-	RawResponse            *http.Response
+	// HTTP response status code for this operation
+	StatusCode int
+	// Raw HTTP response; suitable for custom response parsing
+	RawResponse *http.Response
 }
 
 func (o *GetRulesetsResponse) GetContentType() string {
