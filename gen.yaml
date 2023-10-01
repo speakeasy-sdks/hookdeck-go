@@ -1,9 +1,9 @@
 configVersion: 1.0.0
 management:
-  docChecksum: f5f85e261a0dc111ffa34c18736669e6
+  docChecksum: d830a406b2443ec8c3f767c5da86b8c3
   docVersion: 1.0.0
-  speakeasyVersion: 1.65.2
-  generationVersion: 2.75.1
+  speakeasyVersion: 1.92.2
+  generationVersion: 2.142.2
 generation:
   comments:
     disableComments: false
@@ -12,7 +12,20 @@ generation:
   sdkClassName: hookdeck
   singleTagPerOp: false
   tagNamespacingDisabled: false
+features:
+  go:
+    constsAndDefaults: 0.1.0
+    core: 2.91.0
+    errors: 2.81.4
+    flattening: 2.81.1
+    globalSecurity: 2.82.0
+    globalServerURLs: 2.82.0
+    groups: 2.81.1
+    ignores: 2.81.1
+    includes: 2.81.1
+    nameOverrides: 2.81.1
+    unions: 2.83.1
 go:
-  version: 1.5.0
+  version: 1.6.0
   maxMethodParams: 5
   packageName: github.com/speakeasy-sdks/hookdeck-go

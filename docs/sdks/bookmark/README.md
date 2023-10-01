@@ -1,4 +1,5 @@
 # Bookmark
+(*Bookmark*)
 
 ### Available Operations
 
@@ -20,14 +21,14 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
                 Password: "",
                 Username: "",
@@ -37,10 +38,10 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Bookmark.Create(ctx, operations.CreateBookmarkRequestBody{
-        EventDataID: "nulla",
-        Label: "corrupti",
-        Name: hookdeck.String("Ben Mueller"),
-        WebhookID: "iure",
+        EventDataID: "bluetooth Extended",
+        Label: "blue",
+        Name: hookdeckgo.String("grey technology East"),
+        WebhookID: "evolve",
     })
     if err != nil {
         log.Fatal(err)
@@ -77,21 +78,21 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
                 Password: "",
                 Username: "",
             },
         }),
     )
-    id := "magnam"
+    id := "program"
 
     ctx := context.Background()
     res, err := s.Bookmark.Delete(ctx, id)
@@ -130,21 +131,21 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
                 Password: "",
                 Username: "",
             },
         }),
     )
-    id := "debitis"
+    id := "female"
 
     ctx := context.Background()
     res, err := s.Bookmark.Get(ctx, id)
@@ -183,14 +184,14 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
                 Password: "",
                 Username: "",
@@ -198,9 +199,9 @@ func main() {
         }),
     )
     requestBody := operations.TriggerBookmarkRequestBody{
-        Target: operations.TriggerBookmarkRequestBodyTargetHTTP.ToPointer(),
+        Target: operations.TriggerBookmarkRequestBodyTargetCli.ToPointer(),
     }
-    id := "delectus"
+    id := "scalable"
 
     ctx := context.Background()
     res, err := s.Bookmark.Trigger(ctx, requestBody, id)
@@ -240,14 +241,14 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
                 Password: "",
                 Username: "",
@@ -255,12 +256,12 @@ func main() {
         }),
     )
     requestBody := operations.UpdateBookmarkRequestBody{
-        EventDataID: hookdeck.String("tempora"),
-        Label: hookdeck.String("suscipit"),
-        Name: hookdeck.String("Alexandra Schulist"),
-        WebhookID: hookdeck.String("excepturi"),
+        EventDataID: hookdeckgo.String("New Reactive dock"),
+        Label: hookdeckgo.String("Analyst invoice"),
+        Name: hookdeckgo.String("Islands"),
+        WebhookID: hookdeckgo.String("withdrawal extend"),
     }
-    id := "nisi"
+    id := "Plastic"
 
     ctx := context.Background()
     res, err := s.Bookmark.Update(ctx, requestBody, id)

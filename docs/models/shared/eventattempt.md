@@ -1,7 +1,5 @@
 # EventAttempt
 
-A single attempt
-
 
 ## Fields
 

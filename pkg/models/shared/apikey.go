@@ -3,41 +3,26 @@
 package shared
 
 import (
-	"encoding/json"
-	"fmt"
+	"github.com/speakeasy-sdks/hookdeck-go/pkg/utils"
 )
-
-// APIKeyType - Type of auth method
-type APIKeyType string
-
-const (
-	APIKeyTypeAPIKey APIKeyType = "API_KEY"
-)
-
-func (e APIKeyType) ToPointer() *APIKeyType {
-	return &e
-}
-
-func (e *APIKeyType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "API_KEY":
-		*e = APIKeyType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for APIKeyType: %v", v)
-	}
-}
 
 // APIKey - API Key
 type APIKey struct {
 	// API key config for the destination's auth method
 	Config *DestinationAuthMethodAPIKeyConfig `json:"config,omitempty"`
 	// Type of auth method
-	Type APIKeyType `json:"type"`
+	type_ string `const:"API_KEY" json:"type"`
+}
+
+func (a APIKey) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(a, "", false)
+}
+
+func (a *APIKey) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &a, "", false, true); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *APIKey) GetConfig() *DestinationAuthMethodAPIKeyConfig {
@@ -47,9 +32,6 @@ func (o *APIKey) GetConfig() *DestinationAuthMethodAPIKeyConfig {
 	return o.Config
 }
 
-func (o *APIKey) GetType() APIKeyType {
-	if o == nil {
-		return APIKeyType("")
-	}
-	return o.Type
+func (o *APIKey) GetType() string {
+	return "API_KEY"
 }

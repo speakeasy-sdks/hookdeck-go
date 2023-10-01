@@ -2,7 +2,6 @@
 
 package shared
 
-// IgnoredEventPaginatedResult - List of ignored events
 type IgnoredEventPaginatedResult struct {
 	Count      *int64          `json:"count,omitempty"`
 	Models     []IgnoredEvent  `json:"models,omitempty"`
