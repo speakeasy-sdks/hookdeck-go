@@ -1,7 +1,5 @@
 # IssueCount
 
-Issue count
-
 
 ## Fields
 

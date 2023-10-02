@@ -3,8 +3,7 @@
 package shared
 
 import (
-	"encoding/json"
-	"fmt"
+	"github.com/speakeasy-sdks/hookdeck-go/pkg/utils"
 )
 
 // TransformFullTransformation - You can optionally define a new transformation while creating a transform rule
@@ -38,38 +37,24 @@ func (o *TransformFullTransformation) GetName() string {
 	return o.Name
 }
 
-// TransformFullType - A transformation rule must be of type `transformation`
-type TransformFullType string
-
-const (
-	TransformFullTypeTransform TransformFullType = "transform"
-)
-
-func (e TransformFullType) ToPointer() *TransformFullType {
-	return &e
-}
-
-func (e *TransformFullType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "transform":
-		*e = TransformFullType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for TransformFullType: %v", v)
-	}
-}
-
 type TransformFull struct {
 	// You can optionally define a new transformation while creating a transform rule
 	Transformation *TransformFullTransformation `json:"transformation,omitempty"`
 	// ID of the attached transformation object. Optional input, always set once the rule is defined
 	TransformationID *string `json:"transformation_id,omitempty"`
 	// A transformation rule must be of type `transformation`
-	Type TransformFullType `json:"type"`
+	type_ string `const:"transform" json:"type"`
+}
+
+func (t TransformFull) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(t, "", false)
+}
+
+func (t *TransformFull) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &t, "", false, true); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *TransformFull) GetTransformation() *TransformFullTransformation {
@@ -86,9 +71,6 @@ func (o *TransformFull) GetTransformationID() *string {
 	return o.TransformationID
 }
 
-func (o *TransformFull) GetType() TransformFullType {
-	if o == nil {
-		return TransformFullType("")
-	}
-	return o.Type
+func (o *TransformFull) GetType() string {
+	return "transform"
 }

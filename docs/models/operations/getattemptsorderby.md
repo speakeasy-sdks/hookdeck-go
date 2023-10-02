@@ -3,15 +3,15 @@
 
 ## Supported Types
 
-### GetAttemptsOrderBy1
+### 
 
 ```go
-getAttemptsOrderBy := operations.CreateGetAttemptsOrderByGetAttemptsOrderBy1(operations.GetAttemptsOrderBy1{/* values here */})
+getAttemptsOrderBy := operations.CreateGetAttemptsOrderByStr(string{/* values here */})
 ```
 
 ### 
 
 ```go
-getAttemptsOrderBy := operations.CreateGetAttemptsOrderByArrayOfgetAttemptsOrderBy2([]operations.GetAttemptsOrderBy2{/* values here */})
+getAttemptsOrderBy := operations.CreateGetAttemptsOrderByArrayOfstr([]string{/* values here */})
 ```
 

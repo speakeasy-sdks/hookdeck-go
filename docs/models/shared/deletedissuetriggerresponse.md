@@ -1,7 +1,5 @@
 # DeletedIssueTriggerResponse
 
-An object with deleted issue trigger's id
-
 
 ## Fields
 
