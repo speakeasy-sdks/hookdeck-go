@@ -3,41 +3,26 @@
 package shared
 
 import (
-	"encoding/json"
-	"fmt"
+	"github.com/speakeasy-sdks/hookdeck-go/pkg/utils"
 )
-
-// CustomSignatureType - Type of auth method
-type CustomSignatureType string
-
-const (
-	CustomSignatureTypeCustomSignature CustomSignatureType = "CUSTOM_SIGNATURE"
-)
-
-func (e CustomSignatureType) ToPointer() *CustomSignatureType {
-	return &e
-}
-
-func (e *CustomSignatureType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "CUSTOM_SIGNATURE":
-		*e = CustomSignatureType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for CustomSignatureType: %v", v)
-	}
-}
 
 // CustomSignature - Custom Signature
 type CustomSignature struct {
 	// Custom signature config for the destination's auth method
 	Config DestinationAuthMethodCustomSignatureConfig `json:"config"`
 	// Type of auth method
-	Type CustomSignatureType `json:"type"`
+	type_ string `const:"CUSTOM_SIGNATURE" json:"type"`
+}
+
+func (c CustomSignature) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CustomSignature) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, true); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *CustomSignature) GetConfig() DestinationAuthMethodCustomSignatureConfig {
@@ -47,9 +32,6 @@ func (o *CustomSignature) GetConfig() DestinationAuthMethodCustomSignatureConfig
 	return o.Config
 }
 
-func (o *CustomSignature) GetType() CustomSignatureType {
-	if o == nil {
-		return CustomSignatureType("")
-	}
-	return o.Type
+func (o *CustomSignature) GetType() string {
+	return "CUSTOM_SIGNATURE"
 }

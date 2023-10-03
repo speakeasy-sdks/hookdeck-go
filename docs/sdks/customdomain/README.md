@@ -1,4 +1,5 @@
 # CustomDomain
+(*CustomDomain*)
 
 ### Available Operations
 
@@ -17,14 +18,14 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
                 Password: "",
                 Username: "",
@@ -32,9 +33,9 @@ func main() {
         }),
     )
     addCustomHostname := shared.AddCustomHostname{
-        Hostname: "sandy-spruce.biz",
+        Hostname: "murky-sole.name",
     }
-    teamID := "modi"
+    teamID := "Creative"
 
     ctx := context.Background()
     res, err := s.CustomDomain.Add(ctx, addCustomHostname, teamID)
@@ -74,22 +75,22 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
                 Password: "",
                 Username: "",
             },
         }),
     )
-    domainID := "qui"
-    teamID := "aliquid"
+    domainID := "program"
+    teamID := "Designer"
 
     ctx := context.Background()
     res, err := s.CustomDomain.Delete(ctx, domainID, teamID)

@@ -3,40 +3,25 @@
 package shared
 
 import (
-	"encoding/json"
-	"fmt"
+	"github.com/speakeasy-sdks/hookdeck-go/pkg/utils"
 )
-
-// TransformReferenceType - A transformation rule must be of type `transformation`
-type TransformReferenceType string
-
-const (
-	TransformReferenceTypeTransform TransformReferenceType = "transform"
-)
-
-func (e TransformReferenceType) ToPointer() *TransformReferenceType {
-	return &e
-}
-
-func (e *TransformReferenceType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "transform":
-		*e = TransformReferenceType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for TransformReferenceType: %v", v)
-	}
-}
 
 type TransformReference struct {
 	// ID of the attached transformation object. Optional input, always set once the rule is defined
 	TransformationID string `json:"transformation_id"`
 	// A transformation rule must be of type `transformation`
-	Type TransformReferenceType `json:"type"`
+	type_ string `const:"transform" json:"type"`
+}
+
+func (t TransformReference) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(t, "", false)
+}
+
+func (t *TransformReference) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &t, "", false, true); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *TransformReference) GetTransformationID() string {
@@ -46,9 +31,6 @@ func (o *TransformReference) GetTransformationID() string {
 	return o.TransformationID
 }
 
-func (o *TransformReference) GetType() TransformReferenceType {
-	if o == nil {
-		return TransformReferenceType("")
-	}
-	return o.Type
+func (o *TransformReference) GetType() string {
+	return "transform"
 }

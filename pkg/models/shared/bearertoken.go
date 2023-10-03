@@ -3,41 +3,26 @@
 package shared
 
 import (
-	"encoding/json"
-	"fmt"
+	"github.com/speakeasy-sdks/hookdeck-go/pkg/utils"
 )
-
-// BearerTokenType - Type of auth method
-type BearerTokenType string
-
-const (
-	BearerTokenTypeBearerToken BearerTokenType = "BEARER_TOKEN"
-)
-
-func (e BearerTokenType) ToPointer() *BearerTokenType {
-	return &e
-}
-
-func (e *BearerTokenType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "BEARER_TOKEN":
-		*e = BearerTokenType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for BearerTokenType: %v", v)
-	}
-}
 
 // BearerToken - Bearer Token
 type BearerToken struct {
 	// Bearer token config for the destination's auth method
 	Config *DestinationAuthMethodBearerTokenConfig `json:"config,omitempty"`
 	// Type of auth method
-	Type BearerTokenType `json:"type"`
+	type_ string `const:"BEARER_TOKEN" json:"type"`
+}
+
+func (b BearerToken) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(b, "", false)
+}
+
+func (b *BearerToken) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &b, "", false, true); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *BearerToken) GetConfig() *DestinationAuthMethodBearerTokenConfig {
@@ -47,9 +32,6 @@ func (o *BearerToken) GetConfig() *DestinationAuthMethodBearerTokenConfig {
 	return o.Config
 }
 
-func (o *BearerToken) GetType() BearerTokenType {
-	if o == nil {
-		return BearerTokenType("")
-	}
-	return o.Type
+func (o *BearerToken) GetType() string {
+	return "BEARER_TOKEN"
 }
