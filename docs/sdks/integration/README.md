@@ -1,4 +1,5 @@
 # Integration
+(*Integration*)
 
 ### Available Operations
 
@@ -21,22 +22,22 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
                 Password: "",
                 Username: "",
             },
         }),
     )
-    id := "natus"
-    sourceID := "omnis"
+    id := "Frozen"
+    sourceID := "Forward"
 
     ctx := context.Background()
     res, err := s.Integration.AttachIntegrationToSource(ctx, id, sourceID)
@@ -76,14 +77,14 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
                 Password: "",
                 Username: "",
@@ -93,16 +94,12 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Integration.Create(ctx, operations.CreateIntegrationRequestBody{
-        Configs: &shared.APIKeyIntegrationConfigs{
-            APIKey: "perferendis",
-            HeaderKey: "nihil",
-        },
+        Configs: &operations.CreateIntegrationRequestBodyConfigs{},
         Features: []shared.IntegrationFeature{
-            shared.IntegrationFeaturePolling,
             shared.IntegrationFeatureHandshake,
         },
-        Label: hookdeck.String("labore"),
-        Provider: shared.IntegrationProviderHmac.ToPointer(),
+        Label: hookdeckgo.String("Configuration Money"),
+        Provider: shared.IntegrationProviderMailgun.ToPointer(),
     })
     if err != nil {
         log.Fatal(err)
@@ -139,21 +136,21 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
                 Password: "",
                 Username: "",
             },
         }),
     )
-    id := "suscipit"
+    id := "program"
 
     ctx := context.Background()
     res, err := s.Integration.Delete(ctx, id)
@@ -192,22 +189,22 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
                 Password: "",
                 Username: "",
             },
         }),
     )
-    id := "natus"
-    sourceID := "nobis"
+    id := "pish"
+    sourceID := "tidy"
 
     ctx := context.Background()
     res, err := s.Integration.DetachIntegrationToSource(ctx, id, sourceID)
@@ -247,21 +244,21 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
                 Password: "",
                 Username: "",
             },
         }),
     )
-    id := "eum"
+    id := "female"
 
     ctx := context.Background()
     res, err := s.Integration.Get(ctx, id)
@@ -300,14 +297,14 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
                 Password: "",
                 Username: "",
@@ -315,23 +312,14 @@ func main() {
         }),
     )
     requestBody := operations.UpdateIntegrationRequestBody{
-        Configs: &shared.ShopifyIntegrationConfigs{
-            APIKey: hookdeck.String("aspernatur"),
-            APISecret: hookdeck.String("architecto"),
-            RateLimit: hookdeck.Float32(2982.82),
-            RateLimitPeriod: shared.ShopifyIntegrationConfigsRateLimitPeriodLessThanNilGreaterThan.ToPointer(),
-            Shop: hookdeck.String("excepturi"),
-            WebhookSecretKey: "ullam",
-        },
+        Configs: &operations.UpdateIntegrationRequestBodyConfigs{},
         Features: []shared.IntegrationFeature{
-            shared.IntegrationFeatureHandshake,
-            shared.IntegrationFeatureHandshake,
-            shared.IntegrationFeatureVerification,
+            shared.IntegrationFeaturePolling,
         },
-        Label: hookdeck.String("mollitia"),
-        Provider: shared.IntegrationProviderAwsSns.ToPointer(),
+        Label: hookdeckgo.String("Rock"),
+        Provider: shared.IntegrationProviderBasicAuth.ToPointer(),
     }
-    id := "mollitia"
+    id := "male"
 
     ctx := context.Background()
     res, err := s.Integration.Update(ctx, requestBody, id)

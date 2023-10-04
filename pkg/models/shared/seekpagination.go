@@ -3,16 +3,15 @@
 package shared
 
 import (
-	"bytes"
-	"encoding/json"
 	"errors"
+	"github.com/speakeasy-sdks/hookdeck-go/pkg/utils"
 )
 
 type SeekPaginationDir struct {
-	Schema *OrderByDirection `json:"schema,omitempty"`
+	Schema interface{} `json:"schema,omitempty"`
 }
 
-func (o *SeekPaginationDir) GetSchema() *OrderByDirection {
+func (o *SeekPaginationDir) GetSchema() interface{} {
 	if o == nil {
 		return nil
 	}
@@ -52,21 +51,16 @@ func CreateSeekPaginationOrderByArrayOfstr(arrayOfstr []string) SeekPaginationOr
 }
 
 func (u *SeekPaginationOrderBy) UnmarshalJSON(data []byte) error {
-	var d *json.Decoder
 
 	str := new(string)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&str); err == nil {
+	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
 		u.Str = str
 		u.Type = SeekPaginationOrderByTypeStr
 		return nil
 	}
 
 	arrayOfstr := []string{}
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&arrayOfstr); err == nil {
+	if err := utils.UnmarshalJSON(data, &arrayOfstr, "", true, true); err == nil {
 		u.ArrayOfstr = arrayOfstr
 		u.Type = SeekPaginationOrderByTypeArrayOfstr
 		return nil
@@ -77,14 +71,14 @@ func (u *SeekPaginationOrderBy) UnmarshalJSON(data []byte) error {
 
 func (u SeekPaginationOrderBy) MarshalJSON() ([]byte, error) {
 	if u.Str != nil {
-		return json.Marshal(u.Str)
+		return utils.MarshalJSON(u.Str, "", true)
 	}
 
 	if u.ArrayOfstr != nil {
-		return json.Marshal(u.ArrayOfstr)
+		return utils.MarshalJSON(u.ArrayOfstr, "", true)
 	}
 
-	return nil, nil
+	return nil, errors.New("could not marshal union type: all fields are null")
 }
 
 type SeekPagination struct {

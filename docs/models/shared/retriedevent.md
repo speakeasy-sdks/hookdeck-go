@@ -1,7 +1,5 @@
 # RetriedEvent
 
-Retried event with event attempt
-
 
 ## Fields
 
