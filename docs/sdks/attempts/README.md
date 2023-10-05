@@ -1,4 +1,5 @@
 # Attempts
+(*Attempts*)
 
 ## Overview
 
@@ -20,14 +21,14 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
                 Password: "",
                 Username: "",
@@ -39,10 +40,10 @@ func main() {
     res, err := s.Attempts.Get(ctx, operations.GetAttemptsRequest{
         Dir: &operations.GetAttemptsDir{},
         EventID: &operations.GetAttemptsEventID{},
-        Limit: hookdeck.Int64(715190),
-        Next: hookdeck.String("quibusdam"),
+        Limit: hookdeckgo.Int64(700347),
+        Next: hookdeckgo.String("program"),
         OrderBy: &operations.GetAttemptsOrderBy{},
-        Prev: hookdeck.String("unde"),
+        Prev: hookdeckgo.String("Kia Cambridgeshire"),
     })
     if err != nil {
         log.Fatal(err)

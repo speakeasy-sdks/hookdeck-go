@@ -2,7 +2,6 @@
 
 package shared
 
-// ToggleWebhookNotifications - Toggle operation status response
 type ToggleWebhookNotifications struct {
 	Enabled  bool          `json:"enabled"`
 	SourceID string        `json:"source_id"`

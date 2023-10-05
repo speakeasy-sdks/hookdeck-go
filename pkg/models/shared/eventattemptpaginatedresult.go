@@ -2,7 +2,6 @@
 
 package shared
 
-// EventAttemptPaginatedResult - List of attempts
 type EventAttemptPaginatedResult struct {
 	Count      *int64          `json:"count,omitempty"`
 	Models     []EventAttempt  `json:"models,omitempty"`
