@@ -1,4 +1,5 @@
 # BulkRetryEvent
+(*BulkRetryEvent*)
 
 ### Available Operations
 
@@ -18,21 +19,21 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
                 Password: "",
                 Username: "",
             },
         }),
     )
-    id := "quis"
+    id := "Clifton"
 
     ctx := context.Background()
     res, err := s.BulkRetryEvent.Cancel(ctx, id)
@@ -71,15 +72,15 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/types"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
                 Password: "",
                 Username: "",
@@ -104,9 +105,9 @@ func main() {
             IssueID: &operations.CreateEventBulkRetryRequestBodyQueryIssueID{},
             LastAttemptAt: &operations.CreateEventBulkRetryRequestBodyQueryLastAttemptAt{},
             ParsedQuery: &operations.CreateEventBulkRetryRequestBodyQueryParsedQuery{},
-            Path: hookdeck.String("veritatis"),
+            Path: hookdeckgo.String("/private/var"),
             ResponseStatus: &operations.CreateEventBulkRetryRequestBodyQueryResponseStatus{},
-            SearchTerm: hookdeck.String("deserunt"),
+            SearchTerm: hookdeckgo.String("Configuration Money"),
             SourceID: &operations.CreateEventBulkRetryRequestBodyQuerySourceID{},
             Status: &operations.CreateEventBulkRetryRequestBodyQueryStatus{},
             SuccessfulAt: &operations.CreateEventBulkRetryRequestBodyQuerySuccessfulAt{},
@@ -148,21 +149,21 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
                 Password: "",
                 Username: "",
             },
         }),
     )
-    id := "perferendis"
+    id := "female"
 
     ctx := context.Background()
     res, err := s.BulkRetryEvent.Get(ctx, id)

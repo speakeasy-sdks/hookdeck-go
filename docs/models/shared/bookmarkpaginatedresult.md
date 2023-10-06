@@ -1,7 +1,5 @@
 # BookmarkPaginatedResult
 
-List of bookmarks
-
 
 ## Fields
 

@@ -1,7 +1,5 @@
 # Event
 
-A single event
-
 
 ## Fields
 

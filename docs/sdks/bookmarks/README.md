@@ -1,4 +1,5 @@
 # Bookmarks
+(*Bookmarks*)
 
 ## Overview
 
@@ -20,15 +21,15 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/types"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
                 Password: "",
                 Username: "",
@@ -43,11 +44,11 @@ func main() {
         ID: &operations.GetBookmarksID{},
         Label: &operations.GetBookmarksLabel{},
         LastUsedAt: &operations.GetBookmarksLastUsedAt{},
-        Limit: hookdeck.Int64(925597),
+        Limit: hookdeckgo.Int64(700347),
         Name: &operations.GetBookmarksName{},
-        Next: hookdeck.String("temporibus"),
+        Next: hookdeckgo.String("program"),
         OrderBy: &operations.GetBookmarksOrderBy{},
-        Prev: hookdeck.String("ab"),
+        Prev: hookdeckgo.String("Kia Cambridgeshire"),
         WebhookID: &operations.GetBookmarksWebhookID{},
     })
     if err != nil {

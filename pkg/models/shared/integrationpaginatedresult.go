@@ -2,7 +2,6 @@
 
 package shared
 
-// IntegrationPaginatedResult - List of integrations
 type IntegrationPaginatedResult struct {
 	Count      *int64          `json:"count,omitempty"`
 	Models     []Integration   `json:"models,omitempty"`

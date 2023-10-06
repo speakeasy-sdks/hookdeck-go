@@ -1,4 +1,5 @@
 # Events
+(*Events*)
 
 ## Overview
 
@@ -20,15 +21,15 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/types"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
                 Password: "",
                 Username: "",
@@ -53,14 +54,14 @@ func main() {
         Include: operations.GetEventsIncludeData.ToPointer(),
         IssueID: &operations.GetEventsIssueID{},
         LastAttemptAt: &operations.GetEventsLastAttemptAt{},
-        Limit: hookdeck.Int64(956084),
-        Next: hookdeck.String("amet"),
+        Limit: hookdeckgo.Int64(700347),
+        Next: hookdeckgo.String("program"),
         OrderBy: &operations.GetEventsOrderBy{},
         ParsedQuery: &operations.GetEventsParsedQuery{},
-        Path: hookdeck.String("deserunt"),
-        Prev: hookdeck.String("nisi"),
+        Path: hookdeckgo.String("/root"),
+        Prev: hookdeckgo.String("protocol towards payment"),
         ResponseStatus: &operations.GetEventsResponseStatus{},
-        SearchTerm: hookdeck.String("vel"),
+        SearchTerm: hookdeckgo.String("Account Car"),
         SourceID: &operations.GetEventsSourceID{},
         Status: &operations.GetEventsStatus{},
         SuccessfulAt: &operations.GetEventsSuccessfulAt{},

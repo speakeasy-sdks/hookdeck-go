@@ -1,7 +1,5 @@
 # DeletedBookmarkResponse
 
-An object with deleted bookmark's id
-
 
 ## Fields
 

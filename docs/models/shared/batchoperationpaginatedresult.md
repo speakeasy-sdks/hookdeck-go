@@ -1,7 +1,5 @@
 # BatchOperationPaginatedResult
 
-List of ignored events bulk retries
-
 
 ## Fields
 
