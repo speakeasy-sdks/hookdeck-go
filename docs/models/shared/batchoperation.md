@@ -1,12 +1,11 @@
 # BatchOperation
 
-A single events bulk retry
-
 
 ## Fields
 
 | Field                                                              | Type                                                               | Required                                                           | Description                                                        |
 | ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ |
+| `AdditionalProperties`                                             | map[string]*interface{}*                                           | :heavy_minus_sign:                                                 | N/A                                                                |
 | `CancelledAt`                                                      | [*time.Time](https://pkg.go.dev/time#Time)                         | :heavy_minus_sign:                                                 | Date the bulk retry was cancelled                                  |
 | `CompletedAt`                                                      | [*time.Time](https://pkg.go.dev/time#Time)                         | :heavy_minus_sign:                                                 | Date the bulk retry was completed                                  |
 | `CompletedCount`                                                   | **int64*                                                           | :heavy_minus_sign:                                                 | Number of events that were successfully delivered                  |

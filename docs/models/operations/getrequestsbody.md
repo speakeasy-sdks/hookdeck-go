@@ -9,9 +9,9 @@
 getRequestsBody := operations.CreateGetRequestsBodyStr(string{/* values here */})
 ```
 
-### GetRequestsBody2
+### 
 
 ```go
-getRequestsBody := operations.CreateGetRequestsBodyGetRequestsBody2(operations.GetRequestsBody2{/* values here */})
+getRequestsBody := operations.CreateGetRequestsBodyMapOfany(map[string]interface{}{/* values here */})
 ```
 

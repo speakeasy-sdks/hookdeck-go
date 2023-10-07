@@ -2,11 +2,34 @@
 
 package shared
 
+import (
+	"github.com/speakeasy-sdks/hookdeck-go/pkg/utils"
+)
+
 // TransformationIssueAggregationKeys - Keys used as the aggregation keys a 'transformation' type issue
 type TransformationIssueAggregationKeys struct {
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// The minimum log level to open the issue on
 	LogLevel         TransformationExecutionLogLevel `json:"log_level"`
 	TransformationID []string                        `json:"transformation_id"`
+}
+
+func (t TransformationIssueAggregationKeys) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(t, "", false)
+}
+
+func (t *TransformationIssueAggregationKeys) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &t, "", false, false); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *TransformationIssueAggregationKeys) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
 }
 
 func (o *TransformationIssueAggregationKeys) GetLogLevel() TransformationExecutionLogLevel {

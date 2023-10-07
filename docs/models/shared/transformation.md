@@ -1,12 +1,11 @@
 # Transformation
 
-A single transformation
-
 
 ## Fields
 
 | Field                                                              | Type                                                               | Required                                                           | Description                                                        |
 | ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ |
+| `AdditionalProperties`                                             | map[string]*interface{}*                                           | :heavy_minus_sign:                                                 | N/A                                                                |
 | `Code`                                                             | *string*                                                           | :heavy_check_mark:                                                 | JavaScript code to be executed                                     |
 | `CreatedAt`                                                        | [time.Time](https://pkg.go.dev/time#Time)                          | :heavy_check_mark:                                                 | Date the transformation was created                                |
 | `EncryptedEnv`                                                     | **string*                                                          | :heavy_minus_sign:                                                 | N/A                                                                |

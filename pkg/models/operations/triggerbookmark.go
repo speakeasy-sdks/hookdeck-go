@@ -6,6 +6,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
+	"github.com/speakeasy-sdks/hookdeck-go/pkg/utils"
 	"net/http"
 )
 
@@ -38,8 +39,27 @@ func (e *TriggerBookmarkRequestBodyTarget) UnmarshalJSON(data []byte) error {
 }
 
 type TriggerBookmarkRequestBody struct {
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// Bookmark target
 	Target *TriggerBookmarkRequestBodyTarget `json:"target,omitempty"`
+}
+
+func (t TriggerBookmarkRequestBody) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(t, "", false)
+}
+
+func (t *TriggerBookmarkRequestBody) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &t, "", false, false); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *TriggerBookmarkRequestBody) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
 }
 
 func (o *TriggerBookmarkRequestBody) GetTarget() *TriggerBookmarkRequestBodyTarget {
@@ -69,10 +89,13 @@ func (o *TriggerBookmarkRequest) GetID() string {
 }
 
 type TriggerBookmarkResponse struct {
+	// HTTP response content type for this operation
 	ContentType string
 	// Array of created events
-	EventArray  []shared.Event
-	StatusCode  int
+	EventArray []shared.Event
+	// HTTP response status code for this operation
+	StatusCode int
+	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
 }
 

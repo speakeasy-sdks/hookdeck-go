@@ -3,10 +3,9 @@
 package operations
 
 import (
-	"bytes"
-	"encoding/json"
 	"errors"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
+	"github.com/speakeasy-sdks/hookdeck-go/pkg/utils"
 	"net/http"
 )
 
@@ -43,21 +42,16 @@ func CreateGenerateIgnoredEventBulkRetryPlanQueryCauseArrayOfstr(arrayOfstr []st
 }
 
 func (u *GenerateIgnoredEventBulkRetryPlanQueryCause) UnmarshalJSON(data []byte) error {
-	var d *json.Decoder
 
 	str := new(string)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&str); err == nil {
+	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
 		u.Str = str
 		u.Type = GenerateIgnoredEventBulkRetryPlanQueryCauseTypeStr
 		return nil
 	}
 
 	arrayOfstr := []string{}
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&arrayOfstr); err == nil {
+	if err := utils.UnmarshalJSON(data, &arrayOfstr, "", true, true); err == nil {
 		u.ArrayOfstr = arrayOfstr
 		u.Type = GenerateIgnoredEventBulkRetryPlanQueryCauseTypeArrayOfstr
 		return nil
@@ -68,14 +62,14 @@ func (u *GenerateIgnoredEventBulkRetryPlanQueryCause) UnmarshalJSON(data []byte)
 
 func (u GenerateIgnoredEventBulkRetryPlanQueryCause) MarshalJSON() ([]byte, error) {
 	if u.Str != nil {
-		return json.Marshal(u.Str)
+		return utils.MarshalJSON(u.Str, "", true)
 	}
 
 	if u.ArrayOfstr != nil {
-		return json.Marshal(u.ArrayOfstr)
+		return utils.MarshalJSON(u.ArrayOfstr, "", true)
 	}
 
-	return nil, nil
+	return nil, errors.New("could not marshal union type: all fields are null")
 }
 
 type GenerateIgnoredEventBulkRetryPlanQueryWebhookIDType string
@@ -111,21 +105,16 @@ func CreateGenerateIgnoredEventBulkRetryPlanQueryWebhookIDArrayOfstr(arrayOfstr 
 }
 
 func (u *GenerateIgnoredEventBulkRetryPlanQueryWebhookID) UnmarshalJSON(data []byte) error {
-	var d *json.Decoder
 
 	str := new(string)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&str); err == nil {
+	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
 		u.Str = str
 		u.Type = GenerateIgnoredEventBulkRetryPlanQueryWebhookIDTypeStr
 		return nil
 	}
 
 	arrayOfstr := []string{}
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&arrayOfstr); err == nil {
+	if err := utils.UnmarshalJSON(data, &arrayOfstr, "", true, true); err == nil {
 		u.ArrayOfstr = arrayOfstr
 		u.Type = GenerateIgnoredEventBulkRetryPlanQueryWebhookIDTypeArrayOfstr
 		return nil
@@ -136,24 +125,43 @@ func (u *GenerateIgnoredEventBulkRetryPlanQueryWebhookID) UnmarshalJSON(data []b
 
 func (u GenerateIgnoredEventBulkRetryPlanQueryWebhookID) MarshalJSON() ([]byte, error) {
 	if u.Str != nil {
-		return json.Marshal(u.Str)
+		return utils.MarshalJSON(u.Str, "", true)
 	}
 
 	if u.ArrayOfstr != nil {
-		return json.Marshal(u.ArrayOfstr)
+		return utils.MarshalJSON(u.ArrayOfstr, "", true)
 	}
 
-	return nil, nil
+	return nil, errors.New("could not marshal union type: all fields are null")
 }
 
 // GenerateIgnoredEventBulkRetryPlanQuery - Filter by the bulk retry ignored event query object
 type GenerateIgnoredEventBulkRetryPlanQuery struct {
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// The cause of the ignored event
 	Cause *GenerateIgnoredEventBulkRetryPlanQueryCause `queryParam:"name=cause"`
 	// The associated transformation ID (only applicable to the cause `TRANSFORMATION_FAILED`)
 	TransformationID *string `queryParam:"name=transformation_id"`
 	// Connection ID of the ignored event
 	WebhookID *GenerateIgnoredEventBulkRetryPlanQueryWebhookID `queryParam:"name=webhook_id"`
+}
+
+func (g GenerateIgnoredEventBulkRetryPlanQuery) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GenerateIgnoredEventBulkRetryPlanQuery) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, false); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *GenerateIgnoredEventBulkRetryPlanQuery) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
 }
 
 func (o *GenerateIgnoredEventBulkRetryPlanQuery) GetCause() *GenerateIgnoredEventBulkRetryPlanQueryCause {
@@ -192,9 +200,12 @@ func (o *GenerateIgnoredEventBulkRetryPlanRequest) GetQuery() *GenerateIgnoredEv
 type GenerateIgnoredEventBulkRetryPlanResponse struct {
 	// Ignored events bulk retry plan
 	BatchOperationPlan *shared.BatchOperationPlan
-	ContentType        string
-	StatusCode         int
-	RawResponse        *http.Response
+	// HTTP response content type for this operation
+	ContentType string
+	// HTTP response status code for this operation
+	StatusCode int
+	// Raw HTTP response; suitable for custom response parsing
+	RawResponse *http.Response
 }
 
 func (o *GenerateIgnoredEventBulkRetryPlanResponse) GetBatchOperationPlan() *shared.BatchOperationPlan {

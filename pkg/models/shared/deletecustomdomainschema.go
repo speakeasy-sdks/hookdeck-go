@@ -2,10 +2,32 @@
 
 package shared
 
-// DeleteCustomDomainSchema - Custom domain successfuly removed
+import (
+	"github.com/speakeasy-sdks/hookdeck-go/pkg/utils"
+)
+
 type DeleteCustomDomainSchema struct {
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// The custom hostname ID
 	ID string `json:"id"`
+}
+
+func (d DeleteCustomDomainSchema) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(d, "", false)
+}
+
+func (d *DeleteCustomDomainSchema) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &d, "", false, false); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *DeleteCustomDomainSchema) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
 }
 
 func (o *DeleteCustomDomainSchema) GetID() string {

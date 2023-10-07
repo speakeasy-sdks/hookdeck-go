@@ -2,10 +2,33 @@
 
 package shared
 
+import (
+	"github.com/speakeasy-sdks/hookdeck-go/pkg/utils"
+)
+
 type ListCustomDomainSchemaOwnershipVerification struct {
-	Name  *string `json:"name,omitempty"`
-	Type  *string `json:"type,omitempty"`
-	Value *string `json:"value,omitempty"`
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
+	Name                 *string                `json:"name,omitempty"`
+	Type                 *string                `json:"type,omitempty"`
+	Value                *string                `json:"value,omitempty"`
+}
+
+func (l ListCustomDomainSchemaOwnershipVerification) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(l, "", false)
+}
+
+func (l *ListCustomDomainSchemaOwnershipVerification) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &l, "", false, false); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *ListCustomDomainSchemaOwnershipVerification) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
 }
 
 func (o *ListCustomDomainSchemaOwnershipVerification) GetName() *string {
@@ -30,8 +53,27 @@ func (o *ListCustomDomainSchemaOwnershipVerification) GetValue() *string {
 }
 
 type ListCustomDomainSchemaSslDcvDelegationRecords struct {
-	Cname       *string `json:"cname,omitempty"`
-	CnameTarget *string `json:"cname_target,omitempty"`
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
+	Cname                *string                `json:"cname,omitempty"`
+	CnameTarget          *string                `json:"cname_target,omitempty"`
+}
+
+func (l ListCustomDomainSchemaSslDcvDelegationRecords) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(l, "", false)
+}
+
+func (l *ListCustomDomainSchemaSslDcvDelegationRecords) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &l, "", false, false); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *ListCustomDomainSchemaSslDcvDelegationRecords) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
 }
 
 func (o *ListCustomDomainSchemaSslDcvDelegationRecords) GetCname() *string {
@@ -49,7 +91,26 @@ func (o *ListCustomDomainSchemaSslDcvDelegationRecords) GetCnameTarget() *string
 }
 
 type ListCustomDomainSchemaSslSettings struct {
-	MinTLSVersion *string `json:"min_tls_version,omitempty"`
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
+	MinTLSVersion        *string                `json:"min_tls_version,omitempty"`
+}
+
+func (l ListCustomDomainSchemaSslSettings) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(l, "", false)
+}
+
+func (l *ListCustomDomainSchemaSslSettings) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &l, "", false, false); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *ListCustomDomainSchemaSslSettings) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
 }
 
 func (o *ListCustomDomainSchemaSslSettings) GetMinTLSVersion() *string {
@@ -60,9 +121,28 @@ func (o *ListCustomDomainSchemaSslSettings) GetMinTLSVersion() *string {
 }
 
 type ListCustomDomainSchemaSslValidationRecords struct {
-	Status   *string `json:"status,omitempty"`
-	TxtName  *string `json:"txt_name,omitempty"`
-	TxtValue *string `json:"txt_value,omitempty"`
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
+	Status               *string                `json:"status,omitempty"`
+	TxtName              *string                `json:"txt_name,omitempty"`
+	TxtValue             *string                `json:"txt_value,omitempty"`
+}
+
+func (l ListCustomDomainSchemaSslValidationRecords) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(l, "", false)
+}
+
+func (l *ListCustomDomainSchemaSslValidationRecords) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &l, "", false, false); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *ListCustomDomainSchemaSslValidationRecords) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
 }
 
 func (o *ListCustomDomainSchemaSslValidationRecords) GetStatus() *string {
@@ -87,6 +167,7 @@ func (o *ListCustomDomainSchemaSslValidationRecords) GetTxtValue() *string {
 }
 
 type ListCustomDomainSchemaSsl struct {
+	AdditionalProperties map[string]interface{}                          `additionalProperties:"true" json:"-"`
 	BundleMethod         *string                                         `json:"bundle_method,omitempty"`
 	CertificateAuthority *string                                         `json:"certificate_authority,omitempty"`
 	DcvDelegationRecords []ListCustomDomainSchemaSslDcvDelegationRecords `json:"dcv_delegation_records,omitempty"`
@@ -99,6 +180,24 @@ type ListCustomDomainSchemaSsl struct {
 	Type                 *string                                         `json:"type,omitempty"`
 	ValidationRecords    []ListCustomDomainSchemaSslValidationRecords    `json:"validation_records,omitempty"`
 	Wildcard             *bool                                           `json:"wildcard,omitempty"`
+}
+
+func (l ListCustomDomainSchemaSsl) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(l, "", false)
+}
+
+func (l *ListCustomDomainSchemaSsl) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &l, "", false, false); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *ListCustomDomainSchemaSsl) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
 }
 
 func (o *ListCustomDomainSchemaSsl) GetBundleMethod() *string {
@@ -186,6 +285,7 @@ func (o *ListCustomDomainSchemaSsl) GetWildcard() *bool {
 }
 
 type ListCustomDomainSchema struct {
+	AdditionalProperties  map[string]interface{}                       `additionalProperties:"true" json:"-"`
 	CreatedAt             *string                                      `json:"created_at,omitempty"`
 	Hostname              *string                                      `json:"hostname,omitempty"`
 	ID                    *string                                      `json:"id,omitempty"`
@@ -193,6 +293,24 @@ type ListCustomDomainSchema struct {
 	Ssl                   *ListCustomDomainSchemaSsl                   `json:"ssl,omitempty"`
 	Status                *string                                      `json:"status,omitempty"`
 	VerificationErrors    []string                                     `json:"verification_errors,omitempty"`
+}
+
+func (l ListCustomDomainSchema) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(l, "", false)
+}
+
+func (l *ListCustomDomainSchema) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &l, "", false, false); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *ListCustomDomainSchema) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
 }
 
 func (o *ListCustomDomainSchema) GetCreatedAt() *string {

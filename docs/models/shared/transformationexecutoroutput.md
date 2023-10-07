@@ -1,12 +1,11 @@
 # TransformationExecutorOutput
 
-Transformation run output
-
 
 ## Fields
 
 | Field                                                                                              | Type                                                                                               | Required                                                                                           | Description                                                                                        |
 | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| `AdditionalProperties`                                                                             | map[string]*interface{}*                                                                           | :heavy_minus_sign:                                                                                 | N/A                                                                                                |
 | `Console`                                                                                          | [][ConsoleLine](../../models/shared/consoleline.md)                                                | :heavy_minus_sign:                                                                                 | N/A                                                                                                |
 | `ExecutionID`                                                                                      | **string*                                                                                          | :heavy_minus_sign:                                                                                 | N/A                                                                                                |
 | `LogLevel`                                                                                         | [TransformationExecutionLogLevel](../../models/shared/transformationexecutionloglevel.md)          | :heavy_check_mark:                                                                                 | The minimum log level to open the issue on                                                         |

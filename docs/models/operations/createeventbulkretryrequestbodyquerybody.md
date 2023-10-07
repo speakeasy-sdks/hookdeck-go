@@ -9,9 +9,9 @@
 createEventBulkRetryRequestBodyQueryBody := operations.CreateCreateEventBulkRetryRequestBodyQueryBodyStr(string{/* values here */})
 ```
 
-### CreateEventBulkRetryRequestBodyQueryBody2
+### 
 
 ```go
-createEventBulkRetryRequestBodyQueryBody := operations.CreateCreateEventBulkRetryRequestBodyQueryBodyCreateEventBulkRetryRequestBodyQueryBody2(operations.CreateEventBulkRetryRequestBodyQueryBody2{/* values here */})
+createEventBulkRetryRequestBodyQueryBody := operations.CreateCreateEventBulkRetryRequestBodyQueryBodyMapOfany(map[string]interface{}{/* values here */})
 ```
 

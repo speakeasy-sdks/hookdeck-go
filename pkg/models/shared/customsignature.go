@@ -5,6 +5,7 @@ package shared
 import (
 	"encoding/json"
 	"fmt"
+	"github.com/speakeasy-sdks/hookdeck-go/pkg/utils"
 )
 
 // CustomSignatureType - Type of auth method
@@ -34,10 +35,29 @@ func (e *CustomSignatureType) UnmarshalJSON(data []byte) error {
 
 // CustomSignature - Custom Signature
 type CustomSignature struct {
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// Custom signature config for the destination's auth method
 	Config DestinationAuthMethodCustomSignatureConfig `json:"config"`
 	// Type of auth method
 	Type CustomSignatureType `json:"type"`
+}
+
+func (c CustomSignature) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CustomSignature) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, true); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *CustomSignature) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
 }
 
 func (o *CustomSignature) GetConfig() DestinationAuthMethodCustomSignatureConfig {

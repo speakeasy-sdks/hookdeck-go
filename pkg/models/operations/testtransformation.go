@@ -3,41 +3,32 @@
 package operations
 
 import (
-	"bytes"
-	"encoding/json"
 	"errors"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
+	"github.com/speakeasy-sdks/hookdeck-go/pkg/utils"
 	"net/http"
 )
-
-// TestTransformationRequestBodyEnv - Key-value environment variables to be passed to the transformation
-type TestTransformationRequestBodyEnv struct {
-}
-
-// TestTransformationRequestBodyRequestBody1 - Body of the request
-type TestTransformationRequestBodyRequestBody1 struct {
-}
 
 type TestTransformationRequestBodyRequestBodyType string
 
 const (
-	TestTransformationRequestBodyRequestBodyTypeTestTransformationRequestBodyRequestBody1 TestTransformationRequestBodyRequestBodyType = "testTransformation_requestBody_request_body_1"
-	TestTransformationRequestBodyRequestBodyTypeStr                                       TestTransformationRequestBodyRequestBodyType = "str"
+	TestTransformationRequestBodyRequestBodyTypeMapOfany TestTransformationRequestBodyRequestBodyType = "mapOfany"
+	TestTransformationRequestBodyRequestBodyTypeStr      TestTransformationRequestBodyRequestBodyType = "str"
 )
 
 type TestTransformationRequestBodyRequestBody struct {
-	TestTransformationRequestBodyRequestBody1 *TestTransformationRequestBodyRequestBody1
-	Str                                       *string
+	MapOfany map[string]interface{}
+	Str      *string
 
 	Type TestTransformationRequestBodyRequestBodyType
 }
 
-func CreateTestTransformationRequestBodyRequestBodyTestTransformationRequestBodyRequestBody1(testTransformationRequestBodyRequestBody1 TestTransformationRequestBodyRequestBody1) TestTransformationRequestBodyRequestBody {
-	typ := TestTransformationRequestBodyRequestBodyTypeTestTransformationRequestBodyRequestBody1
+func CreateTestTransformationRequestBodyRequestBodyMapOfany(mapOfany map[string]interface{}) TestTransformationRequestBodyRequestBody {
+	typ := TestTransformationRequestBodyRequestBodyTypeMapOfany
 
 	return TestTransformationRequestBodyRequestBody{
-		TestTransformationRequestBodyRequestBody1: &testTransformationRequestBodyRequestBody1,
-		Type: typ,
+		MapOfany: mapOfany,
+		Type:     typ,
 	}
 }
 
@@ -51,21 +42,16 @@ func CreateTestTransformationRequestBodyRequestBodyStr(str string) TestTransform
 }
 
 func (u *TestTransformationRequestBodyRequestBody) UnmarshalJSON(data []byte) error {
-	var d *json.Decoder
 
-	testTransformationRequestBodyRequestBody1 := new(TestTransformationRequestBodyRequestBody1)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&testTransformationRequestBodyRequestBody1); err == nil {
-		u.TestTransformationRequestBodyRequestBody1 = testTransformationRequestBodyRequestBody1
-		u.Type = TestTransformationRequestBodyRequestBodyTypeTestTransformationRequestBodyRequestBody1
+	mapOfany := map[string]interface{}{}
+	if err := utils.UnmarshalJSON(data, &mapOfany, "", true, true); err == nil {
+		u.MapOfany = mapOfany
+		u.Type = TestTransformationRequestBodyRequestBodyTypeMapOfany
 		return nil
 	}
 
 	str := new(string)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&str); err == nil {
+	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
 		u.Str = str
 		u.Type = TestTransformationRequestBodyRequestBodyTypeStr
 		return nil
@@ -75,33 +61,48 @@ func (u *TestTransformationRequestBodyRequestBody) UnmarshalJSON(data []byte) er
 }
 
 func (u TestTransformationRequestBodyRequestBody) MarshalJSON() ([]byte, error) {
-	if u.TestTransformationRequestBodyRequestBody1 != nil {
-		return json.Marshal(u.TestTransformationRequestBodyRequestBody1)
+	if u.MapOfany != nil {
+		return utils.MarshalJSON(u.MapOfany, "", true)
 	}
 
 	if u.Str != nil {
-		return json.Marshal(u.Str)
+		return utils.MarshalJSON(u.Str, "", true)
 	}
 
-	return nil, nil
-}
-
-// TestTransformationRequestBodyRequestParsedQuery - JSON representation of the query params
-type TestTransformationRequestBodyRequestParsedQuery struct {
+	return nil, errors.New("could not marshal union type: all fields are null")
 }
 
 // TestTransformationRequestBodyRequest - Request input to use for the transformation execution
 type TestTransformationRequestBodyRequest struct {
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// Body of the request
 	Body *TestTransformationRequestBodyRequestBody `json:"body,omitempty"`
 	// Headers of the request
 	Headers map[string]string `json:"headers"`
 	// JSON representation of the query params
-	ParsedQuery *TestTransformationRequestBodyRequestParsedQuery `json:"parsed_query,omitempty"`
+	ParsedQuery map[string]interface{} `json:"parsed_query,omitempty"`
 	// Path of the request
 	Path *string `json:"path,omitempty"`
 	// String representation of the query params of the request
 	Query *string `json:"query,omitempty"`
+}
+
+func (t TestTransformationRequestBodyRequest) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(t, "", false)
+}
+
+func (t *TestTransformationRequestBodyRequest) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &t, "", false, false); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *TestTransformationRequestBodyRequest) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
 }
 
 func (o *TestTransformationRequestBodyRequest) GetBody() *TestTransformationRequestBodyRequestBody {
@@ -118,7 +119,7 @@ func (o *TestTransformationRequestBodyRequest) GetHeaders() map[string]string {
 	return o.Headers
 }
 
-func (o *TestTransformationRequestBodyRequest) GetParsedQuery() *TestTransformationRequestBodyRequestParsedQuery {
+func (o *TestTransformationRequestBodyRequest) GetParsedQuery() map[string]interface{} {
 	if o == nil {
 		return nil
 	}
@@ -140,17 +141,36 @@ func (o *TestTransformationRequestBodyRequest) GetQuery() *string {
 }
 
 type TestTransformationRequestBody struct {
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// JavaScript code to be executed
 	Code *string `json:"code,omitempty"`
 	// Key-value environment variables to be passed to the transformation
-	Env     *TestTransformationRequestBodyEnv `json:"env,omitempty"`
-	EventID *string                           `json:"event_id,omitempty"`
+	Env     map[string]interface{} `json:"env,omitempty"`
+	EventID *string                `json:"event_id,omitempty"`
 	// Request input to use for the transformation execution
 	Request *TestTransformationRequestBodyRequest `json:"request,omitempty"`
 	// Transformation ID
 	TransformationID *string `json:"transformation_id,omitempty"`
 	// ID of the connection to use for the execution `context`
 	WebhookID *string `json:"webhook_id,omitempty"`
+}
+
+func (t TestTransformationRequestBody) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(t, "", false)
+}
+
+func (t *TestTransformationRequestBody) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &t, "", false, false); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *TestTransformationRequestBody) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
 }
 
 func (o *TestTransformationRequestBody) GetCode() *string {
@@ -160,7 +180,7 @@ func (o *TestTransformationRequestBody) GetCode() *string {
 	return o.Code
 }
 
-func (o *TestTransformationRequestBody) GetEnv() *TestTransformationRequestBodyEnv {
+func (o *TestTransformationRequestBody) GetEnv() map[string]interface{} {
 	if o == nil {
 		return nil
 	}
@@ -196,8 +216,11 @@ func (o *TestTransformationRequestBody) GetWebhookID() *string {
 }
 
 type TestTransformationResponse struct {
+	// HTTP response content type for this operation
 	ContentType string
-	StatusCode  int
+	// HTTP response status code for this operation
+	StatusCode int
+	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
 	// Transformation run output
 	TransformationExecutorOutput *shared.TransformationExecutorOutput

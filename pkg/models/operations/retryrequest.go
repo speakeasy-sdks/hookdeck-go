@@ -4,12 +4,32 @@ package operations
 
 import (
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
+	"github.com/speakeasy-sdks/hookdeck-go/pkg/utils"
 	"net/http"
 )
 
 type RetryRequestRequestBody struct {
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// Subset of webhook_ids to re-run the event logic on. Useful to retry only specific ignored_events
 	WebhookIds []string `json:"webhook_ids"`
+}
+
+func (r RetryRequestRequestBody) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(r, "", false)
+}
+
+func (r *RetryRequestRequestBody) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &r, "", false, false); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *RetryRequestRequestBody) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
 }
 
 func (o *RetryRequestRequestBody) GetWebhookIds() []string {
@@ -39,11 +59,14 @@ func (o *RetryRequestRequest) GetID() string {
 }
 
 type RetryRequestResponse struct {
+	// HTTP response content type for this operation
 	ContentType string
 	// Retry request operation result
 	RetryRequest *shared.RetryRequest
-	StatusCode   int
-	RawResponse  *http.Response
+	// HTTP response status code for this operation
+	StatusCode int
+	// Raw HTTP response; suitable for custom response parsing
+	RawResponse *http.Response
 }
 
 func (o *RetryRequestResponse) GetContentType() string {

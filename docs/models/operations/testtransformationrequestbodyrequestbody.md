@@ -3,10 +3,10 @@
 
 ## Supported Types
 
-### TestTransformationRequestBodyRequestBody1
+### 
 
 ```go
-testTransformationRequestBodyRequestBody := operations.CreateTestTransformationRequestBodyRequestBodyTestTransformationRequestBodyRequestBody1(operations.TestTransformationRequestBodyRequestBody1{/* values here */})
+testTransformationRequestBodyRequestBody := operations.CreateTestTransformationRequestBodyRequestBodyMapOfany(map[string]interface{}{/* values here */})
 ```
 
 ### 

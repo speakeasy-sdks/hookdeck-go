@@ -5,6 +5,7 @@ package shared
 import (
 	"encoding/json"
 	"fmt"
+	"github.com/speakeasy-sdks/hookdeck-go/pkg/utils"
 )
 
 // BasicAuthType - Type of auth method
@@ -34,10 +35,29 @@ func (e *BasicAuthType) UnmarshalJSON(data []byte) error {
 
 // BasicAuth - Basic Auth
 type BasicAuth struct {
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// Basic auth config for the destination's auth method
 	Config *DestinationAuthMethodBasicAuthConfig `json:"config,omitempty"`
 	// Type of auth method
 	Type BasicAuthType `json:"type"`
+}
+
+func (b BasicAuth) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(b, "", false)
+}
+
+func (b *BasicAuth) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &b, "", false, true); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *BasicAuth) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
 }
 
 func (o *BasicAuth) GetConfig() *DestinationAuthMethodBasicAuthConfig {

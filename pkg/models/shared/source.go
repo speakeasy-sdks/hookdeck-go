@@ -3,11 +3,13 @@
 package shared
 
 import (
+	"github.com/speakeasy-sdks/hookdeck-go/pkg/utils"
 	"time"
 )
 
 // SourceIntegration - Integration object
 type SourceIntegration struct {
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// List of enabled features
 	Features []IntegrationFeature `json:"features"`
 	// ID of the integration
@@ -16,6 +18,24 @@ type SourceIntegration struct {
 	Label string `json:"label"`
 	// The provider name
 	Provider IntegrationProvider `json:"provider"`
+}
+
+func (s SourceIntegration) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(s, "", false)
+}
+
+func (s *SourceIntegration) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &s, "", false, false); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *SourceIntegration) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
 }
 
 func (o *SourceIntegration) GetFeatures() []IntegrationFeature {
@@ -48,6 +68,7 @@ func (o *SourceIntegration) GetProvider() IntegrationProvider {
 
 // Source - Associated [Source](#source-object) object
 type Source struct {
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// List of allowed HTTP methods. Defaults to PUT, POST, PATCH, DELETE.
 	AllowedHTTPMethods []SourceAllowedHTTPMethod `json:"allowed_http_methods,omitempty"`
 	// Date the source was archived
@@ -70,6 +91,24 @@ type Source struct {
 	UpdatedAt time.Time `json:"updated_at"`
 	// A unique URL that must be supplied to your webhook's provider
 	URL string `json:"url"`
+}
+
+func (s Source) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(s, "", false)
+}
+
+func (s *Source) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &s, "", false, false); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *Source) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
 }
 
 func (o *Source) GetAllowedHTTPMethods() []SourceAllowedHTTPMethod {

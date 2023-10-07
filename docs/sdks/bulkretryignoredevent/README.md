@@ -1,4 +1,5 @@
 # BulkRetryIgnoredEvent
+(*BulkRetryIgnoredEvent*)
 
 ### Available Operations
 
@@ -19,21 +20,20 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
                 Password: "",
                 Username: "",
             },
         }),
     )
-    id := "ipsam"
+    var id string = "Clifton"
 
     ctx := context.Background()
     res, err := s.BulkRetryIgnoredEvent.Cancel(ctx, id)
@@ -72,14 +72,14 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
                 Password: "",
                 Username: "",
@@ -89,10 +89,23 @@ func main() {
 
     ctx := context.Background()
     res, err := s.BulkRetryIgnoredEvent.Create(ctx, operations.CreateIgnoredEventBulkRetryRequestBody{
+        AdditionalProperties: map[string]interface{}{
+            "online": "Configuration",
+        },
         Query: &operations.CreateIgnoredEventBulkRetryRequestBodyQuery{
-            Cause: &operations.CreateIgnoredEventBulkRetryRequestBodyQueryCause{},
-            TransformationID: hookdeck.String("repellendus"),
-            WebhookID: &operations.CreateIgnoredEventBulkRetryRequestBodyQueryWebhookID{},
+            AdditionalProperties: map[string]interface{}{
+                "Money": "blue",
+            },
+            Cause: operations.CreateCreateIgnoredEventBulkRetryRequestBodyQueryCauseArrayOfstr(
+                    []string{
+                        "grey",
+                    },
+            ),
+            WebhookID: operations.CreateCreateIgnoredEventBulkRetryRequestBodyQueryWebhookIDArrayOfstr(
+                    []string{
+                        "abnormally",
+                    },
+            ),
         },
     })
     if err != nil {
@@ -130,14 +143,14 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
                 Password: "",
                 Username: "",
@@ -145,9 +158,15 @@ func main() {
         }),
     )
     query := &operations.GenerateIgnoredEventBulkRetryPlanQuery{
-        Cause: &operations.GenerateIgnoredEventBulkRetryPlanQueryCause{},
-        TransformationID: hookdeck.String("sapiente"),
-        WebhookID: &operations.GenerateIgnoredEventBulkRetryPlanQueryWebhookID{},
+        AdditionalProperties: map[string]interface{}{
+            "ohm": "payment",
+        },
+        Cause: operations.CreateGenerateIgnoredEventBulkRetryPlanQueryCauseStr(
+        "East",
+        ),
+        WebhookID: operations.CreateGenerateIgnoredEventBulkRetryPlanQueryWebhookIDStr(
+        "Senior",
+        ),
     }
 
     ctx := context.Background()
@@ -187,21 +206,20 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
                 Password: "",
                 Username: "",
             },
         }),
     )
-    id := "quo"
+    var id string = "female"
 
     ctx := context.Background()
     res, err := s.BulkRetryIgnoredEvent.Get(ctx, id)

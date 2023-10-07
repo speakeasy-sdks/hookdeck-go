@@ -3,10 +3,10 @@
 
 ## Supported Types
 
-### TransformationExecutorOutputRequestQuery1
+### 
 
 ```go
-transformationExecutorOutputRequestQuery := shared.CreateTransformationExecutorOutputRequestQueryTransformationExecutorOutputRequestQuery1(shared.TransformationExecutorOutputRequestQuery1{/* values here */})
+transformationExecutorOutputRequestQuery := shared.CreateTransformationExecutorOutputRequestQueryMapOfany(map[string]interface{}{/* values here */})
 ```
 
 ### 

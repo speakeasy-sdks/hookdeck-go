@@ -5,6 +5,7 @@ package shared
 import (
 	"encoding/json"
 	"fmt"
+	"github.com/speakeasy-sdks/hookdeck-go/pkg/utils"
 )
 
 // FilterRuleType - A filter rule must be of type `filter`
@@ -33,6 +34,7 @@ func (e *FilterRuleType) UnmarshalJSON(data []byte) error {
 }
 
 type FilterRule struct {
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// JSON using our filter syntax to filter on request headers
 	Body *ConnectionFilterProperty `json:"body,omitempty"`
 	// JSON using our filter syntax to filter on request headers
@@ -43,6 +45,24 @@ type FilterRule struct {
 	Query *ConnectionFilterProperty `json:"query,omitempty"`
 	// A filter rule must be of type `filter`
 	Type FilterRuleType `json:"type"`
+}
+
+func (f FilterRule) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(f, "", false)
+}
+
+func (f *FilterRule) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &f, "", false, true); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *FilterRule) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
 }
 
 func (o *FilterRule) GetBody() *ConnectionFilterProperty {

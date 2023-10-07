@@ -2,24 +2,47 @@
 
 package shared
 
+import (
+	"github.com/speakeasy-sdks/hookdeck-go/pkg/utils"
+)
+
 // IssueTriggerChannels - Notification channels object for the specific channel type
 type IssueTriggerChannels struct {
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// Email channel for an issue trigger
-	Email *IssueTriggerEmailChannel `json:"email,omitempty"`
+	Email map[string]interface{} `json:"email,omitempty"`
 	// Integration channel for an issue trigger
-	Opsgenie *IssueTriggerIntegrationChannel `json:"opsgenie,omitempty"`
+	Opsgenie map[string]interface{} `json:"opsgenie,omitempty"`
 	// Slack channel for an issue trigger
 	Slack *IssueTriggerSlackChannel `json:"slack,omitempty"`
 }
 
-func (o *IssueTriggerChannels) GetEmail() *IssueTriggerEmailChannel {
+func (i IssueTriggerChannels) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(i, "", false)
+}
+
+func (i *IssueTriggerChannels) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &i, "", false, false); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *IssueTriggerChannels) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
+}
+
+func (o *IssueTriggerChannels) GetEmail() map[string]interface{} {
 	if o == nil {
 		return nil
 	}
 	return o.Email
 }
 
-func (o *IssueTriggerChannels) GetOpsgenie() *IssueTriggerIntegrationChannel {
+func (o *IssueTriggerChannels) GetOpsgenie() map[string]interface{} {
 	if o == nil {
 		return nil
 	}

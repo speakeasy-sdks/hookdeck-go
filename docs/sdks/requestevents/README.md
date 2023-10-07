@@ -1,4 +1,5 @@
 # RequestEvents
+(*RequestEvents*)
 
 ### Available Operations
 
@@ -16,15 +17,15 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/types"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
                 Password: "",
                 Username: "",
@@ -34,34 +35,100 @@ func main() {
 
     ctx := context.Background()
     res, err := s.RequestEvents.Get(ctx, operations.GetRequestEventsRequest{
-        Attempts: &operations.GetRequestEventsAttempts{},
-        Body: &operations.GetRequestEventsBody{},
-        BulkRetryID: &operations.GetRequestEventsBulkRetryID{},
-        CliID: &operations.GetRequestEventsCliID{},
-        CliUserID: &operations.GetRequestEventsCliUserID{},
-        CreatedAt: &operations.GetRequestEventsCreatedAt{},
-        DestinationID: &operations.GetRequestEventsDestinationID{},
-        Dir: &operations.GetRequestEventsDir{},
-        ErrorCode: &operations.GetRequestEventsErrorCode{},
-        EventDataID: &operations.GetRequestEventsEventDataID{},
-        Headers: &operations.GetRequestEventsHeaders{},
-        IDPathParameter: "nobis",
-        IDQueryParameter: &operations.GetRequestEventsID{},
-        Include: operations.GetRequestEventsIncludeData.ToPointer(),
-        IssueID: &operations.GetRequestEventsIssueID{},
-        LastAttemptAt: &operations.GetRequestEventsLastAttemptAt{},
-        Limit: hookdeck.Int64(171629),
-        Next: hookdeck.String("quis"),
-        OrderBy: &operations.GetRequestEventsOrderBy{},
-        ParsedQuery: &operations.GetRequestEventsParsedQuery{},
-        Path: hookdeck.String("totam"),
-        Prev: hookdeck.String("dignissimos"),
-        ResponseStatus: &operations.GetRequestEventsResponseStatus{},
-        SearchTerm: hookdeck.String("eaque"),
-        SourceID: &operations.GetRequestEventsSourceID{},
-        Status: &operations.GetRequestEventsStatus{},
-        SuccessfulAt: &operations.GetRequestEventsSuccessfulAt{},
-        WebhookID: &operations.GetRequestEventsWebhookID{},
+        Attempts: operations.CreateGetRequestEventsAttemptsGetRequestEventsAttempts2(
+                operations.GetRequestEventsAttempts2{
+                    AdditionalProperties: map[string]interface{}{
+                        "Northeast": "Hatchback",
+                    },
+                },
+        ),
+        Body: operations.CreateGetRequestEventsBodyMapOfany(
+                map[string]interface{}{
+                    "protocol": "towards",
+                },
+        ),
+        BulkRetryID: operations.CreateGetRequestEventsBulkRetryIDStr(
+        "Xenon",
+        ),
+        CliID: operations.CreateGetRequestEventsCliIDGetRequestEventsCliID2(
+                operations.GetRequestEventsCliID2{
+                    AdditionalProperties: map[string]interface{}{
+                        "Car": "magnetic",
+                    },
+                },
+        ),
+        CliUserID: operations.CreateGetRequestEventsCliUserIDStr(
+        "Gasoline",
+        ),
+        CreatedAt: operations.CreateGetRequestEventsCreatedAtDateTime(
+        types.MustTimeFromString("2023-12-06T14:41:34.659Z"),
+        ),
+        DestinationID: operations.CreateGetRequestEventsDestinationIDStr(
+        "Dollar",
+        ),
+        Dir: operations.CreateGetRequestEventsDirGetRequestEventsDir1(
+        operations.GetRequestEventsDir1Asc,
+        ),
+        ErrorCode: operations.CreateGetRequestEventsErrorCodeArrayOfstr(
+                []string{
+                    "Bicycle",
+                },
+        ),
+        EventDataID: operations.CreateGetRequestEventsEventDataIDStr(
+        "Reduced",
+        ),
+        Headers: operations.CreateGetRequestEventsHeadersMapOfany(
+                map[string]interface{}{
+                    "woman": "Bedfordshire",
+                },
+        ),
+        IDPathParameter: "cyan",
+        IDQueryParameter: operations.CreateGetRequestEventsIDStr(
+        "West",
+        ),
+        IssueID: operations.CreateGetRequestEventsIssueIDStr(
+        "Holmium",
+        ),
+        LastAttemptAt: operations.CreateGetRequestEventsLastAttemptAtGetRequestEventsLastAttemptAt2(
+                operations.GetRequestEventsLastAttemptAt2{
+                    AdditionalProperties: map[string]interface{}{
+                        "Oklahoma": "functionalities",
+                    },
+                },
+        ),
+        OrderBy: operations.CreateGetRequestEventsOrderByArrayOfgetRequestEventsOrderBy2(
+                []operations.GetRequestEventsOrderBy2{
+                    operations.GetRequestEventsOrderBy2LastAttemptAt,
+                },
+        ),
+        ParsedQuery: operations.CreateGetRequestEventsParsedQueryMapOfany(
+                map[string]interface{}{
+                    "Maria": "Kendall",
+                },
+        ),
+        ResponseStatus: operations.CreateGetRequestEventsResponseStatusArrayOfinteger(
+                []int64{
+                    424256,
+                },
+        ),
+        SourceID: operations.CreateGetRequestEventsSourceIDStr(
+        "Delaware",
+        ),
+        Status: operations.CreateGetRequestEventsStatusEventStatus(
+        shared.EventStatusScheduled,
+        ),
+        SuccessfulAt: operations.CreateGetRequestEventsSuccessfulAtGetRequestEventsSuccessfulAt2(
+                operations.GetRequestEventsSuccessfulAt2{
+                    AdditionalProperties: map[string]interface{}{
+                        "Alexa": "Direct",
+                    },
+                },
+        ),
+        WebhookID: operations.CreateGetRequestEventsWebhookIDArrayOfstr(
+                []string{
+                    "Northwest",
+                },
+        ),
     })
     if err != nil {
         log.Fatal(err)

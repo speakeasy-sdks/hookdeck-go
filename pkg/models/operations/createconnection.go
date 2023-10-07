@@ -6,6 +6,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
+	"github.com/speakeasy-sdks/hookdeck-go/pkg/utils"
 	"net/http"
 )
 
@@ -42,8 +43,9 @@ func (e *CreateConnectionRequestBodyDestinationRateLimitPeriod) UnmarshalJSON(da
 
 // CreateConnectionRequestBodyDestination - Destination input object
 type CreateConnectionRequestBodyDestination struct {
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// Config for the destination's auth method
-	AuthMethod interface{} `json:"auth_method,omitempty"`
+	AuthMethod *shared.DestinationAuthMethodConfig `json:"auth_method,omitempty"`
 	// Path for the CLI destination
 	CliPath *string `json:"cli_path,omitempty"`
 	// HTTP method used on requests sent to the destination, overrides the method used on requests sent to the source.
@@ -52,14 +54,32 @@ type CreateConnectionRequestBodyDestination struct {
 	Name                   string `json:"name"`
 	PathForwardingDisabled *bool  `json:"path_forwarding_disabled,omitempty"`
 	// Limit event attempts to receive per period
-	RateLimit interface{} `json:"rate_limit,omitempty"`
+	RateLimit *int64 `json:"rate_limit,omitempty"`
 	// Period to rate limit attempts
 	RateLimitPeriod *CreateConnectionRequestBodyDestinationRateLimitPeriod `json:"rate_limit_period,omitempty"`
 	// Endpoint of the destination
 	URL *string `json:"url,omitempty"`
 }
 
-func (o *CreateConnectionRequestBodyDestination) GetAuthMethod() interface{} {
+func (c CreateConnectionRequestBodyDestination) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateConnectionRequestBodyDestination) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, false); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *CreateConnectionRequestBodyDestination) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
+}
+
+func (o *CreateConnectionRequestBodyDestination) GetAuthMethod() *shared.DestinationAuthMethodConfig {
 	if o == nil {
 		return nil
 	}
@@ -94,7 +114,7 @@ func (o *CreateConnectionRequestBodyDestination) GetPathForwardingDisabled() *bo
 	return o.PathForwardingDisabled
 }
 
-func (o *CreateConnectionRequestBodyDestination) GetRateLimit() interface{} {
+func (o *CreateConnectionRequestBodyDestination) GetRateLimit() *int64 {
 	if o == nil {
 		return nil
 	}
@@ -117,11 +137,30 @@ func (o *CreateConnectionRequestBodyDestination) GetURL() *string {
 
 // CreateConnectionRequestBodyRuleset - Ruleset input object
 type CreateConnectionRequestBodyRuleset struct {
-	IsTeamDefault *bool `json:"is_team_default,omitempty"`
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
+	IsTeamDefault        *bool                  `json:"is_team_default,omitempty"`
 	// Name for the ruleset
 	Name string `json:"name"`
 	// Array of rules to apply
-	Rules []interface{} `json:"rules,omitempty"`
+	Rules []shared.Rule `json:"rules,omitempty"`
+}
+
+func (c CreateConnectionRequestBodyRuleset) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateConnectionRequestBodyRuleset) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, false); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *CreateConnectionRequestBodyRuleset) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
 }
 
 func (o *CreateConnectionRequestBodyRuleset) GetIsTeamDefault() *bool {
@@ -138,7 +177,7 @@ func (o *CreateConnectionRequestBodyRuleset) GetName() string {
 	return o.Name
 }
 
-func (o *CreateConnectionRequestBodyRuleset) GetRules() []interface{} {
+func (o *CreateConnectionRequestBodyRuleset) GetRules() []shared.Rule {
 	if o == nil {
 		return nil
 	}
@@ -147,12 +186,31 @@ func (o *CreateConnectionRequestBodyRuleset) GetRules() []interface{} {
 
 // CreateConnectionRequestBodySource - Source input object
 type CreateConnectionRequestBodySource struct {
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// List of allowed HTTP methods. Defaults to PUT, POST, PATCH, DELETE.
 	AllowedHTTPMethods []shared.SourceAllowedHTTPMethod `json:"allowed_http_methods,omitempty"`
 	// Custom response object
 	CustomResponse *shared.SourceCustomResponse `json:"custom_response,omitempty"`
 	// A unique name for the source
 	Name string `json:"name"`
+}
+
+func (c CreateConnectionRequestBodySource) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateConnectionRequestBodySource) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, false); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *CreateConnectionRequestBodySource) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
 }
 
 func (o *CreateConnectionRequestBodySource) GetAllowedHTTPMethods() []shared.SourceAllowedHTTPMethod {
@@ -177,6 +235,7 @@ func (o *CreateConnectionRequestBodySource) GetName() string {
 }
 
 type CreateConnectionRequestBody struct {
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// Destination input object
 	Destination *CreateConnectionRequestBodyDestination `json:"destination,omitempty"`
 	// ID of a destination to bind to the connection
@@ -184,7 +243,7 @@ type CreateConnectionRequestBody struct {
 	// A unique name of the connection for the source
 	Name string `json:"name"`
 	// Array of rules to apply
-	Rules []interface{} `json:"rules,omitempty"`
+	Rules []shared.Rule `json:"rules,omitempty"`
 	// Ruleset input object
 	Ruleset *CreateConnectionRequestBodyRuleset `json:"ruleset,omitempty"`
 	// ID of a rule to bind to the connection. Default to the Workspace default ruleset
@@ -193,6 +252,24 @@ type CreateConnectionRequestBody struct {
 	Source *CreateConnectionRequestBodySource `json:"source,omitempty"`
 	// ID of a source to bind to the connection
 	SourceID *string `json:"source_id,omitempty"`
+}
+
+func (c CreateConnectionRequestBody) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateConnectionRequestBody) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, false); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *CreateConnectionRequestBody) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
 }
 
 func (o *CreateConnectionRequestBody) GetDestination() *CreateConnectionRequestBodyDestination {
@@ -216,7 +293,7 @@ func (o *CreateConnectionRequestBody) GetName() string {
 	return o.Name
 }
 
-func (o *CreateConnectionRequestBody) GetRules() []interface{} {
+func (o *CreateConnectionRequestBody) GetRules() []shared.Rule {
 	if o == nil {
 		return nil
 	}
@@ -253,9 +330,12 @@ func (o *CreateConnectionRequestBody) GetSourceID() *string {
 
 type CreateConnectionResponse struct {
 	// A single connection
-	Connection  *shared.Connection
+	Connection *shared.Connection
+	// HTTP response content type for this operation
 	ContentType string
-	StatusCode  int
+	// HTTP response status code for this operation
+	StatusCode int
+	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
 }
 
