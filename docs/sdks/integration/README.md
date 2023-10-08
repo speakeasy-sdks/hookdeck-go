@@ -1,4 +1,5 @@
 # Integration
+(*Integration*)
 
 ### Available Operations
 
@@ -21,22 +22,21 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
                 Password: "",
                 Username: "",
             },
         }),
     )
-    id := "natus"
-    sourceID := "omnis"
+    var id string = "Frozen"
+    var sourceID string = "Forward"
 
     ctx := context.Background()
     res, err := s.Integration.AttachIntegrationToSource(ctx, id, sourceID)
@@ -76,14 +76,14 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
                 Password: "",
                 Username: "",
@@ -93,16 +93,21 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Integration.Create(ctx, operations.CreateIntegrationRequestBody{
-        Configs: &shared.APIKeyIntegrationConfigs{
-            APIKey: "perferendis",
-            HeaderKey: "nihil",
+        AdditionalProperties: map[string]interface{}{
+            "online": "Configuration",
         },
+        Configs: operations.CreateCreateIntegrationRequestBodyConfigsCreateIntegrationRequestBodyConfigsAPIKeyIntegrationConfigs(
+                operations.CreateIntegrationRequestBodyConfigsAPIKeyIntegrationConfigs{
+                    AdditionalProperties: map[string]interface{}{
+                        "innovative": "blue",
+                    },
+                    APIKey: "grey technology East",
+                    HeaderKey: "evolve",
+                },
+        ),
         Features: []shared.IntegrationFeature{
             shared.IntegrationFeaturePolling,
-            shared.IntegrationFeatureHandshake,
         },
-        Label: hookdeck.String("labore"),
-        Provider: shared.IntegrationProviderHmac.ToPointer(),
     })
     if err != nil {
         log.Fatal(err)
@@ -139,21 +144,20 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
                 Password: "",
                 Username: "",
             },
         }),
     )
-    id := "suscipit"
+    var id string = "program"
 
     ctx := context.Background()
     res, err := s.Integration.Delete(ctx, id)
@@ -192,22 +196,21 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
                 Password: "",
                 Username: "",
             },
         }),
     )
-    id := "natus"
-    sourceID := "nobis"
+    var id string = "pish"
+    var sourceID string = "tidy"
 
     ctx := context.Background()
     res, err := s.Integration.DetachIntegrationToSource(ctx, id, sourceID)
@@ -247,21 +250,20 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
                 Password: "",
                 Username: "",
             },
         }),
     )
-    id := "eum"
+    var id string = "female"
 
     ctx := context.Background()
     res, err := s.Integration.Get(ctx, id)
@@ -300,14 +302,14 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
                 Password: "",
                 Username: "",
@@ -315,23 +317,23 @@ func main() {
         }),
     )
     requestBody := operations.UpdateIntegrationRequestBody{
-        Configs: &shared.ShopifyIntegrationConfigs{
-            APIKey: hookdeck.String("aspernatur"),
-            APISecret: hookdeck.String("architecto"),
-            RateLimit: hookdeck.Float32(2982.82),
-            RateLimitPeriod: shared.ShopifyIntegrationConfigsRateLimitPeriodLessThanNilGreaterThan.ToPointer(),
-            Shop: hookdeck.String("excepturi"),
-            WebhookSecretKey: "ullam",
+        AdditionalProperties: map[string]interface{}{
+            "Van": "East",
         },
+        Configs: operations.CreateUpdateIntegrationRequestBodyConfigsUpdateIntegrationRequestBodyConfigsBasicAuthIntegrationConfigs(
+                operations.UpdateIntegrationRequestBodyConfigsBasicAuthIntegrationConfigs{
+                    AdditionalProperties: map[string]interface{}{
+                        "dock": "Quality",
+                    },
+                    Name: "invoice Arizona",
+                    Password: "vPKDk8CkuAMJjbG",
+                },
+        ),
         Features: []shared.IntegrationFeature{
             shared.IntegrationFeatureHandshake,
-            shared.IntegrationFeatureHandshake,
-            shared.IntegrationFeatureVerification,
         },
-        Label: hookdeck.String("mollitia"),
-        Provider: shared.IntegrationProviderAwsSns.ToPointer(),
     }
-    id := "mollitia"
+    var id string = "Galveston"
 
     ctx := context.Background()
     res, err := s.Integration.Update(ctx, requestBody, id)

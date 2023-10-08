@@ -4,16 +4,36 @@ package operations
 
 import (
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
+	"github.com/speakeasy-sdks/hookdeck-go/pkg/utils"
 	"net/http"
 )
 
 type ToggleWebhookNotificationsRequestBody struct {
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// Enable or disable webhook notifications on the workspace
 	Enabled *bool `json:"enabled,omitempty"`
 	// The Hookdeck Source to send the webhook to
 	SourceID *string `json:"source_id,omitempty"`
 	// List of topics to send notifications for
 	Topics []shared.TopicsValue `json:"topics,omitempty"`
+}
+
+func (t ToggleWebhookNotificationsRequestBody) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(t, "", false)
+}
+
+func (t *ToggleWebhookNotificationsRequestBody) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &t, "", false, false); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *ToggleWebhookNotificationsRequestBody) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
 }
 
 func (o *ToggleWebhookNotificationsRequestBody) GetEnabled() *bool {
@@ -38,8 +58,11 @@ func (o *ToggleWebhookNotificationsRequestBody) GetTopics() []shared.TopicsValue
 }
 
 type ToggleWebhookNotificationsResponse struct {
+	// HTTP response content type for this operation
 	ContentType string
-	StatusCode  int
+	// HTTP response status code for this operation
+	StatusCode int
+	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
 	// Toggle operation status response
 	ToggleWebhookNotifications *shared.ToggleWebhookNotifications

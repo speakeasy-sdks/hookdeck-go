@@ -4,16 +4,36 @@ package operations
 
 import (
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
+	"github.com/speakeasy-sdks/hookdeck-go/pkg/utils"
 	"net/http"
 )
 
 // UpdateConnectionRequestBodyRuleset - Ruleset input object
 type UpdateConnectionRequestBodyRuleset struct {
-	IsTeamDefault *bool `json:"is_team_default,omitempty"`
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
+	IsTeamDefault        *bool                  `json:"is_team_default,omitempty"`
 	// Name for the ruleset
 	Name string `json:"name"`
 	// Array of rules to apply
-	Rules []interface{} `json:"rules,omitempty"`
+	Rules []shared.Rule `json:"rules,omitempty"`
+}
+
+func (u UpdateConnectionRequestBodyRuleset) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UpdateConnectionRequestBodyRuleset) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, false); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *UpdateConnectionRequestBodyRuleset) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
 }
 
 func (o *UpdateConnectionRequestBodyRuleset) GetIsTeamDefault() *bool {
@@ -30,7 +50,7 @@ func (o *UpdateConnectionRequestBodyRuleset) GetName() string {
 	return o.Name
 }
 
-func (o *UpdateConnectionRequestBodyRuleset) GetRules() []interface{} {
+func (o *UpdateConnectionRequestBodyRuleset) GetRules() []shared.Rule {
 	if o == nil {
 		return nil
 	}
@@ -38,14 +58,33 @@ func (o *UpdateConnectionRequestBodyRuleset) GetRules() []interface{} {
 }
 
 type UpdateConnectionRequestBody struct {
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// Unique name of the connection for the source
 	Name *string `json:"name,omitempty"`
 	// Array of rules to apply
-	Rules []interface{} `json:"rules,omitempty"`
+	Rules []shared.Rule `json:"rules,omitempty"`
 	// Ruleset input object
 	Ruleset *UpdateConnectionRequestBodyRuleset `json:"ruleset,omitempty"`
 	// ID of a rule to bind to the connection. Default to the Workspace default ruleset
 	RulesetID *string `json:"ruleset_id,omitempty"`
+}
+
+func (u UpdateConnectionRequestBody) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UpdateConnectionRequestBody) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, false); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *UpdateConnectionRequestBody) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
 }
 
 func (o *UpdateConnectionRequestBody) GetName() *string {
@@ -55,7 +94,7 @@ func (o *UpdateConnectionRequestBody) GetName() *string {
 	return o.Name
 }
 
-func (o *UpdateConnectionRequestBody) GetRules() []interface{} {
+func (o *UpdateConnectionRequestBody) GetRules() []shared.Rule {
 	if o == nil {
 		return nil
 	}
@@ -97,9 +136,12 @@ func (o *UpdateConnectionRequest) GetID() string {
 
 type UpdateConnectionResponse struct {
 	// A single connection
-	Connection  *shared.Connection
+	Connection *shared.Connection
+	// HTTP response content type for this operation
 	ContentType string
-	StatusCode  int
+	// HTTP response status code for this operation
+	StatusCode int
+	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
 }
 

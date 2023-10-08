@@ -1,4 +1,5 @@
 # Ruleset
+(*Ruleset*)
 
 ### Available Operations
 
@@ -21,21 +22,20 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
                 Password: "",
                 Username: "",
             },
         }),
     )
-    id := "recusandae"
+    var id string = "meek"
 
     ctx := context.Background()
     res, err := s.Ruleset.Archive(ctx, id)
@@ -74,14 +74,14 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
                 Password: "",
                 Username: "",
@@ -91,21 +91,20 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Ruleset.Create(ctx, operations.CreateRulesetRequestBody{
-        IsTeamDefault: hookdeck.Bool(false),
-        Name: "Miss Cesar Metz",
-        Rules: []interface{}{
-            shared.TransformReference{
-                TransformationID: "occaecati",
-                Type: shared.TransformReferenceTypeTransform,
-            },
-            shared.TransformReference{
-                TransformationID: "asperiores",
-                Type: shared.TransformReferenceTypeTransform,
-            },
-            shared.DelayRule{
-                Delay: 267262,
-                Type: shared.DelayRuleTypeDelay,
-            },
+        AdditionalProperties: map[string]interface{}{
+            "online": "Configuration",
+        },
+        Name: "innovative blue",
+        Rules: []shared.Rule{
+            shared.CreateRuleDelayRule(
+                shared.DelayRule{
+                    AdditionalProperties: map[string]interface{}{
+                        "grey": "technology",
+                    },
+                    Delay: 86,
+                    Type: shared.DelayRuleTypeDelay,
+                },
+            ),
         },
     })
     if err != nil {
@@ -143,21 +142,20 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
                 Password: "",
                 Username: "",
             },
         }),
     )
-    id := "iste"
+    var id string = "female"
 
     ctx := context.Background()
     res, err := s.Ruleset.Get(ctx, id)
@@ -196,21 +194,20 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
                 Password: "",
                 Username: "",
             },
         }),
     )
-    id := "dolorum"
+    var id string = "Bedfordshire"
 
     ctx := context.Background()
     res, err := s.Ruleset.Unarchive(ctx, id)
@@ -249,14 +246,14 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
                 Password: "",
                 Username: "",
@@ -264,30 +261,33 @@ func main() {
         }),
     )
     requestBody := operations.UpdateRulesetRequestBody{
-        IsTeamDefault: hookdeck.Bool(false),
-        Name: hookdeck.String("Ervin McLaughlin"),
-        Rules: []interface{}{
-            shared.AlertRule{
-                Strategy: shared.AlertStrategyLastAttempt,
-                Type: shared.AlertRuleTypeAlert,
-            },
-            shared.AlertRule{
-                Strategy: shared.AlertStrategyEachAttempt,
-                Type: shared.AlertRuleTypeAlert,
-            },
-            shared.AlertRule{
-                Strategy: shared.AlertStrategyEachAttempt,
-                Type: shared.AlertRuleTypeAlert,
-            },
-            shared.RetryRule{
-                Count: hookdeck.Int64(218749),
-                Interval: hookdeck.Int64(944373),
-                Strategy: shared.RetryStrategyExponential,
-                Type: shared.RetryRuleTypeRetry,
-            },
+        AdditionalProperties: map[string]interface{}{
+            "Van": "East",
+        },
+        Rules: []shared.Rule{
+            shared.CreateRuleTransformRule(
+                shared.CreateTransformRuleTransformFull(
+                        shared.TransformFull{
+                            AdditionalProperties: map[string]interface{}{
+                                "Metal": "cheater",
+                            },
+                            Transformation: &shared.TransformFullTransformation{
+                                AdditionalProperties: map[string]interface{}{
+                                    "Islands": "online",
+                                },
+                                Code: "extend Plastic",
+                                Env: map[string]string{
+                                    "Carolina": "syndicate",
+                                },
+                                Name: "implement JBOD",
+                            },
+                            Type: shared.TransformFullTypeTransform,
+                        },
+                ),
+            ),
         },
     }
-    id := "cum"
+    var id string = "Bicycle"
 
     ctx := context.Background()
     res, err := s.Ruleset.Update(ctx, requestBody, id)
@@ -327,14 +327,14 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
                 Password: "",
                 Username: "",
@@ -344,22 +344,20 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Ruleset.Upsert(ctx, operations.UpsertRulesetRequestBody{
-        IsTeamDefault: hookdeck.Bool(false),
-        Name: "Marian Wisozk",
-        Rules: []interface{}{
-            shared.RetryRule{
-                Count: hookdeck.Int64(58029),
-                Interval: hookdeck.Int64(56418),
-                Strategy: shared.RetryStrategyLinear,
-                Type: shared.RetryRuleTypeRetry,
-            },
-            shared.FilterRule{
-                Body: &shared.ConnectionFilterProperty{},
-                Headers: &shared.ConnectionFilterProperty{},
-                Path: &shared.ConnectionFilterProperty{},
-                Query: &shared.ConnectionFilterProperty{},
-                Type: shared.FilterRuleTypeFilter,
-            },
+        AdditionalProperties: map[string]interface{}{
+            "index": "PNG",
+        },
+        Name: "grow kilogram",
+        Rules: []shared.Rule{
+            shared.CreateRuleRetryRule(
+                shared.RetryRule{
+                    AdditionalProperties: map[string]interface{}{
+                        "Triathlon/Time": "Cisgender",
+                    },
+                    Strategy: shared.RetryStrategyLinear,
+                    Type: shared.RetryRuleTypeRetry,
+                },
+            ),
         },
     })
     if err != nil {

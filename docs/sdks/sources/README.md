@@ -1,4 +1,5 @@
 # Sources
+(*Sources*)
 
 ## Overview
 
@@ -20,15 +21,15 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/types"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
                 Password: "",
                 Username: "",
@@ -38,16 +39,30 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Sources.Get(ctx, operations.GetSourcesRequest{
-        Archived: hookdeck.Bool(false),
-        ArchivedAt: &operations.GetSourcesArchivedAt{},
-        Dir: &operations.GetSourcesDir{},
-        ID: &operations.GetSourcesID{},
-        IntegrationID: &operations.GetSourcesIntegrationID{},
-        Limit: hookdeck.Int64(311860),
-        Name: &operations.GetSourcesName{},
-        Next: hookdeck.String("tempora"),
-        OrderBy: &operations.GetSourcesOrderBy{},
-        Prev: hookdeck.String("vel"),
+        ArchivedAt: operations.CreateGetSourcesArchivedAtGetSourcesArchivedAt2(
+                operations.GetSourcesArchivedAt2{
+                    AdditionalProperties: map[string]interface{}{
+                        "Northeast": "Hatchback",
+                    },
+                },
+        ),
+        Dir: operations.CreateGetSourcesDirArrayOfgetSourcesDir2(
+                []operations.GetSourcesDir2{
+                    operations.GetSourcesDir2Desc,
+                },
+        ),
+        ID: operations.CreateGetSourcesIDStr(
+        "towards",
+        ),
+        IntegrationID: operations.CreateGetSourcesIntegrationIDStr(
+        "Xenon",
+        ),
+        Name: operations.CreateGetSourcesNameStr(
+        "Car",
+        ),
+        OrderBy: operations.CreateGetSourcesOrderByGetSourcesOrderBy1(
+        operations.GetSourcesOrderBy1CreatedAt,
+        ),
     })
     if err != nil {
         log.Fatal(err)

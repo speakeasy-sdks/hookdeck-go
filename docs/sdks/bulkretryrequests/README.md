@@ -1,4 +1,5 @@
 # BulkRetryRequests
+(*BulkRetryRequests*)
 
 ### Available Operations
 
@@ -16,15 +17,15 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/types"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
                 Password: "",
                 Username: "",
@@ -34,22 +35,62 @@ func main() {
 
     ctx := context.Background()
     res, err := s.BulkRetryRequests.Create(ctx, operations.CreateRequestBulkRetryRequestBody{
+        AdditionalProperties: map[string]interface{}{
+            "online": "Configuration",
+        },
         Query: &operations.CreateRequestBulkRetryRequestBodyQuery{
-            Body: &operations.CreateRequestBulkRetryRequestBodyQueryBody{},
-            BulkRetryID: &operations.CreateRequestBulkRetryRequestBodyQueryBulkRetryID{},
-            CreatedAt: &operations.CreateRequestBulkRetryRequestBodyQueryCreatedAt{},
-            EventsCount: &operations.CreateRequestBulkRetryRequestBodyQueryEventsCount{},
-            Headers: &operations.CreateRequestBulkRetryRequestBodyQueryHeaders{},
-            ID: &operations.CreateRequestBulkRetryRequestBodyQueryID{},
-            IgnoredCount: &operations.CreateRequestBulkRetryRequestBodyQueryIgnoredCount{},
-            IngestedAt: &operations.CreateRequestBulkRetryRequestBodyQueryIngestedAt{},
-            ParsedQuery: &operations.CreateRequestBulkRetryRequestBodyQueryParsedQuery{},
-            Path: hookdeck.String("molestiae"),
-            RejectionCause: &operations.CreateRequestBulkRetryRequestBodyQueryRejectionCause{},
-            SearchTerm: hookdeck.String("quod"),
-            SourceID: &operations.CreateRequestBulkRetryRequestBodyQuerySourceID{},
-            Status: operations.CreateRequestBulkRetryRequestBodyQueryStatusRejected.ToPointer(),
-            Verified: hookdeck.Bool(false),
+            AdditionalProperties: map[string]interface{}{
+                "Money": "blue",
+            },
+            Body: operations.CreateCreateRequestBulkRetryRequestBodyQueryBodyMapOfany(
+                    map[string]interface{}{
+                        "grey": "technology",
+                    },
+            ),
+            BulkRetryID: operations.CreateCreateRequestBulkRetryRequestBodyQueryBulkRetryIDStr(
+            "deposit",
+            ),
+            CreatedAt: operations.CreateCreateRequestBulkRetryRequestBodyQueryCreatedAtDateTime(
+            types.MustTimeFromString("2021-04-09T12:15:56.056Z"),
+            ),
+            EventsCount: operations.CreateCreateRequestBulkRetryRequestBodyQueryEventsCountArrayOfinteger(
+                    []int64{
+                        792620,
+                    },
+            ),
+            Headers: operations.CreateCreateRequestBulkRetryRequestBodyQueryHeadersMapOfany(
+                    map[string]interface{}{
+                        "Gasoline": "Screen",
+                    },
+            ),
+            ID: operations.CreateCreateRequestBulkRetryRequestBodyQueryIDStr(
+            "physical",
+            ),
+            IgnoredCount: operations.CreateCreateRequestBulkRetryRequestBodyQueryIgnoredCountCreateRequestBulkRetryRequestBodyQueryIgnoredCount2(
+                    operations.CreateRequestBulkRetryRequestBodyQueryIgnoredCount2{
+                        AdditionalProperties: map[string]interface{}{
+                            "Durham": "after",
+                        },
+                    },
+            ),
+            IngestedAt: operations.CreateCreateRequestBulkRetryRequestBodyQueryIngestedAtCreateRequestBulkRetryRequestBodyQueryIngestedAt2(
+                    operations.CreateRequestBulkRetryRequestBodyQueryIngestedAt2{
+                        AdditionalProperties: map[string]interface{}{
+                            "Intelligent": "Fish",
+                        },
+                    },
+            ),
+            ParsedQuery: operations.CreateCreateRequestBulkRetryRequestBodyQueryParsedQueryStr(
+            "Fiat",
+            ),
+            RejectionCause: operations.CreateCreateRequestBulkRetryRequestBodyQueryRejectionCauseArrayOfRequestRejectionCause(
+                    []shared.RequestRejectionCause{
+                        shared.RequestRejectionCauseNoWebhook,
+                    },
+            ),
+            SourceID: operations.CreateCreateRequestBulkRetryRequestBodyQuerySourceIDStr(
+            "Borders",
+            ),
         },
     })
     if err != nil {

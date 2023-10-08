@@ -2,11 +2,34 @@
 
 package shared
 
+import (
+	"github.com/speakeasy-sdks/hookdeck-go/pkg/utils"
+)
+
 // TransformationIssueReference - Reference to the event request transformation an issue is being created for.
 type TransformationIssueReference struct {
-	TransformationExecutionID string `json:"transformation_execution_id"`
+	AdditionalProperties      map[string]interface{} `additionalProperties:"true" json:"-"`
+	TransformationExecutionID string                 `json:"transformation_execution_id"`
 	// Deprecated but still found on historical issues
 	TriggerEventRequestTransformationID *string `json:"trigger_event_request_transformation_id,omitempty"`
+}
+
+func (t TransformationIssueReference) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(t, "", false)
+}
+
+func (t *TransformationIssueReference) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &t, "", false, false); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *TransformationIssueReference) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
 }
 
 func (o *TransformationIssueReference) GetTransformationExecutionID() string {

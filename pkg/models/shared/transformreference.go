@@ -5,6 +5,7 @@ package shared
 import (
 	"encoding/json"
 	"fmt"
+	"github.com/speakeasy-sdks/hookdeck-go/pkg/utils"
 )
 
 // TransformReferenceType - A transformation rule must be of type `transformation`
@@ -33,10 +34,29 @@ func (e *TransformReferenceType) UnmarshalJSON(data []byte) error {
 }
 
 type TransformReference struct {
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// ID of the attached transformation object. Optional input, always set once the rule is defined
 	TransformationID string `json:"transformation_id"`
 	// A transformation rule must be of type `transformation`
 	Type TransformReferenceType `json:"type"`
+}
+
+func (t TransformReference) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(t, "", false)
+}
+
+func (t *TransformReference) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &t, "", false, true); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *TransformReference) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
 }
 
 func (o *TransformReference) GetTransformationID() string {

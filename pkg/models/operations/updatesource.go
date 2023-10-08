@@ -4,16 +4,36 @@ package operations
 
 import (
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
+	"github.com/speakeasy-sdks/hookdeck-go/pkg/utils"
 	"net/http"
 )
 
 type UpdateSourceRequestBody struct {
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// List of allowed HTTP methods. Defaults to PUT, POST, PATCH, DELETE.
 	AllowedHTTPMethods []shared.SourceAllowedHTTPMethod `json:"allowed_http_methods,omitempty"`
 	// Custom response object
 	CustomResponse *shared.SourceCustomResponse `json:"custom_response,omitempty"`
 	// A unique name for the source
 	Name *string `json:"name,omitempty"`
+}
+
+func (u UpdateSourceRequestBody) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UpdateSourceRequestBody) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, false); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *UpdateSourceRequestBody) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
 }
 
 func (o *UpdateSourceRequestBody) GetAllowedHTTPMethods() []shared.SourceAllowedHTTPMethod {
@@ -57,10 +77,13 @@ func (o *UpdateSourceRequest) GetID() string {
 }
 
 type UpdateSourceResponse struct {
+	// HTTP response content type for this operation
 	ContentType string
 	// A single source
-	Source      *shared.Source
-	StatusCode  int
+	Source *shared.Source
+	// HTTP response status code for this operation
+	StatusCode int
+	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
 }
 

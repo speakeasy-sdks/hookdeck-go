@@ -3,15 +3,16 @@
 package shared
 
 import (
+	"github.com/speakeasy-sdks/hookdeck-go/pkg/utils"
 	"time"
 )
 
-// IssueTrigger - A single issue trigger
 type IssueTrigger struct {
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// Notification channels object for the specific channel type
 	Channels *IssueTriggerChannels `json:"channels,omitempty"`
 	// Configuration object for the specific issue type selected
-	Configs interface{} `json:"configs"`
+	Configs IssueTriggerReference `json:"configs"`
 	// ISO timestamp for when the issue trigger was created
 	CreatedAt time.Time `json:"created_at"`
 	// ISO timestamp for when the issue trigger was deleted
@@ -30,6 +31,24 @@ type IssueTrigger struct {
 	UpdatedAt time.Time `json:"updated_at"`
 }
 
+func (i IssueTrigger) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(i, "", false)
+}
+
+func (i *IssueTrigger) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &i, "", false, false); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *IssueTrigger) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
+}
+
 func (o *IssueTrigger) GetChannels() *IssueTriggerChannels {
 	if o == nil {
 		return nil
@@ -37,9 +56,9 @@ func (o *IssueTrigger) GetChannels() *IssueTriggerChannels {
 	return o.Channels
 }
 
-func (o *IssueTrigger) GetConfigs() interface{} {
+func (o *IssueTrigger) GetConfigs() IssueTriggerReference {
 	if o == nil {
-		return nil
+		return IssueTriggerReference{}
 	}
 	return o.Configs
 }

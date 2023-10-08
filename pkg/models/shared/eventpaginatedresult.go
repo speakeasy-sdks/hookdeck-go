@@ -2,11 +2,33 @@
 
 package shared
 
-// EventPaginatedResult - List of events
+import (
+	"github.com/speakeasy-sdks/hookdeck-go/pkg/utils"
+)
+
 type EventPaginatedResult struct {
-	Count      *int64          `json:"count,omitempty"`
-	Models     []Event         `json:"models,omitempty"`
-	Pagination *SeekPagination `json:"pagination,omitempty"`
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
+	Count                *int64                 `json:"count,omitempty"`
+	Models               []Event                `json:"models,omitempty"`
+	Pagination           *SeekPagination        `json:"pagination,omitempty"`
+}
+
+func (e EventPaginatedResult) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(e, "", false)
+}
+
+func (e *EventPaginatedResult) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &e, "", false, false); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *EventPaginatedResult) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
 }
 
 func (o *EventPaginatedResult) GetCount() *int64 {

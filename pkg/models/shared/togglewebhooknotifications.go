@@ -2,11 +2,33 @@
 
 package shared
 
-// ToggleWebhookNotifications - Toggle operation status response
+import (
+	"github.com/speakeasy-sdks/hookdeck-go/pkg/utils"
+)
+
 type ToggleWebhookNotifications struct {
-	Enabled  bool          `json:"enabled"`
-	SourceID string        `json:"source_id"`
-	Topics   []TopicsValue `json:"topics,omitempty"`
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
+	Enabled              bool                   `json:"enabled"`
+	SourceID             string                 `json:"source_id"`
+	Topics               []TopicsValue          `json:"topics,omitempty"`
+}
+
+func (t ToggleWebhookNotifications) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(t, "", false)
+}
+
+func (t *ToggleWebhookNotifications) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &t, "", false, false); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *ToggleWebhookNotifications) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
 }
 
 func (o *ToggleWebhookNotifications) GetEnabled() bool {

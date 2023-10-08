@@ -5,6 +5,7 @@ package shared
 import (
 	"encoding/json"
 	"fmt"
+	"github.com/speakeasy-sdks/hookdeck-go/pkg/utils"
 )
 
 // RetryRuleType - A retry rule must be of type `retry`
@@ -33,6 +34,7 @@ func (e *RetryRuleType) UnmarshalJSON(data []byte) error {
 }
 
 type RetryRule struct {
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// Maximum number of retries to attempt
 	Count *int64 `json:"count,omitempty"`
 	// Time in MS between each retry
@@ -41,6 +43,24 @@ type RetryRule struct {
 	Strategy RetryStrategy `json:"strategy"`
 	// A retry rule must be of type `retry`
 	Type RetryRuleType `json:"type"`
+}
+
+func (r RetryRule) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(r, "", false)
+}
+
+func (r *RetryRule) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &r, "", false, true); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *RetryRule) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
 }
 
 func (o *RetryRule) GetCount() *int64 {

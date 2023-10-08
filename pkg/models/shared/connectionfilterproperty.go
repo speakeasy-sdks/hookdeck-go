@@ -3,29 +3,24 @@
 package shared
 
 import (
-	"bytes"
-	"encoding/json"
 	"errors"
+	"github.com/speakeasy-sdks/hookdeck-go/pkg/utils"
 )
-
-// ConnectionFilterProperty4 - JSON using our filter syntax to filter on request headers
-type ConnectionFilterProperty4 struct {
-}
 
 type ConnectionFilterPropertyType string
 
 const (
-	ConnectionFilterPropertyTypeStr                       ConnectionFilterPropertyType = "str"
-	ConnectionFilterPropertyTypeFloat32                   ConnectionFilterPropertyType = "float32"
-	ConnectionFilterPropertyTypeBoolean                   ConnectionFilterPropertyType = "boolean"
-	ConnectionFilterPropertyTypeConnectionFilterProperty4 ConnectionFilterPropertyType = "ConnectionFilterProperty_4"
+	ConnectionFilterPropertyTypeStr      ConnectionFilterPropertyType = "str"
+	ConnectionFilterPropertyTypeFloat32  ConnectionFilterPropertyType = "float32"
+	ConnectionFilterPropertyTypeBoolean  ConnectionFilterPropertyType = "boolean"
+	ConnectionFilterPropertyTypeMapOfany ConnectionFilterPropertyType = "mapOfany"
 )
 
 type ConnectionFilterProperty struct {
-	Str                       *string
-	Float32                   *float32
-	Boolean                   *bool
-	ConnectionFilterProperty4 *ConnectionFilterProperty4
+	Str      *string
+	Float32  *float32
+	Boolean  *bool
+	MapOfany map[string]interface{}
 
 	Type ConnectionFilterPropertyType
 }
@@ -57,51 +52,42 @@ func CreateConnectionFilterPropertyBoolean(boolean bool) ConnectionFilterPropert
 	}
 }
 
-func CreateConnectionFilterPropertyConnectionFilterProperty4(connectionFilterProperty4 ConnectionFilterProperty4) ConnectionFilterProperty {
-	typ := ConnectionFilterPropertyTypeConnectionFilterProperty4
+func CreateConnectionFilterPropertyMapOfany(mapOfany map[string]interface{}) ConnectionFilterProperty {
+	typ := ConnectionFilterPropertyTypeMapOfany
 
 	return ConnectionFilterProperty{
-		ConnectionFilterProperty4: &connectionFilterProperty4,
-		Type:                      typ,
+		MapOfany: mapOfany,
+		Type:     typ,
 	}
 }
 
 func (u *ConnectionFilterProperty) UnmarshalJSON(data []byte) error {
-	var d *json.Decoder
 
 	str := new(string)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&str); err == nil {
+	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
 		u.Str = str
 		u.Type = ConnectionFilterPropertyTypeStr
 		return nil
 	}
 
-	float32T := new(float32)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&float32T); err == nil {
-		u.Float32 = float32T
+	float32Var := new(float32)
+	if err := utils.UnmarshalJSON(data, &float32Var, "", true, true); err == nil {
+		u.Float32 = float32Var
 		u.Type = ConnectionFilterPropertyTypeFloat32
 		return nil
 	}
 
 	boolean := new(bool)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&boolean); err == nil {
+	if err := utils.UnmarshalJSON(data, &boolean, "", true, true); err == nil {
 		u.Boolean = boolean
 		u.Type = ConnectionFilterPropertyTypeBoolean
 		return nil
 	}
 
-	connectionFilterProperty4 := new(ConnectionFilterProperty4)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&connectionFilterProperty4); err == nil {
-		u.ConnectionFilterProperty4 = connectionFilterProperty4
-		u.Type = ConnectionFilterPropertyTypeConnectionFilterProperty4
+	mapOfany := map[string]interface{}{}
+	if err := utils.UnmarshalJSON(data, &mapOfany, "", true, true); err == nil {
+		u.MapOfany = mapOfany
+		u.Type = ConnectionFilterPropertyTypeMapOfany
 		return nil
 	}
 
@@ -110,20 +96,20 @@ func (u *ConnectionFilterProperty) UnmarshalJSON(data []byte) error {
 
 func (u ConnectionFilterProperty) MarshalJSON() ([]byte, error) {
 	if u.Str != nil {
-		return json.Marshal(u.Str)
+		return utils.MarshalJSON(u.Str, "", true)
 	}
 
 	if u.Float32 != nil {
-		return json.Marshal(u.Float32)
+		return utils.MarshalJSON(u.Float32, "", true)
 	}
 
 	if u.Boolean != nil {
-		return json.Marshal(u.Boolean)
+		return utils.MarshalJSON(u.Boolean, "", true)
 	}
 
-	if u.ConnectionFilterProperty4 != nil {
-		return json.Marshal(u.ConnectionFilterProperty4)
+	if u.MapOfany != nil {
+		return utils.MarshalJSON(u.MapOfany, "", true)
 	}
 
-	return nil, nil
+	return nil, errors.New("could not marshal union type: all fields are null")
 }

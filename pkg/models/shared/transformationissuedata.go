@@ -2,10 +2,33 @@
 
 package shared
 
+import (
+	"github.com/speakeasy-sdks/hookdeck-go/pkg/utils"
+)
+
 // TransformationIssueData - Transformation issue data
 type TransformationIssueData struct {
+	AdditionalProperties    map[string]interface{}  `additionalProperties:"true" json:"-"`
 	TransformationExecution TransformationExecution `json:"transformation_execution"`
 	TriggerAttempt          *EventAttempt           `json:"trigger_attempt,omitempty"`
+}
+
+func (t TransformationIssueData) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(t, "", false)
+}
+
+func (t *TransformationIssueData) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &t, "", false, false); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *TransformationIssueData) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
 }
 
 func (o *TransformationIssueData) GetTransformationExecution() TransformationExecution {

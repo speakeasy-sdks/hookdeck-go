@@ -2,11 +2,33 @@
 
 package shared
 
-// ConnectionPaginatedResult - List of connections
+import (
+	"github.com/speakeasy-sdks/hookdeck-go/pkg/utils"
+)
+
 type ConnectionPaginatedResult struct {
-	Count      *int64          `json:"count,omitempty"`
-	Models     []Connection    `json:"models,omitempty"`
-	Pagination *SeekPagination `json:"pagination,omitempty"`
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
+	Count                *int64                 `json:"count,omitempty"`
+	Models               []Connection           `json:"models,omitempty"`
+	Pagination           *SeekPagination        `json:"pagination,omitempty"`
+}
+
+func (c ConnectionPaginatedResult) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *ConnectionPaginatedResult) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, false); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *ConnectionPaginatedResult) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
 }
 
 func (o *ConnectionPaginatedResult) GetCount() *int64 {

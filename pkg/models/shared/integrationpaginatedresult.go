@@ -2,11 +2,33 @@
 
 package shared
 
-// IntegrationPaginatedResult - List of integrations
+import (
+	"github.com/speakeasy-sdks/hookdeck-go/pkg/utils"
+)
+
 type IntegrationPaginatedResult struct {
-	Count      *int64          `json:"count,omitempty"`
-	Models     []Integration   `json:"models,omitempty"`
-	Pagination *SeekPagination `json:"pagination,omitempty"`
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
+	Count                *int64                 `json:"count,omitempty"`
+	Models               []Integration          `json:"models,omitempty"`
+	Pagination           *SeekPagination        `json:"pagination,omitempty"`
+}
+
+func (i IntegrationPaginatedResult) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(i, "", false)
+}
+
+func (i *IntegrationPaginatedResult) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &i, "", false, false); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *IntegrationPaginatedResult) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
 }
 
 func (o *IntegrationPaginatedResult) GetCount() *int64 {

@@ -2,11 +2,33 @@
 
 package shared
 
-// IgnoredEventPaginatedResult - List of ignored events
+import (
+	"github.com/speakeasy-sdks/hookdeck-go/pkg/utils"
+)
+
 type IgnoredEventPaginatedResult struct {
-	Count      *int64          `json:"count,omitempty"`
-	Models     []IgnoredEvent  `json:"models,omitempty"`
-	Pagination *SeekPagination `json:"pagination,omitempty"`
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
+	Count                *int64                 `json:"count,omitempty"`
+	Models               []IgnoredEvent         `json:"models,omitempty"`
+	Pagination           *SeekPagination        `json:"pagination,omitempty"`
+}
+
+func (i IgnoredEventPaginatedResult) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(i, "", false)
+}
+
+func (i *IgnoredEventPaginatedResult) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &i, "", false, false); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *IgnoredEventPaginatedResult) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
 }
 
 func (o *IgnoredEventPaginatedResult) GetCount() *int64 {
