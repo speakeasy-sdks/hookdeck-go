@@ -2,14 +2,36 @@
 
 package shared
 
-// BatchOperationPlan - Ignored events bulk retry plan
+import (
+	"github.com/speakeasy-sdks/hookdeck-go/pkg/utils"
+)
+
 type BatchOperationPlan struct {
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// Number of batches required to complete the bulk retry
 	EstimatedBatch *int64 `json:"estimated_batch,omitempty"`
 	// Number of estimated events to be retried
 	EstimatedCount *int64 `json:"estimated_count,omitempty"`
 	// Progression of the batch operations, values 0 - 1
 	Progress *float32 `json:"progress,omitempty"`
+}
+
+func (b BatchOperationPlan) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(b, "", false)
+}
+
+func (b *BatchOperationPlan) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &b, "", false, false); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *BatchOperationPlan) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
 }
 
 func (o *BatchOperationPlan) GetEstimatedBatch() *int64 {

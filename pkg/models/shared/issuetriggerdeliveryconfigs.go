@@ -3,9 +3,8 @@
 package shared
 
 import (
-	"bytes"
-	"encoding/json"
 	"errors"
+	"github.com/speakeasy-sdks/hookdeck-go/pkg/utils"
 )
 
 type IssueTriggerDeliveryConfigsConnectionsType string
@@ -41,21 +40,16 @@ func CreateIssueTriggerDeliveryConfigsConnectionsArrayOfstr(arrayOfstr []string)
 }
 
 func (u *IssueTriggerDeliveryConfigsConnections) UnmarshalJSON(data []byte) error {
-	var d *json.Decoder
 
 	str := new(string)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&str); err == nil {
+	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
 		u.Str = str
 		u.Type = IssueTriggerDeliveryConfigsConnectionsTypeStr
 		return nil
 	}
 
 	arrayOfstr := []string{}
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&arrayOfstr); err == nil {
+	if err := utils.UnmarshalJSON(data, &arrayOfstr, "", true, true); err == nil {
 		u.ArrayOfstr = arrayOfstr
 		u.Type = IssueTriggerDeliveryConfigsConnectionsTypeArrayOfstr
 		return nil
@@ -66,22 +60,41 @@ func (u *IssueTriggerDeliveryConfigsConnections) UnmarshalJSON(data []byte) erro
 
 func (u IssueTriggerDeliveryConfigsConnections) MarshalJSON() ([]byte, error) {
 	if u.Str != nil {
-		return json.Marshal(u.Str)
+		return utils.MarshalJSON(u.Str, "", true)
 	}
 
 	if u.ArrayOfstr != nil {
-		return json.Marshal(u.ArrayOfstr)
+		return utils.MarshalJSON(u.ArrayOfstr, "", true)
 	}
 
-	return nil, nil
+	return nil, errors.New("could not marshal union type: all fields are null")
 }
 
 // IssueTriggerDeliveryConfigs - Configurations for a 'delivery' issue trigger
 type IssueTriggerDeliveryConfigs struct {
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// A pattern to match on the connection name or array of connection IDs. Use `*` as wildcard.
 	Connections IssueTriggerDeliveryConfigsConnections `json:"connections"`
 	// The strategy uses to open the issue
 	Strategy IssueTriggerStrategy `json:"strategy"`
+}
+
+func (i IssueTriggerDeliveryConfigs) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(i, "", false)
+}
+
+func (i *IssueTriggerDeliveryConfigs) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &i, "", false, true); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *IssueTriggerDeliveryConfigs) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
 }
 
 func (o *IssueTriggerDeliveryConfigs) GetConnections() IssueTriggerDeliveryConfigsConnections {

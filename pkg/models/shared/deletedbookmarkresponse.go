@@ -2,10 +2,32 @@
 
 package shared
 
-// DeletedBookmarkResponse - An object with deleted bookmark's id
+import (
+	"github.com/speakeasy-sdks/hookdeck-go/pkg/utils"
+)
+
 type DeletedBookmarkResponse struct {
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// Bookmark ID
 	ID string `json:"id"`
+}
+
+func (d DeletedBookmarkResponse) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(d, "", false)
+}
+
+func (d *DeletedBookmarkResponse) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &d, "", false, false); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *DeletedBookmarkResponse) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
 }
 
 func (o *DeletedBookmarkResponse) GetID() string {

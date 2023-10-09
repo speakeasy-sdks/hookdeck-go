@@ -2,10 +2,32 @@
 
 package shared
 
-// IssueCount - Issue count
+import (
+	"github.com/speakeasy-sdks/hookdeck-go/pkg/utils"
+)
+
 type IssueCount struct {
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// Number of issues
 	Count int64 `json:"count"`
+}
+
+func (i IssueCount) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(i, "", false)
+}
+
+func (i *IssueCount) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &i, "", false, false); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *IssueCount) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
 }
 
 func (o *IssueCount) GetCount() int64 {

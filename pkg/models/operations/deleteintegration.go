@@ -19,11 +19,14 @@ func (o *DeleteIntegrationRequest) GetID() string {
 }
 
 type DeleteIntegrationResponse struct {
+	// HTTP response content type for this operation
 	ContentType string
 	// An object with deleted integration id
 	DeletedIntegration *shared.DeletedIntegration
-	StatusCode         int
-	RawResponse        *http.Response
+	// HTTP response status code for this operation
+	StatusCode int
+	// Raw HTTP response; suitable for custom response parsing
+	RawResponse *http.Response
 }
 
 func (o *DeleteIntegrationResponse) GetContentType() string {

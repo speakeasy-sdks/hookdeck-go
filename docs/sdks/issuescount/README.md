@@ -1,4 +1,5 @@
 # IssuesCount
+(*IssuesCount*)
 
 ### Available Operations
 
@@ -16,15 +17,15 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/types"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
                 Password: "",
                 Username: "",
@@ -35,24 +36,129 @@ func main() {
     ctx := context.Background()
     res, err := s.IssuesCount.Get(ctx, operations.GetIssueCountRequest{
         AggregationKeys: &operations.GetIssueCountAggregationKeys{
-            ErrorCode: &operations.GetIssueCountAggregationKeysErrorCode{},
-            ResponseStatus: &operations.GetIssueCountAggregationKeysResponseStatus{},
-            WebhookID: &operations.GetIssueCountAggregationKeysWebhookID{},
+            AdditionalProperties: map[string]interface{}{
+                "female": "program",
+            },
+            ErrorCode: operations.CreateGetIssueCountAggregationKeysErrorCodeArrayOfAttemptErrorCode(
+                    []shared.AttemptErrorCode{
+                        shared.AttemptErrorCodeHostUnreachable,
+                    },
+            ),
+            ResponseStatus: operations.CreateGetIssueCountAggregationKeysResponseStatusArrayOffloat32(
+                    []float32{
+                        785.92,
+                    },
+            ),
+            WebhookID: operations.CreateGetIssueCountAggregationKeysWebhookIDArrayOfstr(
+                    []string{
+                        "joyous",
+                    },
+            ),
         },
-        CreatedAt: &operations.GetIssueCountCreatedAt{},
-        Dir: &operations.GetIssueCountDir{},
-        DismissedAt: &operations.GetIssueCountDismissedAt{},
-        FirstSeenAt: &operations.GetIssueCountFirstSeenAt{},
-        ID: &operations.GetIssueCountID{},
-        IssueTriggerID: &operations.GetIssueCountIssueTriggerID{},
-        LastSeenAt: &operations.GetIssueCountLastSeenAt{},
-        Limit: hookdeck.Int64(975522),
-        MergedWith: &operations.GetIssueCountMergedWith{},
-        Next: hookdeck.String("perferendis"),
-        OrderBy: &operations.GetIssueCountOrderBy{},
-        Prev: hookdeck.String("fugiat"),
-        Status: &operations.GetIssueCountStatus{},
-        Type: &operations.GetIssueCountType{},
+        CreatedAt: operations.CreateGetIssueCountCreatedAtGetIssueCountCreatedAt2(
+                operations.GetIssueCountCreatedAt2{
+                    AdditionalProperties: map[string]interface{}{
+                        "withdrawal": "Car",
+                    },
+                },
+        ),
+        Dir: operations.CreateGetIssueCountDirGetIssueCountDir1(
+        operations.GetIssueCountDir1Asc,
+        ),
+        DismissedAt: operations.CreateGetIssueCountDismissedAtDateTime(
+        types.MustTimeFromString("2023-05-28T12:03:58.127Z"),
+        ),
+        FirstSeenAt: operations.CreateGetIssueCountFirstSeenAtGetIssueCountFirstSeenAt2(
+                operations.GetIssueCountFirstSeenAt2{
+                    AdditionalProperties: map[string]interface{}{
+                        "Cambridgeshire": "Table",
+                    },
+                },
+        ),
+        ID: operations.CreateGetIssueCountIDStr(
+        "iss_YXKv5OdJXCiVwkPhGy",
+        ),
+        IssueTriggerID: operations.CreateGetIssueCountIssueTriggerIDArrayOfstr(
+                []string{
+                    "i",
+                    "t",
+                    "_",
+                    "B",
+                    "X",
+                    "K",
+                    "v",
+                    "5",
+                    "O",
+                    "d",
+                    "J",
+                    "X",
+                    "C",
+                    "i",
+                    "V",
+                    "w",
+                    "k",
+                    "P",
+                    "h",
+                    "G",
+                    "y",
+                },
+        ),
+        LastSeenAt: operations.CreateGetIssueCountLastSeenAtDateTime(
+        types.MustTimeFromString("2022-01-14T00:57:47.709Z"),
+        ),
+        MergedWith: operations.CreateGetIssueCountMergedWithArrayOfstr(
+                []string{
+                    "i",
+                    "s",
+                    "s",
+                    "_",
+                    "A",
+                    "X",
+                    "K",
+                    "v",
+                    "3",
+                    "O",
+                    "d",
+                    "J",
+                    "X",
+                    "C",
+                    "i",
+                    "K",
+                    "l",
+                    "k",
+                    "P",
+                    "h",
+                    "D",
+                    "z",
+                },
+        ),
+        OrderBy: operations.CreateGetIssueCountOrderByArrayOfgetIssueCountOrderBy2(
+                []operations.GetIssueCountOrderBy2{
+                    operations.GetIssueCountOrderBy2Status,
+                },
+        ),
+        Status: operations.CreateGetIssueCountStatusArrayOfgetIssueCountStatus2(
+                []operations.GetIssueCountStatus2{
+                    operations.GetIssueCountStatus2Ignored,
+                    operations.GetIssueCountStatus2Ignored,
+                    operations.GetIssueCountStatus2Acknowledged,
+                    operations.GetIssueCountStatus2Resolved,
+                    operations.GetIssueCountStatus2Acknowledged,
+                    operations.GetIssueCountStatus2Opened,
+                },
+        ),
+        Type: operations.CreateGetIssueCountTypeArrayOfgetIssueCountType2(
+                []operations.GetIssueCountType2{
+                    operations.GetIssueCountType2Delivery,
+                    operations.GetIssueCountType2Delivery,
+                    operations.GetIssueCountType2Delivery,
+                    operations.GetIssueCountType2Delivery,
+                    operations.GetIssueCountType2Transformation,
+                    operations.GetIssueCountType2Delivery,
+                    operations.GetIssueCountType2Backpressure,
+                    operations.GetIssueCountType2Delivery,
+                },
+        ),
     })
     if err != nil {
         log.Fatal(err)

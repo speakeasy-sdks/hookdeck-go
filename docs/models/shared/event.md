@@ -1,12 +1,11 @@
 # Event
 
-A single event
-
 
 ## Fields
 
 | Field                                             | Type                                              | Required                                          | Description                                       |
 | ------------------------------------------------- | ------------------------------------------------- | ------------------------------------------------- | ------------------------------------------------- |
+| `AdditionalProperties`                            | map[string]*interface{}*                          | :heavy_minus_sign:                                | N/A                                               |
 | `Attempts`                                        | *int64*                                           | :heavy_check_mark:                                | Number of delivery attempts made                  |
 | `CliID`                                           | **string*                                         | :heavy_minus_sign:                                | ID of the CLI the event is sent to                |
 | `CreatedAt`                                       | [time.Time](https://pkg.go.dev/time#Time)         | :heavy_check_mark:                                | Date the event was created                        |

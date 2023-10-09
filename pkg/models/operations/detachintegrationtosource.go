@@ -3,7 +3,6 @@
 package operations
 
 import (
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
 	"net/http"
 )
 
@@ -27,11 +26,14 @@ func (o *DetachIntegrationToSourceRequest) GetSourceID() string {
 }
 
 type DetachIntegrationToSourceResponse struct {
+	// HTTP response content type for this operation
 	ContentType string
 	// Detach operation success status
-	DetachedIntegrationFromSource *shared.DetachedIntegrationFromSource
-	StatusCode                    int
-	RawResponse                   *http.Response
+	DetachedIntegrationFromSource map[string]interface{}
+	// HTTP response status code for this operation
+	StatusCode int
+	// Raw HTTP response; suitable for custom response parsing
+	RawResponse *http.Response
 }
 
 func (o *DetachIntegrationToSourceResponse) GetContentType() string {
@@ -41,7 +43,7 @@ func (o *DetachIntegrationToSourceResponse) GetContentType() string {
 	return o.ContentType
 }
 
-func (o *DetachIntegrationToSourceResponse) GetDetachedIntegrationFromSource() *shared.DetachedIntegrationFromSource {
+func (o *DetachIntegrationToSourceResponse) GetDetachedIntegrationFromSource() map[string]interface{} {
 	if o == nil {
 		return nil
 	}

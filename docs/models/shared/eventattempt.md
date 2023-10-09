@@ -1,12 +1,11 @@
 # EventAttempt
 
-A single attempt
-
 
 ## Fields
 
 | Field                                                                                      | Type                                                                                       | Required                                                                                   | Description                                                                                |
 | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
+| `AdditionalProperties`                                                                     | map[string]*interface{}*                                                                   | :heavy_minus_sign:                                                                         | N/A                                                                                        |
 | `ArchivedAt`                                                                               | **string*                                                                                  | :heavy_minus_sign:                                                                         | Date the attempt was archived                                                              |
 | `AttemptNumber`                                                                            | **int64*                                                                                   | :heavy_minus_sign:                                                                         | Sequential number of attempts (up to and including this one) made for the associated event |
 | `Body`                                                                                     | [*EventAttemptBody](../../models/shared/eventattemptbody.md)                               | :heavy_minus_sign:                                                                         | N/A                                                                                        |

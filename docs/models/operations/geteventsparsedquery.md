@@ -9,9 +9,9 @@
 getEventsParsedQuery := operations.CreateGetEventsParsedQueryStr(string{/* values here */})
 ```
 
-### GetEventsParsedQuery2
+### 
 
 ```go
-getEventsParsedQuery := operations.CreateGetEventsParsedQueryGetEventsParsedQuery2(operations.GetEventsParsedQuery2{/* values here */})
+getEventsParsedQuery := operations.CreateGetEventsParsedQueryMapOfany(map[string]interface{}{/* values here */})
 ```
 

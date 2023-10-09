@@ -5,16 +5,36 @@ package shared
 import (
 	"encoding/json"
 	"fmt"
+	"github.com/speakeasy-sdks/hookdeck-go/pkg/utils"
 )
 
 // TransformFullTransformation - You can optionally define a new transformation while creating a transform rule
 type TransformFullTransformation struct {
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// A string representation of your JavaScript (ES6) code to run
 	Code string `json:"code"`
 	// A key-value object of environment variables to encrypt and expose to your transformation code
 	Env map[string]string `json:"env,omitempty"`
 	// The unique name of the transformation
 	Name string `json:"name"`
+}
+
+func (t TransformFullTransformation) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(t, "", false)
+}
+
+func (t *TransformFullTransformation) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &t, "", false, false); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *TransformFullTransformation) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
 }
 
 func (o *TransformFullTransformation) GetCode() string {
@@ -64,12 +84,31 @@ func (e *TransformFullType) UnmarshalJSON(data []byte) error {
 }
 
 type TransformFull struct {
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// You can optionally define a new transformation while creating a transform rule
 	Transformation *TransformFullTransformation `json:"transformation,omitempty"`
 	// ID of the attached transformation object. Optional input, always set once the rule is defined
 	TransformationID *string `json:"transformation_id,omitempty"`
 	// A transformation rule must be of type `transformation`
 	Type TransformFullType `json:"type"`
+}
+
+func (t TransformFull) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(t, "", false)
+}
+
+func (t *TransformFull) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &t, "", false, true); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *TransformFull) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
 }
 
 func (o *TransformFull) GetTransformation() *TransformFullTransformation {

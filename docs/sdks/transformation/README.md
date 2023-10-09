@@ -1,4 +1,5 @@
 # Transformation
+(*Transformation*)
 
 ### Available Operations
 
@@ -20,14 +21,14 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
                 Password: "",
                 Username: "",
@@ -37,14 +38,16 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Transformation.Create(ctx, operations.CreateTransformationRequestBody{
-        Code: "quod",
-        Env: map[string]interface{}{
-            "qui": "dolorum",
-            "a": "esse",
-            "harum": "iusto",
-            "ipsum": "quisquam",
+        AdditionalProperties: map[string]interface{}{
+            "online": "Configuration",
         },
-        Name: "Marvin Renner",
+        Code: "innovative blue",
+        Env: map[string]operations.CreateTransformationRequestBodyEnv{
+            "shred": operations.CreateCreateTransformationRequestBodyEnvStr(
+            "technology",
+            ),
+        },
+        Name: "deposit",
     })
     if err != nil {
         log.Fatal(err)
@@ -81,21 +84,20 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
                 Password: "",
                 Username: "",
             },
         }),
     )
-    id := "enim"
+    var id string = "female"
 
     ctx := context.Background()
     res, err := s.Transformation.Get(ctx, id)
@@ -134,14 +136,14 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
                 Password: "",
                 Username: "",
@@ -151,22 +153,26 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Transformation.Test(ctx, operations.TestTransformationRequestBody{
-        Code: hookdeck.String("dolorem"),
-        Env: &operations.TestTransformationRequestBodyEnv{},
-        EventID: hookdeck.String("sapiente"),
-        Request: &operations.TestTransformationRequestBodyRequest{
-            Body: &operations.TestTransformationRequestBodyRequestBody{},
-            Headers: map[string]string{
-                "nihil": "sit",
-                "expedita": "neque",
-                "sed": "vel",
-            },
-            ParsedQuery: &operations.TestTransformationRequestBodyRequestParsedQuery{},
-            Path: hookdeck.String("libero"),
-            Query: hookdeck.String("voluptas"),
+        AdditionalProperties: map[string]interface{}{
+            "except": "Metal",
         },
-        TransformationID: hookdeck.String("deserunt"),
-        WebhookID: hookdeck.String("quam"),
+        Env: map[string]interface{}{
+            "CSS": "Liaison",
+        },
+        Request: &operations.TestTransformationRequestBodyRequest{
+            AdditionalProperties: map[string]interface{}{
+                "blue": "harrumph",
+            },
+            Body: operations.CreateTestTransformationRequestBodyRequestBodyStr(
+            "Fundamental",
+            ),
+            Headers: map[string]string{
+                "West": "collaborative",
+            },
+            ParsedQuery: map[string]interface{}{
+                "withdrawal": "Gasoline",
+            },
+        },
     })
     if err != nil {
         log.Fatal(err)
@@ -203,14 +209,14 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
                 Password: "",
                 Username: "",
@@ -218,14 +224,16 @@ func main() {
         }),
     )
     requestBody := operations.UpdateTransformationRequestBody{
-        Code: hookdeck.String("ipsum"),
-        Env: map[string]interface{}{
-            "qui": "cupiditate",
-            "maxime": "pariatur",
+        AdditionalProperties: map[string]interface{}{
+            "Van": "East",
         },
-        Name: hookdeck.String("Keith Padberg"),
+        Env: map[string]operations.UpdateTransformationRequestBodyEnv{
+            "male": operations.CreateUpdateTransformationRequestBodyEnvStr(
+            "Quality",
+            ),
+        },
     }
-    id := "aspernatur"
+    var id string = "redundant"
 
     ctx := context.Background()
     res, err := s.Transformation.Update(ctx, requestBody, id)
@@ -265,14 +273,14 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
                 Password: "",
                 Username: "",
@@ -282,13 +290,16 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Transformation.Upsert(ctx, operations.UpsertTransformationRequestBody{
-        Code: "dolores",
-        Env: map[string]interface{}{
-            "facilis": "aliquid",
-            "quam": "molestias",
-            "temporibus": "qui",
+        AdditionalProperties: map[string]interface{}{
+            "index": "PNG",
         },
-        Name: "Beverly Cummerata II",
+        Code: "grow kilogram",
+        Env: map[string]operations.UpsertTransformationRequestBodyEnv{
+            "West": operations.CreateUpsertTransformationRequestBodyEnvFloat32(
+            1386.71,
+            ),
+        },
+        Name: "Highway mammoth",
     })
     if err != nil {
         log.Fatal(err)

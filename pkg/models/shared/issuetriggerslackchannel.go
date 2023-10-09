@@ -2,10 +2,33 @@
 
 package shared
 
+import (
+	"github.com/speakeasy-sdks/hookdeck-go/pkg/utils"
+)
+
 // IssueTriggerSlackChannel - Slack channel for an issue trigger
 type IssueTriggerSlackChannel struct {
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// Channel name
 	ChannelName string `json:"channel_name"`
+}
+
+func (i IssueTriggerSlackChannel) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(i, "", false)
+}
+
+func (i *IssueTriggerSlackChannel) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &i, "", false, false); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *IssueTriggerSlackChannel) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
 }
 
 func (o *IssueTriggerSlackChannel) GetChannelName() string {

@@ -9,9 +9,9 @@
 createRequestBulkRetryRequestBodyQueryHeaders := operations.CreateCreateRequestBulkRetryRequestBodyQueryHeadersStr(string{/* values here */})
 ```
 
-### CreateRequestBulkRetryRequestBodyQueryHeaders2
+### 
 
 ```go
-createRequestBulkRetryRequestBodyQueryHeaders := operations.CreateCreateRequestBulkRetryRequestBodyQueryHeadersCreateRequestBulkRetryRequestBodyQueryHeaders2(operations.CreateRequestBulkRetryRequestBodyQueryHeaders2{/* values here */})
+createRequestBulkRetryRequestBodyQueryHeaders := operations.CreateCreateRequestBulkRetryRequestBodyQueryHeadersMapOfany(map[string]interface{}{/* values here */})
 ```
 

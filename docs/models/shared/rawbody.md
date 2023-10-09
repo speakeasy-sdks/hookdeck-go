@@ -1,10 +1,9 @@
 # RawBody
 
-A request raw body data
-
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `Body`             | *string*           | :heavy_check_mark: | N/A                |
+| Field                    | Type                     | Required                 | Description              |
+| ------------------------ | ------------------------ | ------------------------ | ------------------------ |
+| `AdditionalProperties`   | map[string]*interface{}* | :heavy_minus_sign:       | N/A                      |
+| `Body`                   | *string*                 | :heavy_check_mark:       | N/A                      |

@@ -3,17 +3,461 @@
 package operations
 
 import (
+	"encoding/json"
+	"errors"
+	"fmt"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
+	"github.com/speakeasy-sdks/hookdeck-go/pkg/utils"
 	"net/http"
 )
 
-// CreateIntegrationRequestBodyConfigs1 - Decrypted Key/Value object of the associated configuration for that provider
-type CreateIntegrationRequestBodyConfigs1 struct {
+type CreateIntegrationRequestBodyConfigsShopifyIntegrationConfigsRateLimitPeriod string
+
+const (
+	CreateIntegrationRequestBodyConfigsShopifyIntegrationConfigsRateLimitPeriodLessThanNilGreaterThan CreateIntegrationRequestBodyConfigsShopifyIntegrationConfigsRateLimitPeriod = "<nil>"
+	CreateIntegrationRequestBodyConfigsShopifyIntegrationConfigsRateLimitPeriodMinute                 CreateIntegrationRequestBodyConfigsShopifyIntegrationConfigsRateLimitPeriod = "minute"
+	CreateIntegrationRequestBodyConfigsShopifyIntegrationConfigsRateLimitPeriodSecond                 CreateIntegrationRequestBodyConfigsShopifyIntegrationConfigsRateLimitPeriod = "second"
+)
+
+func (e CreateIntegrationRequestBodyConfigsShopifyIntegrationConfigsRateLimitPeriod) ToPointer() *CreateIntegrationRequestBodyConfigsShopifyIntegrationConfigsRateLimitPeriod {
+	return &e
+}
+
+func (e *CreateIntegrationRequestBodyConfigsShopifyIntegrationConfigsRateLimitPeriod) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "<nil>":
+		fallthrough
+	case "minute":
+		fallthrough
+	case "second":
+		*e = CreateIntegrationRequestBodyConfigsShopifyIntegrationConfigsRateLimitPeriod(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CreateIntegrationRequestBodyConfigsShopifyIntegrationConfigsRateLimitPeriod: %v", v)
+	}
+}
+
+// CreateIntegrationRequestBodyConfigsShopifyIntegrationConfigs - Decrypted Key/Value object of the associated configuration for that provider
+type CreateIntegrationRequestBodyConfigsShopifyIntegrationConfigs struct {
+	AdditionalProperties map[string]interface{}                                                       `additionalProperties:"true" json:"-"`
+	APIKey               *string                                                                      `json:"api_key,omitempty"`
+	APISecret            *string                                                                      `json:"api_secret,omitempty"`
+	RateLimit            *float32                                                                     `json:"rate_limit,omitempty"`
+	RateLimitPeriod      *CreateIntegrationRequestBodyConfigsShopifyIntegrationConfigsRateLimitPeriod `json:"rate_limit_period,omitempty"`
+	Shop                 *string                                                                      `json:"shop,omitempty"`
+	WebhookSecretKey     string                                                                       `json:"webhook_secret_key"`
+}
+
+func (c CreateIntegrationRequestBodyConfigsShopifyIntegrationConfigs) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateIntegrationRequestBodyConfigsShopifyIntegrationConfigs) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, true); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *CreateIntegrationRequestBodyConfigsShopifyIntegrationConfigs) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
+}
+
+func (o *CreateIntegrationRequestBodyConfigsShopifyIntegrationConfigs) GetAPIKey() *string {
+	if o == nil {
+		return nil
+	}
+	return o.APIKey
+}
+
+func (o *CreateIntegrationRequestBodyConfigsShopifyIntegrationConfigs) GetAPISecret() *string {
+	if o == nil {
+		return nil
+	}
+	return o.APISecret
+}
+
+func (o *CreateIntegrationRequestBodyConfigsShopifyIntegrationConfigs) GetRateLimit() *float32 {
+	if o == nil {
+		return nil
+	}
+	return o.RateLimit
+}
+
+func (o *CreateIntegrationRequestBodyConfigsShopifyIntegrationConfigs) GetRateLimitPeriod() *CreateIntegrationRequestBodyConfigsShopifyIntegrationConfigsRateLimitPeriod {
+	if o == nil {
+		return nil
+	}
+	return o.RateLimitPeriod
+}
+
+func (o *CreateIntegrationRequestBodyConfigsShopifyIntegrationConfigs) GetShop() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Shop
+}
+
+func (o *CreateIntegrationRequestBodyConfigsShopifyIntegrationConfigs) GetWebhookSecretKey() string {
+	if o == nil {
+		return ""
+	}
+	return o.WebhookSecretKey
+}
+
+// CreateIntegrationRequestBodyConfigsBasicAuthIntegrationConfigs - Decrypted Key/Value object of the associated configuration for that provider
+type CreateIntegrationRequestBodyConfigsBasicAuthIntegrationConfigs struct {
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
+	Name                 string                 `json:"name"`
+	Password             string                 `json:"password"`
+}
+
+func (c CreateIntegrationRequestBodyConfigsBasicAuthIntegrationConfigs) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateIntegrationRequestBodyConfigsBasicAuthIntegrationConfigs) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, true); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *CreateIntegrationRequestBodyConfigsBasicAuthIntegrationConfigs) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
+}
+
+func (o *CreateIntegrationRequestBodyConfigsBasicAuthIntegrationConfigs) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+func (o *CreateIntegrationRequestBodyConfigsBasicAuthIntegrationConfigs) GetPassword() string {
+	if o == nil {
+		return ""
+	}
+	return o.Password
+}
+
+// CreateIntegrationRequestBodyConfigsHandledHMACConfigs - Decrypted Key/Value object of the associated configuration for that provider
+type CreateIntegrationRequestBodyConfigsHandledHMACConfigs struct {
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
+	WebhookSecretKey     string                 `json:"webhook_secret_key"`
+}
+
+func (c CreateIntegrationRequestBodyConfigsHandledHMACConfigs) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateIntegrationRequestBodyConfigsHandledHMACConfigs) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, true); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *CreateIntegrationRequestBodyConfigsHandledHMACConfigs) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
+}
+
+func (o *CreateIntegrationRequestBodyConfigsHandledHMACConfigs) GetWebhookSecretKey() string {
+	if o == nil {
+		return ""
+	}
+	return o.WebhookSecretKey
+}
+
+// CreateIntegrationRequestBodyConfigsAPIKeyIntegrationConfigs - Decrypted Key/Value object of the associated configuration for that provider
+type CreateIntegrationRequestBodyConfigsAPIKeyIntegrationConfigs struct {
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
+	APIKey               string                 `json:"api_key"`
+	HeaderKey            string                 `json:"header_key"`
+}
+
+func (c CreateIntegrationRequestBodyConfigsAPIKeyIntegrationConfigs) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateIntegrationRequestBodyConfigsAPIKeyIntegrationConfigs) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, true); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *CreateIntegrationRequestBodyConfigsAPIKeyIntegrationConfigs) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
+}
+
+func (o *CreateIntegrationRequestBodyConfigsAPIKeyIntegrationConfigs) GetAPIKey() string {
+	if o == nil {
+		return ""
+	}
+	return o.APIKey
+}
+
+func (o *CreateIntegrationRequestBodyConfigsAPIKeyIntegrationConfigs) GetHeaderKey() string {
+	if o == nil {
+		return ""
+	}
+	return o.HeaderKey
+}
+
+type CreateIntegrationRequestBodyConfigsHMACIntegrationConfigsEncoding string
+
+const (
+	CreateIntegrationRequestBodyConfigsHMACIntegrationConfigsEncodingBase64 CreateIntegrationRequestBodyConfigsHMACIntegrationConfigsEncoding = "base64"
+	CreateIntegrationRequestBodyConfigsHMACIntegrationConfigsEncodingHex    CreateIntegrationRequestBodyConfigsHMACIntegrationConfigsEncoding = "hex"
+)
+
+func (e CreateIntegrationRequestBodyConfigsHMACIntegrationConfigsEncoding) ToPointer() *CreateIntegrationRequestBodyConfigsHMACIntegrationConfigsEncoding {
+	return &e
+}
+
+func (e *CreateIntegrationRequestBodyConfigsHMACIntegrationConfigsEncoding) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "base64":
+		fallthrough
+	case "hex":
+		*e = CreateIntegrationRequestBodyConfigsHMACIntegrationConfigsEncoding(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CreateIntegrationRequestBodyConfigsHMACIntegrationConfigsEncoding: %v", v)
+	}
+}
+
+// CreateIntegrationRequestBodyConfigsHMACIntegrationConfigs - Decrypted Key/Value object of the associated configuration for that provider
+type CreateIntegrationRequestBodyConfigsHMACIntegrationConfigs struct {
+	AdditionalProperties map[string]interface{}                                            `additionalProperties:"true" json:"-"`
+	Algorithm            shared.HMACAlgorithms                                             `json:"algorithm"`
+	Encoding             CreateIntegrationRequestBodyConfigsHMACIntegrationConfigsEncoding `json:"encoding"`
+	HeaderKey            string                                                            `json:"header_key"`
+	WebhookSecretKey     string                                                            `json:"webhook_secret_key"`
+}
+
+func (c CreateIntegrationRequestBodyConfigsHMACIntegrationConfigs) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateIntegrationRequestBodyConfigsHMACIntegrationConfigs) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, true); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *CreateIntegrationRequestBodyConfigsHMACIntegrationConfigs) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
+}
+
+func (o *CreateIntegrationRequestBodyConfigsHMACIntegrationConfigs) GetAlgorithm() shared.HMACAlgorithms {
+	if o == nil {
+		return shared.HMACAlgorithms("")
+	}
+	return o.Algorithm
+}
+
+func (o *CreateIntegrationRequestBodyConfigsHMACIntegrationConfigs) GetEncoding() CreateIntegrationRequestBodyConfigsHMACIntegrationConfigsEncoding {
+	if o == nil {
+		return CreateIntegrationRequestBodyConfigsHMACIntegrationConfigsEncoding("")
+	}
+	return o.Encoding
+}
+
+func (o *CreateIntegrationRequestBodyConfigsHMACIntegrationConfigs) GetHeaderKey() string {
+	if o == nil {
+		return ""
+	}
+	return o.HeaderKey
+}
+
+func (o *CreateIntegrationRequestBodyConfigsHMACIntegrationConfigs) GetWebhookSecretKey() string {
+	if o == nil {
+		return ""
+	}
+	return o.WebhookSecretKey
+}
+
+type CreateIntegrationRequestBodyConfigsType string
+
+const (
+	CreateIntegrationRequestBodyConfigsTypeMapOfany                                                       CreateIntegrationRequestBodyConfigsType = "mapOfany"
+	CreateIntegrationRequestBodyConfigsTypeCreateIntegrationRequestBodyConfigsHMACIntegrationConfigs      CreateIntegrationRequestBodyConfigsType = "createIntegration_requestBody_configs_HMACIntegrationConfigs"
+	CreateIntegrationRequestBodyConfigsTypeCreateIntegrationRequestBodyConfigsAPIKeyIntegrationConfigs    CreateIntegrationRequestBodyConfigsType = "createIntegration_requestBody_configs_APIKeyIntegrationConfigs"
+	CreateIntegrationRequestBodyConfigsTypeCreateIntegrationRequestBodyConfigsHandledHMACConfigs          CreateIntegrationRequestBodyConfigsType = "createIntegration_requestBody_configs_HandledHMACConfigs"
+	CreateIntegrationRequestBodyConfigsTypeCreateIntegrationRequestBodyConfigsBasicAuthIntegrationConfigs CreateIntegrationRequestBodyConfigsType = "createIntegration_requestBody_configs_BasicAuthIntegrationConfigs"
+	CreateIntegrationRequestBodyConfigsTypeCreateIntegrationRequestBodyConfigsShopifyIntegrationConfigs   CreateIntegrationRequestBodyConfigsType = "createIntegration_requestBody_configs_ShopifyIntegrationConfigs"
+)
+
+type CreateIntegrationRequestBodyConfigs struct {
+	MapOfany                                                       map[string]interface{}
+	CreateIntegrationRequestBodyConfigsHMACIntegrationConfigs      *CreateIntegrationRequestBodyConfigsHMACIntegrationConfigs
+	CreateIntegrationRequestBodyConfigsAPIKeyIntegrationConfigs    *CreateIntegrationRequestBodyConfigsAPIKeyIntegrationConfigs
+	CreateIntegrationRequestBodyConfigsHandledHMACConfigs          *CreateIntegrationRequestBodyConfigsHandledHMACConfigs
+	CreateIntegrationRequestBodyConfigsBasicAuthIntegrationConfigs *CreateIntegrationRequestBodyConfigsBasicAuthIntegrationConfigs
+	CreateIntegrationRequestBodyConfigsShopifyIntegrationConfigs   *CreateIntegrationRequestBodyConfigsShopifyIntegrationConfigs
+
+	Type CreateIntegrationRequestBodyConfigsType
+}
+
+func CreateCreateIntegrationRequestBodyConfigsMapOfany(mapOfany map[string]interface{}) CreateIntegrationRequestBodyConfigs {
+	typ := CreateIntegrationRequestBodyConfigsTypeMapOfany
+
+	return CreateIntegrationRequestBodyConfigs{
+		MapOfany: mapOfany,
+		Type:     typ,
+	}
+}
+
+func CreateCreateIntegrationRequestBodyConfigsCreateIntegrationRequestBodyConfigsHMACIntegrationConfigs(createIntegrationRequestBodyConfigsHMACIntegrationConfigs CreateIntegrationRequestBodyConfigsHMACIntegrationConfigs) CreateIntegrationRequestBodyConfigs {
+	typ := CreateIntegrationRequestBodyConfigsTypeCreateIntegrationRequestBodyConfigsHMACIntegrationConfigs
+
+	return CreateIntegrationRequestBodyConfigs{
+		CreateIntegrationRequestBodyConfigsHMACIntegrationConfigs: &createIntegrationRequestBodyConfigsHMACIntegrationConfigs,
+		Type: typ,
+	}
+}
+
+func CreateCreateIntegrationRequestBodyConfigsCreateIntegrationRequestBodyConfigsAPIKeyIntegrationConfigs(createIntegrationRequestBodyConfigsAPIKeyIntegrationConfigs CreateIntegrationRequestBodyConfigsAPIKeyIntegrationConfigs) CreateIntegrationRequestBodyConfigs {
+	typ := CreateIntegrationRequestBodyConfigsTypeCreateIntegrationRequestBodyConfigsAPIKeyIntegrationConfigs
+
+	return CreateIntegrationRequestBodyConfigs{
+		CreateIntegrationRequestBodyConfigsAPIKeyIntegrationConfigs: &createIntegrationRequestBodyConfigsAPIKeyIntegrationConfigs,
+		Type: typ,
+	}
+}
+
+func CreateCreateIntegrationRequestBodyConfigsCreateIntegrationRequestBodyConfigsHandledHMACConfigs(createIntegrationRequestBodyConfigsHandledHMACConfigs CreateIntegrationRequestBodyConfigsHandledHMACConfigs) CreateIntegrationRequestBodyConfigs {
+	typ := CreateIntegrationRequestBodyConfigsTypeCreateIntegrationRequestBodyConfigsHandledHMACConfigs
+
+	return CreateIntegrationRequestBodyConfigs{
+		CreateIntegrationRequestBodyConfigsHandledHMACConfigs: &createIntegrationRequestBodyConfigsHandledHMACConfigs,
+		Type: typ,
+	}
+}
+
+func CreateCreateIntegrationRequestBodyConfigsCreateIntegrationRequestBodyConfigsBasicAuthIntegrationConfigs(createIntegrationRequestBodyConfigsBasicAuthIntegrationConfigs CreateIntegrationRequestBodyConfigsBasicAuthIntegrationConfigs) CreateIntegrationRequestBodyConfigs {
+	typ := CreateIntegrationRequestBodyConfigsTypeCreateIntegrationRequestBodyConfigsBasicAuthIntegrationConfigs
+
+	return CreateIntegrationRequestBodyConfigs{
+		CreateIntegrationRequestBodyConfigsBasicAuthIntegrationConfigs: &createIntegrationRequestBodyConfigsBasicAuthIntegrationConfigs,
+		Type: typ,
+	}
+}
+
+func CreateCreateIntegrationRequestBodyConfigsCreateIntegrationRequestBodyConfigsShopifyIntegrationConfigs(createIntegrationRequestBodyConfigsShopifyIntegrationConfigs CreateIntegrationRequestBodyConfigsShopifyIntegrationConfigs) CreateIntegrationRequestBodyConfigs {
+	typ := CreateIntegrationRequestBodyConfigsTypeCreateIntegrationRequestBodyConfigsShopifyIntegrationConfigs
+
+	return CreateIntegrationRequestBodyConfigs{
+		CreateIntegrationRequestBodyConfigsShopifyIntegrationConfigs: &createIntegrationRequestBodyConfigsShopifyIntegrationConfigs,
+		Type: typ,
+	}
+}
+
+func (u *CreateIntegrationRequestBodyConfigs) UnmarshalJSON(data []byte) error {
+
+	createIntegrationRequestBodyConfigsHandledHMACConfigs := new(CreateIntegrationRequestBodyConfigsHandledHMACConfigs)
+	if err := utils.UnmarshalJSON(data, &createIntegrationRequestBodyConfigsHandledHMACConfigs, "", true, true); err == nil {
+		u.CreateIntegrationRequestBodyConfigsHandledHMACConfigs = createIntegrationRequestBodyConfigsHandledHMACConfigs
+		u.Type = CreateIntegrationRequestBodyConfigsTypeCreateIntegrationRequestBodyConfigsHandledHMACConfigs
+		return nil
+	}
+
+	createIntegrationRequestBodyConfigsAPIKeyIntegrationConfigs := new(CreateIntegrationRequestBodyConfigsAPIKeyIntegrationConfigs)
+	if err := utils.UnmarshalJSON(data, &createIntegrationRequestBodyConfigsAPIKeyIntegrationConfigs, "", true, true); err == nil {
+		u.CreateIntegrationRequestBodyConfigsAPIKeyIntegrationConfigs = createIntegrationRequestBodyConfigsAPIKeyIntegrationConfigs
+		u.Type = CreateIntegrationRequestBodyConfigsTypeCreateIntegrationRequestBodyConfigsAPIKeyIntegrationConfigs
+		return nil
+	}
+
+	createIntegrationRequestBodyConfigsBasicAuthIntegrationConfigs := new(CreateIntegrationRequestBodyConfigsBasicAuthIntegrationConfigs)
+	if err := utils.UnmarshalJSON(data, &createIntegrationRequestBodyConfigsBasicAuthIntegrationConfigs, "", true, true); err == nil {
+		u.CreateIntegrationRequestBodyConfigsBasicAuthIntegrationConfigs = createIntegrationRequestBodyConfigsBasicAuthIntegrationConfigs
+		u.Type = CreateIntegrationRequestBodyConfigsTypeCreateIntegrationRequestBodyConfigsBasicAuthIntegrationConfigs
+		return nil
+	}
+
+	createIntegrationRequestBodyConfigsHMACIntegrationConfigs := new(CreateIntegrationRequestBodyConfigsHMACIntegrationConfigs)
+	if err := utils.UnmarshalJSON(data, &createIntegrationRequestBodyConfigsHMACIntegrationConfigs, "", true, true); err == nil {
+		u.CreateIntegrationRequestBodyConfigsHMACIntegrationConfigs = createIntegrationRequestBodyConfigsHMACIntegrationConfigs
+		u.Type = CreateIntegrationRequestBodyConfigsTypeCreateIntegrationRequestBodyConfigsHMACIntegrationConfigs
+		return nil
+	}
+
+	createIntegrationRequestBodyConfigsShopifyIntegrationConfigs := new(CreateIntegrationRequestBodyConfigsShopifyIntegrationConfigs)
+	if err := utils.UnmarshalJSON(data, &createIntegrationRequestBodyConfigsShopifyIntegrationConfigs, "", true, true); err == nil {
+		u.CreateIntegrationRequestBodyConfigsShopifyIntegrationConfigs = createIntegrationRequestBodyConfigsShopifyIntegrationConfigs
+		u.Type = CreateIntegrationRequestBodyConfigsTypeCreateIntegrationRequestBodyConfigsShopifyIntegrationConfigs
+		return nil
+	}
+
+	mapOfany := map[string]interface{}{}
+	if err := utils.UnmarshalJSON(data, &mapOfany, "", true, true); err == nil {
+		u.MapOfany = mapOfany
+		u.Type = CreateIntegrationRequestBodyConfigsTypeMapOfany
+		return nil
+	}
+
+	return errors.New("could not unmarshal into supported union types")
+}
+
+func (u CreateIntegrationRequestBodyConfigs) MarshalJSON() ([]byte, error) {
+	if u.MapOfany != nil {
+		return utils.MarshalJSON(u.MapOfany, "", true)
+	}
+
+	if u.CreateIntegrationRequestBodyConfigsHMACIntegrationConfigs != nil {
+		return utils.MarshalJSON(u.CreateIntegrationRequestBodyConfigsHMACIntegrationConfigs, "", true)
+	}
+
+	if u.CreateIntegrationRequestBodyConfigsAPIKeyIntegrationConfigs != nil {
+		return utils.MarshalJSON(u.CreateIntegrationRequestBodyConfigsAPIKeyIntegrationConfigs, "", true)
+	}
+
+	if u.CreateIntegrationRequestBodyConfigsHandledHMACConfigs != nil {
+		return utils.MarshalJSON(u.CreateIntegrationRequestBodyConfigsHandledHMACConfigs, "", true)
+	}
+
+	if u.CreateIntegrationRequestBodyConfigsBasicAuthIntegrationConfigs != nil {
+		return utils.MarshalJSON(u.CreateIntegrationRequestBodyConfigsBasicAuthIntegrationConfigs, "", true)
+	}
+
+	if u.CreateIntegrationRequestBodyConfigsShopifyIntegrationConfigs != nil {
+		return utils.MarshalJSON(u.CreateIntegrationRequestBodyConfigsShopifyIntegrationConfigs, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type: all fields are null")
 }
 
 type CreateIntegrationRequestBody struct {
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// Decrypted Key/Value object of the associated configuration for that provider
-	Configs interface{} `json:"configs,omitempty"`
+	Configs *CreateIntegrationRequestBodyConfigs `json:"configs,omitempty"`
 	// List of features to enable (see features list above)
 	Features []shared.IntegrationFeature `json:"features,omitempty"`
 	// Label of the integration
@@ -22,7 +466,25 @@ type CreateIntegrationRequestBody struct {
 	Provider *shared.IntegrationProvider `json:"provider,omitempty"`
 }
 
-func (o *CreateIntegrationRequestBody) GetConfigs() interface{} {
+func (c CreateIntegrationRequestBody) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateIntegrationRequestBody) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, false); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *CreateIntegrationRequestBody) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
+}
+
+func (o *CreateIntegrationRequestBody) GetConfigs() *CreateIntegrationRequestBodyConfigs {
 	if o == nil {
 		return nil
 	}
@@ -51,10 +513,13 @@ func (o *CreateIntegrationRequestBody) GetProvider() *shared.IntegrationProvider
 }
 
 type CreateIntegrationResponse struct {
+	// HTTP response content type for this operation
 	ContentType string
 	// A single integration
 	Integration *shared.Integration
-	StatusCode  int
+	// HTTP response status code for this operation
+	StatusCode int
+	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
 }
 

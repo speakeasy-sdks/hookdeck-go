@@ -5,6 +5,7 @@
 
 | Field                                          | Type                                           | Required                                       | Description                                    |
 | ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- |
+| `AdditionalProperties`                         | map[string]*interface{}*                       | :heavy_minus_sign:                             | N/A                                            |
 | `EventDataID`                                  | *string*                                       | :heavy_check_mark:                             | ID of the event data to bookmark               |
 | `Label`                                        | *string*                                       | :heavy_check_mark:                             | Descriptive name of the bookmark               |
 | `Name`                                         | **string*                                      | :heavy_minus_sign:                             | A unique, human-friendly name for the bookmark |

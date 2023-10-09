@@ -4,10 +4,12 @@ package operations
 
 import (
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
+	"github.com/speakeasy-sdks/hookdeck-go/pkg/utils"
 	"net/http"
 )
 
 type UpdateBookmarkRequestBody struct {
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// ID of the event data to bookmark
 	EventDataID *string `json:"event_data_id,omitempty"`
 	// Descriptive name of the bookmark
@@ -16,6 +18,24 @@ type UpdateBookmarkRequestBody struct {
 	Name *string `json:"name,omitempty"`
 	// ID of the associated connection
 	WebhookID *string `json:"webhook_id,omitempty"`
+}
+
+func (u UpdateBookmarkRequestBody) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UpdateBookmarkRequestBody) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, false); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *UpdateBookmarkRequestBody) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
 }
 
 func (o *UpdateBookmarkRequestBody) GetEventDataID() *string {
@@ -67,9 +87,12 @@ func (o *UpdateBookmarkRequest) GetID() string {
 
 type UpdateBookmarkResponse struct {
 	// A single bookmark
-	Bookmark    *shared.Bookmark
+	Bookmark *shared.Bookmark
+	// HTTP response content type for this operation
 	ContentType string
-	StatusCode  int
+	// HTTP response status code for this operation
+	StatusCode int
+	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
 }
 

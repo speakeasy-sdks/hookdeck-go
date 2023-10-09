@@ -3,11 +3,12 @@
 package shared
 
 import (
+	"github.com/speakeasy-sdks/hookdeck-go/pkg/utils"
 	"time"
 )
 
-// Transformation - A single transformation
 type Transformation struct {
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// JavaScript code to be executed
 	Code string `json:"code"`
 	// Date the transformation was created
@@ -24,6 +25,24 @@ type Transformation struct {
 	TeamID string `json:"team_id"`
 	// Date the transformation was last updated
 	UpdatedAt time.Time `json:"updated_at"`
+}
+
+func (t Transformation) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(t, "", false)
+}
+
+func (t *Transformation) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &t, "", false, false); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *Transformation) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
 }
 
 func (o *Transformation) GetCode() string {

@@ -2,12 +2,35 @@
 
 package shared
 
+import (
+	"github.com/speakeasy-sdks/hookdeck-go/pkg/utils"
+)
+
 // DestinationAuthMethodCustomSignatureConfig - Custom signature config for the destination's auth method
 type DestinationAuthMethodCustomSignatureConfig struct {
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// Key for the custom signature auth
 	Key string `json:"key"`
 	// Signing secret for the custom signature auth. If left empty a secret will be generated for you.
 	SigningSecret *string `json:"signing_secret,omitempty"`
+}
+
+func (d DestinationAuthMethodCustomSignatureConfig) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(d, "", false)
+}
+
+func (d *DestinationAuthMethodCustomSignatureConfig) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &d, "", false, false); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *DestinationAuthMethodCustomSignatureConfig) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
 }
 
 func (o *DestinationAuthMethodCustomSignatureConfig) GetKey() string {

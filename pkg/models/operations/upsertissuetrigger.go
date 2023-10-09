@@ -3,29 +3,135 @@
 package operations
 
 import (
+	"errors"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
+	"github.com/speakeasy-sdks/hookdeck-go/pkg/utils"
 	"net/http"
 )
 
+type UpsertIssueTriggerRequestBodyConfigsType string
+
+const (
+	UpsertIssueTriggerRequestBodyConfigsTypeIssueTriggerDeliveryConfigs       UpsertIssueTriggerRequestBodyConfigsType = "IssueTriggerDeliveryConfigs"
+	UpsertIssueTriggerRequestBodyConfigsTypeIssueTriggerTransformationConfigs UpsertIssueTriggerRequestBodyConfigsType = "IssueTriggerTransformationConfigs"
+	UpsertIssueTriggerRequestBodyConfigsTypeIssueTriggerBackpressureConfigs   UpsertIssueTriggerRequestBodyConfigsType = "IssueTriggerBackpressureConfigs"
+)
+
+type UpsertIssueTriggerRequestBodyConfigs struct {
+	IssueTriggerDeliveryConfigs       *shared.IssueTriggerDeliveryConfigs
+	IssueTriggerTransformationConfigs *shared.IssueTriggerTransformationConfigs
+	IssueTriggerBackpressureConfigs   *shared.IssueTriggerBackpressureConfigs
+
+	Type UpsertIssueTriggerRequestBodyConfigsType
+}
+
+func CreateUpsertIssueTriggerRequestBodyConfigsIssueTriggerDeliveryConfigs(issueTriggerDeliveryConfigs shared.IssueTriggerDeliveryConfigs) UpsertIssueTriggerRequestBodyConfigs {
+	typ := UpsertIssueTriggerRequestBodyConfigsTypeIssueTriggerDeliveryConfigs
+
+	return UpsertIssueTriggerRequestBodyConfigs{
+		IssueTriggerDeliveryConfigs: &issueTriggerDeliveryConfigs,
+		Type:                        typ,
+	}
+}
+
+func CreateUpsertIssueTriggerRequestBodyConfigsIssueTriggerTransformationConfigs(issueTriggerTransformationConfigs shared.IssueTriggerTransformationConfigs) UpsertIssueTriggerRequestBodyConfigs {
+	typ := UpsertIssueTriggerRequestBodyConfigsTypeIssueTriggerTransformationConfigs
+
+	return UpsertIssueTriggerRequestBodyConfigs{
+		IssueTriggerTransformationConfigs: &issueTriggerTransformationConfigs,
+		Type:                              typ,
+	}
+}
+
+func CreateUpsertIssueTriggerRequestBodyConfigsIssueTriggerBackpressureConfigs(issueTriggerBackpressureConfigs shared.IssueTriggerBackpressureConfigs) UpsertIssueTriggerRequestBodyConfigs {
+	typ := UpsertIssueTriggerRequestBodyConfigsTypeIssueTriggerBackpressureConfigs
+
+	return UpsertIssueTriggerRequestBodyConfigs{
+		IssueTriggerBackpressureConfigs: &issueTriggerBackpressureConfigs,
+		Type:                            typ,
+	}
+}
+
+func (u *UpsertIssueTriggerRequestBodyConfigs) UnmarshalJSON(data []byte) error {
+
+	issueTriggerDeliveryConfigs := new(shared.IssueTriggerDeliveryConfigs)
+	if err := utils.UnmarshalJSON(data, &issueTriggerDeliveryConfigs, "", true, true); err == nil {
+		u.IssueTriggerDeliveryConfigs = issueTriggerDeliveryConfigs
+		u.Type = UpsertIssueTriggerRequestBodyConfigsTypeIssueTriggerDeliveryConfigs
+		return nil
+	}
+
+	issueTriggerTransformationConfigs := new(shared.IssueTriggerTransformationConfigs)
+	if err := utils.UnmarshalJSON(data, &issueTriggerTransformationConfigs, "", true, true); err == nil {
+		u.IssueTriggerTransformationConfigs = issueTriggerTransformationConfigs
+		u.Type = UpsertIssueTriggerRequestBodyConfigsTypeIssueTriggerTransformationConfigs
+		return nil
+	}
+
+	issueTriggerBackpressureConfigs := new(shared.IssueTriggerBackpressureConfigs)
+	if err := utils.UnmarshalJSON(data, &issueTriggerBackpressureConfigs, "", true, true); err == nil {
+		u.IssueTriggerBackpressureConfigs = issueTriggerBackpressureConfigs
+		u.Type = UpsertIssueTriggerRequestBodyConfigsTypeIssueTriggerBackpressureConfigs
+		return nil
+	}
+
+	return errors.New("could not unmarshal into supported union types")
+}
+
+func (u UpsertIssueTriggerRequestBodyConfigs) MarshalJSON() ([]byte, error) {
+	if u.IssueTriggerDeliveryConfigs != nil {
+		return utils.MarshalJSON(u.IssueTriggerDeliveryConfigs, "", true)
+	}
+
+	if u.IssueTriggerTransformationConfigs != nil {
+		return utils.MarshalJSON(u.IssueTriggerTransformationConfigs, "", true)
+	}
+
+	if u.IssueTriggerBackpressureConfigs != nil {
+		return utils.MarshalJSON(u.IssueTriggerBackpressureConfigs, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type: all fields are null")
+}
+
 type UpsertIssueTriggerRequestBody struct {
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// Notification channels object for the specific channel type
-	Channels shared.IssueTriggerChannels `json:"channels"`
+	Channels *shared.IssueTriggerChannels `json:"channels"`
 	// Configuration object for the specific issue type selected
-	Configs interface{} `json:"configs,omitempty"`
+	Configs *UpsertIssueTriggerRequestBodyConfigs `json:"configs,omitempty"`
 	// Required unique name to use as reference when using the API
 	Name string `json:"name"`
 	// Issue type
 	Type shared.IssueType `json:"type"`
 }
 
-func (o *UpsertIssueTriggerRequestBody) GetChannels() shared.IssueTriggerChannels {
+func (u UpsertIssueTriggerRequestBody) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UpsertIssueTriggerRequestBody) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, false); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *UpsertIssueTriggerRequestBody) GetAdditionalProperties() map[string]interface{} {
 	if o == nil {
-		return shared.IssueTriggerChannels{}
+		return nil
+	}
+	return o.AdditionalProperties
+}
+
+func (o *UpsertIssueTriggerRequestBody) GetChannels() *shared.IssueTriggerChannels {
+	if o == nil {
+		return nil
 	}
 	return o.Channels
 }
 
-func (o *UpsertIssueTriggerRequestBody) GetConfigs() interface{} {
+func (o *UpsertIssueTriggerRequestBody) GetConfigs() *UpsertIssueTriggerRequestBodyConfigs {
 	if o == nil {
 		return nil
 	}
@@ -47,11 +153,14 @@ func (o *UpsertIssueTriggerRequestBody) GetType() shared.IssueType {
 }
 
 type UpsertIssueTriggerResponse struct {
+	// HTTP response content type for this operation
 	ContentType string
 	// A single issue trigger
 	IssueTrigger *shared.IssueTrigger
-	StatusCode   int
-	RawResponse  *http.Response
+	// HTTP response status code for this operation
+	StatusCode int
+	// Raw HTTP response; suitable for custom response parsing
+	RawResponse *http.Response
 }
 
 func (o *UpsertIssueTriggerResponse) GetContentType() string {

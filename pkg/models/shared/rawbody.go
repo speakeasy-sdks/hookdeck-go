@@ -2,9 +2,31 @@
 
 package shared
 
-// RawBody - A request raw body data
+import (
+	"github.com/speakeasy-sdks/hookdeck-go/pkg/utils"
+)
+
 type RawBody struct {
-	Body string `json:"body"`
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
+	Body                 string                 `json:"body"`
+}
+
+func (r RawBody) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(r, "", false)
+}
+
+func (r *RawBody) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &r, "", false, false); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *RawBody) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
 }
 
 func (o *RawBody) GetBody() string {

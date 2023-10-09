@@ -1,12 +1,11 @@
 # Bookmark
 
-A single bookmark
-
 
 ## Fields
 
 | Field                                                    | Type                                                     | Required                                                 | Description                                              |
 | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
+| `AdditionalProperties`                                   | map[string]*interface{}*                                 | :heavy_minus_sign:                                       | N/A                                                      |
 | `Alias`                                                  | **string*                                                | :heavy_minus_sign:                                       | Alternate alias for the bookmark                         |
 | `CreatedAt`                                              | [time.Time](https://pkg.go.dev/time#Time)                | :heavy_check_mark:                                       | Date the bookmark was created                            |
 | `Data`                                                   | [*ShortEventData](../../models/shared/shorteventdata.md) | :heavy_minus_sign:                                       | N/A                                                      |

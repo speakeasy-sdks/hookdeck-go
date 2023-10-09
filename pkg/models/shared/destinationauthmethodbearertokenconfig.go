@@ -2,10 +2,33 @@
 
 package shared
 
+import (
+	"github.com/speakeasy-sdks/hookdeck-go/pkg/utils"
+)
+
 // DestinationAuthMethodBearerTokenConfig - Bearer token config for the destination's auth method
 type DestinationAuthMethodBearerTokenConfig struct {
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// Token for the bearer token auth
 	Token string `json:"token"`
+}
+
+func (d DestinationAuthMethodBearerTokenConfig) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(d, "", false)
+}
+
+func (d *DestinationAuthMethodBearerTokenConfig) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &d, "", false, false); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *DestinationAuthMethodBearerTokenConfig) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
 }
 
 func (o *DestinationAuthMethodBearerTokenConfig) GetToken() string {

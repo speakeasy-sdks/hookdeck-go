@@ -6,6 +6,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
+	"github.com/speakeasy-sdks/hookdeck-go/pkg/utils"
 	"net/http"
 )
 
@@ -41,8 +42,9 @@ func (e *UpdateDestinationRequestBodyRateLimitPeriod) UnmarshalJSON(data []byte)
 }
 
 type UpdateDestinationRequestBody struct {
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// Config for the destination's auth method
-	AuthMethod interface{} `json:"auth_method,omitempty"`
+	AuthMethod *shared.DestinationAuthMethodConfig `json:"auth_method,omitempty"`
 	// Path for the CLI destination
 	CliPath *string `json:"cli_path,omitempty"`
 	// HTTP method used on requests sent to the destination, overrides the method used on requests sent to the source.
@@ -51,14 +53,32 @@ type UpdateDestinationRequestBody struct {
 	Name                   *string `json:"name,omitempty"`
 	PathForwardingDisabled *bool   `json:"path_forwarding_disabled,omitempty"`
 	// Limit event attempts to receive per period
-	RateLimit interface{} `json:"rate_limit,omitempty"`
+	RateLimit *int64 `json:"rate_limit,omitempty"`
 	// Period to rate limit attempts
 	RateLimitPeriod *UpdateDestinationRequestBodyRateLimitPeriod `json:"rate_limit_period,omitempty"`
 	// Endpoint of the destination
 	URL *string `json:"url,omitempty"`
 }
 
-func (o *UpdateDestinationRequestBody) GetAuthMethod() interface{} {
+func (u UpdateDestinationRequestBody) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UpdateDestinationRequestBody) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, false); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *UpdateDestinationRequestBody) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
+}
+
+func (o *UpdateDestinationRequestBody) GetAuthMethod() *shared.DestinationAuthMethodConfig {
 	if o == nil {
 		return nil
 	}
@@ -93,7 +113,7 @@ func (o *UpdateDestinationRequestBody) GetPathForwardingDisabled() *bool {
 	return o.PathForwardingDisabled
 }
 
-func (o *UpdateDestinationRequestBody) GetRateLimit() interface{} {
+func (o *UpdateDestinationRequestBody) GetRateLimit() *int64 {
 	if o == nil {
 		return nil
 	}
@@ -134,10 +154,13 @@ func (o *UpdateDestinationRequest) GetID() string {
 }
 
 type UpdateDestinationResponse struct {
+	// HTTP response content type for this operation
 	ContentType string
 	// A single destination
 	Destination *shared.Destination
-	StatusCode  int
+	// HTTP response status code for this operation
+	StatusCode int
+	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
 }
 

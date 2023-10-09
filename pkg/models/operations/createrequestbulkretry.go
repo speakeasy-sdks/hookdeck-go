@@ -3,29 +3,25 @@
 package operations
 
 import (
-	"bytes"
 	"encoding/json"
 	"errors"
 	"fmt"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
+	"github.com/speakeasy-sdks/hookdeck-go/pkg/utils"
 	"net/http"
 	"time"
 )
 
-// CreateRequestBulkRetryRequestBodyQueryBody2 - URL Encoded string of the JSON to match to the data body
-type CreateRequestBulkRetryRequestBodyQueryBody2 struct {
-}
-
 type CreateRequestBulkRetryRequestBodyQueryBodyType string
 
 const (
-	CreateRequestBulkRetryRequestBodyQueryBodyTypeStr                                         CreateRequestBulkRetryRequestBodyQueryBodyType = "str"
-	CreateRequestBulkRetryRequestBodyQueryBodyTypeCreateRequestBulkRetryRequestBodyQueryBody2 CreateRequestBulkRetryRequestBodyQueryBodyType = "createRequestBulkRetry_requestBody_query_body_2"
+	CreateRequestBulkRetryRequestBodyQueryBodyTypeStr      CreateRequestBulkRetryRequestBodyQueryBodyType = "str"
+	CreateRequestBulkRetryRequestBodyQueryBodyTypeMapOfany CreateRequestBulkRetryRequestBodyQueryBodyType = "mapOfany"
 )
 
 type CreateRequestBulkRetryRequestBodyQueryBody struct {
-	Str                                         *string
-	CreateRequestBulkRetryRequestBodyQueryBody2 *CreateRequestBulkRetryRequestBodyQueryBody2
+	Str      *string
+	MapOfany map[string]interface{}
 
 	Type CreateRequestBulkRetryRequestBodyQueryBodyType
 }
@@ -39,33 +35,28 @@ func CreateCreateRequestBulkRetryRequestBodyQueryBodyStr(str string) CreateReque
 	}
 }
 
-func CreateCreateRequestBulkRetryRequestBodyQueryBodyCreateRequestBulkRetryRequestBodyQueryBody2(createRequestBulkRetryRequestBodyQueryBody2 CreateRequestBulkRetryRequestBodyQueryBody2) CreateRequestBulkRetryRequestBodyQueryBody {
-	typ := CreateRequestBulkRetryRequestBodyQueryBodyTypeCreateRequestBulkRetryRequestBodyQueryBody2
+func CreateCreateRequestBulkRetryRequestBodyQueryBodyMapOfany(mapOfany map[string]interface{}) CreateRequestBulkRetryRequestBodyQueryBody {
+	typ := CreateRequestBulkRetryRequestBodyQueryBodyTypeMapOfany
 
 	return CreateRequestBulkRetryRequestBodyQueryBody{
-		CreateRequestBulkRetryRequestBodyQueryBody2: &createRequestBulkRetryRequestBodyQueryBody2,
-		Type: typ,
+		MapOfany: mapOfany,
+		Type:     typ,
 	}
 }
 
 func (u *CreateRequestBulkRetryRequestBodyQueryBody) UnmarshalJSON(data []byte) error {
-	var d *json.Decoder
 
 	str := new(string)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&str); err == nil {
+	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
 		u.Str = str
 		u.Type = CreateRequestBulkRetryRequestBodyQueryBodyTypeStr
 		return nil
 	}
 
-	createRequestBulkRetryRequestBodyQueryBody2 := new(CreateRequestBulkRetryRequestBodyQueryBody2)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&createRequestBulkRetryRequestBodyQueryBody2); err == nil {
-		u.CreateRequestBulkRetryRequestBodyQueryBody2 = createRequestBulkRetryRequestBodyQueryBody2
-		u.Type = CreateRequestBulkRetryRequestBodyQueryBodyTypeCreateRequestBulkRetryRequestBodyQueryBody2
+	mapOfany := map[string]interface{}{}
+	if err := utils.UnmarshalJSON(data, &mapOfany, "", true, true); err == nil {
+		u.MapOfany = mapOfany
+		u.Type = CreateRequestBulkRetryRequestBodyQueryBodyTypeMapOfany
 		return nil
 	}
 
@@ -74,14 +65,14 @@ func (u *CreateRequestBulkRetryRequestBodyQueryBody) UnmarshalJSON(data []byte) 
 
 func (u CreateRequestBulkRetryRequestBodyQueryBody) MarshalJSON() ([]byte, error) {
 	if u.Str != nil {
-		return json.Marshal(u.Str)
+		return utils.MarshalJSON(u.Str, "", true)
 	}
 
-	if u.CreateRequestBulkRetryRequestBodyQueryBody2 != nil {
-		return json.Marshal(u.CreateRequestBulkRetryRequestBodyQueryBody2)
+	if u.MapOfany != nil {
+		return utils.MarshalJSON(u.MapOfany, "", true)
 	}
 
-	return nil, nil
+	return nil, errors.New("could not marshal union type: all fields are null")
 }
 
 type CreateRequestBulkRetryRequestBodyQueryBulkRetryIDType string
@@ -117,21 +108,16 @@ func CreateCreateRequestBulkRetryRequestBodyQueryBulkRetryIDArrayOfstr(arrayOfst
 }
 
 func (u *CreateRequestBulkRetryRequestBodyQueryBulkRetryID) UnmarshalJSON(data []byte) error {
-	var d *json.Decoder
 
 	str := new(string)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&str); err == nil {
+	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
 		u.Str = str
 		u.Type = CreateRequestBulkRetryRequestBodyQueryBulkRetryIDTypeStr
 		return nil
 	}
 
 	arrayOfstr := []string{}
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&arrayOfstr); err == nil {
+	if err := utils.UnmarshalJSON(data, &arrayOfstr, "", true, true); err == nil {
 		u.ArrayOfstr = arrayOfstr
 		u.Type = CreateRequestBulkRetryRequestBodyQueryBulkRetryIDTypeArrayOfstr
 		return nil
@@ -142,22 +128,41 @@ func (u *CreateRequestBulkRetryRequestBodyQueryBulkRetryID) UnmarshalJSON(data [
 
 func (u CreateRequestBulkRetryRequestBodyQueryBulkRetryID) MarshalJSON() ([]byte, error) {
 	if u.Str != nil {
-		return json.Marshal(u.Str)
+		return utils.MarshalJSON(u.Str, "", true)
 	}
 
 	if u.ArrayOfstr != nil {
-		return json.Marshal(u.ArrayOfstr)
+		return utils.MarshalJSON(u.ArrayOfstr, "", true)
 	}
 
-	return nil, nil
+	return nil, errors.New("could not marshal union type: all fields are null")
 }
 
 type CreateRequestBulkRetryRequestBodyQueryCreatedAt2 struct {
-	Any *bool      `json:"any,omitempty"`
-	Gt  *time.Time `json:"gt,omitempty"`
-	Gte *time.Time `json:"gte,omitempty"`
-	Le  *time.Time `json:"le,omitempty"`
-	Lte *time.Time `json:"lte,omitempty"`
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
+	Any                  *bool                  `json:"any,omitempty"`
+	Gt                   *time.Time             `json:"gt,omitempty"`
+	Gte                  *time.Time             `json:"gte,omitempty"`
+	Le                   *time.Time             `json:"le,omitempty"`
+	Lte                  *time.Time             `json:"lte,omitempty"`
+}
+
+func (c CreateRequestBulkRetryRequestBodyQueryCreatedAt2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateRequestBulkRetryRequestBodyQueryCreatedAt2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, true); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *CreateRequestBulkRetryRequestBodyQueryCreatedAt2) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
 }
 
 func (o *CreateRequestBulkRetryRequestBodyQueryCreatedAt2) GetAny() *bool {
@@ -228,23 +233,18 @@ func CreateCreateRequestBulkRetryRequestBodyQueryCreatedAtCreateRequestBulkRetry
 }
 
 func (u *CreateRequestBulkRetryRequestBodyQueryCreatedAt) UnmarshalJSON(data []byte) error {
-	var d *json.Decoder
 
-	dateTime := new(time.Time)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&dateTime); err == nil {
-		u.DateTime = dateTime
-		u.Type = CreateRequestBulkRetryRequestBodyQueryCreatedAtTypeDateTime
+	createRequestBulkRetryRequestBodyQueryCreatedAt2 := new(CreateRequestBulkRetryRequestBodyQueryCreatedAt2)
+	if err := utils.UnmarshalJSON(data, &createRequestBulkRetryRequestBodyQueryCreatedAt2, "", true, true); err == nil {
+		u.CreateRequestBulkRetryRequestBodyQueryCreatedAt2 = createRequestBulkRetryRequestBodyQueryCreatedAt2
+		u.Type = CreateRequestBulkRetryRequestBodyQueryCreatedAtTypeCreateRequestBulkRetryRequestBodyQueryCreatedAt2
 		return nil
 	}
 
-	createRequestBulkRetryRequestBodyQueryCreatedAt2 := new(CreateRequestBulkRetryRequestBodyQueryCreatedAt2)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&createRequestBulkRetryRequestBodyQueryCreatedAt2); err == nil {
-		u.CreateRequestBulkRetryRequestBodyQueryCreatedAt2 = createRequestBulkRetryRequestBodyQueryCreatedAt2
-		u.Type = CreateRequestBulkRetryRequestBodyQueryCreatedAtTypeCreateRequestBulkRetryRequestBodyQueryCreatedAt2
+	dateTime := new(time.Time)
+	if err := utils.UnmarshalJSON(data, &dateTime, "", true, true); err == nil {
+		u.DateTime = dateTime
+		u.Type = CreateRequestBulkRetryRequestBodyQueryCreatedAtTypeDateTime
 		return nil
 	}
 
@@ -253,23 +253,42 @@ func (u *CreateRequestBulkRetryRequestBodyQueryCreatedAt) UnmarshalJSON(data []b
 
 func (u CreateRequestBulkRetryRequestBodyQueryCreatedAt) MarshalJSON() ([]byte, error) {
 	if u.DateTime != nil {
-		return json.Marshal(u.DateTime)
+		return utils.MarshalJSON(u.DateTime, "", true)
 	}
 
 	if u.CreateRequestBulkRetryRequestBodyQueryCreatedAt2 != nil {
-		return json.Marshal(u.CreateRequestBulkRetryRequestBodyQueryCreatedAt2)
+		return utils.MarshalJSON(u.CreateRequestBulkRetryRequestBodyQueryCreatedAt2, "", true)
 	}
 
-	return nil, nil
+	return nil, errors.New("could not marshal union type: all fields are null")
 }
 
 type CreateRequestBulkRetryRequestBodyQueryEventsCount2 struct {
-	Any      *bool  `json:"any,omitempty"`
-	Contains *int64 `json:"contains,omitempty"`
-	Gt       *int64 `json:"gt,omitempty"`
-	Gte      *int64 `json:"gte,omitempty"`
-	Le       *int64 `json:"le,omitempty"`
-	Lte      *int64 `json:"lte,omitempty"`
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
+	Any                  *bool                  `json:"any,omitempty"`
+	Contains             *int64                 `json:"contains,omitempty"`
+	Gt                   *int64                 `json:"gt,omitempty"`
+	Gte                  *int64                 `json:"gte,omitempty"`
+	Le                   *int64                 `json:"le,omitempty"`
+	Lte                  *int64                 `json:"lte,omitempty"`
+}
+
+func (c CreateRequestBulkRetryRequestBodyQueryEventsCount2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateRequestBulkRetryRequestBodyQueryEventsCount2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, true); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *CreateRequestBulkRetryRequestBodyQueryEventsCount2) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
 }
 
 func (o *CreateRequestBulkRetryRequestBodyQueryEventsCount2) GetAny() *bool {
@@ -358,30 +377,23 @@ func CreateCreateRequestBulkRetryRequestBodyQueryEventsCountArrayOfinteger(array
 }
 
 func (u *CreateRequestBulkRetryRequestBodyQueryEventsCount) UnmarshalJSON(data []byte) error {
-	var d *json.Decoder
-
-	integer := new(int64)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&integer); err == nil {
-		u.Integer = integer
-		u.Type = CreateRequestBulkRetryRequestBodyQueryEventsCountTypeInteger
-		return nil
-	}
 
 	createRequestBulkRetryRequestBodyQueryEventsCount2 := new(CreateRequestBulkRetryRequestBodyQueryEventsCount2)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&createRequestBulkRetryRequestBodyQueryEventsCount2); err == nil {
+	if err := utils.UnmarshalJSON(data, &createRequestBulkRetryRequestBodyQueryEventsCount2, "", true, true); err == nil {
 		u.CreateRequestBulkRetryRequestBodyQueryEventsCount2 = createRequestBulkRetryRequestBodyQueryEventsCount2
 		u.Type = CreateRequestBulkRetryRequestBodyQueryEventsCountTypeCreateRequestBulkRetryRequestBodyQueryEventsCount2
 		return nil
 	}
 
+	integer := new(int64)
+	if err := utils.UnmarshalJSON(data, &integer, "", true, true); err == nil {
+		u.Integer = integer
+		u.Type = CreateRequestBulkRetryRequestBodyQueryEventsCountTypeInteger
+		return nil
+	}
+
 	arrayOfinteger := []int64{}
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&arrayOfinteger); err == nil {
+	if err := utils.UnmarshalJSON(data, &arrayOfinteger, "", true, true); err == nil {
 		u.ArrayOfinteger = arrayOfinteger
 		u.Type = CreateRequestBulkRetryRequestBodyQueryEventsCountTypeArrayOfinteger
 		return nil
@@ -392,34 +404,30 @@ func (u *CreateRequestBulkRetryRequestBodyQueryEventsCount) UnmarshalJSON(data [
 
 func (u CreateRequestBulkRetryRequestBodyQueryEventsCount) MarshalJSON() ([]byte, error) {
 	if u.Integer != nil {
-		return json.Marshal(u.Integer)
+		return utils.MarshalJSON(u.Integer, "", true)
 	}
 
 	if u.CreateRequestBulkRetryRequestBodyQueryEventsCount2 != nil {
-		return json.Marshal(u.CreateRequestBulkRetryRequestBodyQueryEventsCount2)
+		return utils.MarshalJSON(u.CreateRequestBulkRetryRequestBodyQueryEventsCount2, "", true)
 	}
 
 	if u.ArrayOfinteger != nil {
-		return json.Marshal(u.ArrayOfinteger)
+		return utils.MarshalJSON(u.ArrayOfinteger, "", true)
 	}
 
-	return nil, nil
-}
-
-// CreateRequestBulkRetryRequestBodyQueryHeaders2 - URL Encoded string of the JSON to match to the data headers
-type CreateRequestBulkRetryRequestBodyQueryHeaders2 struct {
+	return nil, errors.New("could not marshal union type: all fields are null")
 }
 
 type CreateRequestBulkRetryRequestBodyQueryHeadersType string
 
 const (
-	CreateRequestBulkRetryRequestBodyQueryHeadersTypeStr                                            CreateRequestBulkRetryRequestBodyQueryHeadersType = "str"
-	CreateRequestBulkRetryRequestBodyQueryHeadersTypeCreateRequestBulkRetryRequestBodyQueryHeaders2 CreateRequestBulkRetryRequestBodyQueryHeadersType = "createRequestBulkRetry_requestBody_query_headers_2"
+	CreateRequestBulkRetryRequestBodyQueryHeadersTypeStr      CreateRequestBulkRetryRequestBodyQueryHeadersType = "str"
+	CreateRequestBulkRetryRequestBodyQueryHeadersTypeMapOfany CreateRequestBulkRetryRequestBodyQueryHeadersType = "mapOfany"
 )
 
 type CreateRequestBulkRetryRequestBodyQueryHeaders struct {
-	Str                                            *string
-	CreateRequestBulkRetryRequestBodyQueryHeaders2 *CreateRequestBulkRetryRequestBodyQueryHeaders2
+	Str      *string
+	MapOfany map[string]interface{}
 
 	Type CreateRequestBulkRetryRequestBodyQueryHeadersType
 }
@@ -433,33 +441,28 @@ func CreateCreateRequestBulkRetryRequestBodyQueryHeadersStr(str string) CreateRe
 	}
 }
 
-func CreateCreateRequestBulkRetryRequestBodyQueryHeadersCreateRequestBulkRetryRequestBodyQueryHeaders2(createRequestBulkRetryRequestBodyQueryHeaders2 CreateRequestBulkRetryRequestBodyQueryHeaders2) CreateRequestBulkRetryRequestBodyQueryHeaders {
-	typ := CreateRequestBulkRetryRequestBodyQueryHeadersTypeCreateRequestBulkRetryRequestBodyQueryHeaders2
+func CreateCreateRequestBulkRetryRequestBodyQueryHeadersMapOfany(mapOfany map[string]interface{}) CreateRequestBulkRetryRequestBodyQueryHeaders {
+	typ := CreateRequestBulkRetryRequestBodyQueryHeadersTypeMapOfany
 
 	return CreateRequestBulkRetryRequestBodyQueryHeaders{
-		CreateRequestBulkRetryRequestBodyQueryHeaders2: &createRequestBulkRetryRequestBodyQueryHeaders2,
-		Type: typ,
+		MapOfany: mapOfany,
+		Type:     typ,
 	}
 }
 
 func (u *CreateRequestBulkRetryRequestBodyQueryHeaders) UnmarshalJSON(data []byte) error {
-	var d *json.Decoder
 
 	str := new(string)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&str); err == nil {
+	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
 		u.Str = str
 		u.Type = CreateRequestBulkRetryRequestBodyQueryHeadersTypeStr
 		return nil
 	}
 
-	createRequestBulkRetryRequestBodyQueryHeaders2 := new(CreateRequestBulkRetryRequestBodyQueryHeaders2)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&createRequestBulkRetryRequestBodyQueryHeaders2); err == nil {
-		u.CreateRequestBulkRetryRequestBodyQueryHeaders2 = createRequestBulkRetryRequestBodyQueryHeaders2
-		u.Type = CreateRequestBulkRetryRequestBodyQueryHeadersTypeCreateRequestBulkRetryRequestBodyQueryHeaders2
+	mapOfany := map[string]interface{}{}
+	if err := utils.UnmarshalJSON(data, &mapOfany, "", true, true); err == nil {
+		u.MapOfany = mapOfany
+		u.Type = CreateRequestBulkRetryRequestBodyQueryHeadersTypeMapOfany
 		return nil
 	}
 
@@ -468,14 +471,14 @@ func (u *CreateRequestBulkRetryRequestBodyQueryHeaders) UnmarshalJSON(data []byt
 
 func (u CreateRequestBulkRetryRequestBodyQueryHeaders) MarshalJSON() ([]byte, error) {
 	if u.Str != nil {
-		return json.Marshal(u.Str)
+		return utils.MarshalJSON(u.Str, "", true)
 	}
 
-	if u.CreateRequestBulkRetryRequestBodyQueryHeaders2 != nil {
-		return json.Marshal(u.CreateRequestBulkRetryRequestBodyQueryHeaders2)
+	if u.MapOfany != nil {
+		return utils.MarshalJSON(u.MapOfany, "", true)
 	}
 
-	return nil, nil
+	return nil, errors.New("could not marshal union type: all fields are null")
 }
 
 type CreateRequestBulkRetryRequestBodyQueryIDType string
@@ -511,21 +514,16 @@ func CreateCreateRequestBulkRetryRequestBodyQueryIDArrayOfstr(arrayOfstr []strin
 }
 
 func (u *CreateRequestBulkRetryRequestBodyQueryID) UnmarshalJSON(data []byte) error {
-	var d *json.Decoder
 
 	str := new(string)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&str); err == nil {
+	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
 		u.Str = str
 		u.Type = CreateRequestBulkRetryRequestBodyQueryIDTypeStr
 		return nil
 	}
 
 	arrayOfstr := []string{}
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&arrayOfstr); err == nil {
+	if err := utils.UnmarshalJSON(data, &arrayOfstr, "", true, true); err == nil {
 		u.ArrayOfstr = arrayOfstr
 		u.Type = CreateRequestBulkRetryRequestBodyQueryIDTypeArrayOfstr
 		return nil
@@ -536,23 +534,42 @@ func (u *CreateRequestBulkRetryRequestBodyQueryID) UnmarshalJSON(data []byte) er
 
 func (u CreateRequestBulkRetryRequestBodyQueryID) MarshalJSON() ([]byte, error) {
 	if u.Str != nil {
-		return json.Marshal(u.Str)
+		return utils.MarshalJSON(u.Str, "", true)
 	}
 
 	if u.ArrayOfstr != nil {
-		return json.Marshal(u.ArrayOfstr)
+		return utils.MarshalJSON(u.ArrayOfstr, "", true)
 	}
 
-	return nil, nil
+	return nil, errors.New("could not marshal union type: all fields are null")
 }
 
 type CreateRequestBulkRetryRequestBodyQueryIgnoredCount2 struct {
-	Any      *bool  `json:"any,omitempty"`
-	Contains *int64 `json:"contains,omitempty"`
-	Gt       *int64 `json:"gt,omitempty"`
-	Gte      *int64 `json:"gte,omitempty"`
-	Le       *int64 `json:"le,omitempty"`
-	Lte      *int64 `json:"lte,omitempty"`
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
+	Any                  *bool                  `json:"any,omitempty"`
+	Contains             *int64                 `json:"contains,omitempty"`
+	Gt                   *int64                 `json:"gt,omitempty"`
+	Gte                  *int64                 `json:"gte,omitempty"`
+	Le                   *int64                 `json:"le,omitempty"`
+	Lte                  *int64                 `json:"lte,omitempty"`
+}
+
+func (c CreateRequestBulkRetryRequestBodyQueryIgnoredCount2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateRequestBulkRetryRequestBodyQueryIgnoredCount2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, true); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *CreateRequestBulkRetryRequestBodyQueryIgnoredCount2) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
 }
 
 func (o *CreateRequestBulkRetryRequestBodyQueryIgnoredCount2) GetAny() *bool {
@@ -641,30 +658,23 @@ func CreateCreateRequestBulkRetryRequestBodyQueryIgnoredCountArrayOfinteger(arra
 }
 
 func (u *CreateRequestBulkRetryRequestBodyQueryIgnoredCount) UnmarshalJSON(data []byte) error {
-	var d *json.Decoder
-
-	integer := new(int64)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&integer); err == nil {
-		u.Integer = integer
-		u.Type = CreateRequestBulkRetryRequestBodyQueryIgnoredCountTypeInteger
-		return nil
-	}
 
 	createRequestBulkRetryRequestBodyQueryIgnoredCount2 := new(CreateRequestBulkRetryRequestBodyQueryIgnoredCount2)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&createRequestBulkRetryRequestBodyQueryIgnoredCount2); err == nil {
+	if err := utils.UnmarshalJSON(data, &createRequestBulkRetryRequestBodyQueryIgnoredCount2, "", true, true); err == nil {
 		u.CreateRequestBulkRetryRequestBodyQueryIgnoredCount2 = createRequestBulkRetryRequestBodyQueryIgnoredCount2
 		u.Type = CreateRequestBulkRetryRequestBodyQueryIgnoredCountTypeCreateRequestBulkRetryRequestBodyQueryIgnoredCount2
 		return nil
 	}
 
+	integer := new(int64)
+	if err := utils.UnmarshalJSON(data, &integer, "", true, true); err == nil {
+		u.Integer = integer
+		u.Type = CreateRequestBulkRetryRequestBodyQueryIgnoredCountTypeInteger
+		return nil
+	}
+
 	arrayOfinteger := []int64{}
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&arrayOfinteger); err == nil {
+	if err := utils.UnmarshalJSON(data, &arrayOfinteger, "", true, true); err == nil {
 		u.ArrayOfinteger = arrayOfinteger
 		u.Type = CreateRequestBulkRetryRequestBodyQueryIgnoredCountTypeArrayOfinteger
 		return nil
@@ -675,26 +685,45 @@ func (u *CreateRequestBulkRetryRequestBodyQueryIgnoredCount) UnmarshalJSON(data 
 
 func (u CreateRequestBulkRetryRequestBodyQueryIgnoredCount) MarshalJSON() ([]byte, error) {
 	if u.Integer != nil {
-		return json.Marshal(u.Integer)
+		return utils.MarshalJSON(u.Integer, "", true)
 	}
 
 	if u.CreateRequestBulkRetryRequestBodyQueryIgnoredCount2 != nil {
-		return json.Marshal(u.CreateRequestBulkRetryRequestBodyQueryIgnoredCount2)
+		return utils.MarshalJSON(u.CreateRequestBulkRetryRequestBodyQueryIgnoredCount2, "", true)
 	}
 
 	if u.ArrayOfinteger != nil {
-		return json.Marshal(u.ArrayOfinteger)
+		return utils.MarshalJSON(u.ArrayOfinteger, "", true)
 	}
 
-	return nil, nil
+	return nil, errors.New("could not marshal union type: all fields are null")
 }
 
 type CreateRequestBulkRetryRequestBodyQueryIngestedAt2 struct {
-	Any *bool      `json:"any,omitempty"`
-	Gt  *time.Time `json:"gt,omitempty"`
-	Gte *time.Time `json:"gte,omitempty"`
-	Le  *time.Time `json:"le,omitempty"`
-	Lte *time.Time `json:"lte,omitempty"`
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
+	Any                  *bool                  `json:"any,omitempty"`
+	Gt                   *time.Time             `json:"gt,omitempty"`
+	Gte                  *time.Time             `json:"gte,omitempty"`
+	Le                   *time.Time             `json:"le,omitempty"`
+	Lte                  *time.Time             `json:"lte,omitempty"`
+}
+
+func (c CreateRequestBulkRetryRequestBodyQueryIngestedAt2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateRequestBulkRetryRequestBodyQueryIngestedAt2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, true); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *CreateRequestBulkRetryRequestBodyQueryIngestedAt2) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
 }
 
 func (o *CreateRequestBulkRetryRequestBodyQueryIngestedAt2) GetAny() *bool {
@@ -765,23 +794,18 @@ func CreateCreateRequestBulkRetryRequestBodyQueryIngestedAtCreateRequestBulkRetr
 }
 
 func (u *CreateRequestBulkRetryRequestBodyQueryIngestedAt) UnmarshalJSON(data []byte) error {
-	var d *json.Decoder
 
-	dateTime := new(time.Time)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&dateTime); err == nil {
-		u.DateTime = dateTime
-		u.Type = CreateRequestBulkRetryRequestBodyQueryIngestedAtTypeDateTime
+	createRequestBulkRetryRequestBodyQueryIngestedAt2 := new(CreateRequestBulkRetryRequestBodyQueryIngestedAt2)
+	if err := utils.UnmarshalJSON(data, &createRequestBulkRetryRequestBodyQueryIngestedAt2, "", true, true); err == nil {
+		u.CreateRequestBulkRetryRequestBodyQueryIngestedAt2 = createRequestBulkRetryRequestBodyQueryIngestedAt2
+		u.Type = CreateRequestBulkRetryRequestBodyQueryIngestedAtTypeCreateRequestBulkRetryRequestBodyQueryIngestedAt2
 		return nil
 	}
 
-	createRequestBulkRetryRequestBodyQueryIngestedAt2 := new(CreateRequestBulkRetryRequestBodyQueryIngestedAt2)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&createRequestBulkRetryRequestBodyQueryIngestedAt2); err == nil {
-		u.CreateRequestBulkRetryRequestBodyQueryIngestedAt2 = createRequestBulkRetryRequestBodyQueryIngestedAt2
-		u.Type = CreateRequestBulkRetryRequestBodyQueryIngestedAtTypeCreateRequestBulkRetryRequestBodyQueryIngestedAt2
+	dateTime := new(time.Time)
+	if err := utils.UnmarshalJSON(data, &dateTime, "", true, true); err == nil {
+		u.DateTime = dateTime
+		u.Type = CreateRequestBulkRetryRequestBodyQueryIngestedAtTypeDateTime
 		return nil
 	}
 
@@ -790,30 +814,26 @@ func (u *CreateRequestBulkRetryRequestBodyQueryIngestedAt) UnmarshalJSON(data []
 
 func (u CreateRequestBulkRetryRequestBodyQueryIngestedAt) MarshalJSON() ([]byte, error) {
 	if u.DateTime != nil {
-		return json.Marshal(u.DateTime)
+		return utils.MarshalJSON(u.DateTime, "", true)
 	}
 
 	if u.CreateRequestBulkRetryRequestBodyQueryIngestedAt2 != nil {
-		return json.Marshal(u.CreateRequestBulkRetryRequestBodyQueryIngestedAt2)
+		return utils.MarshalJSON(u.CreateRequestBulkRetryRequestBodyQueryIngestedAt2, "", true)
 	}
 
-	return nil, nil
-}
-
-// CreateRequestBulkRetryRequestBodyQueryParsedQuery2 - URL Encoded string of the JSON to match to the parsed query (JSON representation of the query)
-type CreateRequestBulkRetryRequestBodyQueryParsedQuery2 struct {
+	return nil, errors.New("could not marshal union type: all fields are null")
 }
 
 type CreateRequestBulkRetryRequestBodyQueryParsedQueryType string
 
 const (
-	CreateRequestBulkRetryRequestBodyQueryParsedQueryTypeStr                                                CreateRequestBulkRetryRequestBodyQueryParsedQueryType = "str"
-	CreateRequestBulkRetryRequestBodyQueryParsedQueryTypeCreateRequestBulkRetryRequestBodyQueryParsedQuery2 CreateRequestBulkRetryRequestBodyQueryParsedQueryType = "createRequestBulkRetry_requestBody_query_parsed_query_2"
+	CreateRequestBulkRetryRequestBodyQueryParsedQueryTypeStr      CreateRequestBulkRetryRequestBodyQueryParsedQueryType = "str"
+	CreateRequestBulkRetryRequestBodyQueryParsedQueryTypeMapOfany CreateRequestBulkRetryRequestBodyQueryParsedQueryType = "mapOfany"
 )
 
 type CreateRequestBulkRetryRequestBodyQueryParsedQuery struct {
-	Str                                                *string
-	CreateRequestBulkRetryRequestBodyQueryParsedQuery2 *CreateRequestBulkRetryRequestBodyQueryParsedQuery2
+	Str      *string
+	MapOfany map[string]interface{}
 
 	Type CreateRequestBulkRetryRequestBodyQueryParsedQueryType
 }
@@ -827,33 +847,28 @@ func CreateCreateRequestBulkRetryRequestBodyQueryParsedQueryStr(str string) Crea
 	}
 }
 
-func CreateCreateRequestBulkRetryRequestBodyQueryParsedQueryCreateRequestBulkRetryRequestBodyQueryParsedQuery2(createRequestBulkRetryRequestBodyQueryParsedQuery2 CreateRequestBulkRetryRequestBodyQueryParsedQuery2) CreateRequestBulkRetryRequestBodyQueryParsedQuery {
-	typ := CreateRequestBulkRetryRequestBodyQueryParsedQueryTypeCreateRequestBulkRetryRequestBodyQueryParsedQuery2
+func CreateCreateRequestBulkRetryRequestBodyQueryParsedQueryMapOfany(mapOfany map[string]interface{}) CreateRequestBulkRetryRequestBodyQueryParsedQuery {
+	typ := CreateRequestBulkRetryRequestBodyQueryParsedQueryTypeMapOfany
 
 	return CreateRequestBulkRetryRequestBodyQueryParsedQuery{
-		CreateRequestBulkRetryRequestBodyQueryParsedQuery2: &createRequestBulkRetryRequestBodyQueryParsedQuery2,
-		Type: typ,
+		MapOfany: mapOfany,
+		Type:     typ,
 	}
 }
 
 func (u *CreateRequestBulkRetryRequestBodyQueryParsedQuery) UnmarshalJSON(data []byte) error {
-	var d *json.Decoder
 
 	str := new(string)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&str); err == nil {
+	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
 		u.Str = str
 		u.Type = CreateRequestBulkRetryRequestBodyQueryParsedQueryTypeStr
 		return nil
 	}
 
-	createRequestBulkRetryRequestBodyQueryParsedQuery2 := new(CreateRequestBulkRetryRequestBodyQueryParsedQuery2)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&createRequestBulkRetryRequestBodyQueryParsedQuery2); err == nil {
-		u.CreateRequestBulkRetryRequestBodyQueryParsedQuery2 = createRequestBulkRetryRequestBodyQueryParsedQuery2
-		u.Type = CreateRequestBulkRetryRequestBodyQueryParsedQueryTypeCreateRequestBulkRetryRequestBodyQueryParsedQuery2
+	mapOfany := map[string]interface{}{}
+	if err := utils.UnmarshalJSON(data, &mapOfany, "", true, true); err == nil {
+		u.MapOfany = mapOfany
+		u.Type = CreateRequestBulkRetryRequestBodyQueryParsedQueryTypeMapOfany
 		return nil
 	}
 
@@ -862,24 +877,43 @@ func (u *CreateRequestBulkRetryRequestBodyQueryParsedQuery) UnmarshalJSON(data [
 
 func (u CreateRequestBulkRetryRequestBodyQueryParsedQuery) MarshalJSON() ([]byte, error) {
 	if u.Str != nil {
-		return json.Marshal(u.Str)
+		return utils.MarshalJSON(u.Str, "", true)
 	}
 
-	if u.CreateRequestBulkRetryRequestBodyQueryParsedQuery2 != nil {
-		return json.Marshal(u.CreateRequestBulkRetryRequestBodyQueryParsedQuery2)
+	if u.MapOfany != nil {
+		return utils.MarshalJSON(u.MapOfany, "", true)
 	}
 
-	return nil, nil
+	return nil, errors.New("could not marshal union type: all fields are null")
 }
 
 // CreateRequestBulkRetryRequestBodyQueryRejectionCause2 - Filter by rejection cause
 type CreateRequestBulkRetryRequestBodyQueryRejectionCause2 struct {
-	Any      *bool                         `json:"any,omitempty"`
-	Contains *shared.RequestRejectionCause `json:"contains,omitempty"`
-	Gt       *shared.RequestRejectionCause `json:"gt,omitempty"`
-	Gte      *shared.RequestRejectionCause `json:"gte,omitempty"`
-	Le       *shared.RequestRejectionCause `json:"le,omitempty"`
-	Lte      *shared.RequestRejectionCause `json:"lte,omitempty"`
+	AdditionalProperties map[string]interface{}        `additionalProperties:"true" json:"-"`
+	Any                  *bool                         `json:"any,omitempty"`
+	Contains             *shared.RequestRejectionCause `json:"contains,omitempty"`
+	Gt                   *shared.RequestRejectionCause `json:"gt,omitempty"`
+	Gte                  *shared.RequestRejectionCause `json:"gte,omitempty"`
+	Le                   *shared.RequestRejectionCause `json:"le,omitempty"`
+	Lte                  *shared.RequestRejectionCause `json:"lte,omitempty"`
+}
+
+func (c CreateRequestBulkRetryRequestBodyQueryRejectionCause2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateRequestBulkRetryRequestBodyQueryRejectionCause2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, true); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *CreateRequestBulkRetryRequestBodyQueryRejectionCause2) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
 }
 
 func (o *CreateRequestBulkRetryRequestBodyQueryRejectionCause2) GetAny() *bool {
@@ -924,28 +958,77 @@ func (o *CreateRequestBulkRetryRequestBodyQueryRejectionCause2) GetLte() *shared
 	return o.Lte
 }
 
+// CreateRequestBulkRetryRequestBodyQueryRejectionCauseRequestRejectionCause - Filter by rejection cause
+type CreateRequestBulkRetryRequestBodyQueryRejectionCauseRequestRejectionCause string
+
+const (
+	CreateRequestBulkRetryRequestBodyQueryRejectionCauseRequestRejectionCauseSourceArchived         CreateRequestBulkRetryRequestBodyQueryRejectionCauseRequestRejectionCause = "SOURCE_ARCHIVED"
+	CreateRequestBulkRetryRequestBodyQueryRejectionCauseRequestRejectionCauseNoWebhook              CreateRequestBulkRetryRequestBodyQueryRejectionCauseRequestRejectionCause = "NO_WEBHOOK"
+	CreateRequestBulkRetryRequestBodyQueryRejectionCauseRequestRejectionCauseVerificationFailed     CreateRequestBulkRetryRequestBodyQueryRejectionCauseRequestRejectionCause = "VERIFICATION_FAILED"
+	CreateRequestBulkRetryRequestBodyQueryRejectionCauseRequestRejectionCauseUnsupportedHTTPMethod  CreateRequestBulkRetryRequestBodyQueryRejectionCauseRequestRejectionCause = "UNSUPPORTED_HTTP_METHOD"
+	CreateRequestBulkRetryRequestBodyQueryRejectionCauseRequestRejectionCauseUnsupportedContentType CreateRequestBulkRetryRequestBodyQueryRejectionCauseRequestRejectionCause = "UNSUPPORTED_CONTENT_TYPE"
+	CreateRequestBulkRetryRequestBodyQueryRejectionCauseRequestRejectionCauseUnparsableJSON         CreateRequestBulkRetryRequestBodyQueryRejectionCauseRequestRejectionCause = "UNPARSABLE_JSON"
+	CreateRequestBulkRetryRequestBodyQueryRejectionCauseRequestRejectionCausePayloadTooLarge        CreateRequestBulkRetryRequestBodyQueryRejectionCauseRequestRejectionCause = "PAYLOAD_TOO_LARGE"
+	CreateRequestBulkRetryRequestBodyQueryRejectionCauseRequestRejectionCauseIngestionFatal         CreateRequestBulkRetryRequestBodyQueryRejectionCauseRequestRejectionCause = "INGESTION_FATAL"
+	CreateRequestBulkRetryRequestBodyQueryRejectionCauseRequestRejectionCauseUnknown                CreateRequestBulkRetryRequestBodyQueryRejectionCauseRequestRejectionCause = "UNKNOWN"
+)
+
+func (e CreateRequestBulkRetryRequestBodyQueryRejectionCauseRequestRejectionCause) ToPointer() *CreateRequestBulkRetryRequestBodyQueryRejectionCauseRequestRejectionCause {
+	return &e
+}
+
+func (e *CreateRequestBulkRetryRequestBodyQueryRejectionCauseRequestRejectionCause) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "SOURCE_ARCHIVED":
+		fallthrough
+	case "NO_WEBHOOK":
+		fallthrough
+	case "VERIFICATION_FAILED":
+		fallthrough
+	case "UNSUPPORTED_HTTP_METHOD":
+		fallthrough
+	case "UNSUPPORTED_CONTENT_TYPE":
+		fallthrough
+	case "UNPARSABLE_JSON":
+		fallthrough
+	case "PAYLOAD_TOO_LARGE":
+		fallthrough
+	case "INGESTION_FATAL":
+		fallthrough
+	case "UNKNOWN":
+		*e = CreateRequestBulkRetryRequestBodyQueryRejectionCauseRequestRejectionCause(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CreateRequestBulkRetryRequestBodyQueryRejectionCauseRequestRejectionCause: %v", v)
+	}
+}
+
 type CreateRequestBulkRetryRequestBodyQueryRejectionCauseType string
 
 const (
-	CreateRequestBulkRetryRequestBodyQueryRejectionCauseTypeRequestRejectionCause                                 CreateRequestBulkRetryRequestBodyQueryRejectionCauseType = "RequestRejectionCause"
-	CreateRequestBulkRetryRequestBodyQueryRejectionCauseTypeCreateRequestBulkRetryRequestBodyQueryRejectionCause2 CreateRequestBulkRetryRequestBodyQueryRejectionCauseType = "createRequestBulkRetry_requestBody_query_rejection_cause_2"
-	CreateRequestBulkRetryRequestBodyQueryRejectionCauseTypeArrayOfRequestRejectionCause                          CreateRequestBulkRetryRequestBodyQueryRejectionCauseType = "arrayOfRequestRejectionCause"
+	CreateRequestBulkRetryRequestBodyQueryRejectionCauseTypeCreateRequestBulkRetryRequestBodyQueryRejectionCauseRequestRejectionCause CreateRequestBulkRetryRequestBodyQueryRejectionCauseType = "createRequestBulkRetry_requestBody_query_rejection_cause_RequestRejectionCause"
+	CreateRequestBulkRetryRequestBodyQueryRejectionCauseTypeCreateRequestBulkRetryRequestBodyQueryRejectionCause2                     CreateRequestBulkRetryRequestBodyQueryRejectionCauseType = "createRequestBulkRetry_requestBody_query_rejection_cause_2"
+	CreateRequestBulkRetryRequestBodyQueryRejectionCauseTypeArrayOfRequestRejectionCause                                              CreateRequestBulkRetryRequestBodyQueryRejectionCauseType = "arrayOfRequestRejectionCause"
 )
 
 type CreateRequestBulkRetryRequestBodyQueryRejectionCause struct {
-	RequestRejectionCause                                 *shared.RequestRejectionCause
-	CreateRequestBulkRetryRequestBodyQueryRejectionCause2 *CreateRequestBulkRetryRequestBodyQueryRejectionCause2
-	ArrayOfRequestRejectionCause                          []shared.RequestRejectionCause
+	CreateRequestBulkRetryRequestBodyQueryRejectionCauseRequestRejectionCause *CreateRequestBulkRetryRequestBodyQueryRejectionCauseRequestRejectionCause
+	CreateRequestBulkRetryRequestBodyQueryRejectionCause2                     *CreateRequestBulkRetryRequestBodyQueryRejectionCause2
+	ArrayOfRequestRejectionCause                                              []shared.RequestRejectionCause
 
 	Type CreateRequestBulkRetryRequestBodyQueryRejectionCauseType
 }
 
-func CreateCreateRequestBulkRetryRequestBodyQueryRejectionCauseRequestRejectionCause(requestRejectionCause shared.RequestRejectionCause) CreateRequestBulkRetryRequestBodyQueryRejectionCause {
-	typ := CreateRequestBulkRetryRequestBodyQueryRejectionCauseTypeRequestRejectionCause
+func CreateCreateRequestBulkRetryRequestBodyQueryRejectionCauseCreateRequestBulkRetryRequestBodyQueryRejectionCauseRequestRejectionCause(createRequestBulkRetryRequestBodyQueryRejectionCauseRequestRejectionCause CreateRequestBulkRetryRequestBodyQueryRejectionCauseRequestRejectionCause) CreateRequestBulkRetryRequestBodyQueryRejectionCause {
+	typ := CreateRequestBulkRetryRequestBodyQueryRejectionCauseTypeCreateRequestBulkRetryRequestBodyQueryRejectionCauseRequestRejectionCause
 
 	return CreateRequestBulkRetryRequestBodyQueryRejectionCause{
-		RequestRejectionCause: &requestRejectionCause,
-		Type:                  typ,
+		CreateRequestBulkRetryRequestBodyQueryRejectionCauseRequestRejectionCause: &createRequestBulkRetryRequestBodyQueryRejectionCauseRequestRejectionCause,
+		Type: typ,
 	}
 }
 
@@ -968,30 +1051,23 @@ func CreateCreateRequestBulkRetryRequestBodyQueryRejectionCauseArrayOfRequestRej
 }
 
 func (u *CreateRequestBulkRetryRequestBodyQueryRejectionCause) UnmarshalJSON(data []byte) error {
-	var d *json.Decoder
-
-	requestRejectionCause := new(shared.RequestRejectionCause)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&requestRejectionCause); err == nil {
-		u.RequestRejectionCause = requestRejectionCause
-		u.Type = CreateRequestBulkRetryRequestBodyQueryRejectionCauseTypeRequestRejectionCause
-		return nil
-	}
 
 	createRequestBulkRetryRequestBodyQueryRejectionCause2 := new(CreateRequestBulkRetryRequestBodyQueryRejectionCause2)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&createRequestBulkRetryRequestBodyQueryRejectionCause2); err == nil {
+	if err := utils.UnmarshalJSON(data, &createRequestBulkRetryRequestBodyQueryRejectionCause2, "", true, true); err == nil {
 		u.CreateRequestBulkRetryRequestBodyQueryRejectionCause2 = createRequestBulkRetryRequestBodyQueryRejectionCause2
 		u.Type = CreateRequestBulkRetryRequestBodyQueryRejectionCauseTypeCreateRequestBulkRetryRequestBodyQueryRejectionCause2
 		return nil
 	}
 
+	createRequestBulkRetryRequestBodyQueryRejectionCauseRequestRejectionCause := new(CreateRequestBulkRetryRequestBodyQueryRejectionCauseRequestRejectionCause)
+	if err := utils.UnmarshalJSON(data, &createRequestBulkRetryRequestBodyQueryRejectionCauseRequestRejectionCause, "", true, true); err == nil {
+		u.CreateRequestBulkRetryRequestBodyQueryRejectionCauseRequestRejectionCause = createRequestBulkRetryRequestBodyQueryRejectionCauseRequestRejectionCause
+		u.Type = CreateRequestBulkRetryRequestBodyQueryRejectionCauseTypeCreateRequestBulkRetryRequestBodyQueryRejectionCauseRequestRejectionCause
+		return nil
+	}
+
 	arrayOfRequestRejectionCause := []shared.RequestRejectionCause{}
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&arrayOfRequestRejectionCause); err == nil {
+	if err := utils.UnmarshalJSON(data, &arrayOfRequestRejectionCause, "", true, true); err == nil {
 		u.ArrayOfRequestRejectionCause = arrayOfRequestRejectionCause
 		u.Type = CreateRequestBulkRetryRequestBodyQueryRejectionCauseTypeArrayOfRequestRejectionCause
 		return nil
@@ -1001,19 +1077,19 @@ func (u *CreateRequestBulkRetryRequestBodyQueryRejectionCause) UnmarshalJSON(dat
 }
 
 func (u CreateRequestBulkRetryRequestBodyQueryRejectionCause) MarshalJSON() ([]byte, error) {
-	if u.RequestRejectionCause != nil {
-		return json.Marshal(u.RequestRejectionCause)
+	if u.CreateRequestBulkRetryRequestBodyQueryRejectionCauseRequestRejectionCause != nil {
+		return utils.MarshalJSON(u.CreateRequestBulkRetryRequestBodyQueryRejectionCauseRequestRejectionCause, "", true)
 	}
 
 	if u.CreateRequestBulkRetryRequestBodyQueryRejectionCause2 != nil {
-		return json.Marshal(u.CreateRequestBulkRetryRequestBodyQueryRejectionCause2)
+		return utils.MarshalJSON(u.CreateRequestBulkRetryRequestBodyQueryRejectionCause2, "", true)
 	}
 
 	if u.ArrayOfRequestRejectionCause != nil {
-		return json.Marshal(u.ArrayOfRequestRejectionCause)
+		return utils.MarshalJSON(u.ArrayOfRequestRejectionCause, "", true)
 	}
 
-	return nil, nil
+	return nil, errors.New("could not marshal union type: all fields are null")
 }
 
 type CreateRequestBulkRetryRequestBodyQuerySourceIDType string
@@ -1049,21 +1125,16 @@ func CreateCreateRequestBulkRetryRequestBodyQuerySourceIDArrayOfstr(arrayOfstr [
 }
 
 func (u *CreateRequestBulkRetryRequestBodyQuerySourceID) UnmarshalJSON(data []byte) error {
-	var d *json.Decoder
 
 	str := new(string)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&str); err == nil {
+	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
 		u.Str = str
 		u.Type = CreateRequestBulkRetryRequestBodyQuerySourceIDTypeStr
 		return nil
 	}
 
 	arrayOfstr := []string{}
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&arrayOfstr); err == nil {
+	if err := utils.UnmarshalJSON(data, &arrayOfstr, "", true, true); err == nil {
 		u.ArrayOfstr = arrayOfstr
 		u.Type = CreateRequestBulkRetryRequestBodyQuerySourceIDTypeArrayOfstr
 		return nil
@@ -1074,14 +1145,14 @@ func (u *CreateRequestBulkRetryRequestBodyQuerySourceID) UnmarshalJSON(data []by
 
 func (u CreateRequestBulkRetryRequestBodyQuerySourceID) MarshalJSON() ([]byte, error) {
 	if u.Str != nil {
-		return json.Marshal(u.Str)
+		return utils.MarshalJSON(u.Str, "", true)
 	}
 
 	if u.ArrayOfstr != nil {
-		return json.Marshal(u.ArrayOfstr)
+		return utils.MarshalJSON(u.ArrayOfstr, "", true)
 	}
 
-	return nil, nil
+	return nil, errors.New("could not marshal union type: all fields are null")
 }
 
 type CreateRequestBulkRetryRequestBodyQueryStatus string
@@ -1113,6 +1184,7 @@ func (e *CreateRequestBulkRetryRequestBodyQueryStatus) UnmarshalJSON(data []byte
 
 // CreateRequestBulkRetryRequestBodyQuery - Filter properties for the events to be included in the bulk retry, use query parameters of [Requests](#requests)
 type CreateRequestBulkRetryRequestBodyQuery struct {
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// URL Encoded string of the JSON to match to the data body
 	Body        *CreateRequestBulkRetryRequestBodyQueryBody        `json:"body,omitempty"`
 	BulkRetryID *CreateRequestBulkRetryRequestBodyQueryBulkRetryID `json:"bulk_retry_id,omitempty"`
@@ -1137,6 +1209,24 @@ type CreateRequestBulkRetryRequestBodyQuery struct {
 	Status   *CreateRequestBulkRetryRequestBodyQueryStatus   `json:"status,omitempty"`
 	// Filter by verification status
 	Verified *bool `json:"verified,omitempty"`
+}
+
+func (c CreateRequestBulkRetryRequestBodyQuery) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateRequestBulkRetryRequestBodyQuery) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, false); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *CreateRequestBulkRetryRequestBodyQuery) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
 }
 
 func (o *CreateRequestBulkRetryRequestBodyQuery) GetBody() *CreateRequestBulkRetryRequestBodyQueryBody {
@@ -1245,8 +1335,27 @@ func (o *CreateRequestBulkRetryRequestBodyQuery) GetVerified() *bool {
 }
 
 type CreateRequestBulkRetryRequestBody struct {
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// Filter properties for the events to be included in the bulk retry, use query parameters of [Requests](#requests)
 	Query *CreateRequestBulkRetryRequestBodyQuery `json:"query,omitempty"`
+}
+
+func (c CreateRequestBulkRetryRequestBody) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateRequestBulkRetryRequestBody) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, false); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *CreateRequestBulkRetryRequestBody) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
 }
 
 func (o *CreateRequestBulkRetryRequestBody) GetQuery() *CreateRequestBulkRetryRequestBodyQuery {
@@ -1259,9 +1368,12 @@ func (o *CreateRequestBulkRetryRequestBody) GetQuery() *CreateRequestBulkRetryRe
 type CreateRequestBulkRetryResponse struct {
 	// A single requests bulk retry
 	BatchOperation *shared.BatchOperation
-	ContentType    string
-	StatusCode     int
-	RawResponse    *http.Response
+	// HTTP response content type for this operation
+	ContentType string
+	// HTTP response status code for this operation
+	StatusCode int
+	// Raw HTTP response; suitable for custom response parsing
+	RawResponse *http.Response
 }
 
 func (o *CreateRequestBulkRetryResponse) GetBatchOperation() *shared.BatchOperation {

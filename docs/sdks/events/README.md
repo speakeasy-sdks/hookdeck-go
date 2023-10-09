@@ -1,4 +1,5 @@
 # Events
+(*Events*)
 
 ## Overview
 
@@ -20,15 +21,15 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/types"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
                 Password: "",
                 Username: "",
@@ -38,33 +39,95 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Events.Get(ctx, operations.GetEventsRequest{
-        Attempts: &operations.GetEventsAttempts{},
-        Body: &operations.GetEventsBody{},
-        BulkRetryID: &operations.GetEventsBulkRetryID{},
-        CliID: &operations.GetEventsCliID{},
-        CliUserID: &operations.GetEventsCliUserID{},
-        CreatedAt: &operations.GetEventsCreatedAt{},
-        DestinationID: &operations.GetEventsDestinationID{},
-        Dir: &operations.GetEventsDir{},
-        ErrorCode: &operations.GetEventsErrorCode{},
-        EventDataID: &operations.GetEventsEventDataID{},
-        Headers: &operations.GetEventsHeaders{},
-        ID: &operations.GetEventsID{},
-        Include: operations.GetEventsIncludeData.ToPointer(),
-        IssueID: &operations.GetEventsIssueID{},
-        LastAttemptAt: &operations.GetEventsLastAttemptAt{},
-        Limit: hookdeck.Int64(956084),
-        Next: hookdeck.String("amet"),
-        OrderBy: &operations.GetEventsOrderBy{},
-        ParsedQuery: &operations.GetEventsParsedQuery{},
-        Path: hookdeck.String("deserunt"),
-        Prev: hookdeck.String("nisi"),
-        ResponseStatus: &operations.GetEventsResponseStatus{},
-        SearchTerm: hookdeck.String("vel"),
-        SourceID: &operations.GetEventsSourceID{},
-        Status: &operations.GetEventsStatus{},
-        SuccessfulAt: &operations.GetEventsSuccessfulAt{},
-        WebhookID: &operations.GetEventsWebhookID{},
+        Attempts: operations.CreateGetEventsAttemptsGetEventsAttempts2(
+                operations.GetEventsAttempts2{
+                    AdditionalProperties: map[string]interface{}{
+                        "Northeast": "Hatchback",
+                    },
+                },
+        ),
+        Body: operations.CreateGetEventsBodyMapOfany(
+                map[string]interface{}{
+                    "protocol": "towards",
+                },
+        ),
+        BulkRetryID: operations.CreateGetEventsBulkRetryIDStr(
+        "Xenon",
+        ),
+        CliID: operations.CreateGetEventsCliIDGetEventsCliID2(
+                operations.GetEventsCliID2{
+                    AdditionalProperties: map[string]interface{}{
+                        "Car": "magnetic",
+                    },
+                },
+        ),
+        CliUserID: operations.CreateGetEventsCliUserIDStr(
+        "Gasoline",
+        ),
+        CreatedAt: operations.CreateGetEventsCreatedAtDateTime(
+        types.MustTimeFromString("2023-12-06T14:41:34.659Z"),
+        ),
+        DestinationID: operations.CreateGetEventsDestinationIDStr(
+        "Dollar",
+        ),
+        Dir: operations.CreateGetEventsDirGetEventsDir1(
+        operations.GetEventsDir1Asc,
+        ),
+        ErrorCode: operations.CreateGetEventsErrorCodeArrayOfstr(
+                []string{
+                    "Bicycle",
+                },
+        ),
+        EventDataID: operations.CreateGetEventsEventDataIDStr(
+        "Reduced",
+        ),
+        Headers: operations.CreateGetEventsHeadersMapOfany(
+                map[string]interface{}{
+                    "woman": "Bedfordshire",
+                },
+        ),
+        ID: operations.CreateGetEventsIDStr(
+        "cyan",
+        ),
+        IssueID: operations.CreateGetEventsIssueIDStr(
+        "West",
+        ),
+        LastAttemptAt: operations.CreateGetEventsLastAttemptAtDateTime(
+        types.MustTimeFromString("2021-11-08T00:36:38.602Z"),
+        ),
+        OrderBy: operations.CreateGetEventsOrderByArrayOfgetEventsOrderBy2(
+                []operations.GetEventsOrderBy2{
+                    operations.GetEventsOrderBy2CreatedAt,
+                },
+        ),
+        ParsedQuery: operations.CreateGetEventsParsedQueryMapOfany(
+                map[string]interface{}{
+                    "Bicycle": "functionalities",
+                },
+        ),
+        ResponseStatus: operations.CreateGetEventsResponseStatusArrayOfinteger(
+                []int64{
+                    324692,
+                },
+        ),
+        SourceID: operations.CreateGetEventsSourceIDArrayOfstr(
+                []string{
+                    "Maria",
+                },
+        ),
+        Status: operations.CreateGetEventsStatusEventStatus(
+        shared.EventStatusHold,
+        ),
+        SuccessfulAt: operations.CreateGetEventsSuccessfulAtGetEventsSuccessfulAt2(
+                operations.GetEventsSuccessfulAt2{
+                    AdditionalProperties: map[string]interface{}{
+                        "Iranian": "Aaliyah",
+                    },
+                },
+        ),
+        WebhookID: operations.CreateGetEventsWebhookIDStr(
+        "Stamford",
+        ),
     })
     if err != nil {
         log.Fatal(err)

@@ -2,12 +2,35 @@
 
 package shared
 
+import (
+	"github.com/speakeasy-sdks/hookdeck-go/pkg/utils"
+)
+
 // DestinationAuthMethodBasicAuthConfig - Basic auth config for the destination's auth method
 type DestinationAuthMethodBasicAuthConfig struct {
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// Password for basic auth
 	Password string `json:"password"`
 	// Username for basic auth
 	Username string `json:"username"`
+}
+
+func (d DestinationAuthMethodBasicAuthConfig) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(d, "", false)
+}
+
+func (d *DestinationAuthMethodBasicAuthConfig) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &d, "", false, false); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *DestinationAuthMethodBasicAuthConfig) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
 }
 
 func (o *DestinationAuthMethodBasicAuthConfig) GetPassword() string {

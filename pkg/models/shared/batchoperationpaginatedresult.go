@@ -2,11 +2,33 @@
 
 package shared
 
-// BatchOperationPaginatedResult - List of ignored events bulk retries
+import (
+	"github.com/speakeasy-sdks/hookdeck-go/pkg/utils"
+)
+
 type BatchOperationPaginatedResult struct {
-	Count      *int64           `json:"count,omitempty"`
-	Models     []BatchOperation `json:"models,omitempty"`
-	Pagination *SeekPagination  `json:"pagination,omitempty"`
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
+	Count                *int64                 `json:"count,omitempty"`
+	Models               []BatchOperation       `json:"models,omitempty"`
+	Pagination           *SeekPagination        `json:"pagination,omitempty"`
+}
+
+func (b BatchOperationPaginatedResult) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(b, "", false)
+}
+
+func (b *BatchOperationPaginatedResult) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &b, "", false, false); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *BatchOperationPaginatedResult) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
 }
 
 func (o *BatchOperationPaginatedResult) GetCount() *int64 {

@@ -1,4 +1,5 @@
 # Connections
+(*Connections*)
 
 ## Overview
 
@@ -20,15 +21,15 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/types"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
                 Password: "",
                 Username: "",
@@ -38,16 +39,40 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Connections.Get(ctx, operations.GetConnectionsRequest{
-        Archived: hookdeck.Bool(false),
-        ArchivedAt: &operations.GetConnectionsArchivedAt{},
-        DestinationID: &operations.GetConnectionsDestinationID{},
-        Dir: &operations.GetConnectionsDir{},
-        FullName: hookdeck.String("deserunt"),
-        ID: &operations.GetConnectionsID{},
-        Name: &operations.GetConnectionsName{},
-        OrderBy: &operations.GetConnectionsOrderBy{},
-        PausedAt: &operations.GetConnectionsPausedAt{},
-        SourceID: &operations.GetConnectionsSourceID{},
+        ArchivedAt: operations.CreateGetConnectionsArchivedAtGetConnectionsArchivedAt2(
+                operations.GetConnectionsArchivedAt2{
+                    AdditionalProperties: map[string]interface{}{
+                        "Northeast": "Hatchback",
+                    },
+                },
+        ),
+        DestinationID: operations.CreateGetConnectionsDestinationIDArrayOfstr(
+                []string{
+                    "protocol",
+                },
+        ),
+        Dir: operations.CreateGetConnectionsDirArrayOfgetConnectionsDir2(
+                []operations.GetConnectionsDir2{
+                    operations.GetConnectionsDir2Desc,
+                },
+        ),
+        ID: operations.CreateGetConnectionsIDStr(
+        "Xenon",
+        ),
+        Name: operations.CreateGetConnectionsNameStr(
+        "Car",
+        ),
+        OrderBy: operations.CreateGetConnectionsOrderByGetConnectionsOrderBy1(
+        operations.GetConnectionsOrderBy1CreatedAt,
+        ),
+        PausedAt: operations.CreateGetConnectionsPausedAtDateTime(
+        types.MustTimeFromString("2022-01-20T10:24:38.093Z"),
+        ),
+        SourceID: operations.CreateGetConnectionsSourceIDArrayOfstr(
+                []string{
+                    "Neon",
+                },
+        ),
     })
     if err != nil {
         log.Fatal(err)

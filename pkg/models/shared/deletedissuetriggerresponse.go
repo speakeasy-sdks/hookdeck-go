@@ -2,9 +2,31 @@
 
 package shared
 
-// DeletedIssueTriggerResponse - An object with deleted issue trigger's id
+import (
+	"github.com/speakeasy-sdks/hookdeck-go/pkg/utils"
+)
+
 type DeletedIssueTriggerResponse struct {
-	ID string `json:"id"`
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
+	ID                   string                 `json:"id"`
+}
+
+func (d DeletedIssueTriggerResponse) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(d, "", false)
+}
+
+func (d *DeletedIssueTriggerResponse) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &d, "", false, false); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *DeletedIssueTriggerResponse) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
 }
 
 func (o *DeletedIssueTriggerResponse) GetID() string {

@@ -1,12 +1,11 @@
 # Request
 
-A single request
-
 
 ## Fields
 
 | Field                                                                   | Type                                                                    | Required                                                                | Description                                                             |
 | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- |
+| `AdditionalProperties`                                                  | map[string]*interface{}*                                                | :heavy_minus_sign:                                                      | N/A                                                                     |
 | `CliEventsCount`                                                        | **int64*                                                                | :heavy_minus_sign:                                                      | The count of CLI events created from this request                       |
 | `CreatedAt`                                                             | [time.Time](https://pkg.go.dev/time#Time)                               | :heavy_check_mark:                                                      | 	Date the event was created                                             |
 | `Data`                                                                  | [*RequestData](../../models/shared/requestdata.md)                      | :heavy_minus_sign:                                                      | N/A                                                                     |
