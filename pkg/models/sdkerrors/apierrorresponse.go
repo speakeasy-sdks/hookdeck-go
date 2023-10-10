@@ -4,11 +4,9 @@ package sdkerrors
 
 import (
 	"encoding/json"
-	"net/http"
 )
 
 type APIErrorResponseData struct {
-	RawResponse *http.Response `json:"-"`
 }
 
 var _ error = &APIErrorResponseData{}
@@ -20,7 +18,7 @@ func (e *APIErrorResponseData) Error() string {
 
 // APIErrorResponse - Error response model
 type APIErrorResponse struct {
-	RawResponse *http.Response `json:"-"`
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// Error code
 	Code string                `json:"code"`
 	Data *APIErrorResponseData `json:"data,omitempty"`

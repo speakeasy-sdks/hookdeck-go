@@ -1,4 +1,5 @@
 # BulkRetryEvent
+(*BulkRetryEvent*)
 
 ### Available Operations
 
@@ -18,21 +19,20 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
                 Password: "",
                 Username: "",
             },
         }),
     )
-    id := "quis"
+    var id string = "Clifton"
 
     ctx := context.Background()
     res, err := s.BulkRetryEvent.Cancel(ctx, id)
@@ -71,15 +71,15 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/types"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
                 Password: "",
                 Username: "",
@@ -89,28 +89,92 @@ func main() {
 
     ctx := context.Background()
     res, err := s.BulkRetryEvent.Create(ctx, operations.CreateEventBulkRetryRequestBody{
+        AdditionalProperties: map[string]interface{}{
+            "online": "Configuration",
+        },
         Query: &operations.CreateEventBulkRetryRequestBodyQuery{
-            Attempts: &operations.CreateEventBulkRetryRequestBodyQueryAttempts{},
-            Body: &operations.CreateEventBulkRetryRequestBodyQueryBody{},
-            BulkRetryID: &operations.CreateEventBulkRetryRequestBodyQueryBulkRetryID{},
-            CliID: &operations.CreateEventBulkRetryRequestBodyQueryCliID{},
-            CliUserID: &operations.CreateEventBulkRetryRequestBodyQueryCliUserID{},
-            CreatedAt: &operations.CreateEventBulkRetryRequestBodyQueryCreatedAt{},
-            DestinationID: &operations.CreateEventBulkRetryRequestBodyQueryDestinationID{},
-            ErrorCode: &operations.CreateEventBulkRetryRequestBodyQueryErrorCode{},
-            EventDataID: &operations.CreateEventBulkRetryRequestBodyQueryEventDataID{},
-            Headers: &operations.CreateEventBulkRetryRequestBodyQueryHeaders{},
-            ID: &operations.CreateEventBulkRetryRequestBodyQueryID{},
-            IssueID: &operations.CreateEventBulkRetryRequestBodyQueryIssueID{},
-            LastAttemptAt: &operations.CreateEventBulkRetryRequestBodyQueryLastAttemptAt{},
-            ParsedQuery: &operations.CreateEventBulkRetryRequestBodyQueryParsedQuery{},
-            Path: hookdeck.String("veritatis"),
-            ResponseStatus: &operations.CreateEventBulkRetryRequestBodyQueryResponseStatus{},
-            SearchTerm: hookdeck.String("deserunt"),
-            SourceID: &operations.CreateEventBulkRetryRequestBodyQuerySourceID{},
-            Status: &operations.CreateEventBulkRetryRequestBodyQueryStatus{},
-            SuccessfulAt: &operations.CreateEventBulkRetryRequestBodyQuerySuccessfulAt{},
-            WebhookID: &operations.CreateEventBulkRetryRequestBodyQueryWebhookID{},
+            AdditionalProperties: map[string]interface{}{
+                "Money": "blue",
+            },
+            Attempts: operations.CreateCreateEventBulkRetryRequestBodyQueryAttemptsCreateEventBulkRetryRequestBodyQueryAttempts2(
+                    operations.CreateEventBulkRetryRequestBodyQueryAttempts2{
+                        AdditionalProperties: map[string]interface{}{
+                            "grey": "technology",
+                        },
+                    },
+            ),
+            Body: operations.CreateCreateEventBulkRetryRequestBodyQueryBodyStr(
+            "deposit",
+            ),
+            BulkRetryID: operations.CreateCreateEventBulkRetryRequestBodyQueryBulkRetryIDStr(
+            "Northwest",
+            ),
+            CliID: operations.CreateCreateEventBulkRetryRequestBodyQueryCliIDArrayOfstr(
+                    []string{
+                        "SUV",
+                    },
+            ),
+            CliUserID: operations.CreateCreateEventBulkRetryRequestBodyQueryCliUserIDArrayOfstr(
+                    []string{
+                        "Screen",
+                    },
+            ),
+            CreatedAt: operations.CreateCreateEventBulkRetryRequestBodyQueryCreatedAtDateTime(
+            types.MustTimeFromString("2023-11-15T08:41:39.306Z"),
+            ),
+            DestinationID: operations.CreateCreateEventBulkRetryRequestBodyQueryDestinationIDArrayOfstr(
+                    []string{
+                        "Ameliorated",
+                    },
+            ),
+            ErrorCode: operations.CreateCreateEventBulkRetryRequestBodyQueryErrorCodeStr(
+            "after",
+            ),
+            EventDataID: operations.CreateCreateEventBulkRetryRequestBodyQueryEventDataIDArrayOfstr(
+                    []string{
+                        "Intelligent",
+                    },
+            ),
+            Headers: operations.CreateCreateEventBulkRetryRequestBodyQueryHeadersStr(
+            "female",
+            ),
+            ID: operations.CreateCreateEventBulkRetryRequestBodyQueryIDArrayOfstr(
+                    []string{
+                        "functionalities",
+                    },
+            ),
+            IssueID: operations.CreateCreateEventBulkRetryRequestBodyQueryIssueIDStr(
+            "Account",
+            ),
+            LastAttemptAt: operations.CreateCreateEventBulkRetryRequestBodyQueryLastAttemptAtDateTime(
+            types.MustTimeFromString("2022-01-27T17:59:46.224Z"),
+            ),
+            ParsedQuery: operations.CreateCreateEventBulkRetryRequestBodyQueryParsedQueryMapOfany(
+                    map[string]interface{}{
+                        "Kentucky": "animated",
+                    },
+            ),
+            ResponseStatus: operations.CreateCreateEventBulkRetryRequestBodyQueryResponseStatusArrayOfinteger(
+                    []int64{
+                        621636,
+                    },
+            ),
+            SourceID: operations.CreateCreateEventBulkRetryRequestBodyQuerySourceIDArrayOfstr(
+                    []string{
+                        "Senior",
+                    },
+            ),
+            Status: operations.CreateCreateEventBulkRetryRequestBodyQueryStatusEventStatus(
+            shared.EventStatusScheduled,
+            ),
+            SuccessfulAt: operations.CreateCreateEventBulkRetryRequestBodyQuerySuccessfulAtDateTime(
+            types.MustTimeFromString("2023-09-22T09:00:36.734Z"),
+            ),
+            WebhookID: operations.CreateCreateEventBulkRetryRequestBodyQueryWebhookIDArrayOfstr(
+                    []string{
+                        "Towels",
+                    },
+            ),
         },
     })
     if err != nil {
@@ -148,21 +212,20 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
                 Password: "",
                 Username: "",
             },
         }),
     )
-    id := "perferendis"
+    var id string = "female"
 
     ctx := context.Background()
     res, err := s.BulkRetryEvent.Get(ctx, id)

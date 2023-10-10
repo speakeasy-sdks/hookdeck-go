@@ -5,6 +5,7 @@ package shared
 import (
 	"encoding/json"
 	"fmt"
+	"github.com/speakeasy-sdks/hookdeck-go/pkg/utils"
 	"time"
 )
 
@@ -34,6 +35,7 @@ func (e *DeliveryIssueType) UnmarshalJSON(data []byte) error {
 
 // DeliveryIssue - Delivery issue
 type DeliveryIssue struct {
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// Keys used as the aggregation keys a 'delivery' type issue
 	AggregationKeys DeliveryIssueAggregationKeys `json:"aggregation_keys"`
 	AutoResolvedAt  *time.Time                   `json:"auto_resolved_at,omitempty"`
@@ -61,6 +63,24 @@ type DeliveryIssue struct {
 	Type   DeliveryIssueType `json:"type"`
 	// ISO timestamp for when the issue was last updated
 	UpdatedAt string `json:"updated_at"`
+}
+
+func (d DeliveryIssue) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(d, "", false)
+}
+
+func (d *DeliveryIssue) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &d, "", false, true); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *DeliveryIssue) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
 }
 
 func (o *DeliveryIssue) GetAggregationKeys() DeliveryIssueAggregationKeys {

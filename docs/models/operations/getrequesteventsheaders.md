@@ -9,9 +9,9 @@
 getRequestEventsHeaders := operations.CreateGetRequestEventsHeadersStr(string{/* values here */})
 ```
 
-### GetRequestEventsHeaders2
+### 
 
 ```go
-getRequestEventsHeaders := operations.CreateGetRequestEventsHeadersGetRequestEventsHeaders2(operations.GetRequestEventsHeaders2{/* values here */})
+getRequestEventsHeaders := operations.CreateGetRequestEventsHeadersMapOfany(map[string]interface{}{/* values here */})
 ```
 

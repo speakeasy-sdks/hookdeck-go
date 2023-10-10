@@ -2,11 +2,33 @@
 
 package shared
 
-// IssueTriggerPaginatedResult - List of issue triggers
+import (
+	"github.com/speakeasy-sdks/hookdeck-go/pkg/utils"
+)
+
 type IssueTriggerPaginatedResult struct {
-	Count      *int64          `json:"count,omitempty"`
-	Models     []IssueTrigger  `json:"models,omitempty"`
-	Pagination *SeekPagination `json:"pagination,omitempty"`
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
+	Count                *int64                 `json:"count,omitempty"`
+	Models               []IssueTrigger         `json:"models,omitempty"`
+	Pagination           *SeekPagination        `json:"pagination,omitempty"`
+}
+
+func (i IssueTriggerPaginatedResult) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(i, "", false)
+}
+
+func (i *IssueTriggerPaginatedResult) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &i, "", false, false); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *IssueTriggerPaginatedResult) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
 }
 
 func (o *IssueTriggerPaginatedResult) GetCount() *int64 {

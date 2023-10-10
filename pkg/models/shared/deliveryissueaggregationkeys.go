@@ -2,11 +2,34 @@
 
 package shared
 
+import (
+	"github.com/speakeasy-sdks/hookdeck-go/pkg/utils"
+)
+
 // DeliveryIssueAggregationKeys - Keys used as the aggregation keys a 'delivery' type issue
 type DeliveryIssueAggregationKeys struct {
-	ErrorCode      []AttemptErrorCode `json:"error_code"`
-	ResponseStatus []float32          `json:"response_status"`
-	WebhookID      []string           `json:"webhook_id"`
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
+	ErrorCode            []AttemptErrorCode     `json:"error_code"`
+	ResponseStatus       []float32              `json:"response_status"`
+	WebhookID            []string               `json:"webhook_id"`
+}
+
+func (d DeliveryIssueAggregationKeys) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(d, "", false)
+}
+
+func (d *DeliveryIssueAggregationKeys) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &d, "", false, false); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *DeliveryIssueAggregationKeys) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
 }
 
 func (o *DeliveryIssueAggregationKeys) GetErrorCode() []AttemptErrorCode {

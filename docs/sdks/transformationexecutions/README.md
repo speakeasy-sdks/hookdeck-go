@@ -1,4 +1,5 @@
 # TransformationExecutions
+(*TransformationExecutions*)
 
 ### Available Operations
 
@@ -16,15 +17,15 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/types"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
                 Password: "",
                 Username: "",
@@ -34,16 +35,31 @@ func main() {
 
     ctx := context.Background()
     res, err := s.TransformationExecutions.Get(ctx, operations.GetTransformationExecutionsRequest{
-        CreatedAt: &operations.GetTransformationExecutionsCreatedAt{},
-        Dir: &operations.GetTransformationExecutionsDir{},
-        ID: "0cbb1e31-b8b9-40f3-843a-1108e0adcf4b",
-        IssueID: &operations.GetTransformationExecutionsIssueID{},
-        Limit: hookdeck.Int64(586410),
-        LogLevel: &operations.GetTransformationExecutionsLogLevel{},
-        Next: hookdeck.String("qui"),
-        OrderBy: &operations.GetTransformationExecutionsOrderBy{},
-        Prev: hookdeck.String("quae"),
-        WebhookID: &operations.GetTransformationExecutionsWebhookID{},
+        CreatedAt: operations.CreateGetTransformationExecutionsCreatedAtGetTransformationExecutionsCreatedAt2(
+                operations.GetTransformationExecutionsCreatedAt2{
+                    AdditionalProperties: map[string]interface{}{
+                        "Northeast": "Hatchback",
+                    },
+                },
+        ),
+        Dir: operations.CreateGetTransformationExecutionsDirArrayOfgetTransformationExecutionsDir2(
+                []operations.GetTransformationExecutionsDir2{
+                    operations.GetTransformationExecutionsDir2Desc,
+                },
+        ),
+        ID: "<ID>",
+        IssueID: operations.CreateGetTransformationExecutionsIssueIDStr(
+        "towards",
+        ),
+        LogLevel: operations.CreateGetTransformationExecutionsLogLevelGetTransformationExecutionsLogLevel1(
+        operations.GetTransformationExecutionsLogLevel1Error,
+        ),
+        OrderBy: operations.CreateGetTransformationExecutionsOrderByGetTransformationExecutionsOrderBy1(
+        operations.GetTransformationExecutionsOrderBy1CreatedAt,
+        ),
+        WebhookID: operations.CreateGetTransformationExecutionsWebhookIDStr(
+        "Car",
+        ),
     })
     if err != nil {
         log.Fatal(err)

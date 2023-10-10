@@ -1,13 +1,12 @@
 # Integration
 
-A single integration
-
 
 ## Fields
 
 | Field                                                                        | Type                                                                         | Required                                                                     | Description                                                                  |
 | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| `Configs`                                                                    | *interface{}*                                                                | :heavy_check_mark:                                                           | Decrypted Key/Value object of the associated configuration for that provider |
+| `AdditionalProperties`                                                       | map[string]*interface{}*                                                     | :heavy_minus_sign:                                                           | N/A                                                                          |
+| `Configs`                                                                    | [IntegrationConfigs](../../models/shared/integrationconfigs.md)              | :heavy_check_mark:                                                           | Decrypted Key/Value object of the associated configuration for that provider |
 | `CreatedAt`                                                                  | [time.Time](https://pkg.go.dev/time#Time)                                    | :heavy_check_mark:                                                           | Date the integration was created                                             |
 | `Features`                                                                   | [][IntegrationFeature](../../models/shared/integrationfeature.md)            | :heavy_check_mark:                                                           | List of features to enable (see features list below)                         |
 | `ID`                                                                         | *string*                                                                     | :heavy_check_mark:                                                           | ID of the integration                                                        |

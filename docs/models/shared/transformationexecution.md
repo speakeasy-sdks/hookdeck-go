@@ -1,12 +1,11 @@
 # TransformationExecution
 
-A single transformation execution
-
 
 ## Fields
 
 | Field                                                                                     | Type                                                                                      | Required                                                                                  | Description                                                                               |
 | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
+| `AdditionalProperties`                                                                    | map[string]*interface{}*                                                                  | :heavy_minus_sign:                                                                        | N/A                                                                                       |
 | `CreatedAt`                                                                               | [time.Time](https://pkg.go.dev/time#Time)                                                 | :heavy_check_mark:                                                                        | N/A                                                                                       |
 | `ID`                                                                                      | *string*                                                                                  | :heavy_check_mark:                                                                        | N/A                                                                                       |
 | `IssueID`                                                                                 | **string*                                                                                 | :heavy_minus_sign:                                                                        | N/A                                                                                       |

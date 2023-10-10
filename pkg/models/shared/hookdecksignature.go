@@ -5,6 +5,7 @@ package shared
 import (
 	"encoding/json"
 	"fmt"
+	"github.com/speakeasy-sdks/hookdeck-go/pkg/utils"
 )
 
 // HookdeckSignatureType - Type of auth method
@@ -34,13 +35,32 @@ func (e *HookdeckSignatureType) UnmarshalJSON(data []byte) error {
 
 // HookdeckSignature - Hookdeck Signature
 type HookdeckSignature struct {
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// Empty config for the destination's auth method
-	Config *DestinationAuthMethodSignatureConfig `json:"config,omitempty"`
+	Config map[string]interface{} `json:"config,omitempty"`
 	// Type of auth method
 	Type HookdeckSignatureType `json:"type"`
 }
 
-func (o *HookdeckSignature) GetConfig() *DestinationAuthMethodSignatureConfig {
+func (h HookdeckSignature) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(h, "", false)
+}
+
+func (h *HookdeckSignature) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &h, "", false, true); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *HookdeckSignature) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
+}
+
+func (o *HookdeckSignature) GetConfig() map[string]interface{} {
 	if o == nil {
 		return nil
 	}

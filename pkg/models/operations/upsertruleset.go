@@ -4,15 +4,35 @@ package operations
 
 import (
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
+	"github.com/speakeasy-sdks/hookdeck-go/pkg/utils"
 	"net/http"
 )
 
 type UpsertRulesetRequestBody struct {
-	IsTeamDefault *bool `json:"is_team_default,omitempty"`
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
+	IsTeamDefault        *bool                  `json:"is_team_default,omitempty"`
 	// Name for the ruleset
 	Name string `json:"name"`
 	// Array of rules to apply
-	Rules []interface{} `json:"rules,omitempty"`
+	Rules []shared.Rule `json:"rules,omitempty"`
+}
+
+func (u UpsertRulesetRequestBody) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UpsertRulesetRequestBody) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, false); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *UpsertRulesetRequestBody) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
 }
 
 func (o *UpsertRulesetRequestBody) GetIsTeamDefault() *bool {
@@ -29,7 +49,7 @@ func (o *UpsertRulesetRequestBody) GetName() string {
 	return o.Name
 }
 
-func (o *UpsertRulesetRequestBody) GetRules() []interface{} {
+func (o *UpsertRulesetRequestBody) GetRules() []shared.Rule {
 	if o == nil {
 		return nil
 	}
@@ -37,10 +57,13 @@ func (o *UpsertRulesetRequestBody) GetRules() []interface{} {
 }
 
 type UpsertRulesetResponse struct {
+	// HTTP response content type for this operation
 	ContentType string
 	// A single ruleset
-	Ruleset     *shared.Ruleset
-	StatusCode  int
+	Ruleset *shared.Ruleset
+	// HTTP response status code for this operation
+	StatusCode int
+	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
 }
 

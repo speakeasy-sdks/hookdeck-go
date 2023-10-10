@@ -2,10 +2,33 @@
 
 package shared
 
+import (
+	"github.com/speakeasy-sdks/hookdeck-go/pkg/utils"
+)
+
 // DeliveryIssueReference - Reference to the event and attempt an issue is being created for.
 type DeliveryIssueReference struct {
-	AttemptID string `json:"attempt_id"`
-	EventID   string `json:"event_id"`
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
+	AttemptID            string                 `json:"attempt_id"`
+	EventID              string                 `json:"event_id"`
+}
+
+func (d DeliveryIssueReference) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(d, "", false)
+}
+
+func (d *DeliveryIssueReference) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &d, "", false, false); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *DeliveryIssueReference) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
 }
 
 func (o *DeliveryIssueReference) GetAttemptID() string {

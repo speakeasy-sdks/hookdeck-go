@@ -2,10 +2,32 @@
 
 package shared
 
-// RetryRequest - Retry request operation result
+import (
+	"github.com/speakeasy-sdks/hookdeck-go/pkg/utils"
+)
+
 type RetryRequest struct {
-	Events  []Event `json:"events,omitempty"`
-	Request Request `json:"request"`
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
+	Events               []Event                `json:"events,omitempty"`
+	Request              Request                `json:"request"`
+}
+
+func (r RetryRequest) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(r, "", false)
+}
+
+func (r *RetryRequest) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &r, "", false, false); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *RetryRequest) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
 }
 
 func (o *RetryRequest) GetEvents() []Event {

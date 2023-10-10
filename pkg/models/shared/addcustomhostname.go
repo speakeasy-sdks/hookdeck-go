@@ -2,10 +2,32 @@
 
 package shared
 
-// AddCustomHostname - Custom domain successfuly added
+import (
+	"github.com/speakeasy-sdks/hookdeck-go/pkg/utils"
+)
+
 type AddCustomHostname struct {
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// The custom hostname to attach to the workspace
 	Hostname string `json:"hostname"`
+}
+
+func (a AddCustomHostname) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(a, "", false)
+}
+
+func (a *AddCustomHostname) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &a, "", false, false); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *AddCustomHostname) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
 }
 
 func (o *AddCustomHostname) GetHostname() string {

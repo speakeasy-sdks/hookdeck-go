@@ -5,6 +5,7 @@ package shared
 import (
 	"encoding/json"
 	"fmt"
+	"github.com/speakeasy-sdks/hookdeck-go/pkg/utils"
 )
 
 // AlertRuleType - An alert rule must be of type `alert`
@@ -33,10 +34,29 @@ func (e *AlertRuleType) UnmarshalJSON(data []byte) error {
 }
 
 type AlertRule struct {
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// Alert strategy to use
 	Strategy AlertStrategy `json:"strategy"`
 	// An alert rule must be of type `alert`
 	Type AlertRuleType `json:"type"`
+}
+
+func (a AlertRule) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(a, "", false)
+}
+
+func (a *AlertRule) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &a, "", false, true); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *AlertRule) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
 }
 
 func (o *AlertRule) GetStrategy() AlertStrategy {

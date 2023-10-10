@@ -3,11 +3,12 @@
 package shared
 
 import (
+	"github.com/speakeasy-sdks/hookdeck-go/pkg/utils"
 	"time"
 )
 
-// Connection - A single connection
 type Connection struct {
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// Date the connection was archived
 	ArchivedAt *time.Time `json:"archived_at,omitempty"`
 	// Date the connection was created
@@ -21,9 +22,9 @@ type Connection struct {
 	// Date the connection was paused
 	PausedAt *time.Time `json:"paused_at,omitempty"`
 	// Array of rules applied to connection after factoring for the ruleset
-	ResolvedRules []interface{} `json:"resolved_rules,omitempty"`
+	ResolvedRules []Rule `json:"resolved_rules,omitempty"`
 	// Array of rules configured on the connection
-	Rules []interface{} `json:"rules,omitempty"`
+	Rules []Rule `json:"rules,omitempty"`
 	// Associated [Ruleset](#ruleset-object) object
 	Ruleset *Ruleset `json:"ruleset,omitempty"`
 	// Associated [Source](#source-object) object
@@ -32,6 +33,24 @@ type Connection struct {
 	TeamID string `json:"team_id"`
 	// Date the connection was last updated
 	UpdatedAt time.Time `json:"updated_at"`
+}
+
+func (c Connection) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *Connection) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, false); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *Connection) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
 }
 
 func (o *Connection) GetArchivedAt() *time.Time {
@@ -76,14 +95,14 @@ func (o *Connection) GetPausedAt() *time.Time {
 	return o.PausedAt
 }
 
-func (o *Connection) GetResolvedRules() []interface{} {
+func (o *Connection) GetResolvedRules() []Rule {
 	if o == nil {
 		return nil
 	}
 	return o.ResolvedRules
 }
 
-func (o *Connection) GetRules() []interface{} {
+func (o *Connection) GetRules() []Rule {
 	if o == nil {
 		return nil
 	}

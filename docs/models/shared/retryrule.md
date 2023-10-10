@@ -5,6 +5,7 @@
 
 | Field                                                   | Type                                                    | Required                                                | Description                                             |
 | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
+| `AdditionalProperties`                                  | map[string]*interface{}*                                | :heavy_minus_sign:                                      | N/A                                                     |
 | `Count`                                                 | **int64*                                                | :heavy_minus_sign:                                      | Maximum number of retries to attempt                    |
 | `Interval`                                              | **int64*                                                | :heavy_minus_sign:                                      | Time in MS between each retry                           |
 | `Strategy`                                              | [RetryStrategy](../../models/shared/retrystrategy.md)   | :heavy_check_mark:                                      | Algorithm to use when calculating delay between retries |

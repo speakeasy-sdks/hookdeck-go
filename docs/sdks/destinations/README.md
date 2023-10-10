@@ -1,4 +1,5 @@
 # Destinations
+(*Destinations*)
 
 ## Overview
 
@@ -20,15 +21,15 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/types"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
                 Password: "",
                 Username: "",
@@ -38,17 +39,35 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Destinations.Get(ctx, operations.GetDestinationsRequest{
-        Archived: hookdeck.Bool(false),
-        ArchivedAt: &operations.GetDestinationsArchivedAt{},
-        CliPath: &operations.GetDestinationsCliPath{},
-        Dir: &operations.GetDestinationsDir{},
-        ID: &operations.GetDestinationsID{},
-        Limit: hookdeck.Int64(965417),
-        Name: &operations.GetDestinationsName{},
-        Next: hookdeck.String("quidem"),
-        OrderBy: &operations.GetDestinationsOrderBy{},
-        Prev: hookdeck.String("provident"),
-        URL: &operations.GetDestinationsURL{},
+        ArchivedAt: operations.CreateGetDestinationsArchivedAtGetDestinationsArchivedAt2(
+                operations.GetDestinationsArchivedAt2{
+                    AdditionalProperties: map[string]interface{}{
+                        "Northeast": "Hatchback",
+                    },
+                },
+        ),
+        CliPath: operations.CreateGetDestinationsCliPathArrayOfstr(
+                []string{
+                    "protocol",
+                },
+        ),
+        Dir: operations.CreateGetDestinationsDirArrayOfgetDestinationsDir2(
+                []operations.GetDestinationsDir2{
+                    operations.GetDestinationsDir2Desc,
+                },
+        ),
+        ID: operations.CreateGetDestinationsIDStr(
+        "Xenon",
+        ),
+        Name: operations.CreateGetDestinationsNameStr(
+        "Car",
+        ),
+        OrderBy: operations.CreateGetDestinationsOrderByGetDestinationsOrderBy1(
+        operations.GetDestinationsOrderBy1CreatedAt,
+        ),
+        URL: operations.CreateGetDestinationsURLStr(
+        "Gasoline Cambridgeshire",
+        ),
     })
     if err != nil {
         log.Fatal(err)

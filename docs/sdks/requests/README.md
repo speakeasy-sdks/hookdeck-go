@@ -1,4 +1,5 @@
 # Requests
+(*Requests*)
 
 ## Overview
 
@@ -20,15 +21,15 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/types"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
                 Password: "",
                 Username: "",
@@ -38,27 +39,61 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Requests.Get(ctx, operations.GetRequestsRequest{
-        Body: &operations.GetRequestsBody{},
-        BulkRetryID: &operations.GetRequestsBulkRetryID{},
-        CreatedAt: &operations.GetRequestsCreatedAt{},
-        Dir: &operations.GetRequestsDir{},
-        EventsCount: &operations.GetRequestsEventsCount{},
-        Headers: &operations.GetRequestsHeaders{},
-        ID: &operations.GetRequestsID{},
-        IgnoredCount: &operations.GetRequestsIgnoredCount{},
-        Include: operations.GetRequestsIncludeData.ToPointer(),
-        IngestedAt: &operations.GetRequestsIngestedAt{},
-        Limit: hookdeck.Int64(793698),
-        Next: hookdeck.String("quam"),
-        OrderBy: &operations.GetRequestsOrderBy{},
-        ParsedQuery: &operations.GetRequestsParsedQuery{},
-        Path: hookdeck.String("dolor"),
-        Prev: hookdeck.String("vero"),
-        RejectionCause: &operations.GetRequestsRejectionCause{},
-        SearchTerm: hookdeck.String("nostrum"),
-        SourceID: &operations.GetRequestsSourceID{},
-        Status: operations.GetRequestsStatusRejected.ToPointer(),
-        Verified: hookdeck.Bool(false),
+        Body: operations.CreateGetRequestsBodyMapOfany(
+                map[string]interface{}{
+                    "Northeast": "Hatchback",
+                },
+        ),
+        BulkRetryID: operations.CreateGetRequestsBulkRetryIDArrayOfstr(
+                []string{
+                    "protocol",
+                },
+        ),
+        CreatedAt: operations.CreateGetRequestsCreatedAtGetRequestsCreatedAt2(
+                operations.GetRequestsCreatedAt2{
+                    AdditionalProperties: map[string]interface{}{
+                        "joyous": "Xenon",
+                    },
+                },
+        ),
+        Dir: operations.CreateGetRequestsDirGetRequestsDir1(
+        operations.GetRequestsDir1Asc,
+        ),
+        EventsCount: operations.CreateGetRequestsEventsCountArrayOfinteger(
+                []int64{
+                    213457,
+                },
+        ),
+        Headers: operations.CreateGetRequestsHeadersStr(
+        "ah",
+        ),
+        ID: operations.CreateGetRequestsIDStr(
+        "Neon",
+        ),
+        IgnoredCount: operations.CreateGetRequestsIgnoredCountArrayOfinteger(
+                []int64{
+                    219956,
+                },
+        ),
+        IngestedAt: operations.CreateGetRequestsIngestedAtDateTime(
+        types.MustTimeFromString("2021-12-10T05:49:57.828Z"),
+        ),
+        OrderBy: operations.CreateGetRequestsOrderByArrayOfgetRequestsOrderBy2(
+                []operations.GetRequestsOrderBy2{
+                    operations.GetRequestsOrderBy2IngestedAt,
+                },
+        ),
+        ParsedQuery: operations.CreateGetRequestsParsedQueryStr(
+        "input",
+        ),
+        RejectionCause: operations.CreateGetRequestsRejectionCauseArrayOfRequestRejectionCause(
+                []shared.RequestRejectionCause{
+                    shared.RequestRejectionCauseIngestionFatal,
+                },
+        ),
+        SourceID: operations.CreateGetRequestsSourceIDStr(
+        "Reduced",
+        ),
     })
     if err != nil {
         log.Fatal(err)

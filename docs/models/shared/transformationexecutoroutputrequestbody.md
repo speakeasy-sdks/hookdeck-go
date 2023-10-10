@@ -9,9 +9,9 @@
 transformationExecutorOutputRequestBody := shared.CreateTransformationExecutorOutputRequestBodyStr(string{/* values here */})
 ```
 
-### TransformationExecutorOutputRequestBody2
+### 
 
 ```go
-transformationExecutorOutputRequestBody := shared.CreateTransformationExecutorOutputRequestBodyTransformationExecutorOutputRequestBody2(shared.TransformationExecutorOutputRequestBody2{/* values here */})
+transformationExecutorOutputRequestBody := shared.CreateTransformationExecutorOutputRequestBodyMapOfany(map[string]interface{}{/* values here */})
 ```
 

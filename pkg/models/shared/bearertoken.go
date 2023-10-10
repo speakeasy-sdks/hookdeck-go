@@ -5,6 +5,7 @@ package shared
 import (
 	"encoding/json"
 	"fmt"
+	"github.com/speakeasy-sdks/hookdeck-go/pkg/utils"
 )
 
 // BearerTokenType - Type of auth method
@@ -34,10 +35,29 @@ func (e *BearerTokenType) UnmarshalJSON(data []byte) error {
 
 // BearerToken - Bearer Token
 type BearerToken struct {
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// Bearer token config for the destination's auth method
 	Config *DestinationAuthMethodBearerTokenConfig `json:"config,omitempty"`
 	// Type of auth method
 	Type BearerTokenType `json:"type"`
+}
+
+func (b BearerToken) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(b, "", false)
+}
+
+func (b *BearerToken) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &b, "", false, true); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *BearerToken) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
 }
 
 func (o *BearerToken) GetConfig() *DestinationAuthMethodBearerTokenConfig {

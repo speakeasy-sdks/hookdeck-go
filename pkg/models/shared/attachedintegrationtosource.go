@@ -2,9 +2,31 @@
 
 package shared
 
-// AttachedIntegrationToSource - Attach operation success status
+import (
+	"github.com/speakeasy-sdks/hookdeck-go/pkg/utils"
+)
+
 type AttachedIntegrationToSource struct {
-	Success bool `json:"success"`
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
+	Success              bool                   `json:"success"`
+}
+
+func (a AttachedIntegrationToSource) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(a, "", false)
+}
+
+func (a *AttachedIntegrationToSource) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &a, "", false, false); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *AttachedIntegrationToSource) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
 }
 
 func (o *AttachedIntegrationToSource) GetSuccess() bool {

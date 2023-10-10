@@ -3,6 +3,7 @@
 package operations
 
 import (
+	"github.com/speakeasy-sdks/hookdeck-go/pkg/utils"
 	"net/http"
 )
 
@@ -19,8 +20,27 @@ func (o *DeleteConnectionRequest) GetID() string {
 
 // DeleteConnection200ApplicationJSON - A single connection
 type DeleteConnection200ApplicationJSON struct {
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// ID of the connection
 	ID string `json:"id"`
+}
+
+func (d DeleteConnection200ApplicationJSON) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(d, "", false)
+}
+
+func (d *DeleteConnection200ApplicationJSON) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &d, "", false, false); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *DeleteConnection200ApplicationJSON) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
 }
 
 func (o *DeleteConnection200ApplicationJSON) GetID() string {
@@ -31,8 +51,11 @@ func (o *DeleteConnection200ApplicationJSON) GetID() string {
 }
 
 type DeleteConnectionResponse struct {
+	// HTTP response content type for this operation
 	ContentType string
-	StatusCode  int
+	// HTTP response status code for this operation
+	StatusCode int
+	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
 	// A single connection
 	DeleteConnection200ApplicationJSONObject *DeleteConnection200ApplicationJSON

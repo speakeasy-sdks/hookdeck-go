@@ -1,4 +1,5 @@
 # Issue
+(*Issue*)
 
 ### Available Operations
 
@@ -18,21 +19,20 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
                 Password: "",
                 Username: "",
             },
         }),
     )
-    id := "dolor"
+    var id string = "Gallium"
 
     ctx := context.Background()
     res, err := s.Issue.Dismiss(ctx, id)
@@ -71,21 +71,20 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
                 Password: "",
                 Username: "",
             },
         }),
     )
-    id := "necessitatibus"
+    var id string = "female"
 
     ctx := context.Background()
     res, err := s.Issue.Get(ctx, id)
@@ -124,14 +123,14 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
                 Password: "",
                 Username: "",
@@ -139,9 +138,12 @@ func main() {
         }),
     )
     requestBody := operations.UpdateIssueRequestBody{
-        Status: operations.UpdateIssueRequestBodyStatusOpened,
+        AdditionalProperties: map[string]interface{}{
+            "Van": "East",
+        },
+        Status: operations.UpdateIssueRequestBodyStatusAcknowledged,
     }
-    id := "nemo"
+    var id string = "dock"
 
     ctx := context.Background()
     res, err := s.Issue.Update(ctx, requestBody, id)

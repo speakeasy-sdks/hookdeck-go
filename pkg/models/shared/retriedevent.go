@@ -2,15 +2,37 @@
 
 package shared
 
-// RetriedEvent - Retried event with event attempt
+import (
+	"github.com/speakeasy-sdks/hookdeck-go/pkg/utils"
+)
+
 type RetriedEvent struct {
-	Attempt EventAttempt `json:"attempt"`
-	Event   Event        `json:"event"`
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
+	Attempt              *EventAttempt          `json:"attempt"`
+	Event                Event                  `json:"event"`
 }
 
-func (o *RetriedEvent) GetAttempt() EventAttempt {
+func (r RetriedEvent) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(r, "", false)
+}
+
+func (r *RetriedEvent) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &r, "", false, false); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *RetriedEvent) GetAdditionalProperties() map[string]interface{} {
 	if o == nil {
-		return EventAttempt{}
+		return nil
+	}
+	return o.AdditionalProperties
+}
+
+func (o *RetriedEvent) GetAttempt() *EventAttempt {
+	if o == nil {
+		return nil
 	}
 	return o.Attempt
 }

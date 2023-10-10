@@ -2,10 +2,33 @@
 
 package shared
 
+import (
+	"github.com/speakeasy-sdks/hookdeck-go/pkg/utils"
+)
+
 // DeliveryIssueData - Delivery issue data
 type DeliveryIssueData struct {
-	TriggerAttempt *EventAttempt `json:"trigger_attempt,omitempty"`
-	TriggerEvent   *Event        `json:"trigger_event,omitempty"`
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
+	TriggerAttempt       *EventAttempt          `json:"trigger_attempt,omitempty"`
+	TriggerEvent         *Event                 `json:"trigger_event,omitempty"`
+}
+
+func (d DeliveryIssueData) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(d, "", false)
+}
+
+func (d *DeliveryIssueData) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &d, "", false, false); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *DeliveryIssueData) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
 }
 
 func (o *DeliveryIssueData) GetTriggerAttempt() *EventAttempt {

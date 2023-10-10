@@ -5,6 +5,7 @@ package shared
 import (
 	"encoding/json"
 	"fmt"
+	"github.com/speakeasy-sdks/hookdeck-go/pkg/utils"
 )
 
 // APIKeyType - Type of auth method
@@ -34,10 +35,29 @@ func (e *APIKeyType) UnmarshalJSON(data []byte) error {
 
 // APIKey - API Key
 type APIKey struct {
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
 	// API key config for the destination's auth method
 	Config *DestinationAuthMethodAPIKeyConfig `json:"config,omitempty"`
 	// Type of auth method
 	Type APIKeyType `json:"type"`
+}
+
+func (a APIKey) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(a, "", false)
+}
+
+func (a *APIKey) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &a, "", false, true); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *APIKey) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
 }
 
 func (o *APIKey) GetConfig() *DestinationAuthMethodAPIKeyConfig {

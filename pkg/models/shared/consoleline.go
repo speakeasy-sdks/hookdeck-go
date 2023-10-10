@@ -5,6 +5,7 @@ package shared
 import (
 	"encoding/json"
 	"fmt"
+	"github.com/speakeasy-sdks/hookdeck-go/pkg/utils"
 )
 
 type ConsoleLineType string
@@ -44,8 +45,27 @@ func (e *ConsoleLineType) UnmarshalJSON(data []byte) error {
 }
 
 type ConsoleLine struct {
-	Message string          `json:"message"`
-	Type    ConsoleLineType `json:"type"`
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
+	Message              string                 `json:"message"`
+	Type                 ConsoleLineType        `json:"type"`
+}
+
+func (c ConsoleLine) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *ConsoleLine) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, false); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *ConsoleLine) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
 }
 
 func (o *ConsoleLine) GetMessage() string {

@@ -3,9 +3,8 @@
 package shared
 
 import (
-	"bytes"
-	"encoding/json"
 	"errors"
+	"github.com/speakeasy-sdks/hookdeck-go/pkg/utils"
 )
 
 type SeekPaginationDir struct {
@@ -52,21 +51,16 @@ func CreateSeekPaginationOrderByArrayOfstr(arrayOfstr []string) SeekPaginationOr
 }
 
 func (u *SeekPaginationOrderBy) UnmarshalJSON(data []byte) error {
-	var d *json.Decoder
 
 	str := new(string)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&str); err == nil {
+	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
 		u.Str = str
 		u.Type = SeekPaginationOrderByTypeStr
 		return nil
 	}
 
 	arrayOfstr := []string{}
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&arrayOfstr); err == nil {
+	if err := utils.UnmarshalJSON(data, &arrayOfstr, "", true, true); err == nil {
 		u.ArrayOfstr = arrayOfstr
 		u.Type = SeekPaginationOrderByTypeArrayOfstr
 		return nil
@@ -77,22 +71,41 @@ func (u *SeekPaginationOrderBy) UnmarshalJSON(data []byte) error {
 
 func (u SeekPaginationOrderBy) MarshalJSON() ([]byte, error) {
 	if u.Str != nil {
-		return json.Marshal(u.Str)
+		return utils.MarshalJSON(u.Str, "", true)
 	}
 
 	if u.ArrayOfstr != nil {
-		return json.Marshal(u.ArrayOfstr)
+		return utils.MarshalJSON(u.ArrayOfstr, "", true)
 	}
 
-	return nil, nil
+	return nil, errors.New("could not marshal union type: all fields are null")
 }
 
 type SeekPagination struct {
-	Dir     *SeekPaginationDir     `json:"dir,omitempty"`
-	Limit   *int64                 `json:"limit,omitempty"`
-	Next    *string                `json:"next,omitempty"`
-	OrderBy *SeekPaginationOrderBy `json:"order_by,omitempty"`
-	Prev    *string                `json:"prev,omitempty"`
+	AdditionalProperties map[string]interface{} `additionalProperties:"true" json:"-"`
+	Dir                  *SeekPaginationDir     `json:"dir,omitempty"`
+	Limit                *int64                 `json:"limit,omitempty"`
+	Next                 *string                `json:"next,omitempty"`
+	OrderBy              *SeekPaginationOrderBy `json:"order_by,omitempty"`
+	Prev                 *string                `json:"prev,omitempty"`
+}
+
+func (s SeekPagination) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(s, "", false)
+}
+
+func (s *SeekPagination) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &s, "", false, false); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *SeekPagination) GetAdditionalProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.AdditionalProperties
 }
 
 func (o *SeekPagination) GetDir() *SeekPaginationDir {
