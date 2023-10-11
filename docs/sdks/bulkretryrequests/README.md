@@ -1,4 +1,5 @@
 # BulkRetryRequests
+(*BulkRetryRequests*)
 
 ### Available Operations
 
@@ -16,15 +17,15 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/types"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
                 Password: "",
                 Username: "",
@@ -35,21 +36,45 @@ func main() {
     ctx := context.Background()
     res, err := s.BulkRetryRequests.Create(ctx, operations.CreateRequestBulkRetryRequestBody{
         Query: &operations.CreateRequestBulkRetryRequestBodyQuery{
-            Body: &operations.CreateRequestBulkRetryRequestBodyQueryBody{},
-            BulkRetryID: &operations.CreateRequestBulkRetryRequestBodyQueryBulkRetryID{},
-            CreatedAt: &operations.CreateRequestBulkRetryRequestBodyQueryCreatedAt{},
-            EventsCount: &operations.CreateRequestBulkRetryRequestBodyQueryEventsCount{},
-            Headers: &operations.CreateRequestBulkRetryRequestBodyQueryHeaders{},
-            ID: &operations.CreateRequestBulkRetryRequestBodyQueryID{},
-            IgnoredCount: &operations.CreateRequestBulkRetryRequestBodyQueryIgnoredCount{},
-            IngestedAt: &operations.CreateRequestBulkRetryRequestBodyQueryIngestedAt{},
-            ParsedQuery: &operations.CreateRequestBulkRetryRequestBodyQueryParsedQuery{},
-            Path: hookdeck.String("molestiae"),
-            RejectionCause: &operations.CreateRequestBulkRetryRequestBodyQueryRejectionCause{},
-            SearchTerm: hookdeck.String("quod"),
-            SourceID: &operations.CreateRequestBulkRetryRequestBodyQuerySourceID{},
-            Status: operations.CreateRequestBulkRetryRequestBodyQueryStatusRejected.ToPointer(),
-            Verified: hookdeck.Bool(false),
+            Body: operations.CreateCreateRequestBulkRetryRequestBodyQueryBodyStr(
+            "bluetooth",
+            ),
+            BulkRetryID: operations.CreateCreateRequestBulkRetryRequestBodyQueryBulkRetryIDArrayOfstr(
+                    []string{
+                        "Money",
+                    },
+            ),
+            CreatedAt: operations.CreateCreateRequestBulkRetryRequestBodyQueryCreatedAtCreateRequestBulkRetryRequestBodyQueryCreatedAt2(
+                    operations.CreateRequestBulkRetryRequestBodyQueryCreatedAt2{},
+            ),
+            EventsCount: operations.CreateCreateRequestBulkRetryRequestBodyQueryEventsCountInteger(
+            996706,
+            ),
+            Headers: operations.CreateCreateRequestBulkRetryRequestBodyQueryHeadersCreateRequestBulkRetryRequestBodyQueryHeaders2(
+                    operations.CreateRequestBulkRetryRequestBodyQueryHeaders2{},
+            ),
+            ID: operations.CreateCreateRequestBulkRetryRequestBodyQueryIDStr(
+            "technology",
+            ),
+            IgnoredCount: operations.CreateCreateRequestBulkRetryRequestBodyQueryIgnoredCountInteger(
+            455222,
+            ),
+            IngestedAt: operations.CreateCreateRequestBulkRetryRequestBodyQueryIngestedAtDateTime(
+            types.MustTimeFromString("2021-11-27T03:41:30.033Z"),
+            ),
+            ParsedQuery: operations.CreateCreateRequestBulkRetryRequestBodyQueryParsedQueryStr(
+            "male",
+            ),
+            RejectionCause: operations.CreateCreateRequestBulkRetryRequestBodyQueryRejectionCauseArrayOfRequestRejectionCause(
+                    []shared.RequestRejectionCause{
+                        shared.RequestRejectionCauseIngestionFatal,
+                    },
+            ),
+            SourceID: operations.CreateCreateRequestBulkRetryRequestBodyQuerySourceIDArrayOfstr(
+                    []string{
+                        "Screen",
+                    },
+            ),
         },
     })
     if err != nil {
