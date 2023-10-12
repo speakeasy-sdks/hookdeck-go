@@ -1,7 +1,5 @@
 # ToggleWebhookNotifications
 
-Toggle operation status response
-
 
 ## Fields
 

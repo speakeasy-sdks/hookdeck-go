@@ -1,4 +1,5 @@
 # Transformations
+(*Transformations*)
 
 ## Overview
 
@@ -20,14 +21,14 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
                 Password: "",
                 Username: "",
@@ -37,13 +38,26 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Transformations.Get(ctx, operations.GetTransformationsRequest{
-        Dir: &operations.GetTransformationsDir{},
-        ID: &operations.GetTransformationsID{},
-        Limit: hookdeck.Int64(512393),
-        Name: &operations.GetTransformationsName{},
-        Next: hookdeck.String("odio"),
-        OrderBy: &operations.GetTransformationsOrderBy{},
-        Prev: hookdeck.String("occaecati"),
+        Dir: operations.CreateGetTransformationsDirArrayOfgetTransformationsDir2(
+                []operations.GetTransformationsDir2{
+                    operations.GetTransformationsDir2Asc,
+                },
+        ),
+        ID: operations.CreateGetTransformationsIDArrayOfstr(
+                []string{
+                    "Hatchback",
+                },
+        ),
+        Name: operations.CreateGetTransformationsNameArrayOfstr(
+                []string{
+                    "protocol",
+                },
+        ),
+        OrderBy: operations.CreateGetTransformationsOrderByArrayOfgetTransformationsOrderBy2(
+                []operations.GetTransformationsOrderBy2{
+                    operations.GetTransformationsOrderBy2CreatedAt,
+                },
+        ),
     })
     if err != nil {
         log.Fatal(err)
