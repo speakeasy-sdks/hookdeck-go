@@ -1,4 +1,5 @@
 # Bookmarks
+(*Bookmarks*)
 
 ## Overview
 
@@ -20,15 +21,15 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/types"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
                 Password: "",
                 Username: "",
@@ -38,17 +39,38 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Bookmarks.Get(ctx, operations.GetBookmarksRequest{
-        Dir: &operations.GetBookmarksDir{},
-        EventDataID: &operations.GetBookmarksEventDataID{},
-        ID: &operations.GetBookmarksID{},
-        Label: &operations.GetBookmarksLabel{},
-        LastUsedAt: &operations.GetBookmarksLastUsedAt{},
-        Limit: hookdeck.Int64(925597),
-        Name: &operations.GetBookmarksName{},
-        Next: hookdeck.String("temporibus"),
-        OrderBy: &operations.GetBookmarksOrderBy{},
-        Prev: hookdeck.String("ab"),
-        WebhookID: &operations.GetBookmarksWebhookID{},
+        Dir: operations.CreateGetBookmarksDirArrayOfgetBookmarksDir2(
+                []operations.GetBookmarksDir2{
+                    operations.GetBookmarksDir2Asc,
+                },
+        ),
+        EventDataID: operations.CreateGetBookmarksEventDataIDArrayOfstr(
+                []string{
+                    "Hatchback",
+                },
+        ),
+        ID: operations.CreateGetBookmarksIDArrayOfstr(
+                []string{
+                    "protocol",
+                },
+        ),
+        Label: operations.CreateGetBookmarksLabelArrayOfstr(
+                []string{
+                    "joyous",
+                },
+        ),
+        LastUsedAt: operations.CreateGetBookmarksLastUsedAtGetBookmarksLastUsedAt2(
+                operations.GetBookmarksLastUsedAt2{},
+        ),
+        Name: operations.CreateGetBookmarksNameStr(
+        "Account",
+        ),
+        OrderBy: operations.CreateGetBookmarksOrderByGetBookmarksOrderBy1(
+        operations.GetBookmarksOrderBy1CreatedAt,
+        ),
+        WebhookID: operations.CreateGetBookmarksWebhookIDStr(
+        "ah",
+        ),
     })
     if err != nil {
         log.Fatal(err)
