@@ -2,7 +2,6 @@
 
 package shared
 
-// DestinationPaginatedResult - List of destinations
 type DestinationPaginatedResult struct {
 	Count      *int64          `json:"count,omitempty"`
 	Models     []Destination   `json:"models,omitempty"`

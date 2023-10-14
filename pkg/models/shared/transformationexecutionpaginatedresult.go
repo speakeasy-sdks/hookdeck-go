@@ -2,7 +2,6 @@
 
 package shared
 
-// TransformationExecutionPaginatedResult - List of transformation executions
 type TransformationExecutionPaginatedResult struct {
 	Count      *int64                    `json:"count,omitempty"`
 	Models     []TransformationExecution `json:"models,omitempty"`

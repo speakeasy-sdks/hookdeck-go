@@ -1,7 +1,5 @@
 # DeleteCustomDomainSchema
 
-Custom domain successfuly removed
-
 
 ## Fields
 
