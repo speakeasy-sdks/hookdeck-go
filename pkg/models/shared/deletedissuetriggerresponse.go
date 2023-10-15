@@ -2,7 +2,6 @@
 
 package shared
 
-// DeletedIssueTriggerResponse - An object with deleted issue trigger's id
 type DeletedIssueTriggerResponse struct {
 	ID string `json:"id"`
 }

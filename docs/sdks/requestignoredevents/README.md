@@ -1,4 +1,5 @@
 # RequestIgnoredEvents
+(*RequestIgnoredEvents*)
 
 ### Available Operations
 
@@ -16,14 +17,14 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
                 Password: "",
                 Username: "",
@@ -33,13 +34,18 @@ func main() {
 
     ctx := context.Background()
     res, err := s.RequestIgnoredEvents.Get(ctx, operations.GetRequestIgnoredEventsRequest{
-        Dir: &operations.GetRequestIgnoredEventsDir{},
-        IDPathParameter: "quis",
-        IDQueryParameter: &operations.GetRequestIgnoredEventsID{},
-        Limit: hookdeck.Int64(199996),
-        Next: hookdeck.String("eos"),
-        OrderBy: &operations.GetRequestIgnoredEventsOrderBy{},
-        Prev: hookdeck.String("perferendis"),
+        Dir: operations.CreateGetRequestIgnoredEventsDirArrayOfgetRequestIgnoredEventsDir2(
+                []operations.GetRequestIgnoredEventsDir2{
+                    operations.GetRequestIgnoredEventsDir2Asc,
+                },
+        ),
+        IDPathParameter: "Hatchback Kia",
+        IDQueryParameter: operations.CreateGetRequestIgnoredEventsIDStr(
+        "towards",
+        ),
+        OrderBy: operations.CreateGetRequestIgnoredEventsOrderByGetRequestIgnoredEventsOrderBy1(
+        operations.GetRequestIgnoredEventsOrderBy1CreatedAt,
+        ),
     })
     if err != nil {
         log.Fatal(err)

@@ -69,10 +69,13 @@ func (o *TriggerBookmarkRequest) GetID() string {
 }
 
 type TriggerBookmarkResponse struct {
+	// HTTP response content type for this operation
 	ContentType string
 	// Array of created events
-	EventArray  []shared.Event
-	StatusCode  int
+	EventArray []shared.Event
+	// HTTP response status code for this operation
+	StatusCode int
+	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
 }
 

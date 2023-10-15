@@ -1,7 +1,5 @@
 # RulesetPaginatedResult
 
-List of rulesets
-
 
 ## Fields
 

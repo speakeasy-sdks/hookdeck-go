@@ -2,7 +2,6 @@
 
 package shared
 
-// RulesetPaginatedResult - List of rulesets
 type RulesetPaginatedResult struct {
 	Count      *int64          `json:"count,omitempty"`
 	Models     []Ruleset       `json:"models,omitempty"`
