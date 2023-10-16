@@ -1,4 +1,5 @@
 # Attempts
+(*Attempts*)
 
 ## Overview
 
@@ -20,14 +21,14 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
                 Password: "",
                 Username: "",
@@ -37,12 +38,21 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Attempts.Get(ctx, operations.GetAttemptsRequest{
-        Dir: &operations.GetAttemptsDir{},
-        EventID: &operations.GetAttemptsEventID{},
-        Limit: hookdeck.Int64(715190),
-        Next: hookdeck.String("quibusdam"),
-        OrderBy: &operations.GetAttemptsOrderBy{},
-        Prev: hookdeck.String("unde"),
+        Dir: operations.CreateGetAttemptsDirArrayOfgetAttemptsDir2(
+                []operations.GetAttemptsDir2{
+                    operations.GetAttemptsDir2Asc,
+                },
+        ),
+        EventID: operations.CreateGetAttemptsEventIDArrayOfstr(
+                []string{
+                    "Hatchback",
+                },
+        ),
+        OrderBy: operations.CreateGetAttemptsOrderByArrayOfgetAttemptsOrderBy2(
+                []operations.GetAttemptsOrderBy2{
+                    operations.GetAttemptsOrderBy2CreatedAt,
+                },
+        ),
     })
     if err != nil {
         log.Fatal(err)

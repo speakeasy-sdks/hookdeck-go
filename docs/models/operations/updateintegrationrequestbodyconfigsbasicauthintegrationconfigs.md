@@ -1,4 +1,4 @@
-# APIKeyIntegrationConfigs
+# UpdateIntegrationRequestBodyConfigsBasicAuthIntegrationConfigs
 
 Decrypted Key/Value object of the associated configuration for that provider
 
@@ -7,5 +7,5 @@ Decrypted Key/Value object of the associated configuration for that provider
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `APIKey`           | *string*           | :heavy_check_mark: | N/A                |
-| `HeaderKey`        | *string*           | :heavy_check_mark: | N/A                |
+| `Name`             | *string*           | :heavy_check_mark: | N/A                |
+| `Password`         | *string*           | :heavy_check_mark: | N/A                |

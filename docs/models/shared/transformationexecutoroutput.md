@@ -1,7 +1,5 @@
 # TransformationExecutorOutput
 
-Transformation run output
-
 
 ## Fields
 
