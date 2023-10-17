@@ -3,11 +3,11 @@
 package operations
 
 import (
-	"bytes"
 	"encoding/json"
 	"errors"
 	"fmt"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
+	"github.com/speakeasy-sdks/hookdeck-go/pkg/utils"
 	"net/http"
 	"time"
 )
@@ -100,21 +100,16 @@ func CreateGetIssueTriggersDirArrayOfgetIssueTriggersDir2(arrayOfgetIssueTrigger
 }
 
 func (u *GetIssueTriggersDir) UnmarshalJSON(data []byte) error {
-	var d *json.Decoder
 
 	getIssueTriggersDir1 := new(GetIssueTriggersDir1)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&getIssueTriggersDir1); err == nil {
+	if err := utils.UnmarshalJSON(data, &getIssueTriggersDir1, "", true, true); err == nil {
 		u.GetIssueTriggersDir1 = getIssueTriggersDir1
 		u.Type = GetIssueTriggersDirTypeGetIssueTriggersDir1
 		return nil
 	}
 
 	arrayOfgetIssueTriggersDir2 := []GetIssueTriggersDir2{}
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&arrayOfgetIssueTriggersDir2); err == nil {
+	if err := utils.UnmarshalJSON(data, &arrayOfgetIssueTriggersDir2, "", true, true); err == nil {
 		u.ArrayOfgetIssueTriggersDir2 = arrayOfgetIssueTriggersDir2
 		u.Type = GetIssueTriggersDirTypeArrayOfgetIssueTriggersDir2
 		return nil
@@ -125,14 +120,14 @@ func (u *GetIssueTriggersDir) UnmarshalJSON(data []byte) error {
 
 func (u GetIssueTriggersDir) MarshalJSON() ([]byte, error) {
 	if u.GetIssueTriggersDir1 != nil {
-		return json.Marshal(u.GetIssueTriggersDir1)
+		return utils.MarshalJSON(u.GetIssueTriggersDir1, "", true)
 	}
 
 	if u.ArrayOfgetIssueTriggersDir2 != nil {
-		return json.Marshal(u.ArrayOfgetIssueTriggersDir2)
+		return utils.MarshalJSON(u.ArrayOfgetIssueTriggersDir2, "", true)
 	}
 
-	return nil, nil
+	return nil, errors.New("could not marshal union type: all fields are null")
 }
 
 // GetIssueTriggersDisabledAt2 - Date when the issue trigger was disabled
@@ -142,6 +137,17 @@ type GetIssueTriggersDisabledAt2 struct {
 	Gte *time.Time `queryParam:"name=gte"`
 	Le  *time.Time `queryParam:"name=le"`
 	Lte *time.Time `queryParam:"name=lte"`
+}
+
+func (g GetIssueTriggersDisabledAt2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetIssueTriggersDisabledAt2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, true); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *GetIssueTriggersDisabledAt2) GetAny() *bool {
@@ -212,23 +218,18 @@ func CreateGetIssueTriggersDisabledAtGetIssueTriggersDisabledAt2(getIssueTrigger
 }
 
 func (u *GetIssueTriggersDisabledAt) UnmarshalJSON(data []byte) error {
-	var d *json.Decoder
 
-	dateTime := new(time.Time)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&dateTime); err == nil {
-		u.DateTime = dateTime
-		u.Type = GetIssueTriggersDisabledAtTypeDateTime
+	getIssueTriggersDisabledAt2 := new(GetIssueTriggersDisabledAt2)
+	if err := utils.UnmarshalJSON(data, &getIssueTriggersDisabledAt2, "", true, true); err == nil {
+		u.GetIssueTriggersDisabledAt2 = getIssueTriggersDisabledAt2
+		u.Type = GetIssueTriggersDisabledAtTypeGetIssueTriggersDisabledAt2
 		return nil
 	}
 
-	getIssueTriggersDisabledAt2 := new(GetIssueTriggersDisabledAt2)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&getIssueTriggersDisabledAt2); err == nil {
-		u.GetIssueTriggersDisabledAt2 = getIssueTriggersDisabledAt2
-		u.Type = GetIssueTriggersDisabledAtTypeGetIssueTriggersDisabledAt2
+	dateTime := new(time.Time)
+	if err := utils.UnmarshalJSON(data, &dateTime, "", true, true); err == nil {
+		u.DateTime = dateTime
+		u.Type = GetIssueTriggersDisabledAtTypeDateTime
 		return nil
 	}
 
@@ -237,14 +238,14 @@ func (u *GetIssueTriggersDisabledAt) UnmarshalJSON(data []byte) error {
 
 func (u GetIssueTriggersDisabledAt) MarshalJSON() ([]byte, error) {
 	if u.DateTime != nil {
-		return json.Marshal(u.DateTime)
+		return utils.MarshalJSON(u.DateTime, "", true)
 	}
 
 	if u.GetIssueTriggersDisabledAt2 != nil {
-		return json.Marshal(u.GetIssueTriggersDisabledAt2)
+		return utils.MarshalJSON(u.GetIssueTriggersDisabledAt2, "", true)
 	}
 
-	return nil, nil
+	return nil, errors.New("could not marshal union type: all fields are null")
 }
 
 type GetIssueTriggersOrderBy2 string
@@ -335,21 +336,16 @@ func CreateGetIssueTriggersOrderByArrayOfgetIssueTriggersOrderBy2(arrayOfgetIssu
 }
 
 func (u *GetIssueTriggersOrderBy) UnmarshalJSON(data []byte) error {
-	var d *json.Decoder
 
 	getIssueTriggersOrderBy1 := new(GetIssueTriggersOrderBy1)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&getIssueTriggersOrderBy1); err == nil {
+	if err := utils.UnmarshalJSON(data, &getIssueTriggersOrderBy1, "", true, true); err == nil {
 		u.GetIssueTriggersOrderBy1 = getIssueTriggersOrderBy1
 		u.Type = GetIssueTriggersOrderByTypeGetIssueTriggersOrderBy1
 		return nil
 	}
 
 	arrayOfgetIssueTriggersOrderBy2 := []GetIssueTriggersOrderBy2{}
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&arrayOfgetIssueTriggersOrderBy2); err == nil {
+	if err := utils.UnmarshalJSON(data, &arrayOfgetIssueTriggersOrderBy2, "", true, true); err == nil {
 		u.ArrayOfgetIssueTriggersOrderBy2 = arrayOfgetIssueTriggersOrderBy2
 		u.Type = GetIssueTriggersOrderByTypeArrayOfgetIssueTriggersOrderBy2
 		return nil
@@ -360,14 +356,14 @@ func (u *GetIssueTriggersOrderBy) UnmarshalJSON(data []byte) error {
 
 func (u GetIssueTriggersOrderBy) MarshalJSON() ([]byte, error) {
 	if u.GetIssueTriggersOrderBy1 != nil {
-		return json.Marshal(u.GetIssueTriggersOrderBy1)
+		return utils.MarshalJSON(u.GetIssueTriggersOrderBy1, "", true)
 	}
 
 	if u.ArrayOfgetIssueTriggersOrderBy2 != nil {
-		return json.Marshal(u.ArrayOfgetIssueTriggersOrderBy2)
+		return utils.MarshalJSON(u.ArrayOfgetIssueTriggersOrderBy2, "", true)
 	}
 
-	return nil, nil
+	return nil, errors.New("could not marshal union type: all fields are null")
 }
 
 type GetIssueTriggersRequest struct {
@@ -439,11 +435,14 @@ func (o *GetIssueTriggersRequest) GetType() *shared.IssueType {
 }
 
 type GetIssueTriggersResponse struct {
+	// HTTP response content type for this operation
 	ContentType string
 	// List of issue triggers
 	IssueTriggerPaginatedResult *shared.IssueTriggerPaginatedResult
-	StatusCode                  int
-	RawResponse                 *http.Response
+	// HTTP response status code for this operation
+	StatusCode int
+	// Raw HTTP response; suitable for custom response parsing
+	RawResponse *http.Response
 }
 
 func (o *GetIssueTriggersResponse) GetContentType() string {

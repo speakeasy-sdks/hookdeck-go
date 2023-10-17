@@ -3,10 +3,10 @@
 
 ## Supported Types
 
-### RequestRejectionCause
+### GetRequestsRejectionCauseRequestRejectionCause
 
 ```go
-getRequestsRejectionCause := operations.CreateGetRequestsRejectionCauseRequestRejectionCause(shared.RequestRejectionCause{/* values here */})
+getRequestsRejectionCause := operations.CreateGetRequestsRejectionCauseGetRequestsRejectionCauseRequestRejectionCause(operations.GetRequestsRejectionCauseRequestRejectionCause{/* values here */})
 ```
 
 ### GetRequestsRejectionCause2

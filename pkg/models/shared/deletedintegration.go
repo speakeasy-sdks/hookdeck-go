@@ -2,7 +2,6 @@
 
 package shared
 
-// DeletedIntegration - An object with deleted integration id
 type DeletedIntegration struct {
 	ID string `json:"id"`
 }

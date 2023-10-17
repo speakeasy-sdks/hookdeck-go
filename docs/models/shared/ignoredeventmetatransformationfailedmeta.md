@@ -1,4 +1,4 @@
-# TransformationFailedMeta
+# IgnoredEventMetaTransformationFailedMeta
 
 
 ## Fields

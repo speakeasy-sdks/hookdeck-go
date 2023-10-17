@@ -2,7 +2,6 @@
 
 package shared
 
-// ConnectionPaginatedResult - List of connections
 type ConnectionPaginatedResult struct {
 	Count      *int64          `json:"count,omitempty"`
 	Models     []Connection    `json:"models,omitempty"`
