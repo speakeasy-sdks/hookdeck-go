@@ -1,4 +1,5 @@
 # RequestEvents
+(*RequestEvents*)
 
 ### Available Operations
 
@@ -16,15 +17,15 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/types"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
                 Password: "",
                 Username: "",
@@ -34,34 +35,82 @@ func main() {
 
     ctx := context.Background()
     res, err := s.RequestEvents.Get(ctx, operations.GetRequestEventsRequest{
-        Attempts: &operations.GetRequestEventsAttempts{},
-        Body: &operations.GetRequestEventsBody{},
-        BulkRetryID: &operations.GetRequestEventsBulkRetryID{},
-        CliID: &operations.GetRequestEventsCliID{},
-        CliUserID: &operations.GetRequestEventsCliUserID{},
-        CreatedAt: &operations.GetRequestEventsCreatedAt{},
-        DestinationID: &operations.GetRequestEventsDestinationID{},
-        Dir: &operations.GetRequestEventsDir{},
-        ErrorCode: &operations.GetRequestEventsErrorCode{},
-        EventDataID: &operations.GetRequestEventsEventDataID{},
-        Headers: &operations.GetRequestEventsHeaders{},
-        IDPathParameter: "nobis",
-        IDQueryParameter: &operations.GetRequestEventsID{},
-        Include: operations.GetRequestEventsIncludeData.ToPointer(),
-        IssueID: &operations.GetRequestEventsIssueID{},
-        LastAttemptAt: &operations.GetRequestEventsLastAttemptAt{},
-        Limit: hookdeck.Int64(171629),
-        Next: hookdeck.String("quis"),
-        OrderBy: &operations.GetRequestEventsOrderBy{},
-        ParsedQuery: &operations.GetRequestEventsParsedQuery{},
-        Path: hookdeck.String("totam"),
-        Prev: hookdeck.String("dignissimos"),
-        ResponseStatus: &operations.GetRequestEventsResponseStatus{},
-        SearchTerm: hookdeck.String("eaque"),
-        SourceID: &operations.GetRequestEventsSourceID{},
-        Status: &operations.GetRequestEventsStatus{},
-        SuccessfulAt: &operations.GetRequestEventsSuccessfulAt{},
-        WebhookID: &operations.GetRequestEventsWebhookID{},
+        Attempts: operations.CreateGetRequestEventsAttemptsGetRequestEventsAttempts2(
+                operations.GetRequestEventsAttempts2{},
+        ),
+        Body: operations.CreateGetRequestEventsBodyStr(
+        "program",
+        ),
+        BulkRetryID: operations.CreateGetRequestEventsBulkRetryIDArrayOfstr(
+                []string{
+                    "Kia",
+                },
+        ),
+        CliID: operations.CreateGetRequestEventsCliIDStr(
+        "towards",
+        ),
+        CliUserID: operations.CreateGetRequestEventsCliUserIDStr(
+        "Xenon",
+        ),
+        CreatedAt: operations.CreateGetRequestEventsCreatedAtDateTime(
+        types.MustTimeFromString("2021-10-15T18:16:01.443Z"),
+        ),
+        DestinationID: operations.CreateGetRequestEventsDestinationIDArrayOfstr(
+                []string{
+                    "Car",
+                },
+        ),
+        Dir: operations.CreateGetRequestEventsDirArrayOfgetRequestEventsDir2(
+                []operations.GetRequestEventsDir2{
+                    operations.GetRequestEventsDir2Asc,
+                },
+        ),
+        ErrorCode: operations.CreateGetRequestEventsErrorCodeStr(
+        "Neon",
+        ),
+        EventDataID: operations.CreateGetRequestEventsEventDataIDArrayOfstr(
+                []string{
+                    "Table",
+                },
+        ),
+        Headers: operations.CreateGetRequestEventsHeadersStr(
+        "quasi",
+        ),
+        IDPathParameter: "Optional",
+        IDQueryParameter: operations.CreateGetRequestEventsIDArrayOfstr(
+                []string{
+                    "Hybrid",
+                },
+        ),
+        IssueID: operations.CreateGetRequestEventsIssueIDStr(
+        "Reduced",
+        ),
+        LastAttemptAt: operations.CreateGetRequestEventsLastAttemptAtGetRequestEventsLastAttemptAt2(
+                operations.GetRequestEventsLastAttemptAt2{},
+        ),
+        OrderBy: operations.CreateGetRequestEventsOrderByArrayOfgetRequestEventsOrderBy2(
+                []operations.GetRequestEventsOrderBy2{
+                    operations.GetRequestEventsOrderBy2LastAttemptAt,
+                },
+        ),
+        ParsedQuery: operations.CreateGetRequestEventsParsedQueryGetRequestEventsParsedQuery2(
+                operations.GetRequestEventsParsedQuery2{},
+        ),
+        ResponseStatus: operations.CreateGetRequestEventsResponseStatusInteger(
+        322612,
+        ),
+        SourceID: operations.CreateGetRequestEventsSourceIDStr(
+        "cyan",
+        ),
+        Status: operations.CreateGetRequestEventsStatusEventStatus(
+        shared.EventStatusScheduled,
+        ),
+        SuccessfulAt: operations.CreateGetRequestEventsSuccessfulAtGetRequestEventsSuccessfulAt2(
+                operations.GetRequestEventsSuccessfulAt2{},
+        ),
+        WebhookID: operations.CreateGetRequestEventsWebhookIDStr(
+        "Holmium",
+        ),
     })
     if err != nil {
         log.Fatal(err)

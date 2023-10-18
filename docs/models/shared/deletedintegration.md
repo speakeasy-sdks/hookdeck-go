@@ -1,7 +1,5 @@
 # DeletedIntegration
 
-An object with deleted integration id
-
 
 ## Fields
 

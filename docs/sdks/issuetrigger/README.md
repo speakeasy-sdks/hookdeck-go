@@ -1,4 +1,5 @@
 # IssueTrigger
+(*IssueTrigger*)
 
 ### Available Operations
 
@@ -22,14 +23,14 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
                 Password: "",
                 Username: "",
@@ -39,19 +40,22 @@ func main() {
 
     ctx := context.Background()
     res, err := s.IssueTrigger.Create(ctx, operations.CreateIssueTriggerRequestBody{
-        Channels: shared.IssueTriggerChannels{
+        Channels: &shared.IssueTriggerChannels{
             Email: &shared.IssueTriggerEmailChannel{},
             Opsgenie: &shared.IssueTriggerIntegrationChannel{},
             Slack: &shared.IssueTriggerSlackChannel{
-                ChannelName: "quasi",
+                ChannelName: "online",
             },
         },
-        Configs: &shared.IssueTriggerTransformationConfigs{
-            LogLevel: shared.TransformationExecutionLogLevelFatal,
-            Transformations: shared.IssueTriggerTransformationConfigsTransformations{},
-        },
-        Name: hookdeck.String("Frederick Schoen"),
-        Type: shared.IssueTypeTransformation,
+        Configs: operations.CreateCreateIssueTriggerRequestBodyConfigsIssueTriggerTransformationConfigs(
+                shared.IssueTriggerTransformationConfigs{
+                    LogLevel: shared.TransformationExecutionLogLevelFatal,
+                    Transformations: shared.CreateIssueTriggerTransformationConfigsTransformationsStr(
+                    "innovative",
+                    ),
+                },
+        ),
+        Type: shared.IssueTypeBackpressure,
     })
     if err != nil {
         log.Fatal(err)
@@ -88,21 +92,22 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
                 Password: "",
                 Username: "",
             },
         }),
     )
-    id := "architecto"
+
+
+    var id string = "program"
 
     ctx := context.Background()
     res, err := s.IssueTrigger.Delete(ctx, id)
@@ -141,21 +146,22 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
                 Password: "",
                 Username: "",
             },
         }),
     )
-    id := "architecto"
+
+
+    var id string = "Bicycle"
 
     ctx := context.Background()
     res, err := s.IssueTrigger.Disable(ctx, id)
@@ -194,21 +200,22 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
                 Password: "",
                 Username: "",
             },
         }),
     )
-    id := "repudiandae"
+
+
+    var id string = "male"
 
     ctx := context.Background()
     res, err := s.IssueTrigger.Enable(ctx, id)
@@ -247,21 +254,22 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
                 Password: "",
                 Username: "",
             },
         }),
     )
-    id := "ullam"
+
+
+    var id string = "female"
 
     ctx := context.Background()
     res, err := s.IssueTrigger.Get(ctx, id)
@@ -300,37 +308,41 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/types"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
                 Password: "",
                 Username: "",
             },
         }),
     )
+
+
     requestBody := operations.UpdateIssueTriggerRequestBody{
         Channels: &shared.IssueTriggerChannels{
             Email: &shared.IssueTriggerEmailChannel{},
             Opsgenie: &shared.IssueTriggerIntegrationChannel{},
             Slack: &shared.IssueTriggerSlackChannel{
-                ChannelName: "expedita",
+                ChannelName: "Van",
             },
         },
-        Configs: &shared.IssueTriggerTransformationConfigs{
-            LogLevel: shared.TransformationExecutionLogLevelFatal,
-            Transformations: shared.IssueTriggerTransformationConfigsTransformations{},
-        },
-        DisabledAt: types.MustTimeFromString("2022-07-21T08:29:53.942Z"),
-        Name: hookdeck.String("Al Bashirian"),
+        Configs: operations.CreateUpdateIssueTriggerRequestBodyConfigsIssueTriggerDeliveryConfigs(
+                shared.IssueTriggerDeliveryConfigs{
+                    Connections: shared.CreateIssueTriggerDeliveryConfigsConnectionsStr(
+                    "male",
+                    ),
+                    Strategy: shared.IssueTriggerStrategyFirstAttempt,
+                },
+        ),
     }
-    id := "natus"
+
+    var id string = "Quality"
 
     ctx := context.Background()
     res, err := s.IssueTrigger.Update(ctx, requestBody, id)
@@ -370,14 +382,14 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
                 Password: "",
                 Username: "",
@@ -387,18 +399,22 @@ func main() {
 
     ctx := context.Background()
     res, err := s.IssueTrigger.Upsert(ctx, operations.UpsertIssueTriggerRequestBody{
-        Channels: shared.IssueTriggerChannels{
+        Channels: &shared.IssueTriggerChannels{
             Email: &shared.IssueTriggerEmailChannel{},
             Opsgenie: &shared.IssueTriggerIntegrationChannel{},
             Slack: &shared.IssueTriggerSlackChannel{
-                ChannelName: "magni",
+                ChannelName: "index",
             },
         },
-        Configs: &shared.IssueTriggerDeliveryConfigs{
-            Connections: shared.IssueTriggerDeliveryConfigsConnections{},
-            Strategy: shared.IssueTriggerStrategyFinalAttempt,
-        },
-        Name: "Ervin Schoen",
+        Configs: operations.CreateUpsertIssueTriggerRequestBodyConfigsIssueTriggerTransformationConfigs(
+                shared.IssueTriggerTransformationConfigs{
+                    LogLevel: shared.TransformationExecutionLogLevelWarn,
+                    Transformations: shared.CreateIssueTriggerTransformationConfigsTransformationsStr(
+                    "grow",
+                    ),
+                },
+        ),
+        Name: "kilogram",
         Type: shared.IssueTypeDelivery,
     })
     if err != nil {

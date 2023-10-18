@@ -2,7 +2,6 @@
 
 package shared
 
-// SourcePaginatedResult - List of sources
 type SourcePaginatedResult struct {
 	Count      *int64          `json:"count,omitempty"`
 	Models     []Source        `json:"models,omitempty"`
