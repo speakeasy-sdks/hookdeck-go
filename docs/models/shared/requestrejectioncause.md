@@ -1,7 +1,5 @@
 # RequestRejectionCause
 
-Filter by rejection cause
-
 
 ## Values
 

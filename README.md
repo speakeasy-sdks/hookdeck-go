@@ -30,40 +30,39 @@ go get github.com/speakeasy-sdks/hookdeck-go
 
 ## SDK Example Usage
 <!-- Start SDK Example Usage -->
-
-
 ```go
 package main
 
-import(
+import (
 	"context"
-	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
+	"log"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
-            BasicAuth: &shared.SchemeBasicAuth{
-                Password: "",
-                Username: "",
-            },
-        }),
-    )
-    id := "corrupti"
+	s := hookdeckgo.New(
+		hookdeckgo.WithSecurity(shared.Security{
+			BasicAuth: &shared.SchemeBasicAuth{
+				Password: "",
+				Username: "",
+			},
+		}),
+	)
 
-    ctx := context.Background()
-    res, err := s.Attempt.Get(ctx, id)
-    if err != nil {
-        log.Fatal(err)
-    }
+	var id string = "female"
 
-    if res.EventAttempt != nil {
-        // handle response
-    }
+	ctx := context.Background()
+	res, err := s.Attempt.Get(ctx, id)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	if res.EventAttempt != nil {
+		// handle response
+	}
 }
+
 ```
 <!-- End SDK Example Usage -->
 
@@ -286,6 +285,24 @@ func main() {
 
 * [Toggle](docs/sdks/webhooknotifications/README.md#toggle) - Toggle webhook notifications for the workspace
 <!-- End SDK Available Operations -->
+
+
+
+<!-- Start Dev Containers -->
+
+
+
+<!-- End Dev Containers -->
+
+
+
+<!-- Start Go Types -->
+
+<!-- End Go Types -->
+
+<!-- Placeholder for Future Speakeasy SDK Sections -->
+
+
 
 ### Maturity
 

@@ -1,4 +1,5 @@
 # Issues
+(*Issues*)
 
 ## Overview
 
@@ -20,15 +21,15 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/types"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
                 Password: "",
                 Username: "",
@@ -39,24 +40,111 @@ func main() {
     ctx := context.Background()
     res, err := s.Issues.Get(ctx, operations.GetIssuesRequest{
         AggregationKeys: &operations.GetIssuesAggregationKeys{
-            ErrorCode: &operations.GetIssuesAggregationKeysErrorCode{},
-            ResponseStatus: &operations.GetIssuesAggregationKeysResponseStatus{},
-            WebhookID: &operations.GetIssuesAggregationKeysWebhookID{},
+            ErrorCode: operations.CreateGetIssuesAggregationKeysErrorCodeArrayOfAttemptErrorCode(
+                    []shared.AttemptErrorCode{
+                        shared.AttemptErrorCodeTimeout,
+                    },
+            ),
+            ResponseStatus: operations.CreateGetIssuesAggregationKeysResponseStatusArrayOffloat32(
+                    []float32{
+                        8441.99,
+                    },
+            ),
+            WebhookID: operations.CreateGetIssuesAggregationKeysWebhookIDArrayOfstr(
+                    []string{
+                        "Kia",
+                    },
+            ),
         },
-        CreatedAt: &operations.GetIssuesCreatedAt{},
-        Dir: &operations.GetIssuesDir{},
-        DismissedAt: &operations.GetIssuesDismissedAt{},
-        FirstSeenAt: &operations.GetIssuesFirstSeenAt{},
-        ID: &operations.GetIssuesID{},
-        IssueTriggerID: &operations.GetIssuesIssueTriggerID{},
-        LastSeenAt: &operations.GetIssuesLastSeenAt{},
-        Limit: hookdeck.Int64(50588),
-        MergedWith: &operations.GetIssuesMergedWith{},
-        Next: hookdeck.String("pariatur"),
-        OrderBy: &operations.GetIssuesOrderBy{},
-        Prev: hookdeck.String("nemo"),
-        Status: &operations.GetIssuesStatus{},
-        Type: &operations.GetIssuesType{},
+        CreatedAt: operations.CreateGetIssuesCreatedAtDateTime(
+        types.MustTimeFromString("2023-11-29T02:34:03.781Z"),
+        ),
+        Dir: operations.CreateGetIssuesDirArrayOfgetIssuesDir2(
+                []operations.GetIssuesDir2{
+                    operations.GetIssuesDir2Asc,
+                },
+        ),
+        DismissedAt: operations.CreateGetIssuesDismissedAtGetIssuesDismissedAt2(
+                operations.GetIssuesDismissedAt2{},
+        ),
+        FirstSeenAt: operations.CreateGetIssuesFirstSeenAtDateTime(
+        types.MustTimeFromString("2022-03-29T23:04:28.455Z"),
+        ),
+        ID: operations.CreateGetIssuesIDStr(
+        "iss_YXKv5OdJXCiVwkPhGy",
+        ),
+        IssueTriggerID: operations.CreateGetIssuesIssueTriggerIDArrayOfstr(
+                []string{
+                    "i",
+                    "t",
+                    "_",
+                    "B",
+                    "X",
+                    "K",
+                    "v",
+                    "5",
+                    "O",
+                    "d",
+                    "J",
+                    "X",
+                    "C",
+                    "i",
+                    "V",
+                    "w",
+                    "k",
+                    "P",
+                    "h",
+                    "G",
+                    "y",
+                },
+        ),
+        LastSeenAt: operations.CreateGetIssuesLastSeenAtDateTime(
+        types.MustTimeFromString("2021-03-16T20:28:26.941Z"),
+        ),
+        MergedWith: operations.CreateGetIssuesMergedWithArrayOfstr(
+                []string{
+                    "i",
+                    "s",
+                    "s",
+                    "_",
+                    "A",
+                    "X",
+                    "K",
+                    "v",
+                    "3",
+                    "O",
+                    "d",
+                    "J",
+                    "X",
+                    "C",
+                    "i",
+                    "K",
+                    "l",
+                    "k",
+                    "P",
+                    "h",
+                    "D",
+                    "z",
+                },
+        ),
+        OrderBy: operations.CreateGetIssuesOrderByGetIssuesOrderBy1(
+        operations.GetIssuesOrderBy1LastSeenAt,
+        ),
+        Status: operations.CreateGetIssuesStatusGetIssuesStatus1(
+        operations.GetIssuesStatus1Opened,
+        ),
+        Type: operations.CreateGetIssuesTypeArrayOfgetIssuesType2(
+                []operations.GetIssuesType2{
+                    operations.GetIssuesType2Backpressure,
+                    operations.GetIssuesType2Delivery,
+                    operations.GetIssuesType2Backpressure,
+                    operations.GetIssuesType2Delivery,
+                    operations.GetIssuesType2Transformation,
+                    operations.GetIssuesType2Delivery,
+                    operations.GetIssuesType2Transformation,
+                    operations.GetIssuesType2Delivery,
+                },
+        ),
     })
     if err != nil {
         log.Fatal(err)
