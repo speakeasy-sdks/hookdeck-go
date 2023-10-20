@@ -3,9 +3,8 @@
 package shared
 
 import (
-	"bytes"
-	"encoding/json"
 	"errors"
+	"github.com/speakeasy-sdks/hookdeck-go/pkg/utils"
 	"time"
 )
 
@@ -56,30 +55,23 @@ func CreateEventDataBodyArrayOfany(arrayOfany []interface{}) EventDataBody {
 }
 
 func (u *EventDataBody) UnmarshalJSON(data []byte) error {
-	var d *json.Decoder
-
-	str := new(string)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&str); err == nil {
-		u.Str = str
-		u.Type = EventDataBodyTypeStr
-		return nil
-	}
 
 	eventDataBody2 := new(EventDataBody2)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&eventDataBody2); err == nil {
+	if err := utils.UnmarshalJSON(data, &eventDataBody2, "", true, true); err == nil {
 		u.EventDataBody2 = eventDataBody2
 		u.Type = EventDataBodyTypeEventDataBody2
 		return nil
 	}
 
+	str := new(string)
+	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
+		u.Str = str
+		u.Type = EventDataBodyTypeStr
+		return nil
+	}
+
 	arrayOfany := []interface{}{}
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&arrayOfany); err == nil {
+	if err := utils.UnmarshalJSON(data, &arrayOfany, "", true, true); err == nil {
 		u.ArrayOfany = arrayOfany
 		u.Type = EventDataBodyTypeArrayOfany
 		return nil
@@ -90,18 +82,18 @@ func (u *EventDataBody) UnmarshalJSON(data []byte) error {
 
 func (u EventDataBody) MarshalJSON() ([]byte, error) {
 	if u.Str != nil {
-		return json.Marshal(u.Str)
+		return utils.MarshalJSON(u.Str, "", true)
 	}
 
 	if u.EventDataBody2 != nil {
-		return json.Marshal(u.EventDataBody2)
+		return utils.MarshalJSON(u.EventDataBody2, "", true)
 	}
 
 	if u.ArrayOfany != nil {
-		return json.Marshal(u.ArrayOfany)
+		return utils.MarshalJSON(u.ArrayOfany, "", true)
 	}
 
-	return nil, nil
+	return nil, errors.New("could not marshal union type: all fields are null")
 }
 
 type EventDataHeadersType string
@@ -137,21 +129,16 @@ func CreateEventDataHeadersMapOfstr(mapOfstr map[string]string) EventDataHeaders
 }
 
 func (u *EventDataHeaders) UnmarshalJSON(data []byte) error {
-	var d *json.Decoder
 
 	str := new(string)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&str); err == nil {
+	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
 		u.Str = str
 		u.Type = EventDataHeadersTypeStr
 		return nil
 	}
 
 	mapOfstr := map[string]string{}
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&mapOfstr); err == nil {
+	if err := utils.UnmarshalJSON(data, &mapOfstr, "", true, true); err == nil {
 		u.MapOfstr = mapOfstr
 		u.Type = EventDataHeadersTypeMapOfstr
 		return nil
@@ -162,14 +149,14 @@ func (u *EventDataHeaders) UnmarshalJSON(data []byte) error {
 
 func (u EventDataHeaders) MarshalJSON() ([]byte, error) {
 	if u.Str != nil {
-		return json.Marshal(u.Str)
+		return utils.MarshalJSON(u.Str, "", true)
 	}
 
 	if u.MapOfstr != nil {
-		return json.Marshal(u.MapOfstr)
+		return utils.MarshalJSON(u.MapOfstr, "", true)
 	}
 
-	return nil, nil
+	return nil, errors.New("could not marshal union type: all fields are null")
 }
 
 type EventDataParsedQuery2 struct {
@@ -208,23 +195,18 @@ func CreateEventDataParsedQueryEventDataParsedQuery2(eventDataParsedQuery2 Event
 }
 
 func (u *EventDataParsedQuery) UnmarshalJSON(data []byte) error {
-	var d *json.Decoder
 
-	str := new(string)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&str); err == nil {
-		u.Str = str
-		u.Type = EventDataParsedQueryTypeStr
+	eventDataParsedQuery2 := new(EventDataParsedQuery2)
+	if err := utils.UnmarshalJSON(data, &eventDataParsedQuery2, "", true, true); err == nil {
+		u.EventDataParsedQuery2 = eventDataParsedQuery2
+		u.Type = EventDataParsedQueryTypeEventDataParsedQuery2
 		return nil
 	}
 
-	eventDataParsedQuery2 := new(EventDataParsedQuery2)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&eventDataParsedQuery2); err == nil {
-		u.EventDataParsedQuery2 = eventDataParsedQuery2
-		u.Type = EventDataParsedQueryTypeEventDataParsedQuery2
+	str := new(string)
+	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
+		u.Str = str
+		u.Type = EventDataParsedQueryTypeStr
 		return nil
 	}
 
@@ -233,14 +215,14 @@ func (u *EventDataParsedQuery) UnmarshalJSON(data []byte) error {
 
 func (u EventDataParsedQuery) MarshalJSON() ([]byte, error) {
 	if u.Str != nil {
-		return json.Marshal(u.Str)
+		return utils.MarshalJSON(u.Str, "", true)
 	}
 
 	if u.EventDataParsedQuery2 != nil {
-		return json.Marshal(u.EventDataParsedQuery2)
+		return utils.MarshalJSON(u.EventDataParsedQuery2, "", true)
 	}
 
-	return nil, nil
+	return nil, errors.New("could not marshal union type: all fields are null")
 }
 
 type EventData struct {
@@ -294,7 +276,6 @@ func (o *EventData) GetQuery() *string {
 	return o.Query
 }
 
-// Event - A single event
 type Event struct {
 	// Number of delivery attempts made
 	Attempts int64 `json:"attempts"`
@@ -330,6 +311,17 @@ type Event struct {
 	UpdatedAt time.Time `json:"updated_at"`
 	// ID of the associated connection
 	WebhookID string `json:"webhook_id"`
+}
+
+func (e Event) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(e, "", false)
+}
+
+func (e *Event) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &e, "", false, false); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *Event) GetAttempts() int64 {

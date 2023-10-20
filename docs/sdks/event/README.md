@@ -1,4 +1,5 @@
 # Event
+(*Event*)
 
 ### Available Operations
 
@@ -18,21 +19,22 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
                 Password: "",
                 Username: "",
             },
         }),
     )
-    id := "nam"
+
+
+    var id string = "female"
 
     ctx := context.Background()
     res, err := s.Event.Get(ctx, id)
@@ -71,21 +73,22 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
                 Password: "",
                 Username: "",
             },
         }),
     )
-    id := "id"
+
+
+    var id string = "Synergized"
 
     ctx := context.Background()
     res, err := s.Event.MuteEvent(ctx, id)
@@ -124,21 +127,22 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
                 Password: "",
                 Username: "",
             },
         }),
     )
-    id := "blanditiis"
+
+
+    var id string = "Agent"
 
     ctx := context.Background()
     res, err := s.Event.Retry(ctx, id)
