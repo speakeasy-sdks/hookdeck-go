@@ -1,7 +1,5 @@
 # IntegrationPaginatedResult
 
-List of integrations
-
 
 ## Fields
 

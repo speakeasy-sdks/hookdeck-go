@@ -1,7 +1,5 @@
 # ConnectionPaginatedResult
 
-List of connections
-
 
 ## Fields
 

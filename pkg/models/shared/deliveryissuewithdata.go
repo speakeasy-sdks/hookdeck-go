@@ -5,6 +5,7 @@ package shared
 import (
 	"encoding/json"
 	"fmt"
+	"github.com/speakeasy-sdks/hookdeck-go/pkg/utils"
 	"time"
 )
 
@@ -63,6 +64,17 @@ type DeliveryIssueWithData struct {
 	Type   DeliveryIssueWithDataType `json:"type"`
 	// ISO timestamp for when the issue was last updated
 	UpdatedAt string `json:"updated_at"`
+}
+
+func (d DeliveryIssueWithData) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(d, "", false)
+}
+
+func (d *DeliveryIssueWithData) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &d, "", false, true); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *DeliveryIssueWithData) GetAggregationKeys() DeliveryIssueAggregationKeys {

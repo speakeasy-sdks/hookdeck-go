@@ -3,10 +3,10 @@
 
 ## Supported Types
 
-### RequestRejectionCause
+### CreateRequestBulkRetryRequestBodyQueryRejectionCauseRequestRejectionCause
 
 ```go
-createRequestBulkRetryRequestBodyQueryRejectionCause := operations.CreateCreateRequestBulkRetryRequestBodyQueryRejectionCauseRequestRejectionCause(shared.RequestRejectionCause{/* values here */})
+createRequestBulkRetryRequestBodyQueryRejectionCause := operations.CreateCreateRequestBulkRetryRequestBodyQueryRejectionCauseCreateRequestBulkRetryRequestBodyQueryRejectionCauseRequestRejectionCause(operations.CreateRequestBulkRetryRequestBodyQueryRejectionCauseRequestRejectionCause{/* values here */})
 ```
 
 ### CreateRequestBulkRetryRequestBodyQueryRejectionCause2
