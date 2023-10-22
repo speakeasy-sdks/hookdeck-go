@@ -3,11 +3,11 @@
 package operations
 
 import (
-	"bytes"
 	"encoding/json"
 	"errors"
 	"fmt"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
+	"github.com/speakeasy-sdks/hookdeck-go/pkg/utils"
 	"net/http"
 	"time"
 )
@@ -19,6 +19,17 @@ type GetIgnoredEventBulkRetriesCancelledAt2 struct {
 	Gte *time.Time `queryParam:"name=gte"`
 	Le  *time.Time `queryParam:"name=le"`
 	Lte *time.Time `queryParam:"name=lte"`
+}
+
+func (g GetIgnoredEventBulkRetriesCancelledAt2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetIgnoredEventBulkRetriesCancelledAt2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, true); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *GetIgnoredEventBulkRetriesCancelledAt2) GetAny() *bool {
@@ -89,23 +100,18 @@ func CreateGetIgnoredEventBulkRetriesCancelledAtGetIgnoredEventBulkRetriesCancel
 }
 
 func (u *GetIgnoredEventBulkRetriesCancelledAt) UnmarshalJSON(data []byte) error {
-	var d *json.Decoder
 
-	dateTime := new(time.Time)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&dateTime); err == nil {
-		u.DateTime = dateTime
-		u.Type = GetIgnoredEventBulkRetriesCancelledAtTypeDateTime
+	getIgnoredEventBulkRetriesCancelledAt2 := new(GetIgnoredEventBulkRetriesCancelledAt2)
+	if err := utils.UnmarshalJSON(data, &getIgnoredEventBulkRetriesCancelledAt2, "", true, true); err == nil {
+		u.GetIgnoredEventBulkRetriesCancelledAt2 = getIgnoredEventBulkRetriesCancelledAt2
+		u.Type = GetIgnoredEventBulkRetriesCancelledAtTypeGetIgnoredEventBulkRetriesCancelledAt2
 		return nil
 	}
 
-	getIgnoredEventBulkRetriesCancelledAt2 := new(GetIgnoredEventBulkRetriesCancelledAt2)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&getIgnoredEventBulkRetriesCancelledAt2); err == nil {
-		u.GetIgnoredEventBulkRetriesCancelledAt2 = getIgnoredEventBulkRetriesCancelledAt2
-		u.Type = GetIgnoredEventBulkRetriesCancelledAtTypeGetIgnoredEventBulkRetriesCancelledAt2
+	dateTime := new(time.Time)
+	if err := utils.UnmarshalJSON(data, &dateTime, "", true, true); err == nil {
+		u.DateTime = dateTime
+		u.Type = GetIgnoredEventBulkRetriesCancelledAtTypeDateTime
 		return nil
 	}
 
@@ -114,14 +120,14 @@ func (u *GetIgnoredEventBulkRetriesCancelledAt) UnmarshalJSON(data []byte) error
 
 func (u GetIgnoredEventBulkRetriesCancelledAt) MarshalJSON() ([]byte, error) {
 	if u.DateTime != nil {
-		return json.Marshal(u.DateTime)
+		return utils.MarshalJSON(u.DateTime, "", true)
 	}
 
 	if u.GetIgnoredEventBulkRetriesCancelledAt2 != nil {
-		return json.Marshal(u.GetIgnoredEventBulkRetriesCancelledAt2)
+		return utils.MarshalJSON(u.GetIgnoredEventBulkRetriesCancelledAt2, "", true)
 	}
 
-	return nil, nil
+	return nil, errors.New("could not marshal union type: all fields are null")
 }
 
 // GetIgnoredEventBulkRetriesCompletedAt2 - Filter by date the bulk retry completed
@@ -131,6 +137,17 @@ type GetIgnoredEventBulkRetriesCompletedAt2 struct {
 	Gte *time.Time `queryParam:"name=gte"`
 	Le  *time.Time `queryParam:"name=le"`
 	Lte *time.Time `queryParam:"name=lte"`
+}
+
+func (g GetIgnoredEventBulkRetriesCompletedAt2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetIgnoredEventBulkRetriesCompletedAt2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, true); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *GetIgnoredEventBulkRetriesCompletedAt2) GetAny() *bool {
@@ -201,23 +218,18 @@ func CreateGetIgnoredEventBulkRetriesCompletedAtGetIgnoredEventBulkRetriesComple
 }
 
 func (u *GetIgnoredEventBulkRetriesCompletedAt) UnmarshalJSON(data []byte) error {
-	var d *json.Decoder
 
-	dateTime := new(time.Time)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&dateTime); err == nil {
-		u.DateTime = dateTime
-		u.Type = GetIgnoredEventBulkRetriesCompletedAtTypeDateTime
+	getIgnoredEventBulkRetriesCompletedAt2 := new(GetIgnoredEventBulkRetriesCompletedAt2)
+	if err := utils.UnmarshalJSON(data, &getIgnoredEventBulkRetriesCompletedAt2, "", true, true); err == nil {
+		u.GetIgnoredEventBulkRetriesCompletedAt2 = getIgnoredEventBulkRetriesCompletedAt2
+		u.Type = GetIgnoredEventBulkRetriesCompletedAtTypeGetIgnoredEventBulkRetriesCompletedAt2
 		return nil
 	}
 
-	getIgnoredEventBulkRetriesCompletedAt2 := new(GetIgnoredEventBulkRetriesCompletedAt2)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&getIgnoredEventBulkRetriesCompletedAt2); err == nil {
-		u.GetIgnoredEventBulkRetriesCompletedAt2 = getIgnoredEventBulkRetriesCompletedAt2
-		u.Type = GetIgnoredEventBulkRetriesCompletedAtTypeGetIgnoredEventBulkRetriesCompletedAt2
+	dateTime := new(time.Time)
+	if err := utils.UnmarshalJSON(data, &dateTime, "", true, true); err == nil {
+		u.DateTime = dateTime
+		u.Type = GetIgnoredEventBulkRetriesCompletedAtTypeDateTime
 		return nil
 	}
 
@@ -226,14 +238,14 @@ func (u *GetIgnoredEventBulkRetriesCompletedAt) UnmarshalJSON(data []byte) error
 
 func (u GetIgnoredEventBulkRetriesCompletedAt) MarshalJSON() ([]byte, error) {
 	if u.DateTime != nil {
-		return json.Marshal(u.DateTime)
+		return utils.MarshalJSON(u.DateTime, "", true)
 	}
 
 	if u.GetIgnoredEventBulkRetriesCompletedAt2 != nil {
-		return json.Marshal(u.GetIgnoredEventBulkRetriesCompletedAt2)
+		return utils.MarshalJSON(u.GetIgnoredEventBulkRetriesCompletedAt2, "", true)
 	}
 
-	return nil, nil
+	return nil, errors.New("could not marshal union type: all fields are null")
 }
 
 // GetIgnoredEventBulkRetriesCreatedAt2 - Filter by date the bulk retry was created
@@ -243,6 +255,17 @@ type GetIgnoredEventBulkRetriesCreatedAt2 struct {
 	Gte *time.Time `queryParam:"name=gte"`
 	Le  *time.Time `queryParam:"name=le"`
 	Lte *time.Time `queryParam:"name=lte"`
+}
+
+func (g GetIgnoredEventBulkRetriesCreatedAt2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetIgnoredEventBulkRetriesCreatedAt2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, true); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *GetIgnoredEventBulkRetriesCreatedAt2) GetAny() *bool {
@@ -313,23 +336,18 @@ func CreateGetIgnoredEventBulkRetriesCreatedAtGetIgnoredEventBulkRetriesCreatedA
 }
 
 func (u *GetIgnoredEventBulkRetriesCreatedAt) UnmarshalJSON(data []byte) error {
-	var d *json.Decoder
 
-	dateTime := new(time.Time)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&dateTime); err == nil {
-		u.DateTime = dateTime
-		u.Type = GetIgnoredEventBulkRetriesCreatedAtTypeDateTime
+	getIgnoredEventBulkRetriesCreatedAt2 := new(GetIgnoredEventBulkRetriesCreatedAt2)
+	if err := utils.UnmarshalJSON(data, &getIgnoredEventBulkRetriesCreatedAt2, "", true, true); err == nil {
+		u.GetIgnoredEventBulkRetriesCreatedAt2 = getIgnoredEventBulkRetriesCreatedAt2
+		u.Type = GetIgnoredEventBulkRetriesCreatedAtTypeGetIgnoredEventBulkRetriesCreatedAt2
 		return nil
 	}
 
-	getIgnoredEventBulkRetriesCreatedAt2 := new(GetIgnoredEventBulkRetriesCreatedAt2)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&getIgnoredEventBulkRetriesCreatedAt2); err == nil {
-		u.GetIgnoredEventBulkRetriesCreatedAt2 = getIgnoredEventBulkRetriesCreatedAt2
-		u.Type = GetIgnoredEventBulkRetriesCreatedAtTypeGetIgnoredEventBulkRetriesCreatedAt2
+	dateTime := new(time.Time)
+	if err := utils.UnmarshalJSON(data, &dateTime, "", true, true); err == nil {
+		u.DateTime = dateTime
+		u.Type = GetIgnoredEventBulkRetriesCreatedAtTypeDateTime
 		return nil
 	}
 
@@ -338,14 +356,14 @@ func (u *GetIgnoredEventBulkRetriesCreatedAt) UnmarshalJSON(data []byte) error {
 
 func (u GetIgnoredEventBulkRetriesCreatedAt) MarshalJSON() ([]byte, error) {
 	if u.DateTime != nil {
-		return json.Marshal(u.DateTime)
+		return utils.MarshalJSON(u.DateTime, "", true)
 	}
 
 	if u.GetIgnoredEventBulkRetriesCreatedAt2 != nil {
-		return json.Marshal(u.GetIgnoredEventBulkRetriesCreatedAt2)
+		return utils.MarshalJSON(u.GetIgnoredEventBulkRetriesCreatedAt2, "", true)
 	}
 
-	return nil, nil
+	return nil, errors.New("could not marshal union type: all fields are null")
 }
 
 type GetIgnoredEventBulkRetriesDir2 string
@@ -436,21 +454,16 @@ func CreateGetIgnoredEventBulkRetriesDirArrayOfgetIgnoredEventBulkRetriesDir2(ar
 }
 
 func (u *GetIgnoredEventBulkRetriesDir) UnmarshalJSON(data []byte) error {
-	var d *json.Decoder
 
 	getIgnoredEventBulkRetriesDir1 := new(GetIgnoredEventBulkRetriesDir1)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&getIgnoredEventBulkRetriesDir1); err == nil {
+	if err := utils.UnmarshalJSON(data, &getIgnoredEventBulkRetriesDir1, "", true, true); err == nil {
 		u.GetIgnoredEventBulkRetriesDir1 = getIgnoredEventBulkRetriesDir1
 		u.Type = GetIgnoredEventBulkRetriesDirTypeGetIgnoredEventBulkRetriesDir1
 		return nil
 	}
 
 	arrayOfgetIgnoredEventBulkRetriesDir2 := []GetIgnoredEventBulkRetriesDir2{}
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&arrayOfgetIgnoredEventBulkRetriesDir2); err == nil {
+	if err := utils.UnmarshalJSON(data, &arrayOfgetIgnoredEventBulkRetriesDir2, "", true, true); err == nil {
 		u.ArrayOfgetIgnoredEventBulkRetriesDir2 = arrayOfgetIgnoredEventBulkRetriesDir2
 		u.Type = GetIgnoredEventBulkRetriesDirTypeArrayOfgetIgnoredEventBulkRetriesDir2
 		return nil
@@ -461,14 +474,14 @@ func (u *GetIgnoredEventBulkRetriesDir) UnmarshalJSON(data []byte) error {
 
 func (u GetIgnoredEventBulkRetriesDir) MarshalJSON() ([]byte, error) {
 	if u.GetIgnoredEventBulkRetriesDir1 != nil {
-		return json.Marshal(u.GetIgnoredEventBulkRetriesDir1)
+		return utils.MarshalJSON(u.GetIgnoredEventBulkRetriesDir1, "", true)
 	}
 
 	if u.ArrayOfgetIgnoredEventBulkRetriesDir2 != nil {
-		return json.Marshal(u.ArrayOfgetIgnoredEventBulkRetriesDir2)
+		return utils.MarshalJSON(u.ArrayOfgetIgnoredEventBulkRetriesDir2, "", true)
 	}
 
-	return nil, nil
+	return nil, errors.New("could not marshal union type: all fields are null")
 }
 
 type GetIgnoredEventBulkRetriesIDType string
@@ -504,21 +517,16 @@ func CreateGetIgnoredEventBulkRetriesIDArrayOfstr(arrayOfstr []string) GetIgnore
 }
 
 func (u *GetIgnoredEventBulkRetriesID) UnmarshalJSON(data []byte) error {
-	var d *json.Decoder
 
 	str := new(string)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&str); err == nil {
+	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
 		u.Str = str
 		u.Type = GetIgnoredEventBulkRetriesIDTypeStr
 		return nil
 	}
 
 	arrayOfstr := []string{}
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&arrayOfstr); err == nil {
+	if err := utils.UnmarshalJSON(data, &arrayOfstr, "", true, true); err == nil {
 		u.ArrayOfstr = arrayOfstr
 		u.Type = GetIgnoredEventBulkRetriesIDTypeArrayOfstr
 		return nil
@@ -529,14 +537,14 @@ func (u *GetIgnoredEventBulkRetriesID) UnmarshalJSON(data []byte) error {
 
 func (u GetIgnoredEventBulkRetriesID) MarshalJSON() ([]byte, error) {
 	if u.Str != nil {
-		return json.Marshal(u.Str)
+		return utils.MarshalJSON(u.Str, "", true)
 	}
 
 	if u.ArrayOfstr != nil {
-		return json.Marshal(u.ArrayOfstr)
+		return utils.MarshalJSON(u.ArrayOfstr, "", true)
 	}
 
-	return nil, nil
+	return nil, errors.New("could not marshal union type: all fields are null")
 }
 
 type GetIgnoredEventBulkRetriesOrderBy2 string
@@ -621,21 +629,16 @@ func CreateGetIgnoredEventBulkRetriesOrderByArrayOfgetIgnoredEventBulkRetriesOrd
 }
 
 func (u *GetIgnoredEventBulkRetriesOrderBy) UnmarshalJSON(data []byte) error {
-	var d *json.Decoder
 
 	getIgnoredEventBulkRetriesOrderBy1 := new(GetIgnoredEventBulkRetriesOrderBy1)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&getIgnoredEventBulkRetriesOrderBy1); err == nil {
+	if err := utils.UnmarshalJSON(data, &getIgnoredEventBulkRetriesOrderBy1, "", true, true); err == nil {
 		u.GetIgnoredEventBulkRetriesOrderBy1 = getIgnoredEventBulkRetriesOrderBy1
 		u.Type = GetIgnoredEventBulkRetriesOrderByTypeGetIgnoredEventBulkRetriesOrderBy1
 		return nil
 	}
 
 	arrayOfgetIgnoredEventBulkRetriesOrderBy2 := []GetIgnoredEventBulkRetriesOrderBy2{}
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&arrayOfgetIgnoredEventBulkRetriesOrderBy2); err == nil {
+	if err := utils.UnmarshalJSON(data, &arrayOfgetIgnoredEventBulkRetriesOrderBy2, "", true, true); err == nil {
 		u.ArrayOfgetIgnoredEventBulkRetriesOrderBy2 = arrayOfgetIgnoredEventBulkRetriesOrderBy2
 		u.Type = GetIgnoredEventBulkRetriesOrderByTypeArrayOfgetIgnoredEventBulkRetriesOrderBy2
 		return nil
@@ -646,14 +649,14 @@ func (u *GetIgnoredEventBulkRetriesOrderBy) UnmarshalJSON(data []byte) error {
 
 func (u GetIgnoredEventBulkRetriesOrderBy) MarshalJSON() ([]byte, error) {
 	if u.GetIgnoredEventBulkRetriesOrderBy1 != nil {
-		return json.Marshal(u.GetIgnoredEventBulkRetriesOrderBy1)
+		return utils.MarshalJSON(u.GetIgnoredEventBulkRetriesOrderBy1, "", true)
 	}
 
 	if u.ArrayOfgetIgnoredEventBulkRetriesOrderBy2 != nil {
-		return json.Marshal(u.ArrayOfgetIgnoredEventBulkRetriesOrderBy2)
+		return utils.MarshalJSON(u.ArrayOfgetIgnoredEventBulkRetriesOrderBy2, "", true)
 	}
 
-	return nil, nil
+	return nil, errors.New("could not marshal union type: all fields are null")
 }
 
 type GetIgnoredEventBulkRetriesQueryCauseType string
@@ -689,21 +692,16 @@ func CreateGetIgnoredEventBulkRetriesQueryCauseArrayOfstr(arrayOfstr []string) G
 }
 
 func (u *GetIgnoredEventBulkRetriesQueryCause) UnmarshalJSON(data []byte) error {
-	var d *json.Decoder
 
 	str := new(string)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&str); err == nil {
+	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
 		u.Str = str
 		u.Type = GetIgnoredEventBulkRetriesQueryCauseTypeStr
 		return nil
 	}
 
 	arrayOfstr := []string{}
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&arrayOfstr); err == nil {
+	if err := utils.UnmarshalJSON(data, &arrayOfstr, "", true, true); err == nil {
 		u.ArrayOfstr = arrayOfstr
 		u.Type = GetIgnoredEventBulkRetriesQueryCauseTypeArrayOfstr
 		return nil
@@ -714,14 +712,14 @@ func (u *GetIgnoredEventBulkRetriesQueryCause) UnmarshalJSON(data []byte) error 
 
 func (u GetIgnoredEventBulkRetriesQueryCause) MarshalJSON() ([]byte, error) {
 	if u.Str != nil {
-		return json.Marshal(u.Str)
+		return utils.MarshalJSON(u.Str, "", true)
 	}
 
 	if u.ArrayOfstr != nil {
-		return json.Marshal(u.ArrayOfstr)
+		return utils.MarshalJSON(u.ArrayOfstr, "", true)
 	}
 
-	return nil, nil
+	return nil, errors.New("could not marshal union type: all fields are null")
 }
 
 type GetIgnoredEventBulkRetriesQueryWebhookIDType string
@@ -757,21 +755,16 @@ func CreateGetIgnoredEventBulkRetriesQueryWebhookIDArrayOfstr(arrayOfstr []strin
 }
 
 func (u *GetIgnoredEventBulkRetriesQueryWebhookID) UnmarshalJSON(data []byte) error {
-	var d *json.Decoder
 
 	str := new(string)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&str); err == nil {
+	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
 		u.Str = str
 		u.Type = GetIgnoredEventBulkRetriesQueryWebhookIDTypeStr
 		return nil
 	}
 
 	arrayOfstr := []string{}
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&arrayOfstr); err == nil {
+	if err := utils.UnmarshalJSON(data, &arrayOfstr, "", true, true); err == nil {
 		u.ArrayOfstr = arrayOfstr
 		u.Type = GetIgnoredEventBulkRetriesQueryWebhookIDTypeArrayOfstr
 		return nil
@@ -782,14 +775,14 @@ func (u *GetIgnoredEventBulkRetriesQueryWebhookID) UnmarshalJSON(data []byte) er
 
 func (u GetIgnoredEventBulkRetriesQueryWebhookID) MarshalJSON() ([]byte, error) {
 	if u.Str != nil {
-		return json.Marshal(u.Str)
+		return utils.MarshalJSON(u.Str, "", true)
 	}
 
 	if u.ArrayOfstr != nil {
-		return json.Marshal(u.ArrayOfstr)
+		return utils.MarshalJSON(u.ArrayOfstr, "", true)
 	}
 
-	return nil, nil
+	return nil, errors.New("could not marshal union type: all fields are null")
 }
 
 // GetIgnoredEventBulkRetriesQuery - Filter by the bulk retry ignored event query object
@@ -926,9 +919,12 @@ func (o *GetIgnoredEventBulkRetriesRequest) GetQueryPartialMatch() *bool {
 type GetIgnoredEventBulkRetriesResponse struct {
 	// List of ignored events bulk retries
 	BatchOperationPaginatedResult *shared.BatchOperationPaginatedResult
-	ContentType                   string
-	StatusCode                    int
-	RawResponse                   *http.Response
+	// HTTP response content type for this operation
+	ContentType string
+	// HTTP response status code for this operation
+	StatusCode int
+	// Raw HTTP response; suitable for custom response parsing
+	RawResponse *http.Response
 }
 
 func (o *GetIgnoredEventBulkRetriesResponse) GetBatchOperationPaginatedResult() *shared.BatchOperationPaginatedResult {

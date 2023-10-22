@@ -27,11 +27,14 @@ func (o *DetachIntegrationToSourceRequest) GetSourceID() string {
 }
 
 type DetachIntegrationToSourceResponse struct {
+	// HTTP response content type for this operation
 	ContentType string
 	// Detach operation success status
 	DetachedIntegrationFromSource *shared.DetachedIntegrationFromSource
-	StatusCode                    int
-	RawResponse                   *http.Response
+	// HTTP response status code for this operation
+	StatusCode int
+	// Raw HTTP response; suitable for custom response parsing
+	RawResponse *http.Response
 }
 
 func (o *DetachIntegrationToSourceResponse) GetContentType() string {
