@@ -2,7 +2,6 @@
 
 package shared
 
-// BatchOperationPaginatedResult - List of ignored events bulk retries
 type BatchOperationPaginatedResult struct {
 	Count      *int64           `json:"count,omitempty"`
 	Models     []BatchOperation `json:"models,omitempty"`

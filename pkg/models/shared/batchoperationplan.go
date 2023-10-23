@@ -2,7 +2,6 @@
 
 package shared
 
-// BatchOperationPlan - Ignored events bulk retry plan
 type BatchOperationPlan struct {
 	// Number of batches required to complete the bulk retry
 	EstimatedBatch *int64 `json:"estimated_batch,omitempty"`

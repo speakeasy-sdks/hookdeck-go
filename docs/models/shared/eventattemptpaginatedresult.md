@@ -1,7 +1,5 @@
 # EventAttemptPaginatedResult
 
-List of attempts
-
 
 ## Fields
 
