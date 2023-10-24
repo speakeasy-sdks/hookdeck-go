@@ -1,7 +1,5 @@
 # AddCustomHostname
 
-Custom domain successfuly added
-
 
 ## Fields
 
