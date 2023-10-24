@@ -3,20 +3,118 @@
 package operations
 
 import (
+	"errors"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
+	"github.com/speakeasy-sdks/hookdeck-go/pkg/utils"
 	"net/http"
 	"time"
 )
+
+type UpdateIssueTriggerRequestBodyConfigsType string
+
+const (
+	UpdateIssueTriggerRequestBodyConfigsTypeIssueTriggerDeliveryConfigs       UpdateIssueTriggerRequestBodyConfigsType = "IssueTriggerDeliveryConfigs"
+	UpdateIssueTriggerRequestBodyConfigsTypeIssueTriggerTransformationConfigs UpdateIssueTriggerRequestBodyConfigsType = "IssueTriggerTransformationConfigs"
+	UpdateIssueTriggerRequestBodyConfigsTypeIssueTriggerBackpressureConfigs   UpdateIssueTriggerRequestBodyConfigsType = "IssueTriggerBackpressureConfigs"
+)
+
+type UpdateIssueTriggerRequestBodyConfigs struct {
+	IssueTriggerDeliveryConfigs       *shared.IssueTriggerDeliveryConfigs
+	IssueTriggerTransformationConfigs *shared.IssueTriggerTransformationConfigs
+	IssueTriggerBackpressureConfigs   *shared.IssueTriggerBackpressureConfigs
+
+	Type UpdateIssueTriggerRequestBodyConfigsType
+}
+
+func CreateUpdateIssueTriggerRequestBodyConfigsIssueTriggerDeliveryConfigs(issueTriggerDeliveryConfigs shared.IssueTriggerDeliveryConfigs) UpdateIssueTriggerRequestBodyConfigs {
+	typ := UpdateIssueTriggerRequestBodyConfigsTypeIssueTriggerDeliveryConfigs
+
+	return UpdateIssueTriggerRequestBodyConfigs{
+		IssueTriggerDeliveryConfigs: &issueTriggerDeliveryConfigs,
+		Type:                        typ,
+	}
+}
+
+func CreateUpdateIssueTriggerRequestBodyConfigsIssueTriggerTransformationConfigs(issueTriggerTransformationConfigs shared.IssueTriggerTransformationConfigs) UpdateIssueTriggerRequestBodyConfigs {
+	typ := UpdateIssueTriggerRequestBodyConfigsTypeIssueTriggerTransformationConfigs
+
+	return UpdateIssueTriggerRequestBodyConfigs{
+		IssueTriggerTransformationConfigs: &issueTriggerTransformationConfigs,
+		Type:                              typ,
+	}
+}
+
+func CreateUpdateIssueTriggerRequestBodyConfigsIssueTriggerBackpressureConfigs(issueTriggerBackpressureConfigs shared.IssueTriggerBackpressureConfigs) UpdateIssueTriggerRequestBodyConfigs {
+	typ := UpdateIssueTriggerRequestBodyConfigsTypeIssueTriggerBackpressureConfigs
+
+	return UpdateIssueTriggerRequestBodyConfigs{
+		IssueTriggerBackpressureConfigs: &issueTriggerBackpressureConfigs,
+		Type:                            typ,
+	}
+}
+
+func (u *UpdateIssueTriggerRequestBodyConfigs) UnmarshalJSON(data []byte) error {
+
+	issueTriggerDeliveryConfigs := new(shared.IssueTriggerDeliveryConfigs)
+	if err := utils.UnmarshalJSON(data, &issueTriggerDeliveryConfigs, "", true, true); err == nil {
+		u.IssueTriggerDeliveryConfigs = issueTriggerDeliveryConfigs
+		u.Type = UpdateIssueTriggerRequestBodyConfigsTypeIssueTriggerDeliveryConfigs
+		return nil
+	}
+
+	issueTriggerTransformationConfigs := new(shared.IssueTriggerTransformationConfigs)
+	if err := utils.UnmarshalJSON(data, &issueTriggerTransformationConfigs, "", true, true); err == nil {
+		u.IssueTriggerTransformationConfigs = issueTriggerTransformationConfigs
+		u.Type = UpdateIssueTriggerRequestBodyConfigsTypeIssueTriggerTransformationConfigs
+		return nil
+	}
+
+	issueTriggerBackpressureConfigs := new(shared.IssueTriggerBackpressureConfigs)
+	if err := utils.UnmarshalJSON(data, &issueTriggerBackpressureConfigs, "", true, true); err == nil {
+		u.IssueTriggerBackpressureConfigs = issueTriggerBackpressureConfigs
+		u.Type = UpdateIssueTriggerRequestBodyConfigsTypeIssueTriggerBackpressureConfigs
+		return nil
+	}
+
+	return errors.New("could not unmarshal into supported union types")
+}
+
+func (u UpdateIssueTriggerRequestBodyConfigs) MarshalJSON() ([]byte, error) {
+	if u.IssueTriggerDeliveryConfigs != nil {
+		return utils.MarshalJSON(u.IssueTriggerDeliveryConfigs, "", true)
+	}
+
+	if u.IssueTriggerTransformationConfigs != nil {
+		return utils.MarshalJSON(u.IssueTriggerTransformationConfigs, "", true)
+	}
+
+	if u.IssueTriggerBackpressureConfigs != nil {
+		return utils.MarshalJSON(u.IssueTriggerBackpressureConfigs, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type: all fields are null")
+}
 
 type UpdateIssueTriggerRequestBody struct {
 	// Notification channels object for the specific channel type
 	Channels *shared.IssueTriggerChannels `json:"channels,omitempty"`
 	// Configuration object for the specific issue type selected
-	Configs interface{} `json:"configs,omitempty"`
+	Configs *UpdateIssueTriggerRequestBodyConfigs `json:"configs,omitempty"`
 	// Date when the issue trigger was disabled
 	DisabledAt *time.Time `json:"disabled_at,omitempty"`
 	// Optional unique name to use as reference when using the API
 	Name *string `json:"name,omitempty"`
+}
+
+func (u UpdateIssueTriggerRequestBody) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UpdateIssueTriggerRequestBody) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, false); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *UpdateIssueTriggerRequestBody) GetChannels() *shared.IssueTriggerChannels {
@@ -26,7 +124,7 @@ func (o *UpdateIssueTriggerRequestBody) GetChannels() *shared.IssueTriggerChanne
 	return o.Channels
 }
 
-func (o *UpdateIssueTriggerRequestBody) GetConfigs() interface{} {
+func (o *UpdateIssueTriggerRequestBody) GetConfigs() *UpdateIssueTriggerRequestBodyConfigs {
 	if o == nil {
 		return nil
 	}
@@ -67,11 +165,14 @@ func (o *UpdateIssueTriggerRequest) GetID() string {
 }
 
 type UpdateIssueTriggerResponse struct {
+	// HTTP response content type for this operation
 	ContentType string
 	// A single issue trigger
 	IssueTrigger *shared.IssueTrigger
-	StatusCode   int
-	RawResponse  *http.Response
+	// HTTP response status code for this operation
+	StatusCode int
+	// Raw HTTP response; suitable for custom response parsing
+	RawResponse *http.Response
 }
 
 func (o *UpdateIssueTriggerResponse) GetContentType() string {

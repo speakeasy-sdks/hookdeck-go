@@ -2,7 +2,6 @@
 
 package shared
 
-// RequestPaginatedResult - List of requests
 type RequestPaginatedResult struct {
 	Count      *int64          `json:"count,omitempty"`
 	Models     []Request       `json:"models,omitempty"`

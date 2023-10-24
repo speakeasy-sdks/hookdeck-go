@@ -1,4 +1,5 @@
 # TransformationExecution
+(*TransformationExecution*)
 
 ### Available Operations
 
@@ -16,22 +17,24 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
                 Password: "",
                 Username: "",
             },
         }),
     )
-    executionID := "nam"
-    id := "hic"
+
+
+    var executionID string = "string"
+
+    var id string = "string"
 
     ctx := context.Background()
     res, err := s.TransformationExecution.Get(ctx, executionID, id)
