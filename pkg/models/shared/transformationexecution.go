@@ -3,10 +3,10 @@
 package shared
 
 import (
+	"github.com/speakeasy-sdks/hookdeck-go/pkg/utils"
 	"time"
 )
 
-// TransformationExecution - A single transformation execution
 type TransformationExecution struct {
 	CreatedAt time.Time `json:"created_at"`
 	ID        string    `json:"id"`
@@ -22,6 +22,17 @@ type TransformationExecution struct {
 	TransformedEventDataID string                          `json:"transformed_event_data_id"`
 	UpdatedAt              time.Time                       `json:"updated_at"`
 	WebhookID              string                          `json:"webhook_id"`
+}
+
+func (t TransformationExecution) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(t, "", false)
+}
+
+func (t *TransformationExecution) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &t, "", false, false); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *TransformationExecution) GetCreatedAt() time.Time {

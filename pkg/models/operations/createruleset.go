@@ -12,7 +12,7 @@ type CreateRulesetRequestBody struct {
 	// Name for the ruleset
 	Name string `json:"name"`
 	// Array of rules to apply
-	Rules []interface{} `json:"rules,omitempty"`
+	Rules []shared.Rule `json:"rules,omitempty"`
 }
 
 func (o *CreateRulesetRequestBody) GetIsTeamDefault() *bool {
@@ -29,7 +29,7 @@ func (o *CreateRulesetRequestBody) GetName() string {
 	return o.Name
 }
 
-func (o *CreateRulesetRequestBody) GetRules() []interface{} {
+func (o *CreateRulesetRequestBody) GetRules() []shared.Rule {
 	if o == nil {
 		return nil
 	}
@@ -37,10 +37,13 @@ func (o *CreateRulesetRequestBody) GetRules() []interface{} {
 }
 
 type CreateRulesetResponse struct {
+	// HTTP response content type for this operation
 	ContentType string
 	// A single ruleset
-	Ruleset     *shared.Ruleset
-	StatusCode  int
+	Ruleset *shared.Ruleset
+	// HTTP response status code for this operation
+	StatusCode int
+	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
 }
 
