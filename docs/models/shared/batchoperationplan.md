@@ -1,7 +1,5 @@
 # BatchOperationPlan
 
-Ignored events bulk retry plan
-
 
 ## Fields
 

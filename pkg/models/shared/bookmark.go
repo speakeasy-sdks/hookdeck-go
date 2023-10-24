@@ -3,10 +3,10 @@
 package shared
 
 import (
+	"github.com/speakeasy-sdks/hookdeck-go/pkg/utils"
 	"time"
 )
 
-// Bookmark - A single bookmark
 type Bookmark struct {
 	// Alternate alias for the bookmark
 	Alias *string `json:"alias,omitempty"`
@@ -27,6 +27,17 @@ type Bookmark struct {
 	UpdatedAt time.Time `json:"updated_at"`
 	// ID of the associated connection
 	WebhookID string `json:"webhook_id"`
+}
+
+func (b Bookmark) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(b, "", false)
+}
+
+func (b *Bookmark) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &b, "", false, false); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *Bookmark) GetAlias() *string {
