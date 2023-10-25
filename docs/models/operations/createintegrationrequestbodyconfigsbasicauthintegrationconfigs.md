@@ -1,4 +1,4 @@
-# HandledHMACConfigs
+# CreateIntegrationRequestBodyConfigsBasicAuthIntegrationConfigs
 
 Decrypted Key/Value object of the associated configuration for that provider
 
@@ -7,4 +7,5 @@ Decrypted Key/Value object of the associated configuration for that provider
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `WebhookSecretKey` | *string*           | :heavy_check_mark: | N/A                |
+| `Name`             | *string*           | :heavy_check_mark: | N/A                |
+| `Password`         | *string*           | :heavy_check_mark: | N/A                |

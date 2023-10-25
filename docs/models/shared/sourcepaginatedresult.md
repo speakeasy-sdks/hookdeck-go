@@ -1,7 +1,5 @@
 # SourcePaginatedResult
 
-List of sources
-
 
 ## Fields
 

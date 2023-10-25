@@ -1,7 +1,5 @@
 # EventPaginatedResult
 
-List of events
-
 
 ## Fields
 
