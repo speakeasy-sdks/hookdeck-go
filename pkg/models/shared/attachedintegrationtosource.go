@@ -2,7 +2,6 @@
 
 package shared
 
-// AttachedIntegrationToSource - Attach operation success status
 type AttachedIntegrationToSource struct {
 	Success bool `json:"success"`
 }

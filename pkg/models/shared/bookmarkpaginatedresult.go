@@ -2,7 +2,6 @@
 
 package shared
 
-// BookmarkPaginatedResult - List of bookmarks
 type BookmarkPaginatedResult struct {
 	Count      *int64          `json:"count,omitempty"`
 	Models     []Bookmark      `json:"models,omitempty"`

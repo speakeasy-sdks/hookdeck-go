@@ -30,40 +30,39 @@ go get github.com/speakeasy-sdks/hookdeck-go
 
 ## SDK Example Usage
 <!-- Start SDK Example Usage -->
-
-
 ```go
 package main
 
-import(
+import (
 	"context"
-	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
+	"log"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
-            BasicAuth: &shared.SchemeBasicAuth{
-                Password: "",
-                Username: "",
-            },
-        }),
-    )
-    id := "corrupti"
+	s := hookdeckgo.New(
+		hookdeckgo.WithSecurity(shared.Security{
+			BasicAuth: &shared.SchemeBasicAuth{
+				Password: "",
+				Username: "",
+			},
+		}),
+	)
 
-    ctx := context.Background()
-    res, err := s.Attempt.Get(ctx, id)
-    if err != nil {
-        log.Fatal(err)
-    }
+	var id string = "string"
 
-    if res.EventAttempt != nil {
-        // handle response
-    }
+	ctx := context.Background()
+	res, err := s.Attempt.Get(ctx, id)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	if res.EventAttempt != nil {
+		// handle response
+	}
 }
+
 ```
 <!-- End SDK Example Usage -->
 
@@ -286,6 +285,103 @@ func main() {
 
 * [Toggle](docs/sdks/webhooknotifications/README.md#toggle) - Toggle webhook notifications for the workspace
 <!-- End SDK Available Operations -->
+
+
+
+<!-- Start Dev Containers -->
+
+
+
+<!-- End Dev Containers -->
+
+
+
+<!-- Start Error Handling -->
+# Error Handling
+
+Handling errors in your SDK should largely match your expectations.  All operations return a response object or an error, they will never return both.  When specified by the OpenAPI spec document, the SDK will return the appropriate subclass.
+
+
+## Example
+
+```go
+package main
+
+import (
+	"context"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
+	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
+	"log"
+)
+
+func main() {
+	s := hookdeckgo.New(
+		hookdeckgo.WithSecurity(shared.Security{
+			BasicAuth: &shared.SchemeBasicAuth{
+				Password: "",
+				Username: "",
+			},
+		}),
+	)
+
+	var id string = "string"
+
+	ctx := context.Background()
+	res, err := s.Attempt.Get(ctx, id)
+	if err != nil {
+
+		var e *APIErrorResponse
+		if errors.As(err, &e) {
+			// handle error
+			log.Fatal(e.Error())
+		}
+
+	}
+}
+
+```
+<!-- End Error Handling -->
+
+
+
+<!-- Start Go Types -->
+
+<!-- End Go Types -->
+
+
+
+<!-- Start Custom HTTP Client -->
+# Custom HTTP Client
+
+The Go SDK makes API calls that wrap an internal HTTP client. The requirements for the HTTP client are very simple. It must match this interface:
+
+```go
+type HTTPClient interface {
+	Do(req *http.Request) (*http.Response, error)
+}
+```
+
+The built-in `net/http` client satisfies this interface and a default client based on the built-in is provided by default. To replace this default with a client of your own, you can implement this interface yourself or provide your own client configured as desired. Here's a simple example, which adds a client with a 30 second timeout.
+
+```go
+import (
+	"net/http"
+	"time"
+	"github.com/myorg/your-go-sdk"
+)
+
+var (
+	httpClient = &http.Client{Timeout: 30 * time.Second}
+	sdkClient  = sdk.New(sdk.WithClient(httpClient))
+)
+```
+
+This can be a convenient way to configure timeouts, cookies, proxies, custom headers, and other low-level configuration.
+<!-- End Custom HTTP Client -->
+
+<!-- Placeholder for Future Speakeasy SDK Sections -->
+
+
 
 ### Maturity
 
