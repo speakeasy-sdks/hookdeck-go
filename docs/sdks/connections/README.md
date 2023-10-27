@@ -1,4 +1,5 @@
 # Connections
+(*Connections*)
 
 ## Overview
 
@@ -20,15 +21,15 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/types"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
                 Password: "",
                 Username: "",
@@ -38,16 +39,38 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Connections.Get(ctx, operations.GetConnectionsRequest{
-        Archived: hookdeck.Bool(false),
-        ArchivedAt: &operations.GetConnectionsArchivedAt{},
-        DestinationID: &operations.GetConnectionsDestinationID{},
-        Dir: &operations.GetConnectionsDir{},
-        FullName: hookdeck.String("deserunt"),
-        ID: &operations.GetConnectionsID{},
-        Name: &operations.GetConnectionsName{},
-        OrderBy: &operations.GetConnectionsOrderBy{},
-        PausedAt: &operations.GetConnectionsPausedAt{},
-        SourceID: &operations.GetConnectionsSourceID{},
+        ArchivedAt: operations.CreateGetConnectionsArchivedAtGetConnectionsArchivedAt2(
+                operations.GetConnectionsArchivedAt2{},
+        ),
+        DestinationID: operations.CreateGetConnectionsDestinationIDStr(
+        "string",
+        ),
+        Dir: operations.CreateGetConnectionsDirArrayOfgetConnectionsDir2(
+                []operations.GetConnectionsDir2{
+                    operations.GetConnectionsDir2Desc,
+                },
+        ),
+        ID: operations.CreateGetConnectionsIDArrayOfstr(
+                []string{
+                    "string",
+                },
+        ),
+        Name: operations.CreateGetConnectionsNameGetConnectionsName2(
+                operations.GetConnectionsName2{},
+        ),
+        OrderBy: operations.CreateGetConnectionsOrderByArrayOfgetConnectionsOrderBy2(
+                []operations.GetConnectionsOrderBy2{
+                    operations.GetConnectionsOrderBy2CreatedAt,
+                },
+        ),
+        PausedAt: operations.CreateGetConnectionsPausedAtDateTime(
+        types.MustTimeFromString("2023-11-29T02:34:03.781Z"),
+        ),
+        SourceID: operations.CreateGetConnectionsSourceIDArrayOfstr(
+                []string{
+                    "string",
+                },
+        ),
     })
     if err != nil {
         log.Fatal(err)

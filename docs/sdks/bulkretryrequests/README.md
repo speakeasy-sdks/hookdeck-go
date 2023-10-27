@@ -1,4 +1,5 @@
 # BulkRetryRequests
+(*BulkRetryRequests*)
 
 ### Available Operations
 
@@ -16,15 +17,15 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/types"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
                 Password: "",
                 Username: "",
@@ -35,21 +36,45 @@ func main() {
     ctx := context.Background()
     res, err := s.BulkRetryRequests.Create(ctx, operations.CreateRequestBulkRetryRequestBody{
         Query: &operations.CreateRequestBulkRetryRequestBodyQuery{
-            Body: &operations.CreateRequestBulkRetryRequestBodyQueryBody{},
-            BulkRetryID: &operations.CreateRequestBulkRetryRequestBodyQueryBulkRetryID{},
-            CreatedAt: &operations.CreateRequestBulkRetryRequestBodyQueryCreatedAt{},
-            EventsCount: &operations.CreateRequestBulkRetryRequestBodyQueryEventsCount{},
-            Headers: &operations.CreateRequestBulkRetryRequestBodyQueryHeaders{},
-            ID: &operations.CreateRequestBulkRetryRequestBodyQueryID{},
-            IgnoredCount: &operations.CreateRequestBulkRetryRequestBodyQueryIgnoredCount{},
-            IngestedAt: &operations.CreateRequestBulkRetryRequestBodyQueryIngestedAt{},
-            ParsedQuery: &operations.CreateRequestBulkRetryRequestBodyQueryParsedQuery{},
-            Path: hookdeck.String("molestiae"),
-            RejectionCause: &operations.CreateRequestBulkRetryRequestBodyQueryRejectionCause{},
-            SearchTerm: hookdeck.String("quod"),
-            SourceID: &operations.CreateRequestBulkRetryRequestBodyQuerySourceID{},
-            Status: operations.CreateRequestBulkRetryRequestBodyQueryStatusRejected.ToPointer(),
-            Verified: hookdeck.Bool(false),
+            Body: operations.CreateCreateRequestBulkRetryRequestBodyQueryBodyStr(
+            "string",
+            ),
+            BulkRetryID: operations.CreateCreateRequestBulkRetryRequestBodyQueryBulkRetryIDStr(
+            "string",
+            ),
+            CreatedAt: operations.CreateCreateRequestBulkRetryRequestBodyQueryCreatedAtCreateRequestBulkRetryRequestBodyQueryCreatedAt2(
+                    operations.CreateRequestBulkRetryRequestBodyQueryCreatedAt2{},
+            ),
+            EventsCount: operations.CreateCreateRequestBulkRetryRequestBodyQueryEventsCountArrayOfinteger(
+                    []int64{
+                        417458,
+                    },
+            ),
+            Headers: operations.CreateCreateRequestBulkRetryRequestBodyQueryHeadersStr(
+            "string",
+            ),
+            ID: operations.CreateCreateRequestBulkRetryRequestBodyQueryIDStr(
+            "string",
+            ),
+            IgnoredCount: operations.CreateCreateRequestBulkRetryRequestBodyQueryIgnoredCountArrayOfinteger(
+                    []int64{
+                        69025,
+                    },
+            ),
+            IngestedAt: operations.CreateCreateRequestBulkRetryRequestBodyQueryIngestedAtCreateRequestBulkRetryRequestBodyQueryIngestedAt2(
+                    operations.CreateRequestBulkRetryRequestBodyQueryIngestedAt2{},
+            ),
+            ParsedQuery: operations.CreateCreateRequestBulkRetryRequestBodyQueryParsedQueryCreateRequestBulkRetryRequestBodyQueryParsedQuery2(
+                    operations.CreateRequestBulkRetryRequestBodyQueryParsedQuery2{},
+            ),
+            RejectionCause: operations.CreateCreateRequestBulkRetryRequestBodyQueryRejectionCauseCreateRequestBulkRetryRequestBodyQueryRejectionCause2(
+                    operations.CreateRequestBulkRetryRequestBodyQueryRejectionCause2{},
+            ),
+            SourceID: operations.CreateCreateRequestBulkRetryRequestBodyQuerySourceIDArrayOfstr(
+                    []string{
+                        "string",
+                    },
+            ),
         },
     })
     if err != nil {

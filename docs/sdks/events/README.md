@@ -1,4 +1,5 @@
 # Events
+(*Events*)
 
 ## Overview
 
@@ -20,15 +21,15 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/types"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
                 Password: "",
                 Username: "",
@@ -38,33 +39,81 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Events.Get(ctx, operations.GetEventsRequest{
-        Attempts: &operations.GetEventsAttempts{},
-        Body: &operations.GetEventsBody{},
-        BulkRetryID: &operations.GetEventsBulkRetryID{},
-        CliID: &operations.GetEventsCliID{},
-        CliUserID: &operations.GetEventsCliUserID{},
-        CreatedAt: &operations.GetEventsCreatedAt{},
-        DestinationID: &operations.GetEventsDestinationID{},
-        Dir: &operations.GetEventsDir{},
-        ErrorCode: &operations.GetEventsErrorCode{},
-        EventDataID: &operations.GetEventsEventDataID{},
-        Headers: &operations.GetEventsHeaders{},
-        ID: &operations.GetEventsID{},
-        Include: operations.GetEventsIncludeData.ToPointer(),
-        IssueID: &operations.GetEventsIssueID{},
-        LastAttemptAt: &operations.GetEventsLastAttemptAt{},
-        Limit: hookdeck.Int64(956084),
-        Next: hookdeck.String("amet"),
-        OrderBy: &operations.GetEventsOrderBy{},
-        ParsedQuery: &operations.GetEventsParsedQuery{},
-        Path: hookdeck.String("deserunt"),
-        Prev: hookdeck.String("nisi"),
-        ResponseStatus: &operations.GetEventsResponseStatus{},
-        SearchTerm: hookdeck.String("vel"),
-        SourceID: &operations.GetEventsSourceID{},
-        Status: &operations.GetEventsStatus{},
-        SuccessfulAt: &operations.GetEventsSuccessfulAt{},
-        WebhookID: &operations.GetEventsWebhookID{},
+        Attempts: operations.CreateGetEventsAttemptsGetEventsAttempts2(
+                operations.GetEventsAttempts2{},
+        ),
+        Body: operations.CreateGetEventsBodyStr(
+        "string",
+        ),
+        BulkRetryID: operations.CreateGetEventsBulkRetryIDArrayOfstr(
+                []string{
+                    "string",
+                },
+        ),
+        CliID: operations.CreateGetEventsCliIDArrayOfstr(
+                []string{
+                    "string",
+                },
+        ),
+        CliUserID: operations.CreateGetEventsCliUserIDArrayOfstr(
+                []string{
+                    "string",
+                },
+        ),
+        CreatedAt: operations.CreateGetEventsCreatedAtGetEventsCreatedAt2(
+                operations.GetEventsCreatedAt2{},
+        ),
+        DestinationID: operations.CreateGetEventsDestinationIDArrayOfstr(
+                []string{
+                    "string",
+                },
+        ),
+        Dir: operations.CreateGetEventsDirGetEventsDir1(
+        operations.GetEventsDir1Desc,
+        ),
+        ErrorCode: operations.CreateGetEventsErrorCodeArrayOfstr(
+                []string{
+                    "string",
+                },
+        ),
+        EventDataID: operations.CreateGetEventsEventDataIDStr(
+        "string",
+        ),
+        Headers: operations.CreateGetEventsHeadersGetEventsHeaders2(
+                operations.GetEventsHeaders2{},
+        ),
+        ID: operations.CreateGetEventsIDStr(
+        "string",
+        ),
+        IssueID: operations.CreateGetEventsIssueIDStr(
+        "string",
+        ),
+        LastAttemptAt: operations.CreateGetEventsLastAttemptAtDateTime(
+        types.MustTimeFromString("2023-09-12T22:44:18.030Z"),
+        ),
+        OrderBy: operations.CreateGetEventsOrderByGetEventsOrderBy1(
+        operations.GetEventsOrderBy1LastAttemptAt,
+        ),
+        ParsedQuery: operations.CreateGetEventsParsedQueryGetEventsParsedQuery2(
+                operations.GetEventsParsedQuery2{},
+        ),
+        ResponseStatus: operations.CreateGetEventsResponseStatusInteger(
+        438142,
+        ),
+        SourceID: operations.CreateGetEventsSourceIDStr(
+        "string",
+        ),
+        Status: operations.CreateGetEventsStatusArrayOfEventStatus(
+                []shared.EventStatus{
+                    shared.EventStatusSuccessful,
+                },
+        ),
+        SuccessfulAt: operations.CreateGetEventsSuccessfulAtDateTime(
+        types.MustTimeFromString("2023-12-06T14:41:34.659Z"),
+        ),
+        WebhookID: operations.CreateGetEventsWebhookIDStr(
+        "string",
+        ),
     })
     if err != nil {
         log.Fatal(err)

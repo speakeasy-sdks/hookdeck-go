@@ -1,7 +1,5 @@
 # AttachedIntegrationToSource
 
-Attach operation success status
-
 
 ## Fields
 
