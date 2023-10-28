@@ -1,7 +1,5 @@
 # Request
 
-A single request
-
 
 ## Fields
 
