@@ -19,11 +19,14 @@ func (o *RetryEventRequest) GetID() string {
 }
 
 type RetryEventResponse struct {
+	// HTTP response content type for this operation
 	ContentType string
 	// Retried event with event attempt
 	RetriedEvent *shared.RetriedEvent
-	StatusCode   int
-	RawResponse  *http.Response
+	// HTTP response status code for this operation
+	StatusCode int
+	// Raw HTTP response; suitable for custom response parsing
+	RawResponse *http.Response
 }
 
 func (o *RetryEventResponse) GetContentType() string {

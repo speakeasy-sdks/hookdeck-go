@@ -42,7 +42,7 @@ func (e *CreateDestinationRequestBodyRateLimitPeriod) UnmarshalJSON(data []byte)
 
 type CreateDestinationRequestBody struct {
 	// Config for the destination's auth method
-	AuthMethod interface{} `json:"auth_method,omitempty"`
+	AuthMethod *shared.DestinationAuthMethodConfig `json:"auth_method,omitempty"`
 	// Path for the CLI destination
 	CliPath *string `json:"cli_path,omitempty"`
 	// HTTP method used on requests sent to the destination, overrides the method used on requests sent to the source.
@@ -51,14 +51,14 @@ type CreateDestinationRequestBody struct {
 	Name                   string `json:"name"`
 	PathForwardingDisabled *bool  `json:"path_forwarding_disabled,omitempty"`
 	// Limit event attempts to receive per period
-	RateLimit interface{} `json:"rate_limit,omitempty"`
+	RateLimit *int64 `json:"rate_limit,omitempty"`
 	// Period to rate limit attempts
 	RateLimitPeriod *CreateDestinationRequestBodyRateLimitPeriod `json:"rate_limit_period,omitempty"`
 	// Endpoint of the destination
 	URL *string `json:"url,omitempty"`
 }
 
-func (o *CreateDestinationRequestBody) GetAuthMethod() interface{} {
+func (o *CreateDestinationRequestBody) GetAuthMethod() *shared.DestinationAuthMethodConfig {
 	if o == nil {
 		return nil
 	}
@@ -93,7 +93,7 @@ func (o *CreateDestinationRequestBody) GetPathForwardingDisabled() *bool {
 	return o.PathForwardingDisabled
 }
 
-func (o *CreateDestinationRequestBody) GetRateLimit() interface{} {
+func (o *CreateDestinationRequestBody) GetRateLimit() *int64 {
 	if o == nil {
 		return nil
 	}
@@ -115,10 +115,13 @@ func (o *CreateDestinationRequestBody) GetURL() *string {
 }
 
 type CreateDestinationResponse struct {
+	// HTTP response content type for this operation
 	ContentType string
 	// A single destination
 	Destination *shared.Destination
-	StatusCode  int
+	// HTTP response status code for this operation
+	StatusCode int
+	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
 }
 

@@ -4,23 +4,13 @@ package sdkerrors
 
 import (
 	"encoding/json"
-	"net/http"
 )
 
 type APIErrorResponseData struct {
-	RawResponse *http.Response `json:"-"`
-}
-
-var _ error = &APIErrorResponseData{}
-
-func (e *APIErrorResponseData) Error() string {
-	data, _ := json.Marshal(e)
-	return string(data)
 }
 
 // APIErrorResponse - Error response model
 type APIErrorResponse struct {
-	RawResponse *http.Response `json:"-"`
 	// Error code
 	Code string                `json:"code"`
 	Data *APIErrorResponseData `json:"data,omitempty"`
