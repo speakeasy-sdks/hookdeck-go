@@ -3,10 +3,10 @@
 package shared
 
 import (
+	"github.com/speakeasy-sdks/hookdeck-go/pkg/utils"
 	"time"
 )
 
-// Transformation - A single transformation
 type Transformation struct {
 	// JavaScript code to be executed
 	Code string `json:"code"`
@@ -24,6 +24,17 @@ type Transformation struct {
 	TeamID string `json:"team_id"`
 	// Date the transformation was last updated
 	UpdatedAt time.Time `json:"updated_at"`
+}
+
+func (t Transformation) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(t, "", false)
+}
+
+func (t *Transformation) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &t, "", false, false); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *Transformation) GetCode() string {

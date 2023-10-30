@@ -1,7 +1,5 @@
 # BatchOperation
 
-A single events bulk retry
-
 
 ## Fields
 

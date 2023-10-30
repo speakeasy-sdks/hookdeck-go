@@ -2,7 +2,6 @@
 
 package shared
 
-// RawBody - A request raw body data
 type RawBody struct {
 	Body string `json:"body"`
 }

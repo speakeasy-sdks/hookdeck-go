@@ -3,15 +3,80 @@
 package operations
 
 import (
+	"errors"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
+	"github.com/speakeasy-sdks/hookdeck-go/pkg/utils"
 	"net/http"
 )
+
+type UpdateTransformationRequestBodyEnvType string
+
+const (
+	UpdateTransformationRequestBodyEnvTypeStr     UpdateTransformationRequestBodyEnvType = "str"
+	UpdateTransformationRequestBodyEnvTypeFloat32 UpdateTransformationRequestBodyEnvType = "float32"
+)
+
+type UpdateTransformationRequestBodyEnv struct {
+	Str     *string
+	Float32 *float32
+
+	Type UpdateTransformationRequestBodyEnvType
+}
+
+func CreateUpdateTransformationRequestBodyEnvStr(str string) UpdateTransformationRequestBodyEnv {
+	typ := UpdateTransformationRequestBodyEnvTypeStr
+
+	return UpdateTransformationRequestBodyEnv{
+		Str:  &str,
+		Type: typ,
+	}
+}
+
+func CreateUpdateTransformationRequestBodyEnvFloat32(float32T float32) UpdateTransformationRequestBodyEnv {
+	typ := UpdateTransformationRequestBodyEnvTypeFloat32
+
+	return UpdateTransformationRequestBodyEnv{
+		Float32: &float32T,
+		Type:    typ,
+	}
+}
+
+func (u *UpdateTransformationRequestBodyEnv) UnmarshalJSON(data []byte) error {
+
+	str := new(string)
+	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
+		u.Str = str
+		u.Type = UpdateTransformationRequestBodyEnvTypeStr
+		return nil
+	}
+
+	float32Var := new(float32)
+	if err := utils.UnmarshalJSON(data, &float32Var, "", true, true); err == nil {
+		u.Float32 = float32Var
+		u.Type = UpdateTransformationRequestBodyEnvTypeFloat32
+		return nil
+	}
+
+	return errors.New("could not unmarshal into supported union types")
+}
+
+func (u UpdateTransformationRequestBodyEnv) MarshalJSON() ([]byte, error) {
+	if u.Str != nil {
+		return utils.MarshalJSON(u.Str, "", true)
+	}
+
+	if u.Float32 != nil {
+		return utils.MarshalJSON(u.Float32, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type: all fields are null")
+}
 
 type UpdateTransformationRequestBody struct {
 	// JavaScript code to be executed
 	Code *string `json:"code,omitempty"`
 	// Key-value environment variables to be passed to the transformation
-	Env map[string]interface{} `json:"env,omitempty"`
+	Env map[string]UpdateTransformationRequestBodyEnv `json:"env,omitempty"`
 	// A unique, human-friendly name for the transformation
 	Name *string `json:"name,omitempty"`
 }
@@ -23,7 +88,7 @@ func (o *UpdateTransformationRequestBody) GetCode() *string {
 	return o.Code
 }
 
-func (o *UpdateTransformationRequestBody) GetEnv() map[string]interface{} {
+func (o *UpdateTransformationRequestBody) GetEnv() map[string]UpdateTransformationRequestBodyEnv {
 	if o == nil {
 		return nil
 	}
@@ -57,8 +122,11 @@ func (o *UpdateTransformationRequest) GetID() string {
 }
 
 type UpdateTransformationResponse struct {
+	// HTTP response content type for this operation
 	ContentType string
-	StatusCode  int
+	// HTTP response status code for this operation
+	StatusCode int
+	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
 	// A single transformation
 	Transformation *shared.Transformation

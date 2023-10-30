@@ -38,10 +38,13 @@ func (o *CreateSourceRequestBody) GetName() string {
 }
 
 type CreateSourceResponse struct {
+	// HTTP response content type for this operation
 	ContentType string
 	// A single source
-	Source      *shared.Source
-	StatusCode  int
+	Source *shared.Source
+	// HTTP response status code for this operation
+	StatusCode int
+	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
 }
 
