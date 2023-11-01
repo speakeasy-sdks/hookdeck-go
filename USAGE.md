@@ -4,34 +4,35 @@
 ```go
 package main
 
-import(
+import (
 	"context"
-	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
+	"log"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
-            BasicAuth: &shared.SchemeBasicAuth{
-                Password: "",
-                Username: "",
-            },
-        }),
-    )
-    id := "corrupti"
+	s := hookdeckgo.New(
+		hookdeckgo.WithSecurity(shared.Security{
+			BasicAuth: &shared.SchemeBasicAuth{
+				Password: "",
+				Username: "",
+			},
+		}),
+	)
 
-    ctx := context.Background()
-    res, err := s.Attempt.Get(ctx, id)
-    if err != nil {
-        log.Fatal(err)
-    }
+	var id string = "string"
 
-    if res.EventAttempt != nil {
-        // handle response
-    }
+	ctx := context.Background()
+	res, err := s.Attempt.Get(ctx, id)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	if res.EventAttempt != nil {
+		// handle response
+	}
 }
+
 ```
 <!-- End SDK Example Usage -->

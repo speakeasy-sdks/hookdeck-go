@@ -3,9 +3,8 @@
 package shared
 
 import (
-	"bytes"
-	"encoding/json"
 	"errors"
+	"github.com/speakeasy-sdks/hookdeck-go/pkg/utils"
 	"time"
 )
 
@@ -42,22 +41,17 @@ func CreateBatchOperationQueryStr(str string) BatchOperationQuery {
 }
 
 func (u *BatchOperationQuery) UnmarshalJSON(data []byte) error {
-	var d *json.Decoder
 
 	mapOfany := map[string]interface{}{}
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&mapOfany); err == nil {
+	if err := utils.UnmarshalJSON(data, &mapOfany, "", true, true); err == nil {
 		u.MapOfany = mapOfany
 		u.Type = BatchOperationQueryTypeMapOfany
 		return nil
 	}
 
-	str := new(string)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&str); err == nil {
-		u.Str = str
+	str := ""
+	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
+		u.Str = &str
 		u.Type = BatchOperationQueryTypeStr
 		return nil
 	}
@@ -67,17 +61,16 @@ func (u *BatchOperationQuery) UnmarshalJSON(data []byte) error {
 
 func (u BatchOperationQuery) MarshalJSON() ([]byte, error) {
 	if u.MapOfany != nil {
-		return json.Marshal(u.MapOfany)
+		return utils.MarshalJSON(u.MapOfany, "", true)
 	}
 
 	if u.Str != nil {
-		return json.Marshal(u.Str)
+		return utils.MarshalJSON(u.Str, "", true)
 	}
 
-	return nil, nil
+	return nil, errors.New("could not marshal union type: all fields are null")
 }
 
-// BatchOperation - A single events bulk retry
 type BatchOperation struct {
 	// Date the bulk retry was cancelled
 	CancelledAt *time.Time `json:"cancelled_at,omitempty"`
@@ -108,6 +101,17 @@ type BatchOperation struct {
 	TeamID string `json:"team_id"`
 	// Last time the bulk retry was updated
 	UpdatedAt time.Time `json:"updated_at"`
+}
+
+func (b BatchOperation) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(b, "", false)
+}
+
+func (b *BatchOperation) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &b, "", false, false); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *BatchOperation) GetCancelledAt() *time.Time {
