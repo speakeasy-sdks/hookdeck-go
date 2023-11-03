@@ -3,9 +3,8 @@
 package shared
 
 import (
-	"bytes"
-	"encoding/json"
 	"errors"
+	"github.com/speakeasy-sdks/hookdeck-go/pkg/utils"
 )
 
 // ConnectionFilterProperty4 - JSON using our filter syntax to filter on request headers
@@ -67,41 +66,32 @@ func CreateConnectionFilterPropertyConnectionFilterProperty4(connectionFilterPro
 }
 
 func (u *ConnectionFilterProperty) UnmarshalJSON(data []byte) error {
-	var d *json.Decoder
 
-	str := new(string)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&str); err == nil {
-		u.Str = str
+	connectionFilterProperty4 := ConnectionFilterProperty4{}
+	if err := utils.UnmarshalJSON(data, &connectionFilterProperty4, "", true, true); err == nil {
+		u.ConnectionFilterProperty4 = &connectionFilterProperty4
+		u.Type = ConnectionFilterPropertyTypeConnectionFilterProperty4
+		return nil
+	}
+
+	str := ""
+	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
+		u.Str = &str
 		u.Type = ConnectionFilterPropertyTypeStr
 		return nil
 	}
 
-	float32T := new(float32)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&float32T); err == nil {
-		u.Float32 = float32T
+	float32Var := float32(0)
+	if err := utils.UnmarshalJSON(data, &float32Var, "", true, true); err == nil {
+		u.Float32 = &float32Var
 		u.Type = ConnectionFilterPropertyTypeFloat32
 		return nil
 	}
 
-	boolean := new(bool)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&boolean); err == nil {
-		u.Boolean = boolean
+	boolean := false
+	if err := utils.UnmarshalJSON(data, &boolean, "", true, true); err == nil {
+		u.Boolean = &boolean
 		u.Type = ConnectionFilterPropertyTypeBoolean
-		return nil
-	}
-
-	connectionFilterProperty4 := new(ConnectionFilterProperty4)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&connectionFilterProperty4); err == nil {
-		u.ConnectionFilterProperty4 = connectionFilterProperty4
-		u.Type = ConnectionFilterPropertyTypeConnectionFilterProperty4
 		return nil
 	}
 
@@ -110,20 +100,20 @@ func (u *ConnectionFilterProperty) UnmarshalJSON(data []byte) error {
 
 func (u ConnectionFilterProperty) MarshalJSON() ([]byte, error) {
 	if u.Str != nil {
-		return json.Marshal(u.Str)
+		return utils.MarshalJSON(u.Str, "", true)
 	}
 
 	if u.Float32 != nil {
-		return json.Marshal(u.Float32)
+		return utils.MarshalJSON(u.Float32, "", true)
 	}
 
 	if u.Boolean != nil {
-		return json.Marshal(u.Boolean)
+		return utils.MarshalJSON(u.Boolean, "", true)
 	}
 
 	if u.ConnectionFilterProperty4 != nil {
-		return json.Marshal(u.ConnectionFilterProperty4)
+		return utils.MarshalJSON(u.ConnectionFilterProperty4, "", true)
 	}
 
-	return nil, nil
+	return nil, errors.New("could not marshal union type: all fields are null")
 }

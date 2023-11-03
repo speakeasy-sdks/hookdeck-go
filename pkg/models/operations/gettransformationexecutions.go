@@ -3,11 +3,11 @@
 package operations
 
 import (
-	"bytes"
 	"encoding/json"
 	"errors"
 	"fmt"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
+	"github.com/speakeasy-sdks/hookdeck-go/pkg/utils"
 	"net/http"
 	"time"
 )
@@ -19,6 +19,17 @@ type GetTransformationExecutionsCreatedAt2 struct {
 	Gte *time.Time `queryParam:"name=gte"`
 	Le  *time.Time `queryParam:"name=le"`
 	Lte *time.Time `queryParam:"name=lte"`
+}
+
+func (g GetTransformationExecutionsCreatedAt2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetTransformationExecutionsCreatedAt2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, true); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *GetTransformationExecutionsCreatedAt2) GetAny() *bool {
@@ -89,23 +100,18 @@ func CreateGetTransformationExecutionsCreatedAtGetTransformationExecutionsCreate
 }
 
 func (u *GetTransformationExecutionsCreatedAt) UnmarshalJSON(data []byte) error {
-	var d *json.Decoder
 
-	dateTime := new(time.Time)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&dateTime); err == nil {
-		u.DateTime = dateTime
-		u.Type = GetTransformationExecutionsCreatedAtTypeDateTime
+	getTransformationExecutionsCreatedAt2 := GetTransformationExecutionsCreatedAt2{}
+	if err := utils.UnmarshalJSON(data, &getTransformationExecutionsCreatedAt2, "", true, true); err == nil {
+		u.GetTransformationExecutionsCreatedAt2 = &getTransformationExecutionsCreatedAt2
+		u.Type = GetTransformationExecutionsCreatedAtTypeGetTransformationExecutionsCreatedAt2
 		return nil
 	}
 
-	getTransformationExecutionsCreatedAt2 := new(GetTransformationExecutionsCreatedAt2)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&getTransformationExecutionsCreatedAt2); err == nil {
-		u.GetTransformationExecutionsCreatedAt2 = getTransformationExecutionsCreatedAt2
-		u.Type = GetTransformationExecutionsCreatedAtTypeGetTransformationExecutionsCreatedAt2
+	dateTime := time.Time{}
+	if err := utils.UnmarshalJSON(data, &dateTime, "", true, true); err == nil {
+		u.DateTime = &dateTime
+		u.Type = GetTransformationExecutionsCreatedAtTypeDateTime
 		return nil
 	}
 
@@ -114,14 +120,14 @@ func (u *GetTransformationExecutionsCreatedAt) UnmarshalJSON(data []byte) error 
 
 func (u GetTransformationExecutionsCreatedAt) MarshalJSON() ([]byte, error) {
 	if u.DateTime != nil {
-		return json.Marshal(u.DateTime)
+		return utils.MarshalJSON(u.DateTime, "", true)
 	}
 
 	if u.GetTransformationExecutionsCreatedAt2 != nil {
-		return json.Marshal(u.GetTransformationExecutionsCreatedAt2)
+		return utils.MarshalJSON(u.GetTransformationExecutionsCreatedAt2, "", true)
 	}
 
-	return nil, nil
+	return nil, errors.New("could not marshal union type: all fields are null")
 }
 
 type GetTransformationExecutionsDir2 string
@@ -212,21 +218,16 @@ func CreateGetTransformationExecutionsDirArrayOfgetTransformationExecutionsDir2(
 }
 
 func (u *GetTransformationExecutionsDir) UnmarshalJSON(data []byte) error {
-	var d *json.Decoder
 
-	getTransformationExecutionsDir1 := new(GetTransformationExecutionsDir1)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&getTransformationExecutionsDir1); err == nil {
-		u.GetTransformationExecutionsDir1 = getTransformationExecutionsDir1
+	getTransformationExecutionsDir1 := GetTransformationExecutionsDir1("")
+	if err := utils.UnmarshalJSON(data, &getTransformationExecutionsDir1, "", true, true); err == nil {
+		u.GetTransformationExecutionsDir1 = &getTransformationExecutionsDir1
 		u.Type = GetTransformationExecutionsDirTypeGetTransformationExecutionsDir1
 		return nil
 	}
 
 	arrayOfgetTransformationExecutionsDir2 := []GetTransformationExecutionsDir2{}
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&arrayOfgetTransformationExecutionsDir2); err == nil {
+	if err := utils.UnmarshalJSON(data, &arrayOfgetTransformationExecutionsDir2, "", true, true); err == nil {
 		u.ArrayOfgetTransformationExecutionsDir2 = arrayOfgetTransformationExecutionsDir2
 		u.Type = GetTransformationExecutionsDirTypeArrayOfgetTransformationExecutionsDir2
 		return nil
@@ -237,14 +238,14 @@ func (u *GetTransformationExecutionsDir) UnmarshalJSON(data []byte) error {
 
 func (u GetTransformationExecutionsDir) MarshalJSON() ([]byte, error) {
 	if u.GetTransformationExecutionsDir1 != nil {
-		return json.Marshal(u.GetTransformationExecutionsDir1)
+		return utils.MarshalJSON(u.GetTransformationExecutionsDir1, "", true)
 	}
 
 	if u.ArrayOfgetTransformationExecutionsDir2 != nil {
-		return json.Marshal(u.ArrayOfgetTransformationExecutionsDir2)
+		return utils.MarshalJSON(u.ArrayOfgetTransformationExecutionsDir2, "", true)
 	}
 
-	return nil, nil
+	return nil, errors.New("could not marshal union type: all fields are null")
 }
 
 type GetTransformationExecutionsIssueIDType string
@@ -280,21 +281,16 @@ func CreateGetTransformationExecutionsIssueIDArrayOfstr(arrayOfstr []string) Get
 }
 
 func (u *GetTransformationExecutionsIssueID) UnmarshalJSON(data []byte) error {
-	var d *json.Decoder
 
-	str := new(string)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&str); err == nil {
-		u.Str = str
+	str := ""
+	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
+		u.Str = &str
 		u.Type = GetTransformationExecutionsIssueIDTypeStr
 		return nil
 	}
 
 	arrayOfstr := []string{}
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&arrayOfstr); err == nil {
+	if err := utils.UnmarshalJSON(data, &arrayOfstr, "", true, true); err == nil {
 		u.ArrayOfstr = arrayOfstr
 		u.Type = GetTransformationExecutionsIssueIDTypeArrayOfstr
 		return nil
@@ -305,14 +301,14 @@ func (u *GetTransformationExecutionsIssueID) UnmarshalJSON(data []byte) error {
 
 func (u GetTransformationExecutionsIssueID) MarshalJSON() ([]byte, error) {
 	if u.Str != nil {
-		return json.Marshal(u.Str)
+		return utils.MarshalJSON(u.Str, "", true)
 	}
 
 	if u.ArrayOfstr != nil {
-		return json.Marshal(u.ArrayOfstr)
+		return utils.MarshalJSON(u.ArrayOfstr, "", true)
 	}
 
-	return nil, nil
+	return nil, errors.New("could not marshal union type: all fields are null")
 }
 
 type GetTransformationExecutionsLogLevel2 string
@@ -427,21 +423,16 @@ func CreateGetTransformationExecutionsLogLevelArrayOfgetTransformationExecutions
 }
 
 func (u *GetTransformationExecutionsLogLevel) UnmarshalJSON(data []byte) error {
-	var d *json.Decoder
 
-	getTransformationExecutionsLogLevel1 := new(GetTransformationExecutionsLogLevel1)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&getTransformationExecutionsLogLevel1); err == nil {
-		u.GetTransformationExecutionsLogLevel1 = getTransformationExecutionsLogLevel1
+	getTransformationExecutionsLogLevel1 := GetTransformationExecutionsLogLevel1("")
+	if err := utils.UnmarshalJSON(data, &getTransformationExecutionsLogLevel1, "", true, true); err == nil {
+		u.GetTransformationExecutionsLogLevel1 = &getTransformationExecutionsLogLevel1
 		u.Type = GetTransformationExecutionsLogLevelTypeGetTransformationExecutionsLogLevel1
 		return nil
 	}
 
 	arrayOfgetTransformationExecutionsLogLevel2 := []GetTransformationExecutionsLogLevel2{}
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&arrayOfgetTransformationExecutionsLogLevel2); err == nil {
+	if err := utils.UnmarshalJSON(data, &arrayOfgetTransformationExecutionsLogLevel2, "", true, true); err == nil {
 		u.ArrayOfgetTransformationExecutionsLogLevel2 = arrayOfgetTransformationExecutionsLogLevel2
 		u.Type = GetTransformationExecutionsLogLevelTypeArrayOfgetTransformationExecutionsLogLevel2
 		return nil
@@ -452,14 +443,14 @@ func (u *GetTransformationExecutionsLogLevel) UnmarshalJSON(data []byte) error {
 
 func (u GetTransformationExecutionsLogLevel) MarshalJSON() ([]byte, error) {
 	if u.GetTransformationExecutionsLogLevel1 != nil {
-		return json.Marshal(u.GetTransformationExecutionsLogLevel1)
+		return utils.MarshalJSON(u.GetTransformationExecutionsLogLevel1, "", true)
 	}
 
 	if u.ArrayOfgetTransformationExecutionsLogLevel2 != nil {
-		return json.Marshal(u.ArrayOfgetTransformationExecutionsLogLevel2)
+		return utils.MarshalJSON(u.ArrayOfgetTransformationExecutionsLogLevel2, "", true)
 	}
 
-	return nil, nil
+	return nil, errors.New("could not marshal union type: all fields are null")
 }
 
 type GetTransformationExecutionsOrderBy2 string
@@ -544,21 +535,16 @@ func CreateGetTransformationExecutionsOrderByArrayOfgetTransformationExecutionsO
 }
 
 func (u *GetTransformationExecutionsOrderBy) UnmarshalJSON(data []byte) error {
-	var d *json.Decoder
 
-	getTransformationExecutionsOrderBy1 := new(GetTransformationExecutionsOrderBy1)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&getTransformationExecutionsOrderBy1); err == nil {
-		u.GetTransformationExecutionsOrderBy1 = getTransformationExecutionsOrderBy1
+	getTransformationExecutionsOrderBy1 := GetTransformationExecutionsOrderBy1("")
+	if err := utils.UnmarshalJSON(data, &getTransformationExecutionsOrderBy1, "", true, true); err == nil {
+		u.GetTransformationExecutionsOrderBy1 = &getTransformationExecutionsOrderBy1
 		u.Type = GetTransformationExecutionsOrderByTypeGetTransformationExecutionsOrderBy1
 		return nil
 	}
 
 	arrayOfgetTransformationExecutionsOrderBy2 := []GetTransformationExecutionsOrderBy2{}
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&arrayOfgetTransformationExecutionsOrderBy2); err == nil {
+	if err := utils.UnmarshalJSON(data, &arrayOfgetTransformationExecutionsOrderBy2, "", true, true); err == nil {
 		u.ArrayOfgetTransformationExecutionsOrderBy2 = arrayOfgetTransformationExecutionsOrderBy2
 		u.Type = GetTransformationExecutionsOrderByTypeArrayOfgetTransformationExecutionsOrderBy2
 		return nil
@@ -569,14 +555,14 @@ func (u *GetTransformationExecutionsOrderBy) UnmarshalJSON(data []byte) error {
 
 func (u GetTransformationExecutionsOrderBy) MarshalJSON() ([]byte, error) {
 	if u.GetTransformationExecutionsOrderBy1 != nil {
-		return json.Marshal(u.GetTransformationExecutionsOrderBy1)
+		return utils.MarshalJSON(u.GetTransformationExecutionsOrderBy1, "", true)
 	}
 
 	if u.ArrayOfgetTransformationExecutionsOrderBy2 != nil {
-		return json.Marshal(u.ArrayOfgetTransformationExecutionsOrderBy2)
+		return utils.MarshalJSON(u.ArrayOfgetTransformationExecutionsOrderBy2, "", true)
 	}
 
-	return nil, nil
+	return nil, errors.New("could not marshal union type: all fields are null")
 }
 
 type GetTransformationExecutionsWebhookIDType string
@@ -612,21 +598,16 @@ func CreateGetTransformationExecutionsWebhookIDArrayOfstr(arrayOfstr []string) G
 }
 
 func (u *GetTransformationExecutionsWebhookID) UnmarshalJSON(data []byte) error {
-	var d *json.Decoder
 
-	str := new(string)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&str); err == nil {
-		u.Str = str
+	str := ""
+	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
+		u.Str = &str
 		u.Type = GetTransformationExecutionsWebhookIDTypeStr
 		return nil
 	}
 
 	arrayOfstr := []string{}
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&arrayOfstr); err == nil {
+	if err := utils.UnmarshalJSON(data, &arrayOfstr, "", true, true); err == nil {
 		u.ArrayOfstr = arrayOfstr
 		u.Type = GetTransformationExecutionsWebhookIDTypeArrayOfstr
 		return nil
@@ -637,14 +618,14 @@ func (u *GetTransformationExecutionsWebhookID) UnmarshalJSON(data []byte) error 
 
 func (u GetTransformationExecutionsWebhookID) MarshalJSON() ([]byte, error) {
 	if u.Str != nil {
-		return json.Marshal(u.Str)
+		return utils.MarshalJSON(u.Str, "", true)
 	}
 
 	if u.ArrayOfstr != nil {
-		return json.Marshal(u.ArrayOfstr)
+		return utils.MarshalJSON(u.ArrayOfstr, "", true)
 	}
 
-	return nil, nil
+	return nil, errors.New("could not marshal union type: all fields are null")
 }
 
 type GetTransformationExecutionsRequest struct {
@@ -731,8 +712,11 @@ func (o *GetTransformationExecutionsRequest) GetWebhookID() *GetTransformationEx
 }
 
 type GetTransformationExecutionsResponse struct {
+	// HTTP response content type for this operation
 	ContentType string
-	StatusCode  int
+	// HTTP response status code for this operation
+	StatusCode int
+	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
 	// List of transformation executions
 	TransformationExecutionPaginatedResult *shared.TransformationExecutionPaginatedResult

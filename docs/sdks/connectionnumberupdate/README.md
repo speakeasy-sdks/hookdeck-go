@@ -1,4 +1,5 @@
 # ConnectionNumberUpdate
+(*ConnectionNumberUpdate*)
 
 ### Available Operations
 
@@ -16,14 +17,14 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
                 Password: "",
                 Username: "",
@@ -34,71 +35,58 @@ func main() {
     ctx := context.Background()
     res, err := s.ConnectionNumberUpdate.Upsert(ctx, operations.UpsertConnectionRequestBody{
         Destination: &operations.UpsertConnectionRequestBodyDestination{
-            AuthMethod: &shared.HookdeckSignature{
-                Config: &shared.DestinationAuthMethodSignatureConfig{},
-                Type: shared.HookdeckSignatureTypeHookdeckSignature,
-            },
-            CliPath: hookdeck.String("reiciendis"),
-            HTTPMethod: shared.DestinationHTTPMethodDelete.ToPointer(),
-            Name: "Jessie Langosh V",
-            PathForwardingDisabled: hookdeck.Bool(false),
-            RateLimit: hookdeck.Int64(739264),
-            RateLimitPeriod: operations.UpsertConnectionRequestBodyDestinationRateLimitPeriodSecond.ToPointer(),
-            URL: hookdeck.String("doloremque"),
+            AuthMethod: shared.CreateDestinationAuthMethodConfigAPIKey(
+                    shared.APIKey{
+                        Config: &shared.DestinationAuthMethodAPIKeyConfig{
+                            APIKey: "string",
+                            Key: "<key>",
+                        },
+                        Type: shared.APIKeyTypeAPIKey,
+                    },
+            ),
+            Name: "string",
         },
-        DestinationID: hookdeck.String("reprehenderit"),
-        Name: "Shawna Carter",
-        Rules: []interface{}{
-            shared.RetryRule{
-                Count: hookdeck.Int64(688661),
-                Interval: hookdeck.Int64(317983),
-                Strategy: shared.RetryStrategyExponential,
-                Type: shared.RetryRuleTypeRetry,
-            },
-            shared.FilterRule{
-                Body: &shared.ConnectionFilterProperty{},
-                Headers: &shared.ConnectionFilterProperty{},
-                Path: &shared.ConnectionFilterProperty{},
-                Query: &shared.ConnectionFilterProperty{},
-                Type: shared.FilterRuleTypeFilter,
-            },
+        Name: "string",
+        Rules: []shared.Rule{
+            shared.CreateRuleFilterRule(
+                shared.FilterRule{
+                    Body: shared.CreateConnectionFilterPropertyFloat32(
+                    5344.19,
+                    ),
+                    Headers: shared.CreateConnectionFilterPropertyFloat32(
+                    3135.5,
+                    ),
+                    Path: shared.CreateConnectionFilterPropertyFloat32(
+                    7400.64,
+                    ),
+                    Query: shared.CreateConnectionFilterPropertyStr(
+                    "string",
+                    ),
+                    Type: shared.FilterRuleTypeFilter,
+                },
+            ),
         },
         Ruleset: &operations.UpsertConnectionRequestBodyRuleset{
-            IsTeamDefault: hookdeck.Bool(false),
-            Name: "Eric Emmerich",
-            Rules: []interface{}{
-                shared.DelayRule{
-                    Delay: 265389,
-                    Type: shared.DelayRuleTypeDelay,
-                },
-                shared.FilterRule{
-                    Body: &shared.ConnectionFilterProperty{},
-                    Headers: &shared.ConnectionFilterProperty{},
-                    Path: &shared.ConnectionFilterProperty{},
-                    Query: &shared.ConnectionFilterProperty{},
-                    Type: shared.FilterRuleTypeFilter,
-                },
-                shared.FilterRule{
-                    Body: &shared.ConnectionFilterProperty{},
-                    Headers: &shared.ConnectionFilterProperty{},
-                    Path: &shared.ConnectionFilterProperty{},
-                    Query: &shared.ConnectionFilterProperty{},
-                    Type: shared.FilterRuleTypeFilter,
-                },
+            Name: "string",
+            Rules: []shared.Rule{
+                shared.CreateRuleRetryRule(
+                    shared.RetryRule{
+                        Strategy: shared.RetryStrategyExponential,
+                        Type: shared.RetryRuleTypeRetry,
+                    },
+                ),
             },
         },
-        RulesetID: hookdeck.String("voluptates"),
         Source: &operations.UpsertConnectionRequestBodySource{
             AllowedHTTPMethods: []shared.SourceAllowedHTTPMethod{
                 shared.SourceAllowedHTTPMethodDelete,
             },
             CustomResponse: &shared.SourceCustomResponse{
-                Body: "sint",
+                Body: "string",
                 ContentType: shared.SourceCustomResponseContentTypeJSON,
             },
-            Name: "Miss Randall Hamill",
+            Name: "string",
         },
-        SourceID: hookdeck.String("explicabo"),
     })
     if err != nil {
         log.Fatal(err)

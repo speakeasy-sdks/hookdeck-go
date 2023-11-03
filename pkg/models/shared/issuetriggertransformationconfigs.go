@@ -3,9 +3,8 @@
 package shared
 
 import (
-	"bytes"
-	"encoding/json"
 	"errors"
+	"github.com/speakeasy-sdks/hookdeck-go/pkg/utils"
 )
 
 type IssueTriggerTransformationConfigsTransformationsType string
@@ -41,21 +40,16 @@ func CreateIssueTriggerTransformationConfigsTransformationsArrayOfstr(arrayOfstr
 }
 
 func (u *IssueTriggerTransformationConfigsTransformations) UnmarshalJSON(data []byte) error {
-	var d *json.Decoder
 
-	str := new(string)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&str); err == nil {
-		u.Str = str
+	str := ""
+	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
+		u.Str = &str
 		u.Type = IssueTriggerTransformationConfigsTransformationsTypeStr
 		return nil
 	}
 
 	arrayOfstr := []string{}
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&arrayOfstr); err == nil {
+	if err := utils.UnmarshalJSON(data, &arrayOfstr, "", true, true); err == nil {
 		u.ArrayOfstr = arrayOfstr
 		u.Type = IssueTriggerTransformationConfigsTransformationsTypeArrayOfstr
 		return nil
@@ -66,14 +60,14 @@ func (u *IssueTriggerTransformationConfigsTransformations) UnmarshalJSON(data []
 
 func (u IssueTriggerTransformationConfigsTransformations) MarshalJSON() ([]byte, error) {
 	if u.Str != nil {
-		return json.Marshal(u.Str)
+		return utils.MarshalJSON(u.Str, "", true)
 	}
 
 	if u.ArrayOfstr != nil {
-		return json.Marshal(u.ArrayOfstr)
+		return utils.MarshalJSON(u.ArrayOfstr, "", true)
 	}
 
-	return nil, nil
+	return nil, errors.New("could not marshal union type: all fields are null")
 }
 
 // IssueTriggerTransformationConfigs - Configurations for a 'Transformation' issue trigger

@@ -3,6 +3,7 @@
 package shared
 
 import (
+	"github.com/speakeasy-sdks/hookdeck-go/pkg/utils"
 	"time"
 )
 
@@ -19,11 +20,22 @@ type Ruleset struct {
 	// A unique name for the ruleset
 	Name string `json:"name"`
 	// Array of rules to apply
-	Rules []interface{} `json:"rules"`
+	Rules []Rule `json:"rules"`
 	// ID of the workspace
 	TeamID string `json:"team_id"`
 	// Date the ruleset was last updated
 	UpdatedAt time.Time `json:"updated_at"`
+}
+
+func (r Ruleset) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(r, "", false)
+}
+
+func (r *Ruleset) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &r, "", false, false); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *Ruleset) GetArchivedAt() *time.Time {
@@ -61,9 +73,9 @@ func (o *Ruleset) GetName() string {
 	return o.Name
 }
 
-func (o *Ruleset) GetRules() []interface{} {
+func (o *Ruleset) GetRules() []Rule {
 	if o == nil {
-		return []interface{}{}
+		return []Rule{}
 	}
 	return o.Rules
 }

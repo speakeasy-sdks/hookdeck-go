@@ -1,4 +1,5 @@
 # Rulesets
+(*Rulesets*)
 
 ## Overview
 
@@ -20,15 +21,15 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/types"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
                 Password: "",
                 Username: "",
@@ -38,22 +39,47 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Rulesets.Get(ctx, operations.GetRulesetsRequest{
-        Archived: hookdeck.Bool(false),
-        ArchivedAt: &operations.GetRulesetsArchivedAt{},
-        Dir: &operations.GetRulesetsDir{},
-        ID: &operations.GetRulesetsID{},
-        Limit: hookdeck.Int64(311796),
-        Name: &operations.GetRulesetsName2{
-            Any: hookdeck.Bool(false),
-            Contains: &operations.GetRulesetsName2Contains{},
-            Gt: &operations.GetRulesetsName2Gt{},
-            Gte: &operations.GetRulesetsName2Gte{},
-            Le: &operations.GetRulesetsName2Le{},
-            Lte: &operations.GetRulesetsName2Lte{},
-        },
-        Next: hookdeck.String("quidem"),
-        OrderBy: &operations.GetRulesetsOrderBy{},
-        Prev: hookdeck.String("voluptatibus"),
+        ArchivedAt: operations.CreateGetRulesetsArchivedAtGetRulesetsArchivedAt2(
+                operations.GetRulesetsArchivedAt2{},
+        ),
+        Dir: operations.CreateGetRulesetsDirGetRulesetsDir1(
+        operations.GetRulesetsDir1Desc,
+        ),
+        ID: operations.CreateGetRulesetsIDArrayOfstr(
+                []string{
+                    "string",
+                },
+        ),
+        Name: operations.CreateGetRulesetsNameGetRulesetsName2(
+                operations.GetRulesetsName2{
+                    Contains: operations.CreateGetRulesetsName2ContainsArrayOfstr(
+                            []string{
+                                "string",
+                            },
+                    ),
+                    Gt: operations.CreateGetRulesetsName2GtArrayOfstr(
+                            []string{
+                                "string",
+                            },
+                    ),
+                    Gte: operations.CreateGetRulesetsName2GteStr(
+                    "string",
+                    ),
+                    Le: operations.CreateGetRulesetsName2LeArrayOfstr(
+                            []string{
+                                "string",
+                            },
+                    ),
+                    Lte: operations.CreateGetRulesetsName2LteArrayOfstr(
+                            []string{
+                                "string",
+                            },
+                    ),
+                },
+        ),
+        OrderBy: operations.CreateGetRulesetsOrderByGetRulesetsOrderBy1(
+        operations.GetRulesetsOrderBy1CreatedAt,
+        ),
     })
     if err != nil {
         log.Fatal(err)
