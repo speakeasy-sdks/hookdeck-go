@@ -1,7 +1,5 @@
 # DetachedIntegrationFromSource
 
-Detach operation success status
-
 
 ## Fields
 

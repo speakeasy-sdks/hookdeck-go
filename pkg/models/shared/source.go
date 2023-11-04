@@ -3,6 +3,7 @@
 package shared
 
 import (
+	"github.com/speakeasy-sdks/hookdeck-go/pkg/utils"
 	"time"
 )
 
@@ -70,6 +71,17 @@ type Source struct {
 	UpdatedAt time.Time `json:"updated_at"`
 	// A unique URL that must be supplied to your webhook's provider
 	URL string `json:"url"`
+}
+
+func (s Source) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(s, "", false)
+}
+
+func (s *Source) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &s, "", false, false); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *Source) GetAllowedHTTPMethods() []SourceAllowedHTTPMethod {

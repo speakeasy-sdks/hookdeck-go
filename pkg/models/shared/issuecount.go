@@ -2,7 +2,6 @@
 
 package shared
 
-// IssueCount - Issue count
 type IssueCount struct {
 	// Number of issues
 	Count int64 `json:"count"`

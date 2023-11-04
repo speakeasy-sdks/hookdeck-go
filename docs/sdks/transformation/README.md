@@ -1,4 +1,5 @@
 # Transformation
+(*Transformation*)
 
 ### Available Operations
 
@@ -20,14 +21,14 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
                 Password: "",
                 Username: "",
@@ -37,14 +38,13 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Transformation.Create(ctx, operations.CreateTransformationRequestBody{
-        Code: "quod",
-        Env: map[string]interface{}{
-            "qui": "dolorum",
-            "a": "esse",
-            "harum": "iusto",
-            "ipsum": "quisquam",
+        Code: "string",
+        Env: map[string]operations.CreateTransformationRequestBodyEnv{
+            "key": operations.CreateCreateTransformationRequestBodyEnvStr(
+            "string",
+            ),
         },
-        Name: "Marvin Renner",
+        Name: "string",
     })
     if err != nil {
         log.Fatal(err)
@@ -81,21 +81,22 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
                 Password: "",
                 Username: "",
             },
         }),
     )
-    id := "enim"
+
+
+    var id string = "string"
 
     ctx := context.Background()
     res, err := s.Transformation.Get(ctx, id)
@@ -134,14 +135,14 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
                 Password: "",
                 Username: "",
@@ -151,22 +152,16 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Transformation.Test(ctx, operations.TestTransformationRequestBody{
-        Code: hookdeck.String("dolorem"),
         Env: &operations.TestTransformationRequestBodyEnv{},
-        EventID: hookdeck.String("sapiente"),
         Request: &operations.TestTransformationRequestBodyRequest{
-            Body: &operations.TestTransformationRequestBodyRequestBody{},
+            Body: operations.CreateTestTransformationRequestBodyRequestBodyStr(
+            "string",
+            ),
             Headers: map[string]string{
-                "nihil": "sit",
-                "expedita": "neque",
-                "sed": "vel",
+                "key": "string",
             },
             ParsedQuery: &operations.TestTransformationRequestBodyRequestParsedQuery{},
-            Path: hookdeck.String("libero"),
-            Query: hookdeck.String("voluptas"),
         },
-        TransformationID: hookdeck.String("deserunt"),
-        WebhookID: hookdeck.String("quam"),
     })
     if err != nil {
         log.Fatal(err)
@@ -203,29 +198,31 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
                 Password: "",
                 Username: "",
             },
         }),
     )
+
+
     requestBody := operations.UpdateTransformationRequestBody{
-        Code: hookdeck.String("ipsum"),
-        Env: map[string]interface{}{
-            "qui": "cupiditate",
-            "maxime": "pariatur",
+        Env: map[string]operations.UpdateTransformationRequestBodyEnv{
+            "key": operations.CreateUpdateTransformationRequestBodyEnvFloat32(
+            245.55,
+            ),
         },
-        Name: hookdeck.String("Keith Padberg"),
     }
-    id := "aspernatur"
+
+    var id string = "string"
 
     ctx := context.Background()
     res, err := s.Transformation.Update(ctx, requestBody, id)
@@ -265,14 +262,14 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
 	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(shared.Security{
             BasicAuth: &shared.SchemeBasicAuth{
                 Password: "",
                 Username: "",
@@ -282,13 +279,13 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Transformation.Upsert(ctx, operations.UpsertTransformationRequestBody{
-        Code: "dolores",
-        Env: map[string]interface{}{
-            "facilis": "aliquid",
-            "quam": "molestias",
-            "temporibus": "qui",
+        Code: "string",
+        Env: map[string]operations.UpsertTransformationRequestBodyEnv{
+            "key": operations.CreateUpsertTransformationRequestBodyEnvFloat32(
+            4317.05,
+            ),
         },
-        Name: "Beverly Cummerata II",
+        Name: "string",
     })
     if err != nil {
         log.Fatal(err)
