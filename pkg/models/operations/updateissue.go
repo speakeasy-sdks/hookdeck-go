@@ -5,6 +5,7 @@ package operations
 import (
 	"encoding/json"
 	"fmt"
+	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
 	"net/http"
 )
 
@@ -74,10 +75,13 @@ func (o *UpdateIssueRequest) GetID() string {
 }
 
 type UpdateIssueResponse struct {
+	// HTTP response content type for this operation
 	ContentType string
 	// Updated issue
-	Issue       interface{}
-	StatusCode  int
+	Issue *shared.Issue
+	// HTTP response status code for this operation
+	StatusCode int
+	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
 }
 
@@ -88,7 +92,7 @@ func (o *UpdateIssueResponse) GetContentType() string {
 	return o.ContentType
 }
 
-func (o *UpdateIssueResponse) GetIssue() interface{} {
+func (o *UpdateIssueResponse) GetIssue() *shared.Issue {
 	if o == nil {
 		return nil
 	}
