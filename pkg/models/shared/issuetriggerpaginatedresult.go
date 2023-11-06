@@ -2,7 +2,6 @@
 
 package shared
 
-// IssueTriggerPaginatedResult - List of issue triggers
 type IssueTriggerPaginatedResult struct {
 	Count      *int64          `json:"count,omitempty"`
 	Models     []IssueTrigger  `json:"models,omitempty"`

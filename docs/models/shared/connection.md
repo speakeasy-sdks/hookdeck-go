@@ -1,7 +1,5 @@
 # Connection
 
-A single connection
-
 
 ## Fields
 
@@ -13,8 +11,8 @@ A single connection
 | `ID`                                                                 | *string*                                                             | :heavy_check_mark:                                                   | ID of the connection                                                 |
 | `Name`                                                               | *string*                                                             | :heavy_check_mark:                                                   | Unique name of the connection for this source                        |
 | `PausedAt`                                                           | [*time.Time](https://pkg.go.dev/time#Time)                           | :heavy_minus_sign:                                                   | Date the connection was paused                                       |
-| `ResolvedRules`                                                      | []*interface{}*                                                      | :heavy_minus_sign:                                                   | Array of rules applied to connection after factoring for the ruleset |
-| `Rules`                                                              | []*interface{}*                                                      | :heavy_minus_sign:                                                   | Array of rules configured on the connection                          |
+| `ResolvedRules`                                                      | [][Rule](../../models/shared/rule.md)                                | :heavy_minus_sign:                                                   | Array of rules applied to connection after factoring for the ruleset |
+| `Rules`                                                              | [][Rule](../../models/shared/rule.md)                                | :heavy_minus_sign:                                                   | Array of rules configured on the connection                          |
 | `Ruleset`                                                            | [*Ruleset](../../models/shared/ruleset.md)                           | :heavy_minus_sign:                                                   | Associated [Ruleset](#ruleset-object) object                         |
 | `Source`                                                             | [Source](../../models/shared/source.md)                              | :heavy_check_mark:                                                   | Associated [Source](#source-object) object                           |
 | `TeamID`                                                             | *string*                                                             | :heavy_check_mark:                                                   | ID of the workspace                                                  |
