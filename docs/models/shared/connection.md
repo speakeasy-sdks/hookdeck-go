@@ -1,7 +1,5 @@
 # Connection
 
-A single connection
-
 
 ## Fields
 
@@ -9,13 +7,13 @@ A single connection
 | -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- |
 | `ArchivedAt`                                                         | [*time.Time](https://pkg.go.dev/time#Time)                           | :heavy_minus_sign:                                                   | Date the connection was archived                                     |
 | `CreatedAt`                                                          | [time.Time](https://pkg.go.dev/time#Time)                            | :heavy_check_mark:                                                   | Date the connection was created                                      |
-| `Destination`                                                        | [Destination](../../models/shared/destination.md)                    | :heavy_check_mark:                                                   | Associated [Destination](#destination-object) object                 |
+| `Destination`                                                        | [components.Destination](../../models/shared/destination.md)         | :heavy_check_mark:                                                   | Associated [Destination](#destination-object) object                 |
 | `ID`                                                                 | *string*                                                             | :heavy_check_mark:                                                   | ID of the connection                                                 |
 | `Name`                                                               | *string*                                                             | :heavy_check_mark:                                                   | Unique name of the connection for this source                        |
 | `PausedAt`                                                           | [*time.Time](https://pkg.go.dev/time#Time)                           | :heavy_minus_sign:                                                   | Date the connection was paused                                       |
-| `ResolvedRules`                                                      | []*interface{}*                                                      | :heavy_minus_sign:                                                   | Array of rules applied to connection after factoring for the ruleset |
-| `Rules`                                                              | []*interface{}*                                                      | :heavy_minus_sign:                                                   | Array of rules configured on the connection                          |
-| `Ruleset`                                                            | [*Ruleset](../../models/shared/ruleset.md)                           | :heavy_minus_sign:                                                   | Associated [Ruleset](#ruleset-object) object                         |
-| `Source`                                                             | [Source](../../models/shared/source.md)                              | :heavy_check_mark:                                                   | Associated [Source](#source-object) object                           |
+| `ResolvedRules`                                                      | [][components.Rule](../../models/shared/rule.md)                     | :heavy_minus_sign:                                                   | Array of rules applied to connection after factoring for the ruleset |
+| `Rules`                                                              | [][components.Rule](../../models/shared/rule.md)                     | :heavy_minus_sign:                                                   | Array of rules configured on the connection                          |
+| `Ruleset`                                                            | [*components.Ruleset](../../models/shared/ruleset.md)                | :heavy_minus_sign:                                                   | Associated [Ruleset](#ruleset-object) object                         |
+| `Source`                                                             | [components.Source](../../models/shared/source.md)                   | :heavy_check_mark:                                                   | Associated [Source](#source-object) object                           |
 | `TeamID`                                                             | *string*                                                             | :heavy_check_mark:                                                   | ID of the workspace                                                  |
 | `UpdatedAt`                                                          | [time.Time](https://pkg.go.dev/time#Time)                            | :heavy_check_mark:                                                   | Date the connection was last updated                                 |

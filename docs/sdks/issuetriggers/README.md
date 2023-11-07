@@ -1,4 +1,5 @@
 # IssueTriggers
+(*.IssueTriggers*)
 
 ### Available Operations
 
@@ -16,16 +17,16 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/types"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
+	"github.com/speakeasy-sdks/hookdeck-go/models/components"
+	"github.com/speakeasy-sdks/hookdeck-go/models/operations"
+	"github.com/speakeasy-sdks/hookdeck-go/types"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
-            BasicAuth: &shared.SchemeBasicAuth{
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(components.Security{
+            BasicAuth: &components.SchemeBasicAuth{
                 Password: "",
                 Username: "",
             },
@@ -34,14 +35,19 @@ func main() {
 
     ctx := context.Background()
     res, err := s.IssueTriggers.Get(ctx, operations.GetIssueTriggersRequest{
-        Dir: &operations.GetIssueTriggersDir{},
-        DisabledAt: &operations.GetIssueTriggersDisabledAt{},
-        Limit: hookdeck.Int64(407183),
-        Name: hookdeck.String("Virginia Wunsch"),
-        Next: hookdeck.String("voluptate"),
-        OrderBy: &operations.GetIssueTriggersOrderBy{},
-        Prev: hookdeck.String("autem"),
-        Type: shared.IssueTypeBackpressure.ToPointer(),
+        Dir: operations.CreateGetIssueTriggersQueryParamDirArrayOfgetIssueTriggersQueryParam2(
+                []operations.GetIssueTriggersQueryParam2{
+                    operations.GetIssueTriggersQueryParam2Asc,
+                },
+        ),
+        DisabledAt: operations.CreateDisabledAtGetIssueTriggersQueryParamIssueTriggers2(
+                operations.GetIssueTriggersQueryParamIssueTriggers2{},
+        ),
+        OrderBy: operations.CreateGetIssueTriggersQueryParamOrderByArrayOfgetIssueTriggersQueryParamIssueTriggersOrderBy2(
+                []operations.GetIssueTriggersQueryParamIssueTriggersOrderBy2{
+                    operations.GetIssueTriggersQueryParamIssueTriggersOrderBy2Type,
+                },
+        ),
     })
     if err != nil {
         log.Fatal(err)

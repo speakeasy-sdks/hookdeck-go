@@ -1,7 +1,5 @@
 # Integration
 
-A single integration
-
 
 ## Fields
 
@@ -9,10 +7,10 @@ A single integration
 | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
 | `Configs`                                                                    | *interface{}*                                                                | :heavy_check_mark:                                                           | Decrypted Key/Value object of the associated configuration for that provider |
 | `CreatedAt`                                                                  | [time.Time](https://pkg.go.dev/time#Time)                                    | :heavy_check_mark:                                                           | Date the integration was created                                             |
-| `Features`                                                                   | [][IntegrationFeature](../../models/shared/integrationfeature.md)            | :heavy_check_mark:                                                           | List of features to enable (see features list below)                         |
+| `Features`                                                                   | [][components.IntegrationFeature](../../models/shared/integrationfeature.md) | :heavy_check_mark:                                                           | List of features to enable (see features list below)                         |
 | `ID`                                                                         | *string*                                                                     | :heavy_check_mark:                                                           | ID of the integration                                                        |
 | `Label`                                                                      | *string*                                                                     | :heavy_check_mark:                                                           | Label of the integration                                                     |
-| `Provider`                                                                   | [IntegrationProvider](../../models/shared/integrationprovider.md)            | :heavy_check_mark:                                                           | The provider name                                                            |
+| `Provider`                                                                   | [components.IntegrationProvider](../../models/shared/integrationprovider.md) | :heavy_check_mark:                                                           | The provider name                                                            |
 | `Sources`                                                                    | []*string*                                                                   | :heavy_check_mark:                                                           | List of source IDs the integration is attached to                            |
 | `TeamID`                                                                     | *string*                                                                     | :heavy_check_mark:                                                           | ID of the workspace                                                          |
 | `UpdatedAt`                                                                  | [time.Time](https://pkg.go.dev/time#Time)                                    | :heavy_check_mark:                                                           | Date the integration was last updated                                        |

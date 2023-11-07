@@ -1,4 +1,5 @@
 # Attempts
+(*.Attempts*)
 
 ## Overview
 
@@ -20,15 +21,15 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
+	"github.com/speakeasy-sdks/hookdeck-go/models/components"
+	"github.com/speakeasy-sdks/hookdeck-go/models/operations"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
-            BasicAuth: &shared.SchemeBasicAuth{
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(components.Security{
+            BasicAuth: &components.SchemeBasicAuth{
                 Password: "",
                 Username: "",
             },
@@ -37,12 +38,21 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Attempts.Get(ctx, operations.GetAttemptsRequest{
-        Dir: &operations.GetAttemptsDir{},
-        EventID: &operations.GetAttemptsEventID{},
-        Limit: hookdeck.Int64(715190),
-        Next: hookdeck.String("quibusdam"),
-        OrderBy: &operations.GetAttemptsOrderBy{},
-        Prev: hookdeck.String("unde"),
+        Dir: operations.CreateDirArrayOfgetAttemptsQueryParam2(
+                []operations.GetAttemptsQueryParam2{
+                    operations.GetAttemptsQueryParam2Asc,
+                },
+        ),
+        EventID: operations.CreateEventIDArrayOfstr(
+                []string{
+                    "string",
+                },
+        ),
+        OrderBy: operations.CreateOrderByArrayOfqueryParam2(
+                []operations.QueryParam2{
+                    operations.QueryParam2CreatedAt,
+                },
+        ),
     })
     if err != nil {
         log.Fatal(err)

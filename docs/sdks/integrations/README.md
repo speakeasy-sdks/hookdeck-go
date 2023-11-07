@@ -1,4 +1,5 @@
 # Integrations
+(*.Integrations*)
 
 ## Overview
 
@@ -20,22 +21,24 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
+	"github.com/speakeasy-sdks/hookdeck-go/models/components"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
-            BasicAuth: &shared.SchemeBasicAuth{
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(components.Security{
+            BasicAuth: &components.SchemeBasicAuth{
                 Password: "",
                 Username: "",
             },
         }),
     )
-    label := "ad"
-    provider := shared.IntegrationProviderSvix
+
+
+    var label *string = "string"
+
+    var provider *components.IntegrationProvider = components.IntegrationProviderOura
 
     ctx := context.Background()
     res, err := s.Integrations.Get(ctx, label, provider)
@@ -51,11 +54,11 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                 | Type                                                                      | Required                                                                  | Description                                                               |
-| ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
-| `ctx`                                                                     | [context.Context](https://pkg.go.dev/context#Context)                     | :heavy_check_mark:                                                        | The context to use for the request.                                       |
-| `label`                                                                   | **string*                                                                 | :heavy_minus_sign:                                                        | N/A                                                                       |
-| `provider`                                                                | [*shared.IntegrationProvider](../../models/shared/integrationprovider.md) | :heavy_minus_sign:                                                        | The provider name                                                         |
+| Parameter                                                                     | Type                                                                          | Required                                                                      | Description                                                                   |
+| ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
+| `ctx`                                                                         | [context.Context](https://pkg.go.dev/context#Context)                         | :heavy_check_mark:                                                            | The context to use for the request.                                           |
+| `label`                                                                       | **string*                                                                     | :heavy_minus_sign:                                                            | N/A                                                                           |
+| `provider`                                                                    | [*components.IntegrationProvider](../../models/shared/integrationprovider.md) | :heavy_minus_sign:                                                            | The provider name                                                             |
 
 
 ### Response

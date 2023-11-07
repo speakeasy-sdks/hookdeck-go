@@ -1,8 +1,0 @@
-# ListCustomDomainSchemaSslSettings
-
-
-## Fields
-
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `MinTLSVersion`    | **string*          | :heavy_minus_sign: | N/A                |

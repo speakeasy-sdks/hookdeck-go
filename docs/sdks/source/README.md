@@ -1,4 +1,5 @@
 # Source
+(*.Source*)
 
 ### Available Operations
 
@@ -22,21 +23,22 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
+	"github.com/speakeasy-sdks/hookdeck-go/models/components"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
-            BasicAuth: &shared.SchemeBasicAuth{
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(components.Security{
+            BasicAuth: &components.SchemeBasicAuth{
                 Password: "",
                 Username: "",
             },
         }),
     )
-    id := "voluptas"
+
+
+    var id string = "string"
 
     ctx := context.Background()
     res, err := s.Source.Archive(ctx, id)
@@ -75,15 +77,15 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
+	"github.com/speakeasy-sdks/hookdeck-go/models/components"
+	"github.com/speakeasy-sdks/hookdeck-go/models/operations"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
-            BasicAuth: &shared.SchemeBasicAuth{
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(components.Security{
+            BasicAuth: &components.SchemeBasicAuth{
                 Password: "",
                 Username: "",
             },
@@ -92,16 +94,14 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Source.Create(ctx, operations.CreateSourceRequestBody{
-        AllowedHTTPMethods: []shared.SourceAllowedHTTPMethod{
-            shared.SourceAllowedHTTPMethodGet,
-            shared.SourceAllowedHTTPMethodPut,
-            shared.SourceAllowedHTTPMethodGet,
+        AllowedHTTPMethods: []components.SourceAllowedHTTPMethod{
+            components.SourceAllowedHTTPMethodPut,
         },
-        CustomResponse: &shared.SourceCustomResponse{
-            Body: "fugiat",
-            ContentType: shared.SourceCustomResponseContentTypeJSON,
+        CustomResponse: &components.SourceCustomResponse{
+            Body: "string",
+            ContentType: components.SourceCustomResponseContentTypeText,
         },
-        Name: "Omar Kris",
+        Name: "string",
     })
     if err != nil {
         log.Fatal(err)
@@ -138,21 +138,22 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
+	"github.com/speakeasy-sdks/hookdeck-go/models/components"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
-            BasicAuth: &shared.SchemeBasicAuth{
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(components.Security{
+            BasicAuth: &components.SchemeBasicAuth{
                 Password: "",
                 Username: "",
             },
         }),
     )
-    id := "deleniti"
+
+
+    var id string = "string"
 
     ctx := context.Background()
     res, err := s.Source.Delete(ctx, id)
@@ -160,7 +161,7 @@ func main() {
         log.Fatal(err)
     }
 
-    if res.DeleteSource200ApplicationJSONObject != nil {
+    if res.Object != nil {
         // handle response
     }
 }
@@ -191,21 +192,22 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
+	"github.com/speakeasy-sdks/hookdeck-go/models/components"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
-            BasicAuth: &shared.SchemeBasicAuth{
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(components.Security{
+            BasicAuth: &components.SchemeBasicAuth{
                 Password: "",
                 Username: "",
             },
         }),
     )
-    id := "omnis"
+
+
+    var id string = "string"
 
     ctx := context.Background()
     res, err := s.Source.Get(ctx, id)
@@ -244,21 +246,22 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
+	"github.com/speakeasy-sdks/hookdeck-go/models/components"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
-            BasicAuth: &shared.SchemeBasicAuth{
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(components.Security{
+            BasicAuth: &components.SchemeBasicAuth{
                 Password: "",
                 Username: "",
             },
         }),
     )
-    id := "necessitatibus"
+
+
+    var id string = "string"
 
     ctx := context.Background()
     res, err := s.Source.Unarchive(ctx, id)
@@ -297,33 +300,33 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
+	"github.com/speakeasy-sdks/hookdeck-go/models/components"
+	"github.com/speakeasy-sdks/hookdeck-go/models/operations"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
-            BasicAuth: &shared.SchemeBasicAuth{
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(components.Security{
+            BasicAuth: &components.SchemeBasicAuth{
                 Password: "",
                 Username: "",
             },
         }),
     )
+
+
     requestBody := operations.UpdateSourceRequestBody{
-        AllowedHTTPMethods: []shared.SourceAllowedHTTPMethod{
-            shared.SourceAllowedHTTPMethodDelete,
-            shared.SourceAllowedHTTPMethodPut,
-            shared.SourceAllowedHTTPMethodPost,
+        AllowedHTTPMethods: []components.SourceAllowedHTTPMethod{
+            components.SourceAllowedHTTPMethodDelete,
         },
-        CustomResponse: &shared.SourceCustomResponse{
-            Body: "voluptate",
-            ContentType: shared.SourceCustomResponseContentTypeText,
+        CustomResponse: &components.SourceCustomResponse{
+            Body: "string",
+            ContentType: components.SourceCustomResponseContentTypeJSON,
         },
-        Name: hookdeck.String("Mrs. Ray Collins"),
     }
-    id := "accusamus"
+
+    var id string = "string"
 
     ctx := context.Background()
     res, err := s.Source.Update(ctx, requestBody, id)
@@ -363,15 +366,15 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
+	"github.com/speakeasy-sdks/hookdeck-go/models/components"
+	"github.com/speakeasy-sdks/hookdeck-go/models/operations"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
-            BasicAuth: &shared.SchemeBasicAuth{
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(components.Security{
+            BasicAuth: &components.SchemeBasicAuth{
                 Password: "",
                 Username: "",
             },
@@ -380,15 +383,14 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Source.Upsert(ctx, operations.UpsertSourceRequestBody{
-        AllowedHTTPMethods: []shared.SourceAllowedHTTPMethod{
-            shared.SourceAllowedHTTPMethodDelete,
-            shared.SourceAllowedHTTPMethodPost,
+        AllowedHTTPMethods: []components.SourceAllowedHTTPMethod{
+            components.SourceAllowedHTTPMethodPut,
         },
-        CustomResponse: &shared.SourceCustomResponse{
-            Body: "deserunt",
-            ContentType: shared.SourceCustomResponseContentTypeText,
+        CustomResponse: &components.SourceCustomResponse{
+            Body: "string",
+            ContentType: components.SourceCustomResponseContentTypeText,
         },
-        Name: "Kari Leannon PhD",
+        Name: "string",
     })
     if err != nil {
         log.Fatal(err)

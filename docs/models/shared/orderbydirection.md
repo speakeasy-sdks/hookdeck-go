@@ -6,24 +6,24 @@
 ### OrderByDirection1
 
 ```go
-orderByDirection := shared.CreateOrderByDirectionOrderByDirection1(shared.OrderByDirection1{/* values here */})
+orderByDirection := shared.CreateOrderByDirectionOrderByDirection1(components.OrderByDirection1{/* values here */})
 ```
 
 ### OrderByDirection2
 
 ```go
-orderByDirection := shared.CreateOrderByDirectionOrderByDirection2(shared.OrderByDirection2{/* values here */})
+orderByDirection := shared.CreateOrderByDirectionOrderByDirection2(components.OrderByDirection2{/* values here */})
 ```
 
-### OrderByDirection3
+### Three
 
 ```go
-orderByDirection := shared.CreateOrderByDirectionOrderByDirection3(shared.OrderByDirection3{/* values here */})
+orderByDirection := shared.CreateOrderByDirectionThree(components.Three{/* values here */})
 ```
 
 ### OrderByDirection4
 
 ```go
-orderByDirection := shared.CreateOrderByDirectionOrderByDirection4(shared.OrderByDirection4{/* values here */})
+orderByDirection := shared.CreateOrderByDirectionOrderByDirection4(components.OrderByDirection4{/* values here */})
 ```
 

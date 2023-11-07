@@ -4,34 +4,50 @@
 ```go
 package main
 
-import(
+import (
 	"context"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
+	"github.com/speakeasy-sdks/hookdeck-go/models/components"
+	"github.com/speakeasy-sdks/hookdeck-go/models/operations"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
-            BasicAuth: &shared.SchemeBasicAuth{
-                Password: "",
-                Username: "",
-            },
-        }),
-    )
-    id := "corrupti"
+	s := hookdeckgo.New(
+		hookdeckgo.WithSecurity(components.Security{
+			BasicAuth: &components.SchemeBasicAuth{
+				Password: "",
+				Username: "",
+			},
+		}),
+	)
 
-    ctx := context.Background()
-    res, err := s.Attempt.Get(ctx, id)
-    if err != nil {
-        log.Fatal(err)
-    }
+	ctx := context.Background()
+	res, err := s.Attempts.Get(ctx, operations.GetAttemptsRequest{
+		Dir: operations.CreateDirArrayOfgetAttemptsQueryParam2(
+			[]operations.GetAttemptsQueryParam2{
+				operations.GetAttemptsQueryParam2Asc,
+			},
+		),
+		EventID: operations.CreateEventIDArrayOfstr(
+			[]string{
+				"string",
+			},
+		),
+		OrderBy: operations.CreateOrderByArrayOfqueryParam2(
+			[]operations.QueryParam2{
+				operations.QueryParam2CreatedAt,
+			},
+		),
+	})
+	if err != nil {
+		log.Fatal(err)
+	}
 
-    if res.EventAttempt != nil {
-        // handle response
-    }
+	if res.EventAttemptPaginatedResult != nil {
+		// handle response
+	}
 }
+
 ```
 <!-- End SDK Example Usage -->

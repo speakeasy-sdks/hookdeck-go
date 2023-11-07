@@ -1,4 +1,5 @@
 # CustomDomain
+(*.CustomDomain*)
 
 ### Available Operations
 
@@ -17,24 +18,26 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
+	"github.com/speakeasy-sdks/hookdeck-go/models/components"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
-            BasicAuth: &shared.SchemeBasicAuth{
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(components.Security{
+            BasicAuth: &components.SchemeBasicAuth{
                 Password: "",
                 Username: "",
             },
         }),
     )
-    addCustomHostname := shared.AddCustomHostname{
-        Hostname: "sandy-spruce.biz",
+
+
+    addCustomHostname := components.AddCustomHostname{
+        Hostname: "murky-sole.name",
     }
-    teamID := "modi"
+
+    var teamID string = "string"
 
     ctx := context.Background()
     res, err := s.CustomDomain.Add(ctx, addCustomHostname, teamID)
@@ -50,11 +53,11 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                            | Type                                                                 | Required                                                             | Description                                                          |
-| -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- |
-| `ctx`                                                                | [context.Context](https://pkg.go.dev/context#Context)                | :heavy_check_mark:                                                   | The context to use for the request.                                  |
-| `addCustomHostname`                                                  | [shared.AddCustomHostname](../../models/shared/addcustomhostname.md) | :heavy_check_mark:                                                   | N/A                                                                  |
-| `teamID`                                                             | *string*                                                             | :heavy_check_mark:                                                   | N/A                                                                  |
+| Parameter                                                                | Type                                                                     | Required                                                                 | Description                                                              |
+| ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
+| `ctx`                                                                    | [context.Context](https://pkg.go.dev/context#Context)                    | :heavy_check_mark:                                                       | The context to use for the request.                                      |
+| `addCustomHostname`                                                      | [components.AddCustomHostname](../../models/shared/addcustomhostname.md) | :heavy_check_mark:                                                       | N/A                                                                      |
+| `teamID`                                                                 | *string*                                                                 | :heavy_check_mark:                                                       | N/A                                                                      |
 
 
 ### Response
@@ -74,22 +77,24 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
+	"github.com/speakeasy-sdks/hookdeck-go/models/components"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
-            BasicAuth: &shared.SchemeBasicAuth{
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(components.Security{
+            BasicAuth: &components.SchemeBasicAuth{
                 Password: "",
                 Username: "",
             },
         }),
     )
-    domainID := "qui"
-    teamID := "aliquid"
+
+
+    var domainID string = "string"
+
+    var teamID string = "string"
 
     ctx := context.Background()
     res, err := s.CustomDomain.Delete(ctx, domainID, teamID)
