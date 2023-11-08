@@ -1,4 +1,5 @@
 # BulkRetryRequests
+(*.BulkRetryRequests*)
 
 ### Available Operations
 
@@ -16,16 +17,16 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/types"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
+	"github.com/speakeasy-sdks/hookdeck-go/models/components"
+	"github.com/speakeasy-sdks/hookdeck-go/models/operations"
+	"github.com/speakeasy-sdks/hookdeck-go/types"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
-            BasicAuth: &shared.SchemeBasicAuth{
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(components.Security{
+            BasicAuth: &components.SchemeBasicAuth{
                 Password: "",
                 Username: "",
             },
@@ -34,22 +35,46 @@ func main() {
 
     ctx := context.Background()
     res, err := s.BulkRetryRequests.Create(ctx, operations.CreateRequestBulkRetryRequestBody{
-        Query: &operations.CreateRequestBulkRetryRequestBodyQuery{
-            Body: &operations.CreateRequestBulkRetryRequestBodyQueryBody{},
-            BulkRetryID: &operations.CreateRequestBulkRetryRequestBodyQueryBulkRetryID{},
-            CreatedAt: &operations.CreateRequestBulkRetryRequestBodyQueryCreatedAt{},
-            EventsCount: &operations.CreateRequestBulkRetryRequestBodyQueryEventsCount{},
-            Headers: &operations.CreateRequestBulkRetryRequestBodyQueryHeaders{},
-            ID: &operations.CreateRequestBulkRetryRequestBodyQueryID{},
-            IgnoredCount: &operations.CreateRequestBulkRetryRequestBodyQueryIgnoredCount{},
-            IngestedAt: &operations.CreateRequestBulkRetryRequestBodyQueryIngestedAt{},
-            ParsedQuery: &operations.CreateRequestBulkRetryRequestBodyQueryParsedQuery{},
-            Path: hookdeck.String("molestiae"),
-            RejectionCause: &operations.CreateRequestBulkRetryRequestBodyQueryRejectionCause{},
-            SearchTerm: hookdeck.String("quod"),
-            SourceID: &operations.CreateRequestBulkRetryRequestBodyQuerySourceID{},
-            Status: operations.CreateRequestBulkRetryRequestBodyQueryStatusRejected.ToPointer(),
-            Verified: hookdeck.Bool(false),
+        Query: &operations.CreateRequestBulkRetryQuery{
+            Body: operations.CreateCreateRequestBulkRetryBodyStr(
+            "string",
+            ),
+            BulkRetryID: operations.CreateCreateRequestBulkRetryBulkRetryIDStr(
+            "string",
+            ),
+            CreatedAt: operations.CreateCreateRequestBulkRetryCreatedAtCreateRequestBulkRetryBulkRetryRequests2(
+                    operations.CreateRequestBulkRetryBulkRetryRequests2{},
+            ),
+            EventsCount: operations.CreateEventsCountArrayOfinteger(
+                    []int64{
+                        417458,
+                    },
+            ),
+            Headers: operations.CreateCreateRequestBulkRetryHeadersStr(
+            "string",
+            ),
+            ID: operations.CreateCreateRequestBulkRetryIDStr(
+            "string",
+            ),
+            IgnoredCount: operations.CreateIgnoredCountArrayOfinteger(
+                    []int64{
+                        69025,
+                    },
+            ),
+            IngestedAt: operations.CreateIngestedAtCreateRequestBulkRetryBulkRetryRequestsRequestRequestBodyQueryIngestedAt2(
+                    operations.CreateRequestBulkRetryBulkRetryRequestsRequestRequestBodyQueryIngestedAt2{},
+            ),
+            ParsedQuery: operations.CreateCreateRequestBulkRetryParsedQueryCreateRequestBulkRetryBulkRetryRequestsRequestRequestBodyQueryParsedQuery2(
+                    operations.CreateRequestBulkRetryBulkRetryRequestsRequestRequestBodyQueryParsedQuery2{},
+            ),
+            RejectionCause: operations.CreateRejectionCauseCreateRequestBulkRetryBulkRetryRequestsRequestRequestBodyQueryRejectionCause2(
+                    operations.CreateRequestBulkRetryBulkRetryRequestsRequestRequestBodyQueryRejectionCause2{},
+            ),
+            SourceID: operations.CreateCreateRequestBulkRetrySourceIDArrayOfstr(
+                    []string{
+                        "string",
+                    },
+            ),
         },
     })
     if err != nil {
@@ -73,4 +98,7 @@ func main() {
 ### Response
 
 **[*operations.CreateRequestBulkRetryResponse](../../models/operations/createrequestbulkretryresponse.md), error**
-
+| Error Object               | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| sdkerrors.APIErrorResponse | 400,422                    | application/json           |
+| sdkerrors.SDKError         | 400-600                    | */*                        |

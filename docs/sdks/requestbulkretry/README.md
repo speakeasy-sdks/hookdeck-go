@@ -1,4 +1,5 @@
 # RequestBulkRetry
+(*.RequestBulkRetry*)
 
 ### Available Operations
 
@@ -17,21 +18,22 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
+	"github.com/speakeasy-sdks/hookdeck-go/models/components"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
-            BasicAuth: &shared.SchemeBasicAuth{
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(components.Security{
+            BasicAuth: &components.SchemeBasicAuth{
                 Password: "",
                 Username: "",
             },
         }),
     )
-    id := "hic"
+
+
+    var id string = "string"
 
     ctx := context.Background()
     res, err := s.RequestBulkRetry.Cancel(ctx, id)
@@ -56,7 +58,10 @@ func main() {
 ### Response
 
 **[*operations.CancelRequestBulkRetryResponse](../../models/operations/cancelrequestbulkretryresponse.md), error**
-
+| Error Object               | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| sdkerrors.APIErrorResponse | 404                        | application/json           |
+| sdkerrors.SDKError         | 400-600                    | */*                        |
 
 ## Get
 
@@ -70,21 +75,22 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
+	"github.com/speakeasy-sdks/hookdeck-go/models/components"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
-            BasicAuth: &shared.SchemeBasicAuth{
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(components.Security{
+            BasicAuth: &components.SchemeBasicAuth{
                 Password: "",
                 Username: "",
             },
         }),
     )
-    id := "libero"
+
+
+    var id string = "string"
 
     ctx := context.Background()
     res, err := s.RequestBulkRetry.Get(ctx, id)
@@ -109,4 +115,7 @@ func main() {
 ### Response
 
 **[*operations.GetRequestBulkRetryResponse](../../models/operations/getrequestbulkretryresponse.md), error**
-
+| Error Object               | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| sdkerrors.APIErrorResponse | 404                        | application/json           |
+| sdkerrors.SDKError         | 400-600                    | */*                        |

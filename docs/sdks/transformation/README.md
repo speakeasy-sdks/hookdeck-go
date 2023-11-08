@@ -1,4 +1,5 @@
 # Transformation
+(*.Transformation*)
 
 ### Available Operations
 
@@ -20,15 +21,15 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
+	"github.com/speakeasy-sdks/hookdeck-go/models/components"
+	"github.com/speakeasy-sdks/hookdeck-go/models/operations"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
-            BasicAuth: &shared.SchemeBasicAuth{
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(components.Security{
+            BasicAuth: &components.SchemeBasicAuth{
                 Password: "",
                 Username: "",
             },
@@ -37,14 +38,13 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Transformation.Create(ctx, operations.CreateTransformationRequestBody{
-        Code: "quod",
-        Env: map[string]interface{}{
-            "qui": "dolorum",
-            "a": "esse",
-            "harum": "iusto",
-            "ipsum": "quisquam",
+        Code: "string",
+        Env: map[string]operations.Env{
+            "key": operations.CreateEnvStr(
+            "string",
+            ),
         },
-        Name: "Marvin Renner",
+        Name: "string",
     })
     if err != nil {
         log.Fatal(err)
@@ -67,7 +67,10 @@ func main() {
 ### Response
 
 **[*operations.CreateTransformationResponse](../../models/operations/createtransformationresponse.md), error**
-
+| Error Object               | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| sdkerrors.APIErrorResponse | 400,422                    | application/json           |
+| sdkerrors.SDKError         | 400-600                    | */*                        |
 
 ## Get
 
@@ -81,21 +84,22 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
+	"github.com/speakeasy-sdks/hookdeck-go/models/components"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
-            BasicAuth: &shared.SchemeBasicAuth{
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(components.Security{
+            BasicAuth: &components.SchemeBasicAuth{
                 Password: "",
                 Username: "",
             },
         }),
     )
-    id := "enim"
+
+
+    var id string = "string"
 
     ctx := context.Background()
     res, err := s.Transformation.Get(ctx, id)
@@ -120,7 +124,10 @@ func main() {
 ### Response
 
 **[*operations.GetTransformationResponse](../../models/operations/gettransformationresponse.md), error**
-
+| Error Object               | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| sdkerrors.APIErrorResponse | 404                        | application/json           |
+| sdkerrors.SDKError         | 400-600                    | */*                        |
 
 ## Test
 
@@ -134,15 +141,15 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
+	"github.com/speakeasy-sdks/hookdeck-go/models/components"
+	"github.com/speakeasy-sdks/hookdeck-go/models/operations"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
-            BasicAuth: &shared.SchemeBasicAuth{
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(components.Security{
+            BasicAuth: &components.SchemeBasicAuth{
                 Password: "",
                 Username: "",
             },
@@ -151,22 +158,16 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Transformation.Test(ctx, operations.TestTransformationRequestBody{
-        Code: hookdeck.String("dolorem"),
-        Env: &operations.TestTransformationRequestBodyEnv{},
-        EventID: hookdeck.String("sapiente"),
-        Request: &operations.TestTransformationRequestBodyRequest{
-            Body: &operations.TestTransformationRequestBodyRequestBody{},
+        Env: &operations.TestTransformationEnv{},
+        Request: &operations.Request{
+            Body: operations.CreateTestTransformationBodyStr(
+            "string",
+            ),
             Headers: map[string]string{
-                "nihil": "sit",
-                "expedita": "neque",
-                "sed": "vel",
+                "key": "string",
             },
-            ParsedQuery: &operations.TestTransformationRequestBodyRequestParsedQuery{},
-            Path: hookdeck.String("libero"),
-            Query: hookdeck.String("voluptas"),
+            ParsedQuery: &operations.TestTransformationParsedQuery{},
         },
-        TransformationID: hookdeck.String("deserunt"),
-        WebhookID: hookdeck.String("quam"),
     })
     if err != nil {
         log.Fatal(err)
@@ -189,7 +190,10 @@ func main() {
 ### Response
 
 **[*operations.TestTransformationResponse](../../models/operations/testtransformationresponse.md), error**
-
+| Error Object               | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| sdkerrors.APIErrorResponse | 400,422                    | application/json           |
+| sdkerrors.SDKError         | 400-600                    | */*                        |
 
 ## Update
 
@@ -203,29 +207,31 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
+	"github.com/speakeasy-sdks/hookdeck-go/models/components"
+	"github.com/speakeasy-sdks/hookdeck-go/models/operations"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
-            BasicAuth: &shared.SchemeBasicAuth{
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(components.Security{
+            BasicAuth: &components.SchemeBasicAuth{
                 Password: "",
                 Username: "",
             },
         }),
     )
+
+
     requestBody := operations.UpdateTransformationRequestBody{
-        Code: hookdeck.String("ipsum"),
-        Env: map[string]interface{}{
-            "qui": "cupiditate",
-            "maxime": "pariatur",
+        Env: map[string]operations.UpdateTransformationEnv{
+            "key": operations.CreateUpdateTransformationEnvFloat32(
+            245.55,
+            ),
         },
-        Name: hookdeck.String("Keith Padberg"),
     }
-    id := "aspernatur"
+
+    var id string = "string"
 
     ctx := context.Background()
     res, err := s.Transformation.Update(ctx, requestBody, id)
@@ -251,7 +257,10 @@ func main() {
 ### Response
 
 **[*operations.UpdateTransformationResponse](../../models/operations/updatetransformationresponse.md), error**
-
+| Error Object               | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| sdkerrors.APIErrorResponse | 400,404,422                | application/json           |
+| sdkerrors.SDKError         | 400-600                    | */*                        |
 
 ## Upsert
 
@@ -265,15 +274,15 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
+	"github.com/speakeasy-sdks/hookdeck-go/models/components"
+	"github.com/speakeasy-sdks/hookdeck-go/models/operations"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
-            BasicAuth: &shared.SchemeBasicAuth{
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(components.Security{
+            BasicAuth: &components.SchemeBasicAuth{
                 Password: "",
                 Username: "",
             },
@@ -282,13 +291,13 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Transformation.Upsert(ctx, operations.UpsertTransformationRequestBody{
-        Code: "dolores",
-        Env: map[string]interface{}{
-            "facilis": "aliquid",
-            "quam": "molestias",
-            "temporibus": "qui",
+        Code: "string",
+        Env: map[string]operations.UpsertTransformationEnv{
+            "key": operations.CreateUpsertTransformationEnvFloat32(
+            4317.05,
+            ),
         },
-        Name: "Beverly Cummerata II",
+        Name: "string",
     })
     if err != nil {
         log.Fatal(err)
@@ -311,4 +320,7 @@ func main() {
 ### Response
 
 **[*operations.UpsertTransformationResponse](../../models/operations/upserttransformationresponse.md), error**
-
+| Error Object               | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| sdkerrors.APIErrorResponse | 400,422                    | application/json           |
+| sdkerrors.SDKError         | 400-600                    | */*                        |

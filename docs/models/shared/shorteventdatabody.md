@@ -9,10 +9,10 @@
 shortEventDataBody := shared.CreateShortEventDataBodyStr(string{/* values here */})
 ```
 
-### ShortEventDataBody2
+### Two
 
 ```go
-shortEventDataBody := shared.CreateShortEventDataBodyShortEventDataBody2(shared.ShortEventDataBody2{/* values here */})
+shortEventDataBody := shared.CreateShortEventDataBodyTwo(components.Two{/* values here */})
 ```
 
 ### 

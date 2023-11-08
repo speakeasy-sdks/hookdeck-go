@@ -1,4 +1,5 @@
 # Transformations
+(*.Transformations*)
 
 ## Overview
 
@@ -20,15 +21,15 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
+	"github.com/speakeasy-sdks/hookdeck-go/models/components"
+	"github.com/speakeasy-sdks/hookdeck-go/models/operations"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
-            BasicAuth: &shared.SchemeBasicAuth{
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(components.Security{
+            BasicAuth: &components.SchemeBasicAuth{
                 Password: "",
                 Username: "",
             },
@@ -37,13 +38,26 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Transformations.Get(ctx, operations.GetTransformationsRequest{
-        Dir: &operations.GetTransformationsDir{},
-        ID: &operations.GetTransformationsID{},
-        Limit: hookdeck.Int64(512393),
-        Name: &operations.GetTransformationsName{},
-        Next: hookdeck.String("odio"),
-        OrderBy: &operations.GetTransformationsOrderBy{},
-        Prev: hookdeck.String("occaecati"),
+        Dir: operations.CreateGetTransformationsQueryParamDirArrayOfgetTransformationsQueryParam2(
+                []operations.GetTransformationsQueryParam2{
+                    operations.GetTransformationsQueryParam2Asc,
+                },
+        ),
+        ID: operations.CreateGetTransformationsQueryParamIDArrayOfstr(
+                []string{
+                    "string",
+                },
+        ),
+        Name: operations.CreateGetTransformationsQueryParamNameArrayOfstr(
+                []string{
+                    "string",
+                },
+        ),
+        OrderBy: operations.CreateGetTransformationsQueryParamOrderByArrayOfgetTransformationsQueryParamTransformations2(
+                []operations.GetTransformationsQueryParamTransformations2{
+                    operations.GetTransformationsQueryParamTransformations2CreatedAt,
+                },
+        ),
     })
     if err != nil {
         log.Fatal(err)
@@ -66,4 +80,7 @@ func main() {
 ### Response
 
 **[*operations.GetTransformationsResponse](../../models/operations/gettransformationsresponse.md), error**
-
+| Error Object               | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| sdkerrors.APIErrorResponse | 400,422                    | application/json           |
+| sdkerrors.SDKError         | 400-600                    | */*                        |

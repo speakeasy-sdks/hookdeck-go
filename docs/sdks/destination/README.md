@@ -1,4 +1,5 @@
 # Destination
+(*.Destination*)
 
 ### Available Operations
 
@@ -22,21 +23,22 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
+	"github.com/speakeasy-sdks/hookdeck-go/models/components"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
-            BasicAuth: &shared.SchemeBasicAuth{
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(components.Security{
+            BasicAuth: &components.SchemeBasicAuth{
                 Password: "",
                 Username: "",
             },
         }),
     )
-    id := "quos"
+
+
+    var id string = "string"
 
     ctx := context.Background()
     res, err := s.Destination.Archive(ctx, id)
@@ -61,7 +63,10 @@ func main() {
 ### Response
 
 **[*operations.ArchiveDestinationResponse](../../models/operations/archivedestinationresponse.md), error**
-
+| Error Object               | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| sdkerrors.APIErrorResponse | 404                        | application/json           |
+| sdkerrors.SDKError         | 400-600                    | */*                        |
 
 ## Create
 
@@ -75,15 +80,15 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
+	"github.com/speakeasy-sdks/hookdeck-go/models/components"
+	"github.com/speakeasy-sdks/hookdeck-go/models/operations"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
-            BasicAuth: &shared.SchemeBasicAuth{
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(components.Security{
+            BasicAuth: &components.SchemeBasicAuth{
                 Password: "",
                 Username: "",
             },
@@ -92,17 +97,16 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Destination.Create(ctx, operations.CreateDestinationRequestBody{
-        AuthMethod: &shared.HookdeckSignature{
-            Config: &shared.DestinationAuthMethodSignatureConfig{},
-            Type: shared.HookdeckSignatureTypeHookdeckSignature,
-        },
-        CliPath: hookdeck.String("magni"),
-        HTTPMethod: shared.DestinationHTTPMethodPatch.ToPointer(),
-        Name: "Linda Corkery",
-        PathForwardingDisabled: hookdeck.Bool(false),
-        RateLimit: hookdeck.Int64(703737),
-        RateLimitPeriod: operations.CreateDestinationRequestBodyRateLimitPeriodHour.ToPointer(),
-        URL: hookdeck.String("labore"),
+        AuthMethod: components.CreateDestinationAuthMethodConfigAPIKey(
+                components.APIKey{
+                    Config: &components.DestinationAuthMethodAPIKeyConfig{
+                        APIKey: "string",
+                        Key: "<key>",
+                    },
+                    Type: components.TypeAPIKey,
+                },
+        ),
+        Name: "string",
     })
     if err != nil {
         log.Fatal(err)
@@ -125,7 +129,10 @@ func main() {
 ### Response
 
 **[*operations.CreateDestinationResponse](../../models/operations/createdestinationresponse.md), error**
-
+| Error Object               | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| sdkerrors.APIErrorResponse | 400,422                    | application/json           |
+| sdkerrors.SDKError         | 400-600                    | */*                        |
 
 ## Delete
 
@@ -139,21 +146,22 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
+	"github.com/speakeasy-sdks/hookdeck-go/models/components"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
-            BasicAuth: &shared.SchemeBasicAuth{
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(components.Security{
+            BasicAuth: &components.SchemeBasicAuth{
                 Password: "",
                 Username: "",
             },
         }),
     )
-    id := "delectus"
+
+
+    var id string = "string"
 
     ctx := context.Background()
     res, err := s.Destination.Delete(ctx, id)
@@ -161,7 +169,7 @@ func main() {
         log.Fatal(err)
     }
 
-    if res.DeleteDestination200ApplicationJSONObject != nil {
+    if res.Object != nil {
         // handle response
     }
 }
@@ -178,7 +186,10 @@ func main() {
 ### Response
 
 **[*operations.DeleteDestinationResponse](../../models/operations/deletedestinationresponse.md), error**
-
+| Error Object               | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| sdkerrors.APIErrorResponse | 404                        | application/json           |
+| sdkerrors.SDKError         | 400-600                    | */*                        |
 
 ## Get
 
@@ -192,21 +203,22 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
+	"github.com/speakeasy-sdks/hookdeck-go/models/components"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
-            BasicAuth: &shared.SchemeBasicAuth{
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(components.Security{
+            BasicAuth: &components.SchemeBasicAuth{
                 Password: "",
                 Username: "",
             },
         }),
     )
-    id := "eum"
+
+
+    var id string = "string"
 
     ctx := context.Background()
     res, err := s.Destination.Get(ctx, id)
@@ -231,7 +243,10 @@ func main() {
 ### Response
 
 **[*operations.GetDestinationResponse](../../models/operations/getdestinationresponse.md), error**
-
+| Error Object               | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| sdkerrors.APIErrorResponse | 404,410                    | application/json           |
+| sdkerrors.SDKError         | 400-600                    | */*                        |
 
 ## Unarchive
 
@@ -245,21 +260,22 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
+	"github.com/speakeasy-sdks/hookdeck-go/models/components"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
-            BasicAuth: &shared.SchemeBasicAuth{
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(components.Security{
+            BasicAuth: &components.SchemeBasicAuth{
                 Password: "",
                 Username: "",
             },
         }),
     )
-    id := "non"
+
+
+    var id string = "string"
 
     ctx := context.Background()
     res, err := s.Destination.Unarchive(ctx, id)
@@ -284,7 +300,10 @@ func main() {
 ### Response
 
 **[*operations.UnarchiveDestinationResponse](../../models/operations/unarchivedestinationresponse.md), error**
-
+| Error Object               | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| sdkerrors.APIErrorResponse | 404                        | application/json           |
+| sdkerrors.SDKError         | 400-600                    | */*                        |
 
 ## Update
 
@@ -298,36 +317,34 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
+	"github.com/speakeasy-sdks/hookdeck-go/models/components"
+	"github.com/speakeasy-sdks/hookdeck-go/models/operations"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
-            BasicAuth: &shared.SchemeBasicAuth{
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(components.Security{
+            BasicAuth: &components.SchemeBasicAuth{
                 Password: "",
                 Username: "",
             },
         }),
     )
+
+
     requestBody := operations.UpdateDestinationRequestBody{
-        AuthMethod: &shared.BearerToken{
-            Config: &shared.DestinationAuthMethodBearerTokenConfig{
-                Token: "sint",
-            },
-            Type: shared.BearerTokenTypeBearerToken,
-        },
-        CliPath: hookdeck.String("aliquid"),
-        HTTPMethod: shared.DestinationHTTPMethodPut.ToPointer(),
-        Name: hookdeck.String("Perry Nikolaus"),
-        PathForwardingDisabled: hookdeck.Bool(false),
-        RateLimit: hookdeck.Int64(680056),
-        RateLimitPeriod: operations.UpdateDestinationRequestBodyRateLimitPeriodMinute.ToPointer(),
-        URL: hookdeck.String("in"),
+        AuthMethod: components.CreateDestinationAuthMethodConfigCustomSignature(
+                components.CustomSignature{
+                    Config: components.DestinationAuthMethodCustomSignatureConfig{
+                        Key: "<key>",
+                    },
+                    Type: components.CustomSignatureTypeCustomSignature,
+                },
+        ),
     }
-    id := "illum"
+
+    var id string = "string"
 
     ctx := context.Background()
     res, err := s.Destination.Update(ctx, requestBody, id)
@@ -353,7 +370,10 @@ func main() {
 ### Response
 
 **[*operations.UpdateDestinationResponse](../../models/operations/updatedestinationresponse.md), error**
-
+| Error Object               | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| sdkerrors.APIErrorResponse | 400,404,422                | application/json           |
+| sdkerrors.SDKError         | 400-600                    | */*                        |
 
 ## Upsert
 
@@ -367,15 +387,15 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
+	"github.com/speakeasy-sdks/hookdeck-go/models/components"
+	"github.com/speakeasy-sdks/hookdeck-go/models/operations"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
-            BasicAuth: &shared.SchemeBasicAuth{
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(components.Security{
+            BasicAuth: &components.SchemeBasicAuth{
                 Password: "",
                 Username: "",
             },
@@ -384,20 +404,16 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Destination.Upsert(ctx, operations.UpsertDestinationRequestBody{
-        AuthMethod: &shared.CustomSignature{
-            Config: shared.DestinationAuthMethodCustomSignatureConfig{
-                Key: "rerum",
-                SigningSecret: hookdeck.String("dicta"),
-            },
-            Type: shared.CustomSignatureTypeCustomSignature,
-        },
-        CliPath: hookdeck.String("magnam"),
-        HTTPMethod: shared.DestinationHTTPMethodPatch.ToPointer(),
-        Name: "Nathaniel Hyatt",
-        PathForwardingDisabled: hookdeck.Bool(false),
-        RateLimit: hookdeck.Int64(581273),
-        RateLimitPeriod: operations.UpsertDestinationRequestBodyRateLimitPeriodSecond.ToPointer(),
-        URL: hookdeck.String("accusamus"),
+        AuthMethod: components.CreateDestinationAuthMethodConfigAPIKey(
+                components.APIKey{
+                    Config: &components.DestinationAuthMethodAPIKeyConfig{
+                        APIKey: "string",
+                        Key: "<key>",
+                    },
+                    Type: components.TypeAPIKey,
+                },
+        ),
+        Name: "string",
     })
     if err != nil {
         log.Fatal(err)
@@ -420,4 +436,7 @@ func main() {
 ### Response
 
 **[*operations.UpsertDestinationResponse](../../models/operations/upsertdestinationresponse.md), error**
-
+| Error Object               | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| sdkerrors.APIErrorResponse | 400,422                    | application/json           |
+| sdkerrors.SDKError         | 400-600                    | */*                        |

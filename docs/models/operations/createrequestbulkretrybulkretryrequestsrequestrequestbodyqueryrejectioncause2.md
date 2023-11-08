@@ -1,0 +1,15 @@
+# CreateRequestBulkRetryBulkRetryRequestsRequestRequestBodyQueryRejectionCause2
+
+Filter by rejection cause
+
+
+## Fields
+
+| Field                                                                             | Type                                                                              | Required                                                                          | Description                                                                       |
+| --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
+| `Any`                                                                             | **bool*                                                                           | :heavy_minus_sign:                                                                | N/A                                                                               |
+| `Contains`                                                                        | [*components.RequestRejectionCause](../../models/shared/requestrejectioncause.md) | :heavy_minus_sign:                                                                | N/A                                                                               |
+| `Gt`                                                                              | [*components.RequestRejectionCause](../../models/shared/requestrejectioncause.md) | :heavy_minus_sign:                                                                | N/A                                                                               |
+| `Gte`                                                                             | [*components.RequestRejectionCause](../../models/shared/requestrejectioncause.md) | :heavy_minus_sign:                                                                | N/A                                                                               |
+| `Le`                                                                              | [*components.RequestRejectionCause](../../models/shared/requestrejectioncause.md) | :heavy_minus_sign:                                                                | N/A                                                                               |
+| `Lte`                                                                             | [*components.RequestRejectionCause](../../models/shared/requestrejectioncause.md) | :heavy_minus_sign:                                                                | N/A                                                                               |

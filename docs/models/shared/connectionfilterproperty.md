@@ -21,9 +21,9 @@ connectionFilterProperty := shared.CreateConnectionFilterPropertyFloat32(float32
 connectionFilterProperty := shared.CreateConnectionFilterPropertyBoolean(bool{/* values here */})
 ```
 
-### ConnectionFilterProperty4
+### Four
 
 ```go
-connectionFilterProperty := shared.CreateConnectionFilterPropertyConnectionFilterProperty4(shared.ConnectionFilterProperty4{/* values here */})
+connectionFilterProperty := shared.CreateConnectionFilterPropertyFour(components.Four{/* values here */})
 ```
 
