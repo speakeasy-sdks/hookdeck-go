@@ -1,4 +1,5 @@
 # Source
+(*Source*)
 
 ### Available Operations
 
@@ -22,21 +23,22 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
+	"github.com/speakeasy-sdks/hookdeck-go/models/components"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
-            BasicAuth: &shared.SchemeBasicAuth{
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(components.Security{
+            BasicAuth: &components.SchemeBasicAuth{
                 Password: "",
                 Username: "",
             },
         }),
     )
-    id := "voluptas"
+
+
+    var id string = "string"
 
     ctx := context.Background()
     res, err := s.Source.Archive(ctx, id)
@@ -61,7 +63,10 @@ func main() {
 ### Response
 
 **[*operations.ArchiveSourceResponse](../../models/operations/archivesourceresponse.md), error**
-
+| Error Object               | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| sdkerrors.APIErrorResponse | 404                        | application/json           |
+| sdkerrors.SDKError         | 400-600                    | */*                        |
 
 ## Create
 
@@ -75,15 +80,15 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
+	"github.com/speakeasy-sdks/hookdeck-go/models/components"
+	"github.com/speakeasy-sdks/hookdeck-go/models/operations"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
-            BasicAuth: &shared.SchemeBasicAuth{
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(components.Security{
+            BasicAuth: &components.SchemeBasicAuth{
                 Password: "",
                 Username: "",
             },
@@ -92,16 +97,14 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Source.Create(ctx, operations.CreateSourceRequestBody{
-        AllowedHTTPMethods: []shared.SourceAllowedHTTPMethod{
-            shared.SourceAllowedHTTPMethodGet,
-            shared.SourceAllowedHTTPMethodPut,
-            shared.SourceAllowedHTTPMethodGet,
+        AllowedHTTPMethods: []components.SourceAllowedHTTPMethod{
+            components.SourceAllowedHTTPMethodPut,
         },
-        CustomResponse: &shared.SourceCustomResponse{
-            Body: "fugiat",
-            ContentType: shared.SourceCustomResponseContentTypeJSON,
+        CustomResponse: &components.SourceCustomResponse{
+            Body: "string",
+            ContentType: components.SourceCustomResponseContentTypeText,
         },
-        Name: "Omar Kris",
+        Name: "string",
     })
     if err != nil {
         log.Fatal(err)
@@ -124,7 +127,10 @@ func main() {
 ### Response
 
 **[*operations.CreateSourceResponse](../../models/operations/createsourceresponse.md), error**
-
+| Error Object               | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| sdkerrors.APIErrorResponse | 400,422                    | application/json           |
+| sdkerrors.SDKError         | 400-600                    | */*                        |
 
 ## Delete
 
@@ -138,21 +144,22 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
+	"github.com/speakeasy-sdks/hookdeck-go/models/components"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
-            BasicAuth: &shared.SchemeBasicAuth{
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(components.Security{
+            BasicAuth: &components.SchemeBasicAuth{
                 Password: "",
                 Username: "",
             },
         }),
     )
-    id := "deleniti"
+
+
+    var id string = "string"
 
     ctx := context.Background()
     res, err := s.Source.Delete(ctx, id)
@@ -160,7 +167,7 @@ func main() {
         log.Fatal(err)
     }
 
-    if res.DeleteSource200ApplicationJSONObject != nil {
+    if res.Object != nil {
         // handle response
     }
 }
@@ -177,7 +184,10 @@ func main() {
 ### Response
 
 **[*operations.DeleteSourceResponse](../../models/operations/deletesourceresponse.md), error**
-
+| Error Object               | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| sdkerrors.APIErrorResponse | 404                        | application/json           |
+| sdkerrors.SDKError         | 400-600                    | */*                        |
 
 ## Get
 
@@ -191,21 +201,22 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
+	"github.com/speakeasy-sdks/hookdeck-go/models/components"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
-            BasicAuth: &shared.SchemeBasicAuth{
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(components.Security{
+            BasicAuth: &components.SchemeBasicAuth{
                 Password: "",
                 Username: "",
             },
         }),
     )
-    id := "omnis"
+
+
+    var id string = "string"
 
     ctx := context.Background()
     res, err := s.Source.Get(ctx, id)
@@ -230,7 +241,10 @@ func main() {
 ### Response
 
 **[*operations.GetSourceResponse](../../models/operations/getsourceresponse.md), error**
-
+| Error Object               | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| sdkerrors.APIErrorResponse | 404                        | application/json           |
+| sdkerrors.SDKError         | 400-600                    | */*                        |
 
 ## Unarchive
 
@@ -244,21 +258,22 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
+	"github.com/speakeasy-sdks/hookdeck-go/models/components"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
-            BasicAuth: &shared.SchemeBasicAuth{
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(components.Security{
+            BasicAuth: &components.SchemeBasicAuth{
                 Password: "",
                 Username: "",
             },
         }),
     )
-    id := "necessitatibus"
+
+
+    var id string = "string"
 
     ctx := context.Background()
     res, err := s.Source.Unarchive(ctx, id)
@@ -283,7 +298,10 @@ func main() {
 ### Response
 
 **[*operations.UnarchiveSourceResponse](../../models/operations/unarchivesourceresponse.md), error**
-
+| Error Object               | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| sdkerrors.APIErrorResponse | 404                        | application/json           |
+| sdkerrors.SDKError         | 400-600                    | */*                        |
 
 ## Update
 
@@ -297,33 +315,33 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
+	"github.com/speakeasy-sdks/hookdeck-go/models/components"
+	"github.com/speakeasy-sdks/hookdeck-go/models/operations"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
-            BasicAuth: &shared.SchemeBasicAuth{
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(components.Security{
+            BasicAuth: &components.SchemeBasicAuth{
                 Password: "",
                 Username: "",
             },
         }),
     )
+
+
     requestBody := operations.UpdateSourceRequestBody{
-        AllowedHTTPMethods: []shared.SourceAllowedHTTPMethod{
-            shared.SourceAllowedHTTPMethodDelete,
-            shared.SourceAllowedHTTPMethodPut,
-            shared.SourceAllowedHTTPMethodPost,
+        AllowedHTTPMethods: []components.SourceAllowedHTTPMethod{
+            components.SourceAllowedHTTPMethodDelete,
         },
-        CustomResponse: &shared.SourceCustomResponse{
-            Body: "voluptate",
-            ContentType: shared.SourceCustomResponseContentTypeText,
+        CustomResponse: &components.SourceCustomResponse{
+            Body: "string",
+            ContentType: components.SourceCustomResponseContentTypeJSON,
         },
-        Name: hookdeck.String("Mrs. Ray Collins"),
     }
-    id := "accusamus"
+
+    var id string = "string"
 
     ctx := context.Background()
     res, err := s.Source.Update(ctx, requestBody, id)
@@ -349,7 +367,10 @@ func main() {
 ### Response
 
 **[*operations.UpdateSourceResponse](../../models/operations/updatesourceresponse.md), error**
-
+| Error Object               | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| sdkerrors.APIErrorResponse | 400,404,422                | application/json           |
+| sdkerrors.SDKError         | 400-600                    | */*                        |
 
 ## Upsert
 
@@ -363,15 +384,15 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
+	"github.com/speakeasy-sdks/hookdeck-go/models/components"
+	"github.com/speakeasy-sdks/hookdeck-go/models/operations"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
-            BasicAuth: &shared.SchemeBasicAuth{
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(components.Security{
+            BasicAuth: &components.SchemeBasicAuth{
                 Password: "",
                 Username: "",
             },
@@ -380,15 +401,14 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Source.Upsert(ctx, operations.UpsertSourceRequestBody{
-        AllowedHTTPMethods: []shared.SourceAllowedHTTPMethod{
-            shared.SourceAllowedHTTPMethodDelete,
-            shared.SourceAllowedHTTPMethodPost,
+        AllowedHTTPMethods: []components.SourceAllowedHTTPMethod{
+            components.SourceAllowedHTTPMethodPut,
         },
-        CustomResponse: &shared.SourceCustomResponse{
-            Body: "deserunt",
-            ContentType: shared.SourceCustomResponseContentTypeText,
+        CustomResponse: &components.SourceCustomResponse{
+            Body: "string",
+            ContentType: components.SourceCustomResponseContentTypeText,
         },
-        Name: "Kari Leannon PhD",
+        Name: "string",
     })
     if err != nil {
         log.Fatal(err)
@@ -411,4 +431,7 @@ func main() {
 ### Response
 
 **[*operations.UpsertSourceResponse](../../models/operations/upsertsourceresponse.md), error**
-
+| Error Object               | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| sdkerrors.APIErrorResponse | 400,422                    | application/json           |
+| sdkerrors.SDKError         | 400-600                    | */*                        |

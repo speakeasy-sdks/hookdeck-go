@@ -1,4 +1,5 @@
 # CustomDomains
+(*CustomDomains*)
 
 ### Available Operations
 
@@ -16,21 +17,22 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
+	"github.com/speakeasy-sdks/hookdeck-go/models/components"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
-            BasicAuth: &shared.SchemeBasicAuth{
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(components.Security{
+            BasicAuth: &components.SchemeBasicAuth{
                 Password: "",
                 Username: "",
             },
         }),
     )
-    teamID := "cupiditate"
+
+
+    var teamID string = "string"
 
     ctx := context.Background()
     res, err := s.CustomDomains.List(ctx, teamID)
@@ -55,4 +57,6 @@ func main() {
 ### Response
 
 **[*operations.ListCustomDomainsResponse](../../models/operations/listcustomdomainsresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |

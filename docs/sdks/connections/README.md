@@ -1,4 +1,5 @@
 # Connections
+(*Connections*)
 
 ## Overview
 
@@ -20,16 +21,16 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/types"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
+	"github.com/speakeasy-sdks/hookdeck-go/models/components"
+	"github.com/speakeasy-sdks/hookdeck-go/models/operations"
+	"github.com/speakeasy-sdks/hookdeck-go/types"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
-            BasicAuth: &shared.SchemeBasicAuth{
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(components.Security{
+            BasicAuth: &components.SchemeBasicAuth{
                 Password: "",
                 Username: "",
             },
@@ -38,16 +39,38 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Connections.Get(ctx, operations.GetConnectionsRequest{
-        Archived: hookdeck.Bool(false),
-        ArchivedAt: &operations.GetConnectionsArchivedAt{},
-        DestinationID: &operations.GetConnectionsDestinationID{},
-        Dir: &operations.GetConnectionsDir{},
-        FullName: hookdeck.String("deserunt"),
-        ID: &operations.GetConnectionsID{},
-        Name: &operations.GetConnectionsName{},
-        OrderBy: &operations.GetConnectionsOrderBy{},
-        PausedAt: &operations.GetConnectionsPausedAt{},
-        SourceID: &operations.GetConnectionsSourceID{},
+        ArchivedAt: operations.CreateArchivedAtGetConnectionsQueryParam2(
+                operations.GetConnectionsQueryParam2{},
+        ),
+        DestinationID: operations.CreateQueryParamDestinationIDStr(
+        "string",
+        ),
+        Dir: operations.CreateGetConnectionsQueryParamDirArrayOfgetConnectionsQueryParamConnections2(
+                []operations.GetConnectionsQueryParamConnections2{
+                    operations.GetConnectionsQueryParamConnections2Desc,
+                },
+        ),
+        ID: operations.CreateGetConnectionsQueryParamIDArrayOfstr(
+                []string{
+                    "string",
+                },
+        ),
+        Name: operations.CreateQueryParamNameGetConnectionsQueryParamConnectionsName2(
+                operations.GetConnectionsQueryParamConnectionsName2{},
+        ),
+        OrderBy: operations.CreateGetConnectionsQueryParamOrderByArrayOfgetConnectionsQueryParamConnectionsOrderBy2(
+                []operations.GetConnectionsQueryParamConnectionsOrderBy2{
+                    operations.GetConnectionsQueryParamConnectionsOrderBy2CreatedAt,
+                },
+        ),
+        PausedAt: operations.CreatePausedAtDateTime(
+        types.MustTimeFromString("2023-11-29T02:34:03.781Z"),
+        ),
+        SourceID: operations.CreateQueryParamSourceIDArrayOfstr(
+                []string{
+                    "string",
+                },
+        ),
     })
     if err != nil {
         log.Fatal(err)
@@ -70,4 +93,7 @@ func main() {
 ### Response
 
 **[*operations.GetConnectionsResponse](../../models/operations/getconnectionsresponse.md), error**
-
+| Error Object               | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| sdkerrors.APIErrorResponse | 400,422                    | application/json           |
+| sdkerrors.SDKError         | 400-600                    | */*                        |

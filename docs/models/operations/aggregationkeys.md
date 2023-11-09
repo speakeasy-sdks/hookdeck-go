@@ -1,0 +1,12 @@
+# AggregationKeys
+
+Filter by aggregation keys
+
+
+## Fields
+
+| Field                                                                                                         | Type                                                                                                          | Required                                                                                                      | Description                                                                                                   |
+| ------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
+| `ErrorCode`                                                                                                   | [*operations.GetIssuesQueryParamErrorCode](../../models/operations/getissuesqueryparamerrorcode.md)           | :heavy_minus_sign:                                                                                            | N/A                                                                                                           |
+| `ResponseStatus`                                                                                              | [*operations.GetIssuesQueryParamResponseStatus](../../models/operations/getissuesqueryparamresponsestatus.md) | :heavy_minus_sign:                                                                                            | N/A                                                                                                           |
+| `WebhookID`                                                                                                   | [*operations.GetIssuesQueryParamWebhookID](../../models/operations/getissuesqueryparamwebhookid.md)           | :heavy_minus_sign:                                                                                            | N/A                                                                                                           |

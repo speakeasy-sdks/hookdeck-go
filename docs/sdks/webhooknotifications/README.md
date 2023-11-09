@@ -1,4 +1,5 @@
 # WebhookNotifications
+(*WebhookNotifications*)
 
 ### Available Operations
 
@@ -16,15 +17,15 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
+	"github.com/speakeasy-sdks/hookdeck-go/models/components"
+	"github.com/speakeasy-sdks/hookdeck-go/models/operations"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
-            BasicAuth: &shared.SchemeBasicAuth{
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(components.Security{
+            BasicAuth: &components.SchemeBasicAuth{
                 Password: "",
                 Username: "",
             },
@@ -33,13 +34,8 @@ func main() {
 
     ctx := context.Background()
     res, err := s.WebhookNotifications.Toggle(ctx, operations.ToggleWebhookNotificationsRequestBody{
-        Enabled: hookdeck.Bool(false),
-        SourceID: hookdeck.String("voluptatibus"),
-        Topics: []shared.TopicsValue{
-            shared.TopicsValueEventSuccessful,
-            shared.TopicsValueDeprecatedAttemptFailed,
-            shared.TopicsValueIssueUpdated,
-            shared.TopicsValueIssueOpened,
+        Topics: []components.TopicsValue{
+            components.TopicsValueIssueOpened,
         },
     })
     if err != nil {
@@ -63,4 +59,6 @@ func main() {
 ### Response
 
 **[*operations.ToggleWebhookNotificationsResponse](../../models/operations/togglewebhooknotificationsresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |

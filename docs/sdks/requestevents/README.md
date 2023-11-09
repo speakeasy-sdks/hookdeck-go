@@ -1,4 +1,5 @@
 # RequestEvents
+(*RequestEvents*)
 
 ### Available Operations
 
@@ -16,16 +17,16 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/types"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
+	"github.com/speakeasy-sdks/hookdeck-go/models/components"
+	"github.com/speakeasy-sdks/hookdeck-go/models/operations"
+	"github.com/speakeasy-sdks/hookdeck-go/types"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
-            BasicAuth: &shared.SchemeBasicAuth{
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(components.Security{
+            BasicAuth: &components.SchemeBasicAuth{
                 Password: "",
                 Username: "",
             },
@@ -34,34 +35,82 @@ func main() {
 
     ctx := context.Background()
     res, err := s.RequestEvents.Get(ctx, operations.GetRequestEventsRequest{
-        Attempts: &operations.GetRequestEventsAttempts{},
-        Body: &operations.GetRequestEventsBody{},
-        BulkRetryID: &operations.GetRequestEventsBulkRetryID{},
-        CliID: &operations.GetRequestEventsCliID{},
-        CliUserID: &operations.GetRequestEventsCliUserID{},
-        CreatedAt: &operations.GetRequestEventsCreatedAt{},
-        DestinationID: &operations.GetRequestEventsDestinationID{},
-        Dir: &operations.GetRequestEventsDir{},
-        ErrorCode: &operations.GetRequestEventsErrorCode{},
-        EventDataID: &operations.GetRequestEventsEventDataID{},
-        Headers: &operations.GetRequestEventsHeaders{},
-        IDPathParameter: "nobis",
-        IDQueryParameter: &operations.GetRequestEventsID{},
-        Include: operations.GetRequestEventsIncludeData.ToPointer(),
-        IssueID: &operations.GetRequestEventsIssueID{},
-        LastAttemptAt: &operations.GetRequestEventsLastAttemptAt{},
-        Limit: hookdeck.Int64(171629),
-        Next: hookdeck.String("quis"),
-        OrderBy: &operations.GetRequestEventsOrderBy{},
-        ParsedQuery: &operations.GetRequestEventsParsedQuery{},
-        Path: hookdeck.String("totam"),
-        Prev: hookdeck.String("dignissimos"),
-        ResponseStatus: &operations.GetRequestEventsResponseStatus{},
-        SearchTerm: hookdeck.String("eaque"),
-        SourceID: &operations.GetRequestEventsSourceID{},
-        Status: &operations.GetRequestEventsStatus{},
-        SuccessfulAt: &operations.GetRequestEventsSuccessfulAt{},
-        WebhookID: &operations.GetRequestEventsWebhookID{},
+        Attempts: operations.CreateGetRequestEventsQueryParamAttemptsGetRequestEventsQueryParam2(
+                operations.GetRequestEventsQueryParam2{},
+        ),
+        Body: operations.CreateGetRequestEventsQueryParamBodyStr(
+        "string",
+        ),
+        BulkRetryID: operations.CreateGetRequestEventsQueryParamBulkRetryIDArrayOfstr(
+                []string{
+                    "string",
+                },
+        ),
+        CliID: operations.CreateGetRequestEventsQueryParamCliIDArrayOfstr(
+                []string{
+                    "string",
+                },
+        ),
+        CliUserID: operations.CreateGetRequestEventsQueryParamCliUserIDArrayOfstr(
+                []string{
+                    "string",
+                },
+        ),
+        CreatedAt: operations.CreateGetRequestEventsQueryParamCreatedAtGetRequestEventsQueryParamRequestEventsCreatedAt2(
+                operations.GetRequestEventsQueryParamRequestEventsCreatedAt2{},
+        ),
+        DestinationID: operations.CreateGetRequestEventsQueryParamDestinationIDArrayOfstr(
+                []string{
+                    "string",
+                },
+        ),
+        Dir: operations.CreateGetRequestEventsQueryParamDirGetRequestEventsQueryParam1(
+        operations.GetRequestEventsQueryParam1Desc,
+        ),
+        ErrorCode: operations.CreateGetRequestEventsQueryParamErrorCodeArrayOfstr(
+                []string{
+                    "string",
+                },
+        ),
+        EventDataID: operations.CreateGetRequestEventsQueryParamEventDataIDStr(
+        "string",
+        ),
+        Headers: operations.CreateGetRequestEventsQueryParamHeadersGetRequestEventsQueryParamRequestEventsHeaders2(
+                operations.GetRequestEventsQueryParamRequestEventsHeaders2{},
+        ),
+        IDPathParameter: "string",
+        IDQueryParameter: operations.CreateGetRequestEventsQueryParamIDStr(
+        "string",
+        ),
+        IssueID: operations.CreateGetRequestEventsQueryParamIssueIDStr(
+        "string",
+        ),
+        LastAttemptAt: operations.CreateGetRequestEventsQueryParamLastAttemptAtDateTime(
+        types.MustTimeFromString("2023-09-12T22:44:18.030Z"),
+        ),
+        OrderBy: operations.CreateGetRequestEventsQueryParamOrderByGetRequestEventsQueryParamRequestEvents1(
+        operations.GetRequestEventsQueryParamRequestEvents1LastAttemptAt,
+        ),
+        ParsedQuery: operations.CreateGetRequestEventsQueryParamParsedQueryGetRequestEventsQueryParamRequestEventsParsedQuery2(
+                operations.GetRequestEventsQueryParamRequestEventsParsedQuery2{},
+        ),
+        ResponseStatus: operations.CreateGetRequestEventsQueryParamResponseStatusInteger(
+        438142,
+        ),
+        SourceID: operations.CreateGetRequestEventsQueryParamSourceIDStr(
+        "string",
+        ),
+        Status: operations.CreateGetRequestEventsQueryParamStatusArrayOfEventStatus(
+                []components.EventStatus{
+                    components.EventStatusSuccessful,
+                },
+        ),
+        SuccessfulAt: operations.CreateGetRequestEventsQueryParamSuccessfulAtDateTime(
+        types.MustTimeFromString("2023-12-06T14:41:34.659Z"),
+        ),
+        WebhookID: operations.CreateGetRequestEventsQueryParamWebhookIDStr(
+        "string",
+        ),
     })
     if err != nil {
         log.Fatal(err)
@@ -84,4 +133,7 @@ func main() {
 ### Response
 
 **[*operations.GetRequestEventsResponse](../../models/operations/getrequesteventsresponse.md), error**
-
+| Error Object               | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| sdkerrors.APIErrorResponse | 400,404,422                | application/json           |
+| sdkerrors.SDKError         | 400-600                    | */*                        |
