@@ -20,10 +20,10 @@ Archive a ruleset
 package main
 
 import(
+	"github.com/speakeasy-sdks/hookdeck-go/models/components"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
 	"context"
 	"log"
-	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
-	"github.com/speakeasy-sdks/hookdeck-go/models/components"
 )
 
 func main() {
@@ -77,11 +77,11 @@ Create a ruleset
 package main
 
 import(
-	"context"
-	"log"
-	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
 	"github.com/speakeasy-sdks/hookdeck-go/models/components"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
+	"context"
 	"github.com/speakeasy-sdks/hookdeck-go/models/operations"
+	"log"
 )
 
 func main() {
@@ -153,10 +153,10 @@ Get a ruleset
 package main
 
 import(
+	"github.com/speakeasy-sdks/hookdeck-go/models/components"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
 	"context"
 	"log"
-	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
-	"github.com/speakeasy-sdks/hookdeck-go/models/components"
 )
 
 func main() {
@@ -210,10 +210,10 @@ Unarchive a ruleset
 package main
 
 import(
+	"github.com/speakeasy-sdks/hookdeck-go/models/components"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
 	"context"
 	"log"
-	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
-	"github.com/speakeasy-sdks/hookdeck-go/models/components"
 )
 
 func main() {
@@ -267,11 +267,11 @@ Update a ruleset
 package main
 
 import(
+	"github.com/speakeasy-sdks/hookdeck-go/models/components"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
+	"github.com/speakeasy-sdks/hookdeck-go/models/operations"
 	"context"
 	"log"
-	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
-	"github.com/speakeasy-sdks/hookdeck-go/models/components"
-	"github.com/speakeasy-sdks/hookdeck-go/models/operations"
 )
 
 func main() {
@@ -337,11 +337,11 @@ Update or create a ruleset
 package main
 
 import(
-	"context"
-	"log"
-	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
 	"github.com/speakeasy-sdks/hookdeck-go/models/components"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
+	"context"
 	"github.com/speakeasy-sdks/hookdeck-go/models/operations"
+	"log"
 )
 
 func main() {

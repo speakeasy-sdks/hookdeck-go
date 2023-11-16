@@ -19,12 +19,11 @@ Retrieve a list of endpoints to which your webhooks can be routed.
 package main
 
 import(
-	"context"
-	"log"
-	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
 	"github.com/speakeasy-sdks/hookdeck-go/models/components"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
+	"context"
 	"github.com/speakeasy-sdks/hookdeck-go/models/operations"
-	"github.com/speakeasy-sdks/hookdeck-go/types"
+	"log"
 )
 
 func main() {

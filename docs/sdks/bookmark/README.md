@@ -19,11 +19,11 @@ Create a new bookmark.
 package main
 
 import(
-	"context"
-	"log"
-	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
 	"github.com/speakeasy-sdks/hookdeck-go/models/components"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
+	"context"
 	"github.com/speakeasy-sdks/hookdeck-go/models/operations"
+	"log"
 )
 
 func main() {
@@ -78,10 +78,10 @@ Delete an existing bookmark
 package main
 
 import(
+	"github.com/speakeasy-sdks/hookdeck-go/models/components"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
 	"context"
 	"log"
-	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
-	"github.com/speakeasy-sdks/hookdeck-go/models/components"
 )
 
 func main() {
@@ -135,10 +135,10 @@ Retrieve an existing bookmark details.
 package main
 
 import(
+	"github.com/speakeasy-sdks/hookdeck-go/models/components"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
 	"context"
 	"log"
-	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
-	"github.com/speakeasy-sdks/hookdeck-go/models/components"
 )
 
 func main() {
@@ -192,11 +192,11 @@ Trigger a bookmark operation to store and replay a specific request.
 package main
 
 import(
+	"github.com/speakeasy-sdks/hookdeck-go/models/components"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
+	"github.com/speakeasy-sdks/hookdeck-go/models/operations"
 	"context"
 	"log"
-	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
-	"github.com/speakeasy-sdks/hookdeck-go/models/components"
-	"github.com/speakeasy-sdks/hookdeck-go/models/operations"
 )
 
 func main() {
@@ -253,11 +253,11 @@ Update an existing bookmark information.
 package main
 
 import(
+	"github.com/speakeasy-sdks/hookdeck-go/models/components"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
+	"github.com/speakeasy-sdks/hookdeck-go/models/operations"
 	"context"
 	"log"
-	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
-	"github.com/speakeasy-sdks/hookdeck-go/models/components"
-	"github.com/speakeasy-sdks/hookdeck-go/models/operations"
 )
 
 func main() {

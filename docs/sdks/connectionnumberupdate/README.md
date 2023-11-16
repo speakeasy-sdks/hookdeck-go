@@ -15,11 +15,11 @@ Update or create a connection
 package main
 
 import(
-	"context"
-	"log"
-	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
 	"github.com/speakeasy-sdks/hookdeck-go/models/components"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
+	"context"
 	"github.com/speakeasy-sdks/hookdeck-go/models/operations"
+	"log"
 )
 
 func main() {

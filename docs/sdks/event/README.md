@@ -17,10 +17,10 @@ Retrieve a request that Hookdeck receives from a source.
 package main
 
 import(
+	"github.com/speakeasy-sdks/hookdeck-go/models/components"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
 	"context"
 	"log"
-	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
-	"github.com/speakeasy-sdks/hookdeck-go/models/components"
 )
 
 func main() {
@@ -74,10 +74,10 @@ Mute a request that Hookdeck receives from a specific source.
 package main
 
 import(
+	"github.com/speakeasy-sdks/hookdeck-go/models/components"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
 	"context"
 	"log"
-	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
-	"github.com/speakeasy-sdks/hookdeck-go/models/components"
 )
 
 func main() {
@@ -131,10 +131,10 @@ Retry the operation to retrieve a request that Hookdeck receives from a specific
 package main
 
 import(
+	"github.com/speakeasy-sdks/hookdeck-go/models/components"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
 	"context"
 	"log"
-	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
-	"github.com/speakeasy-sdks/hookdeck-go/models/components"
 )
 
 func main() {

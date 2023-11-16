@@ -17,10 +17,10 @@ Cancel an events bulk retry
 package main
 
 import(
+	"github.com/speakeasy-sdks/hookdeck-go/models/components"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
 	"context"
 	"log"
-	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
-	"github.com/speakeasy-sdks/hookdeck-go/models/components"
 )
 
 func main() {
@@ -74,12 +74,12 @@ Create an events bulk retry
 package main
 
 import(
-	"context"
-	"log"
-	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
 	"github.com/speakeasy-sdks/hookdeck-go/models/components"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
+	"context"
 	"github.com/speakeasy-sdks/hookdeck-go/models/operations"
 	"github.com/speakeasy-sdks/hookdeck-go/types"
+	"log"
 )
 
 func main() {
@@ -206,10 +206,10 @@ Get an events bulk retry
 package main
 
 import(
+	"github.com/speakeasy-sdks/hookdeck-go/models/components"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
 	"context"
 	"log"
-	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
-	"github.com/speakeasy-sdks/hookdeck-go/models/components"
 )
 
 func main() {

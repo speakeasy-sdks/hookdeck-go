@@ -15,10 +15,10 @@ List all custom domains and their verification statuses for the workspace
 package main
 
 import(
+	"github.com/speakeasy-sdks/hookdeck-go/models/components"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
 	"context"
 	"log"
-	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
-	"github.com/speakeasy-sdks/hookdeck-go/models/components"
 )
 
 func main() {

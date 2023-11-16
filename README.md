@@ -330,9 +330,11 @@ package main
 
 import (
 	"context"
+	"errors"
 	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
 	"github.com/speakeasy-sdks/hookdeck-go/models/components"
 	"github.com/speakeasy-sdks/hookdeck-go/models/operations"
+	"github.com/speakeasy-sdks/hookdeck-go/models/sdkerrors"
 	"log"
 )
 
