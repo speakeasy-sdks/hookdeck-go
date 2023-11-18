@@ -225,7 +225,7 @@ func (u EventParsedQuery) MarshalJSON() ([]byte, error) {
 	return nil, errors.New("could not marshal union type: all fields are null")
 }
 
-type EventData struct {
+type Data struct {
 	Body           *EventBody        `json:"body,omitempty"`
 	Headers        *EventHeaders     `json:"headers,omitempty"`
 	IsLargePayload *bool             `json:"is_large_payload,omitempty"`
@@ -234,42 +234,42 @@ type EventData struct {
 	Query          *string           `json:"query,omitempty"`
 }
 
-func (o *EventData) GetBody() *EventBody {
+func (o *Data) GetBody() *EventBody {
 	if o == nil {
 		return nil
 	}
 	return o.Body
 }
 
-func (o *EventData) GetHeaders() *EventHeaders {
+func (o *Data) GetHeaders() *EventHeaders {
 	if o == nil {
 		return nil
 	}
 	return o.Headers
 }
 
-func (o *EventData) GetIsLargePayload() *bool {
+func (o *Data) GetIsLargePayload() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.IsLargePayload
 }
 
-func (o *EventData) GetParsedQuery() *EventParsedQuery {
+func (o *Data) GetParsedQuery() *EventParsedQuery {
 	if o == nil {
 		return nil
 	}
 	return o.ParsedQuery
 }
 
-func (o *EventData) GetPath() string {
+func (o *Data) GetPath() string {
 	if o == nil {
 		return ""
 	}
 	return o.Path
 }
 
-func (o *EventData) GetQuery() *string {
+func (o *Data) GetQuery() *string {
 	if o == nil {
 		return nil
 	}
@@ -282,9 +282,9 @@ type Event struct {
 	// ID of the CLI the event is sent to
 	CliID *string `json:"cli_id,omitempty"`
 	// Date the event was created
-	CreatedAt   time.Time  `json:"created_at"`
-	CreatedAtID *string    `json:"created_at_id,omitempty"`
-	Data        *EventData `json:"data,omitempty"`
+	CreatedAt   time.Time `json:"created_at"`
+	CreatedAtID *string   `json:"created_at_id,omitempty"`
+	Data        *Data     `json:"data,omitempty"`
 	// ID of the associated destination
 	DestinationID string `json:"destination_id"`
 	// ID of the request data
@@ -352,7 +352,7 @@ func (o *Event) GetCreatedAtID() *string {
 	return o.CreatedAtID
 }
 
-func (o *Event) GetData() *EventData {
+func (o *Event) GetData() *Data {
 	if o == nil {
 		return nil
 	}

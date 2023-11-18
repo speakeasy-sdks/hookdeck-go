@@ -873,7 +873,7 @@ docs/models/components/eventbody.md
 docs/models/components/eventheaders.md
 docs/models/components/event2.md
 docs/models/components/eventparsedquery.md
-docs/models/components/eventdata.md
+docs/models/components/data.md
 docs/models/components/event.md
 docs/models/components/eventstatus.md
 docs/models/components/query.md
