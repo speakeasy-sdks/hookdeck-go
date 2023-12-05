@@ -264,7 +264,6 @@ internal/utils/utils.go
 /models/components/security.go
 /models/components/schemebasicauth.go
 /models/sdkerrors/apierrorresponse.go
-USAGE.md
 docs/models/operations/getattemptsqueryparam2.md
 docs/models/operations/getattemptsqueryparam1.md
 docs/models/operations/dir.md
@@ -1071,4 +1070,5 @@ docs/sdks/transformationexecution/README.md
 docs/sdks/connections/README.md
 docs/sdks/connection/README.md
 docs/sdks/connectionnumberupdate/README.md
+USAGE.md
 .gitattributes

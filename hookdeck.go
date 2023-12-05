@@ -248,9 +248,9 @@ func New(opts ...SDKOption) *Hookdeck {
 		sdkConfiguration: sdkConfiguration{
 			Language:          "go",
 			OpenAPIDocVersion: "1.0.0",
-			SDKVersion:        "1.6.3",
-			GenVersion:        "2.194.1",
-			UserAgent:         "speakeasy-sdk/go 1.6.3 2.194.1 1.0.0 github.com/speakeasy-sdks/hookdeck-go",
+			SDKVersion:        "1.6.4",
+			GenVersion:        "2.210.3",
+			UserAgent:         "speakeasy-sdk/go 1.6.4 2.210.3 1.0.0 github.com/speakeasy-sdks/hookdeck-go",
 			ServerDefaults: []map[string]string{
 				{
 					"version": "2023-01-01",
