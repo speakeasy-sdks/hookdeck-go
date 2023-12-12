@@ -2,8 +2,8 @@ configVersion: 1.0.0
 management:
   docChecksum: d830a406b2443ec8c3f767c5da86b8c3
   docVersion: 1.0.0
-  speakeasyVersion: 1.125.1
-  generationVersion: 2.210.3
+  speakeasyVersion: 1.126.0
+  generationVersion: 2.213.3
 generation:
   comments: {}
   sdkClassName: hookdeck
@@ -13,17 +13,17 @@ generation:
 features:
   go:
     constsAndDefaults: 0.1.2
-    core: 3.1.5
+    core: 3.2.0
     errors: 2.81.8
     flattening: 2.81.1
-    globalSecurity: 2.82.2
+    globalSecurity: 2.82.3
     globalServerURLs: 2.82.1
     groups: 2.81.2
     ignores: 2.81.1
     nameOverrides: 2.81.1
     unions: 2.85.0
 go:
-  version: 1.6.4
+  version: 1.7.0
   clientServerStatusCodesAsErrors: true
   flattenGlobalSecurity: true
   imports:

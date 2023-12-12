@@ -31,8 +31,8 @@ func main() {
     s := hookdeckgo.New(
         hookdeckgo.WithSecurity(components.Security{
             BasicAuth: &components.SchemeBasicAuth{
-                Password: "",
-                Username: "",
+                Password: "<YOUR_PASSWORD_HERE>",
+                Username: "<YOUR_USERNAME_HERE>",
             },
         }),
     )
@@ -42,7 +42,7 @@ func main() {
         ArchivedAt: operations.CreateArchivedAtGetConnectionsQueryParam2(
                 operations.GetConnectionsQueryParam2{},
         ),
-        DestinationID: operations.CreateQueryParamDestinationIDStr(
+        DestinationID: operations.CreateGetConnectionsQueryParamDestinationIDStr(
         "string",
         ),
         Dir: operations.CreateGetConnectionsQueryParamDirArrayOfgetConnectionsQueryParamConnections2(
@@ -66,7 +66,7 @@ func main() {
         PausedAt: operations.CreatePausedAtDateTime(
         types.MustTimeFromString("2023-11-29T02:34:03.781Z"),
         ),
-        SourceID: operations.CreateQueryParamSourceIDArrayOfstr(
+        SourceID: operations.CreateGetConnectionsQueryParamSourceIDArrayOfstr(
                 []string{
                     "string",
                 },

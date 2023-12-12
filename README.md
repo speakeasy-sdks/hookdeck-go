@@ -48,8 +48,8 @@ func main() {
 	s := hookdeckgo.New(
 		hookdeckgo.WithSecurity(components.Security{
 			BasicAuth: &components.SchemeBasicAuth{
-				Password: "",
-				Username: "",
+				Password: "<YOUR_PASSWORD_HERE>",
+				Username: "<YOUR_USERNAME_HERE>",
 			},
 		}),
 	)
@@ -254,14 +254,14 @@ func main() {
 * [Update](docs/sdks/source/README.md#update) - Update a source
 * [Upsert](docs/sdks/source/README.md#upsert) - Update or create a source
 
+### [CustomDomains](docs/sdks/customdomains/README.md)
+
+* [List](docs/sdks/customdomains/README.md#list) - List all custom domains and their verification statuses for the workspace
+
 ### [CustomDomain](docs/sdks/customdomain/README.md)
 
 * [Add](docs/sdks/customdomain/README.md#add) - Add a custom domain to the workspace
 * [Delete](docs/sdks/customdomain/README.md#delete) - Removes a custom domain from the workspace
-
-### [CustomDomains](docs/sdks/customdomains/README.md)
-
-* [List](docs/sdks/customdomains/README.md#list) - List all custom domains and their verification statuses for the workspace
 
 ### [Transformations](docs/sdks/transformations/README.md)
 
@@ -336,8 +336,8 @@ func main() {
 	s := hookdeckgo.New(
 		hookdeckgo.WithSecurity(components.Security{
 			BasicAuth: &components.SchemeBasicAuth{
-				Password: "",
-				Username: "",
+				Password: "<YOUR_PASSWORD_HERE>",
+				Username: "<YOUR_USERNAME_HERE>",
 			},
 		}),
 	)
@@ -410,8 +410,8 @@ func main() {
 		hookdeckgo.WithServerIndex(0),
 		hookdeckgo.WithSecurity(components.Security{
 			BasicAuth: &components.SchemeBasicAuth{
-				Password: "",
-				Username: "",
+				Password: "<YOUR_PASSWORD_HERE>",
+				Username: "<YOUR_USERNAME_HERE>",
 			},
 		}),
 	)
@@ -469,8 +469,8 @@ func main() {
 		hookdeckgo.WithServerURL("https://api.hookdeck.com/{version}"),
 		hookdeckgo.WithSecurity(components.Security{
 			BasicAuth: &components.SchemeBasicAuth{
-				Password: "",
-				Username: "",
+				Password: "<YOUR_PASSWORD_HERE>",
+				Username: "<YOUR_USERNAME_HERE>",
 			},
 		}),
 	)
@@ -566,8 +566,8 @@ func main() {
 	s := hookdeckgo.New(
 		hookdeckgo.WithSecurity(components.Security{
 			BasicAuth: &components.SchemeBasicAuth{
-				Password: "",
-				Username: "",
+				Password: "<YOUR_PASSWORD_HERE>",
+				Username: "<YOUR_USERNAME_HERE>",
 			},
 		}),
 	)

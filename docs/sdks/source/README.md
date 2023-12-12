@@ -31,8 +31,8 @@ func main() {
     s := hookdeckgo.New(
         hookdeckgo.WithSecurity(components.Security{
             BasicAuth: &components.SchemeBasicAuth{
-                Password: "",
-                Username: "",
+                Password: "<YOUR_PASSWORD_HERE>",
+                Username: "<YOUR_USERNAME_HERE>",
             },
         }),
     )
@@ -89,8 +89,8 @@ func main() {
     s := hookdeckgo.New(
         hookdeckgo.WithSecurity(components.Security{
             BasicAuth: &components.SchemeBasicAuth{
-                Password: "",
-                Username: "",
+                Password: "<YOUR_PASSWORD_HERE>",
+                Username: "<YOUR_USERNAME_HERE>",
             },
         }),
     )
@@ -152,8 +152,8 @@ func main() {
     s := hookdeckgo.New(
         hookdeckgo.WithSecurity(components.Security{
             BasicAuth: &components.SchemeBasicAuth{
-                Password: "",
-                Username: "",
+                Password: "<YOUR_PASSWORD_HERE>",
+                Username: "<YOUR_USERNAME_HERE>",
             },
         }),
     )
@@ -209,8 +209,8 @@ func main() {
     s := hookdeckgo.New(
         hookdeckgo.WithSecurity(components.Security{
             BasicAuth: &components.SchemeBasicAuth{
-                Password: "",
-                Username: "",
+                Password: "<YOUR_PASSWORD_HERE>",
+                Username: "<YOUR_USERNAME_HERE>",
             },
         }),
     )
@@ -266,8 +266,8 @@ func main() {
     s := hookdeckgo.New(
         hookdeckgo.WithSecurity(components.Security{
             BasicAuth: &components.SchemeBasicAuth{
-                Password: "",
-                Username: "",
+                Password: "<YOUR_PASSWORD_HERE>",
+                Username: "<YOUR_USERNAME_HERE>",
             },
         }),
     )
@@ -324,8 +324,8 @@ func main() {
     s := hookdeckgo.New(
         hookdeckgo.WithSecurity(components.Security{
             BasicAuth: &components.SchemeBasicAuth{
-                Password: "",
-                Username: "",
+                Password: "<YOUR_PASSWORD_HERE>",
+                Username: "<YOUR_USERNAME_HERE>",
             },
         }),
     )
@@ -393,8 +393,8 @@ func main() {
     s := hookdeckgo.New(
         hookdeckgo.WithSecurity(components.Security{
             BasicAuth: &components.SchemeBasicAuth{
-                Password: "",
-                Username: "",
+                Password: "<YOUR_PASSWORD_HERE>",
+                Username: "<YOUR_USERNAME_HERE>",
             },
         }),
     )

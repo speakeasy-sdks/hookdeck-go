@@ -105,8 +105,8 @@ type Hookdeck struct {
 	// A source represents any third party that sends webhooks to Hookdeck.
 	Sources       *Sources
 	Source        *Source
-	CustomDomain  *CustomDomain
 	CustomDomains *CustomDomains
+	CustomDomain  *CustomDomain
 	// A transformation represents JavaScript code that will be executed on a connection's requests. Transformations are applied to connections using Rules.
 	Transformations          *Transformations
 	Transformation           *Transformation
@@ -220,7 +220,6 @@ func withSecurity(security interface{}) func(context.Context) (interface{}, erro
 }
 
 // WithSecurity configures the SDK to use the provided security details
-
 func WithSecurity(security components.Security) SDKOption {
 	return func(sdk *Hookdeck) {
 		sdk.sdkConfiguration.Security = withSecurity(security)
@@ -248,9 +247,9 @@ func New(opts ...SDKOption) *Hookdeck {
 		sdkConfiguration: sdkConfiguration{
 			Language:          "go",
 			OpenAPIDocVersion: "1.0.0",
-			SDKVersion:        "1.6.4",
-			GenVersion:        "2.210.3",
-			UserAgent:         "speakeasy-sdk/go 1.6.4 2.210.3 1.0.0 github.com/speakeasy-sdks/hookdeck-go",
+			SDKVersion:        "1.7.0",
+			GenVersion:        "2.213.3",
+			UserAgent:         "speakeasy-sdk/go 1.7.0 2.213.3 1.0.0 github.com/speakeasy-sdks/hookdeck-go",
 			ServerDefaults: []map[string]string{
 				{
 					"version": "2023-01-01",
@@ -336,9 +335,9 @@ func New(opts ...SDKOption) *Hookdeck {
 
 	sdk.Source = newSource(sdk.sdkConfiguration)
 
-	sdk.CustomDomain = newCustomDomain(sdk.sdkConfiguration)
-
 	sdk.CustomDomains = newCustomDomains(sdk.sdkConfiguration)
+
+	sdk.CustomDomain = newCustomDomain(sdk.sdkConfiguration)
 
 	sdk.Transformations = newTransformations(sdk.sdkConfiguration)
 

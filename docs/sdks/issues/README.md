@@ -31,8 +31,8 @@ func main() {
     s := hookdeckgo.New(
         hookdeckgo.WithSecurity(components.Security{
             BasicAuth: &components.SchemeBasicAuth{
-                Password: "",
-                Username: "",
+                Password: "<YOUR_PASSWORD_HERE>",
+                Username: "<YOUR_USERNAME_HERE>",
             },
         }),
     )
@@ -75,27 +75,7 @@ func main() {
         ),
         IssueTriggerID: operations.CreateIssueTriggerIDArrayOfstr(
                 []string{
-                    "i",
-                    "t",
-                    "_",
-                    "B",
-                    "X",
-                    "K",
-                    "v",
-                    "5",
-                    "O",
-                    "d",
-                    "J",
-                    "X",
-                    "C",
-                    "i",
-                    "V",
-                    "w",
-                    "k",
-                    "P",
-                    "h",
-                    "G",
-                    "y",
+                    "it_BXKv5OdJXCiVwkPhGy",
                 },
         ),
         LastSeenAt: operations.CreateLastSeenAtDateTime(
@@ -114,13 +94,6 @@ func main() {
         ),
         Type: operations.CreateTypeArrayOfgetIssuesQueryParamIssuesType2(
                 []operations.GetIssuesQueryParamIssuesType2{
-                    operations.GetIssuesQueryParamIssuesType2Delivery,
-                    operations.GetIssuesQueryParamIssuesType2Transformation,
-                    operations.GetIssuesQueryParamIssuesType2Transformation,
-                    operations.GetIssuesQueryParamIssuesType2Backpressure,
-                    operations.GetIssuesQueryParamIssuesType2Backpressure,
-                    operations.GetIssuesQueryParamIssuesType2Delivery,
-                    operations.GetIssuesQueryParamIssuesType2Backpressure,
                     operations.GetIssuesQueryParamIssuesType2Delivery,
                 },
         ),

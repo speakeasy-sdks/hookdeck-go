@@ -31,8 +31,8 @@ func main() {
     s := hookdeckgo.New(
         hookdeckgo.WithSecurity(components.Security{
             BasicAuth: &components.SchemeBasicAuth{
-                Password: "",
-                Username: "",
+                Password: "<YOUR_PASSWORD_HERE>",
+                Username: "<YOUR_USERNAME_HERE>",
             },
         }),
     )
@@ -85,7 +85,7 @@ func main() {
         ID: operations.CreateGetEventsQueryParamIDStr(
         "string",
         ),
-        IssueID: operations.CreateQueryParamIssueIDStr(
+        IssueID: operations.CreateGetEventsQueryParamIssueIDStr(
         "string",
         ),
         LastAttemptAt: operations.CreateQueryParamLastAttemptAtDateTime(
@@ -103,7 +103,7 @@ func main() {
         SourceID: operations.CreateGetEventsQueryParamSourceIDStr(
         "string",
         ),
-        Status: operations.CreateQueryParamStatusArrayOfEventStatus(
+        Status: operations.CreateGetEventsQueryParamStatusArrayOfEventStatus(
                 []components.EventStatus{
                     components.EventStatusSuccessful,
                 },

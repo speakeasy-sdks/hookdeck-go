@@ -997,58 +997,58 @@ func (e *Include) UnmarshalJSON(data []byte) error {
 	}
 }
 
-type QueryParamIssueIDType string
+type GetEventsQueryParamIssueIDType string
 
 const (
-	QueryParamIssueIDTypeStr        QueryParamIssueIDType = "str"
-	QueryParamIssueIDTypeArrayOfstr QueryParamIssueIDType = "arrayOfstr"
+	GetEventsQueryParamIssueIDTypeStr        GetEventsQueryParamIssueIDType = "str"
+	GetEventsQueryParamIssueIDTypeArrayOfstr GetEventsQueryParamIssueIDType = "arrayOfstr"
 )
 
-type QueryParamIssueID struct {
+type GetEventsQueryParamIssueID struct {
 	Str        *string
 	ArrayOfstr []string
 
-	Type QueryParamIssueIDType
+	Type GetEventsQueryParamIssueIDType
 }
 
-func CreateQueryParamIssueIDStr(str string) QueryParamIssueID {
-	typ := QueryParamIssueIDTypeStr
+func CreateGetEventsQueryParamIssueIDStr(str string) GetEventsQueryParamIssueID {
+	typ := GetEventsQueryParamIssueIDTypeStr
 
-	return QueryParamIssueID{
+	return GetEventsQueryParamIssueID{
 		Str:  &str,
 		Type: typ,
 	}
 }
 
-func CreateQueryParamIssueIDArrayOfstr(arrayOfstr []string) QueryParamIssueID {
-	typ := QueryParamIssueIDTypeArrayOfstr
+func CreateGetEventsQueryParamIssueIDArrayOfstr(arrayOfstr []string) GetEventsQueryParamIssueID {
+	typ := GetEventsQueryParamIssueIDTypeArrayOfstr
 
-	return QueryParamIssueID{
+	return GetEventsQueryParamIssueID{
 		ArrayOfstr: arrayOfstr,
 		Type:       typ,
 	}
 }
 
-func (u *QueryParamIssueID) UnmarshalJSON(data []byte) error {
+func (u *GetEventsQueryParamIssueID) UnmarshalJSON(data []byte) error {
 
 	str := ""
 	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
 		u.Str = &str
-		u.Type = QueryParamIssueIDTypeStr
+		u.Type = GetEventsQueryParamIssueIDTypeStr
 		return nil
 	}
 
 	arrayOfstr := []string{}
 	if err := utils.UnmarshalJSON(data, &arrayOfstr, "", true, true); err == nil {
 		u.ArrayOfstr = arrayOfstr
-		u.Type = QueryParamIssueIDTypeArrayOfstr
+		u.Type = GetEventsQueryParamIssueIDTypeArrayOfstr
 		return nil
 	}
 
 	return errors.New("could not unmarshal into supported union types")
 }
 
-func (u QueryParamIssueID) MarshalJSON() ([]byte, error) {
+func (u GetEventsQueryParamIssueID) MarshalJSON() ([]byte, error) {
 	if u.Str != nil {
 		return utils.MarshalJSON(u.Str, "", true)
 	}
@@ -1569,58 +1569,58 @@ func (u GetEventsQueryParamSourceID) MarshalJSON() ([]byte, error) {
 	return nil, errors.New("could not marshal union type: all fields are null")
 }
 
-type QueryParamStatusType string
+type GetEventsQueryParamStatusType string
 
 const (
-	QueryParamStatusTypeEventStatus        QueryParamStatusType = "EventStatus"
-	QueryParamStatusTypeArrayOfEventStatus QueryParamStatusType = "arrayOfEventStatus"
+	GetEventsQueryParamStatusTypeEventStatus        GetEventsQueryParamStatusType = "EventStatus"
+	GetEventsQueryParamStatusTypeArrayOfEventStatus GetEventsQueryParamStatusType = "arrayOfEventStatus"
 )
 
-type QueryParamStatus struct {
+type GetEventsQueryParamStatus struct {
 	EventStatus        *components.EventStatus
 	ArrayOfEventStatus []components.EventStatus
 
-	Type QueryParamStatusType
+	Type GetEventsQueryParamStatusType
 }
 
-func CreateQueryParamStatusEventStatus(eventStatus components.EventStatus) QueryParamStatus {
-	typ := QueryParamStatusTypeEventStatus
+func CreateGetEventsQueryParamStatusEventStatus(eventStatus components.EventStatus) GetEventsQueryParamStatus {
+	typ := GetEventsQueryParamStatusTypeEventStatus
 
-	return QueryParamStatus{
+	return GetEventsQueryParamStatus{
 		EventStatus: &eventStatus,
 		Type:        typ,
 	}
 }
 
-func CreateQueryParamStatusArrayOfEventStatus(arrayOfEventStatus []components.EventStatus) QueryParamStatus {
-	typ := QueryParamStatusTypeArrayOfEventStatus
+func CreateGetEventsQueryParamStatusArrayOfEventStatus(arrayOfEventStatus []components.EventStatus) GetEventsQueryParamStatus {
+	typ := GetEventsQueryParamStatusTypeArrayOfEventStatus
 
-	return QueryParamStatus{
+	return GetEventsQueryParamStatus{
 		ArrayOfEventStatus: arrayOfEventStatus,
 		Type:               typ,
 	}
 }
 
-func (u *QueryParamStatus) UnmarshalJSON(data []byte) error {
+func (u *GetEventsQueryParamStatus) UnmarshalJSON(data []byte) error {
 
 	eventStatus := components.EventStatus("")
 	if err := utils.UnmarshalJSON(data, &eventStatus, "", true, true); err == nil {
 		u.EventStatus = &eventStatus
-		u.Type = QueryParamStatusTypeEventStatus
+		u.Type = GetEventsQueryParamStatusTypeEventStatus
 		return nil
 	}
 
 	arrayOfEventStatus := []components.EventStatus{}
 	if err := utils.UnmarshalJSON(data, &arrayOfEventStatus, "", true, true); err == nil {
 		u.ArrayOfEventStatus = arrayOfEventStatus
-		u.Type = QueryParamStatusTypeArrayOfEventStatus
+		u.Type = GetEventsQueryParamStatusTypeArrayOfEventStatus
 		return nil
 	}
 
 	return errors.New("could not unmarshal into supported union types")
 }
 
-func (u QueryParamStatus) MarshalJSON() ([]byte, error) {
+func (u GetEventsQueryParamStatus) MarshalJSON() ([]byte, error) {
 	if u.EventStatus != nil {
 		return utils.MarshalJSON(u.EventStatus, "", true)
 	}
@@ -1828,7 +1828,7 @@ type GetEventsRequest struct {
 	ID            *GetEventsQueryParamID            `queryParam:"style=form,explode=true,name=id"`
 	// Include the data object in the event model
 	Include        *Include                      `queryParam:"style=form,explode=true,name=include"`
-	IssueID        *QueryParamIssueID            `queryParam:"style=form,explode=true,name=issue_id"`
+	IssueID        *GetEventsQueryParamIssueID   `queryParam:"style=form,explode=true,name=issue_id"`
 	LastAttemptAt  *QueryParamLastAttemptAt      `queryParam:"style=form,explode=true,name=last_attempt_at"`
 	Limit          *int64                        `queryParam:"style=form,explode=true,name=limit"`
 	Next           *string                       `queryParam:"style=form,explode=true,name=next"`
@@ -1839,7 +1839,7 @@ type GetEventsRequest struct {
 	ResponseStatus *QueryParamResponseStatus     `queryParam:"style=form,explode=true,name=response_status"`
 	SearchTerm     *string                       `queryParam:"style=form,explode=true,name=search_term"`
 	SourceID       *GetEventsQueryParamSourceID  `queryParam:"style=form,explode=true,name=source_id"`
-	Status         *QueryParamStatus             `queryParam:"style=form,explode=true,name=status"`
+	Status         *GetEventsQueryParamStatus    `queryParam:"style=form,explode=true,name=status"`
 	SuccessfulAt   *QueryParamSuccessfulAt       `queryParam:"style=form,explode=true,name=successful_at"`
 	WebhookID      *GetEventsQueryParamWebhookID `queryParam:"style=form,explode=true,name=webhook_id"`
 }
@@ -1935,7 +1935,7 @@ func (o *GetEventsRequest) GetInclude() *Include {
 	return o.Include
 }
 
-func (o *GetEventsRequest) GetIssueID() *QueryParamIssueID {
+func (o *GetEventsRequest) GetIssueID() *GetEventsQueryParamIssueID {
 	if o == nil {
 		return nil
 	}
@@ -2012,7 +2012,7 @@ func (o *GetEventsRequest) GetSourceID() *GetEventsQueryParamSourceID {
 	return o.SourceID
 }
 
-func (o *GetEventsRequest) GetStatus() *QueryParamStatus {
+func (o *GetEventsRequest) GetStatus() *GetEventsQueryParamStatus {
 	if o == nil {
 		return nil
 	}

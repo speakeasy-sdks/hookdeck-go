@@ -27,8 +27,8 @@ func main() {
     s := hookdeckgo.New(
         hookdeckgo.WithSecurity(components.Security{
             BasicAuth: &components.SchemeBasicAuth{
-                Password: "",
-                Username: "",
+                Password: "<YOUR_PASSWORD_HERE>",
+                Username: "<YOUR_USERNAME_HERE>",
             },
         }),
     )
@@ -71,27 +71,7 @@ func main() {
         ),
         IssueTriggerID: operations.CreateQueryParamIssueTriggerIDArrayOfstr(
                 []string{
-                    "i",
-                    "t",
-                    "_",
-                    "B",
-                    "X",
-                    "K",
-                    "v",
-                    "5",
-                    "O",
-                    "d",
-                    "J",
-                    "X",
-                    "C",
-                    "i",
-                    "V",
-                    "w",
-                    "k",
-                    "P",
-                    "h",
-                    "G",
-                    "y",
+                    "it_BXKv5OdJXCiVwkPhGy",
                 },
         ),
         LastSeenAt: operations.CreateQueryParamLastSeenAtDateTime(
@@ -110,13 +90,6 @@ func main() {
         ),
         Type: operations.CreateQueryParamTypeArrayOfgetIssueCountQueryParamIssuesCountType2(
                 []operations.GetIssueCountQueryParamIssuesCountType2{
-                    operations.GetIssueCountQueryParamIssuesCountType2Delivery,
-                    operations.GetIssueCountQueryParamIssuesCountType2Transformation,
-                    operations.GetIssueCountQueryParamIssuesCountType2Transformation,
-                    operations.GetIssueCountQueryParamIssuesCountType2Backpressure,
-                    operations.GetIssueCountQueryParamIssuesCountType2Backpressure,
-                    operations.GetIssueCountQueryParamIssuesCountType2Delivery,
-                    operations.GetIssueCountQueryParamIssuesCountType2Backpressure,
                     operations.GetIssueCountQueryParamIssuesCountType2Delivery,
                 },
         ),

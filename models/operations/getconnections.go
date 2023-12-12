@@ -130,58 +130,58 @@ func (u ArchivedAt) MarshalJSON() ([]byte, error) {
 	return nil, errors.New("could not marshal union type: all fields are null")
 }
 
-type QueryParamDestinationIDType string
+type GetConnectionsQueryParamDestinationIDType string
 
 const (
-	QueryParamDestinationIDTypeStr        QueryParamDestinationIDType = "str"
-	QueryParamDestinationIDTypeArrayOfstr QueryParamDestinationIDType = "arrayOfstr"
+	GetConnectionsQueryParamDestinationIDTypeStr        GetConnectionsQueryParamDestinationIDType = "str"
+	GetConnectionsQueryParamDestinationIDTypeArrayOfstr GetConnectionsQueryParamDestinationIDType = "arrayOfstr"
 )
 
-type QueryParamDestinationID struct {
+type GetConnectionsQueryParamDestinationID struct {
 	Str        *string
 	ArrayOfstr []string
 
-	Type QueryParamDestinationIDType
+	Type GetConnectionsQueryParamDestinationIDType
 }
 
-func CreateQueryParamDestinationIDStr(str string) QueryParamDestinationID {
-	typ := QueryParamDestinationIDTypeStr
+func CreateGetConnectionsQueryParamDestinationIDStr(str string) GetConnectionsQueryParamDestinationID {
+	typ := GetConnectionsQueryParamDestinationIDTypeStr
 
-	return QueryParamDestinationID{
+	return GetConnectionsQueryParamDestinationID{
 		Str:  &str,
 		Type: typ,
 	}
 }
 
-func CreateQueryParamDestinationIDArrayOfstr(arrayOfstr []string) QueryParamDestinationID {
-	typ := QueryParamDestinationIDTypeArrayOfstr
+func CreateGetConnectionsQueryParamDestinationIDArrayOfstr(arrayOfstr []string) GetConnectionsQueryParamDestinationID {
+	typ := GetConnectionsQueryParamDestinationIDTypeArrayOfstr
 
-	return QueryParamDestinationID{
+	return GetConnectionsQueryParamDestinationID{
 		ArrayOfstr: arrayOfstr,
 		Type:       typ,
 	}
 }
 
-func (u *QueryParamDestinationID) UnmarshalJSON(data []byte) error {
+func (u *GetConnectionsQueryParamDestinationID) UnmarshalJSON(data []byte) error {
 
 	str := ""
 	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
 		u.Str = &str
-		u.Type = QueryParamDestinationIDTypeStr
+		u.Type = GetConnectionsQueryParamDestinationIDTypeStr
 		return nil
 	}
 
 	arrayOfstr := []string{}
 	if err := utils.UnmarshalJSON(data, &arrayOfstr, "", true, true); err == nil {
 		u.ArrayOfstr = arrayOfstr
-		u.Type = QueryParamDestinationIDTypeArrayOfstr
+		u.Type = GetConnectionsQueryParamDestinationIDTypeArrayOfstr
 		return nil
 	}
 
 	return errors.New("could not unmarshal into supported union types")
 }
 
-func (u QueryParamDestinationID) MarshalJSON() ([]byte, error) {
+func (u GetConnectionsQueryParamDestinationID) MarshalJSON() ([]byte, error) {
 	if u.Str != nil {
 		return utils.MarshalJSON(u.Str, "", true)
 	}
@@ -719,58 +719,58 @@ func (u PausedAt) MarshalJSON() ([]byte, error) {
 	return nil, errors.New("could not marshal union type: all fields are null")
 }
 
-type QueryParamSourceIDType string
+type GetConnectionsQueryParamSourceIDType string
 
 const (
-	QueryParamSourceIDTypeStr        QueryParamSourceIDType = "str"
-	QueryParamSourceIDTypeArrayOfstr QueryParamSourceIDType = "arrayOfstr"
+	GetConnectionsQueryParamSourceIDTypeStr        GetConnectionsQueryParamSourceIDType = "str"
+	GetConnectionsQueryParamSourceIDTypeArrayOfstr GetConnectionsQueryParamSourceIDType = "arrayOfstr"
 )
 
-type QueryParamSourceID struct {
+type GetConnectionsQueryParamSourceID struct {
 	Str        *string
 	ArrayOfstr []string
 
-	Type QueryParamSourceIDType
+	Type GetConnectionsQueryParamSourceIDType
 }
 
-func CreateQueryParamSourceIDStr(str string) QueryParamSourceID {
-	typ := QueryParamSourceIDTypeStr
+func CreateGetConnectionsQueryParamSourceIDStr(str string) GetConnectionsQueryParamSourceID {
+	typ := GetConnectionsQueryParamSourceIDTypeStr
 
-	return QueryParamSourceID{
+	return GetConnectionsQueryParamSourceID{
 		Str:  &str,
 		Type: typ,
 	}
 }
 
-func CreateQueryParamSourceIDArrayOfstr(arrayOfstr []string) QueryParamSourceID {
-	typ := QueryParamSourceIDTypeArrayOfstr
+func CreateGetConnectionsQueryParamSourceIDArrayOfstr(arrayOfstr []string) GetConnectionsQueryParamSourceID {
+	typ := GetConnectionsQueryParamSourceIDTypeArrayOfstr
 
-	return QueryParamSourceID{
+	return GetConnectionsQueryParamSourceID{
 		ArrayOfstr: arrayOfstr,
 		Type:       typ,
 	}
 }
 
-func (u *QueryParamSourceID) UnmarshalJSON(data []byte) error {
+func (u *GetConnectionsQueryParamSourceID) UnmarshalJSON(data []byte) error {
 
 	str := ""
 	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
 		u.Str = &str
-		u.Type = QueryParamSourceIDTypeStr
+		u.Type = GetConnectionsQueryParamSourceIDTypeStr
 		return nil
 	}
 
 	arrayOfstr := []string{}
 	if err := utils.UnmarshalJSON(data, &arrayOfstr, "", true, true); err == nil {
 		u.ArrayOfstr = arrayOfstr
-		u.Type = QueryParamSourceIDTypeArrayOfstr
+		u.Type = GetConnectionsQueryParamSourceIDTypeArrayOfstr
 		return nil
 	}
 
 	return errors.New("could not unmarshal into supported union types")
 }
 
-func (u QueryParamSourceID) MarshalJSON() ([]byte, error) {
+func (u GetConnectionsQueryParamSourceID) MarshalJSON() ([]byte, error) {
 	if u.Str != nil {
 		return utils.MarshalJSON(u.Str, "", true)
 	}
@@ -783,16 +783,16 @@ func (u QueryParamSourceID) MarshalJSON() ([]byte, error) {
 }
 
 type GetConnectionsRequest struct {
-	Archived      *bool                            `queryParam:"style=form,explode=true,name=archived"`
-	ArchivedAt    *ArchivedAt                      `queryParam:"style=form,explode=true,name=archived_at"`
-	DestinationID *QueryParamDestinationID         `queryParam:"style=form,explode=true,name=destination_id"`
-	Dir           *GetConnectionsQueryParamDir     `queryParam:"style=form,explode=true,name=dir"`
-	FullName      *string                          `queryParam:"style=form,explode=true,name=full_name"`
-	ID            *GetConnectionsQueryParamID      `queryParam:"style=form,explode=true,name=id"`
-	Name          *QueryParamName                  `queryParam:"style=form,explode=true,name=name"`
-	OrderBy       *GetConnectionsQueryParamOrderBy `queryParam:"style=form,explode=true,name=order_by"`
-	PausedAt      *PausedAt                        `queryParam:"style=form,explode=true,name=paused_at"`
-	SourceID      *QueryParamSourceID              `queryParam:"style=form,explode=true,name=source_id"`
+	Archived      *bool                                  `queryParam:"style=form,explode=true,name=archived"`
+	ArchivedAt    *ArchivedAt                            `queryParam:"style=form,explode=true,name=archived_at"`
+	DestinationID *GetConnectionsQueryParamDestinationID `queryParam:"style=form,explode=true,name=destination_id"`
+	Dir           *GetConnectionsQueryParamDir           `queryParam:"style=form,explode=true,name=dir"`
+	FullName      *string                                `queryParam:"style=form,explode=true,name=full_name"`
+	ID            *GetConnectionsQueryParamID            `queryParam:"style=form,explode=true,name=id"`
+	Name          *QueryParamName                        `queryParam:"style=form,explode=true,name=name"`
+	OrderBy       *GetConnectionsQueryParamOrderBy       `queryParam:"style=form,explode=true,name=order_by"`
+	PausedAt      *PausedAt                              `queryParam:"style=form,explode=true,name=paused_at"`
+	SourceID      *GetConnectionsQueryParamSourceID      `queryParam:"style=form,explode=true,name=source_id"`
 }
 
 func (o *GetConnectionsRequest) GetArchived() *bool {
@@ -809,7 +809,7 @@ func (o *GetConnectionsRequest) GetArchivedAt() *ArchivedAt {
 	return o.ArchivedAt
 }
 
-func (o *GetConnectionsRequest) GetDestinationID() *QueryParamDestinationID {
+func (o *GetConnectionsRequest) GetDestinationID() *GetConnectionsQueryParamDestinationID {
 	if o == nil {
 		return nil
 	}
@@ -858,7 +858,7 @@ func (o *GetConnectionsRequest) GetPausedAt() *PausedAt {
 	return o.PausedAt
 }
 
-func (o *GetConnectionsRequest) GetSourceID() *QueryParamSourceID {
+func (o *GetConnectionsRequest) GetSourceID() *GetConnectionsQueryParamSourceID {
 	if o == nil {
 		return nil
 	}
