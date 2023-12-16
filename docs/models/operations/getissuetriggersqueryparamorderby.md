@@ -1,5 +1,7 @@
 # GetIssueTriggersQueryParamOrderBy
 
+Sort key(s)
+
 
 ## Supported Types
 

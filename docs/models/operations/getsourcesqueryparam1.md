@@ -1,7 +1,5 @@
 # GetSourcesQueryParam1
 
-Sort direction
-
 
 ## Values
 

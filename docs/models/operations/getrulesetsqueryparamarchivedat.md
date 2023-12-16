@@ -1,5 +1,7 @@
 # GetRulesetsQueryParamArchivedAt
 
+Date the ruleset was archived
+
 
 ## Supported Types
 

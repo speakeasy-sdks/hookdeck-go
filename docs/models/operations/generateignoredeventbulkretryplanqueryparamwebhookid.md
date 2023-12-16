@@ -1,5 +1,7 @@
 # GenerateIgnoredEventBulkRetryPlanQueryParamWebhookID
 
+Connection ID of the ignored event
+
 
 ## Supported Types
 

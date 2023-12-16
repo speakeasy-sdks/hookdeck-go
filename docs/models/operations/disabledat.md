@@ -1,5 +1,7 @@
 # DisabledAt
 
+Date when the issue trigger was disabled
+
 
 ## Supported Types
 

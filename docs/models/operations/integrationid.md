@@ -1,5 +1,7 @@
 # IntegrationID
 
+Filter by integration IDs
+
 
 ## Supported Types
 

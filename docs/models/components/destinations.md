@@ -1,5 +1,7 @@
 # Destinations
 
+A pattern to match on the destination name or array of destination IDs. Use `*` as wildcard.
+
 
 ## Supported Types
 

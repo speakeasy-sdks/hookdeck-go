@@ -12,7 +12,6 @@ import (
 	"time"
 )
 
-// GetSourcesQueryParam2 - Date the source was archived
 type GetSourcesQueryParam2 struct {
 	Any *bool      `queryParam:"name=any"`
 	Gt  *time.Time `queryParam:"name=gt"`
@@ -74,6 +73,7 @@ const (
 	GetSourcesQueryParamArchivedAtTypeGetSourcesQueryParam2 GetSourcesQueryParamArchivedAtType = "getSources_queryParam_2"
 )
 
+// GetSourcesQueryParamArchivedAt - Date the source was archived
 type GetSourcesQueryParamArchivedAt struct {
 	DateTime              *time.Time
 	GetSourcesQueryParam2 *GetSourcesQueryParam2
@@ -157,7 +157,6 @@ func (e *GetSourcesQueryParamSources2) UnmarshalJSON(data []byte) error {
 	}
 }
 
-// GetSourcesQueryParam1 - Sort direction
 type GetSourcesQueryParam1 string
 
 const (
@@ -192,6 +191,7 @@ const (
 	GetSourcesQueryParamDirTypeArrayOfgetSourcesQueryParamSources2 GetSourcesQueryParamDirType = "arrayOfgetSources_queryParam_Sources_2"
 )
 
+// GetSourcesQueryParamDir - Sort direction
 type GetSourcesQueryParamDir struct {
 	GetSourcesQueryParam1               *GetSourcesQueryParam1
 	ArrayOfgetSourcesQueryParamSources2 []GetSourcesQueryParamSources2
@@ -255,6 +255,7 @@ const (
 	GetSourcesQueryParamIDTypeArrayOfstr GetSourcesQueryParamIDType = "arrayOfstr"
 )
 
+// GetSourcesQueryParamID - Filter by source IDs
 type GetSourcesQueryParamID struct {
 	Str        *string
 	ArrayOfstr []string
@@ -311,7 +312,6 @@ func (u GetSourcesQueryParamID) MarshalJSON() ([]byte, error) {
 	return nil, errors.New("could not marshal union type: all fields are null")
 }
 
-// GetSourcesQueryParamSourcesIntegrationID2 - Filter by integration IDs
 type GetSourcesQueryParamSourcesIntegrationID2 struct {
 	Any *bool `queryParam:"name=any"`
 }
@@ -330,6 +330,7 @@ const (
 	IntegrationIDTypeGetSourcesQueryParamSourcesIntegrationID2 IntegrationIDType = "getSources_queryParam_Sources_integration_id_2"
 )
 
+// IntegrationID - Filter by integration IDs
 type IntegrationID struct {
 	Str                                       *string
 	GetSourcesQueryParamSourcesIntegrationID2 *GetSourcesQueryParamSourcesIntegrationID2
@@ -386,7 +387,6 @@ func (u IntegrationID) MarshalJSON() ([]byte, error) {
 	return nil, errors.New("could not marshal union type: all fields are null")
 }
 
-// GetSourcesQueryParamSourcesName2 - The source name
 type GetSourcesQueryParamSourcesName2 struct {
 	Any      *bool   `queryParam:"name=any"`
 	Contains *string `queryParam:"name=contains"`
@@ -445,6 +445,7 @@ const (
 	GetSourcesQueryParamNameTypeGetSourcesQueryParamSourcesName2 GetSourcesQueryParamNameType = "getSources_queryParam_Sources_name_2"
 )
 
+// GetSourcesQueryParamName - The source name
 type GetSourcesQueryParamName struct {
 	Str                              *string
 	GetSourcesQueryParamSourcesName2 *GetSourcesQueryParamSourcesName2
@@ -525,7 +526,6 @@ func (e *GetSourcesQueryParamSourcesOrderBy2) UnmarshalJSON(data []byte) error {
 	}
 }
 
-// GetSourcesQueryParamSources1 - Sort key(s)
 type GetSourcesQueryParamSources1 string
 
 const (
@@ -557,6 +557,7 @@ const (
 	GetSourcesQueryParamOrderByTypeArrayOfgetSourcesQueryParamSourcesOrderBy2 GetSourcesQueryParamOrderByType = "arrayOfgetSources_queryParam_Sources_order_by_2"
 )
 
+// GetSourcesQueryParamOrderBy - Sort key(s)
 type GetSourcesQueryParamOrderBy struct {
 	GetSourcesQueryParamSources1               *GetSourcesQueryParamSources1
 	ArrayOfgetSourcesQueryParamSourcesOrderBy2 []GetSourcesQueryParamSourcesOrderBy2
@@ -614,16 +615,22 @@ func (u GetSourcesQueryParamOrderBy) MarshalJSON() ([]byte, error) {
 }
 
 type GetSourcesRequest struct {
-	Archived      *bool                           `queryParam:"style=form,explode=true,name=archived"`
-	ArchivedAt    *GetSourcesQueryParamArchivedAt `queryParam:"style=form,explode=true,name=archived_at"`
-	Dir           *GetSourcesQueryParamDir        `queryParam:"style=form,explode=true,name=dir"`
-	ID            *GetSourcesQueryParamID         `queryParam:"style=form,explode=true,name=id"`
-	IntegrationID *IntegrationID                  `queryParam:"style=form,explode=true,name=integration_id"`
-	Limit         *int64                          `queryParam:"style=form,explode=true,name=limit"`
-	Name          *GetSourcesQueryParamName       `queryParam:"style=form,explode=true,name=name"`
-	Next          *string                         `queryParam:"style=form,explode=true,name=next"`
-	OrderBy       *GetSourcesQueryParamOrderBy    `queryParam:"style=form,explode=true,name=order_by"`
-	Prev          *string                         `queryParam:"style=form,explode=true,name=prev"`
+	Archived *bool `queryParam:"style=form,explode=true,name=archived"`
+	// Date the source was archived
+	ArchivedAt *GetSourcesQueryParamArchivedAt `queryParam:"style=form,explode=true,name=archived_at"`
+	// Sort direction
+	Dir *GetSourcesQueryParamDir `queryParam:"style=form,explode=true,name=dir"`
+	// Filter by source IDs
+	ID *GetSourcesQueryParamID `queryParam:"style=form,explode=true,name=id"`
+	// Filter by integration IDs
+	IntegrationID *IntegrationID `queryParam:"style=form,explode=true,name=integration_id"`
+	Limit         *int64         `queryParam:"style=form,explode=true,name=limit"`
+	// The source name
+	Name *GetSourcesQueryParamName `queryParam:"style=form,explode=true,name=name"`
+	Next *string                   `queryParam:"style=form,explode=true,name=next"`
+	// Sort key(s)
+	OrderBy *GetSourcesQueryParamOrderBy `queryParam:"style=form,explode=true,name=order_by"`
+	Prev    *string                      `queryParam:"style=form,explode=true,name=prev"`
 }
 
 func (o *GetSourcesRequest) GetArchived() *bool {

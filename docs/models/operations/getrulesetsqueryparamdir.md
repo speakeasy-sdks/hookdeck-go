@@ -1,5 +1,7 @@
 # GetRulesetsQueryParamDir
 
+Sort direction
+
 
 ## Supported Types
 

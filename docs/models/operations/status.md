@@ -1,5 +1,7 @@
 # Status
 
+Lifecyle status of the event
+
 
 ## Supported Types
 

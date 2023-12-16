@@ -1,5 +1,7 @@
 # UpsertIssueTriggerConfigs
 
+Configuration object for the specific issue type selected
+
 
 ## Supported Types
 

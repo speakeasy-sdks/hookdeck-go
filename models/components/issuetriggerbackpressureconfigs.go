@@ -14,6 +14,7 @@ const (
 	DestinationsTypeArrayOfstr DestinationsType = "arrayOfstr"
 )
 
+// Destinations - A pattern to match on the destination name or array of destination IDs. Use `*` as wildcard.
 type Destinations struct {
 	Str        *string
 	ArrayOfstr []string

@@ -1,5 +1,7 @@
 # GetTransformationsQueryParamID
 
+Filter by transformation IDs
+
 
 ## Supported Types
 

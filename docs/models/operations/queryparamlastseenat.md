@@ -1,5 +1,7 @@
 # QueryParamLastSeenAt
 
+Filter by last seen dates
+
 
 ## Supported Types
 

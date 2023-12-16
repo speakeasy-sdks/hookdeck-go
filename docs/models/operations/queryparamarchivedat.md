@@ -1,5 +1,7 @@
 # QueryParamArchivedAt
 
+Date the destination was archived
+
 
 ## Supported Types
 

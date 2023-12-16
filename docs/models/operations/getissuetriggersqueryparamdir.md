@@ -1,5 +1,7 @@
 # GetIssueTriggersQueryParamDir
 
+Sort direction
+
 
 ## Supported Types
 

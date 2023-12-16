@@ -1,7 +1,5 @@
 # GetConnectionsQueryParamConnections1
 
-Sort key(s)
-
 
 ## Values
 

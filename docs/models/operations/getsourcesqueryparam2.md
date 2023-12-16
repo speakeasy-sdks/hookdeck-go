@@ -1,7 +1,5 @@
 # GetSourcesQueryParam2
 
-Date the source was archived
-
 
 ## Fields
 

@@ -229,7 +229,6 @@ func (o *AggregationKeys) GetWebhookID() *GetIssuesQueryParamWebhookID {
 	return o.WebhookID
 }
 
-// GetIssuesQueryParam2 - Filter by created dates
 type GetIssuesQueryParam2 struct {
 	Any *bool      `queryParam:"name=any"`
 	Gt  *time.Time `queryParam:"name=gt"`
@@ -291,6 +290,7 @@ const (
 	GetIssuesQueryParamCreatedAtTypeGetIssuesQueryParam2 GetIssuesQueryParamCreatedAtType = "getIssues_queryParam_2"
 )
 
+// GetIssuesQueryParamCreatedAt - Filter by created dates
 type GetIssuesQueryParamCreatedAt struct {
 	DateTime             *time.Time
 	GetIssuesQueryParam2 *GetIssuesQueryParam2
@@ -374,7 +374,6 @@ func (e *GetIssuesQueryParamIssues2) UnmarshalJSON(data []byte) error {
 	}
 }
 
-// GetIssuesQueryParam1 - Sort direction
 type GetIssuesQueryParam1 string
 
 const (
@@ -409,6 +408,7 @@ const (
 	GetIssuesQueryParamDirTypeArrayOfgetIssuesQueryParamIssues2 GetIssuesQueryParamDirType = "arrayOfgetIssues_queryParam_Issues_2"
 )
 
+// GetIssuesQueryParamDir - Sort direction
 type GetIssuesQueryParamDir struct {
 	GetIssuesQueryParam1              *GetIssuesQueryParam1
 	ArrayOfgetIssuesQueryParamIssues2 []GetIssuesQueryParamIssues2
@@ -465,7 +465,6 @@ func (u GetIssuesQueryParamDir) MarshalJSON() ([]byte, error) {
 	return nil, errors.New("could not marshal union type: all fields are null")
 }
 
-// GetIssuesQueryParamIssuesDismissedAt2 - Filter by dismissed dates
 type GetIssuesQueryParamIssuesDismissedAt2 struct {
 	Any *bool      `queryParam:"name=any"`
 	Gt  *time.Time `queryParam:"name=gt"`
@@ -527,6 +526,7 @@ const (
 	DismissedAtTypeGetIssuesQueryParamIssuesDismissedAt2 DismissedAtType = "getIssues_queryParam_Issues_dismissed_at_2"
 )
 
+// DismissedAt - Filter by dismissed dates
 type DismissedAt struct {
 	DateTime                              *time.Time
 	GetIssuesQueryParamIssuesDismissedAt2 *GetIssuesQueryParamIssuesDismissedAt2
@@ -583,7 +583,6 @@ func (u DismissedAt) MarshalJSON() ([]byte, error) {
 	return nil, errors.New("could not marshal union type: all fields are null")
 }
 
-// GetIssuesQueryParamIssuesFirstSeenAt2 - Filter by first seen dates
 type GetIssuesQueryParamIssuesFirstSeenAt2 struct {
 	Any *bool      `queryParam:"name=any"`
 	Gt  *time.Time `queryParam:"name=gt"`
@@ -645,6 +644,7 @@ const (
 	FirstSeenAtTypeGetIssuesQueryParamIssuesFirstSeenAt2 FirstSeenAtType = "getIssues_queryParam_Issues_first_seen_at_2"
 )
 
+// FirstSeenAt - Filter by first seen dates
 type FirstSeenAt struct {
 	DateTime                              *time.Time
 	GetIssuesQueryParamIssuesFirstSeenAt2 *GetIssuesQueryParamIssuesFirstSeenAt2
@@ -708,6 +708,7 @@ const (
 	GetIssuesQueryParamIDTypeArrayOfstr GetIssuesQueryParamIDType = "arrayOfstr"
 )
 
+// GetIssuesQueryParamID - Filter by Issue IDs
 type GetIssuesQueryParamID struct {
 	Str        *string
 	ArrayOfstr []string
@@ -771,6 +772,7 @@ const (
 	IssueTriggerIDTypeArrayOfstr IssueTriggerIDType = "arrayOfstr"
 )
 
+// IssueTriggerID - Filter by Issue trigger IDs
 type IssueTriggerID struct {
 	Str        *string
 	ArrayOfstr []string
@@ -827,7 +829,6 @@ func (u IssueTriggerID) MarshalJSON() ([]byte, error) {
 	return nil, errors.New("could not marshal union type: all fields are null")
 }
 
-// GetIssuesQueryParamIssuesLastSeenAt2 - Filter by last seen dates
 type GetIssuesQueryParamIssuesLastSeenAt2 struct {
 	Any *bool      `queryParam:"name=any"`
 	Gt  *time.Time `queryParam:"name=gt"`
@@ -889,6 +890,7 @@ const (
 	LastSeenAtTypeGetIssuesQueryParamIssuesLastSeenAt2 LastSeenAtType = "getIssues_queryParam_Issues_last_seen_at_2"
 )
 
+// LastSeenAt - Filter by last seen dates
 type LastSeenAt struct {
 	DateTime                             *time.Time
 	GetIssuesQueryParamIssuesLastSeenAt2 *GetIssuesQueryParamIssuesLastSeenAt2
@@ -952,6 +954,7 @@ const (
 	MergedWithTypeArrayOfstr MergedWithType = "arrayOfstr"
 )
 
+// MergedWith - Filter by Merged Issue IDs
 type MergedWith struct {
 	Str        *string
 	ArrayOfstr []string
@@ -1044,7 +1047,6 @@ func (e *GetIssuesQueryParamIssuesOrderBy2) UnmarshalJSON(data []byte) error {
 	}
 }
 
-// GetIssuesQueryParamIssues1 - Sort key(s)
 type GetIssuesQueryParamIssues1 string
 
 const (
@@ -1088,6 +1090,7 @@ const (
 	GetIssuesQueryParamOrderByTypeArrayOfgetIssuesQueryParamIssuesOrderBy2 GetIssuesQueryParamOrderByType = "arrayOfgetIssues_queryParam_Issues_order_by_2"
 )
 
+// GetIssuesQueryParamOrderBy - Sort key(s)
 type GetIssuesQueryParamOrderBy struct {
 	GetIssuesQueryParamIssues1               *GetIssuesQueryParamIssues1
 	ArrayOfgetIssuesQueryParamIssuesOrderBy2 []GetIssuesQueryParamIssuesOrderBy2
@@ -1219,6 +1222,7 @@ const (
 	GetIssuesQueryParamStatusTypeArrayOfgetIssuesQueryParamIssuesStatus2 GetIssuesQueryParamStatusType = "arrayOfgetIssues_queryParam_Issues_status_2"
 )
 
+// GetIssuesQueryParamStatus - Filter by Issue statuses
 type GetIssuesQueryParamStatus struct {
 	GetIssuesQueryParamIssuesStatus1        *GetIssuesQueryParamIssuesStatus1
 	ArrayOfgetIssuesQueryParamIssuesStatus2 []GetIssuesQueryParamIssuesStatus2
@@ -1344,6 +1348,7 @@ const (
 	TypeTypeArrayOfgetIssuesQueryParamIssuesType2 TypeType = "arrayOfgetIssues_queryParam_Issues_type_2"
 )
 
+// Type - Filter by Issue types
 type Type struct {
 	GetIssuesQueryParamIssuesType1        *GetIssuesQueryParamIssuesType1
 	ArrayOfgetIssuesQueryParamIssuesType2 []GetIssuesQueryParamIssuesType2
@@ -1402,21 +1407,32 @@ func (u Type) MarshalJSON() ([]byte, error) {
 
 type GetIssuesRequest struct {
 	// Filter by aggregation keys
-	AggregationKeys *AggregationKeys              `queryParam:"style=form,explode=true,name=aggregation_keys"`
-	CreatedAt       *GetIssuesQueryParamCreatedAt `queryParam:"style=form,explode=true,name=created_at"`
-	Dir             *GetIssuesQueryParamDir       `queryParam:"style=form,explode=true,name=dir"`
-	DismissedAt     *DismissedAt                  `queryParam:"style=form,explode=true,name=dismissed_at"`
-	FirstSeenAt     *FirstSeenAt                  `queryParam:"style=form,explode=true,name=first_seen_at"`
-	ID              *GetIssuesQueryParamID        `queryParam:"style=form,explode=true,name=id"`
-	IssueTriggerID  *IssueTriggerID               `queryParam:"style=form,explode=true,name=issue_trigger_id"`
-	LastSeenAt      *LastSeenAt                   `queryParam:"style=form,explode=true,name=last_seen_at"`
-	Limit           *int64                        `queryParam:"style=form,explode=true,name=limit"`
-	MergedWith      *MergedWith                   `queryParam:"style=form,explode=true,name=merged_with"`
-	Next            *string                       `queryParam:"style=form,explode=true,name=next"`
-	OrderBy         *GetIssuesQueryParamOrderBy   `queryParam:"style=form,explode=true,name=order_by"`
-	Prev            *string                       `queryParam:"style=form,explode=true,name=prev"`
-	Status          *GetIssuesQueryParamStatus    `queryParam:"style=form,explode=true,name=status"`
-	Type            *Type                         `queryParam:"style=form,explode=true,name=type"`
+	AggregationKeys *AggregationKeys `queryParam:"style=form,explode=true,name=aggregation_keys"`
+	// Filter by created dates
+	CreatedAt *GetIssuesQueryParamCreatedAt `queryParam:"style=form,explode=true,name=created_at"`
+	// Sort direction
+	Dir *GetIssuesQueryParamDir `queryParam:"style=form,explode=true,name=dir"`
+	// Filter by dismissed dates
+	DismissedAt *DismissedAt `queryParam:"style=form,explode=true,name=dismissed_at"`
+	// Filter by first seen dates
+	FirstSeenAt *FirstSeenAt `queryParam:"style=form,explode=true,name=first_seen_at"`
+	// Filter by Issue IDs
+	ID *GetIssuesQueryParamID `queryParam:"style=form,explode=true,name=id"`
+	// Filter by Issue trigger IDs
+	IssueTriggerID *IssueTriggerID `queryParam:"style=form,explode=true,name=issue_trigger_id"`
+	// Filter by last seen dates
+	LastSeenAt *LastSeenAt `queryParam:"style=form,explode=true,name=last_seen_at"`
+	Limit      *int64      `queryParam:"style=form,explode=true,name=limit"`
+	// Filter by Merged Issue IDs
+	MergedWith *MergedWith `queryParam:"style=form,explode=true,name=merged_with"`
+	Next       *string     `queryParam:"style=form,explode=true,name=next"`
+	// Sort key(s)
+	OrderBy *GetIssuesQueryParamOrderBy `queryParam:"style=form,explode=true,name=order_by"`
+	Prev    *string                     `queryParam:"style=form,explode=true,name=prev"`
+	// Filter by Issue statuses
+	Status *GetIssuesQueryParamStatus `queryParam:"style=form,explode=true,name=status"`
+	// Filter by Issue types
+	Type *Type `queryParam:"style=form,explode=true,name=type"`
 }
 
 func (o *GetIssuesRequest) GetAggregationKeys() *AggregationKeys {

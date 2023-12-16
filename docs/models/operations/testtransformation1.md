@@ -1,7 +1,5 @@
 # TestTransformation1
 
-Body of the request
-
 
 ## Fields
 

@@ -1,5 +1,7 @@
 # GetEventsQueryParamDir
 
+Sort direction
+
 
 ## Supported Types
 

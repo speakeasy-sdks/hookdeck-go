@@ -1,5 +1,7 @@
 # PausedAt
 
+Date the connection was paused
+
 
 ## Supported Types
 

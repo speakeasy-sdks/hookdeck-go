@@ -1,5 +1,7 @@
 # QueryParamCancelledAt
 
+Filter by date the bulk retry was cancelled
+
 
 ## Supported Types
 

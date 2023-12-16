@@ -1,7 +1,5 @@
 # GetRequestsQueryParam1
 
-Sort direction
-
 
 ## Values
 

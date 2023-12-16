@@ -1,7 +1,5 @@
 # GetConnectionsQueryParam1
 
-Sort direction
-
 
 ## Values
 

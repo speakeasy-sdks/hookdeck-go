@@ -1,5 +1,7 @@
 # GetIssueCountQueryParamOrderBy
 
+Sort key(s)
+
 
 ## Supported Types
 

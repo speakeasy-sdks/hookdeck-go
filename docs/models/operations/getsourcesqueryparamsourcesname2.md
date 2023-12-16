@@ -1,7 +1,5 @@
 # GetSourcesQueryParamSourcesName2
 
-The source name
-
 
 ## Fields
 

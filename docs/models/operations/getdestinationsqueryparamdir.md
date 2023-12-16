@@ -1,5 +1,7 @@
 # GetDestinationsQueryParamDir
 
+Sort direction
+
 
 ## Supported Types
 

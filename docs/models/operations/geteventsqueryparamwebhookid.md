@@ -1,5 +1,7 @@
 # GetEventsQueryParamWebhookID
 
+Filter by webhook connection IDs
+
 
 ## Supported Types
 

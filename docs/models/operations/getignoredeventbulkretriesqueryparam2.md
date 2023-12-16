@@ -1,7 +1,5 @@
 # GetIgnoredEventBulkRetriesQueryParam2
 
-Filter by date the bulk retry was cancelled
-
 
 ## Fields
 

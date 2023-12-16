@@ -1,5 +1,7 @@
 # GetRequestEventsQueryParamResponseStatus
 
+Filter by HTTP response status code
+
 
 ## Supported Types
 

@@ -1,5 +1,7 @@
 # QueryParamFirstSeenAt
 
+Filter by first seen dates
+
 
 ## Supported Types
 

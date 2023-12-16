@@ -1,5 +1,7 @@
 # GetRulesetsQueryParamName
 
+The ruleset name
+
 
 ## Supported Types
 

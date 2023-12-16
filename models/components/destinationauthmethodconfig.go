@@ -17,6 +17,7 @@ const (
 	DestinationAuthMethodConfigTypeCustomSignature   DestinationAuthMethodConfigType = "CustomSignature"
 )
 
+// DestinationAuthMethodConfig - Config for the destination's auth method
 type DestinationAuthMethodConfig struct {
 	HookdeckSignature *HookdeckSignature
 	BasicAuth         *BasicAuth

@@ -12,7 +12,6 @@ import (
 	"time"
 )
 
-// GetRequestEventsQueryParam2 - Filter by number of attempts
 type GetRequestEventsQueryParam2 struct {
 	Any      *bool  `queryParam:"name=any"`
 	Contains *int64 `queryParam:"name=contains"`
@@ -71,6 +70,7 @@ const (
 	GetRequestEventsQueryParamAttemptsTypeGetRequestEventsQueryParam2 GetRequestEventsQueryParamAttemptsType = "getRequestEvents_queryParam_2"
 )
 
+// GetRequestEventsQueryParamAttempts - Filter by number of attempts
 type GetRequestEventsQueryParamAttempts struct {
 	Integer                     *int64
 	GetRequestEventsQueryParam2 *GetRequestEventsQueryParam2
@@ -127,7 +127,6 @@ func (u GetRequestEventsQueryParamAttempts) MarshalJSON() ([]byte, error) {
 	return nil, errors.New("could not marshal union type: all fields are null")
 }
 
-// GetRequestEventsQueryParamRequestEvents2 - URL Encoded string of the JSON to match to the data body
 type GetRequestEventsQueryParamRequestEvents2 struct {
 }
 
@@ -138,6 +137,7 @@ const (
 	GetRequestEventsQueryParamBodyTypeGetRequestEventsQueryParamRequestEvents2 GetRequestEventsQueryParamBodyType = "getRequestEvents_queryParam_RequestEvents_2"
 )
 
+// GetRequestEventsQueryParamBody - URL Encoded string of the JSON to match to the data body
 type GetRequestEventsQueryParamBody struct {
 	Str                                      *string
 	GetRequestEventsQueryParamRequestEvents2 *GetRequestEventsQueryParamRequestEvents2
@@ -257,7 +257,6 @@ func (u GetRequestEventsQueryParamBulkRetryID) MarshalJSON() ([]byte, error) {
 	return nil, errors.New("could not marshal union type: all fields are null")
 }
 
-// GetRequestEventsQueryParamRequestEventsCliID2 - Filter by CLI IDs. `?[any]=true` operator for any CLI.
 type GetRequestEventsQueryParamRequestEventsCliID2 struct {
 	Any *bool `queryParam:"name=any"`
 }
@@ -277,6 +276,7 @@ const (
 	GetRequestEventsQueryParamCliIDTypeArrayOfstr                                    GetRequestEventsQueryParamCliIDType = "arrayOfstr"
 )
 
+// GetRequestEventsQueryParamCliID - Filter by CLI IDs. `?[any]=true` operator for any CLI.
 type GetRequestEventsQueryParamCliID struct {
 	Str                                           *string
 	GetRequestEventsQueryParamRequestEventsCliID2 *GetRequestEventsQueryParamRequestEventsCliID2
@@ -417,7 +417,6 @@ func (u GetRequestEventsQueryParamCliUserID) MarshalJSON() ([]byte, error) {
 	return nil, errors.New("could not marshal union type: all fields are null")
 }
 
-// GetRequestEventsQueryParamRequestEventsCreatedAt2 - Filter by `created_at` date using a date operator
 type GetRequestEventsQueryParamRequestEventsCreatedAt2 struct {
 	Any *bool      `queryParam:"name=any"`
 	Gt  *time.Time `queryParam:"name=gt"`
@@ -479,6 +478,7 @@ const (
 	GetRequestEventsQueryParamCreatedAtTypeGetRequestEventsQueryParamRequestEventsCreatedAt2 GetRequestEventsQueryParamCreatedAtType = "getRequestEvents_queryParam_RequestEvents_created_at_2"
 )
 
+// GetRequestEventsQueryParamCreatedAt - Filter by `created_at` date using a date operator
 type GetRequestEventsQueryParamCreatedAt struct {
 	DateTime                                          *time.Time
 	GetRequestEventsQueryParamRequestEventsCreatedAt2 *GetRequestEventsQueryParamRequestEventsCreatedAt2
@@ -542,6 +542,7 @@ const (
 	GetRequestEventsQueryParamDestinationIDTypeArrayOfstr GetRequestEventsQueryParamDestinationIDType = "arrayOfstr"
 )
 
+// GetRequestEventsQueryParamDestinationID - Filter by destination IDs
 type GetRequestEventsQueryParamDestinationID struct {
 	Str        *string
 	ArrayOfstr []string
@@ -625,7 +626,6 @@ func (e *GetRequestEventsQueryParamRequestEventsDir2) UnmarshalJSON(data []byte)
 	}
 }
 
-// GetRequestEventsQueryParam1 - Sort direction
 type GetRequestEventsQueryParam1 string
 
 const (
@@ -660,6 +660,7 @@ const (
 	GetRequestEventsQueryParamDirTypeArrayOfgetRequestEventsQueryParamRequestEventsDir2 GetRequestEventsQueryParamDirType = "arrayOfgetRequestEvents_queryParam_RequestEvents_dir_2"
 )
 
+// GetRequestEventsQueryParamDir - Sort direction
 type GetRequestEventsQueryParamDir struct {
 	GetRequestEventsQueryParam1                        *GetRequestEventsQueryParam1
 	ArrayOfgetRequestEventsQueryParamRequestEventsDir2 []GetRequestEventsQueryParamRequestEventsDir2
@@ -842,7 +843,6 @@ func (u GetRequestEventsQueryParamEventDataID) MarshalJSON() ([]byte, error) {
 	return nil, errors.New("could not marshal union type: all fields are null")
 }
 
-// GetRequestEventsQueryParamRequestEventsHeaders2 - URL Encoded string of the JSON to match to the data headers
 type GetRequestEventsQueryParamRequestEventsHeaders2 struct {
 }
 
@@ -853,6 +853,7 @@ const (
 	GetRequestEventsQueryParamHeadersTypeGetRequestEventsQueryParamRequestEventsHeaders2 GetRequestEventsQueryParamHeadersType = "getRequestEvents_queryParam_RequestEvents_headers_2"
 )
 
+// GetRequestEventsQueryParamHeaders - URL Encoded string of the JSON to match to the data headers
 type GetRequestEventsQueryParamHeaders struct {
 	Str                                             *string
 	GetRequestEventsQueryParamRequestEventsHeaders2 *GetRequestEventsQueryParamRequestEventsHeaders2
@@ -916,6 +917,7 @@ const (
 	GetRequestEventsQueryParamIDTypeArrayOfstr GetRequestEventsQueryParamIDType = "arrayOfstr"
 )
 
+// GetRequestEventsQueryParamID - Filter by event IDs
 type GetRequestEventsQueryParamID struct {
 	Str        *string
 	ArrayOfstr []string
@@ -1060,7 +1062,6 @@ func (u GetRequestEventsQueryParamIssueID) MarshalJSON() ([]byte, error) {
 	return nil, errors.New("could not marshal union type: all fields are null")
 }
 
-// GetRequestEventsQueryParamRequestEventsLastAttemptAt2 - Filter by `last_attempt_at` date using a date operator
 type GetRequestEventsQueryParamRequestEventsLastAttemptAt2 struct {
 	Any *bool      `queryParam:"name=any"`
 	Gt  *time.Time `queryParam:"name=gt"`
@@ -1122,6 +1123,7 @@ const (
 	GetRequestEventsQueryParamLastAttemptAtTypeGetRequestEventsQueryParamRequestEventsLastAttemptAt2 GetRequestEventsQueryParamLastAttemptAtType = "getRequestEvents_queryParam_RequestEvents_last_attempt_at_2"
 )
 
+// GetRequestEventsQueryParamLastAttemptAt - Filter by `last_attempt_at` date using a date operator
 type GetRequestEventsQueryParamLastAttemptAt struct {
 	DateTime                                              *time.Time
 	GetRequestEventsQueryParamRequestEventsLastAttemptAt2 *GetRequestEventsQueryParamRequestEventsLastAttemptAt2
@@ -1208,7 +1210,6 @@ func (e *GetRequestEventsQueryParamRequestEventsOrderBy2) UnmarshalJSON(data []b
 	}
 }
 
-// GetRequestEventsQueryParamRequestEvents1 - Sort key(s)
 type GetRequestEventsQueryParamRequestEvents1 string
 
 const (
@@ -1246,6 +1247,7 @@ const (
 	GetRequestEventsQueryParamOrderByTypeArrayOfgetRequestEventsQueryParamRequestEventsOrderBy2 GetRequestEventsQueryParamOrderByType = "arrayOfgetRequestEvents_queryParam_RequestEvents_order_by_2"
 )
 
+// GetRequestEventsQueryParamOrderBy - Sort key(s)
 type GetRequestEventsQueryParamOrderBy struct {
 	GetRequestEventsQueryParamRequestEvents1               *GetRequestEventsQueryParamRequestEvents1
 	ArrayOfgetRequestEventsQueryParamRequestEventsOrderBy2 []GetRequestEventsQueryParamRequestEventsOrderBy2
@@ -1302,7 +1304,6 @@ func (u GetRequestEventsQueryParamOrderBy) MarshalJSON() ([]byte, error) {
 	return nil, errors.New("could not marshal union type: all fields are null")
 }
 
-// GetRequestEventsQueryParamRequestEventsParsedQuery2 - URL Encoded string of the JSON to match to the parsed query (JSON representation of the query)
 type GetRequestEventsQueryParamRequestEventsParsedQuery2 struct {
 }
 
@@ -1313,6 +1314,7 @@ const (
 	GetRequestEventsQueryParamParsedQueryTypeGetRequestEventsQueryParamRequestEventsParsedQuery2 GetRequestEventsQueryParamParsedQueryType = "getRequestEvents_queryParam_RequestEvents_parsed_query_2"
 )
 
+// GetRequestEventsQueryParamParsedQuery - URL Encoded string of the JSON to match to the parsed query (JSON representation of the query)
 type GetRequestEventsQueryParamParsedQuery struct {
 	Str                                                 *string
 	GetRequestEventsQueryParamRequestEventsParsedQuery2 *GetRequestEventsQueryParamRequestEventsParsedQuery2
@@ -1369,7 +1371,6 @@ func (u GetRequestEventsQueryParamParsedQuery) MarshalJSON() ([]byte, error) {
 	return nil, errors.New("could not marshal union type: all fields are null")
 }
 
-// GetRequestEventsQueryParamRequestEventsResponseStatus2 - Filter by HTTP response status code
 type GetRequestEventsQueryParamRequestEventsResponseStatus2 struct {
 	Any      *bool  `queryParam:"name=any"`
 	Contains *int64 `queryParam:"name=contains"`
@@ -1429,6 +1430,7 @@ const (
 	GetRequestEventsQueryParamResponseStatusTypeArrayOfinteger                                         GetRequestEventsQueryParamResponseStatusType = "arrayOfinteger"
 )
 
+// GetRequestEventsQueryParamResponseStatus - Filter by HTTP response status code
 type GetRequestEventsQueryParamResponseStatus struct {
 	Integer                                                *int64
 	GetRequestEventsQueryParamRequestEventsResponseStatus2 *GetRequestEventsQueryParamRequestEventsResponseStatus2
@@ -1513,6 +1515,7 @@ const (
 	GetRequestEventsQueryParamSourceIDTypeArrayOfstr GetRequestEventsQueryParamSourceIDType = "arrayOfstr"
 )
 
+// GetRequestEventsQueryParamSourceID - Filter by source IDs
 type GetRequestEventsQueryParamSourceID struct {
 	Str        *string
 	ArrayOfstr []string
@@ -1576,6 +1579,7 @@ const (
 	GetRequestEventsQueryParamStatusTypeArrayOfEventStatus GetRequestEventsQueryParamStatusType = "arrayOfEventStatus"
 )
 
+// GetRequestEventsQueryParamStatus - Lifecyle status of the event
 type GetRequestEventsQueryParamStatus struct {
 	EventStatus        *components.EventStatus
 	ArrayOfEventStatus []components.EventStatus
@@ -1632,7 +1636,6 @@ func (u GetRequestEventsQueryParamStatus) MarshalJSON() ([]byte, error) {
 	return nil, errors.New("could not marshal union type: all fields are null")
 }
 
-// GetRequestEventsQueryParamRequestEventsSuccessfulAt2 - Filter by `successful_at` date using a date operator
 type GetRequestEventsQueryParamRequestEventsSuccessfulAt2 struct {
 	Any *bool      `queryParam:"name=any"`
 	Gt  *time.Time `queryParam:"name=gt"`
@@ -1694,6 +1697,7 @@ const (
 	GetRequestEventsQueryParamSuccessfulAtTypeGetRequestEventsQueryParamRequestEventsSuccessfulAt2 GetRequestEventsQueryParamSuccessfulAtType = "getRequestEvents_queryParam_RequestEvents_successful_at_2"
 )
 
+// GetRequestEventsQueryParamSuccessfulAt - Filter by `successful_at` date using a date operator
 type GetRequestEventsQueryParamSuccessfulAt struct {
 	DateTime                                             *time.Time
 	GetRequestEventsQueryParamRequestEventsSuccessfulAt2 *GetRequestEventsQueryParamRequestEventsSuccessfulAt2
@@ -1757,6 +1761,7 @@ const (
 	GetRequestEventsQueryParamWebhookIDTypeArrayOfstr GetRequestEventsQueryParamWebhookIDType = "arrayOfstr"
 )
 
+// GetRequestEventsQueryParamWebhookID - Filter by webhook connection IDs
 type GetRequestEventsQueryParamWebhookID struct {
 	Str        *string
 	ArrayOfstr []string
@@ -1814,35 +1819,51 @@ func (u GetRequestEventsQueryParamWebhookID) MarshalJSON() ([]byte, error) {
 }
 
 type GetRequestEventsRequest struct {
-	Attempts         *GetRequestEventsQueryParamAttempts      `queryParam:"style=form,explode=true,name=attempts"`
-	Body             *GetRequestEventsQueryParamBody          `queryParam:"style=form,explode=true,name=body"`
-	BulkRetryID      *GetRequestEventsQueryParamBulkRetryID   `queryParam:"style=form,explode=true,name=bulk_retry_id"`
-	CliID            *GetRequestEventsQueryParamCliID         `queryParam:"style=form,explode=true,name=cli_id"`
-	CliUserID        *GetRequestEventsQueryParamCliUserID     `queryParam:"style=form,explode=true,name=cli_user_id"`
-	CreatedAt        *GetRequestEventsQueryParamCreatedAt     `queryParam:"style=form,explode=true,name=created_at"`
-	DestinationID    *GetRequestEventsQueryParamDestinationID `queryParam:"style=form,explode=true,name=destination_id"`
-	Dir              *GetRequestEventsQueryParamDir           `queryParam:"style=form,explode=true,name=dir"`
-	ErrorCode        *GetRequestEventsQueryParamErrorCode     `queryParam:"style=form,explode=true,name=error_code"`
-	EventDataID      *GetRequestEventsQueryParamEventDataID   `queryParam:"style=form,explode=true,name=event_data_id"`
-	Headers          *GetRequestEventsQueryParamHeaders       `queryParam:"style=form,explode=true,name=headers"`
-	IDPathParameter  string                                   `pathParam:"style=simple,explode=false,name=id"`
-	IDQueryParameter *GetRequestEventsQueryParamID            `queryParam:"style=form,explode=true,name=id"`
+	// Filter by number of attempts
+	Attempts *GetRequestEventsQueryParamAttempts `queryParam:"style=form,explode=true,name=attempts"`
+	// URL Encoded string of the JSON to match to the data body
+	Body        *GetRequestEventsQueryParamBody        `queryParam:"style=form,explode=true,name=body"`
+	BulkRetryID *GetRequestEventsQueryParamBulkRetryID `queryParam:"style=form,explode=true,name=bulk_retry_id"`
+	// Filter by CLI IDs. `?[any]=true` operator for any CLI.
+	CliID     *GetRequestEventsQueryParamCliID     `queryParam:"style=form,explode=true,name=cli_id"`
+	CliUserID *GetRequestEventsQueryParamCliUserID `queryParam:"style=form,explode=true,name=cli_user_id"`
+	// Filter by `created_at` date using a date operator
+	CreatedAt *GetRequestEventsQueryParamCreatedAt `queryParam:"style=form,explode=true,name=created_at"`
+	// Filter by destination IDs
+	DestinationID *GetRequestEventsQueryParamDestinationID `queryParam:"style=form,explode=true,name=destination_id"`
+	// Sort direction
+	Dir         *GetRequestEventsQueryParamDir         `queryParam:"style=form,explode=true,name=dir"`
+	ErrorCode   *GetRequestEventsQueryParamErrorCode   `queryParam:"style=form,explode=true,name=error_code"`
+	EventDataID *GetRequestEventsQueryParamEventDataID `queryParam:"style=form,explode=true,name=event_data_id"`
+	// URL Encoded string of the JSON to match to the data headers
+	Headers         *GetRequestEventsQueryParamHeaders `queryParam:"style=form,explode=true,name=headers"`
+	IDPathParameter string                             `pathParam:"style=simple,explode=false,name=id"`
+	// Filter by event IDs
+	IDQueryParameter *GetRequestEventsQueryParamID `queryParam:"style=form,explode=true,name=id"`
 	// Include the data object in the event model
-	Include        *QueryParamInclude                        `queryParam:"style=form,explode=true,name=include"`
-	IssueID        *GetRequestEventsQueryParamIssueID        `queryParam:"style=form,explode=true,name=issue_id"`
-	LastAttemptAt  *GetRequestEventsQueryParamLastAttemptAt  `queryParam:"style=form,explode=true,name=last_attempt_at"`
-	Limit          *int64                                    `queryParam:"style=form,explode=true,name=limit"`
-	Next           *string                                   `queryParam:"style=form,explode=true,name=next"`
-	OrderBy        *GetRequestEventsQueryParamOrderBy        `queryParam:"style=form,explode=true,name=order_by"`
-	ParsedQuery    *GetRequestEventsQueryParamParsedQuery    `queryParam:"style=form,explode=true,name=parsed_query"`
-	Path           *string                                   `queryParam:"style=form,explode=true,name=path"`
-	Prev           *string                                   `queryParam:"style=form,explode=true,name=prev"`
+	Include *QueryParamInclude                 `queryParam:"style=form,explode=true,name=include"`
+	IssueID *GetRequestEventsQueryParamIssueID `queryParam:"style=form,explode=true,name=issue_id"`
+	// Filter by `last_attempt_at` date using a date operator
+	LastAttemptAt *GetRequestEventsQueryParamLastAttemptAt `queryParam:"style=form,explode=true,name=last_attempt_at"`
+	Limit         *int64                                   `queryParam:"style=form,explode=true,name=limit"`
+	Next          *string                                  `queryParam:"style=form,explode=true,name=next"`
+	// Sort key(s)
+	OrderBy *GetRequestEventsQueryParamOrderBy `queryParam:"style=form,explode=true,name=order_by"`
+	// URL Encoded string of the JSON to match to the parsed query (JSON representation of the query)
+	ParsedQuery *GetRequestEventsQueryParamParsedQuery `queryParam:"style=form,explode=true,name=parsed_query"`
+	Path        *string                                `queryParam:"style=form,explode=true,name=path"`
+	Prev        *string                                `queryParam:"style=form,explode=true,name=prev"`
+	// Filter by HTTP response status code
 	ResponseStatus *GetRequestEventsQueryParamResponseStatus `queryParam:"style=form,explode=true,name=response_status"`
 	SearchTerm     *string                                   `queryParam:"style=form,explode=true,name=search_term"`
-	SourceID       *GetRequestEventsQueryParamSourceID       `queryParam:"style=form,explode=true,name=source_id"`
-	Status         *GetRequestEventsQueryParamStatus         `queryParam:"style=form,explode=true,name=status"`
-	SuccessfulAt   *GetRequestEventsQueryParamSuccessfulAt   `queryParam:"style=form,explode=true,name=successful_at"`
-	WebhookID      *GetRequestEventsQueryParamWebhookID      `queryParam:"style=form,explode=true,name=webhook_id"`
+	// Filter by source IDs
+	SourceID *GetRequestEventsQueryParamSourceID `queryParam:"style=form,explode=true,name=source_id"`
+	// Lifecyle status of the event
+	Status *GetRequestEventsQueryParamStatus `queryParam:"style=form,explode=true,name=status"`
+	// Filter by `successful_at` date using a date operator
+	SuccessfulAt *GetRequestEventsQueryParamSuccessfulAt `queryParam:"style=form,explode=true,name=successful_at"`
+	// Filter by webhook connection IDs
+	WebhookID *GetRequestEventsQueryParamWebhookID `queryParam:"style=form,explode=true,name=webhook_id"`
 }
 
 func (o *GetRequestEventsRequest) GetAttempts() *GetRequestEventsQueryParamAttempts {

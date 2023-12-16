@@ -1,7 +1,5 @@
 # GetDestinationsQueryParamDestinations2
 
-Path for the CLI destination
-
 
 ## Fields
 

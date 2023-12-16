@@ -1,5 +1,7 @@
 # GetRequestIgnoredEventsQueryParamID
 
+Filter by ignored events IDs
+
 
 ## Supported Types
 

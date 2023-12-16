@@ -14,6 +14,7 @@ const (
 	ConnectionsTypeArrayOfstr ConnectionsType = "arrayOfstr"
 )
 
+// Connections - A pattern to match on the connection name or array of connection IDs. Use `*` as wildcard.
 type Connections struct {
 	Str        *string
 	ArrayOfstr []string

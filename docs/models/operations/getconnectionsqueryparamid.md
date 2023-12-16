@@ -1,5 +1,7 @@
 # GetConnectionsQueryParamID
 
+Filter by connection IDs
+
 
 ## Supported Types
 

@@ -1,7 +1,5 @@
 # GetTransformationExecutionsQueryParamTransformationExecutions1
 
-Log level of the execution
-
 
 ## Values
 

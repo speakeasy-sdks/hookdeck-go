@@ -1,5 +1,7 @@
 # QueryParamCompletedAt
 
+Filter by date the bulk retry completed
+
 
 ## Supported Types
 

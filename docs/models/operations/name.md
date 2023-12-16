@@ -1,5 +1,7 @@
 # Name
 
+Filter by bookmark name
+
 
 ## Supported Types
 

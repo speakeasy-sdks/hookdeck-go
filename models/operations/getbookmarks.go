@@ -39,7 +39,6 @@ func (e *GetBookmarksQueryParam2) UnmarshalJSON(data []byte) error {
 	}
 }
 
-// GetBookmarksQueryParam1 - Sort direction
 type GetBookmarksQueryParam1 string
 
 const (
@@ -74,6 +73,7 @@ const (
 	QueryParamDirTypeArrayOfgetBookmarksQueryParam2 QueryParamDirType = "arrayOfgetBookmarks_queryParam_2"
 )
 
+// QueryParamDir - Sort direction
 type QueryParamDir struct {
 	GetBookmarksQueryParam1        *GetBookmarksQueryParam1
 	ArrayOfgetBookmarksQueryParam2 []GetBookmarksQueryParam2
@@ -137,6 +137,7 @@ const (
 	QueryParamEventDataIDTypeArrayOfstr QueryParamEventDataIDType = "arrayOfstr"
 )
 
+// QueryParamEventDataID - Filter by associated event data ID
 type QueryParamEventDataID struct {
 	Str        *string
 	ArrayOfstr []string
@@ -200,6 +201,7 @@ const (
 	QueryParamIDTypeArrayOfstr QueryParamIDType = "arrayOfstr"
 )
 
+// QueryParamID - Filter by bookmark IDs
 type QueryParamID struct {
 	Str        *string
 	ArrayOfstr []string
@@ -263,6 +265,7 @@ const (
 	LabelTypeArrayOfstr LabelType = "arrayOfstr"
 )
 
+// Label - Filter by label
 type Label struct {
 	Str        *string
 	ArrayOfstr []string
@@ -319,7 +322,6 @@ func (u Label) MarshalJSON() ([]byte, error) {
 	return nil, errors.New("could not marshal union type: all fields are null")
 }
 
-// GetBookmarksQueryParamBookmarks2 - Filter by last used date
 type GetBookmarksQueryParamBookmarks2 struct {
 	Any *bool `queryParam:"name=any"`
 	// Last used date
@@ -385,6 +387,7 @@ const (
 	LastUsedAtTypeGetBookmarksQueryParamBookmarks2 LastUsedAtType = "getBookmarks_queryParam_Bookmarks_2"
 )
 
+// LastUsedAt - Filter by last used date
 type LastUsedAt struct {
 	DateTime                         *time.Time
 	GetBookmarksQueryParamBookmarks2 *GetBookmarksQueryParamBookmarks2
@@ -448,6 +451,7 @@ const (
 	NameTypeArrayOfstr NameType = "arrayOfstr"
 )
 
+// Name - Filter by bookmark name
 type Name struct {
 	Str        *string
 	ArrayOfstr []string
@@ -528,7 +532,6 @@ func (e *GetBookmarksQueryParamBookmarksOrderBy2) UnmarshalJSON(data []byte) err
 	}
 }
 
-// GetBookmarksQueryParamBookmarks1 - Sort key(s)
 type GetBookmarksQueryParamBookmarks1 string
 
 const (
@@ -560,6 +563,7 @@ const (
 	QueryParamOrderByTypeArrayOfgetBookmarksQueryParamBookmarksOrderBy2 QueryParamOrderByType = "arrayOfgetBookmarks_queryParam_Bookmarks_order_by_2"
 )
 
+// QueryParamOrderBy - Sort key(s)
 type QueryParamOrderBy struct {
 	GetBookmarksQueryParamBookmarks1               *GetBookmarksQueryParamBookmarks1
 	ArrayOfgetBookmarksQueryParamBookmarksOrderBy2 []GetBookmarksQueryParamBookmarksOrderBy2
@@ -623,6 +627,7 @@ const (
 	QueryParamWebhookIDTypeArrayOfstr QueryParamWebhookIDType = "arrayOfstr"
 )
 
+// QueryParamWebhookID - Filter by associated connection ID
 type QueryParamWebhookID struct {
 	Str        *string
 	ArrayOfstr []string
@@ -680,17 +685,25 @@ func (u QueryParamWebhookID) MarshalJSON() ([]byte, error) {
 }
 
 type GetBookmarksRequest struct {
-	Dir         *QueryParamDir         `queryParam:"style=form,explode=true,name=dir"`
+	// Sort direction
+	Dir *QueryParamDir `queryParam:"style=form,explode=true,name=dir"`
+	// Filter by associated event data ID
 	EventDataID *QueryParamEventDataID `queryParam:"style=form,explode=true,name=event_data_id"`
-	ID          *QueryParamID          `queryParam:"style=form,explode=true,name=id"`
-	Label       *Label                 `queryParam:"style=form,explode=true,name=label"`
-	LastUsedAt  *LastUsedAt            `queryParam:"style=form,explode=true,name=last_used_at"`
-	Limit       *int64                 `queryParam:"style=form,explode=true,name=limit"`
-	Name        *Name                  `queryParam:"style=form,explode=true,name=name"`
-	Next        *string                `queryParam:"style=form,explode=true,name=next"`
-	OrderBy     *QueryParamOrderBy     `queryParam:"style=form,explode=true,name=order_by"`
-	Prev        *string                `queryParam:"style=form,explode=true,name=prev"`
-	WebhookID   *QueryParamWebhookID   `queryParam:"style=form,explode=true,name=webhook_id"`
+	// Filter by bookmark IDs
+	ID *QueryParamID `queryParam:"style=form,explode=true,name=id"`
+	// Filter by label
+	Label *Label `queryParam:"style=form,explode=true,name=label"`
+	// Filter by last used date
+	LastUsedAt *LastUsedAt `queryParam:"style=form,explode=true,name=last_used_at"`
+	Limit      *int64      `queryParam:"style=form,explode=true,name=limit"`
+	// Filter by bookmark name
+	Name *Name   `queryParam:"style=form,explode=true,name=name"`
+	Next *string `queryParam:"style=form,explode=true,name=next"`
+	// Sort key(s)
+	OrderBy *QueryParamOrderBy `queryParam:"style=form,explode=true,name=order_by"`
+	Prev    *string            `queryParam:"style=form,explode=true,name=prev"`
+	// Filter by associated connection ID
+	WebhookID *QueryParamWebhookID `queryParam:"style=form,explode=true,name=webhook_id"`
 }
 
 func (o *GetBookmarksRequest) GetDir() *QueryParamDir {

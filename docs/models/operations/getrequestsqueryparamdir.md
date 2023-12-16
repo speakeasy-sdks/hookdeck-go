@@ -1,5 +1,7 @@
 # GetRequestsQueryParamDir
 
+Sort direction
+
 
 ## Supported Types
 

@@ -1,7 +1,5 @@
 # GetIssueCountQueryParamIssuesCountDismissedAt2
 
-Filter by dismissed dates
-
 
 ## Fields
 

@@ -1,5 +1,7 @@
 # GetEventsQueryParamOrderBy
 
+Sort key(s)
+
 
 ## Supported Types
 

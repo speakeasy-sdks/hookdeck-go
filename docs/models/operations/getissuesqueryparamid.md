@@ -1,5 +1,7 @@
 # GetIssuesQueryParamID
 
+Filter by Issue IDs
+
 
 ## Supported Types
 

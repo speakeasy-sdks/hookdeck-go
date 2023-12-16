@@ -14,6 +14,7 @@ const (
 	TransformationsTypeArrayOfstr TransformationsType = "arrayOfstr"
 )
 
+// Transformations - A pattern to match on the transformation name or array of transformation IDs. Use `*` as wildcard.
 type Transformations struct {
 	Str        *string
 	ArrayOfstr []string

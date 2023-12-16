@@ -16,6 +16,7 @@ const (
 	CauseTypeArrayOfstr CauseType = "arrayOfstr"
 )
 
+// Cause - The cause of the ignored event
 type Cause struct {
 	Str        *string
 	ArrayOfstr []string
@@ -79,6 +80,7 @@ const (
 	CreateIgnoredEventBulkRetryWebhookIDTypeArrayOfstr CreateIgnoredEventBulkRetryWebhookIDType = "arrayOfstr"
 )
 
+// CreateIgnoredEventBulkRetryWebhookID - Connection ID of the ignored event
 type CreateIgnoredEventBulkRetryWebhookID struct {
 	Str        *string
 	ArrayOfstr []string

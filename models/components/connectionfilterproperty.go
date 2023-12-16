@@ -7,7 +7,6 @@ import (
 	"github.com/speakeasy-sdks/hookdeck-go/internal/utils"
 )
 
-// Four - JSON using our filter syntax to filter on request headers
 type Four struct {
 }
 
@@ -20,6 +19,7 @@ const (
 	ConnectionFilterPropertyTypeFour    ConnectionFilterPropertyType = "4"
 )
 
+// ConnectionFilterProperty - JSON using our filter syntax to filter on request headers
 type ConnectionFilterProperty struct {
 	Str     *string
 	Float32 *float32

@@ -1,7 +1,5 @@
 # GetDestinationsQueryParam2
 
-Date the destination was archived
-
 
 ## Fields
 

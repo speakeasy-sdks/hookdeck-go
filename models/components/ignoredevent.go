@@ -4,6 +4,7 @@ package components
 
 import (
 	"encoding/json"
+	"errors"
 	"fmt"
 	"github.com/speakeasy-sdks/hookdeck-go/internal/utils"
 	"time"
@@ -20,20 +21,20 @@ func (o *TransformationFailedMetaSchemas) GetTransformationID() string {
 	return o.TransformationID
 }
 
-type FilteredMetaSchemas string
+type Schemas string
 
 const (
-	FilteredMetaSchemasBody    FilteredMetaSchemas = "body"
-	FilteredMetaSchemasHeaders FilteredMetaSchemas = "headers"
-	FilteredMetaSchemasPath    FilteredMetaSchemas = "path"
-	FilteredMetaSchemasQuery   FilteredMetaSchemas = "query"
+	SchemasBody    Schemas = "body"
+	SchemasHeaders Schemas = "headers"
+	SchemasPath    Schemas = "path"
+	SchemasQuery   Schemas = "query"
 )
 
-func (e FilteredMetaSchemas) ToPointer() *FilteredMetaSchemas {
+func (e Schemas) ToPointer() *Schemas {
 	return &e
 }
 
-func (e *FilteredMetaSchemas) UnmarshalJSON(data []byte) error {
+func (e *Schemas) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -46,18 +47,81 @@ func (e *FilteredMetaSchemas) UnmarshalJSON(data []byte) error {
 	case "path":
 		fallthrough
 	case "query":
-		*e = FilteredMetaSchemas(v)
+		*e = Schemas(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for FilteredMetaSchemas: %v", v)
+		return fmt.Errorf("invalid value for Schemas: %v", v)
 	}
+}
+
+type MetaType string
+
+const (
+	MetaTypeSchemas                         MetaType = "Schemas"
+	MetaTypeTransformationFailedMetaSchemas MetaType = "TransformationFailedMeta_Schemas"
+)
+
+type Meta struct {
+	Schemas                         *Schemas
+	TransformationFailedMetaSchemas *TransformationFailedMetaSchemas
+
+	Type MetaType
+}
+
+func CreateMetaSchemas(schemas Schemas) Meta {
+	typ := MetaTypeSchemas
+
+	return Meta{
+		Schemas: &schemas,
+		Type:    typ,
+	}
+}
+
+func CreateMetaTransformationFailedMetaSchemas(transformationFailedMetaSchemas TransformationFailedMetaSchemas) Meta {
+	typ := MetaTypeTransformationFailedMetaSchemas
+
+	return Meta{
+		TransformationFailedMetaSchemas: &transformationFailedMetaSchemas,
+		Type:                            typ,
+	}
+}
+
+func (u *Meta) UnmarshalJSON(data []byte) error {
+
+	transformationFailedMetaSchemas := TransformationFailedMetaSchemas{}
+	if err := utils.UnmarshalJSON(data, &transformationFailedMetaSchemas, "", true, true); err == nil {
+		u.TransformationFailedMetaSchemas = &transformationFailedMetaSchemas
+		u.Type = MetaTypeTransformationFailedMetaSchemas
+		return nil
+	}
+
+	schemas := Schemas("")
+	if err := utils.UnmarshalJSON(data, &schemas, "", true, true); err == nil {
+		u.Schemas = &schemas
+		u.Type = MetaTypeSchemas
+		return nil
+	}
+
+	return errors.New("could not unmarshal into supported union types")
+}
+
+func (u Meta) MarshalJSON() ([]byte, error) {
+	if u.Schemas != nil {
+		return utils.MarshalJSON(u.Schemas, "", true)
+	}
+
+	if u.TransformationFailedMetaSchemas != nil {
+		return utils.MarshalJSON(u.TransformationFailedMetaSchemas, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type: all fields are null")
 }
 
 type IgnoredEvent struct {
 	Cause     IgnoredEventCause `json:"cause"`
 	CreatedAt time.Time         `json:"created_at"`
 	ID        string            `json:"id"`
-	Meta      interface{}       `json:"meta,omitempty"`
+	Meta      *Meta             `json:"meta,omitempty"`
 	RequestID string            `json:"request_id"`
 	TeamID    string            `json:"team_id"`
 	UpdatedAt time.Time         `json:"updated_at"`
@@ -96,7 +160,7 @@ func (o *IgnoredEvent) GetID() string {
 	return o.ID
 }
 
-func (o *IgnoredEvent) GetMeta() interface{} {
+func (o *IgnoredEvent) GetMeta() *Meta {
 	if o == nil {
 		return nil
 	}

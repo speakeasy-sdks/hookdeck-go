@@ -1,5 +1,7 @@
 # GetConnectionsQueryParamOrderBy
 
+Sort key(s)
+
 
 ## Supported Types
 

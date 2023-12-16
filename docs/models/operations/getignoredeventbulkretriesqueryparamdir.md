@@ -1,5 +1,7 @@
 # GetIgnoredEventBulkRetriesQueryParamDir
 
+Sort direction
+
 
 ## Supported Types
 

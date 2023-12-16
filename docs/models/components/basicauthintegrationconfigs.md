@@ -1,6 +1,4 @@
-# BasicAuthIntegrationConfigsSchemas
-
-Decrypted Key/Value object of the associated configuration for that provider
+# BasicAuthIntegrationConfigs
 
 
 ## Fields

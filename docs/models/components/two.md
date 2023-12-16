@@ -1,7 +1,8 @@
 # Two
 
 
-## Fields
+## Values
 
-| Field       | Type        | Required    | Description |
-| ----------- | ----------- | ----------- | ----------- |
+| Name      | Value     |
+| --------- | --------- |
+| `TwoDesc` | desc      |

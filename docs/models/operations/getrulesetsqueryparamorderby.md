@@ -1,5 +1,7 @@
 # GetRulesetsQueryParamOrderBy
 
+Sort key(s)
+
 
 ## Supported Types
 

@@ -15,6 +15,7 @@ const (
 	QueryTypeStr      QueryType = "str"
 )
 
+// Query object to filter records
 type Query struct {
 	MapOfany map[string]interface{}
 	Str      *string

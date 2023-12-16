@@ -1,5 +1,7 @@
 # QueryParamWebhookID
 
+Filter by associated connection ID
+
 
 ## Supported Types
 

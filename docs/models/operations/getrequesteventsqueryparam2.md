@@ -1,7 +1,5 @@
 # GetRequestEventsQueryParam2
 
-Filter by number of attempts
-
 
 ## Fields
 

@@ -13,7 +13,6 @@ import (
 type TestTransformationEnv struct {
 }
 
-// TestTransformation1 - Body of the request
 type TestTransformation1 struct {
 }
 
@@ -24,6 +23,7 @@ const (
 	TestTransformationBodyTypeStr                 TestTransformationBodyType = "str"
 )
 
+// TestTransformationBody - Body of the request
 type TestTransformationBody struct {
 	TestTransformation1 *TestTransformation1
 	Str                 *string

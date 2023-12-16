@@ -1,5 +1,7 @@
 # GetEventsQueryParamCreatedAt
 
+Filter by `created_at` date using a date operator
+
 
 ## Supported Types
 

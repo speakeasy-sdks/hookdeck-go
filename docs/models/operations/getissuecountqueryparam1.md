@@ -1,7 +1,5 @@
 # GetIssueCountQueryParam1
 
-Sort direction
-
 
 ## Values
 

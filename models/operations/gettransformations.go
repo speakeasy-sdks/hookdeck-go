@@ -38,7 +38,6 @@ func (e *GetTransformationsQueryParam2) UnmarshalJSON(data []byte) error {
 	}
 }
 
-// GetTransformationsQueryParam1 - Sort direction
 type GetTransformationsQueryParam1 string
 
 const (
@@ -73,6 +72,7 @@ const (
 	GetTransformationsQueryParamDirTypeArrayOfgetTransformationsQueryParam2 GetTransformationsQueryParamDirType = "arrayOfgetTransformations_queryParam_2"
 )
 
+// GetTransformationsQueryParamDir - Sort direction
 type GetTransformationsQueryParamDir struct {
 	GetTransformationsQueryParam1        *GetTransformationsQueryParam1
 	ArrayOfgetTransformationsQueryParam2 []GetTransformationsQueryParam2
@@ -136,6 +136,7 @@ const (
 	GetTransformationsQueryParamIDTypeArrayOfstr GetTransformationsQueryParamIDType = "arrayOfstr"
 )
 
+// GetTransformationsQueryParamID - Filter by transformation IDs
 type GetTransformationsQueryParamID struct {
 	Str        *string
 	ArrayOfstr []string
@@ -199,6 +200,7 @@ const (
 	GetTransformationsQueryParamNameTypeArrayOfstr GetTransformationsQueryParamNameType = "arrayOfstr"
 )
 
+// GetTransformationsQueryParamName - Filter by transformation name
 type GetTransformationsQueryParamName struct {
 	Str        *string
 	ArrayOfstr []string
@@ -279,7 +281,6 @@ func (e *GetTransformationsQueryParamTransformations2) UnmarshalJSON(data []byte
 	}
 }
 
-// GetTransformationsQueryParamTransformations1 - Sort key(s)
 type GetTransformationsQueryParamTransformations1 string
 
 const (
@@ -311,6 +312,7 @@ const (
 	GetTransformationsQueryParamOrderByTypeArrayOfgetTransformationsQueryParamTransformations2 GetTransformationsQueryParamOrderByType = "arrayOfgetTransformations_queryParam_Transformations_2"
 )
 
+// GetTransformationsQueryParamOrderBy - Sort key(s)
 type GetTransformationsQueryParamOrderBy struct {
 	GetTransformationsQueryParamTransformations1        *GetTransformationsQueryParamTransformations1
 	ArrayOfgetTransformationsQueryParamTransformations2 []GetTransformationsQueryParamTransformations2
@@ -368,11 +370,15 @@ func (u GetTransformationsQueryParamOrderBy) MarshalJSON() ([]byte, error) {
 }
 
 type GetTransformationsRequest struct {
-	Dir     *GetTransformationsQueryParamDir     `queryParam:"style=form,explode=true,name=dir"`
-	ID      *GetTransformationsQueryParamID      `queryParam:"style=form,explode=true,name=id"`
-	Limit   *int64                               `queryParam:"style=form,explode=true,name=limit"`
-	Name    *GetTransformationsQueryParamName    `queryParam:"style=form,explode=true,name=name"`
-	Next    *string                              `queryParam:"style=form,explode=true,name=next"`
+	// Sort direction
+	Dir *GetTransformationsQueryParamDir `queryParam:"style=form,explode=true,name=dir"`
+	// Filter by transformation IDs
+	ID    *GetTransformationsQueryParamID `queryParam:"style=form,explode=true,name=id"`
+	Limit *int64                          `queryParam:"style=form,explode=true,name=limit"`
+	// Filter by transformation name
+	Name *GetTransformationsQueryParamName `queryParam:"style=form,explode=true,name=name"`
+	Next *string                           `queryParam:"style=form,explode=true,name=next"`
+	// Sort key(s)
 	OrderBy *GetTransformationsQueryParamOrderBy `queryParam:"style=form,explode=true,name=order_by"`
 	Prev    *string                              `queryParam:"style=form,explode=true,name=prev"`
 }

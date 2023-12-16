@@ -1,5 +1,7 @@
 # GetDestinationsQueryParamOrderBy
 
+Sort key(s)
+
 
 ## Supported Types
 

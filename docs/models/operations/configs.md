@@ -1,23 +1,43 @@
 # Configs
 
+Decrypted Key/Value object of the associated configuration for that provider
+
 
 ## Supported Types
 
-### IssueTriggerDeliveryConfigs
+### One
 
 ```go
-configs := operations.CreateConfigsIssueTriggerDeliveryConfigs(components.IssueTriggerDeliveryConfigs{/* values here */})
+configs := operations.CreateConfigsOne(operations.One{/* values here */})
 ```
 
-### IssueTriggerTransformationConfigs
+### HMACIntegrationConfigs
 
 ```go
-configs := operations.CreateConfigsIssueTriggerTransformationConfigs(components.IssueTriggerTransformationConfigs{/* values here */})
+configs := operations.CreateConfigsHMACIntegrationConfigs(components.HMACIntegrationConfigs{/* values here */})
 ```
 
-### IssueTriggerBackpressureConfigs
+### APIKeyIntegrationConfigs
 
 ```go
-configs := operations.CreateConfigsIssueTriggerBackpressureConfigs(components.IssueTriggerBackpressureConfigs{/* values here */})
+configs := operations.CreateConfigsAPIKeyIntegrationConfigs(components.APIKeyIntegrationConfigs{/* values here */})
+```
+
+### HandledHMACConfigs
+
+```go
+configs := operations.CreateConfigsHandledHMACConfigs(components.HandledHMACConfigs{/* values here */})
+```
+
+### BasicAuthIntegrationConfigs
+
+```go
+configs := operations.CreateConfigsBasicAuthIntegrationConfigs(components.BasicAuthIntegrationConfigs{/* values here */})
+```
+
+### ShopifyIntegrationConfigs
+
+```go
+configs := operations.CreateConfigsShopifyIntegrationConfigs(components.ShopifyIntegrationConfigs{/* values here */})
 ```
 

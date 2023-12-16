@@ -99,10 +99,12 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Integration.Create(ctx, operations.CreateIntegrationRequestBody{
-        Configs: &operations.Schemas{
-            APIKey: "string",
-            HeaderKey: "string",
-        },
+        Configs: operations.CreateConfigsAPIKeyIntegrationConfigs(
+                components.APIKeyIntegrationConfigs{
+                    APIKey: "string",
+                    HeaderKey: "string",
+                },
+        ),
         Features: []components.IntegrationFeature{
             components.IntegrationFeatureHandshake,
         },
@@ -336,9 +338,11 @@ func main() {
 
 
     requestBody := operations.UpdateIntegrationRequestBody{
-        Configs: &operations.ShopifyIntegrationConfigsSchemas{
-            WebhookSecretKey: "string",
-        },
+        Configs: operations.CreateUpdateIntegrationConfigsShopifyIntegrationConfigs(
+                components.ShopifyIntegrationConfigs{
+                    WebhookSecretKey: "string",
+                },
+        ),
         Features: []components.IntegrationFeature{
             components.IntegrationFeatureVerification,
         },

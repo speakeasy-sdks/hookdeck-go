@@ -1,5 +1,7 @@
 # GetDestinationsQueryParamID
 
+Filter by destination IDs
+
 
 ## Supported Types
 

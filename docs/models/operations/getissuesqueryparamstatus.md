@@ -1,5 +1,7 @@
 # GetIssuesQueryParamStatus
 
+Filter by Issue statuses
+
 
 ## Supported Types
 

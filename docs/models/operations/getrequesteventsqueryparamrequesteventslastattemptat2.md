@@ -1,7 +1,5 @@
 # GetRequestEventsQueryParamRequestEventsLastAttemptAt2
 
-Filter by `last_attempt_at` date using a date operator
-
 
 ## Fields
 

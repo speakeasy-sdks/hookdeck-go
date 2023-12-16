@@ -1,7 +1,5 @@
 # GetConnectionsQueryParamConnectionsPausedAt2
 
-Date the connection was paused
-
 
 ## Fields
 

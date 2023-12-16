@@ -1,7 +1,5 @@
 # GetRulesetsQueryParam1
 
-Sort direction
-
 
 ## Values
 

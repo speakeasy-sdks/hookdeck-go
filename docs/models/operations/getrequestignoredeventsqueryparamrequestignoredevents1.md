@@ -1,7 +1,5 @@
 # GetRequestIgnoredEventsQueryParamRequestIgnoredEvents1
 
-Sort key(s)
-
 
 ## Values
 

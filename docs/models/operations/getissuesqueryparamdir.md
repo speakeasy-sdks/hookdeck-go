@@ -1,5 +1,7 @@
 # GetIssuesQueryParamDir
 
+Sort direction
+
 
 ## Supported Types
 

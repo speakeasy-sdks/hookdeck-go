@@ -1,7 +1,5 @@
 # GetIssuesQueryParamIssues1
 
-Sort key(s)
-
 
 ## Values
 

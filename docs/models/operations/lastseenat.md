@@ -1,5 +1,7 @@
 # LastSeenAt
 
+Filter by last seen dates
+
 
 ## Supported Types
 

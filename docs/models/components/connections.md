@@ -1,5 +1,7 @@
 # Connections
 
+A pattern to match on the connection name or array of connection IDs. Use `*` as wildcard.
+
 
 ## Supported Types
 

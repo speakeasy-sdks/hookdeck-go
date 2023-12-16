@@ -16,6 +16,7 @@ const (
 	QueryParamCauseTypeArrayOfstr QueryParamCauseType = "arrayOfstr"
 )
 
+// QueryParamCause - The cause of the ignored event
 type QueryParamCause struct {
 	Str        *string
 	ArrayOfstr []string
@@ -79,6 +80,7 @@ const (
 	GenerateIgnoredEventBulkRetryPlanQueryParamWebhookIDTypeArrayOfstr GenerateIgnoredEventBulkRetryPlanQueryParamWebhookIDType = "arrayOfstr"
 )
 
+// GenerateIgnoredEventBulkRetryPlanQueryParamWebhookID - Connection ID of the ignored event
 type GenerateIgnoredEventBulkRetryPlanQueryParamWebhookID struct {
 	Str        *string
 	ArrayOfstr []string

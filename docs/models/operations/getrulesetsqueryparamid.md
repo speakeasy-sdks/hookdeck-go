@@ -1,5 +1,7 @@
 # GetRulesetsQueryParamID
 
+Filter by ruleset IDs
+
 
 ## Supported Types
 

@@ -1,5 +1,7 @@
 # CreateIgnoredEventBulkRetryWebhookID
 
+Connection ID of the ignored event
+
 
 ## Supported Types
 

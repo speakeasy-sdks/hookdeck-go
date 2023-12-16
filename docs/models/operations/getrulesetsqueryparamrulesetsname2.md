@@ -1,7 +1,5 @@
 # GetRulesetsQueryParamRulesetsName2
 
-The ruleset name
-
 
 ## Fields
 

@@ -1,5 +1,7 @@
 # ConnectionFilterProperty
 
+JSON using our filter syntax to filter on request headers
+
 
 ## Supported Types
 

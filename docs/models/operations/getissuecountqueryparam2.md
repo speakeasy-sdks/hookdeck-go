@@ -1,7 +1,5 @@
 # GetIssueCountQueryParam2
 
-Filter by created dates
-
 
 ## Fields
 

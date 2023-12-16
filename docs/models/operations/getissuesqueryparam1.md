@@ -1,7 +1,5 @@
 # GetIssuesQueryParam1
 
-Sort direction
-
 
 ## Values
 

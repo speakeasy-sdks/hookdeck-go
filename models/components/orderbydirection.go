@@ -57,27 +57,27 @@ func (e *Three) UnmarshalJSON(data []byte) error {
 	}
 }
 
-type OrderByDirection2 string
+type Two string
 
 const (
-	OrderByDirection2Desc OrderByDirection2 = "desc"
+	TwoDesc Two = "desc"
 )
 
-func (e OrderByDirection2) ToPointer() *OrderByDirection2 {
+func (e Two) ToPointer() *Two {
 	return &e
 }
 
-func (e *OrderByDirection2) UnmarshalJSON(data []byte) error {
+func (e *Two) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "desc":
-		*e = OrderByDirection2(v)
+		*e = Two(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for OrderByDirection2: %v", v)
+		return fmt.Errorf("invalid value for Two: %v", v)
 	}
 }
 
@@ -109,14 +109,14 @@ type OrderByDirectionType string
 
 const (
 	OrderByDirectionTypeOrderByDirection1 OrderByDirectionType = "OrderByDirection_1"
-	OrderByDirectionTypeOrderByDirection2 OrderByDirectionType = "OrderByDirection_2"
+	OrderByDirectionTypeTwo               OrderByDirectionType = "2"
 	OrderByDirectionTypeThree             OrderByDirectionType = "3"
 	OrderByDirectionTypeOrderByDirection4 OrderByDirectionType = "OrderByDirection_4"
 )
 
 type OrderByDirection struct {
 	OrderByDirection1 *OrderByDirection1
-	OrderByDirection2 *OrderByDirection2
+	Two               *Two
 	Three             *Three
 	OrderByDirection4 *OrderByDirection4
 
@@ -132,12 +132,12 @@ func CreateOrderByDirectionOrderByDirection1(orderByDirection1 OrderByDirection1
 	}
 }
 
-func CreateOrderByDirectionOrderByDirection2(orderByDirection2 OrderByDirection2) OrderByDirection {
-	typ := OrderByDirectionTypeOrderByDirection2
+func CreateOrderByDirectionTwo(two Two) OrderByDirection {
+	typ := OrderByDirectionTypeTwo
 
 	return OrderByDirection{
-		OrderByDirection2: &orderByDirection2,
-		Type:              typ,
+		Two:  &two,
+		Type: typ,
 	}
 }
 
@@ -168,10 +168,10 @@ func (u *OrderByDirection) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
-	orderByDirection2 := OrderByDirection2("")
-	if err := utils.UnmarshalJSON(data, &orderByDirection2, "", true, true); err == nil {
-		u.OrderByDirection2 = &orderByDirection2
-		u.Type = OrderByDirectionTypeOrderByDirection2
+	two := Two("")
+	if err := utils.UnmarshalJSON(data, &two, "", true, true); err == nil {
+		u.Two = &two
+		u.Type = OrderByDirectionTypeTwo
 		return nil
 	}
 
@@ -197,8 +197,8 @@ func (u OrderByDirection) MarshalJSON() ([]byte, error) {
 		return utils.MarshalJSON(u.OrderByDirection1, "", true)
 	}
 
-	if u.OrderByDirection2 != nil {
-		return utils.MarshalJSON(u.OrderByDirection2, "", true)
+	if u.Two != nil {
+		return utils.MarshalJSON(u.Two, "", true)
 	}
 
 	if u.Three != nil {

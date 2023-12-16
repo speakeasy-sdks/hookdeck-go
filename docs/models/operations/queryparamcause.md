@@ -1,5 +1,7 @@
 # QueryParamCause
 
+The cause of the ignored event
+
 
 ## Supported Types
 

@@ -14,6 +14,7 @@ const (
 	IssueUnionTypeTransformationIssue IssueUnionType = "TransformationIssue"
 )
 
+// Issue
 type Issue struct {
 	DeliveryIssue       *DeliveryIssue
 	TransformationIssue *TransformationIssue

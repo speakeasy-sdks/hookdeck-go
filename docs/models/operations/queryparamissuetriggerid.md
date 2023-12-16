@@ -1,5 +1,7 @@
 # QueryParamIssueTriggerID
 
+Filter by Issue trigger IDs
+
 
 ## Supported Types
 

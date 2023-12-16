@@ -1,5 +1,7 @@
 # GetConnectionsQueryParamDir
 
+Sort direction
+
 
 ## Supported Types
 

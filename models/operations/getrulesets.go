@@ -12,7 +12,6 @@ import (
 	"time"
 )
 
-// GetRulesetsQueryParam2 - Date the ruleset was archived
 type GetRulesetsQueryParam2 struct {
 	Any *bool      `queryParam:"name=any"`
 	Gt  *time.Time `queryParam:"name=gt"`
@@ -74,6 +73,7 @@ const (
 	GetRulesetsQueryParamArchivedAtTypeGetRulesetsQueryParam2 GetRulesetsQueryParamArchivedAtType = "getRulesets_queryParam_2"
 )
 
+// GetRulesetsQueryParamArchivedAt - Date the ruleset was archived
 type GetRulesetsQueryParamArchivedAt struct {
 	DateTime               *time.Time
 	GetRulesetsQueryParam2 *GetRulesetsQueryParam2
@@ -157,7 +157,6 @@ func (e *GetRulesetsQueryParamRulesets2) UnmarshalJSON(data []byte) error {
 	}
 }
 
-// GetRulesetsQueryParam1 - Sort direction
 type GetRulesetsQueryParam1 string
 
 const (
@@ -192,6 +191,7 @@ const (
 	GetRulesetsQueryParamDirTypeArrayOfgetRulesetsQueryParamRulesets2 GetRulesetsQueryParamDirType = "arrayOfgetRulesets_queryParam_Rulesets_2"
 )
 
+// GetRulesetsQueryParamDir - Sort direction
 type GetRulesetsQueryParamDir struct {
 	GetRulesetsQueryParam1                *GetRulesetsQueryParam1
 	ArrayOfgetRulesetsQueryParamRulesets2 []GetRulesetsQueryParamRulesets2
@@ -255,6 +255,7 @@ const (
 	GetRulesetsQueryParamIDTypeArrayOfstr GetRulesetsQueryParamIDType = "arrayOfstr"
 )
 
+// GetRulesetsQueryParamID - Filter by ruleset IDs
 type GetRulesetsQueryParamID struct {
 	Str        *string
 	ArrayOfstr []string
@@ -626,7 +627,6 @@ func (u Lte) MarshalJSON() ([]byte, error) {
 	return nil, errors.New("could not marshal union type: all fields are null")
 }
 
-// GetRulesetsQueryParamRulesetsName2 - The ruleset name
 type GetRulesetsQueryParamRulesetsName2 struct {
 	Any      *bool     `queryParam:"name=any"`
 	Contains *Contains `queryParam:"name=contains"`
@@ -748,6 +748,7 @@ const (
 	GetRulesetsQueryParamNameTypeGetRulesetsQueryParamRulesetsName2 GetRulesetsQueryParamNameType = "getRulesets_queryParam_Rulesets_name_2"
 )
 
+// GetRulesetsQueryParamName - The ruleset name
 type GetRulesetsQueryParamName struct {
 	GetRulesetsQueryParamRulesets1     *GetRulesetsQueryParamRulesets1
 	GetRulesetsQueryParamRulesetsName2 *GetRulesetsQueryParamRulesetsName2
@@ -828,7 +829,6 @@ func (e *GetRulesetsQueryParamRulesetsOrderBy2) UnmarshalJSON(data []byte) error
 	}
 }
 
-// GetRulesetsQueryParamRulesetsOrderBy1 - Sort key(s)
 type GetRulesetsQueryParamRulesetsOrderBy1 string
 
 const (
@@ -860,6 +860,7 @@ const (
 	GetRulesetsQueryParamOrderByTypeArrayOfgetRulesetsQueryParamRulesetsOrderBy2 GetRulesetsQueryParamOrderByType = "arrayOfgetRulesets_queryParam_Rulesets_order_by_2"
 )
 
+// GetRulesetsQueryParamOrderBy - Sort key(s)
 type GetRulesetsQueryParamOrderBy struct {
 	GetRulesetsQueryParamRulesetsOrderBy1        *GetRulesetsQueryParamRulesetsOrderBy1
 	ArrayOfgetRulesetsQueryParamRulesetsOrderBy2 []GetRulesetsQueryParamRulesetsOrderBy2
@@ -917,15 +918,20 @@ func (u GetRulesetsQueryParamOrderBy) MarshalJSON() ([]byte, error) {
 }
 
 type GetRulesetsRequest struct {
-	Archived   *bool                            `queryParam:"style=form,explode=true,name=archived"`
+	Archived *bool `queryParam:"style=form,explode=true,name=archived"`
+	// Date the ruleset was archived
 	ArchivedAt *GetRulesetsQueryParamArchivedAt `queryParam:"style=form,explode=true,name=archived_at"`
-	Dir        *GetRulesetsQueryParamDir        `queryParam:"style=form,explode=true,name=dir"`
-	ID         *GetRulesetsQueryParamID         `queryParam:"style=form,explode=true,name=id"`
-	Limit      *int64                           `queryParam:"style=form,explode=true,name=limit"`
-	Name       *GetRulesetsQueryParamName       `queryParam:"style=form,explode=true,name=name"`
-	Next       *string                          `queryParam:"style=form,explode=true,name=next"`
-	OrderBy    *GetRulesetsQueryParamOrderBy    `queryParam:"style=form,explode=true,name=order_by"`
-	Prev       *string                          `queryParam:"style=form,explode=true,name=prev"`
+	// Sort direction
+	Dir *GetRulesetsQueryParamDir `queryParam:"style=form,explode=true,name=dir"`
+	// Filter by ruleset IDs
+	ID    *GetRulesetsQueryParamID `queryParam:"style=form,explode=true,name=id"`
+	Limit *int64                   `queryParam:"style=form,explode=true,name=limit"`
+	// The ruleset name
+	Name *GetRulesetsQueryParamName `queryParam:"style=form,explode=true,name=name"`
+	Next *string                    `queryParam:"style=form,explode=true,name=next"`
+	// Sort key(s)
+	OrderBy *GetRulesetsQueryParamOrderBy `queryParam:"style=form,explode=true,name=order_by"`
+	Prev    *string                       `queryParam:"style=form,explode=true,name=prev"`
 }
 
 func (o *GetRulesetsRequest) GetArchived() *bool {

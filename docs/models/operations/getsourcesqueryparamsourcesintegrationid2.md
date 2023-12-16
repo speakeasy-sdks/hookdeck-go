@@ -1,7 +1,5 @@
 # GetSourcesQueryParamSourcesIntegrationID2
 
-Filter by integration IDs
-
 
 ## Fields
 

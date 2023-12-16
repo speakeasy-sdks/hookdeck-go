@@ -1,5 +1,7 @@
 # GetConnectionsQueryParamSourceID
 
+Filter by associated source IDs
+
 
 ## Supported Types
 

@@ -1,5 +1,7 @@
 # Query
 
+Query object to filter records
+
 
 ## Supported Types
 

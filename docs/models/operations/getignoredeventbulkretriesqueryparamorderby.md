@@ -1,5 +1,7 @@
 # GetIgnoredEventBulkRetriesQueryParamOrderBy
 
+Sort key(s)
+
 
 ## Supported Types
 

@@ -17,6 +17,7 @@ const (
 	UpsertIssueTriggerConfigsTypeIssueTriggerBackpressureConfigs   UpsertIssueTriggerConfigsType = "IssueTriggerBackpressureConfigs"
 )
 
+// UpsertIssueTriggerConfigs - Configuration object for the specific issue type selected
 type UpsertIssueTriggerConfigs struct {
 	IssueTriggerDeliveryConfigs       *components.IssueTriggerDeliveryConfigs
 	IssueTriggerTransformationConfigs *components.IssueTriggerTransformationConfigs

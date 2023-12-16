@@ -1,11 +1,16 @@
 # Schemas
 
-Decrypted Key/Value object of the associated configuration for that provider
 
+## Values
 
-## Fields
-
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `APIKey`           | *string*           | :heavy_check_mark: | N/A                |
-| `HeaderKey`        | *string*           | :heavy_check_mark: | N/A                |
+| Name                            | Value                           |
+| ------------------------------- | ------------------------------- |
+| `SchemasSourceArchived`         | SOURCE_ARCHIVED                 |
+| `SchemasNoWebhook`              | NO_WEBHOOK                      |
+| `SchemasVerificationFailed`     | VERIFICATION_FAILED             |
+| `SchemasUnsupportedHTTPMethod`  | UNSUPPORTED_HTTP_METHOD         |
+| `SchemasUnsupportedContentType` | UNSUPPORTED_CONTENT_TYPE        |
+| `SchemasUnparsableJSON`         | UNPARSABLE_JSON                 |
+| `SchemasPayloadTooLarge`        | PAYLOAD_TOO_LARGE               |
+| `SchemasIngestionFatal`         | INGESTION_FATAL                 |
+| `SchemasUnknown`                | UNKNOWN                         |

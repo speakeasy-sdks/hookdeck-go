@@ -1,7 +1,5 @@
 # GetIssueTriggersQueryParam1
 
-Sort direction
-
 
 ## Values
 

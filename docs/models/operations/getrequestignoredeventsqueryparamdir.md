@@ -1,5 +1,7 @@
 # GetRequestIgnoredEventsQueryParamDir
 
+Sort direction
+
 
 ## Supported Types
 

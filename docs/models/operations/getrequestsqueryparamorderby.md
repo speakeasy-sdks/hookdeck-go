@@ -1,5 +1,7 @@
 # GetRequestsQueryParamOrderBy
 
+Sort key(s)
+
 
 ## Supported Types
 

@@ -1,5 +1,7 @@
 # ArchivedAt
 
+Date the connection was archived
+
 
 ## Supported Types
 

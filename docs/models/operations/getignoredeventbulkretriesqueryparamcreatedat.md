@@ -1,5 +1,7 @@
 # GetIgnoredEventBulkRetriesQueryParamCreatedAt
 
+Filter by date the bulk retry was created
+
 
 ## Supported Types
 

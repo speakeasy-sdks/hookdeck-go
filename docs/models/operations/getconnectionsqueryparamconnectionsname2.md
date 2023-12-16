@@ -1,7 +1,5 @@
 # GetConnectionsQueryParamConnectionsName2
 
-Filter by connection name
-
 
 ## Fields
 

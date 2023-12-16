@@ -1,7 +1,5 @@
 # GetIssueTriggersQueryParamIssueTriggers2
 
-Date when the issue trigger was disabled
-
 
 ## Fields
 

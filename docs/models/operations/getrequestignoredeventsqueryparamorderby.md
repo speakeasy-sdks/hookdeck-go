@@ -1,5 +1,7 @@
 # GetRequestIgnoredEventsQueryParamOrderBy
 
+Sort key(s)
+
 
 ## Supported Types
 

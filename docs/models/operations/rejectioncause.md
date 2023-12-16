@@ -1,12 +1,14 @@
 # RejectionCause
 
+Filter by rejection cause
+
 
 ## Supported Types
 
-### RequestRejectionCauseSchemas
+### Schemas
 
 ```go
-rejectionCause := operations.CreateRejectionCauseRequestRejectionCauseSchemas(operations.RequestRejectionCauseSchemas{/* values here */})
+rejectionCause := operations.CreateRejectionCauseSchemas(operations.Schemas{/* values here */})
 ```
 
 ### CreateRequestBulkRetryBulkRetryRequestsRequestRequestBodyQueryRejectionCause2

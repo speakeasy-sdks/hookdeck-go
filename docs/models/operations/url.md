@@ -1,5 +1,7 @@
 # URL
 
+HTTP endpoint of the destination
+
 
 ## Supported Types
 

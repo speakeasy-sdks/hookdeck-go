@@ -1,5 +1,7 @@
 # LastUsedAt
 
+Filter by last used date
+
 
 ## Supported Types
 

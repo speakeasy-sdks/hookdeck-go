@@ -1,5 +1,7 @@
 # SuccessfulAt
 
+Filter by `successful_at` date using a date operator
+
 
 ## Supported Types
 

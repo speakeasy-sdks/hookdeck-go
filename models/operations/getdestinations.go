@@ -12,7 +12,6 @@ import (
 	"time"
 )
 
-// GetDestinationsQueryParam2 - Date the destination was archived
 type GetDestinationsQueryParam2 struct {
 	Any *bool      `queryParam:"name=any"`
 	Gt  *time.Time `queryParam:"name=gt"`
@@ -74,6 +73,7 @@ const (
 	QueryParamArchivedAtTypeGetDestinationsQueryParam2 QueryParamArchivedAtType = "getDestinations_queryParam_2"
 )
 
+// QueryParamArchivedAt - Date the destination was archived
 type QueryParamArchivedAt struct {
 	DateTime                   *time.Time
 	GetDestinationsQueryParam2 *GetDestinationsQueryParam2
@@ -130,7 +130,6 @@ func (u QueryParamArchivedAt) MarshalJSON() ([]byte, error) {
 	return nil, errors.New("could not marshal union type: all fields are null")
 }
 
-// GetDestinationsQueryParamDestinations2 - Path for the CLI destination
 type GetDestinationsQueryParamDestinations2 struct {
 	Any *bool `queryParam:"name=any"`
 }
@@ -150,6 +149,7 @@ const (
 	CliPathTypeArrayOfstr                             CliPathType = "arrayOfstr"
 )
 
+// CliPath - Path for the CLI destination
 type CliPath struct {
 	Str                                    *string
 	GetDestinationsQueryParamDestinations2 *GetDestinationsQueryParamDestinations2
@@ -254,7 +254,6 @@ func (e *GetDestinationsQueryParamDestinationsDir2) UnmarshalJSON(data []byte) e
 	}
 }
 
-// GetDestinationsQueryParam1 - Sort direction
 type GetDestinationsQueryParam1 string
 
 const (
@@ -289,6 +288,7 @@ const (
 	GetDestinationsQueryParamDirTypeArrayOfgetDestinationsQueryParamDestinationsDir2 GetDestinationsQueryParamDirType = "arrayOfgetDestinations_queryParam_Destinations_dir_2"
 )
 
+// GetDestinationsQueryParamDir - Sort direction
 type GetDestinationsQueryParamDir struct {
 	GetDestinationsQueryParam1                       *GetDestinationsQueryParam1
 	ArrayOfgetDestinationsQueryParamDestinationsDir2 []GetDestinationsQueryParamDestinationsDir2
@@ -352,6 +352,7 @@ const (
 	GetDestinationsQueryParamIDTypeArrayOfstr GetDestinationsQueryParamIDType = "arrayOfstr"
 )
 
+// GetDestinationsQueryParamID - Filter by destination IDs
 type GetDestinationsQueryParamID struct {
 	Str        *string
 	ArrayOfstr []string
@@ -408,7 +409,6 @@ func (u GetDestinationsQueryParamID) MarshalJSON() ([]byte, error) {
 	return nil, errors.New("could not marshal union type: all fields are null")
 }
 
-// GetDestinationsQueryParamDestinationsName2 - The destination name
 type GetDestinationsQueryParamDestinationsName2 struct {
 	Any      *bool   `queryParam:"name=any"`
 	Contains *string `queryParam:"name=contains"`
@@ -467,6 +467,7 @@ const (
 	GetDestinationsQueryParamNameTypeGetDestinationsQueryParamDestinationsName2 GetDestinationsQueryParamNameType = "getDestinations_queryParam_Destinations_name_2"
 )
 
+// GetDestinationsQueryParamName - The destination name
 type GetDestinationsQueryParamName struct {
 	Str                                        *string
 	GetDestinationsQueryParamDestinationsName2 *GetDestinationsQueryParamDestinationsName2
@@ -547,7 +548,6 @@ func (e *GetDestinationsQueryParamDestinationsOrderBy2) UnmarshalJSON(data []byt
 	}
 }
 
-// GetDestinationsQueryParamDestinations1 - Sort key(s)
 type GetDestinationsQueryParamDestinations1 string
 
 const (
@@ -579,6 +579,7 @@ const (
 	GetDestinationsQueryParamOrderByTypeArrayOfgetDestinationsQueryParamDestinationsOrderBy2 GetDestinationsQueryParamOrderByType = "arrayOfgetDestinations_queryParam_Destinations_order_by_2"
 )
 
+// GetDestinationsQueryParamOrderBy - Sort key(s)
 type GetDestinationsQueryParamOrderBy struct {
 	GetDestinationsQueryParamDestinations1               *GetDestinationsQueryParamDestinations1
 	ArrayOfgetDestinationsQueryParamDestinationsOrderBy2 []GetDestinationsQueryParamDestinationsOrderBy2
@@ -642,6 +643,7 @@ const (
 	URLTypeArrayOfstr URLType = "arrayOfstr"
 )
 
+// URL - HTTP endpoint of the destination
 type URL struct {
 	Str        *string
 	ArrayOfstr []string
@@ -699,17 +701,24 @@ func (u URL) MarshalJSON() ([]byte, error) {
 }
 
 type GetDestinationsRequest struct {
-	Archived   *bool                             `queryParam:"style=form,explode=true,name=archived"`
-	ArchivedAt *QueryParamArchivedAt             `queryParam:"style=form,explode=true,name=archived_at"`
-	CliPath    *CliPath                          `queryParam:"style=form,explode=true,name=cli_path"`
-	Dir        *GetDestinationsQueryParamDir     `queryParam:"style=form,explode=true,name=dir"`
-	ID         *GetDestinationsQueryParamID      `queryParam:"style=form,explode=true,name=id"`
-	Limit      *int64                            `queryParam:"style=form,explode=true,name=limit"`
-	Name       *GetDestinationsQueryParamName    `queryParam:"style=form,explode=true,name=name"`
-	Next       *string                           `queryParam:"style=form,explode=true,name=next"`
-	OrderBy    *GetDestinationsQueryParamOrderBy `queryParam:"style=form,explode=true,name=order_by"`
-	Prev       *string                           `queryParam:"style=form,explode=true,name=prev"`
-	URL        *URL                              `queryParam:"style=form,explode=true,name=url"`
+	Archived *bool `queryParam:"style=form,explode=true,name=archived"`
+	// Date the destination was archived
+	ArchivedAt *QueryParamArchivedAt `queryParam:"style=form,explode=true,name=archived_at"`
+	// Path for the CLI destination
+	CliPath *CliPath `queryParam:"style=form,explode=true,name=cli_path"`
+	// Sort direction
+	Dir *GetDestinationsQueryParamDir `queryParam:"style=form,explode=true,name=dir"`
+	// Filter by destination IDs
+	ID    *GetDestinationsQueryParamID `queryParam:"style=form,explode=true,name=id"`
+	Limit *int64                       `queryParam:"style=form,explode=true,name=limit"`
+	// The destination name
+	Name *GetDestinationsQueryParamName `queryParam:"style=form,explode=true,name=name"`
+	Next *string                        `queryParam:"style=form,explode=true,name=next"`
+	// Sort key(s)
+	OrderBy *GetDestinationsQueryParamOrderBy `queryParam:"style=form,explode=true,name=order_by"`
+	Prev    *string                           `queryParam:"style=form,explode=true,name=prev"`
+	// HTTP endpoint of the destination
+	URL *URL `queryParam:"style=form,explode=true,name=url"`
 }
 
 func (o *GetDestinationsRequest) GetArchived() *bool {

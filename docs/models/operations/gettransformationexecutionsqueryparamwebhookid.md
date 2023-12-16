@@ -1,5 +1,7 @@
 # GetTransformationExecutionsQueryParamWebhookID
 
+ID of the connection the execution was run for
+
 
 ## Supported Types
 

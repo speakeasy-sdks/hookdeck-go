@@ -1,7 +1,5 @@
 # GetIgnoredEventBulkRetriesQueryParam1
 
-Sort direction
-
 
 ## Values
 

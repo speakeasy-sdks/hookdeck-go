@@ -1,7 +1,5 @@
 # GetRulesetsQueryParamRulesetsOrderBy1
 
-Sort key(s)
-
 
 ## Values
 

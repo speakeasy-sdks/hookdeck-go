@@ -12,7 +12,6 @@ import (
 	"time"
 )
 
-// GetIgnoredEventBulkRetriesQueryParam2 - Filter by date the bulk retry was cancelled
 type GetIgnoredEventBulkRetriesQueryParam2 struct {
 	Any *bool      `queryParam:"name=any"`
 	Gt  *time.Time `queryParam:"name=gt"`
@@ -74,6 +73,7 @@ const (
 	QueryParamCancelledAtTypeGetIgnoredEventBulkRetriesQueryParam2 QueryParamCancelledAtType = "getIgnoredEventBulkRetries_queryParam_2"
 )
 
+// QueryParamCancelledAt - Filter by date the bulk retry was cancelled
 type QueryParamCancelledAt struct {
 	DateTime                              *time.Time
 	GetIgnoredEventBulkRetriesQueryParam2 *GetIgnoredEventBulkRetriesQueryParam2
@@ -130,7 +130,6 @@ func (u QueryParamCancelledAt) MarshalJSON() ([]byte, error) {
 	return nil, errors.New("could not marshal union type: all fields are null")
 }
 
-// GetIgnoredEventBulkRetriesQueryParamBulkRetryIgnoredEvents2 - Filter by date the bulk retry completed
 type GetIgnoredEventBulkRetriesQueryParamBulkRetryIgnoredEvents2 struct {
 	Any *bool      `queryParam:"name=any"`
 	Gt  *time.Time `queryParam:"name=gt"`
@@ -192,6 +191,7 @@ const (
 	QueryParamCompletedAtTypeGetIgnoredEventBulkRetriesQueryParamBulkRetryIgnoredEvents2 QueryParamCompletedAtType = "getIgnoredEventBulkRetries_queryParam_BulkRetryIgnoredEvents_2"
 )
 
+// QueryParamCompletedAt - Filter by date the bulk retry completed
 type QueryParamCompletedAt struct {
 	DateTime                                                    *time.Time
 	GetIgnoredEventBulkRetriesQueryParamBulkRetryIgnoredEvents2 *GetIgnoredEventBulkRetriesQueryParamBulkRetryIgnoredEvents2
@@ -248,7 +248,6 @@ func (u QueryParamCompletedAt) MarshalJSON() ([]byte, error) {
 	return nil, errors.New("could not marshal union type: all fields are null")
 }
 
-// GetIgnoredEventBulkRetriesQueryParamBulkRetryIgnoredEventsCreatedAt2 - Filter by date the bulk retry was created
 type GetIgnoredEventBulkRetriesQueryParamBulkRetryIgnoredEventsCreatedAt2 struct {
 	Any *bool      `queryParam:"name=any"`
 	Gt  *time.Time `queryParam:"name=gt"`
@@ -310,6 +309,7 @@ const (
 	GetIgnoredEventBulkRetriesQueryParamCreatedAtTypeGetIgnoredEventBulkRetriesQueryParamBulkRetryIgnoredEventsCreatedAt2 GetIgnoredEventBulkRetriesQueryParamCreatedAtType = "getIgnoredEventBulkRetries_queryParam_BulkRetryIgnoredEvents_created_at_2"
 )
 
+// GetIgnoredEventBulkRetriesQueryParamCreatedAt - Filter by date the bulk retry was created
 type GetIgnoredEventBulkRetriesQueryParamCreatedAt struct {
 	DateTime                                                             *time.Time
 	GetIgnoredEventBulkRetriesQueryParamBulkRetryIgnoredEventsCreatedAt2 *GetIgnoredEventBulkRetriesQueryParamBulkRetryIgnoredEventsCreatedAt2
@@ -393,7 +393,6 @@ func (e *GetIgnoredEventBulkRetriesQueryParamBulkRetryIgnoredEventsDir2) Unmarsh
 	}
 }
 
-// GetIgnoredEventBulkRetriesQueryParam1 - Sort direction
 type GetIgnoredEventBulkRetriesQueryParam1 string
 
 const (
@@ -428,6 +427,7 @@ const (
 	GetIgnoredEventBulkRetriesQueryParamDirTypeArrayOfgetIgnoredEventBulkRetriesQueryParamBulkRetryIgnoredEventsDir2 GetIgnoredEventBulkRetriesQueryParamDirType = "arrayOfgetIgnoredEventBulkRetries_queryParam_BulkRetryIgnoredEvents_dir_2"
 )
 
+// GetIgnoredEventBulkRetriesQueryParamDir - Sort direction
 type GetIgnoredEventBulkRetriesQueryParamDir struct {
 	GetIgnoredEventBulkRetriesQueryParam1                                 *GetIgnoredEventBulkRetriesQueryParam1
 	ArrayOfgetIgnoredEventBulkRetriesQueryParamBulkRetryIgnoredEventsDir2 []GetIgnoredEventBulkRetriesQueryParamBulkRetryIgnoredEventsDir2
@@ -491,6 +491,7 @@ const (
 	GetIgnoredEventBulkRetriesQueryParamIDTypeArrayOfstr GetIgnoredEventBulkRetriesQueryParamIDType = "arrayOfstr"
 )
 
+// GetIgnoredEventBulkRetriesQueryParamID - Filter by bulk retry IDs
 type GetIgnoredEventBulkRetriesQueryParamID struct {
 	Str        *string
 	ArrayOfstr []string
@@ -571,7 +572,6 @@ func (e *GetIgnoredEventBulkRetriesQueryParamBulkRetryIgnoredEventsOrderBy2) Unm
 	}
 }
 
-// GetIgnoredEventBulkRetriesQueryParamBulkRetryIgnoredEvents1 - Sort key(s)
 type GetIgnoredEventBulkRetriesQueryParamBulkRetryIgnoredEvents1 string
 
 const (
@@ -603,6 +603,7 @@ const (
 	GetIgnoredEventBulkRetriesQueryParamOrderByTypeArrayOfgetIgnoredEventBulkRetriesQueryParamBulkRetryIgnoredEventsOrderBy2 GetIgnoredEventBulkRetriesQueryParamOrderByType = "arrayOfgetIgnoredEventBulkRetries_queryParam_BulkRetryIgnoredEvents_order_by_2"
 )
 
+// GetIgnoredEventBulkRetriesQueryParamOrderBy - Sort key(s)
 type GetIgnoredEventBulkRetriesQueryParamOrderBy struct {
 	GetIgnoredEventBulkRetriesQueryParamBulkRetryIgnoredEvents1               *GetIgnoredEventBulkRetriesQueryParamBulkRetryIgnoredEvents1
 	ArrayOfgetIgnoredEventBulkRetriesQueryParamBulkRetryIgnoredEventsOrderBy2 []GetIgnoredEventBulkRetriesQueryParamBulkRetryIgnoredEventsOrderBy2
@@ -666,6 +667,7 @@ const (
 	GetIgnoredEventBulkRetriesQueryParamCauseTypeArrayOfstr GetIgnoredEventBulkRetriesQueryParamCauseType = "arrayOfstr"
 )
 
+// GetIgnoredEventBulkRetriesQueryParamCause - The cause of the ignored event
 type GetIgnoredEventBulkRetriesQueryParamCause struct {
 	Str        *string
 	ArrayOfstr []string
@@ -729,6 +731,7 @@ const (
 	GetIgnoredEventBulkRetriesQueryParamWebhookIDTypeArrayOfstr GetIgnoredEventBulkRetriesQueryParamWebhookIDType = "arrayOfstr"
 )
 
+// GetIgnoredEventBulkRetriesQueryParamWebhookID - Connection ID of the ignored event
 type GetIgnoredEventBulkRetriesQueryParamWebhookID struct {
 	Str        *string
 	ArrayOfstr []string
@@ -817,16 +820,22 @@ func (o *GetIgnoredEventBulkRetriesQueryParamQuery) GetWebhookID() *GetIgnoredEv
 }
 
 type GetIgnoredEventBulkRetriesRequest struct {
-	CancelledAt *QueryParamCancelledAt                         `queryParam:"style=form,explode=true,name=cancelled_at"`
-	CompletedAt *QueryParamCompletedAt                         `queryParam:"style=form,explode=true,name=completed_at"`
-	CreatedAt   *GetIgnoredEventBulkRetriesQueryParamCreatedAt `queryParam:"style=form,explode=true,name=created_at"`
-	Dir         *GetIgnoredEventBulkRetriesQueryParamDir       `queryParam:"style=form,explode=true,name=dir"`
-	ID          *GetIgnoredEventBulkRetriesQueryParamID        `queryParam:"style=form,explode=true,name=id"`
-	InProgress  *bool                                          `queryParam:"style=form,explode=true,name=in_progress"`
-	Limit       *int64                                         `queryParam:"style=form,explode=true,name=limit"`
-	Next        *string                                        `queryParam:"style=form,explode=true,name=next"`
-	OrderBy     *GetIgnoredEventBulkRetriesQueryParamOrderBy   `queryParam:"style=form,explode=true,name=order_by"`
-	Prev        *string                                        `queryParam:"style=form,explode=true,name=prev"`
+	// Filter by date the bulk retry was cancelled
+	CancelledAt *QueryParamCancelledAt `queryParam:"style=form,explode=true,name=cancelled_at"`
+	// Filter by date the bulk retry completed
+	CompletedAt *QueryParamCompletedAt `queryParam:"style=form,explode=true,name=completed_at"`
+	// Filter by date the bulk retry was created
+	CreatedAt *GetIgnoredEventBulkRetriesQueryParamCreatedAt `queryParam:"style=form,explode=true,name=created_at"`
+	// Sort direction
+	Dir *GetIgnoredEventBulkRetriesQueryParamDir `queryParam:"style=form,explode=true,name=dir"`
+	// Filter by bulk retry IDs
+	ID         *GetIgnoredEventBulkRetriesQueryParamID `queryParam:"style=form,explode=true,name=id"`
+	InProgress *bool                                   `queryParam:"style=form,explode=true,name=in_progress"`
+	Limit      *int64                                  `queryParam:"style=form,explode=true,name=limit"`
+	Next       *string                                 `queryParam:"style=form,explode=true,name=next"`
+	// Sort key(s)
+	OrderBy *GetIgnoredEventBulkRetriesQueryParamOrderBy `queryParam:"style=form,explode=true,name=order_by"`
+	Prev    *string                                      `queryParam:"style=form,explode=true,name=prev"`
 	// Filter by the bulk retry ignored event query object
 	Query             *GetIgnoredEventBulkRetriesQueryParamQuery `queryParam:"style=form,explode=true,name=query"`
 	QueryPartialMatch *bool                                      `queryParam:"style=form,explode=true,name=query_partial_match"`

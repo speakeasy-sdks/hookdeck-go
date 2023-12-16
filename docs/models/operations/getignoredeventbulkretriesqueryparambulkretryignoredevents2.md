@@ -1,7 +1,5 @@
 # GetIgnoredEventBulkRetriesQueryParamBulkRetryIgnoredEvents2
 
-Filter by date the bulk retry completed
-
 
 ## Fields
 

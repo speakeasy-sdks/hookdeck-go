@@ -1,5 +1,7 @@
 # GetEventsQueryParamID
 
+Filter by event IDs
+
 
 ## Supported Types
 

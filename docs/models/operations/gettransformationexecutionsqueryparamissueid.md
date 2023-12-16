@@ -1,5 +1,7 @@
 # GetTransformationExecutionsQueryParamIssueID
 
+ID of the associated issue
+
 
 ## Supported Types
 

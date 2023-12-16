@@ -1,5 +1,7 @@
 # GetTransformationsQueryParamName
 
+Filter by transformation name
+
 
 ## Supported Types
 

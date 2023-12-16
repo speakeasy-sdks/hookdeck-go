@@ -1,5 +1,7 @@
 # MergedWith
 
+Filter by Merged Issue IDs
+
 
 ## Supported Types
 

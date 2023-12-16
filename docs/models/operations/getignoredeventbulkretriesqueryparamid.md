@@ -1,5 +1,7 @@
 # GetIgnoredEventBulkRetriesQueryParamID
 
+Filter by bulk retry IDs
+
 
 ## Supported Types
 

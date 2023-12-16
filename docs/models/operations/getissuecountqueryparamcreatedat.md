@@ -1,5 +1,7 @@
 # GetIssueCountQueryParamCreatedAt
 
+Filter by created dates
+
 
 ## Supported Types
 

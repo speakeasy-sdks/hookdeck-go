@@ -47,7 +47,7 @@ func main() {
                 ChannelName: "string",
             },
         },
-        Configs: operations.CreateConfigsIssueTriggerTransformationConfigs(
+        Configs: operations.CreateCreateIssueTriggerConfigsIssueTriggerTransformationConfigs(
                 components.IssueTriggerTransformationConfigs{
                     LogLevel: components.TransformationExecutionLogLevelWarn,
                     Transformations: components.CreateTransformationsArrayOfstr(

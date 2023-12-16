@@ -7,21 +7,21 @@ import (
 	"github.com/speakeasy-sdks/hookdeck-go/internal/utils"
 )
 
-type Two struct {
+type ShortEventData2 struct {
 }
 
 type ShortEventDataBodyType string
 
 const (
-	ShortEventDataBodyTypeStr        ShortEventDataBodyType = "str"
-	ShortEventDataBodyTypeTwo        ShortEventDataBodyType = "2"
-	ShortEventDataBodyTypeArrayOfany ShortEventDataBodyType = "arrayOfany"
+	ShortEventDataBodyTypeStr             ShortEventDataBodyType = "str"
+	ShortEventDataBodyTypeShortEventData2 ShortEventDataBodyType = "ShortEventData_2"
+	ShortEventDataBodyTypeArrayOfany      ShortEventDataBodyType = "arrayOfany"
 )
 
 type ShortEventDataBody struct {
-	Str        *string
-	Two        *Two
-	ArrayOfany []interface{}
+	Str             *string
+	ShortEventData2 *ShortEventData2
+	ArrayOfany      []interface{}
 
 	Type ShortEventDataBodyType
 }
@@ -35,12 +35,12 @@ func CreateShortEventDataBodyStr(str string) ShortEventDataBody {
 	}
 }
 
-func CreateShortEventDataBodyTwo(two Two) ShortEventDataBody {
-	typ := ShortEventDataBodyTypeTwo
+func CreateShortEventDataBodyShortEventData2(shortEventData2 ShortEventData2) ShortEventDataBody {
+	typ := ShortEventDataBodyTypeShortEventData2
 
 	return ShortEventDataBody{
-		Two:  &two,
-		Type: typ,
+		ShortEventData2: &shortEventData2,
+		Type:            typ,
 	}
 }
 
@@ -55,10 +55,10 @@ func CreateShortEventDataBodyArrayOfany(arrayOfany []interface{}) ShortEventData
 
 func (u *ShortEventDataBody) UnmarshalJSON(data []byte) error {
 
-	two := Two{}
-	if err := utils.UnmarshalJSON(data, &two, "", true, true); err == nil {
-		u.Two = &two
-		u.Type = ShortEventDataBodyTypeTwo
+	shortEventData2 := ShortEventData2{}
+	if err := utils.UnmarshalJSON(data, &shortEventData2, "", true, true); err == nil {
+		u.ShortEventData2 = &shortEventData2
+		u.Type = ShortEventDataBodyTypeShortEventData2
 		return nil
 	}
 
@@ -84,8 +84,8 @@ func (u ShortEventDataBody) MarshalJSON() ([]byte, error) {
 		return utils.MarshalJSON(u.Str, "", true)
 	}
 
-	if u.Two != nil {
-		return utils.MarshalJSON(u.Two, "", true)
+	if u.ShortEventData2 != nil {
+		return utils.MarshalJSON(u.ShortEventData2, "", true)
 	}
 
 	if u.ArrayOfany != nil {
@@ -158,19 +158,19 @@ func (u Headers) MarshalJSON() ([]byte, error) {
 	return nil, errors.New("could not marshal union type: all fields are null")
 }
 
-type ShortEventData2 struct {
+type ShortEventDataSchemas2 struct {
 }
 
 type ParsedQueryType string
 
 const (
-	ParsedQueryTypeStr             ParsedQueryType = "str"
-	ParsedQueryTypeShortEventData2 ParsedQueryType = "ShortEventData_2"
+	ParsedQueryTypeStr                    ParsedQueryType = "str"
+	ParsedQueryTypeShortEventDataSchemas2 ParsedQueryType = "ShortEventData_Schemas_2"
 )
 
 type ParsedQuery struct {
-	Str             *string
-	ShortEventData2 *ShortEventData2
+	Str                    *string
+	ShortEventDataSchemas2 *ShortEventDataSchemas2
 
 	Type ParsedQueryType
 }
@@ -184,21 +184,21 @@ func CreateParsedQueryStr(str string) ParsedQuery {
 	}
 }
 
-func CreateParsedQueryShortEventData2(shortEventData2 ShortEventData2) ParsedQuery {
-	typ := ParsedQueryTypeShortEventData2
+func CreateParsedQueryShortEventDataSchemas2(shortEventDataSchemas2 ShortEventDataSchemas2) ParsedQuery {
+	typ := ParsedQueryTypeShortEventDataSchemas2
 
 	return ParsedQuery{
-		ShortEventData2: &shortEventData2,
-		Type:            typ,
+		ShortEventDataSchemas2: &shortEventDataSchemas2,
+		Type:                   typ,
 	}
 }
 
 func (u *ParsedQuery) UnmarshalJSON(data []byte) error {
 
-	shortEventData2 := ShortEventData2{}
-	if err := utils.UnmarshalJSON(data, &shortEventData2, "", true, true); err == nil {
-		u.ShortEventData2 = &shortEventData2
-		u.Type = ParsedQueryTypeShortEventData2
+	shortEventDataSchemas2 := ShortEventDataSchemas2{}
+	if err := utils.UnmarshalJSON(data, &shortEventDataSchemas2, "", true, true); err == nil {
+		u.ShortEventDataSchemas2 = &shortEventDataSchemas2
+		u.Type = ParsedQueryTypeShortEventDataSchemas2
 		return nil
 	}
 
@@ -217,8 +217,8 @@ func (u ParsedQuery) MarshalJSON() ([]byte, error) {
 		return utils.MarshalJSON(u.Str, "", true)
 	}
 
-	if u.ShortEventData2 != nil {
-		return utils.MarshalJSON(u.ShortEventData2, "", true)
+	if u.ShortEventDataSchemas2 != nil {
+		return utils.MarshalJSON(u.ShortEventDataSchemas2, "", true)
 	}
 
 	return nil, errors.New("could not marshal union type: all fields are null")

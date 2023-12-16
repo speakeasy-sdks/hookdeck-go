@@ -1,5 +1,7 @@
 # CliID
 
+Filter by CLI IDs. `?[any]=true` operator for any CLI.
+
 
 ## Supported Types
 

@@ -1,7 +1,5 @@
 # GetIssueCountQueryParamIssuesCount1
 
-Sort key(s)
-
 
 ## Values
 

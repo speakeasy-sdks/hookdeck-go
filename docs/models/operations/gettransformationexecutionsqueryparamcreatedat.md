@@ -1,5 +1,7 @@
 # GetTransformationExecutionsQueryParamCreatedAt
 
+ISO date of the transformation's execution
+
 
 ## Supported Types
 

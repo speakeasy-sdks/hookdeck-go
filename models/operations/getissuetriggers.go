@@ -39,7 +39,6 @@ func (e *GetIssueTriggersQueryParam2) UnmarshalJSON(data []byte) error {
 	}
 }
 
-// GetIssueTriggersQueryParam1 - Sort direction
 type GetIssueTriggersQueryParam1 string
 
 const (
@@ -74,6 +73,7 @@ const (
 	GetIssueTriggersQueryParamDirTypeArrayOfgetIssueTriggersQueryParam2 GetIssueTriggersQueryParamDirType = "arrayOfgetIssueTriggers_queryParam_2"
 )
 
+// GetIssueTriggersQueryParamDir - Sort direction
 type GetIssueTriggersQueryParamDir struct {
 	GetIssueTriggersQueryParam1        *GetIssueTriggersQueryParam1
 	ArrayOfgetIssueTriggersQueryParam2 []GetIssueTriggersQueryParam2
@@ -130,7 +130,6 @@ func (u GetIssueTriggersQueryParamDir) MarshalJSON() ([]byte, error) {
 	return nil, errors.New("could not marshal union type: all fields are null")
 }
 
-// GetIssueTriggersQueryParamIssueTriggers2 - Date when the issue trigger was disabled
 type GetIssueTriggersQueryParamIssueTriggers2 struct {
 	Any *bool      `queryParam:"name=any"`
 	Gt  *time.Time `queryParam:"name=gt"`
@@ -192,6 +191,7 @@ const (
 	DisabledAtTypeGetIssueTriggersQueryParamIssueTriggers2 DisabledAtType = "getIssueTriggers_queryParam_IssueTriggers_2"
 )
 
+// DisabledAt - Date when the issue trigger was disabled
 type DisabledAt struct {
 	DateTime                                 *time.Time
 	GetIssueTriggersQueryParamIssueTriggers2 *GetIssueTriggersQueryParamIssueTriggers2
@@ -275,7 +275,6 @@ func (e *GetIssueTriggersQueryParamIssueTriggersOrderBy2) UnmarshalJSON(data []b
 	}
 }
 
-// GetIssueTriggersQueryParamIssueTriggers1 - Sort key(s)
 type GetIssueTriggersQueryParamIssueTriggers1 string
 
 const (
@@ -310,6 +309,7 @@ const (
 	GetIssueTriggersQueryParamOrderByTypeArrayOfgetIssueTriggersQueryParamIssueTriggersOrderBy2 GetIssueTriggersQueryParamOrderByType = "arrayOfgetIssueTriggers_queryParam_IssueTriggers_order_by_2"
 )
 
+// GetIssueTriggersQueryParamOrderBy - Sort key(s)
 type GetIssueTriggersQueryParamOrderBy struct {
 	GetIssueTriggersQueryParamIssueTriggers1               *GetIssueTriggersQueryParamIssueTriggers1
 	ArrayOfgetIssueTriggersQueryParamIssueTriggersOrderBy2 []GetIssueTriggersQueryParamIssueTriggersOrderBy2
@@ -367,13 +367,16 @@ func (u GetIssueTriggersQueryParamOrderBy) MarshalJSON() ([]byte, error) {
 }
 
 type GetIssueTriggersRequest struct {
-	Dir        *GetIssueTriggersQueryParamDir     `queryParam:"style=form,explode=true,name=dir"`
-	DisabledAt *DisabledAt                        `queryParam:"style=form,explode=true,name=disabled_at"`
-	Limit      *int64                             `queryParam:"style=form,explode=true,name=limit"`
-	Name       *string                            `queryParam:"style=form,explode=true,name=name"`
-	Next       *string                            `queryParam:"style=form,explode=true,name=next"`
-	OrderBy    *GetIssueTriggersQueryParamOrderBy `queryParam:"style=form,explode=true,name=order_by"`
-	Prev       *string                            `queryParam:"style=form,explode=true,name=prev"`
+	// Sort direction
+	Dir *GetIssueTriggersQueryParamDir `queryParam:"style=form,explode=true,name=dir"`
+	// Date when the issue trigger was disabled
+	DisabledAt *DisabledAt `queryParam:"style=form,explode=true,name=disabled_at"`
+	Limit      *int64      `queryParam:"style=form,explode=true,name=limit"`
+	Name       *string     `queryParam:"style=form,explode=true,name=name"`
+	Next       *string     `queryParam:"style=form,explode=true,name=next"`
+	// Sort key(s)
+	OrderBy *GetIssueTriggersQueryParamOrderBy `queryParam:"style=form,explode=true,name=order_by"`
+	Prev    *string                            `queryParam:"style=form,explode=true,name=prev"`
 	// Issue type
 	Type *components.IssueType `queryParam:"style=form,explode=true,name=type"`
 }

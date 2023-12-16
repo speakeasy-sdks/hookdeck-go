@@ -1,5 +1,7 @@
 # GetSourcesQueryParamArchivedAt
 
+Date the source was archived
+
 
 ## Supported Types
 

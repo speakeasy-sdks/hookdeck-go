@@ -1,5 +1,7 @@
 # CreateRequestBulkRetryID
 
+Filter by requests IDs
+
 
 ## Supported Types
 

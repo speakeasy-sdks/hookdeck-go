@@ -1,5 +1,7 @@
 # GetDestinationsQueryParamName
 
+The destination name
+
 
 ## Supported Types
 

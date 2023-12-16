@@ -1,5 +1,7 @@
 # DismissedAt
 
+Filter by dismissed dates
+
 
 ## Supported Types
 

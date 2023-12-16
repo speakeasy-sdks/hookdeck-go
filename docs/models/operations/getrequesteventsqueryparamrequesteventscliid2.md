@@ -1,7 +1,5 @@
 # GetRequestEventsQueryParamRequestEventsCliID2
 
-Filter by CLI IDs. `?[any]=true` operator for any CLI.
-
 
 ## Fields
 

@@ -1,7 +1,5 @@
 # GetTransformationExecutionsQueryParam2
 
-ISO date of the transformation's execution
-
 
 ## Fields
 

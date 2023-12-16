@@ -12,7 +12,6 @@ import (
 	"time"
 )
 
-// GetTransformationExecutionsQueryParam2 - ISO date of the transformation's execution
 type GetTransformationExecutionsQueryParam2 struct {
 	Any *bool      `queryParam:"name=any"`
 	Gt  *time.Time `queryParam:"name=gt"`
@@ -74,6 +73,7 @@ const (
 	GetTransformationExecutionsQueryParamCreatedAtTypeGetTransformationExecutionsQueryParam2 GetTransformationExecutionsQueryParamCreatedAtType = "getTransformationExecutions_queryParam_2"
 )
 
+// GetTransformationExecutionsQueryParamCreatedAt - ISO date of the transformation's execution
 type GetTransformationExecutionsQueryParamCreatedAt struct {
 	DateTime                               *time.Time
 	GetTransformationExecutionsQueryParam2 *GetTransformationExecutionsQueryParam2
@@ -157,7 +157,6 @@ func (e *GetTransformationExecutionsQueryParamTransformationExecutions2) Unmarsh
 	}
 }
 
-// GetTransformationExecutionsQueryParam1 - Sort direction
 type GetTransformationExecutionsQueryParam1 string
 
 const (
@@ -192,6 +191,7 @@ const (
 	GetTransformationExecutionsQueryParamDirTypeArrayOfgetTransformationExecutionsQueryParamTransformationExecutions2 GetTransformationExecutionsQueryParamDirType = "arrayOfgetTransformationExecutions_queryParam_TransformationExecutions_2"
 )
 
+// GetTransformationExecutionsQueryParamDir - Sort direction
 type GetTransformationExecutionsQueryParamDir struct {
 	GetTransformationExecutionsQueryParam1                                *GetTransformationExecutionsQueryParam1
 	ArrayOfgetTransformationExecutionsQueryParamTransformationExecutions2 []GetTransformationExecutionsQueryParamTransformationExecutions2
@@ -255,6 +255,7 @@ const (
 	GetTransformationExecutionsQueryParamIssueIDTypeArrayOfstr GetTransformationExecutionsQueryParamIssueIDType = "arrayOfstr"
 )
 
+// GetTransformationExecutionsQueryParamIssueID - ID of the associated issue
 type GetTransformationExecutionsQueryParamIssueID struct {
 	Str        *string
 	ArrayOfstr []string
@@ -350,7 +351,6 @@ func (e *GetTransformationExecutionsQueryParamTransformationExecutionsLogLevel2)
 	}
 }
 
-// GetTransformationExecutionsQueryParamTransformationExecutions1 - Log level of the execution
 type GetTransformationExecutionsQueryParamTransformationExecutions1 string
 
 const (
@@ -397,6 +397,7 @@ const (
 	LogLevelTypeArrayOfgetTransformationExecutionsQueryParamTransformationExecutionsLogLevel2 LogLevelType = "arrayOfgetTransformationExecutions_queryParam_TransformationExecutions_log_level_2"
 )
 
+// LogLevel - Log level of the execution
 type LogLevel struct {
 	GetTransformationExecutionsQueryParamTransformationExecutions1                *GetTransformationExecutionsQueryParamTransformationExecutions1
 	ArrayOfgetTransformationExecutionsQueryParamTransformationExecutionsLogLevel2 []GetTransformationExecutionsQueryParamTransformationExecutionsLogLevel2
@@ -477,7 +478,6 @@ func (e *GetTransformationExecutionsQueryParamTransformationExecutionsOrderBy2) 
 	}
 }
 
-// GetTransformationExecutionsQueryParamTransformationExecutionsOrderBy1 - Sort key(s)
 type GetTransformationExecutionsQueryParamTransformationExecutionsOrderBy1 string
 
 const (
@@ -509,6 +509,7 @@ const (
 	GetTransformationExecutionsQueryParamOrderByTypeArrayOfgetTransformationExecutionsQueryParamTransformationExecutionsOrderBy2 GetTransformationExecutionsQueryParamOrderByType = "arrayOfgetTransformationExecutions_queryParam_TransformationExecutions_order_by_2"
 )
 
+// GetTransformationExecutionsQueryParamOrderBy - Sort key(s)
 type GetTransformationExecutionsQueryParamOrderBy struct {
 	GetTransformationExecutionsQueryParamTransformationExecutionsOrderBy1        *GetTransformationExecutionsQueryParamTransformationExecutionsOrderBy1
 	ArrayOfgetTransformationExecutionsQueryParamTransformationExecutionsOrderBy2 []GetTransformationExecutionsQueryParamTransformationExecutionsOrderBy2
@@ -572,6 +573,7 @@ const (
 	GetTransformationExecutionsQueryParamWebhookIDTypeArrayOfstr GetTransformationExecutionsQueryParamWebhookIDType = "arrayOfstr"
 )
 
+// GetTransformationExecutionsQueryParamWebhookID - ID of the connection the execution was run for
 type GetTransformationExecutionsQueryParamWebhookID struct {
 	Str        *string
 	ArrayOfstr []string
@@ -629,15 +631,21 @@ func (u GetTransformationExecutionsQueryParamWebhookID) MarshalJSON() ([]byte, e
 }
 
 type GetTransformationExecutionsRequest struct {
+	// ISO date of the transformation's execution
 	CreatedAt *GetTransformationExecutionsQueryParamCreatedAt `queryParam:"style=form,explode=true,name=created_at"`
-	Dir       *GetTransformationExecutionsQueryParamDir       `queryParam:"style=form,explode=true,name=dir"`
-	ID        string                                          `pathParam:"style=simple,explode=false,name=id"`
-	IssueID   *GetTransformationExecutionsQueryParamIssueID   `queryParam:"style=form,explode=true,name=issue_id"`
-	Limit     *int64                                          `queryParam:"style=form,explode=true,name=limit"`
-	LogLevel  *LogLevel                                       `queryParam:"style=form,explode=true,name=log_level"`
-	Next      *string                                         `queryParam:"style=form,explode=true,name=next"`
-	OrderBy   *GetTransformationExecutionsQueryParamOrderBy   `queryParam:"style=form,explode=true,name=order_by"`
-	Prev      *string                                         `queryParam:"style=form,explode=true,name=prev"`
+	// Sort direction
+	Dir *GetTransformationExecutionsQueryParamDir `queryParam:"style=form,explode=true,name=dir"`
+	ID  string                                    `pathParam:"style=simple,explode=false,name=id"`
+	// ID of the associated issue
+	IssueID *GetTransformationExecutionsQueryParamIssueID `queryParam:"style=form,explode=true,name=issue_id"`
+	Limit   *int64                                        `queryParam:"style=form,explode=true,name=limit"`
+	// Log level of the execution
+	LogLevel *LogLevel `queryParam:"style=form,explode=true,name=log_level"`
+	Next     *string   `queryParam:"style=form,explode=true,name=next"`
+	// Sort key(s)
+	OrderBy *GetTransformationExecutionsQueryParamOrderBy `queryParam:"style=form,explode=true,name=order_by"`
+	Prev    *string                                       `queryParam:"style=form,explode=true,name=prev"`
+	// ID of the connection the execution was run for
 	WebhookID *GetTransformationExecutionsQueryParamWebhookID `queryParam:"style=form,explode=true,name=webhook_id"`
 }
 

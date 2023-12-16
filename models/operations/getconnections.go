@@ -12,7 +12,6 @@ import (
 	"time"
 )
 
-// GetConnectionsQueryParam2 - Date the connection was archived
 type GetConnectionsQueryParam2 struct {
 	Any *bool      `queryParam:"name=any"`
 	Gt  *time.Time `queryParam:"name=gt"`
@@ -74,6 +73,7 @@ const (
 	ArchivedAtTypeGetConnectionsQueryParam2 ArchivedAtType = "getConnections_queryParam_2"
 )
 
+// ArchivedAt - Date the connection was archived
 type ArchivedAt struct {
 	DateTime                  *time.Time
 	GetConnectionsQueryParam2 *GetConnectionsQueryParam2
@@ -137,6 +137,7 @@ const (
 	GetConnectionsQueryParamDestinationIDTypeArrayOfstr GetConnectionsQueryParamDestinationIDType = "arrayOfstr"
 )
 
+// GetConnectionsQueryParamDestinationID - Filter by associated destination IDs
 type GetConnectionsQueryParamDestinationID struct {
 	Str        *string
 	ArrayOfstr []string
@@ -220,7 +221,6 @@ func (e *GetConnectionsQueryParamConnections2) UnmarshalJSON(data []byte) error 
 	}
 }
 
-// GetConnectionsQueryParam1 - Sort direction
 type GetConnectionsQueryParam1 string
 
 const (
@@ -255,6 +255,7 @@ const (
 	GetConnectionsQueryParamDirTypeArrayOfgetConnectionsQueryParamConnections2 GetConnectionsQueryParamDirType = "arrayOfgetConnections_queryParam_Connections_2"
 )
 
+// GetConnectionsQueryParamDir - Sort direction
 type GetConnectionsQueryParamDir struct {
 	GetConnectionsQueryParam1                   *GetConnectionsQueryParam1
 	ArrayOfgetConnectionsQueryParamConnections2 []GetConnectionsQueryParamConnections2
@@ -318,6 +319,7 @@ const (
 	GetConnectionsQueryParamIDTypeArrayOfstr GetConnectionsQueryParamIDType = "arrayOfstr"
 )
 
+// GetConnectionsQueryParamID - Filter by connection IDs
 type GetConnectionsQueryParamID struct {
 	Str        *string
 	ArrayOfstr []string
@@ -374,7 +376,6 @@ func (u GetConnectionsQueryParamID) MarshalJSON() ([]byte, error) {
 	return nil, errors.New("could not marshal union type: all fields are null")
 }
 
-// GetConnectionsQueryParamConnectionsName2 - Filter by connection name
 type GetConnectionsQueryParamConnectionsName2 struct {
 	Any      *bool   `queryParam:"name=any"`
 	Contains *string `queryParam:"name=contains"`
@@ -433,6 +434,7 @@ const (
 	QueryParamNameTypeGetConnectionsQueryParamConnectionsName2 QueryParamNameType = "getConnections_queryParam_Connections_name_2"
 )
 
+// QueryParamName - Filter by connection name
 type QueryParamName struct {
 	Str                                      *string
 	GetConnectionsQueryParamConnectionsName2 *GetConnectionsQueryParamConnectionsName2
@@ -513,7 +515,6 @@ func (e *GetConnectionsQueryParamConnectionsOrderBy2) UnmarshalJSON(data []byte)
 	}
 }
 
-// GetConnectionsQueryParamConnections1 - Sort key(s)
 type GetConnectionsQueryParamConnections1 string
 
 const (
@@ -545,6 +546,7 @@ const (
 	GetConnectionsQueryParamOrderByTypeArrayOfgetConnectionsQueryParamConnectionsOrderBy2 GetConnectionsQueryParamOrderByType = "arrayOfgetConnections_queryParam_Connections_order_by_2"
 )
 
+// GetConnectionsQueryParamOrderBy - Sort key(s)
 type GetConnectionsQueryParamOrderBy struct {
 	GetConnectionsQueryParamConnections1               *GetConnectionsQueryParamConnections1
 	ArrayOfgetConnectionsQueryParamConnectionsOrderBy2 []GetConnectionsQueryParamConnectionsOrderBy2
@@ -601,7 +603,6 @@ func (u GetConnectionsQueryParamOrderBy) MarshalJSON() ([]byte, error) {
 	return nil, errors.New("could not marshal union type: all fields are null")
 }
 
-// GetConnectionsQueryParamConnectionsPausedAt2 - Date the connection was paused
 type GetConnectionsQueryParamConnectionsPausedAt2 struct {
 	Any *bool      `queryParam:"name=any"`
 	Gt  *time.Time `queryParam:"name=gt"`
@@ -663,6 +664,7 @@ const (
 	PausedAtTypeGetConnectionsQueryParamConnectionsPausedAt2 PausedAtType = "getConnections_queryParam_Connections_paused_at_2"
 )
 
+// PausedAt - Date the connection was paused
 type PausedAt struct {
 	DateTime                                     *time.Time
 	GetConnectionsQueryParamConnectionsPausedAt2 *GetConnectionsQueryParamConnectionsPausedAt2
@@ -726,6 +728,7 @@ const (
 	GetConnectionsQueryParamSourceIDTypeArrayOfstr GetConnectionsQueryParamSourceIDType = "arrayOfstr"
 )
 
+// GetConnectionsQueryParamSourceID - Filter by associated source IDs
 type GetConnectionsQueryParamSourceID struct {
 	Str        *string
 	ArrayOfstr []string
@@ -783,16 +786,24 @@ func (u GetConnectionsQueryParamSourceID) MarshalJSON() ([]byte, error) {
 }
 
 type GetConnectionsRequest struct {
-	Archived      *bool                                  `queryParam:"style=form,explode=true,name=archived"`
-	ArchivedAt    *ArchivedAt                            `queryParam:"style=form,explode=true,name=archived_at"`
+	Archived *bool `queryParam:"style=form,explode=true,name=archived"`
+	// Date the connection was archived
+	ArchivedAt *ArchivedAt `queryParam:"style=form,explode=true,name=archived_at"`
+	// Filter by associated destination IDs
 	DestinationID *GetConnectionsQueryParamDestinationID `queryParam:"style=form,explode=true,name=destination_id"`
-	Dir           *GetConnectionsQueryParamDir           `queryParam:"style=form,explode=true,name=dir"`
-	FullName      *string                                `queryParam:"style=form,explode=true,name=full_name"`
-	ID            *GetConnectionsQueryParamID            `queryParam:"style=form,explode=true,name=id"`
-	Name          *QueryParamName                        `queryParam:"style=form,explode=true,name=name"`
-	OrderBy       *GetConnectionsQueryParamOrderBy       `queryParam:"style=form,explode=true,name=order_by"`
-	PausedAt      *PausedAt                              `queryParam:"style=form,explode=true,name=paused_at"`
-	SourceID      *GetConnectionsQueryParamSourceID      `queryParam:"style=form,explode=true,name=source_id"`
+	// Sort direction
+	Dir      *GetConnectionsQueryParamDir `queryParam:"style=form,explode=true,name=dir"`
+	FullName *string                      `queryParam:"style=form,explode=true,name=full_name"`
+	// Filter by connection IDs
+	ID *GetConnectionsQueryParamID `queryParam:"style=form,explode=true,name=id"`
+	// Filter by connection name
+	Name *QueryParamName `queryParam:"style=form,explode=true,name=name"`
+	// Sort key(s)
+	OrderBy *GetConnectionsQueryParamOrderBy `queryParam:"style=form,explode=true,name=order_by"`
+	// Date the connection was paused
+	PausedAt *PausedAt `queryParam:"style=form,explode=true,name=paused_at"`
+	// Filter by associated source IDs
+	SourceID *GetConnectionsQueryParamSourceID `queryParam:"style=form,explode=true,name=source_id"`
 }
 
 func (o *GetConnectionsRequest) GetArchived() *bool {

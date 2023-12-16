@@ -1,7 +1,5 @@
 # GetEventsQueryParam1
 
-Sort direction
-
 
 ## Values
 

@@ -1,7 +1,5 @@
 # GetEventsQueryParamEventsSuccessfulAt2
 
-Filter by `successful_at` date using a date operator
-
 
 ## Fields
 

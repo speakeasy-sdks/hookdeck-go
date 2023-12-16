@@ -9,76 +9,77 @@ import (
 	"net/http"
 )
 
-type ConfigsType string
+type CreateIssueTriggerConfigsType string
 
 const (
-	ConfigsTypeIssueTriggerDeliveryConfigs       ConfigsType = "IssueTriggerDeliveryConfigs"
-	ConfigsTypeIssueTriggerTransformationConfigs ConfigsType = "IssueTriggerTransformationConfigs"
-	ConfigsTypeIssueTriggerBackpressureConfigs   ConfigsType = "IssueTriggerBackpressureConfigs"
+	CreateIssueTriggerConfigsTypeIssueTriggerDeliveryConfigs       CreateIssueTriggerConfigsType = "IssueTriggerDeliveryConfigs"
+	CreateIssueTriggerConfigsTypeIssueTriggerTransformationConfigs CreateIssueTriggerConfigsType = "IssueTriggerTransformationConfigs"
+	CreateIssueTriggerConfigsTypeIssueTriggerBackpressureConfigs   CreateIssueTriggerConfigsType = "IssueTriggerBackpressureConfigs"
 )
 
-type Configs struct {
+// CreateIssueTriggerConfigs - Configuration object for the specific issue type selected
+type CreateIssueTriggerConfigs struct {
 	IssueTriggerDeliveryConfigs       *components.IssueTriggerDeliveryConfigs
 	IssueTriggerTransformationConfigs *components.IssueTriggerTransformationConfigs
 	IssueTriggerBackpressureConfigs   *components.IssueTriggerBackpressureConfigs
 
-	Type ConfigsType
+	Type CreateIssueTriggerConfigsType
 }
 
-func CreateConfigsIssueTriggerDeliveryConfigs(issueTriggerDeliveryConfigs components.IssueTriggerDeliveryConfigs) Configs {
-	typ := ConfigsTypeIssueTriggerDeliveryConfigs
+func CreateCreateIssueTriggerConfigsIssueTriggerDeliveryConfigs(issueTriggerDeliveryConfigs components.IssueTriggerDeliveryConfigs) CreateIssueTriggerConfigs {
+	typ := CreateIssueTriggerConfigsTypeIssueTriggerDeliveryConfigs
 
-	return Configs{
+	return CreateIssueTriggerConfigs{
 		IssueTriggerDeliveryConfigs: &issueTriggerDeliveryConfigs,
 		Type:                        typ,
 	}
 }
 
-func CreateConfigsIssueTriggerTransformationConfigs(issueTriggerTransformationConfigs components.IssueTriggerTransformationConfigs) Configs {
-	typ := ConfigsTypeIssueTriggerTransformationConfigs
+func CreateCreateIssueTriggerConfigsIssueTriggerTransformationConfigs(issueTriggerTransformationConfigs components.IssueTriggerTransformationConfigs) CreateIssueTriggerConfigs {
+	typ := CreateIssueTriggerConfigsTypeIssueTriggerTransformationConfigs
 
-	return Configs{
+	return CreateIssueTriggerConfigs{
 		IssueTriggerTransformationConfigs: &issueTriggerTransformationConfigs,
 		Type:                              typ,
 	}
 }
 
-func CreateConfigsIssueTriggerBackpressureConfigs(issueTriggerBackpressureConfigs components.IssueTriggerBackpressureConfigs) Configs {
-	typ := ConfigsTypeIssueTriggerBackpressureConfigs
+func CreateCreateIssueTriggerConfigsIssueTriggerBackpressureConfigs(issueTriggerBackpressureConfigs components.IssueTriggerBackpressureConfigs) CreateIssueTriggerConfigs {
+	typ := CreateIssueTriggerConfigsTypeIssueTriggerBackpressureConfigs
 
-	return Configs{
+	return CreateIssueTriggerConfigs{
 		IssueTriggerBackpressureConfigs: &issueTriggerBackpressureConfigs,
 		Type:                            typ,
 	}
 }
 
-func (u *Configs) UnmarshalJSON(data []byte) error {
+func (u *CreateIssueTriggerConfigs) UnmarshalJSON(data []byte) error {
 
 	issueTriggerDeliveryConfigs := components.IssueTriggerDeliveryConfigs{}
 	if err := utils.UnmarshalJSON(data, &issueTriggerDeliveryConfigs, "", true, true); err == nil {
 		u.IssueTriggerDeliveryConfigs = &issueTriggerDeliveryConfigs
-		u.Type = ConfigsTypeIssueTriggerDeliveryConfigs
+		u.Type = CreateIssueTriggerConfigsTypeIssueTriggerDeliveryConfigs
 		return nil
 	}
 
 	issueTriggerTransformationConfigs := components.IssueTriggerTransformationConfigs{}
 	if err := utils.UnmarshalJSON(data, &issueTriggerTransformationConfigs, "", true, true); err == nil {
 		u.IssueTriggerTransformationConfigs = &issueTriggerTransformationConfigs
-		u.Type = ConfigsTypeIssueTriggerTransformationConfigs
+		u.Type = CreateIssueTriggerConfigsTypeIssueTriggerTransformationConfigs
 		return nil
 	}
 
 	issueTriggerBackpressureConfigs := components.IssueTriggerBackpressureConfigs{}
 	if err := utils.UnmarshalJSON(data, &issueTriggerBackpressureConfigs, "", true, true); err == nil {
 		u.IssueTriggerBackpressureConfigs = &issueTriggerBackpressureConfigs
-		u.Type = ConfigsTypeIssueTriggerBackpressureConfigs
+		u.Type = CreateIssueTriggerConfigsTypeIssueTriggerBackpressureConfigs
 		return nil
 	}
 
 	return errors.New("could not unmarshal into supported union types")
 }
 
-func (u Configs) MarshalJSON() ([]byte, error) {
+func (u CreateIssueTriggerConfigs) MarshalJSON() ([]byte, error) {
 	if u.IssueTriggerDeliveryConfigs != nil {
 		return utils.MarshalJSON(u.IssueTriggerDeliveryConfigs, "", true)
 	}
@@ -98,7 +99,7 @@ type CreateIssueTriggerRequestBody struct {
 	// Notification channels object for the specific channel type
 	Channels *components.IssueTriggerChannels `json:"channels"`
 	// Configuration object for the specific issue type selected
-	Configs *Configs `json:"configs,omitempty"`
+	Configs *CreateIssueTriggerConfigs `json:"configs,omitempty"`
 	// Optional unique name to use as reference when using the API
 	Name *string `json:"name,omitempty"`
 	// Issue type
@@ -112,7 +113,7 @@ func (o *CreateIssueTriggerRequestBody) GetChannels() *components.IssueTriggerCh
 	return o.Channels
 }
 
-func (o *CreateIssueTriggerRequestBody) GetConfigs() *Configs {
+func (o *CreateIssueTriggerRequestBody) GetConfigs() *CreateIssueTriggerConfigs {
 	if o == nil {
 		return nil
 	}

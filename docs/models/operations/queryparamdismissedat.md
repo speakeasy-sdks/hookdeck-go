@@ -1,5 +1,7 @@
 # QueryParamDismissedAt
 
+Filter by dismissed dates
+
 
 ## Supported Types
 

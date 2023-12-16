@@ -1,7 +1,5 @@
 # GetRequestEventsQueryParamRequestEventsResponseStatus2
 
-Filter by HTTP response status code
-
 
 ## Fields
 

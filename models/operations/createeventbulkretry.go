@@ -10,7 +10,6 @@ import (
 	"time"
 )
 
-// Two - Filter by number of attempts
 type Two struct {
 	Any      *bool  `json:"any,omitempty"`
 	Contains *int64 `json:"contains,omitempty"`
@@ -69,6 +68,7 @@ const (
 	AttemptsTypeTwo     AttemptsType = "2"
 )
 
+// Attempts - Filter by number of attempts
 type Attempts struct {
 	Integer *int64
 	Two     *Two
@@ -125,7 +125,6 @@ func (u Attempts) MarshalJSON() ([]byte, error) {
 	return nil, errors.New("could not marshal union type: all fields are null")
 }
 
-// CreateEventBulkRetry2 - URL Encoded string of the JSON to match to the data body
 type CreateEventBulkRetry2 struct {
 }
 
@@ -136,6 +135,7 @@ const (
 	BodyTypeCreateEventBulkRetry2 BodyType = "createEventBulkRetry_2"
 )
 
+// Body - URL Encoded string of the JSON to match to the data body
 type Body struct {
 	Str                   *string
 	CreateEventBulkRetry2 *CreateEventBulkRetry2
@@ -255,7 +255,6 @@ func (u BulkRetryID) MarshalJSON() ([]byte, error) {
 	return nil, errors.New("could not marshal union type: all fields are null")
 }
 
-// CreateEventBulkRetryBulkRetryEvent2 - Filter by CLI IDs. `?[any]=true` operator for any CLI.
 type CreateEventBulkRetryBulkRetryEvent2 struct {
 	Any *bool `json:"any,omitempty"`
 }
@@ -275,6 +274,7 @@ const (
 	CliIDTypeArrayOfstr                          CliIDType = "arrayOfstr"
 )
 
+// CliID - Filter by CLI IDs. `?[any]=true` operator for any CLI.
 type CliID struct {
 	Str                                 *string
 	CreateEventBulkRetryBulkRetryEvent2 *CreateEventBulkRetryBulkRetryEvent2
@@ -415,7 +415,6 @@ func (u CliUserID) MarshalJSON() ([]byte, error) {
 	return nil, errors.New("could not marshal union type: all fields are null")
 }
 
-// CreateEventBulkRetryBulkRetryEventRequest2 - Filter by `created_at` date using a date operator
 type CreateEventBulkRetryBulkRetryEventRequest2 struct {
 	Any *bool      `json:"any,omitempty"`
 	Gt  *time.Time `json:"gt,omitempty"`
@@ -477,6 +476,7 @@ const (
 	CreatedAtTypeCreateEventBulkRetryBulkRetryEventRequest2 CreatedAtType = "createEventBulkRetry_BulkRetryEvent_request_2"
 )
 
+// CreatedAt - Filter by `created_at` date using a date operator
 type CreatedAt struct {
 	DateTime                                   *time.Time
 	CreateEventBulkRetryBulkRetryEventRequest2 *CreateEventBulkRetryBulkRetryEventRequest2
@@ -540,6 +540,7 @@ const (
 	DestinationIDTypeArrayOfstr DestinationIDType = "arrayOfstr"
 )
 
+// DestinationID - Filter by destination IDs
 type DestinationID struct {
 	Str        *string
 	ArrayOfstr []string
@@ -722,7 +723,6 @@ func (u EventDataID) MarshalJSON() ([]byte, error) {
 	return nil, errors.New("could not marshal union type: all fields are null")
 }
 
-// CreateEventBulkRetryBulkRetryEventRequestRequestBody2 - URL Encoded string of the JSON to match to the data headers
 type CreateEventBulkRetryBulkRetryEventRequestRequestBody2 struct {
 }
 
@@ -733,6 +733,7 @@ const (
 	HeadersTypeCreateEventBulkRetryBulkRetryEventRequestRequestBody2 HeadersType = "createEventBulkRetry_BulkRetryEvent_request_requestBody_2"
 )
 
+// Headers - URL Encoded string of the JSON to match to the data headers
 type Headers struct {
 	Str                                                   *string
 	CreateEventBulkRetryBulkRetryEventRequestRequestBody2 *CreateEventBulkRetryBulkRetryEventRequestRequestBody2
@@ -796,6 +797,7 @@ const (
 	IDTypeArrayOfstr IDType = "arrayOfstr"
 )
 
+// ID - Filter by event IDs
 type ID struct {
 	Str        *string
 	ArrayOfstr []string
@@ -915,7 +917,6 @@ func (u IssueID) MarshalJSON() ([]byte, error) {
 	return nil, errors.New("could not marshal union type: all fields are null")
 }
 
-// CreateEventBulkRetryBulkRetryEventRequestRequestBodyQuery2 - Filter by `last_attempt_at` date using a date operator
 type CreateEventBulkRetryBulkRetryEventRequestRequestBodyQuery2 struct {
 	Any *bool      `json:"any,omitempty"`
 	Gt  *time.Time `json:"gt,omitempty"`
@@ -977,6 +978,7 @@ const (
 	LastAttemptAtTypeCreateEventBulkRetryBulkRetryEventRequestRequestBodyQuery2 LastAttemptAtType = "createEventBulkRetry_BulkRetryEvent_request_requestBody_query_2"
 )
 
+// LastAttemptAt - Filter by `last_attempt_at` date using a date operator
 type LastAttemptAt struct {
 	DateTime                                                   *time.Time
 	CreateEventBulkRetryBulkRetryEventRequestRequestBodyQuery2 *CreateEventBulkRetryBulkRetryEventRequestRequestBodyQuery2
@@ -1033,7 +1035,6 @@ func (u LastAttemptAt) MarshalJSON() ([]byte, error) {
 	return nil, errors.New("could not marshal union type: all fields are null")
 }
 
-// CreateEventBulkRetryBulkRetryEventRequestRequestBodyQueryParsedQuery2 - URL Encoded string of the JSON to match to the parsed query (JSON representation of the query)
 type CreateEventBulkRetryBulkRetryEventRequestRequestBodyQueryParsedQuery2 struct {
 }
 
@@ -1044,6 +1045,7 @@ const (
 	ParsedQueryTypeCreateEventBulkRetryBulkRetryEventRequestRequestBodyQueryParsedQuery2 ParsedQueryType = "createEventBulkRetry_BulkRetryEvent_request_requestBody_query_parsed_query_2"
 )
 
+// ParsedQuery - URL Encoded string of the JSON to match to the parsed query (JSON representation of the query)
 type ParsedQuery struct {
 	Str                                                                   *string
 	CreateEventBulkRetryBulkRetryEventRequestRequestBodyQueryParsedQuery2 *CreateEventBulkRetryBulkRetryEventRequestRequestBodyQueryParsedQuery2
@@ -1100,7 +1102,6 @@ func (u ParsedQuery) MarshalJSON() ([]byte, error) {
 	return nil, errors.New("could not marshal union type: all fields are null")
 }
 
-// CreateEventBulkRetryBulkRetryEventRequestRequestBodyQueryResponseStatus2 - Filter by HTTP response status code
 type CreateEventBulkRetryBulkRetryEventRequestRequestBodyQueryResponseStatus2 struct {
 	Any      *bool  `json:"any,omitempty"`
 	Contains *int64 `json:"contains,omitempty"`
@@ -1160,6 +1161,7 @@ const (
 	ResponseStatusTypeArrayOfinteger                                                           ResponseStatusType = "arrayOfinteger"
 )
 
+// ResponseStatus - Filter by HTTP response status code
 type ResponseStatus struct {
 	Integer                                                                  *int64
 	CreateEventBulkRetryBulkRetryEventRequestRequestBodyQueryResponseStatus2 *CreateEventBulkRetryBulkRetryEventRequestRequestBodyQueryResponseStatus2
@@ -1244,6 +1246,7 @@ const (
 	SourceIDTypeArrayOfstr SourceIDType = "arrayOfstr"
 )
 
+// SourceID - Filter by source IDs
 type SourceID struct {
 	Str        *string
 	ArrayOfstr []string
@@ -1307,6 +1310,7 @@ const (
 	StatusTypeArrayOfEventStatus StatusType = "arrayOfEventStatus"
 )
 
+// Status - Lifecyle status of the event
 type Status struct {
 	EventStatus        *components.EventStatus
 	ArrayOfEventStatus []components.EventStatus
@@ -1363,7 +1367,6 @@ func (u Status) MarshalJSON() ([]byte, error) {
 	return nil, errors.New("could not marshal union type: all fields are null")
 }
 
-// CreateEventBulkRetryBulkRetryEventRequestRequestBodyQuerySuccessfulAt2 - Filter by `successful_at` date using a date operator
 type CreateEventBulkRetryBulkRetryEventRequestRequestBodyQuerySuccessfulAt2 struct {
 	Any *bool      `json:"any,omitempty"`
 	Gt  *time.Time `json:"gt,omitempty"`
@@ -1425,6 +1428,7 @@ const (
 	SuccessfulAtTypeCreateEventBulkRetryBulkRetryEventRequestRequestBodyQuerySuccessfulAt2 SuccessfulAtType = "createEventBulkRetry_BulkRetryEvent_request_requestBody_query_successful_at_2"
 )
 
+// SuccessfulAt - Filter by `successful_at` date using a date operator
 type SuccessfulAt struct {
 	DateTime                                                               *time.Time
 	CreateEventBulkRetryBulkRetryEventRequestRequestBodyQuerySuccessfulAt2 *CreateEventBulkRetryBulkRetryEventRequestRequestBodyQuerySuccessfulAt2
@@ -1488,6 +1492,7 @@ const (
 	WebhookIDTypeArrayOfstr WebhookIDType = "arrayOfstr"
 )
 
+// WebhookID - Filter by webhook connection IDs
 type WebhookID struct {
 	Str        *string
 	ArrayOfstr []string

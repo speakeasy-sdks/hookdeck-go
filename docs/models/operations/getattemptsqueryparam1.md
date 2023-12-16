@@ -1,7 +1,5 @@
 # GetAttemptsQueryParam1
 
-Sort direction
-
 
 ## Values
 

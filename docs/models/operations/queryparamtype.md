@@ -1,5 +1,7 @@
 # QueryParamType
 
+Filter by Issue types
+
 
 ## Supported Types
 

@@ -18,6 +18,7 @@ const (
 	UpdateIssueTriggerConfigsTypeIssueTriggerBackpressureConfigs   UpdateIssueTriggerConfigsType = "IssueTriggerBackpressureConfigs"
 )
 
+// UpdateIssueTriggerConfigs - Configuration object for the specific issue type selected
 type UpdateIssueTriggerConfigs struct {
 	IssueTriggerDeliveryConfigs       *components.IssueTriggerDeliveryConfigs
 	IssueTriggerTransformationConfigs *components.IssueTriggerTransformationConfigs

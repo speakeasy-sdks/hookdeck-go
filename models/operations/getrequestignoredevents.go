@@ -38,7 +38,6 @@ func (e *GetRequestIgnoredEventsQueryParam2) UnmarshalJSON(data []byte) error {
 	}
 }
 
-// GetRequestIgnoredEventsQueryParam1 - Sort direction
 type GetRequestIgnoredEventsQueryParam1 string
 
 const (
@@ -73,6 +72,7 @@ const (
 	GetRequestIgnoredEventsQueryParamDirTypeArrayOfgetRequestIgnoredEventsQueryParam2 GetRequestIgnoredEventsQueryParamDirType = "arrayOfgetRequestIgnoredEvents_queryParam_2"
 )
 
+// GetRequestIgnoredEventsQueryParamDir - Sort direction
 type GetRequestIgnoredEventsQueryParamDir struct {
 	GetRequestIgnoredEventsQueryParam1        *GetRequestIgnoredEventsQueryParam1
 	ArrayOfgetRequestIgnoredEventsQueryParam2 []GetRequestIgnoredEventsQueryParam2
@@ -136,6 +136,7 @@ const (
 	GetRequestIgnoredEventsQueryParamIDTypeArrayOfstr GetRequestIgnoredEventsQueryParamIDType = "arrayOfstr"
 )
 
+// GetRequestIgnoredEventsQueryParamID - Filter by ignored events IDs
 type GetRequestIgnoredEventsQueryParamID struct {
 	Str        *string
 	ArrayOfstr []string
@@ -216,7 +217,6 @@ func (e *GetRequestIgnoredEventsQueryParamRequestIgnoredEvents2) UnmarshalJSON(d
 	}
 }
 
-// GetRequestIgnoredEventsQueryParamRequestIgnoredEvents1 - Sort key(s)
 type GetRequestIgnoredEventsQueryParamRequestIgnoredEvents1 string
 
 const (
@@ -248,6 +248,7 @@ const (
 	GetRequestIgnoredEventsQueryParamOrderByTypeArrayOfgetRequestIgnoredEventsQueryParamRequestIgnoredEvents2 GetRequestIgnoredEventsQueryParamOrderByType = "arrayOfgetRequestIgnoredEvents_queryParam_RequestIgnoredEvents_2"
 )
 
+// GetRequestIgnoredEventsQueryParamOrderBy - Sort key(s)
 type GetRequestIgnoredEventsQueryParamOrderBy struct {
 	GetRequestIgnoredEventsQueryParamRequestIgnoredEvents1        *GetRequestIgnoredEventsQueryParamRequestIgnoredEvents1
 	ArrayOfgetRequestIgnoredEventsQueryParamRequestIgnoredEvents2 []GetRequestIgnoredEventsQueryParamRequestIgnoredEvents2
@@ -305,13 +306,16 @@ func (u GetRequestIgnoredEventsQueryParamOrderBy) MarshalJSON() ([]byte, error) 
 }
 
 type GetRequestIgnoredEventsRequest struct {
-	Dir              *GetRequestIgnoredEventsQueryParamDir     `queryParam:"style=form,explode=true,name=dir"`
-	IDPathParameter  string                                    `pathParam:"style=simple,explode=false,name=id"`
-	IDQueryParameter *GetRequestIgnoredEventsQueryParamID      `queryParam:"style=form,explode=true,name=id"`
-	Limit            *int64                                    `queryParam:"style=form,explode=true,name=limit"`
-	Next             *string                                   `queryParam:"style=form,explode=true,name=next"`
-	OrderBy          *GetRequestIgnoredEventsQueryParamOrderBy `queryParam:"style=form,explode=true,name=order_by"`
-	Prev             *string                                   `queryParam:"style=form,explode=true,name=prev"`
+	// Sort direction
+	Dir             *GetRequestIgnoredEventsQueryParamDir `queryParam:"style=form,explode=true,name=dir"`
+	IDPathParameter string                                `pathParam:"style=simple,explode=false,name=id"`
+	// Filter by ignored events IDs
+	IDQueryParameter *GetRequestIgnoredEventsQueryParamID `queryParam:"style=form,explode=true,name=id"`
+	Limit            *int64                               `queryParam:"style=form,explode=true,name=limit"`
+	Next             *string                              `queryParam:"style=form,explode=true,name=next"`
+	// Sort key(s)
+	OrderBy *GetRequestIgnoredEventsQueryParamOrderBy `queryParam:"style=form,explode=true,name=order_by"`
+	Prev    *string                                   `queryParam:"style=form,explode=true,name=prev"`
 }
 
 func (o *GetRequestIgnoredEventsRequest) GetDir() *GetRequestIgnoredEventsQueryParamDir {

@@ -15,6 +15,7 @@ const (
 	IssueTriggerReferenceTypeIssueTriggerBackpressureConfigs   IssueTriggerReferenceType = "IssueTriggerBackpressureConfigs"
 )
 
+// IssueTriggerReference - Configuration object for the specific issue type selected
 type IssueTriggerReference struct {
 	IssueTriggerDeliveryConfigs       *IssueTriggerDeliveryConfigs
 	IssueTriggerTransformationConfigs *IssueTriggerTransformationConfigs

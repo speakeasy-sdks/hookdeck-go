@@ -1,5 +1,7 @@
 # DestinationAuthMethodConfig
 
+Config for the destination's auth method
+
 
 ## Supported Types
 

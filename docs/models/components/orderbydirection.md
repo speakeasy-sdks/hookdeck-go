@@ -9,10 +9,10 @@
 orderByDirection := components.CreateOrderByDirectionOrderByDirection1(components.OrderByDirection1{/* values here */})
 ```
 
-### OrderByDirection2
+### Two
 
 ```go
-orderByDirection := components.CreateOrderByDirectionOrderByDirection2(components.OrderByDirection2{/* values here */})
+orderByDirection := components.CreateOrderByDirectionTwo(components.Two{/* values here */})
 ```
 
 ### Three

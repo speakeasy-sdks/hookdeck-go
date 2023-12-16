@@ -1,7 +1,5 @@
 # GetIssuesQueryParamIssuesFirstSeenAt2
 
-Filter by first seen dates
-
 
 ## Fields
 

@@ -1,7 +1,5 @@
 # GetRulesetsQueryParam2
 
-Date the ruleset was archived
-
 
 ## Fields
 

@@ -1,7 +1,5 @@
 # CreateRequestBulkRetryBulkRetryRequestsRequestRequestBodyQueryRejectionCause2
 
-Filter by rejection cause
-
 
 ## Fields
 

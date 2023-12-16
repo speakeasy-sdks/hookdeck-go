@@ -1,7 +1,5 @@
 # GetRequestEventsQueryParamRequestEventsCreatedAt2
 
-Filter by `created_at` date using a date operator
-
 
 ## Fields
 

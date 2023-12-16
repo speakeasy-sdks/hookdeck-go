@@ -1,7 +1,5 @@
 # GetDestinationsQueryParamDestinationsName2
 
-The destination name
-
 
 ## Fields
 

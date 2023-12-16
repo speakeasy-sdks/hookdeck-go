@@ -1,5 +1,7 @@
 # QueryParamAttempts
 
+Filter by number of attempts
+
 
 ## Supported Types
 

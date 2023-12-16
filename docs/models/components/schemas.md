@@ -1,11 +1,11 @@
 # Schemas
 
-Decrypted Key/Value object of the associated configuration for that provider
 
+## Values
 
-## Fields
-
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `APIKey`           | *string*           | :heavy_check_mark: | N/A                |
-| `HeaderKey`        | *string*           | :heavy_check_mark: | N/A                |
+| Name             | Value            |
+| ---------------- | ---------------- |
+| `SchemasBody`    | body             |
+| `SchemasHeaders` | headers          |
+| `SchemasPath`    | path             |
+| `SchemasQuery`   | query            |

@@ -1,6 +1,4 @@
-# HandledHMACConfigsSchemas
-
-Decrypted Key/Value object of the associated configuration for that provider
+# HandledHMACConfigs
 
 
 ## Fields

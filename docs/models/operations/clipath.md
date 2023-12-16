@@ -1,5 +1,7 @@
 # CliPath
 
+Path for the CLI destination
+
 
 ## Supported Types
 

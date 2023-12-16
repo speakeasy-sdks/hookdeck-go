@@ -38,7 +38,6 @@ func (e *GetAttemptsQueryParam2) UnmarshalJSON(data []byte) error {
 	}
 }
 
-// GetAttemptsQueryParam1 - Sort direction
 type GetAttemptsQueryParam1 string
 
 const (
@@ -73,6 +72,7 @@ const (
 	DirTypeArrayOfgetAttemptsQueryParam2 DirType = "arrayOfgetAttempts_queryParam_2"
 )
 
+// Dir - Sort direction
 type Dir struct {
 	GetAttemptsQueryParam1        *GetAttemptsQueryParam1
 	ArrayOfgetAttemptsQueryParam2 []GetAttemptsQueryParam2
@@ -136,6 +136,7 @@ const (
 	EventIDTypeArrayOfstr EventIDType = "arrayOfstr"
 )
 
+// EventID - Event the attempt is associated with
 type EventID struct {
 	Str        *string
 	ArrayOfstr []string
@@ -216,7 +217,6 @@ func (e *QueryParam2) UnmarshalJSON(data []byte) error {
 	}
 }
 
-// QueryParam1 - Sort key(s)
 type QueryParam1 string
 
 const (
@@ -248,6 +248,7 @@ const (
 	OrderByTypeArrayOfqueryParam2 OrderByType = "arrayOfqueryParam_2"
 )
 
+// OrderBy - Sort key(s)
 type OrderBy struct {
 	QueryParam1        *QueryParam1
 	ArrayOfqueryParam2 []QueryParam2
@@ -305,10 +306,13 @@ func (u OrderBy) MarshalJSON() ([]byte, error) {
 }
 
 type GetAttemptsRequest struct {
-	Dir     *Dir     `queryParam:"style=form,explode=true,name=dir"`
+	// Sort direction
+	Dir *Dir `queryParam:"style=form,explode=true,name=dir"`
+	// Event the attempt is associated with
 	EventID *EventID `queryParam:"style=form,explode=true,name=event_id"`
 	Limit   *int64   `queryParam:"style=form,explode=true,name=limit"`
 	Next    *string  `queryParam:"style=form,explode=true,name=next"`
+	// Sort key(s)
 	OrderBy *OrderBy `queryParam:"style=form,explode=true,name=order_by"`
 	Prev    *string  `queryParam:"style=form,explode=true,name=prev"`
 }

@@ -1,7 +1,5 @@
 # GetIssueCountQueryParamIssuesCountLastSeenAt2
 
-Filter by last seen dates
-
 
 ## Fields
 

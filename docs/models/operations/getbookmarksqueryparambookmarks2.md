@@ -1,7 +1,5 @@
 # GetBookmarksQueryParamBookmarks2
 
-Filter by last used date
-
 
 ## Fields
 

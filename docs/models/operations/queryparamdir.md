@@ -1,5 +1,7 @@
 # QueryParamDir
 
+Sort direction
+
 
 ## Supported Types
 

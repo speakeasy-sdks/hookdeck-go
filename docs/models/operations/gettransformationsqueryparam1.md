@@ -1,7 +1,5 @@
 # GetTransformationsQueryParam1
 
-Sort direction
-
 
 ## Values
 

@@ -1,5 +1,7 @@
 # GetIssuesQueryParamCreatedAt
 
+Filter by created dates
+
 
 ## Supported Types
 

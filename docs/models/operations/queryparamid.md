@@ -1,5 +1,7 @@
 # QueryParamID
 
+Filter by bookmark IDs
+
 
 ## Supported Types
 

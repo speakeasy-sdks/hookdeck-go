@@ -1,5 +1,7 @@
 # GetConnectionsQueryParamDestinationID
 
+Filter by associated destination IDs
+
 
 ## Supported Types
 

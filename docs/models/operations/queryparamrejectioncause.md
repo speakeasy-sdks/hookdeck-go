@@ -1,12 +1,14 @@
 # QueryParamRejectionCause
 
+Filter by rejection cause
+
 
 ## Supported Types
 
-### RequestRejectionCauseSchemas
+### Schemas
 
 ```go
-queryParamRejectionCause := operations.CreateQueryParamRejectionCauseRequestRejectionCauseSchemas(operations.RequestRejectionCauseSchemas{/* values here */})
+queryParamRejectionCause := operations.CreateQueryParamRejectionCauseSchemas(operations.Schemas{/* values here */})
 ```
 
 ### GetRequestsQueryParamRequestsRejectionCause2

@@ -9,10 +9,10 @@
 shortEventDataBody := components.CreateShortEventDataBodyStr(string{/* values here */})
 ```
 
-### Two
+### ShortEventData2
 
 ```go
-shortEventDataBody := components.CreateShortEventDataBodyTwo(components.Two{/* values here */})
+shortEventDataBody := components.CreateShortEventDataBodyShortEventData2(components.ShortEventData2{/* values here */})
 ```
 
 ### 

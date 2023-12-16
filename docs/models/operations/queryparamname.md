@@ -1,5 +1,7 @@
 # QueryParamName
 
+Filter by connection name
+
 
 ## Supported Types
 

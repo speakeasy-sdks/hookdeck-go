@@ -1,5 +1,7 @@
 # LogLevel
 
+Log level of the execution
+
 
 ## Supported Types
 

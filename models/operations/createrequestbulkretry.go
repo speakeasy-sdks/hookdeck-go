@@ -12,7 +12,6 @@ import (
 	"time"
 )
 
-// CreateRequestBulkRetry2 - URL Encoded string of the JSON to match to the data body
 type CreateRequestBulkRetry2 struct {
 }
 
@@ -23,6 +22,7 @@ const (
 	CreateRequestBulkRetryBodyTypeCreateRequestBulkRetry2 CreateRequestBulkRetryBodyType = "createRequestBulkRetry_2"
 )
 
+// CreateRequestBulkRetryBody - URL Encoded string of the JSON to match to the data body
 type CreateRequestBulkRetryBody struct {
 	Str                     *string
 	CreateRequestBulkRetry2 *CreateRequestBulkRetry2
@@ -395,7 +395,6 @@ func (u EventsCount) MarshalJSON() ([]byte, error) {
 	return nil, errors.New("could not marshal union type: all fields are null")
 }
 
-// CreateRequestBulkRetryBulkRetryRequestsRequestRequestBody2 - URL Encoded string of the JSON to match to the data headers
 type CreateRequestBulkRetryBulkRetryRequestsRequestRequestBody2 struct {
 }
 
@@ -406,6 +405,7 @@ const (
 	CreateRequestBulkRetryHeadersTypeCreateRequestBulkRetryBulkRetryRequestsRequestRequestBody2 CreateRequestBulkRetryHeadersType = "createRequestBulkRetry_BulkRetryRequests_request_requestBody_2"
 )
 
+// CreateRequestBulkRetryHeaders - URL Encoded string of the JSON to match to the data headers
 type CreateRequestBulkRetryHeaders struct {
 	Str                                                        *string
 	CreateRequestBulkRetryBulkRetryRequestsRequestRequestBody2 *CreateRequestBulkRetryBulkRetryRequestsRequestRequestBody2
@@ -469,6 +469,7 @@ const (
 	CreateRequestBulkRetryIDTypeArrayOfstr CreateRequestBulkRetryIDType = "arrayOfstr"
 )
 
+// CreateRequestBulkRetryID - Filter by requests IDs
 type CreateRequestBulkRetryID struct {
 	Str        *string
 	ArrayOfstr []string
@@ -778,7 +779,6 @@ func (u IngestedAt) MarshalJSON() ([]byte, error) {
 	return nil, errors.New("could not marshal union type: all fields are null")
 }
 
-// CreateRequestBulkRetryBulkRetryRequestsRequestRequestBodyQueryParsedQuery2 - URL Encoded string of the JSON to match to the parsed query (JSON representation of the query)
 type CreateRequestBulkRetryBulkRetryRequestsRequestRequestBodyQueryParsedQuery2 struct {
 }
 
@@ -789,6 +789,7 @@ const (
 	CreateRequestBulkRetryParsedQueryTypeCreateRequestBulkRetryBulkRetryRequestsRequestRequestBodyQueryParsedQuery2 CreateRequestBulkRetryParsedQueryType = "createRequestBulkRetry_BulkRetryRequests_request_requestBody_query_parsed_query_2"
 )
 
+// CreateRequestBulkRetryParsedQuery - URL Encoded string of the JSON to match to the parsed query (JSON representation of the query)
 type CreateRequestBulkRetryParsedQuery struct {
 	Str                                                                        *string
 	CreateRequestBulkRetryBulkRetryRequestsRequestRequestBodyQueryParsedQuery2 *CreateRequestBulkRetryBulkRetryRequestsRequestRequestBodyQueryParsedQuery2
@@ -845,7 +846,6 @@ func (u CreateRequestBulkRetryParsedQuery) MarshalJSON() ([]byte, error) {
 	return nil, errors.New("could not marshal union type: all fields are null")
 }
 
-// CreateRequestBulkRetryBulkRetryRequestsRequestRequestBodyQueryRejectionCause2 - Filter by rejection cause
 type CreateRequestBulkRetryBulkRetryRequestsRequestRequestBodyQueryRejectionCause2 struct {
 	Any      *bool                             `json:"any,omitempty"`
 	Contains *components.RequestRejectionCause `json:"contains,omitempty"`
@@ -897,26 +897,25 @@ func (o *CreateRequestBulkRetryBulkRetryRequestsRequestRequestBodyQueryRejection
 	return o.Lte
 }
 
-// RequestRejectionCauseSchemas - Filter by rejection cause
-type RequestRejectionCauseSchemas string
+type Schemas string
 
 const (
-	RequestRejectionCauseSchemasSourceArchived         RequestRejectionCauseSchemas = "SOURCE_ARCHIVED"
-	RequestRejectionCauseSchemasNoWebhook              RequestRejectionCauseSchemas = "NO_WEBHOOK"
-	RequestRejectionCauseSchemasVerificationFailed     RequestRejectionCauseSchemas = "VERIFICATION_FAILED"
-	RequestRejectionCauseSchemasUnsupportedHTTPMethod  RequestRejectionCauseSchemas = "UNSUPPORTED_HTTP_METHOD"
-	RequestRejectionCauseSchemasUnsupportedContentType RequestRejectionCauseSchemas = "UNSUPPORTED_CONTENT_TYPE"
-	RequestRejectionCauseSchemasUnparsableJSON         RequestRejectionCauseSchemas = "UNPARSABLE_JSON"
-	RequestRejectionCauseSchemasPayloadTooLarge        RequestRejectionCauseSchemas = "PAYLOAD_TOO_LARGE"
-	RequestRejectionCauseSchemasIngestionFatal         RequestRejectionCauseSchemas = "INGESTION_FATAL"
-	RequestRejectionCauseSchemasUnknown                RequestRejectionCauseSchemas = "UNKNOWN"
+	SchemasSourceArchived         Schemas = "SOURCE_ARCHIVED"
+	SchemasNoWebhook              Schemas = "NO_WEBHOOK"
+	SchemasVerificationFailed     Schemas = "VERIFICATION_FAILED"
+	SchemasUnsupportedHTTPMethod  Schemas = "UNSUPPORTED_HTTP_METHOD"
+	SchemasUnsupportedContentType Schemas = "UNSUPPORTED_CONTENT_TYPE"
+	SchemasUnparsableJSON         Schemas = "UNPARSABLE_JSON"
+	SchemasPayloadTooLarge        Schemas = "PAYLOAD_TOO_LARGE"
+	SchemasIngestionFatal         Schemas = "INGESTION_FATAL"
+	SchemasUnknown                Schemas = "UNKNOWN"
 )
 
-func (e RequestRejectionCauseSchemas) ToPointer() *RequestRejectionCauseSchemas {
+func (e Schemas) ToPointer() *Schemas {
 	return &e
 }
 
-func (e *RequestRejectionCauseSchemas) UnmarshalJSON(data []byte) error {
+func (e *Schemas) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -939,35 +938,36 @@ func (e *RequestRejectionCauseSchemas) UnmarshalJSON(data []byte) error {
 	case "INGESTION_FATAL":
 		fallthrough
 	case "UNKNOWN":
-		*e = RequestRejectionCauseSchemas(v)
+		*e = Schemas(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for RequestRejectionCauseSchemas: %v", v)
+		return fmt.Errorf("invalid value for Schemas: %v", v)
 	}
 }
 
 type RejectionCauseType string
 
 const (
-	RejectionCauseTypeRequestRejectionCauseSchemas                                                  RejectionCauseType = "RequestRejectionCause_Schemas"
+	RejectionCauseTypeSchemas                                                                       RejectionCauseType = "Schemas"
 	RejectionCauseTypeCreateRequestBulkRetryBulkRetryRequestsRequestRequestBodyQueryRejectionCause2 RejectionCauseType = "createRequestBulkRetry_BulkRetryRequests_request_requestBody_query_rejection_cause_2"
 	RejectionCauseTypeArrayOfRequestRejectionCause                                                  RejectionCauseType = "arrayOfRequestRejectionCause"
 )
 
+// RejectionCause - Filter by rejection cause
 type RejectionCause struct {
-	RequestRejectionCauseSchemas                                                  *RequestRejectionCauseSchemas
+	Schemas                                                                       *Schemas
 	CreateRequestBulkRetryBulkRetryRequestsRequestRequestBodyQueryRejectionCause2 *CreateRequestBulkRetryBulkRetryRequestsRequestRequestBodyQueryRejectionCause2
 	ArrayOfRequestRejectionCause                                                  []components.RequestRejectionCause
 
 	Type RejectionCauseType
 }
 
-func CreateRejectionCauseRequestRejectionCauseSchemas(requestRejectionCauseSchemas RequestRejectionCauseSchemas) RejectionCause {
-	typ := RejectionCauseTypeRequestRejectionCauseSchemas
+func CreateRejectionCauseSchemas(schemas Schemas) RejectionCause {
+	typ := RejectionCauseTypeSchemas
 
 	return RejectionCause{
-		RequestRejectionCauseSchemas: &requestRejectionCauseSchemas,
-		Type:                         typ,
+		Schemas: &schemas,
+		Type:    typ,
 	}
 }
 
@@ -998,10 +998,10 @@ func (u *RejectionCause) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
-	requestRejectionCauseSchemas := RequestRejectionCauseSchemas("")
-	if err := utils.UnmarshalJSON(data, &requestRejectionCauseSchemas, "", true, true); err == nil {
-		u.RequestRejectionCauseSchemas = &requestRejectionCauseSchemas
-		u.Type = RejectionCauseTypeRequestRejectionCauseSchemas
+	schemas := Schemas("")
+	if err := utils.UnmarshalJSON(data, &schemas, "", true, true); err == nil {
+		u.Schemas = &schemas
+		u.Type = RejectionCauseTypeSchemas
 		return nil
 	}
 
@@ -1016,8 +1016,8 @@ func (u *RejectionCause) UnmarshalJSON(data []byte) error {
 }
 
 func (u RejectionCause) MarshalJSON() ([]byte, error) {
-	if u.RequestRejectionCauseSchemas != nil {
-		return utils.MarshalJSON(u.RequestRejectionCauseSchemas, "", true)
+	if u.Schemas != nil {
+		return utils.MarshalJSON(u.Schemas, "", true)
 	}
 
 	if u.CreateRequestBulkRetryBulkRetryRequestsRequestRequestBodyQueryRejectionCause2 != nil {
@@ -1038,6 +1038,7 @@ const (
 	CreateRequestBulkRetrySourceIDTypeArrayOfstr CreateRequestBulkRetrySourceIDType = "arrayOfstr"
 )
 
+// CreateRequestBulkRetrySourceID - Filter by source IDs
 type CreateRequestBulkRetrySourceID struct {
 	Str        *string
 	ArrayOfstr []string
@@ -1305,7 +1306,6 @@ func (o *CreateRequestBulkRetryResponse) GetRawResponse() *http.Response {
 	return o.RawResponse
 }
 
-// GetRequestsQueryParam2 - URL Encoded string of the JSON to match to the data body
 type GetRequestsQueryParam2 struct {
 }
 
@@ -1316,6 +1316,7 @@ const (
 	GetRequestsQueryParamBodyTypeGetRequestsQueryParam2 GetRequestsQueryParamBodyType = "getRequests_queryParam_2"
 )
 
+// GetRequestsQueryParamBody - URL Encoded string of the JSON to match to the data body
 type GetRequestsQueryParamBody struct {
 	Str                    *string
 	GetRequestsQueryParam2 *GetRequestsQueryParam2
@@ -1579,7 +1580,6 @@ func (e *GetRequestsQueryParamRequestsDir2) UnmarshalJSON(data []byte) error {
 	}
 }
 
-// GetRequestsQueryParam1 - Sort direction
 type GetRequestsQueryParam1 string
 
 const (
@@ -1614,6 +1614,7 @@ const (
 	GetRequestsQueryParamDirTypeArrayOfgetRequestsQueryParamRequestsDir2 GetRequestsQueryParamDirType = "arrayOfgetRequests_queryParam_Requests_dir_2"
 )
 
+// GetRequestsQueryParamDir - Sort direction
 type GetRequestsQueryParamDir struct {
 	GetRequestsQueryParam1                   *GetRequestsQueryParam1
 	ArrayOfgetRequestsQueryParamRequestsDir2 []GetRequestsQueryParamRequestsDir2
@@ -1806,7 +1807,6 @@ func (u QueryParamEventsCount) MarshalJSON() ([]byte, error) {
 	return nil, errors.New("could not marshal union type: all fields are null")
 }
 
-// GetRequestsQueryParamRequestsHeaders2 - URL Encoded string of the JSON to match to the data headers
 type GetRequestsQueryParamRequestsHeaders2 struct {
 }
 
@@ -1817,6 +1817,7 @@ const (
 	GetRequestsQueryParamHeadersTypeGetRequestsQueryParamRequestsHeaders2 GetRequestsQueryParamHeadersType = "getRequests_queryParam_Requests_headers_2"
 )
 
+// GetRequestsQueryParamHeaders - URL Encoded string of the JSON to match to the data headers
 type GetRequestsQueryParamHeaders struct {
 	Str                                   *string
 	GetRequestsQueryParamRequestsHeaders2 *GetRequestsQueryParamRequestsHeaders2
@@ -1880,6 +1881,7 @@ const (
 	GetRequestsQueryParamIDTypeArrayOfstr GetRequestsQueryParamIDType = "arrayOfstr"
 )
 
+// GetRequestsQueryParamID - Filter by requests IDs
 type GetRequestsQueryParamID struct {
 	Str        *string
 	ArrayOfstr []string
@@ -2240,7 +2242,6 @@ func (e *GetRequestsQueryParamRequestsOrderBy2) UnmarshalJSON(data []byte) error
 	}
 }
 
-// GetRequestsQueryParamRequests1 - Sort key(s)
 type GetRequestsQueryParamRequests1 string
 
 const (
@@ -2275,6 +2276,7 @@ const (
 	GetRequestsQueryParamOrderByTypeArrayOfgetRequestsQueryParamRequestsOrderBy2 GetRequestsQueryParamOrderByType = "arrayOfgetRequests_queryParam_Requests_order_by_2"
 )
 
+// GetRequestsQueryParamOrderBy - Sort key(s)
 type GetRequestsQueryParamOrderBy struct {
 	GetRequestsQueryParamRequests1               *GetRequestsQueryParamRequests1
 	ArrayOfgetRequestsQueryParamRequestsOrderBy2 []GetRequestsQueryParamRequestsOrderBy2
@@ -2331,7 +2333,6 @@ func (u GetRequestsQueryParamOrderBy) MarshalJSON() ([]byte, error) {
 	return nil, errors.New("could not marshal union type: all fields are null")
 }
 
-// GetRequestsQueryParamRequestsParsedQuery2 - URL Encoded string of the JSON to match to the parsed query (JSON representation of the query)
 type GetRequestsQueryParamRequestsParsedQuery2 struct {
 }
 
@@ -2342,6 +2343,7 @@ const (
 	GetRequestsQueryParamParsedQueryTypeGetRequestsQueryParamRequestsParsedQuery2 GetRequestsQueryParamParsedQueryType = "getRequests_queryParam_Requests_parsed_query_2"
 )
 
+// GetRequestsQueryParamParsedQuery - URL Encoded string of the JSON to match to the parsed query (JSON representation of the query)
 type GetRequestsQueryParamParsedQuery struct {
 	Str                                       *string
 	GetRequestsQueryParamRequestsParsedQuery2 *GetRequestsQueryParamRequestsParsedQuery2
@@ -2398,7 +2400,6 @@ func (u GetRequestsQueryParamParsedQuery) MarshalJSON() ([]byte, error) {
 	return nil, errors.New("could not marshal union type: all fields are null")
 }
 
-// GetRequestsQueryParamRequestsRejectionCause2 - Filter by rejection cause
 type GetRequestsQueryParamRequestsRejectionCause2 struct {
 	Any      *bool                             `queryParam:"name=any"`
 	Contains *components.RequestRejectionCause `queryParam:"name=contains"`
@@ -2453,25 +2454,26 @@ func (o *GetRequestsQueryParamRequestsRejectionCause2) GetLte() *components.Requ
 type QueryParamRejectionCauseType string
 
 const (
-	QueryParamRejectionCauseTypeRequestRejectionCauseSchemas                 QueryParamRejectionCauseType = "RequestRejectionCause_Schemas"
+	QueryParamRejectionCauseTypeSchemas                                      QueryParamRejectionCauseType = "Schemas"
 	QueryParamRejectionCauseTypeGetRequestsQueryParamRequestsRejectionCause2 QueryParamRejectionCauseType = "getRequests_queryParam_Requests_rejection_cause_2"
 	QueryParamRejectionCauseTypeArrayOfRequestRejectionCause                 QueryParamRejectionCauseType = "arrayOfRequestRejectionCause"
 )
 
+// QueryParamRejectionCause - Filter by rejection cause
 type QueryParamRejectionCause struct {
-	RequestRejectionCauseSchemas                 *RequestRejectionCauseSchemas
+	Schemas                                      *Schemas
 	GetRequestsQueryParamRequestsRejectionCause2 *GetRequestsQueryParamRequestsRejectionCause2
 	ArrayOfRequestRejectionCause                 []components.RequestRejectionCause
 
 	Type QueryParamRejectionCauseType
 }
 
-func CreateQueryParamRejectionCauseRequestRejectionCauseSchemas(requestRejectionCauseSchemas RequestRejectionCauseSchemas) QueryParamRejectionCause {
-	typ := QueryParamRejectionCauseTypeRequestRejectionCauseSchemas
+func CreateQueryParamRejectionCauseSchemas(schemas Schemas) QueryParamRejectionCause {
+	typ := QueryParamRejectionCauseTypeSchemas
 
 	return QueryParamRejectionCause{
-		RequestRejectionCauseSchemas: &requestRejectionCauseSchemas,
-		Type:                         typ,
+		Schemas: &schemas,
+		Type:    typ,
 	}
 }
 
@@ -2502,10 +2504,10 @@ func (u *QueryParamRejectionCause) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
-	requestRejectionCauseSchemas := RequestRejectionCauseSchemas("")
-	if err := utils.UnmarshalJSON(data, &requestRejectionCauseSchemas, "", true, true); err == nil {
-		u.RequestRejectionCauseSchemas = &requestRejectionCauseSchemas
-		u.Type = QueryParamRejectionCauseTypeRequestRejectionCauseSchemas
+	schemas := Schemas("")
+	if err := utils.UnmarshalJSON(data, &schemas, "", true, true); err == nil {
+		u.Schemas = &schemas
+		u.Type = QueryParamRejectionCauseTypeSchemas
 		return nil
 	}
 
@@ -2520,8 +2522,8 @@ func (u *QueryParamRejectionCause) UnmarshalJSON(data []byte) error {
 }
 
 func (u QueryParamRejectionCause) MarshalJSON() ([]byte, error) {
-	if u.RequestRejectionCauseSchemas != nil {
-		return utils.MarshalJSON(u.RequestRejectionCauseSchemas, "", true)
+	if u.Schemas != nil {
+		return utils.MarshalJSON(u.Schemas, "", true)
 	}
 
 	if u.GetRequestsQueryParamRequestsRejectionCause2 != nil {
@@ -2542,6 +2544,7 @@ const (
 	GetRequestsQueryParamSourceIDTypeArrayOfstr GetRequestsQueryParamSourceIDType = "arrayOfstr"
 )
 
+// GetRequestsQueryParamSourceID - Filter by source IDs
 type GetRequestsQueryParamSourceID struct {
 	Str        *string
 	ArrayOfstr []string
@@ -2626,27 +2629,35 @@ func (e *GetRequestsQueryParamStatus) UnmarshalJSON(data []byte) error {
 }
 
 type GetRequestsRequest struct {
-	Body           *GetRequestsQueryParamBody        `queryParam:"style=form,explode=true,name=body"`
-	BulkRetryID    *GetRequestsQueryParamBulkRetryID `queryParam:"style=form,explode=true,name=bulk_retry_id"`
-	CreatedAt      *GetRequestsQueryParamCreatedAt   `queryParam:"style=form,explode=true,name=created_at"`
-	Dir            *GetRequestsQueryParamDir         `queryParam:"style=form,explode=true,name=dir"`
-	EventsCount    *QueryParamEventsCount            `queryParam:"style=form,explode=true,name=events_count"`
-	Headers        *GetRequestsQueryParamHeaders     `queryParam:"style=form,explode=true,name=headers"`
-	ID             *GetRequestsQueryParamID          `queryParam:"style=form,explode=true,name=id"`
-	IgnoredCount   *QueryParamIgnoredCount           `queryParam:"style=form,explode=true,name=ignored_count"`
-	Include        *GetRequestsQueryParamInclude     `queryParam:"style=form,explode=true,name=include"`
-	IngestedAt     *QueryParamIngestedAt             `queryParam:"style=form,explode=true,name=ingested_at"`
-	Limit          *int64                            `queryParam:"style=form,explode=true,name=limit"`
-	Next           *string                           `queryParam:"style=form,explode=true,name=next"`
-	OrderBy        *GetRequestsQueryParamOrderBy     `queryParam:"style=form,explode=true,name=order_by"`
-	ParsedQuery    *GetRequestsQueryParamParsedQuery `queryParam:"style=form,explode=true,name=parsed_query"`
-	Path           *string                           `queryParam:"style=form,explode=true,name=path"`
-	Prev           *string                           `queryParam:"style=form,explode=true,name=prev"`
-	RejectionCause *QueryParamRejectionCause         `queryParam:"style=form,explode=true,name=rejection_cause"`
-	SearchTerm     *string                           `queryParam:"style=form,explode=true,name=search_term"`
-	SourceID       *GetRequestsQueryParamSourceID    `queryParam:"style=form,explode=true,name=source_id"`
-	Status         *GetRequestsQueryParamStatus      `queryParam:"style=form,explode=true,name=status"`
-	Verified       *bool                             `queryParam:"style=form,explode=true,name=verified"`
+	// URL Encoded string of the JSON to match to the data body
+	Body        *GetRequestsQueryParamBody        `queryParam:"style=form,explode=true,name=body"`
+	BulkRetryID *GetRequestsQueryParamBulkRetryID `queryParam:"style=form,explode=true,name=bulk_retry_id"`
+	CreatedAt   *GetRequestsQueryParamCreatedAt   `queryParam:"style=form,explode=true,name=created_at"`
+	// Sort direction
+	Dir         *GetRequestsQueryParamDir `queryParam:"style=form,explode=true,name=dir"`
+	EventsCount *QueryParamEventsCount    `queryParam:"style=form,explode=true,name=events_count"`
+	// URL Encoded string of the JSON to match to the data headers
+	Headers *GetRequestsQueryParamHeaders `queryParam:"style=form,explode=true,name=headers"`
+	// Filter by requests IDs
+	ID           *GetRequestsQueryParamID      `queryParam:"style=form,explode=true,name=id"`
+	IgnoredCount *QueryParamIgnoredCount       `queryParam:"style=form,explode=true,name=ignored_count"`
+	Include      *GetRequestsQueryParamInclude `queryParam:"style=form,explode=true,name=include"`
+	IngestedAt   *QueryParamIngestedAt         `queryParam:"style=form,explode=true,name=ingested_at"`
+	Limit        *int64                        `queryParam:"style=form,explode=true,name=limit"`
+	Next         *string                       `queryParam:"style=form,explode=true,name=next"`
+	// Sort key(s)
+	OrderBy *GetRequestsQueryParamOrderBy `queryParam:"style=form,explode=true,name=order_by"`
+	// URL Encoded string of the JSON to match to the parsed query (JSON representation of the query)
+	ParsedQuery *GetRequestsQueryParamParsedQuery `queryParam:"style=form,explode=true,name=parsed_query"`
+	Path        *string                           `queryParam:"style=form,explode=true,name=path"`
+	Prev        *string                           `queryParam:"style=form,explode=true,name=prev"`
+	// Filter by rejection cause
+	RejectionCause *QueryParamRejectionCause `queryParam:"style=form,explode=true,name=rejection_cause"`
+	SearchTerm     *string                   `queryParam:"style=form,explode=true,name=search_term"`
+	// Filter by source IDs
+	SourceID *GetRequestsQueryParamSourceID `queryParam:"style=form,explode=true,name=source_id"`
+	Status   *GetRequestsQueryParamStatus   `queryParam:"style=form,explode=true,name=status"`
+	Verified *bool                          `queryParam:"style=form,explode=true,name=verified"`
 }
 
 func (o *GetRequestsRequest) GetBody() *GetRequestsQueryParamBody {

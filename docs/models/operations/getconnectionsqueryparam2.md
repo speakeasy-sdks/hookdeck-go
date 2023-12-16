@@ -1,7 +1,5 @@
 # GetConnectionsQueryParam2
 
-Date the connection was archived
-
 
 ## Fields
 

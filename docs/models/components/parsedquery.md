@@ -9,9 +9,9 @@
 parsedQuery := components.CreateParsedQueryStr(string{/* values here */})
 ```
 
-### ShortEventData2
+### ShortEventDataSchemas2
 
 ```go
-parsedQuery := components.CreateParsedQueryShortEventData2(components.ShortEventData2{/* values here */})
+parsedQuery := components.CreateParsedQueryShortEventDataSchemas2(components.ShortEventDataSchemas2{/* values here */})
 ```
 
