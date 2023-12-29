@@ -1,4 +1,5 @@
 # Requests
+(*Requests*)
 
 ## Overview
 
@@ -18,47 +19,74 @@ Get requests
 package main
 
 import(
+	"github.com/speakeasy-sdks/hookdeck-go/models/components"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
 	"context"
+	"github.com/speakeasy-sdks/hookdeck-go/models/operations"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/types"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
-            BasicAuth: &shared.SchemeBasicAuth{
-                Password: "",
-                Username: "",
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(components.Security{
+            BasicAuth: &components.SchemeBasicAuth{
+                Password: "<YOUR_PASSWORD_HERE>",
+                Username: "<YOUR_USERNAME_HERE>",
             },
         }),
     )
 
     ctx := context.Background()
     res, err := s.Requests.Get(ctx, operations.GetRequestsRequest{
-        Body: &operations.GetRequestsBody{},
-        BulkRetryID: &operations.GetRequestsBulkRetryID{},
-        CreatedAt: &operations.GetRequestsCreatedAt{},
-        Dir: &operations.GetRequestsDir{},
-        EventsCount: &operations.GetRequestsEventsCount{},
-        Headers: &operations.GetRequestsHeaders{},
-        ID: &operations.GetRequestsID{},
-        IgnoredCount: &operations.GetRequestsIgnoredCount{},
-        Include: operations.GetRequestsIncludeData.ToPointer(),
-        IngestedAt: &operations.GetRequestsIngestedAt{},
-        Limit: hookdeck.Int64(793698),
-        Next: hookdeck.String("quam"),
-        OrderBy: &operations.GetRequestsOrderBy{},
-        ParsedQuery: &operations.GetRequestsParsedQuery{},
-        Path: hookdeck.String("dolor"),
-        Prev: hookdeck.String("vero"),
-        RejectionCause: &operations.GetRequestsRejectionCause{},
-        SearchTerm: hookdeck.String("nostrum"),
-        SourceID: &operations.GetRequestsSourceID{},
-        Status: operations.GetRequestsStatusRejected.ToPointer(),
-        Verified: hookdeck.Bool(false),
+        Body: operations.CreateGetRequestsQueryParamBodyGetRequestsQueryParam2(
+                operations.GetRequestsQueryParam2{},
+        ),
+        BulkRetryID: operations.CreateGetRequestsQueryParamBulkRetryIDStr(
+        "string",
+        ),
+        CreatedAt: operations.CreateGetRequestsQueryParamCreatedAtGetRequestsQueryParamRequests2(
+                operations.GetRequestsQueryParamRequests2{},
+        ),
+        Dir: operations.CreateGetRequestsQueryParamDirArrayOfgetRequestsQueryParamRequestsDir2(
+                []operations.GetRequestsQueryParamRequestsDir2{
+                    operations.GetRequestsQueryParamRequestsDir2Desc,
+                },
+        ),
+        EventsCount: operations.CreateQueryParamEventsCountArrayOfinteger(
+                []int64{
+                    521235,
+                },
+        ),
+        Headers: operations.CreateGetRequestsQueryParamHeadersStr(
+        "string",
+        ),
+        ID: operations.CreateGetRequestsQueryParamIDArrayOfstr(
+                []string{
+                    "string",
+                },
+        ),
+        IgnoredCount: operations.CreateQueryParamIgnoredCountArrayOfinteger(
+                []int64{
+                    458049,
+                },
+        ),
+        IngestedAt: operations.CreateQueryParamIngestedAtGetRequestsQueryParamRequestsIngestedAt2(
+                operations.GetRequestsQueryParamRequestsIngestedAt2{},
+        ),
+        OrderBy: operations.CreateGetRequestsQueryParamOrderByGetRequestsQueryParamRequests1(
+        operations.GetRequestsQueryParamRequests1IngestedAt,
+        ),
+        ParsedQuery: operations.CreateGetRequestsQueryParamParsedQueryStr(
+        "string",
+        ),
+        RejectionCause: operations.CreateQueryParamRejectionCauseArrayOfRequestRejectionCause(
+                []components.RequestRejectionCause{
+                    components.RequestRejectionCauseNoWebhook,
+                },
+        ),
+        SourceID: operations.CreateGetRequestsQueryParamSourceIDStr(
+        "string",
+        ),
     })
     if err != nil {
         log.Fatal(err)
@@ -81,4 +109,7 @@ func main() {
 ### Response
 
 **[*operations.GetRequestsResponse](../../models/operations/getrequestsresponse.md), error**
-
+| Error Object               | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| sdkerrors.APIErrorResponse | 400,422                    | application/json           |
+| sdkerrors.SDKError         | 4xx-5xx                    | */*                        |

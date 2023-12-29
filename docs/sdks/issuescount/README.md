@@ -1,4 +1,5 @@
 # IssuesCount
+(*IssuesCount*)
 
 ### Available Operations
 
@@ -14,45 +15,84 @@ Get the number of issues
 package main
 
 import(
+	"github.com/speakeasy-sdks/hookdeck-go/models/components"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
 	"context"
+	"github.com/speakeasy-sdks/hookdeck-go/models/operations"
+	"github.com/speakeasy-sdks/hookdeck-go/types"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/types"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
-            BasicAuth: &shared.SchemeBasicAuth{
-                Password: "",
-                Username: "",
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(components.Security{
+            BasicAuth: &components.SchemeBasicAuth{
+                Password: "<YOUR_PASSWORD_HERE>",
+                Username: "<YOUR_USERNAME_HERE>",
             },
         }),
     )
 
     ctx := context.Background()
     res, err := s.IssuesCount.Get(ctx, operations.GetIssueCountRequest{
-        AggregationKeys: &operations.GetIssueCountAggregationKeys{
-            ErrorCode: &operations.GetIssueCountAggregationKeysErrorCode{},
-            ResponseStatus: &operations.GetIssueCountAggregationKeysResponseStatus{},
-            WebhookID: &operations.GetIssueCountAggregationKeysWebhookID{},
+        AggregationKeys: &operations.QueryParamAggregationKeys{
+            ErrorCode: operations.CreateGetIssueCountQueryParamErrorCodeArrayOfAttemptErrorCode(
+                    []components.AttemptErrorCode{
+                        components.AttemptErrorCodeTimeout,
+                    },
+            ),
+            ResponseStatus: operations.CreateGetIssueCountQueryParamResponseStatusArrayOffloat32(
+                    []float32{
+                        8441.99,
+                    },
+            ),
+            WebhookID: operations.CreateGetIssueCountQueryParamWebhookIDArrayOfstr(
+                    []string{
+                        "string",
+                    },
+            ),
         },
-        CreatedAt: &operations.GetIssueCountCreatedAt{},
-        Dir: &operations.GetIssueCountDir{},
-        DismissedAt: &operations.GetIssueCountDismissedAt{},
-        FirstSeenAt: &operations.GetIssueCountFirstSeenAt{},
-        ID: &operations.GetIssueCountID{},
-        IssueTriggerID: &operations.GetIssueCountIssueTriggerID{},
-        LastSeenAt: &operations.GetIssueCountLastSeenAt{},
-        Limit: hookdeck.Int64(975522),
-        MergedWith: &operations.GetIssueCountMergedWith{},
-        Next: hookdeck.String("perferendis"),
-        OrderBy: &operations.GetIssueCountOrderBy{},
-        Prev: hookdeck.String("fugiat"),
-        Status: &operations.GetIssueCountStatus{},
-        Type: &operations.GetIssueCountType{},
+        CreatedAt: operations.CreateGetIssueCountQueryParamCreatedAtGetIssueCountQueryParam2(
+                operations.GetIssueCountQueryParam2{},
+        ),
+        Dir: operations.CreateGetIssueCountQueryParamDirArrayOfgetIssueCountQueryParamIssuesCount2(
+                []operations.GetIssueCountQueryParamIssuesCount2{
+                    operations.GetIssueCountQueryParamIssuesCount2Asc,
+                },
+        ),
+        DismissedAt: operations.CreateQueryParamDismissedAtGetIssueCountQueryParamIssuesCountDismissedAt2(
+                operations.GetIssueCountQueryParamIssuesCountDismissedAt2{},
+        ),
+        FirstSeenAt: operations.CreateQueryParamFirstSeenAtGetIssueCountQueryParamIssuesCountFirstSeenAt2(
+                operations.GetIssueCountQueryParamIssuesCountFirstSeenAt2{},
+        ),
+        ID: operations.CreateGetIssueCountQueryParamIDStr(
+        "iss_YXKv5OdJXCiVwkPhGy",
+        ),
+        IssueTriggerID: operations.CreateQueryParamIssueTriggerIDArrayOfstr(
+                []string{
+                    "it_BXKv5OdJXCiVwkPhGy",
+                },
+        ),
+        LastSeenAt: operations.CreateQueryParamLastSeenAtDateTime(
+        types.MustTimeFromString("2022-03-29T23:04:28.455Z"),
+        ),
+        MergedWith: operations.CreateQueryParamMergedWithStr(
+        "iss_AXKv3OdJXCiKlkPhDz",
+        ),
+        OrderBy: operations.CreateGetIssueCountQueryParamOrderByArrayOfgetIssueCountQueryParamIssuesCountOrderBy2(
+                []operations.GetIssueCountQueryParamIssuesCountOrderBy2{
+                    operations.GetIssueCountQueryParamIssuesCountOrderBy2FirstSeenAt,
+                },
+        ),
+        Status: operations.CreateGetIssueCountQueryParamStatusGetIssueCountQueryParamIssuesCountStatus1(
+        operations.GetIssueCountQueryParamIssuesCountStatus1Opened,
+        ),
+        Type: operations.CreateQueryParamTypeArrayOfgetIssueCountQueryParamIssuesCountType2(
+                []operations.GetIssueCountQueryParamIssuesCountType2{
+                    operations.GetIssueCountQueryParamIssuesCountType2Delivery,
+                },
+        ),
     })
     if err != nil {
         log.Fatal(err)
@@ -75,4 +115,7 @@ func main() {
 ### Response
 
 **[*operations.GetIssueCountResponse](../../models/operations/getissuecountresponse.md), error**
-
+| Error Object               | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| sdkerrors.APIErrorResponse | 422                        | application/json           |
+| sdkerrors.SDKError         | 4xx-5xx                    | */*                        |

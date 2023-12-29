@@ -1,4 +1,5 @@
 # RequestIgnoredEvents
+(*RequestIgnoredEvents*)
 
 ### Available Operations
 
@@ -14,32 +15,41 @@ Get request ignored events
 package main
 
 import(
+	"github.com/speakeasy-sdks/hookdeck-go/models/components"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
 	"context"
+	"github.com/speakeasy-sdks/hookdeck-go/models/operations"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
-            BasicAuth: &shared.SchemeBasicAuth{
-                Password: "",
-                Username: "",
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(components.Security{
+            BasicAuth: &components.SchemeBasicAuth{
+                Password: "<YOUR_PASSWORD_HERE>",
+                Username: "<YOUR_USERNAME_HERE>",
             },
         }),
     )
 
     ctx := context.Background()
     res, err := s.RequestIgnoredEvents.Get(ctx, operations.GetRequestIgnoredEventsRequest{
-        Dir: &operations.GetRequestIgnoredEventsDir{},
-        IDPathParameter: "quis",
-        IDQueryParameter: &operations.GetRequestIgnoredEventsID{},
-        Limit: hookdeck.Int64(199996),
-        Next: hookdeck.String("eos"),
-        OrderBy: &operations.GetRequestIgnoredEventsOrderBy{},
-        Prev: hookdeck.String("perferendis"),
+        Dir: operations.CreateGetRequestIgnoredEventsQueryParamDirArrayOfgetRequestIgnoredEventsQueryParam2(
+                []operations.GetRequestIgnoredEventsQueryParam2{
+                    operations.GetRequestIgnoredEventsQueryParam2Asc,
+                },
+        ),
+        IDPathParameter: "string",
+        IDQueryParameter: operations.CreateGetRequestIgnoredEventsQueryParamIDArrayOfstr(
+                []string{
+                    "string",
+                },
+        ),
+        OrderBy: operations.CreateGetRequestIgnoredEventsQueryParamOrderByArrayOfgetRequestIgnoredEventsQueryParamRequestIgnoredEvents2(
+                []operations.GetRequestIgnoredEventsQueryParamRequestIgnoredEvents2{
+                    operations.GetRequestIgnoredEventsQueryParamRequestIgnoredEvents2CreatedAt,
+                },
+        ),
     })
     if err != nil {
         log.Fatal(err)
@@ -62,4 +72,7 @@ func main() {
 ### Response
 
 **[*operations.GetRequestIgnoredEventsResponse](../../models/operations/getrequestignoredeventsresponse.md), error**
-
+| Error Object               | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| sdkerrors.APIErrorResponse | 400,404,422                | application/json           |
+| sdkerrors.SDKError         | 4xx-5xx                    | */*                        |

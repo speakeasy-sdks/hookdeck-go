@@ -1,4 +1,5 @@
 # Attempts
+(*Attempts*)
 
 ## Overview
 
@@ -18,31 +19,40 @@ Retrieve a list of attempts.
 package main
 
 import(
+	"github.com/speakeasy-sdks/hookdeck-go/models/components"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
 	"context"
+	"github.com/speakeasy-sdks/hookdeck-go/models/operations"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
-            BasicAuth: &shared.SchemeBasicAuth{
-                Password: "",
-                Username: "",
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(components.Security{
+            BasicAuth: &components.SchemeBasicAuth{
+                Password: "<YOUR_PASSWORD_HERE>",
+                Username: "<YOUR_USERNAME_HERE>",
             },
         }),
     )
 
     ctx := context.Background()
     res, err := s.Attempts.Get(ctx, operations.GetAttemptsRequest{
-        Dir: &operations.GetAttemptsDir{},
-        EventID: &operations.GetAttemptsEventID{},
-        Limit: hookdeck.Int64(715190),
-        Next: hookdeck.String("quibusdam"),
-        OrderBy: &operations.GetAttemptsOrderBy{},
-        Prev: hookdeck.String("unde"),
+        Dir: operations.CreateDirArrayOfgetAttemptsQueryParam2(
+                []operations.GetAttemptsQueryParam2{
+                    operations.GetAttemptsQueryParam2Asc,
+                },
+        ),
+        EventID: operations.CreateEventIDArrayOfstr(
+                []string{
+                    "string",
+                },
+        ),
+        OrderBy: operations.CreateOrderByArrayOfqueryParam2(
+                []operations.QueryParam2{
+                    operations.QueryParam2CreatedAt,
+                },
+        ),
     })
     if err != nil {
         log.Fatal(err)
@@ -65,4 +75,7 @@ func main() {
 ### Response
 
 **[*operations.GetAttemptsResponse](../../models/operations/getattemptsresponse.md), error**
-
+| Error Object               | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| sdkerrors.APIErrorResponse | 400,422                    | application/json           |
+| sdkerrors.SDKError         | 4xx-5xx                    | */*                        |

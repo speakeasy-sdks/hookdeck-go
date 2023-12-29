@@ -1,4 +1,5 @@
 # IssueTrigger
+(*IssueTrigger*)
 
 ### Available Operations
 
@@ -20,38 +21,43 @@ Create a new issue trigger.
 package main
 
 import(
+	"github.com/speakeasy-sdks/hookdeck-go/models/components"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
 	"context"
+	"github.com/speakeasy-sdks/hookdeck-go/models/operations"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
-            BasicAuth: &shared.SchemeBasicAuth{
-                Password: "",
-                Username: "",
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(components.Security{
+            BasicAuth: &components.SchemeBasicAuth{
+                Password: "<YOUR_PASSWORD_HERE>",
+                Username: "<YOUR_USERNAME_HERE>",
             },
         }),
     )
 
     ctx := context.Background()
     res, err := s.IssueTrigger.Create(ctx, operations.CreateIssueTriggerRequestBody{
-        Channels: shared.IssueTriggerChannels{
-            Email: &shared.IssueTriggerEmailChannel{},
-            Opsgenie: &shared.IssueTriggerIntegrationChannel{},
-            Slack: &shared.IssueTriggerSlackChannel{
-                ChannelName: "quasi",
+        Channels: &components.IssueTriggerChannels{
+            Email: &components.IssueTriggerEmailChannel{},
+            Opsgenie: &components.IssueTriggerIntegrationChannel{},
+            Slack: &components.IssueTriggerSlackChannel{
+                ChannelName: "string",
             },
         },
-        Configs: &shared.IssueTriggerTransformationConfigs{
-            LogLevel: shared.TransformationExecutionLogLevelFatal,
-            Transformations: shared.IssueTriggerTransformationConfigsTransformations{},
-        },
-        Name: hookdeck.String("Frederick Schoen"),
-        Type: shared.IssueTypeTransformation,
+        Configs: operations.CreateCreateIssueTriggerConfigsIssueTriggerTransformationConfigs(
+                components.IssueTriggerTransformationConfigs{
+                    LogLevel: components.TransformationExecutionLogLevelWarn,
+                    Transformations: components.CreateTransformationsArrayOfstr(
+                            []string{
+                                "string",
+                            },
+                    ),
+                },
+        ),
+        Type: components.IssueTypeBackpressure,
     })
     if err != nil {
         log.Fatal(err)
@@ -74,7 +80,10 @@ func main() {
 ### Response
 
 **[*operations.CreateIssueTriggerResponse](../../models/operations/createissuetriggerresponse.md), error**
-
+| Error Object               | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| sdkerrors.APIErrorResponse | 400,422                    | application/json           |
+| sdkerrors.SDKError         | 4xx-5xx                    | */*                        |
 
 ## Delete
 
@@ -86,23 +95,24 @@ Delete an existing issue trigger.
 package main
 
 import(
+	"github.com/speakeasy-sdks/hookdeck-go/models/components"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
-            BasicAuth: &shared.SchemeBasicAuth{
-                Password: "",
-                Username: "",
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(components.Security{
+            BasicAuth: &components.SchemeBasicAuth{
+                Password: "<YOUR_PASSWORD_HERE>",
+                Username: "<YOUR_USERNAME_HERE>",
             },
         }),
     )
-    id := "architecto"
+
+
+    var id string = "string"
 
     ctx := context.Background()
     res, err := s.IssueTrigger.Delete(ctx, id)
@@ -127,7 +137,10 @@ func main() {
 ### Response
 
 **[*operations.DeleteIssueTriggerResponse](../../models/operations/deleteissuetriggerresponse.md), error**
-
+| Error Object               | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| sdkerrors.APIErrorResponse | 404                        | application/json           |
+| sdkerrors.SDKError         | 4xx-5xx                    | */*                        |
 
 ## Disable
 
@@ -139,23 +152,24 @@ Disable an existing issue trigger.
 package main
 
 import(
+	"github.com/speakeasy-sdks/hookdeck-go/models/components"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
-            BasicAuth: &shared.SchemeBasicAuth{
-                Password: "",
-                Username: "",
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(components.Security{
+            BasicAuth: &components.SchemeBasicAuth{
+                Password: "<YOUR_PASSWORD_HERE>",
+                Username: "<YOUR_USERNAME_HERE>",
             },
         }),
     )
-    id := "architecto"
+
+
+    var id string = "string"
 
     ctx := context.Background()
     res, err := s.IssueTrigger.Disable(ctx, id)
@@ -180,7 +194,10 @@ func main() {
 ### Response
 
 **[*operations.DisableIssueTriggerResponse](../../models/operations/disableissuetriggerresponse.md), error**
-
+| Error Object               | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| sdkerrors.APIErrorResponse | 404                        | application/json           |
+| sdkerrors.SDKError         | 4xx-5xx                    | */*                        |
 
 ## Enable
 
@@ -192,23 +209,24 @@ Enable an existing issue trigger.
 package main
 
 import(
+	"github.com/speakeasy-sdks/hookdeck-go/models/components"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
-            BasicAuth: &shared.SchemeBasicAuth{
-                Password: "",
-                Username: "",
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(components.Security{
+            BasicAuth: &components.SchemeBasicAuth{
+                Password: "<YOUR_PASSWORD_HERE>",
+                Username: "<YOUR_USERNAME_HERE>",
             },
         }),
     )
-    id := "repudiandae"
+
+
+    var id string = "string"
 
     ctx := context.Background()
     res, err := s.IssueTrigger.Enable(ctx, id)
@@ -233,7 +251,10 @@ func main() {
 ### Response
 
 **[*operations.EnableIssueTriggerResponse](../../models/operations/enableissuetriggerresponse.md), error**
-
+| Error Object               | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| sdkerrors.APIErrorResponse | 404                        | application/json           |
+| sdkerrors.SDKError         | 4xx-5xx                    | */*                        |
 
 ## Get
 
@@ -245,23 +266,24 @@ Get a single issue trigger details.
 package main
 
 import(
+	"github.com/speakeasy-sdks/hookdeck-go/models/components"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
-            BasicAuth: &shared.SchemeBasicAuth{
-                Password: "",
-                Username: "",
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(components.Security{
+            BasicAuth: &components.SchemeBasicAuth{
+                Password: "<YOUR_PASSWORD_HERE>",
+                Username: "<YOUR_USERNAME_HERE>",
             },
         }),
     )
-    id := "ullam"
+
+
+    var id string = "string"
 
     ctx := context.Background()
     res, err := s.IssueTrigger.Get(ctx, id)
@@ -286,7 +308,10 @@ func main() {
 ### Response
 
 **[*operations.GetIssueTriggerResponse](../../models/operations/getissuetriggerresponse.md), error**
-
+| Error Object               | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| sdkerrors.APIErrorResponse | 404                        | application/json           |
+| sdkerrors.SDKError         | 4xx-5xx                    | */*                        |
 
 ## Update
 
@@ -298,39 +323,45 @@ Update the details of an issue trigger.
 package main
 
 import(
+	"github.com/speakeasy-sdks/hookdeck-go/models/components"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
+	"github.com/speakeasy-sdks/hookdeck-go/models/operations"
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/types"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
-            BasicAuth: &shared.SchemeBasicAuth{
-                Password: "",
-                Username: "",
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(components.Security{
+            BasicAuth: &components.SchemeBasicAuth{
+                Password: "<YOUR_PASSWORD_HERE>",
+                Username: "<YOUR_USERNAME_HERE>",
             },
         }),
     )
+
+
     requestBody := operations.UpdateIssueTriggerRequestBody{
-        Channels: &shared.IssueTriggerChannels{
-            Email: &shared.IssueTriggerEmailChannel{},
-            Opsgenie: &shared.IssueTriggerIntegrationChannel{},
-            Slack: &shared.IssueTriggerSlackChannel{
-                ChannelName: "expedita",
+        Channels: &components.IssueTriggerChannels{
+            Email: &components.IssueTriggerEmailChannel{},
+            Opsgenie: &components.IssueTriggerIntegrationChannel{},
+            Slack: &components.IssueTriggerSlackChannel{
+                ChannelName: "string",
             },
         },
-        Configs: &shared.IssueTriggerTransformationConfigs{
-            LogLevel: shared.TransformationExecutionLogLevelFatal,
-            Transformations: shared.IssueTriggerTransformationConfigsTransformations{},
-        },
-        DisabledAt: types.MustTimeFromString("2022-07-21T08:29:53.942Z"),
-        Name: hookdeck.String("Al Bashirian"),
+        Configs: operations.CreateUpdateIssueTriggerConfigsIssueTriggerBackpressureConfigs(
+                components.IssueTriggerBackpressureConfigs{
+                    Delay: 24555,
+                    Destinations: components.CreateDestinationsArrayOfstr(
+                            []string{
+                                "string",
+                            },
+                    ),
+                },
+        ),
     }
-    id := "natus"
+
+    var id string = "string"
 
     ctx := context.Background()
     res, err := s.IssueTrigger.Update(ctx, requestBody, id)
@@ -356,7 +387,10 @@ func main() {
 ### Response
 
 **[*operations.UpdateIssueTriggerResponse](../../models/operations/updateissuetriggerresponse.md), error**
-
+| Error Object               | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| sdkerrors.APIErrorResponse | 400,422                    | application/json           |
+| sdkerrors.SDKError         | 4xx-5xx                    | */*                        |
 
 ## Upsert
 
@@ -368,38 +402,42 @@ Create or update an existing issue trigger.
 package main
 
 import(
+	"github.com/speakeasy-sdks/hookdeck-go/models/components"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
 	"context"
+	"github.com/speakeasy-sdks/hookdeck-go/models/operations"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
-            BasicAuth: &shared.SchemeBasicAuth{
-                Password: "",
-                Username: "",
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(components.Security{
+            BasicAuth: &components.SchemeBasicAuth{
+                Password: "<YOUR_PASSWORD_HERE>",
+                Username: "<YOUR_USERNAME_HERE>",
             },
         }),
     )
 
     ctx := context.Background()
     res, err := s.IssueTrigger.Upsert(ctx, operations.UpsertIssueTriggerRequestBody{
-        Channels: shared.IssueTriggerChannels{
-            Email: &shared.IssueTriggerEmailChannel{},
-            Opsgenie: &shared.IssueTriggerIntegrationChannel{},
-            Slack: &shared.IssueTriggerSlackChannel{
-                ChannelName: "magni",
+        Channels: &components.IssueTriggerChannels{
+            Email: &components.IssueTriggerEmailChannel{},
+            Opsgenie: &components.IssueTriggerIntegrationChannel{},
+            Slack: &components.IssueTriggerSlackChannel{
+                ChannelName: "string",
             },
         },
-        Configs: &shared.IssueTriggerDeliveryConfigs{
-            Connections: shared.IssueTriggerDeliveryConfigsConnections{},
-            Strategy: shared.IssueTriggerStrategyFinalAttempt,
-        },
-        Name: "Ervin Schoen",
-        Type: shared.IssueTypeDelivery,
+        Configs: operations.CreateUpsertIssueTriggerConfigsIssueTriggerTransformationConfigs(
+                components.IssueTriggerTransformationConfigs{
+                    LogLevel: components.TransformationExecutionLogLevelWarn,
+                    Transformations: components.CreateTransformationsStr(
+                    "string",
+                    ),
+                },
+        ),
+        Name: "string",
+        Type: components.IssueTypeTransformation,
     })
     if err != nil {
         log.Fatal(err)
@@ -422,4 +460,7 @@ func main() {
 ### Response
 
 **[*operations.UpsertIssueTriggerResponse](../../models/operations/upsertissuetriggerresponse.md), error**
-
+| Error Object               | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| sdkerrors.APIErrorResponse | 400,422                    | application/json           |
+| sdkerrors.SDKError         | 4xx-5xx                    | */*                        |

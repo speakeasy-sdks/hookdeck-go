@@ -1,4 +1,5 @@
 # Ruleset
+(*Ruleset*)
 
 ### Available Operations
 
@@ -19,23 +20,24 @@ Archive a ruleset
 package main
 
 import(
+	"github.com/speakeasy-sdks/hookdeck-go/models/components"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
-            BasicAuth: &shared.SchemeBasicAuth{
-                Password: "",
-                Username: "",
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(components.Security{
+            BasicAuth: &components.SchemeBasicAuth{
+                Password: "<YOUR_PASSWORD_HERE>",
+                Username: "<YOUR_USERNAME_HERE>",
             },
         }),
     )
-    id := "recusandae"
+
+
+    var id string = "string"
 
     ctx := context.Background()
     res, err := s.Ruleset.Archive(ctx, id)
@@ -60,7 +62,10 @@ func main() {
 ### Response
 
 **[*operations.ArchiveRulesetResponse](../../models/operations/archiverulesetresponse.md), error**
-
+| Error Object               | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| sdkerrors.APIErrorResponse | 404                        | application/json           |
+| sdkerrors.SDKError         | 4xx-5xx                    | */*                        |
 
 ## Create
 
@@ -72,40 +77,44 @@ Create a ruleset
 package main
 
 import(
+	"github.com/speakeasy-sdks/hookdeck-go/models/components"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
 	"context"
+	"github.com/speakeasy-sdks/hookdeck-go/models/operations"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
-            BasicAuth: &shared.SchemeBasicAuth{
-                Password: "",
-                Username: "",
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(components.Security{
+            BasicAuth: &components.SchemeBasicAuth{
+                Password: "<YOUR_PASSWORD_HERE>",
+                Username: "<YOUR_USERNAME_HERE>",
             },
         }),
     )
 
     ctx := context.Background()
     res, err := s.Ruleset.Create(ctx, operations.CreateRulesetRequestBody{
-        IsTeamDefault: hookdeck.Bool(false),
-        Name: "Miss Cesar Metz",
-        Rules: []interface{}{
-            shared.TransformReference{
-                TransformationID: "occaecati",
-                Type: shared.TransformReferenceTypeTransform,
-            },
-            shared.TransformReference{
-                TransformationID: "asperiores",
-                Type: shared.TransformReferenceTypeTransform,
-            },
-            shared.DelayRule{
-                Delay: 267262,
-                Type: shared.DelayRuleTypeDelay,
-            },
+        Name: "string",
+        Rules: []components.Rule{
+            components.CreateRuleFilterRule(
+                components.FilterRule{
+                    Body: components.CreateConnectionFilterPropertyFloat32(
+                    6384.24,
+                    ),
+                    Headers: components.CreateConnectionFilterPropertyFour(
+                            components.Four{},
+                    ),
+                    Path: components.CreateConnectionFilterPropertyFloat32(
+                    2884.08,
+                    ),
+                    Query: components.CreateConnectionFilterPropertyStr(
+                    "string",
+                    ),
+                    Type: components.FilterRuleTypeFilter,
+                },
+            ),
         },
     })
     if err != nil {
@@ -129,7 +138,10 @@ func main() {
 ### Response
 
 **[*operations.CreateRulesetResponse](../../models/operations/createrulesetresponse.md), error**
-
+| Error Object               | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| sdkerrors.APIErrorResponse | 400,422                    | application/json           |
+| sdkerrors.SDKError         | 4xx-5xx                    | */*                        |
 
 ## Get
 
@@ -141,23 +153,24 @@ Get a ruleset
 package main
 
 import(
+	"github.com/speakeasy-sdks/hookdeck-go/models/components"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
-            BasicAuth: &shared.SchemeBasicAuth{
-                Password: "",
-                Username: "",
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(components.Security{
+            BasicAuth: &components.SchemeBasicAuth{
+                Password: "<YOUR_PASSWORD_HERE>",
+                Username: "<YOUR_USERNAME_HERE>",
             },
         }),
     )
-    id := "iste"
+
+
+    var id string = "string"
 
     ctx := context.Background()
     res, err := s.Ruleset.Get(ctx, id)
@@ -182,7 +195,10 @@ func main() {
 ### Response
 
 **[*operations.GetRulesetResponse](../../models/operations/getrulesetresponse.md), error**
-
+| Error Object               | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| sdkerrors.APIErrorResponse | 404                        | application/json           |
+| sdkerrors.SDKError         | 4xx-5xx                    | */*                        |
 
 ## Unarchive
 
@@ -194,23 +210,24 @@ Unarchive a ruleset
 package main
 
 import(
+	"github.com/speakeasy-sdks/hookdeck-go/models/components"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
-            BasicAuth: &shared.SchemeBasicAuth{
-                Password: "",
-                Username: "",
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(components.Security{
+            BasicAuth: &components.SchemeBasicAuth{
+                Password: "<YOUR_PASSWORD_HERE>",
+                Username: "<YOUR_USERNAME_HERE>",
             },
         }),
     )
-    id := "dolorum"
+
+
+    var id string = "string"
 
     ctx := context.Background()
     res, err := s.Ruleset.Unarchive(ctx, id)
@@ -235,7 +252,10 @@ func main() {
 ### Response
 
 **[*operations.UnarchiveRulesetResponse](../../models/operations/unarchiverulesetresponse.md), error**
-
+| Error Object               | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| sdkerrors.APIErrorResponse | 404                        | application/json           |
+| sdkerrors.SDKError         | 4xx-5xx                    | */*                        |
 
 ## Update
 
@@ -247,47 +267,36 @@ Update a ruleset
 package main
 
 import(
+	"github.com/speakeasy-sdks/hookdeck-go/models/components"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
+	"github.com/speakeasy-sdks/hookdeck-go/models/operations"
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
-            BasicAuth: &shared.SchemeBasicAuth{
-                Password: "",
-                Username: "",
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(components.Security{
+            BasicAuth: &components.SchemeBasicAuth{
+                Password: "<YOUR_PASSWORD_HERE>",
+                Username: "<YOUR_USERNAME_HERE>",
             },
         }),
     )
+
+
     requestBody := operations.UpdateRulesetRequestBody{
-        IsTeamDefault: hookdeck.Bool(false),
-        Name: hookdeck.String("Ervin McLaughlin"),
-        Rules: []interface{}{
-            shared.AlertRule{
-                Strategy: shared.AlertStrategyLastAttempt,
-                Type: shared.AlertRuleTypeAlert,
-            },
-            shared.AlertRule{
-                Strategy: shared.AlertStrategyEachAttempt,
-                Type: shared.AlertRuleTypeAlert,
-            },
-            shared.AlertRule{
-                Strategy: shared.AlertStrategyEachAttempt,
-                Type: shared.AlertRuleTypeAlert,
-            },
-            shared.RetryRule{
-                Count: hookdeck.Int64(218749),
-                Interval: hookdeck.Int64(944373),
-                Strategy: shared.RetryStrategyExponential,
-                Type: shared.RetryRuleTypeRetry,
-            },
+        Rules: []components.Rule{
+            components.CreateRuleDelayRule(
+                components.DelayRule{
+                    Delay: 24555,
+                    Type: components.DelayRuleTypeDelay,
+                },
+            ),
         },
     }
-    id := "cum"
+
+    var id string = "string"
 
     ctx := context.Background()
     res, err := s.Ruleset.Update(ctx, requestBody, id)
@@ -313,7 +322,10 @@ func main() {
 ### Response
 
 **[*operations.UpdateRulesetResponse](../../models/operations/updaterulesetresponse.md), error**
-
+| Error Object               | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| sdkerrors.APIErrorResponse | 400,404,422                | application/json           |
+| sdkerrors.SDKError         | 4xx-5xx                    | */*                        |
 
 ## Upsert
 
@@ -325,41 +337,44 @@ Update or create a ruleset
 package main
 
 import(
+	"github.com/speakeasy-sdks/hookdeck-go/models/components"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
 	"context"
+	"github.com/speakeasy-sdks/hookdeck-go/models/operations"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
-            BasicAuth: &shared.SchemeBasicAuth{
-                Password: "",
-                Username: "",
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(components.Security{
+            BasicAuth: &components.SchemeBasicAuth{
+                Password: "<YOUR_PASSWORD_HERE>",
+                Username: "<YOUR_USERNAME_HERE>",
             },
         }),
     )
 
     ctx := context.Background()
     res, err := s.Ruleset.Upsert(ctx, operations.UpsertRulesetRequestBody{
-        IsTeamDefault: hookdeck.Bool(false),
-        Name: "Marian Wisozk",
-        Rules: []interface{}{
-            shared.RetryRule{
-                Count: hookdeck.Int64(58029),
-                Interval: hookdeck.Int64(56418),
-                Strategy: shared.RetryStrategyLinear,
-                Type: shared.RetryRuleTypeRetry,
-            },
-            shared.FilterRule{
-                Body: &shared.ConnectionFilterProperty{},
-                Headers: &shared.ConnectionFilterProperty{},
-                Path: &shared.ConnectionFilterProperty{},
-                Query: &shared.ConnectionFilterProperty{},
-                Type: shared.FilterRuleTypeFilter,
-            },
+        Name: "string",
+        Rules: []components.Rule{
+            components.CreateRuleFilterRule(
+                components.FilterRule{
+                    Body: components.CreateConnectionFilterPropertyFloat32(
+                    4701.83,
+                    ),
+                    Headers: components.CreateConnectionFilterPropertyBoolean(
+                    false,
+                    ),
+                    Path: components.CreateConnectionFilterPropertyFloat32(
+                    3135.5,
+                    ),
+                    Query: components.CreateConnectionFilterPropertyFloat32(
+                    7400.64,
+                    ),
+                    Type: components.FilterRuleTypeFilter,
+                },
+            ),
         },
     })
     if err != nil {
@@ -383,4 +398,7 @@ func main() {
 ### Response
 
 **[*operations.UpsertRulesetResponse](../../models/operations/upsertrulesetresponse.md), error**
-
+| Error Object               | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| sdkerrors.APIErrorResponse | 400,422                    | application/json           |
+| sdkerrors.SDKError         | 4xx-5xx                    | */*                        |

@@ -1,4 +1,5 @@
 # BulkRetryIgnoredEvents
+(*BulkRetryIgnoredEvents*)
 
 ### Available Operations
 
@@ -14,42 +15,60 @@ Get ignored events bulk retries
 package main
 
 import(
+	"github.com/speakeasy-sdks/hookdeck-go/models/components"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
 	"context"
+	"github.com/speakeasy-sdks/hookdeck-go/models/operations"
+	"github.com/speakeasy-sdks/hookdeck-go/types"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/types"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
-            BasicAuth: &shared.SchemeBasicAuth{
-                Password: "",
-                Username: "",
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(components.Security{
+            BasicAuth: &components.SchemeBasicAuth{
+                Password: "<YOUR_PASSWORD_HERE>",
+                Username: "<YOUR_USERNAME_HERE>",
             },
         }),
     )
 
     ctx := context.Background()
     res, err := s.BulkRetryIgnoredEvents.Get(ctx, operations.GetIgnoredEventBulkRetriesRequest{
-        CancelledAt: &operations.GetIgnoredEventBulkRetriesCancelledAt{},
-        CompletedAt: &operations.GetIgnoredEventBulkRetriesCompletedAt{},
-        CreatedAt: &operations.GetIgnoredEventBulkRetriesCreatedAt{},
-        Dir: &operations.GetIgnoredEventBulkRetriesDir{},
-        ID: &operations.GetIgnoredEventBulkRetriesID{},
-        InProgress: hookdeck.Bool(false),
-        Limit: hookdeck.Int64(140350),
-        Next: hookdeck.String("at"),
-        OrderBy: &operations.GetIgnoredEventBulkRetriesOrderBy{},
-        Prev: hookdeck.String("at"),
-        Query: &operations.GetIgnoredEventBulkRetriesQuery{
-            Cause: &operations.GetIgnoredEventBulkRetriesQueryCause{},
-            TransformationID: hookdeck.String("maiores"),
-            WebhookID: &operations.GetIgnoredEventBulkRetriesQueryWebhookID{},
+        CancelledAt: operations.CreateQueryParamCancelledAtGetIgnoredEventBulkRetriesQueryParam2(
+                operations.GetIgnoredEventBulkRetriesQueryParam2{},
+        ),
+        CompletedAt: operations.CreateQueryParamCompletedAtDateTime(
+        types.MustTimeFromString("2022-09-04T22:09:08.769Z"),
+        ),
+        CreatedAt: operations.CreateGetIgnoredEventBulkRetriesQueryParamCreatedAtGetIgnoredEventBulkRetriesQueryParamBulkRetryIgnoredEventsCreatedAt2(
+                operations.GetIgnoredEventBulkRetriesQueryParamBulkRetryIgnoredEventsCreatedAt2{},
+        ),
+        Dir: operations.CreateGetIgnoredEventBulkRetriesQueryParamDirArrayOfgetIgnoredEventBulkRetriesQueryParamBulkRetryIgnoredEventsDir2(
+                []operations.GetIgnoredEventBulkRetriesQueryParamBulkRetryIgnoredEventsDir2{
+                    operations.GetIgnoredEventBulkRetriesQueryParamBulkRetryIgnoredEventsDir2Desc,
+                },
+        ),
+        ID: operations.CreateGetIgnoredEventBulkRetriesQueryParamIDArrayOfstr(
+                []string{
+                    "string",
+                },
+        ),
+        OrderBy: operations.CreateGetIgnoredEventBulkRetriesQueryParamOrderByGetIgnoredEventBulkRetriesQueryParamBulkRetryIgnoredEvents1(
+        operations.GetIgnoredEventBulkRetriesQueryParamBulkRetryIgnoredEvents1CreatedAt,
+        ),
+        Query: &operations.GetIgnoredEventBulkRetriesQueryParamQuery{
+            Cause: operations.CreateGetIgnoredEventBulkRetriesQueryParamCauseArrayOfstr(
+                    []string{
+                        "string",
+                    },
+            ),
+            WebhookID: operations.CreateGetIgnoredEventBulkRetriesQueryParamWebhookIDArrayOfstr(
+                    []string{
+                        "string",
+                    },
+            ),
         },
-        QueryPartialMatch: hookdeck.Bool(false),
     })
     if err != nil {
         log.Fatal(err)
@@ -72,4 +91,7 @@ func main() {
 ### Response
 
 **[*operations.GetIgnoredEventBulkRetriesResponse](../../models/operations/getignoredeventbulkretriesresponse.md), error**
-
+| Error Object               | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| sdkerrors.APIErrorResponse | 400,422                    | application/json           |
+| sdkerrors.SDKError         | 4xx-5xx                    | */*                        |

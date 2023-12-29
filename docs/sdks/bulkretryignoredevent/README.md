@@ -1,4 +1,5 @@
 # BulkRetryIgnoredEvent
+(*BulkRetryIgnoredEvent*)
 
 ### Available Operations
 
@@ -17,23 +18,24 @@ Cancel an ignored events bulk retry
 package main
 
 import(
+	"github.com/speakeasy-sdks/hookdeck-go/models/components"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
-            BasicAuth: &shared.SchemeBasicAuth{
-                Password: "",
-                Username: "",
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(components.Security{
+            BasicAuth: &components.SchemeBasicAuth{
+                Password: "<YOUR_PASSWORD_HERE>",
+                Username: "<YOUR_USERNAME_HERE>",
             },
         }),
     )
-    id := "ipsam"
+
+
+    var id string = "string"
 
     ctx := context.Background()
     res, err := s.BulkRetryIgnoredEvent.Cancel(ctx, id)
@@ -58,7 +60,10 @@ func main() {
 ### Response
 
 **[*operations.CancelIgnoredEventBulkRetryResponse](../../models/operations/cancelignoredeventbulkretryresponse.md), error**
-
+| Error Object               | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| sdkerrors.APIErrorResponse | 404                        | application/json           |
+| sdkerrors.SDKError         | 4xx-5xx                    | */*                        |
 
 ## Create
 
@@ -70,29 +75,32 @@ Create an ignored events bulk retry
 package main
 
 import(
+	"github.com/speakeasy-sdks/hookdeck-go/models/components"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
 	"context"
+	"github.com/speakeasy-sdks/hookdeck-go/models/operations"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
-            BasicAuth: &shared.SchemeBasicAuth{
-                Password: "",
-                Username: "",
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(components.Security{
+            BasicAuth: &components.SchemeBasicAuth{
+                Password: "<YOUR_PASSWORD_HERE>",
+                Username: "<YOUR_USERNAME_HERE>",
             },
         }),
     )
 
     ctx := context.Background()
     res, err := s.BulkRetryIgnoredEvent.Create(ctx, operations.CreateIgnoredEventBulkRetryRequestBody{
-        Query: &operations.CreateIgnoredEventBulkRetryRequestBodyQuery{
-            Cause: &operations.CreateIgnoredEventBulkRetryRequestBodyQueryCause{},
-            TransformationID: hookdeck.String("repellendus"),
-            WebhookID: &operations.CreateIgnoredEventBulkRetryRequestBodyQueryWebhookID{},
+        Query: &operations.CreateIgnoredEventBulkRetryQuery{
+            Cause: operations.CreateCauseStr(
+            "string",
+            ),
+            WebhookID: operations.CreateCreateIgnoredEventBulkRetryWebhookIDStr(
+            "string",
+            ),
         },
     })
     if err != nil {
@@ -116,7 +124,10 @@ func main() {
 ### Response
 
 **[*operations.CreateIgnoredEventBulkRetryResponse](../../models/operations/createignoredeventbulkretryresponse.md), error**
-
+| Error Object               | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| sdkerrors.APIErrorResponse | 400,422                    | application/json           |
+| sdkerrors.SDKError         | 4xx-5xx                    | */*                        |
 
 ## Generate
 
@@ -128,26 +139,35 @@ Generate an ignored events bulk retry plan
 package main
 
 import(
+	"github.com/speakeasy-sdks/hookdeck-go/models/components"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
+	"github.com/speakeasy-sdks/hookdeck-go/models/operations"
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
-            BasicAuth: &shared.SchemeBasicAuth{
-                Password: "",
-                Username: "",
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(components.Security{
+            BasicAuth: &components.SchemeBasicAuth{
+                Password: "<YOUR_PASSWORD_HERE>",
+                Username: "<YOUR_USERNAME_HERE>",
             },
         }),
     )
-    query := &operations.GenerateIgnoredEventBulkRetryPlanQuery{
-        Cause: &operations.GenerateIgnoredEventBulkRetryPlanQueryCause{},
-        TransformationID: hookdeck.String("sapiente"),
-        WebhookID: &operations.GenerateIgnoredEventBulkRetryPlanQueryWebhookID{},
+
+
+    query := &operations.QueryParamQuery{
+        Cause: operations.CreateQueryParamCauseArrayOfstr(
+                []string{
+                    "string",
+                },
+        ),
+        WebhookID: operations.CreateGenerateIgnoredEventBulkRetryPlanQueryParamWebhookIDArrayOfstr(
+                []string{
+                    "string",
+                },
+        ),
     }
 
     ctx := context.Background()
@@ -164,16 +184,19 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                                                               | Type                                                                                                                    | Required                                                                                                                | Description                                                                                                             |
-| ----------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
-| `ctx`                                                                                                                   | [context.Context](https://pkg.go.dev/context#Context)                                                                   | :heavy_check_mark:                                                                                                      | The context to use for the request.                                                                                     |
-| `query`                                                                                                                 | [*operations.GenerateIgnoredEventBulkRetryPlanQuery](../../models/operations/generateignoredeventbulkretryplanquery.md) | :heavy_minus_sign:                                                                                                      | Filter by the bulk retry ignored event query object                                                                     |
+| Parameter                                                                 | Type                                                                      | Required                                                                  | Description                                                               |
+| ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
+| `ctx`                                                                     | [context.Context](https://pkg.go.dev/context#Context)                     | :heavy_check_mark:                                                        | The context to use for the request.                                       |
+| `query`                                                                   | [*operations.QueryParamQuery](../../models/operations/queryparamquery.md) | :heavy_minus_sign:                                                        | Filter by the bulk retry ignored event query object                       |
 
 
 ### Response
 
 **[*operations.GenerateIgnoredEventBulkRetryPlanResponse](../../models/operations/generateignoredeventbulkretryplanresponse.md), error**
-
+| Error Object               | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| sdkerrors.APIErrorResponse | 400,422                    | application/json           |
+| sdkerrors.SDKError         | 4xx-5xx                    | */*                        |
 
 ## Get
 
@@ -185,23 +208,24 @@ Get an ignored events bulk retry
 package main
 
 import(
+	"github.com/speakeasy-sdks/hookdeck-go/models/components"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
-            BasicAuth: &shared.SchemeBasicAuth{
-                Password: "",
-                Username: "",
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(components.Security{
+            BasicAuth: &components.SchemeBasicAuth{
+                Password: "<YOUR_PASSWORD_HERE>",
+                Username: "<YOUR_USERNAME_HERE>",
             },
         }),
     )
-    id := "quo"
+
+
+    var id string = "string"
 
     ctx := context.Background()
     res, err := s.BulkRetryIgnoredEvent.Get(ctx, id)
@@ -226,4 +250,7 @@ func main() {
 ### Response
 
 **[*operations.GetIgnoredEventBulkRetryResponse](../../models/operations/getignoredeventbulkretryresponse.md), error**
-
+| Error Object               | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| sdkerrors.APIErrorResponse | 404                        | application/json           |
+| sdkerrors.SDKError         | 4xx-5xx                    | */*                        |
