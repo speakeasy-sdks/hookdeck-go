@@ -1,0 +1,12 @@
+# QueryParamAggregationKeys
+
+Filter by aggregation keys
+
+
+## Fields
+
+| Field                                                                                                                 | Type                                                                                                                  | Required                                                                                                              | Description                                                                                                           |
+| --------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
+| `ErrorCode`                                                                                                           | [*operations.GetIssueCountQueryParamErrorCode](../../models/operations/getissuecountqueryparamerrorcode.md)           | :heavy_minus_sign:                                                                                                    | N/A                                                                                                                   |
+| `ResponseStatus`                                                                                                      | [*operations.GetIssueCountQueryParamResponseStatus](../../models/operations/getissuecountqueryparamresponsestatus.md) | :heavy_minus_sign:                                                                                                    | N/A                                                                                                                   |
+| `WebhookID`                                                                                                           | [*operations.GetIssueCountQueryParamWebhookID](../../models/operations/getissuecountqueryparamwebhookid.md)           | :heavy_minus_sign:                                                                                                    | N/A                                                                                                                   |

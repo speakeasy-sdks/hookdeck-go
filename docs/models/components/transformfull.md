@@ -1,0 +1,10 @@
+# TransformFull
+
+
+## Fields
+
+| Field                                                                                             | Type                                                                                              | Required                                                                                          | Description                                                                                       |
+| ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
+| `Transformation`                                                                                  | [*components.TransformFullTransformation](../../models/components/transformfulltransformation.md) | :heavy_minus_sign:                                                                                | You can optionally define a new transformation while creating a transform rule                    |
+| `TransformationID`                                                                                | **string*                                                                                         | :heavy_minus_sign:                                                                                | ID of the attached transformation object. Optional input, always set once the rule is defined     |
+| `Type`                                                                                            | [components.TransformFullType](../../models/components/transformfulltype.md)                      | :heavy_check_mark:                                                                                | A transformation rule must be of type `transformation`                                            |

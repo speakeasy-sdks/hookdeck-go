@@ -1,0 +1,13 @@
+# RequestData
+
+
+## Fields
+
+| Field                                                                           | Type                                                                            | Required                                                                        | Description                                                                     |
+| ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
+| `Body`                                                                          | [*components.RequestBody](../../models/components/requestbody.md)               | :heavy_minus_sign:                                                              | N/A                                                                             |
+| `Headers`                                                                       | [*components.RequestHeaders](../../models/components/requestheaders.md)         | :heavy_minus_sign:                                                              | N/A                                                                             |
+| `IsLargePayload`                                                                | **bool*                                                                         | :heavy_minus_sign:                                                              | N/A                                                                             |
+| `ParsedQuery`                                                                   | [*components.RequestParsedQuery](../../models/components/requestparsedquery.md) | :heavy_minus_sign:                                                              | N/A                                                                             |
+| `Path`                                                                          | *string*                                                                        | :heavy_check_mark:                                                              | N/A                                                                             |
+| `Query`                                                                         | **string*                                                                       | :heavy_minus_sign:                                                              | N/A                                                                             |

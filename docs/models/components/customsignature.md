@@ -1,0 +1,11 @@
+# CustomSignature
+
+Custom Signature
+
+
+## Fields
+
+| Field                                                                                                                          | Type                                                                                                                           | Required                                                                                                                       | Description                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------ |
+| `Config`                                                                                                                       | [components.DestinationAuthMethodCustomSignatureConfig](../../models/components/destinationauthmethodcustomsignatureconfig.md) | :heavy_check_mark:                                                                                                             | Custom signature config for the destination's auth method                                                                      |
+| `Type`                                                                                                                         | [components.CustomSignatureType](../../models/components/customsignaturetype.md)                                               | :heavy_check_mark:                                                                                                             | Type of auth method                                                                                                            |

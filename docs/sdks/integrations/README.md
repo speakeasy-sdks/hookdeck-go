@@ -1,4 +1,5 @@
 # Integrations
+(*Integrations*)
 
 ## Overview
 
@@ -18,24 +19,26 @@ Get integrations
 package main
 
 import(
+	"github.com/speakeasy-sdks/hookdeck-go/models/components"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
-            BasicAuth: &shared.SchemeBasicAuth{
-                Password: "",
-                Username: "",
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(components.Security{
+            BasicAuth: &components.SchemeBasicAuth{
+                Password: "<YOUR_PASSWORD_HERE>",
+                Username: "<YOUR_USERNAME_HERE>",
             },
         }),
     )
-    label := "ad"
-    provider := shared.IntegrationProviderSvix
+
+
+    var label *string = "string"
+
+    var provider *components.IntegrationProvider = components.IntegrationProviderOura
 
     ctx := context.Background()
     res, err := s.Integrations.Get(ctx, label, provider)
@@ -51,14 +54,17 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                 | Type                                                                      | Required                                                                  | Description                                                               |
-| ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
-| `ctx`                                                                     | [context.Context](https://pkg.go.dev/context#Context)                     | :heavy_check_mark:                                                        | The context to use for the request.                                       |
-| `label`                                                                   | **string*                                                                 | :heavy_minus_sign:                                                        | N/A                                                                       |
-| `provider`                                                                | [*shared.IntegrationProvider](../../models/shared/integrationprovider.md) | :heavy_minus_sign:                                                        | The provider name                                                         |
+| Parameter                                                                         | Type                                                                              | Required                                                                          | Description                                                                       |
+| --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
+| `ctx`                                                                             | [context.Context](https://pkg.go.dev/context#Context)                             | :heavy_check_mark:                                                                | The context to use for the request.                                               |
+| `label`                                                                           | **string*                                                                         | :heavy_minus_sign:                                                                | N/A                                                                               |
+| `provider`                                                                        | [*components.IntegrationProvider](../../models/components/integrationprovider.md) | :heavy_minus_sign:                                                                | The provider name                                                                 |
 
 
 ### Response
 
 **[*operations.GetIntegrationsResponse](../../models/operations/getintegrationsresponse.md), error**
-
+| Error Object               | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| sdkerrors.APIErrorResponse | 400,422                    | application/json           |
+| sdkerrors.SDKError         | 4xx-5xx                    | */*                        |

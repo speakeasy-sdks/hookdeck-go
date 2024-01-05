@@ -1,0 +1,13 @@
+# ShopifyIntegrationConfigs
+
+
+## Fields
+
+| Field                                                                     | Type                                                                      | Required                                                                  | Description                                                               |
+| ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
+| `APIKey`                                                                  | **string*                                                                 | :heavy_minus_sign:                                                        | N/A                                                                       |
+| `APISecret`                                                               | **string*                                                                 | :heavy_minus_sign:                                                        | N/A                                                                       |
+| `RateLimit`                                                               | **float32*                                                                | :heavy_minus_sign:                                                        | N/A                                                                       |
+| `RateLimitPeriod`                                                         | [*components.RateLimitPeriod](../../models/components/ratelimitperiod.md) | :heavy_minus_sign:                                                        | N/A                                                                       |
+| `Shop`                                                                    | **string*                                                                 | :heavy_minus_sign:                                                        | N/A                                                                       |
+| `WebhookSecretKey`                                                        | *string*                                                                  | :heavy_check_mark:                                                        | N/A                                                                       |

@@ -1,4 +1,5 @@
 # Destinations
+(*Destinations*)
 
 ## Overview
 
@@ -18,37 +19,52 @@ Retrieve a list of endpoints to which your webhooks can be routed.
 package main
 
 import(
+	"github.com/speakeasy-sdks/hookdeck-go/models/components"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
 	"context"
+	"github.com/speakeasy-sdks/hookdeck-go/models/operations"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/types"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
-            BasicAuth: &shared.SchemeBasicAuth{
-                Password: "",
-                Username: "",
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(components.Security{
+            BasicAuth: &components.SchemeBasicAuth{
+                Password: "<YOUR_PASSWORD_HERE>",
+                Username: "<YOUR_USERNAME_HERE>",
             },
         }),
     )
 
     ctx := context.Background()
     res, err := s.Destinations.Get(ctx, operations.GetDestinationsRequest{
-        Archived: hookdeck.Bool(false),
-        ArchivedAt: &operations.GetDestinationsArchivedAt{},
-        CliPath: &operations.GetDestinationsCliPath{},
-        Dir: &operations.GetDestinationsDir{},
-        ID: &operations.GetDestinationsID{},
-        Limit: hookdeck.Int64(965417),
-        Name: &operations.GetDestinationsName{},
-        Next: hookdeck.String("quidem"),
-        OrderBy: &operations.GetDestinationsOrderBy{},
-        Prev: hookdeck.String("provident"),
-        URL: &operations.GetDestinationsURL{},
+        ArchivedAt: operations.CreateQueryParamArchivedAtGetDestinationsQueryParam2(
+                operations.GetDestinationsQueryParam2{},
+        ),
+        CliPath: operations.CreateCliPathStr(
+        "string",
+        ),
+        Dir: operations.CreateGetDestinationsQueryParamDirArrayOfgetDestinationsQueryParamDestinationsDir2(
+                []operations.GetDestinationsQueryParamDestinationsDir2{
+                    operations.GetDestinationsQueryParamDestinationsDir2Desc,
+                },
+        ),
+        ID: operations.CreateGetDestinationsQueryParamIDArrayOfstr(
+                []string{
+                    "string",
+                },
+        ),
+        Name: operations.CreateGetDestinationsQueryParamNameGetDestinationsQueryParamDestinationsName2(
+                operations.GetDestinationsQueryParamDestinationsName2{},
+        ),
+        OrderBy: operations.CreateGetDestinationsQueryParamOrderByArrayOfgetDestinationsQueryParamDestinationsOrderBy2(
+                []operations.GetDestinationsQueryParamDestinationsOrderBy2{
+                    operations.GetDestinationsQueryParamDestinationsOrderBy2CreatedAt,
+                },
+        ),
+        URL: operations.CreateURLStr(
+        "string",
+        ),
     })
     if err != nil {
         log.Fatal(err)
@@ -71,4 +87,7 @@ func main() {
 ### Response
 
 **[*operations.GetDestinationsResponse](../../models/operations/getdestinationsresponse.md), error**
-
+| Error Object               | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| sdkerrors.APIErrorResponse | 400,422                    | application/json           |
+| sdkerrors.SDKError         | 4xx-5xx                    | */*                        |
