@@ -79,7 +79,7 @@ func main() {
                 },
         ),
         LastSeenAt: operations.CreateLastSeenAtDateTime(
-        types.MustTimeFromString("2022-03-29T23:04:28.455Z"),
+        types.MustTimeFromString("2023-03-30T09:00:08.974Z"),
         ),
         MergedWith: operations.CreateMergedWithStr(
         "iss_AXKv3OdJXCiKlkPhDz",

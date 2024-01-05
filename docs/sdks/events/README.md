@@ -89,7 +89,7 @@ func main() {
         "string",
         ),
         LastAttemptAt: operations.CreateQueryParamLastAttemptAtDateTime(
-        types.MustTimeFromString("2023-09-12T22:44:18.030Z"),
+        types.MustTimeFromString("2024-09-12T20:19:34.430Z"),
         ),
         OrderBy: operations.CreateGetEventsQueryParamOrderByGetEventsQueryParamEvents1(
         operations.GetEventsQueryParamEvents1LastAttemptAt,
@@ -109,7 +109,7 @@ func main() {
                 },
         ),
         SuccessfulAt: operations.CreateQueryParamSuccessfulAtDateTime(
-        types.MustTimeFromString("2023-12-06T14:41:34.659Z"),
+        types.MustTimeFromString("2024-12-06T14:08:11.458Z"),
         ),
         WebhookID: operations.CreateGetEventsQueryParamWebhookIDStr(
         "string",

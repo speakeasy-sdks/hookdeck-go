@@ -75,7 +75,7 @@ func main() {
                 },
         ),
         LastSeenAt: operations.CreateQueryParamLastSeenAtDateTime(
-        types.MustTimeFromString("2022-03-29T23:04:28.455Z"),
+        types.MustTimeFromString("2023-03-30T09:00:08.974Z"),
         ),
         MergedWith: operations.CreateQueryParamMergedWithStr(
         "iss_AXKv3OdJXCiKlkPhDz",

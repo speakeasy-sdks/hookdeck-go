@@ -113,7 +113,7 @@ func main() {
             "string",
             ),
             CreatedAt: operations.CreateCreatedAtDateTime(
-            types.MustTimeFromString("2023-05-12T06:25:33.730Z"),
+            types.MustTimeFromString("2024-05-12T01:18:11.295Z"),
             ),
             DestinationID: operations.CreateDestinationIDStr(
             "string",
@@ -142,7 +142,7 @@ func main() {
                     },
             ),
             LastAttemptAt: operations.CreateLastAttemptAtDateTime(
-            types.MustTimeFromString("2022-05-14T11:13:20.233Z"),
+            types.MustTimeFromString("2023-05-14T22:08:51.375Z"),
             ),
             ParsedQuery: operations.CreateParsedQueryStr(
             "string",

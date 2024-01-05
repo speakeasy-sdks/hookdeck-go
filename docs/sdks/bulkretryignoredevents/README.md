@@ -39,7 +39,7 @@ func main() {
                 operations.GetIgnoredEventBulkRetriesQueryParam2{},
         ),
         CompletedAt: operations.CreateQueryParamCompletedAtDateTime(
-        types.MustTimeFromString("2022-09-04T22:09:08.769Z"),
+        types.MustTimeFromString("2023-09-05T11:33:52.010Z"),
         ),
         CreatedAt: operations.CreateGetIgnoredEventBulkRetriesQueryParamCreatedAtGetIgnoredEventBulkRetriesQueryParamBulkRetryIgnoredEventsCreatedAt2(
                 operations.GetIgnoredEventBulkRetriesQueryParamBulkRetryIgnoredEventsCreatedAt2{},

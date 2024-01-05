@@ -64,7 +64,7 @@ func main() {
                 },
         ),
         PausedAt: operations.CreatePausedAtDateTime(
-        types.MustTimeFromString("2023-11-29T02:34:03.781Z"),
+        types.MustTimeFromString("2024-11-29T01:50:48.387Z"),
         ),
         SourceID: operations.CreateGetConnectionsQueryParamSourceIDArrayOfstr(
                 []string{
