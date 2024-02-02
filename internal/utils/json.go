@@ -12,7 +12,7 @@ import (
 	"time"
 	"unsafe"
 
-	"github.com/speakeasy-sdks/hookdeck-go/types"
+	"github.com/speakeasy-sdks/hookdeck-go/v2/types"
 
 	"github.com/ericlagergren/decimal"
 )

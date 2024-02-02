@@ -16,8 +16,8 @@ Get a request
 package main
 
 import(
-	"github.com/speakeasy-sdks/hookdeck-go/models/components"
-	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
+	"github.com/speakeasy-sdks/hookdeck-go/v2/models/components"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go/v2"
 	"context"
 	"log"
 )
@@ -73,9 +73,9 @@ Retry a request
 package main
 
 import(
-	"github.com/speakeasy-sdks/hookdeck-go/models/components"
-	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
-	"github.com/speakeasy-sdks/hookdeck-go/models/operations"
+	"github.com/speakeasy-sdks/hookdeck-go/v2/models/components"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go/v2"
+	"github.com/speakeasy-sdks/hookdeck-go/v2/models/operations"
 	"context"
 	"log"
 )

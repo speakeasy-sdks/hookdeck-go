@@ -17,8 +17,8 @@ Retrieve a request that Hookdeck receives from a source.
 package main
 
 import(
-	"github.com/speakeasy-sdks/hookdeck-go/models/components"
-	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
+	"github.com/speakeasy-sdks/hookdeck-go/v2/models/components"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go/v2"
 	"context"
 	"log"
 )
@@ -74,8 +74,8 @@ Mute a request that Hookdeck receives from a specific source.
 package main
 
 import(
-	"github.com/speakeasy-sdks/hookdeck-go/models/components"
-	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
+	"github.com/speakeasy-sdks/hookdeck-go/v2/models/components"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go/v2"
 	"context"
 	"log"
 )
@@ -131,8 +131,8 @@ Retry the operation to retrieve a request that Hookdeck receives from a specific
 package main
 
 import(
-	"github.com/speakeasy-sdks/hookdeck-go/models/components"
-	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
+	"github.com/speakeasy-sdks/hookdeck-go/v2/models/components"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go/v2"
 	"context"
 	"log"
 )

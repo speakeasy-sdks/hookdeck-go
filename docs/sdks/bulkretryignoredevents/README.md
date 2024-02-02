@@ -15,11 +15,11 @@ Get ignored events bulk retries
 package main
 
 import(
-	"github.com/speakeasy-sdks/hookdeck-go/models/components"
-	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
+	"github.com/speakeasy-sdks/hookdeck-go/v2/models/components"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go/v2"
 	"context"
-	"github.com/speakeasy-sdks/hookdeck-go/models/operations"
-	"github.com/speakeasy-sdks/hookdeck-go/types"
+	"github.com/speakeasy-sdks/hookdeck-go/v2/models/operations"
+	"github.com/speakeasy-sdks/hookdeck-go/v2/types"
 	"log"
 )
 

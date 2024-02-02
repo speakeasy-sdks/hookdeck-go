@@ -19,10 +19,10 @@ Create a new bookmark.
 package main
 
 import(
-	"github.com/speakeasy-sdks/hookdeck-go/models/components"
-	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
+	"github.com/speakeasy-sdks/hookdeck-go/v2/models/components"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go/v2"
 	"context"
-	"github.com/speakeasy-sdks/hookdeck-go/models/operations"
+	"github.com/speakeasy-sdks/hookdeck-go/v2/models/operations"
 	"log"
 )
 
@@ -78,8 +78,8 @@ Delete an existing bookmark
 package main
 
 import(
-	"github.com/speakeasy-sdks/hookdeck-go/models/components"
-	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
+	"github.com/speakeasy-sdks/hookdeck-go/v2/models/components"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go/v2"
 	"context"
 	"log"
 )
@@ -135,8 +135,8 @@ Retrieve an existing bookmark details.
 package main
 
 import(
-	"github.com/speakeasy-sdks/hookdeck-go/models/components"
-	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
+	"github.com/speakeasy-sdks/hookdeck-go/v2/models/components"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go/v2"
 	"context"
 	"log"
 )
@@ -192,9 +192,9 @@ Trigger a bookmark operation to store and replay a specific request.
 package main
 
 import(
-	"github.com/speakeasy-sdks/hookdeck-go/models/components"
-	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
-	"github.com/speakeasy-sdks/hookdeck-go/models/operations"
+	"github.com/speakeasy-sdks/hookdeck-go/v2/models/components"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go/v2"
+	"github.com/speakeasy-sdks/hookdeck-go/v2/models/operations"
 	"context"
 	"log"
 )
@@ -253,9 +253,9 @@ Update an existing bookmark information.
 package main
 
 import(
-	"github.com/speakeasy-sdks/hookdeck-go/models/components"
-	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
-	"github.com/speakeasy-sdks/hookdeck-go/models/operations"
+	"github.com/speakeasy-sdks/hookdeck-go/v2/models/components"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go/v2"
+	"github.com/speakeasy-sdks/hookdeck-go/v2/models/operations"
 	"context"
 	"log"
 )

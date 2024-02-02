@@ -38,9 +38,9 @@ package main
 
 import (
 	"context"
-	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
-	"github.com/speakeasy-sdks/hookdeck-go/models/components"
-	"github.com/speakeasy-sdks/hookdeck-go/models/operations"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go/v2"
+	"github.com/speakeasy-sdks/hookdeck-go/v2/models/components"
+	"github.com/speakeasy-sdks/hookdeck-go/v2/models/operations"
 	"log"
 )
 
@@ -321,10 +321,10 @@ package main
 import (
 	"context"
 	"errors"
-	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
-	"github.com/speakeasy-sdks/hookdeck-go/models/components"
-	"github.com/speakeasy-sdks/hookdeck-go/models/operations"
-	"github.com/speakeasy-sdks/hookdeck-go/models/sdkerrors"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go/v2"
+	"github.com/speakeasy-sdks/hookdeck-go/v2/models/components"
+	"github.com/speakeasy-sdks/hookdeck-go/v2/models/operations"
+	"github.com/speakeasy-sdks/hookdeck-go/v2/models/sdkerrors"
 	"log"
 )
 
@@ -393,9 +393,9 @@ package main
 
 import (
 	"context"
-	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
-	"github.com/speakeasy-sdks/hookdeck-go/models/components"
-	"github.com/speakeasy-sdks/hookdeck-go/models/operations"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go/v2"
+	"github.com/speakeasy-sdks/hookdeck-go/v2/models/components"
+	"github.com/speakeasy-sdks/hookdeck-go/v2/models/operations"
 	"log"
 )
 
@@ -452,9 +452,9 @@ package main
 
 import (
 	"context"
-	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
-	"github.com/speakeasy-sdks/hookdeck-go/models/components"
-	"github.com/speakeasy-sdks/hookdeck-go/models/operations"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go/v2"
+	"github.com/speakeasy-sdks/hookdeck-go/v2/models/components"
+	"github.com/speakeasy-sdks/hookdeck-go/v2/models/operations"
 	"log"
 )
 
@@ -546,9 +546,9 @@ package main
 
 import (
 	"context"
-	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
-	"github.com/speakeasy-sdks/hookdeck-go/models/components"
-	"github.com/speakeasy-sdks/hookdeck-go/models/operations"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go/v2"
+	"github.com/speakeasy-sdks/hookdeck-go/v2/models/components"
+	"github.com/speakeasy-sdks/hookdeck-go/v2/models/operations"
 	"log"
 )
 

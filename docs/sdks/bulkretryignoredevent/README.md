@@ -18,8 +18,8 @@ Cancel an ignored events bulk retry
 package main
 
 import(
-	"github.com/speakeasy-sdks/hookdeck-go/models/components"
-	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
+	"github.com/speakeasy-sdks/hookdeck-go/v2/models/components"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go/v2"
 	"context"
 	"log"
 )
@@ -75,10 +75,10 @@ Create an ignored events bulk retry
 package main
 
 import(
-	"github.com/speakeasy-sdks/hookdeck-go/models/components"
-	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
+	"github.com/speakeasy-sdks/hookdeck-go/v2/models/components"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go/v2"
 	"context"
-	"github.com/speakeasy-sdks/hookdeck-go/models/operations"
+	"github.com/speakeasy-sdks/hookdeck-go/v2/models/operations"
 	"log"
 )
 
@@ -139,9 +139,9 @@ Generate an ignored events bulk retry plan
 package main
 
 import(
-	"github.com/speakeasy-sdks/hookdeck-go/models/components"
-	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
-	"github.com/speakeasy-sdks/hookdeck-go/models/operations"
+	"github.com/speakeasy-sdks/hookdeck-go/v2/models/components"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go/v2"
+	"github.com/speakeasy-sdks/hookdeck-go/v2/models/operations"
 	"context"
 	"log"
 )
@@ -208,8 +208,8 @@ Get an ignored events bulk retry
 package main
 
 import(
-	"github.com/speakeasy-sdks/hookdeck-go/models/components"
-	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go"
+	"github.com/speakeasy-sdks/hookdeck-go/v2/models/components"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go/v2"
 	"context"
 	"log"
 )

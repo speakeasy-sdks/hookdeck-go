@@ -6,8 +6,8 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
-	"github.com/speakeasy-sdks/hookdeck-go/internal/utils"
-	"github.com/speakeasy-sdks/hookdeck-go/models/components"
+	"github.com/speakeasy-sdks/hookdeck-go/v2/internal/utils"
+	"github.com/speakeasy-sdks/hookdeck-go/v2/models/components"
 	"net/http"
 	"time"
 )
@@ -247,9 +247,9 @@ func New(opts ...SDKOption) *Hookdeck {
 		sdkConfiguration: sdkConfiguration{
 			Language:          "go",
 			OpenAPIDocVersion: "1.0.0",
-			SDKVersion:        "1.6.2",
-			GenVersion:        "2.237.2",
-			UserAgent:         "speakeasy-sdk/go 1.6.2 2.237.2 1.0.0 github.com/speakeasy-sdks/hookdeck-go",
+			SDKVersion:        "2.0.0",
+			GenVersion:        "2.248.1",
+			UserAgent:         "speakeasy-sdk/go 2.0.0 2.248.1 1.0.0 github.com/speakeasy-sdks/hookdeck-go",
 			ServerDefaults: []map[string]string{
 				{
 					"version": "2023-01-01",

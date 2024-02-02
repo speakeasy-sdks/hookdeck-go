@@ -6,8 +6,8 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
-	"github.com/speakeasy-sdks/hookdeck-go/internal/utils"
-	"github.com/speakeasy-sdks/hookdeck-go/models/components"
+	"github.com/speakeasy-sdks/hookdeck-go/v2/internal/utils"
+	"github.com/speakeasy-sdks/hookdeck-go/v2/models/components"
 	"net/http"
 	"time"
 )

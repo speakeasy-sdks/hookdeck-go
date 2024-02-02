@@ -3,7 +3,7 @@
 package components
 
 import (
-	"github.com/speakeasy-sdks/hookdeck-go/internal/utils"
+	"github.com/speakeasy-sdks/hookdeck-go/v2/internal/utils"
 	"time"
 )
 

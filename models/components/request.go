@@ -6,7 +6,7 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
-	"github.com/speakeasy-sdks/hookdeck-go/internal/utils"
+	"github.com/speakeasy-sdks/hookdeck-go/v2/internal/utils"
 	"time"
 )
 
