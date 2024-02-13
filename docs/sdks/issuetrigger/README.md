@@ -40,24 +40,8 @@ func main() {
 
     ctx := context.Background()
     res, err := s.IssueTrigger.Create(ctx, operations.CreateIssueTriggerRequestBody{
-        Channels: &components.IssueTriggerChannels{
-            Email: &components.IssueTriggerEmailChannel{},
-            Opsgenie: &components.IssueTriggerIntegrationChannel{},
-            Slack: &components.IssueTriggerSlackChannel{
-                ChannelName: "string",
-            },
-        },
-        Configs: operations.CreateCreateIssueTriggerConfigsIssueTriggerTransformationConfigs(
-                components.IssueTriggerTransformationConfigs{
-                    LogLevel: components.TransformationExecutionLogLevelWarn,
-                    Transformations: components.CreateTransformationsArrayOfstr(
-                            []string{
-                                "string",
-                            },
-                    ),
-                },
-        ),
-        Type: components.IssueTypeBackpressure,
+        Channels: &components.IssueTriggerChannels{},
+        Type: components.IssueTypeTransformation,
     })
     if err != nil {
         log.Fatal(err)
@@ -341,25 +325,7 @@ func main() {
     )
 
 
-    requestBody := operations.UpdateIssueTriggerRequestBody{
-        Channels: &components.IssueTriggerChannels{
-            Email: &components.IssueTriggerEmailChannel{},
-            Opsgenie: &components.IssueTriggerIntegrationChannel{},
-            Slack: &components.IssueTriggerSlackChannel{
-                ChannelName: "string",
-            },
-        },
-        Configs: operations.CreateUpdateIssueTriggerConfigsIssueTriggerBackpressureConfigs(
-                components.IssueTriggerBackpressureConfigs{
-                    Delay: 24555,
-                    Destinations: components.CreateDestinationsArrayOfstr(
-                            []string{
-                                "string",
-                            },
-                    ),
-                },
-        ),
-    }
+    requestBody := operations.UpdateIssueTriggerRequestBody{}
 
     var id string = "string"
 
@@ -421,21 +387,7 @@ func main() {
 
     ctx := context.Background()
     res, err := s.IssueTrigger.Upsert(ctx, operations.UpsertIssueTriggerRequestBody{
-        Channels: &components.IssueTriggerChannels{
-            Email: &components.IssueTriggerEmailChannel{},
-            Opsgenie: &components.IssueTriggerIntegrationChannel{},
-            Slack: &components.IssueTriggerSlackChannel{
-                ChannelName: "string",
-            },
-        },
-        Configs: operations.CreateUpsertIssueTriggerConfigsIssueTriggerTransformationConfigs(
-                components.IssueTriggerTransformationConfigs{
-                    LogLevel: components.TransformationExecutionLogLevelWarn,
-                    Transformations: components.CreateTransformationsStr(
-                    "string",
-                    ),
-                },
-        ),
+        Channels: &components.IssueTriggerChannels{},
         Name: "string",
         Type: components.IssueTypeTransformation,
     })

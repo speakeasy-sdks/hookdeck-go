@@ -37,44 +37,7 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.Bookmarks.Get(ctx, operations.GetBookmarksRequest{
-        Dir: operations.CreateQueryParamDirArrayOfgetBookmarksQueryParam2(
-                []operations.GetBookmarksQueryParam2{
-                    operations.GetBookmarksQueryParam2Asc,
-                },
-        ),
-        EventDataID: operations.CreateQueryParamEventDataIDArrayOfstr(
-                []string{
-                    "string",
-                },
-        ),
-        ID: operations.CreateQueryParamIDArrayOfstr(
-                []string{
-                    "string",
-                },
-        ),
-        Label: operations.CreateLabelArrayOfstr(
-                []string{
-                    "string",
-                },
-        ),
-        LastUsedAt: operations.CreateLastUsedAtGetBookmarksQueryParamBookmarks2(
-                operations.GetBookmarksQueryParamBookmarks2{},
-        ),
-        Name: operations.CreateNameArrayOfstr(
-                []string{
-                    "string",
-                },
-        ),
-        OrderBy: operations.CreateQueryParamOrderByGetBookmarksQueryParamBookmarks1(
-        operations.GetBookmarksQueryParamBookmarks1CreatedAt,
-        ),
-        WebhookID: operations.CreateQueryParamWebhookIDArrayOfstr(
-                []string{
-                    "string",
-                },
-        ),
-    })
+    res, err := s.Bookmarks.Get(ctx, operations.GetBookmarksRequest{})
     if err != nil {
         log.Fatal(err)
     }

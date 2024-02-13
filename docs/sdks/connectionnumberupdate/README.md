@@ -34,59 +34,7 @@ func main() {
 
     ctx := context.Background()
     res, err := s.ConnectionNumberUpdate.Upsert(ctx, operations.UpsertConnectionRequestBody{
-        Destination: &operations.Destination{
-            AuthMethod: components.CreateDestinationAuthMethodConfigAPIKey(
-                    components.APIKey{
-                        Config: &components.DestinationAuthMethodAPIKeyConfig{
-                            APIKey: "string",
-                            Key: "<key>",
-                        },
-                        Type: components.TypeAPIKey,
-                    },
-            ),
-            Name: "string",
-        },
         Name: "string",
-        Rules: []components.Rule{
-            components.CreateRuleFilterRule(
-                components.FilterRule{
-                    Body: components.CreateConnectionFilterPropertyFloat32(
-                    5344.19,
-                    ),
-                    Headers: components.CreateConnectionFilterPropertyFloat32(
-                    3135.5,
-                    ),
-                    Path: components.CreateConnectionFilterPropertyFloat32(
-                    7400.64,
-                    ),
-                    Query: components.CreateConnectionFilterPropertyStr(
-                    "string",
-                    ),
-                    Type: components.FilterRuleTypeFilter,
-                },
-            ),
-        },
-        Ruleset: &operations.Ruleset{
-            Name: "string",
-            Rules: []components.Rule{
-                components.CreateRuleRetryRule(
-                    components.RetryRule{
-                        Strategy: components.RetryStrategyExponential,
-                        Type: components.RetryRuleTypeRetry,
-                    },
-                ),
-            },
-        },
-        Source: &operations.Source{
-            AllowedHTTPMethods: []components.SourceAllowedHTTPMethod{
-                components.SourceAllowedHTTPMethodDelete,
-            },
-            CustomResponse: &components.SourceCustomResponse{
-                Body: "string",
-                ContentType: components.SourceCustomResponseContentTypeJSON,
-            },
-            Name: "string",
-        },
     })
     if err != nil {
         log.Fatal(err)

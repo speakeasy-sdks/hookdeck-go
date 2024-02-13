@@ -37,35 +37,7 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.Destinations.Get(ctx, operations.GetDestinationsRequest{
-        ArchivedAt: operations.CreateQueryParamArchivedAtGetDestinationsQueryParam2(
-                operations.GetDestinationsQueryParam2{},
-        ),
-        CliPath: operations.CreateCliPathStr(
-        "string",
-        ),
-        Dir: operations.CreateGetDestinationsQueryParamDirArrayOfgetDestinationsQueryParamDestinationsDir2(
-                []operations.GetDestinationsQueryParamDestinationsDir2{
-                    operations.GetDestinationsQueryParamDestinationsDir2Desc,
-                },
-        ),
-        ID: operations.CreateGetDestinationsQueryParamIDArrayOfstr(
-                []string{
-                    "string",
-                },
-        ),
-        Name: operations.CreateGetDestinationsQueryParamNameGetDestinationsQueryParamDestinationsName2(
-                operations.GetDestinationsQueryParamDestinationsName2{},
-        ),
-        OrderBy: operations.CreateGetDestinationsQueryParamOrderByArrayOfgetDestinationsQueryParamDestinationsOrderBy2(
-                []operations.GetDestinationsQueryParamDestinationsOrderBy2{
-                    operations.GetDestinationsQueryParamDestinationsOrderBy2CreatedAt,
-                },
-        ),
-        URL: operations.CreateURLStr(
-        "string",
-        ),
-    })
+    res, err := s.Destinations.Get(ctx, operations.GetDestinationsRequest{})
     if err != nil {
         log.Fatal(err)
     }

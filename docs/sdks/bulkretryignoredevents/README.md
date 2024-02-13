@@ -19,7 +19,6 @@ import(
 	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go/v2"
 	"context"
 	"github.com/speakeasy-sdks/hookdeck-go/v2/models/operations"
-	"github.com/speakeasy-sdks/hookdeck-go/v2/types"
 	"log"
 )
 
@@ -34,42 +33,7 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.BulkRetryIgnoredEvents.Get(ctx, operations.GetIgnoredEventBulkRetriesRequest{
-        CancelledAt: operations.CreateQueryParamCancelledAtGetIgnoredEventBulkRetriesQueryParam2(
-                operations.GetIgnoredEventBulkRetriesQueryParam2{},
-        ),
-        CompletedAt: operations.CreateQueryParamCompletedAtDateTime(
-        types.MustTimeFromString("2023-09-05T11:33:52.010Z"),
-        ),
-        CreatedAt: operations.CreateGetIgnoredEventBulkRetriesQueryParamCreatedAtGetIgnoredEventBulkRetriesQueryParamBulkRetryIgnoredEventsCreatedAt2(
-                operations.GetIgnoredEventBulkRetriesQueryParamBulkRetryIgnoredEventsCreatedAt2{},
-        ),
-        Dir: operations.CreateGetIgnoredEventBulkRetriesQueryParamDirArrayOfgetIgnoredEventBulkRetriesQueryParamBulkRetryIgnoredEventsDir2(
-                []operations.GetIgnoredEventBulkRetriesQueryParamBulkRetryIgnoredEventsDir2{
-                    operations.GetIgnoredEventBulkRetriesQueryParamBulkRetryIgnoredEventsDir2Desc,
-                },
-        ),
-        ID: operations.CreateGetIgnoredEventBulkRetriesQueryParamIDArrayOfstr(
-                []string{
-                    "string",
-                },
-        ),
-        OrderBy: operations.CreateGetIgnoredEventBulkRetriesQueryParamOrderByGetIgnoredEventBulkRetriesQueryParamBulkRetryIgnoredEvents1(
-        operations.GetIgnoredEventBulkRetriesQueryParamBulkRetryIgnoredEvents1CreatedAt,
-        ),
-        Query: &operations.GetIgnoredEventBulkRetriesQueryParamQuery{
-            Cause: operations.CreateGetIgnoredEventBulkRetriesQueryParamCauseArrayOfstr(
-                    []string{
-                        "string",
-                    },
-            ),
-            WebhookID: operations.CreateGetIgnoredEventBulkRetriesQueryParamWebhookIDArrayOfstr(
-                    []string{
-                        "string",
-                    },
-            ),
-        },
-    })
+    res, err := s.BulkRetryIgnoredEvents.Get(ctx, operations.GetIgnoredEventBulkRetriesRequest{})
     if err != nil {
         log.Fatal(err)
     }

@@ -37,23 +37,7 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.Attempts.Get(ctx, operations.GetAttemptsRequest{
-        Dir: operations.CreateDirArrayOfgetAttemptsQueryParam2(
-                []operations.GetAttemptsQueryParam2{
-                    operations.GetAttemptsQueryParam2Asc,
-                },
-        ),
-        EventID: operations.CreateEventIDArrayOfstr(
-                []string{
-                    "string",
-                },
-        ),
-        OrderBy: operations.CreateOrderByArrayOfqueryParam2(
-                []operations.QueryParam2{
-                    operations.QueryParam2CreatedAt,
-                },
-        ),
-    })
+    res, err := s.Attempts.Get(ctx, operations.GetAttemptsRequest{})
     if err != nil {
         log.Fatal(err)
     }

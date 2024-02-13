@@ -33,21 +33,7 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.IssueTriggers.Get(ctx, operations.GetIssueTriggersRequest{
-        Dir: operations.CreateGetIssueTriggersQueryParamDirArrayOfgetIssueTriggersQueryParam2(
-                []operations.GetIssueTriggersQueryParam2{
-                    operations.GetIssueTriggersQueryParam2Asc,
-                },
-        ),
-        DisabledAt: operations.CreateDisabledAtGetIssueTriggersQueryParamIssueTriggers2(
-                operations.GetIssueTriggersQueryParamIssueTriggers2{},
-        ),
-        OrderBy: operations.CreateGetIssueTriggersQueryParamOrderByArrayOfgetIssueTriggersQueryParamIssueTriggersOrderBy2(
-                []operations.GetIssueTriggersQueryParamIssueTriggersOrderBy2{
-                    operations.GetIssueTriggersQueryParamIssueTriggersOrderBy2Type,
-                },
-        ),
-    })
+    res, err := s.IssueTriggers.Get(ctx, operations.GetIssueTriggersRequest{})
     if err != nil {
         log.Fatal(err)
     }

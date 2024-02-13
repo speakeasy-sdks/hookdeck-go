@@ -37,57 +37,7 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.Requests.Get(ctx, operations.GetRequestsRequest{
-        Body: operations.CreateGetRequestsQueryParamBodyGetRequestsQueryParam2(
-                operations.GetRequestsQueryParam2{},
-        ),
-        BulkRetryID: operations.CreateGetRequestsQueryParamBulkRetryIDStr(
-        "string",
-        ),
-        CreatedAt: operations.CreateGetRequestsQueryParamCreatedAtGetRequestsQueryParamRequests2(
-                operations.GetRequestsQueryParamRequests2{},
-        ),
-        Dir: operations.CreateGetRequestsQueryParamDirArrayOfgetRequestsQueryParamRequestsDir2(
-                []operations.GetRequestsQueryParamRequestsDir2{
-                    operations.GetRequestsQueryParamRequestsDir2Desc,
-                },
-        ),
-        EventsCount: operations.CreateQueryParamEventsCountArrayOfinteger(
-                []int64{
-                    521235,
-                },
-        ),
-        Headers: operations.CreateGetRequestsQueryParamHeadersStr(
-        "string",
-        ),
-        ID: operations.CreateGetRequestsQueryParamIDArrayOfstr(
-                []string{
-                    "string",
-                },
-        ),
-        IgnoredCount: operations.CreateQueryParamIgnoredCountArrayOfinteger(
-                []int64{
-                    458049,
-                },
-        ),
-        IngestedAt: operations.CreateQueryParamIngestedAtGetRequestsQueryParamRequestsIngestedAt2(
-                operations.GetRequestsQueryParamRequestsIngestedAt2{},
-        ),
-        OrderBy: operations.CreateGetRequestsQueryParamOrderByGetRequestsQueryParamRequests1(
-        operations.GetRequestsQueryParamRequests1IngestedAt,
-        ),
-        ParsedQuery: operations.CreateGetRequestsQueryParamParsedQueryStr(
-        "string",
-        ),
-        RejectionCause: operations.CreateQueryParamRejectionCauseArrayOfRequestRejectionCause(
-                []components.RequestRejectionCause{
-                    components.RequestRejectionCauseNoWebhook,
-                },
-        ),
-        SourceID: operations.CreateGetRequestsQueryParamSourceIDStr(
-        "string",
-        ),
-    })
+    res, err := s.Requests.Get(ctx, operations.GetRequestsRequest{})
     if err != nil {
         log.Fatal(err)
     }

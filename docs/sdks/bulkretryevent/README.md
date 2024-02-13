@@ -78,7 +78,6 @@ import(
 	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go/v2"
 	"context"
 	"github.com/speakeasy-sdks/hookdeck-go/v2/models/operations"
-	"github.com/speakeasy-sdks/hookdeck-go/v2/types"
 	"log"
 )
 
@@ -93,83 +92,7 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.BulkRetryEvent.Create(ctx, operations.CreateEventBulkRetryRequestBody{
-        Query: &operations.Query{
-            Attempts: operations.CreateAttemptsInteger(
-            489382,
-            ),
-            Body: operations.CreateBodyCreateEventBulkRetry2(
-                    operations.CreateEventBulkRetry2{},
-            ),
-            BulkRetryID: operations.CreateBulkRetryIDArrayOfstr(
-                    []string{
-                        "string",
-                    },
-            ),
-            CliID: operations.CreateCliIDCreateEventBulkRetryBulkRetryEvent2(
-                    operations.CreateEventBulkRetryBulkRetryEvent2{},
-            ),
-            CliUserID: operations.CreateCliUserIDStr(
-            "string",
-            ),
-            CreatedAt: operations.CreateCreatedAtDateTime(
-            types.MustTimeFromString("2024-05-12T01:18:11.295Z"),
-            ),
-            DestinationID: operations.CreateDestinationIDStr(
-            "string",
-            ),
-            ErrorCode: operations.CreateErrorCodeArrayOfstr(
-                    []string{
-                        "string",
-                    },
-            ),
-            EventDataID: operations.CreateEventDataIDArrayOfstr(
-                    []string{
-                        "string",
-                    },
-            ),
-            Headers: operations.CreateHeadersStr(
-            "string",
-            ),
-            ID: operations.CreateIDArrayOfstr(
-                    []string{
-                        "string",
-                    },
-            ),
-            IssueID: operations.CreateIssueIDArrayOfstr(
-                    []string{
-                        "string",
-                    },
-            ),
-            LastAttemptAt: operations.CreateLastAttemptAtDateTime(
-            types.MustTimeFromString("2023-05-14T22:08:51.375Z"),
-            ),
-            ParsedQuery: operations.CreateParsedQueryStr(
-            "string",
-            ),
-            ResponseStatus: operations.CreateResponseStatusInteger(
-            89964,
-            ),
-            SourceID: operations.CreateSourceIDArrayOfstr(
-                    []string{
-                        "string",
-                    },
-            ),
-            Status: operations.CreateStatusArrayOfEventStatus(
-                    []components.EventStatus{
-                        components.EventStatusFailed,
-                    },
-            ),
-            SuccessfulAt: operations.CreateSuccessfulAtCreateEventBulkRetryBulkRetryEventRequestRequestBodyQuerySuccessfulAt2(
-                    operations.CreateEventBulkRetryBulkRetryEventRequestRequestBodyQuerySuccessfulAt2{},
-            ),
-            WebhookID: operations.CreateWebhookIDArrayOfstr(
-                    []string{
-                        "string",
-                    },
-            ),
-        },
-    })
+    res, err := s.BulkRetryEvent.Create(ctx, operations.CreateEventBulkRetryRequestBody{})
     if err != nil {
         log.Fatal(err)
     }

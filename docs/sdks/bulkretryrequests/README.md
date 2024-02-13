@@ -33,49 +33,7 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.BulkRetryRequests.Create(ctx, operations.CreateRequestBulkRetryRequestBody{
-        Query: &operations.CreateRequestBulkRetryQuery{
-            Body: operations.CreateCreateRequestBulkRetryBodyStr(
-            "string",
-            ),
-            BulkRetryID: operations.CreateCreateRequestBulkRetryBulkRetryIDStr(
-            "string",
-            ),
-            CreatedAt: operations.CreateCreateRequestBulkRetryCreatedAtCreateRequestBulkRetryBulkRetryRequests2(
-                    operations.CreateRequestBulkRetryBulkRetryRequests2{},
-            ),
-            EventsCount: operations.CreateEventsCountArrayOfinteger(
-                    []int64{
-                        417458,
-                    },
-            ),
-            Headers: operations.CreateCreateRequestBulkRetryHeadersStr(
-            "string",
-            ),
-            ID: operations.CreateCreateRequestBulkRetryIDStr(
-            "string",
-            ),
-            IgnoredCount: operations.CreateIgnoredCountArrayOfinteger(
-                    []int64{
-                        69025,
-                    },
-            ),
-            IngestedAt: operations.CreateIngestedAtCreateRequestBulkRetryBulkRetryRequestsRequestRequestBodyQueryIngestedAt2(
-                    operations.CreateRequestBulkRetryBulkRetryRequestsRequestRequestBodyQueryIngestedAt2{},
-            ),
-            ParsedQuery: operations.CreateCreateRequestBulkRetryParsedQueryCreateRequestBulkRetryBulkRetryRequestsRequestRequestBodyQueryParsedQuery2(
-                    operations.CreateRequestBulkRetryBulkRetryRequestsRequestRequestBodyQueryParsedQuery2{},
-            ),
-            RejectionCause: operations.CreateRejectionCauseCreateRequestBulkRetryBulkRetryRequestsRequestRequestBodyQueryRejectionCause2(
-                    operations.CreateRequestBulkRetryBulkRetryRequestsRequestRequestBodyQueryRejectionCause2{},
-            ),
-            SourceID: operations.CreateCreateRequestBulkRetrySourceIDArrayOfstr(
-                    []string{
-                        "string",
-                    },
-            ),
-        },
-    })
+    res, err := s.BulkRetryRequests.Create(ctx, operations.CreateRequestBulkRetryRequestBody{})
     if err != nil {
         log.Fatal(err)
     }

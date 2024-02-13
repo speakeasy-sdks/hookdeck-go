@@ -23,7 +23,6 @@ import(
 	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go/v2"
 	"context"
 	"github.com/speakeasy-sdks/hookdeck-go/v2/models/operations"
-	"github.com/speakeasy-sdks/hookdeck-go/v2/types"
 	"log"
 )
 
@@ -38,40 +37,7 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.Connections.Get(ctx, operations.GetConnectionsRequest{
-        ArchivedAt: operations.CreateArchivedAtGetConnectionsQueryParam2(
-                operations.GetConnectionsQueryParam2{},
-        ),
-        DestinationID: operations.CreateGetConnectionsQueryParamDestinationIDStr(
-        "string",
-        ),
-        Dir: operations.CreateGetConnectionsQueryParamDirArrayOfgetConnectionsQueryParamConnections2(
-                []operations.GetConnectionsQueryParamConnections2{
-                    operations.GetConnectionsQueryParamConnections2Desc,
-                },
-        ),
-        ID: operations.CreateGetConnectionsQueryParamIDArrayOfstr(
-                []string{
-                    "string",
-                },
-        ),
-        Name: operations.CreateQueryParamNameGetConnectionsQueryParamConnectionsName2(
-                operations.GetConnectionsQueryParamConnectionsName2{},
-        ),
-        OrderBy: operations.CreateGetConnectionsQueryParamOrderByArrayOfgetConnectionsQueryParamConnectionsOrderBy2(
-                []operations.GetConnectionsQueryParamConnectionsOrderBy2{
-                    operations.GetConnectionsQueryParamConnectionsOrderBy2CreatedAt,
-                },
-        ),
-        PausedAt: operations.CreatePausedAtDateTime(
-        types.MustTimeFromString("2024-11-29T01:50:48.387Z"),
-        ),
-        SourceID: operations.CreateGetConnectionsQueryParamSourceIDArrayOfstr(
-                []string{
-                    "string",
-                },
-        ),
-    })
+    res, err := s.Connections.Get(ctx, operations.GetConnectionsRequest{})
     if err != nil {
         log.Fatal(err)
     }

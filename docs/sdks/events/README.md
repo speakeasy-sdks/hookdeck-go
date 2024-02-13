@@ -23,7 +23,6 @@ import(
 	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go/v2"
 	"context"
 	"github.com/speakeasy-sdks/hookdeck-go/v2/models/operations"
-	"github.com/speakeasy-sdks/hookdeck-go/v2/types"
 	"log"
 )
 
@@ -38,83 +37,7 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.Events.Get(ctx, operations.GetEventsRequest{
-        Attempts: operations.CreateQueryParamAttemptsGetEventsQueryParam2(
-                operations.GetEventsQueryParam2{},
-        ),
-        Body: operations.CreateQueryParamBodyStr(
-        "string",
-        ),
-        BulkRetryID: operations.CreateQueryParamBulkRetryIDArrayOfstr(
-                []string{
-                    "string",
-                },
-        ),
-        CliID: operations.CreateQueryParamCliIDArrayOfstr(
-                []string{
-                    "string",
-                },
-        ),
-        CliUserID: operations.CreateQueryParamCliUserIDArrayOfstr(
-                []string{
-                    "string",
-                },
-        ),
-        CreatedAt: operations.CreateGetEventsQueryParamCreatedAtGetEventsQueryParamEventsCreatedAt2(
-                operations.GetEventsQueryParamEventsCreatedAt2{},
-        ),
-        DestinationID: operations.CreateGetEventsQueryParamDestinationIDArrayOfstr(
-                []string{
-                    "string",
-                },
-        ),
-        Dir: operations.CreateGetEventsQueryParamDirGetEventsQueryParam1(
-        operations.GetEventsQueryParam1Desc,
-        ),
-        ErrorCode: operations.CreateQueryParamErrorCodeArrayOfstr(
-                []string{
-                    "string",
-                },
-        ),
-        EventDataID: operations.CreateGetEventsQueryParamEventDataIDStr(
-        "string",
-        ),
-        Headers: operations.CreateQueryParamHeadersGetEventsQueryParamEventsHeaders2(
-                operations.GetEventsQueryParamEventsHeaders2{},
-        ),
-        ID: operations.CreateGetEventsQueryParamIDStr(
-        "string",
-        ),
-        IssueID: operations.CreateGetEventsQueryParamIssueIDStr(
-        "string",
-        ),
-        LastAttemptAt: operations.CreateQueryParamLastAttemptAtDateTime(
-        types.MustTimeFromString("2024-09-12T20:19:34.430Z"),
-        ),
-        OrderBy: operations.CreateGetEventsQueryParamOrderByGetEventsQueryParamEvents1(
-        operations.GetEventsQueryParamEvents1LastAttemptAt,
-        ),
-        ParsedQuery: operations.CreateQueryParamParsedQueryGetEventsQueryParamEventsParsedQuery2(
-                operations.GetEventsQueryParamEventsParsedQuery2{},
-        ),
-        ResponseStatus: operations.CreateQueryParamResponseStatusInteger(
-        438142,
-        ),
-        SourceID: operations.CreateGetEventsQueryParamSourceIDStr(
-        "string",
-        ),
-        Status: operations.CreateGetEventsQueryParamStatusArrayOfEventStatus(
-                []components.EventStatus{
-                    components.EventStatusSuccessful,
-                },
-        ),
-        SuccessfulAt: operations.CreateQueryParamSuccessfulAtDateTime(
-        types.MustTimeFromString("2024-12-06T14:08:11.458Z"),
-        ),
-        WebhookID: operations.CreateGetEventsQueryParamWebhookIDStr(
-        "string",
-        ),
-    })
+    res, err := s.Events.Get(ctx, operations.GetEventsRequest{})
     if err != nil {
         log.Fatal(err)
     }

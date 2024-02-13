@@ -93,16 +93,7 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.BulkRetryIgnoredEvent.Create(ctx, operations.CreateIgnoredEventBulkRetryRequestBody{
-        Query: &operations.CreateIgnoredEventBulkRetryQuery{
-            Cause: operations.CreateCauseStr(
-            "string",
-            ),
-            WebhookID: operations.CreateCreateIgnoredEventBulkRetryWebhookIDStr(
-            "string",
-            ),
-        },
-    })
+    res, err := s.BulkRetryIgnoredEvent.Create(ctx, operations.CreateIgnoredEventBulkRetryRequestBody{})
     if err != nil {
         log.Fatal(err)
     }
@@ -157,18 +148,7 @@ func main() {
     )
 
 
-    query := &operations.QueryParamQuery{
-        Cause: operations.CreateQueryParamCauseArrayOfstr(
-                []string{
-                    "string",
-                },
-        ),
-        WebhookID: operations.CreateGenerateIgnoredEventBulkRetryPlanQueryParamWebhookIDArrayOfstr(
-                []string{
-                    "string",
-                },
-        ),
-    }
+    query := &operations.QueryParamQuery{}
 
     ctx := context.Background()
     res, err := s.BulkRetryIgnoredEvent.Generate(ctx, query)

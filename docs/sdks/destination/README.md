@@ -97,15 +97,6 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Destination.Create(ctx, operations.CreateDestinationRequestBody{
-        AuthMethod: components.CreateDestinationAuthMethodConfigAPIKey(
-                components.APIKey{
-                    Config: &components.DestinationAuthMethodAPIKeyConfig{
-                        APIKey: "string",
-                        Key: "<key>",
-                    },
-                    Type: components.TypeAPIKey,
-                },
-        ),
         Name: "string",
     })
     if err != nil {
@@ -333,16 +324,7 @@ func main() {
     )
 
 
-    requestBody := operations.UpdateDestinationRequestBody{
-        AuthMethod: components.CreateDestinationAuthMethodConfigCustomSignature(
-                components.CustomSignature{
-                    Config: components.DestinationAuthMethodCustomSignatureConfig{
-                        Key: "<key>",
-                    },
-                    Type: components.CustomSignatureTypeCustomSignature,
-                },
-        ),
-    }
+    requestBody := operations.UpdateDestinationRequestBody{}
 
     var id string = "string"
 
@@ -404,15 +386,6 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Destination.Upsert(ctx, operations.UpsertDestinationRequestBody{
-        AuthMethod: components.CreateDestinationAuthMethodConfigAPIKey(
-                components.APIKey{
-                    Config: &components.DestinationAuthMethodAPIKeyConfig{
-                        APIKey: "string",
-                        Key: "<key>",
-                    },
-                    Type: components.TypeAPIKey,
-                },
-        ),
         Name: "string",
     })
     if err != nil {

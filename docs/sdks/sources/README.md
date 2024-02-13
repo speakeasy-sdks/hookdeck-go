@@ -37,30 +37,7 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.Sources.Get(ctx, operations.GetSourcesRequest{
-        ArchivedAt: operations.CreateGetSourcesQueryParamArchivedAtGetSourcesQueryParam2(
-                operations.GetSourcesQueryParam2{},
-        ),
-        Dir: operations.CreateGetSourcesQueryParamDirGetSourcesQueryParam1(
-        operations.GetSourcesQueryParam1Desc,
-        ),
-        ID: operations.CreateGetSourcesQueryParamIDArrayOfstr(
-                []string{
-                    "string",
-                },
-        ),
-        IntegrationID: operations.CreateIntegrationIDGetSourcesQueryParamSourcesIntegrationID2(
-                operations.GetSourcesQueryParamSourcesIntegrationID2{},
-        ),
-        Name: operations.CreateGetSourcesQueryParamNameGetSourcesQueryParamSourcesName2(
-                operations.GetSourcesQueryParamSourcesName2{},
-        ),
-        OrderBy: operations.CreateGetSourcesQueryParamOrderByArrayOfgetSourcesQueryParamSourcesOrderBy2(
-                []operations.GetSourcesQueryParamSourcesOrderBy2{
-                    operations.GetSourcesQueryParamSourcesOrderBy2CreatedAt,
-                },
-        ),
-    })
+    res, err := s.Sources.Get(ctx, operations.GetSourcesRequest{})
     if err != nil {
         log.Fatal(err)
     }

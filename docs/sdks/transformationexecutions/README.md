@@ -34,31 +34,7 @@ func main() {
 
     ctx := context.Background()
     res, err := s.TransformationExecutions.Get(ctx, operations.GetTransformationExecutionsRequest{
-        CreatedAt: operations.CreateGetTransformationExecutionsQueryParamCreatedAtGetTransformationExecutionsQueryParam2(
-                operations.GetTransformationExecutionsQueryParam2{},
-        ),
-        Dir: operations.CreateGetTransformationExecutionsQueryParamDirGetTransformationExecutionsQueryParam1(
-        operations.GetTransformationExecutionsQueryParam1Desc,
-        ),
         ID: "<ID>",
-        IssueID: operations.CreateGetTransformationExecutionsQueryParamIssueIDArrayOfstr(
-                []string{
-                    "string",
-                },
-        ),
-        LogLevel: operations.CreateLogLevelArrayOfgetTransformationExecutionsQueryParamTransformationExecutionsLogLevel2(
-                []operations.GetTransformationExecutionsQueryParamTransformationExecutionsLogLevel2{
-                    operations.GetTransformationExecutionsQueryParamTransformationExecutionsLogLevel2Error,
-                },
-        ),
-        OrderBy: operations.CreateGetTransformationExecutionsQueryParamOrderByArrayOfgetTransformationExecutionsQueryParamTransformationExecutionsOrderBy2(
-                []operations.GetTransformationExecutionsQueryParamTransformationExecutionsOrderBy2{
-                    operations.GetTransformationExecutionsQueryParamTransformationExecutionsOrderBy2CreatedAt,
-                },
-        ),
-        WebhookID: operations.CreateGetTransformationExecutionsQueryParamWebhookIDStr(
-        "string",
-        ),
     })
     if err != nil {
         log.Fatal(err)

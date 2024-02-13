@@ -37,49 +37,7 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.Rulesets.Get(ctx, operations.GetRulesetsRequest{
-        ArchivedAt: operations.CreateGetRulesetsQueryParamArchivedAtGetRulesetsQueryParam2(
-                operations.GetRulesetsQueryParam2{},
-        ),
-        Dir: operations.CreateGetRulesetsQueryParamDirGetRulesetsQueryParam1(
-        operations.GetRulesetsQueryParam1Desc,
-        ),
-        ID: operations.CreateGetRulesetsQueryParamIDArrayOfstr(
-                []string{
-                    "string",
-                },
-        ),
-        Name: operations.CreateGetRulesetsQueryParamNameGetRulesetsQueryParamRulesetsName2(
-                operations.GetRulesetsQueryParamRulesetsName2{
-                    Contains: operations.CreateContainsArrayOfstr(
-                            []string{
-                                "string",
-                            },
-                    ),
-                    Gt: operations.CreateGtArrayOfstr(
-                            []string{
-                                "string",
-                            },
-                    ),
-                    Gte: operations.CreateGteStr(
-                    "string",
-                    ),
-                    Le: operations.CreateLeArrayOfstr(
-                            []string{
-                                "string",
-                            },
-                    ),
-                    Lte: operations.CreateLteArrayOfstr(
-                            []string{
-                                "string",
-                            },
-                    ),
-                },
-        ),
-        OrderBy: operations.CreateGetRulesetsQueryParamOrderByGetRulesetsQueryParamRulesetsOrderBy1(
-        operations.GetRulesetsQueryParamRulesetsOrderBy1CreatedAt,
-        ),
-    })
+    res, err := s.Rulesets.Get(ctx, operations.GetRulesetsRequest{})
     if err != nil {
         log.Fatal(err)
     }

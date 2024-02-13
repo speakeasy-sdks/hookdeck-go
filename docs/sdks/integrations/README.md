@@ -36,9 +36,9 @@ func main() {
     )
 
 
-    var label *string = "string"
+    var label *string = hookdeckgo.String("string")
 
-    var provider *components.IntegrationProvider = components.IntegrationProviderOura
+    var provider *components.IntegrationProvider = components.IntegrationProviderOura.ToPointer()
 
     ctx := context.Background()
     res, err := s.Integrations.Get(ctx, label, provider)

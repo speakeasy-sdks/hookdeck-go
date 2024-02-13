@@ -39,11 +39,6 @@ func main() {
     ctx := context.Background()
     res, err := s.Transformation.Create(ctx, operations.CreateTransformationRequestBody{
         Code: "string",
-        Env: map[string]operations.Env{
-            "key": operations.CreateEnvStr(
-            "string",
-            ),
-        },
         Name: "string",
     })
     if err != nil {
@@ -157,18 +152,7 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.Transformation.Test(ctx, operations.TestTransformationRequestBody{
-        Env: &operations.TestTransformationEnv{},
-        Request: &operations.Request{
-            Body: operations.CreateTestTransformationBodyStr(
-            "string",
-            ),
-            Headers: map[string]string{
-                "key": "string",
-            },
-            ParsedQuery: &operations.TestTransformationParsedQuery{},
-        },
-    })
+    res, err := s.Transformation.Test(ctx, operations.TestTransformationRequestBody{})
     if err != nil {
         log.Fatal(err)
     }
@@ -223,13 +207,7 @@ func main() {
     )
 
 
-    requestBody := operations.UpdateTransformationRequestBody{
-        Env: map[string]operations.UpdateTransformationEnv{
-            "key": operations.CreateUpdateTransformationEnvFloat32(
-            245.55,
-            ),
-        },
-    }
+    requestBody := operations.UpdateTransformationRequestBody{}
 
     var id string = "string"
 
@@ -292,11 +270,6 @@ func main() {
     ctx := context.Background()
     res, err := s.Transformation.Upsert(ctx, operations.UpsertTransformationRequestBody{
         Code: "string",
-        Env: map[string]operations.UpsertTransformationEnv{
-            "key": operations.CreateUpsertTransformationEnvFloat32(
-            4317.05,
-            ),
-        },
         Name: "string",
     })
     if err != nil {

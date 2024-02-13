@@ -98,17 +98,7 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.Integration.Create(ctx, operations.CreateIntegrationRequestBody{
-        Configs: operations.CreateConfigsAPIKeyIntegrationConfigs(
-                components.APIKeyIntegrationConfigs{
-                    APIKey: "string",
-                    HeaderKey: "string",
-                },
-        ),
-        Features: []components.IntegrationFeature{
-            components.IntegrationFeatureHandshake,
-        },
-    })
+    res, err := s.Integration.Create(ctx, operations.CreateIntegrationRequestBody{})
     if err != nil {
         log.Fatal(err)
     }
@@ -337,16 +327,7 @@ func main() {
     )
 
 
-    requestBody := operations.UpdateIntegrationRequestBody{
-        Configs: operations.CreateUpdateIntegrationConfigsShopifyIntegrationConfigs(
-                components.ShopifyIntegrationConfigs{
-                    WebhookSecretKey: "string",
-                },
-        ),
-        Features: []components.IntegrationFeature{
-            components.IntegrationFeatureVerification,
-        },
-    }
+    requestBody := operations.UpdateIntegrationRequestBody{}
 
     var id string = "string"
 

@@ -37,28 +37,7 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.Transformations.Get(ctx, operations.GetTransformationsRequest{
-        Dir: operations.CreateGetTransformationsQueryParamDirArrayOfgetTransformationsQueryParam2(
-                []operations.GetTransformationsQueryParam2{
-                    operations.GetTransformationsQueryParam2Asc,
-                },
-        ),
-        ID: operations.CreateGetTransformationsQueryParamIDArrayOfstr(
-                []string{
-                    "string",
-                },
-        ),
-        Name: operations.CreateGetTransformationsQueryParamNameArrayOfstr(
-                []string{
-                    "string",
-                },
-        ),
-        OrderBy: operations.CreateGetTransformationsQueryParamOrderByArrayOfgetTransformationsQueryParamTransformations2(
-                []operations.GetTransformationsQueryParamTransformations2{
-                    operations.GetTransformationsQueryParamTransformations2CreatedAt,
-                },
-        ),
-    })
+    res, err := s.Transformations.Get(ctx, operations.GetTransformationsRequest{})
     if err != nil {
         log.Fatal(err)
     }

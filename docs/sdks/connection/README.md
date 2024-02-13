@@ -98,61 +98,7 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Connection.Create(ctx, operations.CreateConnectionRequestBody{
-        Destination: &operations.CreateConnectionDestination{
-            AuthMethod: components.CreateDestinationAuthMethodConfigAPIKey(
-                    components.APIKey{
-                        Config: &components.DestinationAuthMethodAPIKeyConfig{
-                            APIKey: "string",
-                            Key: "<key>",
-                        },
-                        Type: components.TypeAPIKey,
-                    },
-            ),
-            Name: "string",
-        },
         Name: "string",
-        Rules: []components.Rule{
-            components.CreateRuleFilterRule(
-                components.FilterRule{
-                    Body: components.CreateConnectionFilterPropertyBoolean(
-                    false,
-                    ),
-                    Headers: components.CreateConnectionFilterPropertyFour(
-                            components.Four{},
-                    ),
-                    Path: components.CreateConnectionFilterPropertyFloat32(
-                    2884.08,
-                    ),
-                    Query: components.CreateConnectionFilterPropertyStr(
-                    "string",
-                    ),
-                    Type: components.FilterRuleTypeFilter,
-                },
-            ),
-        },
-        Ruleset: &operations.CreateConnectionRuleset{
-            Name: "string",
-            Rules: []components.Rule{
-                components.CreateRuleTransformRule(
-                    components.CreateTransformRuleTransformReference(
-                            components.TransformReference{
-                                TransformationID: "string",
-                                Type: components.TransformReferenceTypeTransform,
-                            },
-                    ),
-                ),
-            },
-        },
-        Source: &operations.CreateConnectionSource{
-            AllowedHTTPMethods: []components.SourceAllowedHTTPMethod{
-                components.SourceAllowedHTTPMethodDelete,
-            },
-            CustomResponse: &components.SourceCustomResponse{
-                Body: "string",
-                ContentType: components.SourceCustomResponseContentTypeXML,
-            },
-            Name: "string",
-        },
     })
     if err != nil {
         log.Fatal(err)
@@ -493,38 +439,7 @@ func main() {
     )
 
 
-    requestBody := operations.UpdateConnectionRequestBody{
-        Rules: []components.Rule{
-            components.CreateRuleDelayRule(
-                components.DelayRule{
-                    Delay: 24555,
-                    Type: components.DelayRuleTypeDelay,
-                },
-            ),
-        },
-        Ruleset: &operations.UpdateConnectionRuleset{
-            Name: "string",
-            Rules: []components.Rule{
-                components.CreateRuleFilterRule(
-                    components.FilterRule{
-                        Body: components.CreateConnectionFilterPropertyStr(
-                        "string",
-                        ),
-                        Headers: components.CreateConnectionFilterPropertyFloat32(
-                        7084.55,
-                        ),
-                        Path: components.CreateConnectionFilterPropertyFour(
-                                components.Four{},
-                        ),
-                        Query: components.CreateConnectionFilterPropertyFloat32(
-                        6276.9,
-                        ),
-                        Type: components.FilterRuleTypeFilter,
-                    },
-                ),
-            },
-        },
-    }
+    requestBody := operations.UpdateConnectionRequestBody{}
 
     var id string = "string"
 

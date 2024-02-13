@@ -97,13 +97,6 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Source.Create(ctx, operations.CreateSourceRequestBody{
-        AllowedHTTPMethods: []components.SourceAllowedHTTPMethod{
-            components.SourceAllowedHTTPMethodPut,
-        },
-        CustomResponse: &components.SourceCustomResponse{
-            Body: "string",
-            ContentType: components.SourceCustomResponseContentTypeText,
-        },
         Name: "string",
     })
     if err != nil {
@@ -331,15 +324,7 @@ func main() {
     )
 
 
-    requestBody := operations.UpdateSourceRequestBody{
-        AllowedHTTPMethods: []components.SourceAllowedHTTPMethod{
-            components.SourceAllowedHTTPMethodDelete,
-        },
-        CustomResponse: &components.SourceCustomResponse{
-            Body: "string",
-            ContentType: components.SourceCustomResponseContentTypeJSON,
-        },
-    }
+    requestBody := operations.UpdateSourceRequestBody{}
 
     var id string = "string"
 
@@ -401,13 +386,6 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Source.Upsert(ctx, operations.UpsertSourceRequestBody{
-        AllowedHTTPMethods: []components.SourceAllowedHTTPMethod{
-            components.SourceAllowedHTTPMethodPut,
-        },
-        CustomResponse: &components.SourceCustomResponse{
-            Body: "string",
-            ContentType: components.SourceCustomResponseContentTypeText,
-        },
         Name: "string",
     })
     if err != nil {

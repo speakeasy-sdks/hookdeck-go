@@ -34,22 +34,7 @@ func main() {
 
     ctx := context.Background()
     res, err := s.RequestIgnoredEvents.Get(ctx, operations.GetRequestIgnoredEventsRequest{
-        Dir: operations.CreateGetRequestIgnoredEventsQueryParamDirArrayOfgetRequestIgnoredEventsQueryParam2(
-                []operations.GetRequestIgnoredEventsQueryParam2{
-                    operations.GetRequestIgnoredEventsQueryParam2Asc,
-                },
-        ),
         IDPathParameter: "string",
-        IDQueryParameter: operations.CreateGetRequestIgnoredEventsQueryParamIDArrayOfstr(
-                []string{
-                    "string",
-                },
-        ),
-        OrderBy: operations.CreateGetRequestIgnoredEventsQueryParamOrderByArrayOfgetRequestIgnoredEventsQueryParamRequestIgnoredEvents2(
-                []operations.GetRequestIgnoredEventsQueryParamRequestIgnoredEvents2{
-                    operations.GetRequestIgnoredEventsQueryParamRequestIgnoredEvents2CreatedAt,
-                },
-        ),
     })
     if err != nil {
         log.Fatal(err)

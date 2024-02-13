@@ -19,7 +19,6 @@ import(
 	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go/v2"
 	"context"
 	"github.com/speakeasy-sdks/hookdeck-go/v2/models/operations"
-	"github.com/speakeasy-sdks/hookdeck-go/v2/types"
 	"log"
 )
 
@@ -34,66 +33,7 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.IssuesCount.Get(ctx, operations.GetIssueCountRequest{
-        AggregationKeys: &operations.QueryParamAggregationKeys{
-            ErrorCode: operations.CreateGetIssueCountQueryParamErrorCodeArrayOfAttemptErrorCode(
-                    []components.AttemptErrorCode{
-                        components.AttemptErrorCodeTimeout,
-                    },
-            ),
-            ResponseStatus: operations.CreateGetIssueCountQueryParamResponseStatusArrayOffloat32(
-                    []float32{
-                        8441.99,
-                    },
-            ),
-            WebhookID: operations.CreateGetIssueCountQueryParamWebhookIDArrayOfstr(
-                    []string{
-                        "string",
-                    },
-            ),
-        },
-        CreatedAt: operations.CreateGetIssueCountQueryParamCreatedAtGetIssueCountQueryParam2(
-                operations.GetIssueCountQueryParam2{},
-        ),
-        Dir: operations.CreateGetIssueCountQueryParamDirArrayOfgetIssueCountQueryParamIssuesCount2(
-                []operations.GetIssueCountQueryParamIssuesCount2{
-                    operations.GetIssueCountQueryParamIssuesCount2Asc,
-                },
-        ),
-        DismissedAt: operations.CreateQueryParamDismissedAtGetIssueCountQueryParamIssuesCountDismissedAt2(
-                operations.GetIssueCountQueryParamIssuesCountDismissedAt2{},
-        ),
-        FirstSeenAt: operations.CreateQueryParamFirstSeenAtGetIssueCountQueryParamIssuesCountFirstSeenAt2(
-                operations.GetIssueCountQueryParamIssuesCountFirstSeenAt2{},
-        ),
-        ID: operations.CreateGetIssueCountQueryParamIDStr(
-        "iss_YXKv5OdJXCiVwkPhGy",
-        ),
-        IssueTriggerID: operations.CreateQueryParamIssueTriggerIDArrayOfstr(
-                []string{
-                    "it_BXKv5OdJXCiVwkPhGy",
-                },
-        ),
-        LastSeenAt: operations.CreateQueryParamLastSeenAtDateTime(
-        types.MustTimeFromString("2023-03-30T09:00:08.974Z"),
-        ),
-        MergedWith: operations.CreateQueryParamMergedWithStr(
-        "iss_AXKv3OdJXCiKlkPhDz",
-        ),
-        OrderBy: operations.CreateGetIssueCountQueryParamOrderByArrayOfgetIssueCountQueryParamIssuesCountOrderBy2(
-                []operations.GetIssueCountQueryParamIssuesCountOrderBy2{
-                    operations.GetIssueCountQueryParamIssuesCountOrderBy2FirstSeenAt,
-                },
-        ),
-        Status: operations.CreateGetIssueCountQueryParamStatusGetIssueCountQueryParamIssuesCountStatus1(
-        operations.GetIssueCountQueryParamIssuesCountStatus1Opened,
-        ),
-        Type: operations.CreateQueryParamTypeArrayOfgetIssueCountQueryParamIssuesCountType2(
-                []operations.GetIssueCountQueryParamIssuesCountType2{
-                    operations.GetIssueCountQueryParamIssuesCountType2Delivery,
-                },
-        ),
-    })
+    res, err := s.IssuesCount.Get(ctx, operations.GetIssueCountRequest{})
     if err != nil {
         log.Fatal(err)
     }

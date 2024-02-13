@@ -33,11 +33,7 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.WebhookNotifications.Toggle(ctx, operations.ToggleWebhookNotificationsRequestBody{
-        Topics: []components.TopicsValue{
-            components.TopicsValueIssueOpened,
-        },
-    })
+    res, err := s.WebhookNotifications.Toggle(ctx, operations.ToggleWebhookNotificationsRequestBody{})
     if err != nil {
         log.Fatal(err)
     }

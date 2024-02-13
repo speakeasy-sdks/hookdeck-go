@@ -97,25 +97,6 @@ func main() {
     ctx := context.Background()
     res, err := s.Ruleset.Create(ctx, operations.CreateRulesetRequestBody{
         Name: "string",
-        Rules: []components.Rule{
-            components.CreateRuleFilterRule(
-                components.FilterRule{
-                    Body: components.CreateConnectionFilterPropertyFloat32(
-                    6384.24,
-                    ),
-                    Headers: components.CreateConnectionFilterPropertyFour(
-                            components.Four{},
-                    ),
-                    Path: components.CreateConnectionFilterPropertyFloat32(
-                    2884.08,
-                    ),
-                    Query: components.CreateConnectionFilterPropertyStr(
-                    "string",
-                    ),
-                    Type: components.FilterRuleTypeFilter,
-                },
-            ),
-        },
     })
     if err != nil {
         log.Fatal(err)
@@ -285,16 +266,7 @@ func main() {
     )
 
 
-    requestBody := operations.UpdateRulesetRequestBody{
-        Rules: []components.Rule{
-            components.CreateRuleDelayRule(
-                components.DelayRule{
-                    Delay: 24555,
-                    Type: components.DelayRuleTypeDelay,
-                },
-            ),
-        },
-    }
+    requestBody := operations.UpdateRulesetRequestBody{}
 
     var id string = "string"
 
@@ -357,25 +329,6 @@ func main() {
     ctx := context.Background()
     res, err := s.Ruleset.Upsert(ctx, operations.UpsertRulesetRequestBody{
         Name: "string",
-        Rules: []components.Rule{
-            components.CreateRuleFilterRule(
-                components.FilterRule{
-                    Body: components.CreateConnectionFilterPropertyFloat32(
-                    4701.83,
-                    ),
-                    Headers: components.CreateConnectionFilterPropertyBoolean(
-                    false,
-                    ),
-                    Path: components.CreateConnectionFilterPropertyFloat32(
-                    3135.5,
-                    ),
-                    Query: components.CreateConnectionFilterPropertyFloat32(
-                    7400.64,
-                    ),
-                    Type: components.FilterRuleTypeFilter,
-                },
-            ),
-        },
     })
     if err != nil {
         log.Fatal(err)
