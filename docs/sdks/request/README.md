@@ -33,7 +33,7 @@ func main() {
     )
 
 
-    var id string = "string"
+    var id string = "<value>"
 
     ctx := context.Background()
     res, err := s.Request.Get(ctx, id)
@@ -93,11 +93,11 @@ func main() {
 
     requestBody := operations.RetryRequestRequestBody{
         WebhookIds: []string{
-            "string",
+            "<value>",
         },
     }
 
-    var id string = "string"
+    var id string = "<value>"
 
     ctx := context.Background()
     res, err := s.Request.Retry(ctx, requestBody, id)

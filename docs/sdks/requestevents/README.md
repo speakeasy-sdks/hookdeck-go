@@ -34,7 +34,7 @@ func main() {
 
     ctx := context.Background()
     res, err := s.RequestEvents.Get(ctx, operations.GetRequestEventsRequest{
-        IDPathParameter: "string",
+        IDPathParameter: "<value>",
     })
     if err != nil {
         log.Fatal(err)

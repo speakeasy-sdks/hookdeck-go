@@ -38,7 +38,7 @@ func main() {
     )
 
 
-    var id string = "string"
+    var id string = "<value>"
 
     ctx := context.Background()
     res, err := s.Destination.Archive(ctx, id)
@@ -97,7 +97,7 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Destination.Create(ctx, operations.CreateDestinationRequestBody{
-        Name: "string",
+        Name: "<value>",
     })
     if err != nil {
         log.Fatal(err)
@@ -152,7 +152,7 @@ func main() {
     )
 
 
-    var id string = "string"
+    var id string = "<value>"
 
     ctx := context.Background()
     res, err := s.Destination.Delete(ctx, id)
@@ -209,7 +209,7 @@ func main() {
     )
 
 
-    var id string = "string"
+    var id string = "<value>"
 
     ctx := context.Background()
     res, err := s.Destination.Get(ctx, id)
@@ -266,7 +266,7 @@ func main() {
     )
 
 
-    var id string = "string"
+    var id string = "<value>"
 
     ctx := context.Background()
     res, err := s.Destination.Unarchive(ctx, id)
@@ -326,7 +326,7 @@ func main() {
 
     requestBody := operations.UpdateDestinationRequestBody{}
 
-    var id string = "string"
+    var id string = "<value>"
 
     ctx := context.Background()
     res, err := s.Destination.Update(ctx, requestBody, id)
@@ -386,7 +386,7 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Destination.Upsert(ctx, operations.UpsertDestinationRequestBody{
-        Name: "string",
+        Name: "<value>",
     })
     if err != nil {
         log.Fatal(err)

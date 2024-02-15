@@ -5,11 +5,10 @@ HTTP method used on requests sent to the destination, overrides the method used 
 
 ## Values
 
-| Name                                          | Value                                         |
-| --------------------------------------------- | --------------------------------------------- |
-| `DestinationHTTPMethodLessThanNilGreaterThan` | <nil>                                         |
-| `DestinationHTTPMethodGet`                    | GET                                           |
-| `DestinationHTTPMethodPost`                   | POST                                          |
-| `DestinationHTTPMethodPut`                    | PUT                                           |
-| `DestinationHTTPMethodPatch`                  | PATCH                                         |
-| `DestinationHTTPMethodDelete`                 | DELETE                                        |
+| Name                          | Value                         |
+| ----------------------------- | ----------------------------- |
+| `DestinationHTTPMethodGet`    | GET                           |
+| `DestinationHTTPMethodPost`   | POST                          |
+| `DestinationHTTPMethodPut`    | PUT                           |
+| `DestinationHTTPMethodPatch`  | PATCH                         |
+| `DestinationHTTPMethodDelete` | DELETE                        |

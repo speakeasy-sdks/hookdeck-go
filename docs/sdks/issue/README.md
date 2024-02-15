@@ -34,7 +34,7 @@ func main() {
     )
 
 
-    var id string = "string"
+    var id string = "<value>"
 
     ctx := context.Background()
     res, err := s.Issue.Dismiss(ctx, id)
@@ -91,7 +91,7 @@ func main() {
     )
 
 
-    var id string = "string"
+    var id string = "<value>"
 
     ctx := context.Background()
     res, err := s.Issue.Get(ctx, id)
@@ -153,7 +153,7 @@ func main() {
         Status: operations.UpdateIssueStatusResolved,
     }
 
-    var id string = "string"
+    var id string = "<value>"
 
     ctx := context.Background()
     res, err := s.Issue.Update(ctx, requestBody, id)

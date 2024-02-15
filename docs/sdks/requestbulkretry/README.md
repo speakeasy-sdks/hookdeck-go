@@ -33,7 +33,7 @@ func main() {
     )
 
 
-    var id string = "string"
+    var id string = "<value>"
 
     ctx := context.Background()
     res, err := s.RequestBulkRetry.Cancel(ctx, id)
@@ -90,7 +90,7 @@ func main() {
     )
 
 
-    var id string = "string"
+    var id string = "<value>"
 
     ctx := context.Background()
     res, err := s.RequestBulkRetry.Get(ctx, id)

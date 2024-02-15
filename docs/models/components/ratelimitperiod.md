@@ -3,8 +3,7 @@
 
 ## Values
 
-| Name                                    | Value                                   |
-| --------------------------------------- | --------------------------------------- |
-| `RateLimitPeriodLessThanNilGreaterThan` | <nil>                                   |
-| `RateLimitPeriodMinute`                 | minute                                  |
-| `RateLimitPeriodSecond`                 | second                                  |
+| Name                    | Value                   |
+| ----------------------- | ----------------------- |
+| `RateLimitPeriodMinute` | minute                  |
+| `RateLimitPeriodSecond` | second                  |

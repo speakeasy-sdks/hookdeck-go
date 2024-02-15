@@ -32,7 +32,7 @@ func main() {
     )
 
 
-    var id string = "string"
+    var id string = "<value>"
 
     ctx := context.Background()
     res, err := s.RequestRawBody.Get(ctx, id)

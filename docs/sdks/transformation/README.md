@@ -38,8 +38,8 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Transformation.Create(ctx, operations.CreateTransformationRequestBody{
-        Code: "string",
-        Name: "string",
+        Code: "<value>",
+        Name: "<value>",
     })
     if err != nil {
         log.Fatal(err)
@@ -94,7 +94,7 @@ func main() {
     )
 
 
-    var id string = "string"
+    var id string = "<value>"
 
     ctx := context.Background()
     res, err := s.Transformation.Get(ctx, id)
@@ -209,7 +209,7 @@ func main() {
 
     requestBody := operations.UpdateTransformationRequestBody{}
 
-    var id string = "string"
+    var id string = "<value>"
 
     ctx := context.Background()
     res, err := s.Transformation.Update(ctx, requestBody, id)
@@ -269,8 +269,8 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Transformation.Upsert(ctx, operations.UpsertTransformationRequestBody{
-        Code: "string",
-        Name: "string",
+        Code: "<value>",
+        Name: "<value>",
     })
     if err != nil {
         log.Fatal(err)

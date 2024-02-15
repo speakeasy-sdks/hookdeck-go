@@ -96,7 +96,7 @@ func main() {
     )
 
 
-    var id string = "string"
+    var id string = "<value>"
 
     ctx := context.Background()
     res, err := s.IssueTrigger.Delete(ctx, id)
@@ -153,7 +153,7 @@ func main() {
     )
 
 
-    var id string = "string"
+    var id string = "<value>"
 
     ctx := context.Background()
     res, err := s.IssueTrigger.Disable(ctx, id)
@@ -210,7 +210,7 @@ func main() {
     )
 
 
-    var id string = "string"
+    var id string = "<value>"
 
     ctx := context.Background()
     res, err := s.IssueTrigger.Enable(ctx, id)
@@ -267,7 +267,7 @@ func main() {
     )
 
 
-    var id string = "string"
+    var id string = "<value>"
 
     ctx := context.Background()
     res, err := s.IssueTrigger.Get(ctx, id)
@@ -327,7 +327,7 @@ func main() {
 
     requestBody := operations.UpdateIssueTriggerRequestBody{}
 
-    var id string = "string"
+    var id string = "<value>"
 
     ctx := context.Background()
     res, err := s.IssueTrigger.Update(ctx, requestBody, id)
@@ -388,7 +388,7 @@ func main() {
     ctx := context.Background()
     res, err := s.IssueTrigger.Upsert(ctx, operations.UpsertIssueTriggerRequestBody{
         Channels: &components.IssueTriggerChannels{},
-        Name: "string",
+        Name: "<value>",
         Type: components.IssueTypeTransformation,
     })
     if err != nil {

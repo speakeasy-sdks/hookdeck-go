@@ -282,9 +282,8 @@ func (o *RequestData) GetQuery() *string {
 type IngestPriority string
 
 const (
-	IngestPriorityLessThanNilGreaterThan IngestPriority = "<nil>"
-	IngestPriorityNormal                 IngestPriority = "NORMAL"
-	IngestPriorityLow                    IngestPriority = "LOW"
+	IngestPriorityNormal IngestPriority = "NORMAL"
+	IngestPriorityLow    IngestPriority = "LOW"
 )
 
 func (e IngestPriority) ToPointer() *IngestPriority {
@@ -297,8 +296,6 @@ func (e *IngestPriority) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
-	case "<nil>":
-		fallthrough
 	case "NORMAL":
 		fallthrough
 	case "LOW":

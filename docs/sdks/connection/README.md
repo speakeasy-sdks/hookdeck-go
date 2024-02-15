@@ -39,7 +39,7 @@ func main() {
     )
 
 
-    var id string = "string"
+    var id string = "<value>"
 
     ctx := context.Background()
     res, err := s.Connection.Archive(ctx, id)
@@ -98,7 +98,7 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Connection.Create(ctx, operations.CreateConnectionRequestBody{
-        Name: "string",
+        Name: "<value>",
     })
     if err != nil {
         log.Fatal(err)
@@ -153,7 +153,7 @@ func main() {
     )
 
 
-    var id string = "string"
+    var id string = "<value>"
 
     ctx := context.Background()
     res, err := s.Connection.Delete(ctx, id)
@@ -210,7 +210,7 @@ func main() {
     )
 
 
-    var id string = "string"
+    var id string = "<value>"
 
     ctx := context.Background()
     res, err := s.Connection.Get(ctx, id)
@@ -267,7 +267,7 @@ func main() {
     )
 
 
-    var id string = "string"
+    var id string = "<value>"
 
     ctx := context.Background()
     res, err := s.Connection.Pause(ctx, id)
@@ -324,7 +324,7 @@ func main() {
     )
 
 
-    var id string = "string"
+    var id string = "<value>"
 
     ctx := context.Background()
     res, err := s.Connection.Unarchive(ctx, id)
@@ -381,7 +381,7 @@ func main() {
     )
 
 
-    var id string = "string"
+    var id string = "<value>"
 
     ctx := context.Background()
     res, err := s.Connection.Unpause(ctx, id)
@@ -441,7 +441,7 @@ func main() {
 
     requestBody := operations.UpdateConnectionRequestBody{}
 
-    var id string = "string"
+    var id string = "<value>"
 
     ctx := context.Background()
     res, err := s.Connection.Update(ctx, requestBody, id)

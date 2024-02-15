@@ -81,12 +81,11 @@ func (u Body) MarshalJSON() ([]byte, error) {
 type HTTPMethod string
 
 const (
-	HTTPMethodLessThanNilGreaterThan HTTPMethod = "<nil>"
-	HTTPMethodGet                    HTTPMethod = "GET"
-	HTTPMethodPost                   HTTPMethod = "POST"
-	HTTPMethodPut                    HTTPMethod = "PUT"
-	HTTPMethodPatch                  HTTPMethod = "PATCH"
-	HTTPMethodDelete                 HTTPMethod = "DELETE"
+	HTTPMethodGet    HTTPMethod = "GET"
+	HTTPMethodPost   HTTPMethod = "POST"
+	HTTPMethodPut    HTTPMethod = "PUT"
+	HTTPMethodPatch  HTTPMethod = "PATCH"
+	HTTPMethodDelete HTTPMethod = "DELETE"
 )
 
 func (e HTTPMethod) ToPointer() *HTTPMethod {
@@ -99,8 +98,6 @@ func (e *HTTPMethod) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
-	case "<nil>":
-		fallthrough
 	case "GET":
 		fallthrough
 	case "POST":

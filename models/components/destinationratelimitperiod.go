@@ -11,10 +11,9 @@ import (
 type DestinationRateLimitPeriod string
 
 const (
-	DestinationRateLimitPeriodLessThanNilGreaterThan DestinationRateLimitPeriod = "<nil>"
-	DestinationRateLimitPeriodSecond                 DestinationRateLimitPeriod = "second"
-	DestinationRateLimitPeriodMinute                 DestinationRateLimitPeriod = "minute"
-	DestinationRateLimitPeriodHour                   DestinationRateLimitPeriod = "hour"
+	DestinationRateLimitPeriodSecond DestinationRateLimitPeriod = "second"
+	DestinationRateLimitPeriodMinute DestinationRateLimitPeriod = "minute"
+	DestinationRateLimitPeriodHour   DestinationRateLimitPeriod = "hour"
 )
 
 func (e DestinationRateLimitPeriod) ToPointer() *DestinationRateLimitPeriod {
@@ -27,8 +26,6 @@ func (e *DestinationRateLimitPeriod) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
-	case "<nil>":
-		fallthrough
 	case "second":
 		fallthrough
 	case "minute":

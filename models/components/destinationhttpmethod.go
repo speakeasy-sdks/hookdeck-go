@@ -11,12 +11,11 @@ import (
 type DestinationHTTPMethod string
 
 const (
-	DestinationHTTPMethodLessThanNilGreaterThan DestinationHTTPMethod = "<nil>"
-	DestinationHTTPMethodGet                    DestinationHTTPMethod = "GET"
-	DestinationHTTPMethodPost                   DestinationHTTPMethod = "POST"
-	DestinationHTTPMethodPut                    DestinationHTTPMethod = "PUT"
-	DestinationHTTPMethodPatch                  DestinationHTTPMethod = "PATCH"
-	DestinationHTTPMethodDelete                 DestinationHTTPMethod = "DELETE"
+	DestinationHTTPMethodGet    DestinationHTTPMethod = "GET"
+	DestinationHTTPMethodPost   DestinationHTTPMethod = "POST"
+	DestinationHTTPMethodPut    DestinationHTTPMethod = "PUT"
+	DestinationHTTPMethodPatch  DestinationHTTPMethod = "PATCH"
+	DestinationHTTPMethodDelete DestinationHTTPMethod = "DELETE"
 )
 
 func (e DestinationHTTPMethod) ToPointer() *DestinationHTTPMethod {
@@ -29,8 +28,6 @@ func (e *DestinationHTTPMethod) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
-	case "<nil>":
-		fallthrough
 	case "GET":
 		fallthrough
 	case "POST":

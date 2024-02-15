@@ -10,9 +10,8 @@ import (
 type RateLimitPeriod string
 
 const (
-	RateLimitPeriodLessThanNilGreaterThan RateLimitPeriod = "<nil>"
-	RateLimitPeriodMinute                 RateLimitPeriod = "minute"
-	RateLimitPeriodSecond                 RateLimitPeriod = "second"
+	RateLimitPeriodMinute RateLimitPeriod = "minute"
+	RateLimitPeriodSecond RateLimitPeriod = "second"
 )
 
 func (e RateLimitPeriod) ToPointer() *RateLimitPeriod {
@@ -25,8 +24,6 @@ func (e *RateLimitPeriod) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
-	case "<nil>":
-		fallthrough
 	case "minute":
 		fallthrough
 	case "second":

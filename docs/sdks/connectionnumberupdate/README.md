@@ -34,7 +34,7 @@ func main() {
 
     ctx := context.Background()
     res, err := s.ConnectionNumberUpdate.Upsert(ctx, operations.UpsertConnectionRequestBody{
-        Name: "string",
+        Name: "<value>",
     })
     if err != nil {
         log.Fatal(err)

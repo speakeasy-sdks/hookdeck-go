@@ -11,12 +11,11 @@ import (
 type AttemptTrigger string
 
 const (
-	AttemptTriggerLessThanNilGreaterThan AttemptTrigger = "<nil>"
-	AttemptTriggerInitial                AttemptTrigger = "INITIAL"
-	AttemptTriggerManual                 AttemptTrigger = "MANUAL"
-	AttemptTriggerBulkRetry              AttemptTrigger = "BULK_RETRY"
-	AttemptTriggerUnpause                AttemptTrigger = "UNPAUSE"
-	AttemptTriggerAutomatic              AttemptTrigger = "AUTOMATIC"
+	AttemptTriggerInitial   AttemptTrigger = "INITIAL"
+	AttemptTriggerManual    AttemptTrigger = "MANUAL"
+	AttemptTriggerBulkRetry AttemptTrigger = "BULK_RETRY"
+	AttemptTriggerUnpause   AttemptTrigger = "UNPAUSE"
+	AttemptTriggerAutomatic AttemptTrigger = "AUTOMATIC"
 )
 
 func (e AttemptTrigger) ToPointer() *AttemptTrigger {
@@ -29,8 +28,6 @@ func (e *AttemptTrigger) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
-	case "<nil>":
-		fallthrough
 	case "INITIAL":
 		fallthrough
 	case "MANUAL":

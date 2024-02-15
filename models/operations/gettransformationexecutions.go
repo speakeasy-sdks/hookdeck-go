@@ -315,12 +315,11 @@ func (u GetTransformationExecutionsQueryParamIssueID) MarshalJSON() ([]byte, err
 type GetTransformationExecutionsQueryParamTransformationExecutionsLogLevel2 string
 
 const (
-	GetTransformationExecutionsQueryParamTransformationExecutionsLogLevel2LessThanNilGreaterThan GetTransformationExecutionsQueryParamTransformationExecutionsLogLevel2 = "<nil>"
-	GetTransformationExecutionsQueryParamTransformationExecutionsLogLevel2Debug                  GetTransformationExecutionsQueryParamTransformationExecutionsLogLevel2 = "debug"
-	GetTransformationExecutionsQueryParamTransformationExecutionsLogLevel2Info                   GetTransformationExecutionsQueryParamTransformationExecutionsLogLevel2 = "info"
-	GetTransformationExecutionsQueryParamTransformationExecutionsLogLevel2Warn                   GetTransformationExecutionsQueryParamTransformationExecutionsLogLevel2 = "warn"
-	GetTransformationExecutionsQueryParamTransformationExecutionsLogLevel2Error                  GetTransformationExecutionsQueryParamTransformationExecutionsLogLevel2 = "error"
-	GetTransformationExecutionsQueryParamTransformationExecutionsLogLevel2Fatal                  GetTransformationExecutionsQueryParamTransformationExecutionsLogLevel2 = "fatal"
+	GetTransformationExecutionsQueryParamTransformationExecutionsLogLevel2Debug GetTransformationExecutionsQueryParamTransformationExecutionsLogLevel2 = "debug"
+	GetTransformationExecutionsQueryParamTransformationExecutionsLogLevel2Info  GetTransformationExecutionsQueryParamTransformationExecutionsLogLevel2 = "info"
+	GetTransformationExecutionsQueryParamTransformationExecutionsLogLevel2Warn  GetTransformationExecutionsQueryParamTransformationExecutionsLogLevel2 = "warn"
+	GetTransformationExecutionsQueryParamTransformationExecutionsLogLevel2Error GetTransformationExecutionsQueryParamTransformationExecutionsLogLevel2 = "error"
+	GetTransformationExecutionsQueryParamTransformationExecutionsLogLevel2Fatal GetTransformationExecutionsQueryParamTransformationExecutionsLogLevel2 = "fatal"
 )
 
 func (e GetTransformationExecutionsQueryParamTransformationExecutionsLogLevel2) ToPointer() *GetTransformationExecutionsQueryParamTransformationExecutionsLogLevel2 {
@@ -333,8 +332,6 @@ func (e *GetTransformationExecutionsQueryParamTransformationExecutionsLogLevel2)
 		return err
 	}
 	switch v {
-	case "<nil>":
-		fallthrough
 	case "debug":
 		fallthrough
 	case "info":
@@ -354,12 +351,11 @@ func (e *GetTransformationExecutionsQueryParamTransformationExecutionsLogLevel2)
 type GetTransformationExecutionsQueryParamTransformationExecutions1 string
 
 const (
-	GetTransformationExecutionsQueryParamTransformationExecutions1LessThanNilGreaterThan GetTransformationExecutionsQueryParamTransformationExecutions1 = "<nil>"
-	GetTransformationExecutionsQueryParamTransformationExecutions1Debug                  GetTransformationExecutionsQueryParamTransformationExecutions1 = "debug"
-	GetTransformationExecutionsQueryParamTransformationExecutions1Info                   GetTransformationExecutionsQueryParamTransformationExecutions1 = "info"
-	GetTransformationExecutionsQueryParamTransformationExecutions1Warn                   GetTransformationExecutionsQueryParamTransformationExecutions1 = "warn"
-	GetTransformationExecutionsQueryParamTransformationExecutions1Error                  GetTransformationExecutionsQueryParamTransformationExecutions1 = "error"
-	GetTransformationExecutionsQueryParamTransformationExecutions1Fatal                  GetTransformationExecutionsQueryParamTransformationExecutions1 = "fatal"
+	GetTransformationExecutionsQueryParamTransformationExecutions1Debug GetTransformationExecutionsQueryParamTransformationExecutions1 = "debug"
+	GetTransformationExecutionsQueryParamTransformationExecutions1Info  GetTransformationExecutionsQueryParamTransformationExecutions1 = "info"
+	GetTransformationExecutionsQueryParamTransformationExecutions1Warn  GetTransformationExecutionsQueryParamTransformationExecutions1 = "warn"
+	GetTransformationExecutionsQueryParamTransformationExecutions1Error GetTransformationExecutionsQueryParamTransformationExecutions1 = "error"
+	GetTransformationExecutionsQueryParamTransformationExecutions1Fatal GetTransformationExecutionsQueryParamTransformationExecutions1 = "fatal"
 )
 
 func (e GetTransformationExecutionsQueryParamTransformationExecutions1) ToPointer() *GetTransformationExecutionsQueryParamTransformationExecutions1 {
@@ -372,8 +368,6 @@ func (e *GetTransformationExecutionsQueryParamTransformationExecutions1) Unmarsh
 		return err
 	}
 	switch v {
-	case "<nil>":
-		fallthrough
 	case "debug":
 		fallthrough
 	case "info":

@@ -38,7 +38,7 @@ func main() {
     )
 
 
-    var id string = "string"
+    var id string = "<value>"
 
     ctx := context.Background()
     res, err := s.Source.Archive(ctx, id)
@@ -97,7 +97,7 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Source.Create(ctx, operations.CreateSourceRequestBody{
-        Name: "string",
+        Name: "<value>",
     })
     if err != nil {
         log.Fatal(err)
@@ -152,7 +152,7 @@ func main() {
     )
 
 
-    var id string = "string"
+    var id string = "<value>"
 
     ctx := context.Background()
     res, err := s.Source.Delete(ctx, id)
@@ -209,7 +209,7 @@ func main() {
     )
 
 
-    var id string = "string"
+    var id string = "<value>"
 
     ctx := context.Background()
     res, err := s.Source.Get(ctx, id)
@@ -266,7 +266,7 @@ func main() {
     )
 
 
-    var id string = "string"
+    var id string = "<value>"
 
     ctx := context.Background()
     res, err := s.Source.Unarchive(ctx, id)
@@ -326,7 +326,7 @@ func main() {
 
     requestBody := operations.UpdateSourceRequestBody{}
 
-    var id string = "string"
+    var id string = "<value>"
 
     ctx := context.Background()
     res, err := s.Source.Update(ctx, requestBody, id)
@@ -386,7 +386,7 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Source.Upsert(ctx, operations.UpsertSourceRequestBody{
-        Name: "string",
+        Name: "<value>",
     })
     if err != nil {
         log.Fatal(err)

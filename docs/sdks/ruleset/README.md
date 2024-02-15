@@ -37,7 +37,7 @@ func main() {
     )
 
 
-    var id string = "string"
+    var id string = "<value>"
 
     ctx := context.Background()
     res, err := s.Ruleset.Archive(ctx, id)
@@ -96,7 +96,7 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Ruleset.Create(ctx, operations.CreateRulesetRequestBody{
-        Name: "string",
+        Name: "<value>",
     })
     if err != nil {
         log.Fatal(err)
@@ -151,7 +151,7 @@ func main() {
     )
 
 
-    var id string = "string"
+    var id string = "<value>"
 
     ctx := context.Background()
     res, err := s.Ruleset.Get(ctx, id)
@@ -208,7 +208,7 @@ func main() {
     )
 
 
-    var id string = "string"
+    var id string = "<value>"
 
     ctx := context.Background()
     res, err := s.Ruleset.Unarchive(ctx, id)
@@ -268,7 +268,7 @@ func main() {
 
     requestBody := operations.UpdateRulesetRequestBody{}
 
-    var id string = "string"
+    var id string = "<value>"
 
     ctx := context.Background()
     res, err := s.Ruleset.Update(ctx, requestBody, id)
@@ -328,7 +328,7 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Ruleset.Upsert(ctx, operations.UpsertRulesetRequestBody{
-        Name: "string",
+        Name: "<value>",
     })
     if err != nil {
         log.Fatal(err)

@@ -37,7 +37,7 @@ func main() {
         Hostname: "murky-sole.name",
     }
 
-    var teamID string = "string"
+    var teamID string = "<value>"
 
     ctx := context.Background()
     res, err := s.CustomDomain.Add(ctx, addCustomHostname, teamID)
@@ -94,9 +94,9 @@ func main() {
     )
 
 
-    var domainID string = "string"
+    var domainID string = "<value>"
 
-    var teamID string = "string"
+    var teamID string = "<value>"
 
     ctx := context.Background()
     res, err := s.CustomDomain.Delete(ctx, domainID, teamID)

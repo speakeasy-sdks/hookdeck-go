@@ -34,7 +34,7 @@ func main() {
 
     ctx := context.Background()
     res, err := s.TransformationExecutions.Get(ctx, operations.GetTransformationExecutionsRequest{
-        ID: "<ID>",
+        ID: "<id>",
     })
     if err != nil {
         log.Fatal(err)

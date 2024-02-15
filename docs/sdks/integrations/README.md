@@ -36,7 +36,7 @@ func main() {
     )
 
 
-    var label *string = hookdeckgo.String("string")
+    var label *string = hookdeckgo.String("<value>")
 
     var provider *components.IntegrationProvider = components.IntegrationProviderOura.ToPointer()
 

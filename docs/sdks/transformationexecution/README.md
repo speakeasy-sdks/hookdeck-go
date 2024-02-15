@@ -32,9 +32,9 @@ func main() {
     )
 
 
-    var executionID string = "string"
+    var executionID string = "<value>"
 
-    var id string = "string"
+    var id string = "<value>"
 
     ctx := context.Background()
     res, err := s.TransformationExecution.Get(ctx, executionID, id)

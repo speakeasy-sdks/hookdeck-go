@@ -37,9 +37,9 @@ func main() {
     )
 
 
-    var id string = "string"
+    var id string = "<value>"
 
-    var sourceID string = "string"
+    var sourceID string = "<value>"
 
     ctx := context.Background()
     res, err := s.Integration.AttachIntegrationToSource(ctx, id, sourceID)
@@ -152,7 +152,7 @@ func main() {
     )
 
 
-    var id string = "string"
+    var id string = "<value>"
 
     ctx := context.Background()
     res, err := s.Integration.Delete(ctx, id)
@@ -209,9 +209,9 @@ func main() {
     )
 
 
-    var id string = "string"
+    var id string = "<value>"
 
-    var sourceID string = "string"
+    var sourceID string = "<value>"
 
     ctx := context.Background()
     res, err := s.Integration.DetachIntegrationToSource(ctx, id, sourceID)
@@ -269,7 +269,7 @@ func main() {
     )
 
 
-    var id string = "string"
+    var id string = "<value>"
 
     ctx := context.Background()
     res, err := s.Integration.Get(ctx, id)
@@ -329,7 +329,7 @@ func main() {
 
     requestBody := operations.UpdateIntegrationRequestBody{}
 
-    var id string = "string"
+    var id string = "<value>"
 
     ctx := context.Background()
     res, err := s.Integration.Update(ctx, requestBody, id)

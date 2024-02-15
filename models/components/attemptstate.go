@@ -10,12 +10,11 @@ import (
 type AttemptState string
 
 const (
-	AttemptStateLessThanNilGreaterThan AttemptState = "<nil>"
-	AttemptStateDelivering             AttemptState = "DELIVERING"
-	AttemptStateQueued                 AttemptState = "QUEUED"
-	AttemptStatePending                AttemptState = "PENDING"
-	AttemptStateCompleted              AttemptState = "COMPLETED"
-	AttemptStateHold                   AttemptState = "HOLD"
+	AttemptStateDelivering AttemptState = "DELIVERING"
+	AttemptStateQueued     AttemptState = "QUEUED"
+	AttemptStatePending    AttemptState = "PENDING"
+	AttemptStateCompleted  AttemptState = "COMPLETED"
+	AttemptStateHold       AttemptState = "HOLD"
 )
 
 func (e AttemptState) ToPointer() *AttemptState {
@@ -28,8 +27,6 @@ func (e *AttemptState) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
-	case "<nil>":
-		fallthrough
 	case "DELIVERING":
 		fallthrough
 	case "QUEUED":

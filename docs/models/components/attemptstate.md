@@ -3,11 +3,10 @@
 
 ## Values
 
-| Name                                 | Value                                |
-| ------------------------------------ | ------------------------------------ |
-| `AttemptStateLessThanNilGreaterThan` | <nil>                                |
-| `AttemptStateDelivering`             | DELIVERING                           |
-| `AttemptStateQueued`                 | QUEUED                               |
-| `AttemptStatePending`                | PENDING                              |
-| `AttemptStateCompleted`              | COMPLETED                            |
-| `AttemptStateHold`                   | HOLD                                 |
+| Name                     | Value                    |
+| ------------------------ | ------------------------ |
+| `AttemptStateDelivering` | DELIVERING               |
+| `AttemptStateQueued`     | QUEUED                   |
+| `AttemptStatePending`    | PENDING                  |
+| `AttemptStateCompleted`  | COMPLETED                |
+| `AttemptStateHold`       | HOLD                     |

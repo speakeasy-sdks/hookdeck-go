@@ -32,7 +32,7 @@ func main() {
     )
 
 
-    var teamID string = "string"
+    var teamID string = "<value>"
 
     ctx := context.Background()
     res, err := s.CustomDomains.List(ctx, teamID)

@@ -38,9 +38,9 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Bookmark.Create(ctx, operations.CreateBookmarkRequestBody{
-        EventDataID: "string",
-        Label: "string",
-        WebhookID: "string",
+        EventDataID: "<value>",
+        Label: "<value>",
+        WebhookID: "<value>",
     })
     if err != nil {
         log.Fatal(err)
@@ -95,7 +95,7 @@ func main() {
     )
 
 
-    var id string = "string"
+    var id string = "<value>"
 
     ctx := context.Background()
     res, err := s.Bookmark.Delete(ctx, id)
@@ -152,7 +152,7 @@ func main() {
     )
 
 
-    var id string = "string"
+    var id string = "<value>"
 
     ctx := context.Background()
     res, err := s.Bookmark.Get(ctx, id)
@@ -212,7 +212,7 @@ func main() {
 
     requestBody := operations.TriggerBookmarkRequestBody{}
 
-    var id string = "string"
+    var id string = "<value>"
 
     ctx := context.Background()
     res, err := s.Bookmark.Trigger(ctx, requestBody, id)
@@ -273,7 +273,7 @@ func main() {
 
     requestBody := operations.UpdateBookmarkRequestBody{}
 
-    var id string = "string"
+    var id string = "<value>"
 
     ctx := context.Background()
     res, err := s.Bookmark.Update(ctx, requestBody, id)
