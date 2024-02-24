@@ -28,7 +28,11 @@ func newBulkRetryIgnoredEvent(sdkConfig sdkConfiguration) *BulkRetryIgnoredEvent
 
 // Cancel an ignored events bulk retry
 func (s *BulkRetryIgnoredEvent) Cancel(ctx context.Context, id string) (*operations.CancelIgnoredEventBulkRetryResponse, error) {
-	hookCtx := hooks.HookContext{OperationID: "cancelIgnoredEventBulkRetry"}
+	hookCtx := hooks.HookContext{
+		Context:        ctx,
+		OperationID:    "cancelIgnoredEventBulkRetry",
+		SecuritySource: s.sdkConfiguration.Security,
+	}
 
 	request := operations.CancelIgnoredEventBulkRetryRequest{
 		ID: id,
@@ -47,12 +51,12 @@ func (s *BulkRetryIgnoredEvent) Cancel(ctx context.Context, id string) (*operati
 	req.Header.Set("Accept", "application/json")
 	req.Header.Set("User-Agent", s.sdkConfiguration.UserAgent)
 
-	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
+	client := s.sdkConfiguration.SecurityClient
+
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{HookContext: hookCtx}, req)
 	if err != nil {
 		return nil, err
 	}
-
-	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
 	if err != nil || httpRes == nil {
@@ -62,15 +66,15 @@ func (s *BulkRetryIgnoredEvent) Cancel(ctx context.Context, id string) (*operati
 			err = fmt.Errorf("error sending request: no response")
 		}
 
-		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 		return nil, err
 	} else if utils.MatchStatusCodes([]string{"404", "4XX", "5XX"}, httpRes.StatusCode) {
-		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
 		if err != nil {
 			return nil, err
 		}
 	} else {
-		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{HookContext: hookCtx}, httpRes)
 		if err != nil {
 			return nil, err
 		}
@@ -125,7 +129,11 @@ func (s *BulkRetryIgnoredEvent) Cancel(ctx context.Context, id string) (*operati
 
 // Create an ignored events bulk retry
 func (s *BulkRetryIgnoredEvent) Create(ctx context.Context, request operations.CreateIgnoredEventBulkRetryRequestBody) (*operations.CreateIgnoredEventBulkRetryResponse, error) {
-	hookCtx := hooks.HookContext{OperationID: "createIgnoredEventBulkRetry"}
+	hookCtx := hooks.HookContext{
+		Context:        ctx,
+		OperationID:    "createIgnoredEventBulkRetry",
+		SecuritySource: s.sdkConfiguration.Security,
+	}
 
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	opURL, err := url.JoinPath(baseURL, "/bulk/ignored-events/retry")
@@ -146,12 +154,12 @@ func (s *BulkRetryIgnoredEvent) Create(ctx context.Context, request operations.C
 	req.Header.Set("User-Agent", s.sdkConfiguration.UserAgent)
 	req.Header.Set("Content-Type", reqContentType)
 
-	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
+	client := s.sdkConfiguration.SecurityClient
+
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{HookContext: hookCtx}, req)
 	if err != nil {
 		return nil, err
 	}
-
-	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
 	if err != nil || httpRes == nil {
@@ -161,15 +169,15 @@ func (s *BulkRetryIgnoredEvent) Create(ctx context.Context, request operations.C
 			err = fmt.Errorf("error sending request: no response")
 		}
 
-		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 		return nil, err
 	} else if utils.MatchStatusCodes([]string{"400", "422", "4XX", "5XX"}, httpRes.StatusCode) {
-		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
 		if err != nil {
 			return nil, err
 		}
 	} else {
-		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{HookContext: hookCtx}, httpRes)
 		if err != nil {
 			return nil, err
 		}
@@ -226,7 +234,11 @@ func (s *BulkRetryIgnoredEvent) Create(ctx context.Context, request operations.C
 
 // Generate an ignored events bulk retry plan
 func (s *BulkRetryIgnoredEvent) Generate(ctx context.Context, query *operations.QueryParamQuery) (*operations.GenerateIgnoredEventBulkRetryPlanResponse, error) {
-	hookCtx := hooks.HookContext{OperationID: "generateIgnoredEventBulkRetryPlan"}
+	hookCtx := hooks.HookContext{
+		Context:        ctx,
+		OperationID:    "generateIgnoredEventBulkRetryPlan",
+		SecuritySource: s.sdkConfiguration.Security,
+	}
 
 	request := operations.GenerateIgnoredEventBulkRetryPlanRequest{
 		Query: query,
@@ -249,12 +261,12 @@ func (s *BulkRetryIgnoredEvent) Generate(ctx context.Context, query *operations.
 		return nil, fmt.Errorf("error populating query params: %w", err)
 	}
 
-	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
+	client := s.sdkConfiguration.SecurityClient
+
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{HookContext: hookCtx}, req)
 	if err != nil {
 		return nil, err
 	}
-
-	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
 	if err != nil || httpRes == nil {
@@ -264,15 +276,15 @@ func (s *BulkRetryIgnoredEvent) Generate(ctx context.Context, query *operations.
 			err = fmt.Errorf("error sending request: no response")
 		}
 
-		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 		return nil, err
 	} else if utils.MatchStatusCodes([]string{"400", "422", "4XX", "5XX"}, httpRes.StatusCode) {
-		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
 		if err != nil {
 			return nil, err
 		}
 	} else {
-		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{HookContext: hookCtx}, httpRes)
 		if err != nil {
 			return nil, err
 		}
@@ -329,7 +341,11 @@ func (s *BulkRetryIgnoredEvent) Generate(ctx context.Context, query *operations.
 
 // Get an ignored events bulk retry
 func (s *BulkRetryIgnoredEvent) Get(ctx context.Context, id string) (*operations.GetIgnoredEventBulkRetryResponse, error) {
-	hookCtx := hooks.HookContext{OperationID: "getIgnoredEventBulkRetry"}
+	hookCtx := hooks.HookContext{
+		Context:        ctx,
+		OperationID:    "getIgnoredEventBulkRetry",
+		SecuritySource: s.sdkConfiguration.Security,
+	}
 
 	request := operations.GetIgnoredEventBulkRetryRequest{
 		ID: id,
@@ -348,12 +364,12 @@ func (s *BulkRetryIgnoredEvent) Get(ctx context.Context, id string) (*operations
 	req.Header.Set("Accept", "application/json")
 	req.Header.Set("User-Agent", s.sdkConfiguration.UserAgent)
 
-	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
+	client := s.sdkConfiguration.SecurityClient
+
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{HookContext: hookCtx}, req)
 	if err != nil {
 		return nil, err
 	}
-
-	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
 	if err != nil || httpRes == nil {
@@ -363,15 +379,15 @@ func (s *BulkRetryIgnoredEvent) Get(ctx context.Context, id string) (*operations
 			err = fmt.Errorf("error sending request: no response")
 		}
 
-		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 		return nil, err
 	} else if utils.MatchStatusCodes([]string{"404", "4XX", "5XX"}, httpRes.StatusCode) {
-		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
 		if err != nil {
 			return nil, err
 		}
 	} else {
-		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{HookContext: hookCtx}, httpRes)
 		if err != nil {
 			return nil, err
 		}

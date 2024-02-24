@@ -27,7 +27,11 @@ func newRequestBulkRetry(sdkConfig sdkConfiguration) *RequestBulkRetry {
 
 // Cancel a requests bulk retry
 func (s *RequestBulkRetry) Cancel(ctx context.Context, id string) (*operations.CancelRequestBulkRetryResponse, error) {
-	hookCtx := hooks.HookContext{OperationID: "cancelRequestBulkRetry"}
+	hookCtx := hooks.HookContext{
+		Context:        ctx,
+		OperationID:    "cancelRequestBulkRetry",
+		SecuritySource: s.sdkConfiguration.Security,
+	}
 
 	request := operations.CancelRequestBulkRetryRequest{
 		ID: id,
@@ -46,12 +50,12 @@ func (s *RequestBulkRetry) Cancel(ctx context.Context, id string) (*operations.C
 	req.Header.Set("Accept", "application/json")
 	req.Header.Set("User-Agent", s.sdkConfiguration.UserAgent)
 
-	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
+	client := s.sdkConfiguration.SecurityClient
+
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{HookContext: hookCtx}, req)
 	if err != nil {
 		return nil, err
 	}
-
-	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
 	if err != nil || httpRes == nil {
@@ -61,15 +65,15 @@ func (s *RequestBulkRetry) Cancel(ctx context.Context, id string) (*operations.C
 			err = fmt.Errorf("error sending request: no response")
 		}
 
-		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 		return nil, err
 	} else if utils.MatchStatusCodes([]string{"404", "4XX", "5XX"}, httpRes.StatusCode) {
-		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
 		if err != nil {
 			return nil, err
 		}
 	} else {
-		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{HookContext: hookCtx}, httpRes)
 		if err != nil {
 			return nil, err
 		}
@@ -124,7 +128,11 @@ func (s *RequestBulkRetry) Cancel(ctx context.Context, id string) (*operations.C
 
 // Get a requests bulk retry
 func (s *RequestBulkRetry) Get(ctx context.Context, id string) (*operations.GetRequestBulkRetryResponse, error) {
-	hookCtx := hooks.HookContext{OperationID: "getRequestBulkRetry"}
+	hookCtx := hooks.HookContext{
+		Context:        ctx,
+		OperationID:    "getRequestBulkRetry",
+		SecuritySource: s.sdkConfiguration.Security,
+	}
 
 	request := operations.GetRequestBulkRetryRequest{
 		ID: id,
@@ -143,12 +151,12 @@ func (s *RequestBulkRetry) Get(ctx context.Context, id string) (*operations.GetR
 	req.Header.Set("Accept", "application/json")
 	req.Header.Set("User-Agent", s.sdkConfiguration.UserAgent)
 
-	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
+	client := s.sdkConfiguration.SecurityClient
+
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{HookContext: hookCtx}, req)
 	if err != nil {
 		return nil, err
 	}
-
-	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
 	if err != nil || httpRes == nil {
@@ -158,15 +166,15 @@ func (s *RequestBulkRetry) Get(ctx context.Context, id string) (*operations.GetR
 			err = fmt.Errorf("error sending request: no response")
 		}
 
-		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 		return nil, err
 	} else if utils.MatchStatusCodes([]string{"404", "4XX", "5XX"}, httpRes.StatusCode) {
-		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
 		if err != nil {
 			return nil, err
 		}
 	} else {
-		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{HookContext: hookCtx}, httpRes)
 		if err != nil {
 			return nil, err
 		}

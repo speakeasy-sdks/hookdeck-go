@@ -28,7 +28,11 @@ func newEvent(sdkConfig sdkConfiguration) *Event {
 // Get an Event
 // Retrieve a request that Hookdeck receives from a source.
 func (s *Event) Get(ctx context.Context, id string) (*operations.GetEventResponse, error) {
-	hookCtx := hooks.HookContext{OperationID: "getEvent"}
+	hookCtx := hooks.HookContext{
+		Context:        ctx,
+		OperationID:    "getEvent",
+		SecuritySource: s.sdkConfiguration.Security,
+	}
 
 	request := operations.GetEventRequest{
 		ID: id,
@@ -47,12 +51,12 @@ func (s *Event) Get(ctx context.Context, id string) (*operations.GetEventRespons
 	req.Header.Set("Accept", "application/json")
 	req.Header.Set("User-Agent", s.sdkConfiguration.UserAgent)
 
-	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
+	client := s.sdkConfiguration.SecurityClient
+
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{HookContext: hookCtx}, req)
 	if err != nil {
 		return nil, err
 	}
-
-	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
 	if err != nil || httpRes == nil {
@@ -62,15 +66,15 @@ func (s *Event) Get(ctx context.Context, id string) (*operations.GetEventRespons
 			err = fmt.Errorf("error sending request: no response")
 		}
 
-		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 		return nil, err
 	} else if utils.MatchStatusCodes([]string{"404", "4XX", "5XX"}, httpRes.StatusCode) {
-		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
 		if err != nil {
 			return nil, err
 		}
 	} else {
-		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{HookContext: hookCtx}, httpRes)
 		if err != nil {
 			return nil, err
 		}
@@ -126,7 +130,11 @@ func (s *Event) Get(ctx context.Context, id string) (*operations.GetEventRespons
 // MuteEvent - Mute an Event
 // Mute a request that Hookdeck receives from a specific source.
 func (s *Event) MuteEvent(ctx context.Context, id string) (*operations.MuteEventResponse, error) {
-	hookCtx := hooks.HookContext{OperationID: "muteEvent"}
+	hookCtx := hooks.HookContext{
+		Context:        ctx,
+		OperationID:    "muteEvent",
+		SecuritySource: s.sdkConfiguration.Security,
+	}
 
 	request := operations.MuteEventRequest{
 		ID: id,
@@ -145,12 +153,12 @@ func (s *Event) MuteEvent(ctx context.Context, id string) (*operations.MuteEvent
 	req.Header.Set("Accept", "application/json")
 	req.Header.Set("User-Agent", s.sdkConfiguration.UserAgent)
 
-	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
+	client := s.sdkConfiguration.SecurityClient
+
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{HookContext: hookCtx}, req)
 	if err != nil {
 		return nil, err
 	}
-
-	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
 	if err != nil || httpRes == nil {
@@ -160,15 +168,15 @@ func (s *Event) MuteEvent(ctx context.Context, id string) (*operations.MuteEvent
 			err = fmt.Errorf("error sending request: no response")
 		}
 
-		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 		return nil, err
 	} else if utils.MatchStatusCodes([]string{"404", "4XX", "5XX"}, httpRes.StatusCode) {
-		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
 		if err != nil {
 			return nil, err
 		}
 	} else {
-		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{HookContext: hookCtx}, httpRes)
 		if err != nil {
 			return nil, err
 		}
@@ -224,7 +232,11 @@ func (s *Event) MuteEvent(ctx context.Context, id string) (*operations.MuteEvent
 // Retry an Event
 // Retry the operation to retrieve a request that Hookdeck receives from a specific source.
 func (s *Event) Retry(ctx context.Context, id string) (*operations.RetryEventResponse, error) {
-	hookCtx := hooks.HookContext{OperationID: "retryEvent"}
+	hookCtx := hooks.HookContext{
+		Context:        ctx,
+		OperationID:    "retryEvent",
+		SecuritySource: s.sdkConfiguration.Security,
+	}
 
 	request := operations.RetryEventRequest{
 		ID: id,
@@ -243,12 +255,12 @@ func (s *Event) Retry(ctx context.Context, id string) (*operations.RetryEventRes
 	req.Header.Set("Accept", "application/json")
 	req.Header.Set("User-Agent", s.sdkConfiguration.UserAgent)
 
-	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
+	client := s.sdkConfiguration.SecurityClient
+
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{HookContext: hookCtx}, req)
 	if err != nil {
 		return nil, err
 	}
-
-	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
 	if err != nil || httpRes == nil {
@@ -258,15 +270,15 @@ func (s *Event) Retry(ctx context.Context, id string) (*operations.RetryEventRes
 			err = fmt.Errorf("error sending request: no response")
 		}
 
-		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 		return nil, err
 	} else if utils.MatchStatusCodes([]string{"404", "4XX", "5XX"}, httpRes.StatusCode) {
-		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
 		if err != nil {
 			return nil, err
 		}
 	} else {
-		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{HookContext: hookCtx}, httpRes)
 		if err != nil {
 			return nil, err
 		}

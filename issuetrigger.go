@@ -29,7 +29,11 @@ func newIssueTrigger(sdkConfig sdkConfiguration) *IssueTrigger {
 // Create an Issue Trigger
 // Create a new issue trigger.
 func (s *IssueTrigger) Create(ctx context.Context, request operations.CreateIssueTriggerRequestBody) (*operations.CreateIssueTriggerResponse, error) {
-	hookCtx := hooks.HookContext{OperationID: "createIssueTrigger"}
+	hookCtx := hooks.HookContext{
+		Context:        ctx,
+		OperationID:    "createIssueTrigger",
+		SecuritySource: s.sdkConfiguration.Security,
+	}
 
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	opURL, err := url.JoinPath(baseURL, "/issue-triggers")
@@ -50,12 +54,12 @@ func (s *IssueTrigger) Create(ctx context.Context, request operations.CreateIssu
 	req.Header.Set("User-Agent", s.sdkConfiguration.UserAgent)
 	req.Header.Set("Content-Type", reqContentType)
 
-	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
+	client := s.sdkConfiguration.SecurityClient
+
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{HookContext: hookCtx}, req)
 	if err != nil {
 		return nil, err
 	}
-
-	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
 	if err != nil || httpRes == nil {
@@ -65,15 +69,15 @@ func (s *IssueTrigger) Create(ctx context.Context, request operations.CreateIssu
 			err = fmt.Errorf("error sending request: no response")
 		}
 
-		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 		return nil, err
 	} else if utils.MatchStatusCodes([]string{"400", "422", "4XX", "5XX"}, httpRes.StatusCode) {
-		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
 		if err != nil {
 			return nil, err
 		}
 	} else {
-		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{HookContext: hookCtx}, httpRes)
 		if err != nil {
 			return nil, err
 		}
@@ -131,7 +135,11 @@ func (s *IssueTrigger) Create(ctx context.Context, request operations.CreateIssu
 // Delete an Issue Trigger
 // Delete an existing issue trigger.
 func (s *IssueTrigger) Delete(ctx context.Context, id string) (*operations.DeleteIssueTriggerResponse, error) {
-	hookCtx := hooks.HookContext{OperationID: "deleteIssueTrigger"}
+	hookCtx := hooks.HookContext{
+		Context:        ctx,
+		OperationID:    "deleteIssueTrigger",
+		SecuritySource: s.sdkConfiguration.Security,
+	}
 
 	request := operations.DeleteIssueTriggerRequest{
 		ID: id,
@@ -150,12 +158,12 @@ func (s *IssueTrigger) Delete(ctx context.Context, id string) (*operations.Delet
 	req.Header.Set("Accept", "application/json")
 	req.Header.Set("User-Agent", s.sdkConfiguration.UserAgent)
 
-	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
+	client := s.sdkConfiguration.SecurityClient
+
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{HookContext: hookCtx}, req)
 	if err != nil {
 		return nil, err
 	}
-
-	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
 	if err != nil || httpRes == nil {
@@ -165,15 +173,15 @@ func (s *IssueTrigger) Delete(ctx context.Context, id string) (*operations.Delet
 			err = fmt.Errorf("error sending request: no response")
 		}
 
-		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 		return nil, err
 	} else if utils.MatchStatusCodes([]string{"404", "4XX", "5XX"}, httpRes.StatusCode) {
-		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
 		if err != nil {
 			return nil, err
 		}
 	} else {
-		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{HookContext: hookCtx}, httpRes)
 		if err != nil {
 			return nil, err
 		}
@@ -229,7 +237,11 @@ func (s *IssueTrigger) Delete(ctx context.Context, id string) (*operations.Delet
 // Disable an Issue Trigger
 // Disable an existing issue trigger.
 func (s *IssueTrigger) Disable(ctx context.Context, id string) (*operations.DisableIssueTriggerResponse, error) {
-	hookCtx := hooks.HookContext{OperationID: "disableIssueTrigger"}
+	hookCtx := hooks.HookContext{
+		Context:        ctx,
+		OperationID:    "disableIssueTrigger",
+		SecuritySource: s.sdkConfiguration.Security,
+	}
 
 	request := operations.DisableIssueTriggerRequest{
 		ID: id,
@@ -248,12 +260,12 @@ func (s *IssueTrigger) Disable(ctx context.Context, id string) (*operations.Disa
 	req.Header.Set("Accept", "application/json")
 	req.Header.Set("User-Agent", s.sdkConfiguration.UserAgent)
 
-	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
+	client := s.sdkConfiguration.SecurityClient
+
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{HookContext: hookCtx}, req)
 	if err != nil {
 		return nil, err
 	}
-
-	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
 	if err != nil || httpRes == nil {
@@ -263,15 +275,15 @@ func (s *IssueTrigger) Disable(ctx context.Context, id string) (*operations.Disa
 			err = fmt.Errorf("error sending request: no response")
 		}
 
-		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 		return nil, err
 	} else if utils.MatchStatusCodes([]string{"404", "4XX", "5XX"}, httpRes.StatusCode) {
-		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
 		if err != nil {
 			return nil, err
 		}
 	} else {
-		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{HookContext: hookCtx}, httpRes)
 		if err != nil {
 			return nil, err
 		}
@@ -327,7 +339,11 @@ func (s *IssueTrigger) Disable(ctx context.Context, id string) (*operations.Disa
 // Enable an Issue Trigger
 // Enable an existing issue trigger.
 func (s *IssueTrigger) Enable(ctx context.Context, id string) (*operations.EnableIssueTriggerResponse, error) {
-	hookCtx := hooks.HookContext{OperationID: "enableIssueTrigger"}
+	hookCtx := hooks.HookContext{
+		Context:        ctx,
+		OperationID:    "enableIssueTrigger",
+		SecuritySource: s.sdkConfiguration.Security,
+	}
 
 	request := operations.EnableIssueTriggerRequest{
 		ID: id,
@@ -346,12 +362,12 @@ func (s *IssueTrigger) Enable(ctx context.Context, id string) (*operations.Enabl
 	req.Header.Set("Accept", "application/json")
 	req.Header.Set("User-Agent", s.sdkConfiguration.UserAgent)
 
-	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
+	client := s.sdkConfiguration.SecurityClient
+
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{HookContext: hookCtx}, req)
 	if err != nil {
 		return nil, err
 	}
-
-	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
 	if err != nil || httpRes == nil {
@@ -361,15 +377,15 @@ func (s *IssueTrigger) Enable(ctx context.Context, id string) (*operations.Enabl
 			err = fmt.Errorf("error sending request: no response")
 		}
 
-		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 		return nil, err
 	} else if utils.MatchStatusCodes([]string{"404", "4XX", "5XX"}, httpRes.StatusCode) {
-		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
 		if err != nil {
 			return nil, err
 		}
 	} else {
-		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{HookContext: hookCtx}, httpRes)
 		if err != nil {
 			return nil, err
 		}
@@ -425,7 +441,11 @@ func (s *IssueTrigger) Enable(ctx context.Context, id string) (*operations.Enabl
 // Get an Issue Trigger
 // Get a single issue trigger details.
 func (s *IssueTrigger) Get(ctx context.Context, id string) (*operations.GetIssueTriggerResponse, error) {
-	hookCtx := hooks.HookContext{OperationID: "getIssueTrigger"}
+	hookCtx := hooks.HookContext{
+		Context:        ctx,
+		OperationID:    "getIssueTrigger",
+		SecuritySource: s.sdkConfiguration.Security,
+	}
 
 	request := operations.GetIssueTriggerRequest{
 		ID: id,
@@ -444,12 +464,12 @@ func (s *IssueTrigger) Get(ctx context.Context, id string) (*operations.GetIssue
 	req.Header.Set("Accept", "application/json")
 	req.Header.Set("User-Agent", s.sdkConfiguration.UserAgent)
 
-	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
+	client := s.sdkConfiguration.SecurityClient
+
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{HookContext: hookCtx}, req)
 	if err != nil {
 		return nil, err
 	}
-
-	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
 	if err != nil || httpRes == nil {
@@ -459,15 +479,15 @@ func (s *IssueTrigger) Get(ctx context.Context, id string) (*operations.GetIssue
 			err = fmt.Errorf("error sending request: no response")
 		}
 
-		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 		return nil, err
 	} else if utils.MatchStatusCodes([]string{"404", "4XX", "5XX"}, httpRes.StatusCode) {
-		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
 		if err != nil {
 			return nil, err
 		}
 	} else {
-		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{HookContext: hookCtx}, httpRes)
 		if err != nil {
 			return nil, err
 		}
@@ -523,7 +543,11 @@ func (s *IssueTrigger) Get(ctx context.Context, id string) (*operations.GetIssue
 // Update an Issue Trigger
 // Update the details of an issue trigger.
 func (s *IssueTrigger) Update(ctx context.Context, requestBody operations.UpdateIssueTriggerRequestBody, id string) (*operations.UpdateIssueTriggerResponse, error) {
-	hookCtx := hooks.HookContext{OperationID: "updateIssueTrigger"}
+	hookCtx := hooks.HookContext{
+		Context:        ctx,
+		OperationID:    "updateIssueTrigger",
+		SecuritySource: s.sdkConfiguration.Security,
+	}
 
 	request := operations.UpdateIssueTriggerRequest{
 		RequestBody: requestBody,
@@ -549,12 +573,12 @@ func (s *IssueTrigger) Update(ctx context.Context, requestBody operations.Update
 	req.Header.Set("User-Agent", s.sdkConfiguration.UserAgent)
 	req.Header.Set("Content-Type", reqContentType)
 
-	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
+	client := s.sdkConfiguration.SecurityClient
+
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{HookContext: hookCtx}, req)
 	if err != nil {
 		return nil, err
 	}
-
-	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
 	if err != nil || httpRes == nil {
@@ -564,15 +588,15 @@ func (s *IssueTrigger) Update(ctx context.Context, requestBody operations.Update
 			err = fmt.Errorf("error sending request: no response")
 		}
 
-		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 		return nil, err
 	} else if utils.MatchStatusCodes([]string{"400", "422", "4XX", "5XX"}, httpRes.StatusCode) {
-		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
 		if err != nil {
 			return nil, err
 		}
 	} else {
-		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{HookContext: hookCtx}, httpRes)
 		if err != nil {
 			return nil, err
 		}
@@ -630,7 +654,11 @@ func (s *IssueTrigger) Update(ctx context.Context, requestBody operations.Update
 // Upsert - Create or Update an Issue Trigger
 // Create or update an existing issue trigger.
 func (s *IssueTrigger) Upsert(ctx context.Context, request operations.UpsertIssueTriggerRequestBody) (*operations.UpsertIssueTriggerResponse, error) {
-	hookCtx := hooks.HookContext{OperationID: "upsertIssueTrigger"}
+	hookCtx := hooks.HookContext{
+		Context:        ctx,
+		OperationID:    "upsertIssueTrigger",
+		SecuritySource: s.sdkConfiguration.Security,
+	}
 
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	opURL, err := url.JoinPath(baseURL, "/issue-triggers")
@@ -651,12 +679,12 @@ func (s *IssueTrigger) Upsert(ctx context.Context, request operations.UpsertIssu
 	req.Header.Set("User-Agent", s.sdkConfiguration.UserAgent)
 	req.Header.Set("Content-Type", reqContentType)
 
-	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
+	client := s.sdkConfiguration.SecurityClient
+
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{HookContext: hookCtx}, req)
 	if err != nil {
 		return nil, err
 	}
-
-	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
 	if err != nil || httpRes == nil {
@@ -666,15 +694,15 @@ func (s *IssueTrigger) Upsert(ctx context.Context, request operations.UpsertIssu
 			err = fmt.Errorf("error sending request: no response")
 		}
 
-		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 		return nil, err
 	} else if utils.MatchStatusCodes([]string{"400", "422", "4XX", "5XX"}, httpRes.StatusCode) {
-		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
 		if err != nil {
 			return nil, err
 		}
 	} else {
-		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{HookContext: hookCtx}, httpRes)
 		if err != nil {
 			return nil, err
 		}

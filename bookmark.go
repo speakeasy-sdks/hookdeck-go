@@ -29,7 +29,11 @@ func newBookmark(sdkConfig sdkConfiguration) *Bookmark {
 // Create a Bookmark
 // Create a new bookmark.
 func (s *Bookmark) Create(ctx context.Context, request operations.CreateBookmarkRequestBody) (*operations.CreateBookmarkResponse, error) {
-	hookCtx := hooks.HookContext{OperationID: "createBookmark"}
+	hookCtx := hooks.HookContext{
+		Context:        ctx,
+		OperationID:    "createBookmark",
+		SecuritySource: s.sdkConfiguration.Security,
+	}
 
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	opURL, err := url.JoinPath(baseURL, "/bookmarks")
@@ -50,12 +54,12 @@ func (s *Bookmark) Create(ctx context.Context, request operations.CreateBookmark
 	req.Header.Set("User-Agent", s.sdkConfiguration.UserAgent)
 	req.Header.Set("Content-Type", reqContentType)
 
-	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
+	client := s.sdkConfiguration.SecurityClient
+
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{HookContext: hookCtx}, req)
 	if err != nil {
 		return nil, err
 	}
-
-	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
 	if err != nil || httpRes == nil {
@@ -65,15 +69,15 @@ func (s *Bookmark) Create(ctx context.Context, request operations.CreateBookmark
 			err = fmt.Errorf("error sending request: no response")
 		}
 
-		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 		return nil, err
 	} else if utils.MatchStatusCodes([]string{"400", "422", "4XX", "5XX"}, httpRes.StatusCode) {
-		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
 		if err != nil {
 			return nil, err
 		}
 	} else {
-		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{HookContext: hookCtx}, httpRes)
 		if err != nil {
 			return nil, err
 		}
@@ -131,7 +135,11 @@ func (s *Bookmark) Create(ctx context.Context, request operations.CreateBookmark
 // Delete a Bookmark
 // Delete an existing bookmark
 func (s *Bookmark) Delete(ctx context.Context, id string) (*operations.DeleteBookmarkResponse, error) {
-	hookCtx := hooks.HookContext{OperationID: "deleteBookmark"}
+	hookCtx := hooks.HookContext{
+		Context:        ctx,
+		OperationID:    "deleteBookmark",
+		SecuritySource: s.sdkConfiguration.Security,
+	}
 
 	request := operations.DeleteBookmarkRequest{
 		ID: id,
@@ -150,12 +158,12 @@ func (s *Bookmark) Delete(ctx context.Context, id string) (*operations.DeleteBoo
 	req.Header.Set("Accept", "application/json")
 	req.Header.Set("User-Agent", s.sdkConfiguration.UserAgent)
 
-	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
+	client := s.sdkConfiguration.SecurityClient
+
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{HookContext: hookCtx}, req)
 	if err != nil {
 		return nil, err
 	}
-
-	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
 	if err != nil || httpRes == nil {
@@ -165,15 +173,15 @@ func (s *Bookmark) Delete(ctx context.Context, id string) (*operations.DeleteBoo
 			err = fmt.Errorf("error sending request: no response")
 		}
 
-		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 		return nil, err
 	} else if utils.MatchStatusCodes([]string{"404", "4XX", "5XX"}, httpRes.StatusCode) {
-		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
 		if err != nil {
 			return nil, err
 		}
 	} else {
-		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{HookContext: hookCtx}, httpRes)
 		if err != nil {
 			return nil, err
 		}
@@ -229,7 +237,11 @@ func (s *Bookmark) Delete(ctx context.Context, id string) (*operations.DeleteBoo
 // Get a Single Bookmark
 // Retrieve an existing bookmark details.
 func (s *Bookmark) Get(ctx context.Context, id string) (*operations.GetBookmarkResponse, error) {
-	hookCtx := hooks.HookContext{OperationID: "getBookmark"}
+	hookCtx := hooks.HookContext{
+		Context:        ctx,
+		OperationID:    "getBookmark",
+		SecuritySource: s.sdkConfiguration.Security,
+	}
 
 	request := operations.GetBookmarkRequest{
 		ID: id,
@@ -248,12 +260,12 @@ func (s *Bookmark) Get(ctx context.Context, id string) (*operations.GetBookmarkR
 	req.Header.Set("Accept", "application/json")
 	req.Header.Set("User-Agent", s.sdkConfiguration.UserAgent)
 
-	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
+	client := s.sdkConfiguration.SecurityClient
+
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{HookContext: hookCtx}, req)
 	if err != nil {
 		return nil, err
 	}
-
-	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
 	if err != nil || httpRes == nil {
@@ -263,15 +275,15 @@ func (s *Bookmark) Get(ctx context.Context, id string) (*operations.GetBookmarkR
 			err = fmt.Errorf("error sending request: no response")
 		}
 
-		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 		return nil, err
 	} else if utils.MatchStatusCodes([]string{"404", "4XX", "5XX"}, httpRes.StatusCode) {
-		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
 		if err != nil {
 			return nil, err
 		}
 	} else {
-		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{HookContext: hookCtx}, httpRes)
 		if err != nil {
 			return nil, err
 		}
@@ -327,7 +339,11 @@ func (s *Bookmark) Get(ctx context.Context, id string) (*operations.GetBookmarkR
 // Trigger a Bookmark
 // Trigger a bookmark operation to store and replay a specific request.
 func (s *Bookmark) Trigger(ctx context.Context, requestBody operations.TriggerBookmarkRequestBody, id string) (*operations.TriggerBookmarkResponse, error) {
-	hookCtx := hooks.HookContext{OperationID: "triggerBookmark"}
+	hookCtx := hooks.HookContext{
+		Context:        ctx,
+		OperationID:    "triggerBookmark",
+		SecuritySource: s.sdkConfiguration.Security,
+	}
 
 	request := operations.TriggerBookmarkRequest{
 		RequestBody: requestBody,
@@ -353,12 +369,12 @@ func (s *Bookmark) Trigger(ctx context.Context, requestBody operations.TriggerBo
 	req.Header.Set("User-Agent", s.sdkConfiguration.UserAgent)
 	req.Header.Set("Content-Type", reqContentType)
 
-	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
+	client := s.sdkConfiguration.SecurityClient
+
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{HookContext: hookCtx}, req)
 	if err != nil {
 		return nil, err
 	}
-
-	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
 	if err != nil || httpRes == nil {
@@ -368,15 +384,15 @@ func (s *Bookmark) Trigger(ctx context.Context, requestBody operations.TriggerBo
 			err = fmt.Errorf("error sending request: no response")
 		}
 
-		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 		return nil, err
 	} else if utils.MatchStatusCodes([]string{"400", "404", "422", "4XX", "5XX"}, httpRes.StatusCode) {
-		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
 		if err != nil {
 			return nil, err
 		}
 	} else {
-		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{HookContext: hookCtx}, httpRes)
 		if err != nil {
 			return nil, err
 		}
@@ -436,7 +452,11 @@ func (s *Bookmark) Trigger(ctx context.Context, requestBody operations.TriggerBo
 // Update a Bookmark
 // Update an existing bookmark information.
 func (s *Bookmark) Update(ctx context.Context, requestBody operations.UpdateBookmarkRequestBody, id string) (*operations.UpdateBookmarkResponse, error) {
-	hookCtx := hooks.HookContext{OperationID: "updateBookmark"}
+	hookCtx := hooks.HookContext{
+		Context:        ctx,
+		OperationID:    "updateBookmark",
+		SecuritySource: s.sdkConfiguration.Security,
+	}
 
 	request := operations.UpdateBookmarkRequest{
 		RequestBody: requestBody,
@@ -462,12 +482,12 @@ func (s *Bookmark) Update(ctx context.Context, requestBody operations.UpdateBook
 	req.Header.Set("User-Agent", s.sdkConfiguration.UserAgent)
 	req.Header.Set("Content-Type", reqContentType)
 
-	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
+	client := s.sdkConfiguration.SecurityClient
+
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{HookContext: hookCtx}, req)
 	if err != nil {
 		return nil, err
 	}
-
-	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
 	if err != nil || httpRes == nil {
@@ -477,15 +497,15 @@ func (s *Bookmark) Update(ctx context.Context, requestBody operations.UpdateBook
 			err = fmt.Errorf("error sending request: no response")
 		}
 
-		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 		return nil, err
 	} else if utils.MatchStatusCodes([]string{"400", "404", "422", "4XX", "5XX"}, httpRes.StatusCode) {
-		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
 		if err != nil {
 			return nil, err
 		}
 	} else {
-		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{HookContext: hookCtx}, httpRes)
 		if err != nil {
 			return nil, err
 		}
