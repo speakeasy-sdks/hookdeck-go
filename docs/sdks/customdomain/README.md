@@ -44,7 +44,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.AddCustomHostname != nil {
         // handle response
     }
@@ -103,7 +102,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.DeleteCustomDomainSchema != nil {
         // handle response
     }

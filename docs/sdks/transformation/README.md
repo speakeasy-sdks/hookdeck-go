@@ -44,7 +44,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.Transformation != nil {
         // handle response
     }
@@ -101,7 +100,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.Transformation != nil {
         // handle response
     }
@@ -156,7 +154,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.TransformationExecutorOutput != nil {
         // handle response
     }
@@ -216,7 +213,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.Transformation != nil {
         // handle response
     }
@@ -275,7 +271,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.Transformation != nil {
         // handle response
     }

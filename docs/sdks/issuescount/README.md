@@ -37,7 +37,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.IssueCount != nil {
         // handle response
     }

@@ -25,7 +25,6 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-
 	if res.EventAttemptPaginatedResult != nil {
 		// handle response
 	}

@@ -45,7 +45,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.Bookmark != nil {
         // handle response
     }
@@ -102,7 +101,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.DeletedBookmarkResponse != nil {
         // handle response
     }
@@ -159,7 +157,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.Bookmark != nil {
         // handle response
     }
@@ -219,7 +216,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.EventArray != nil {
         // handle response
     }
@@ -280,7 +276,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.Bookmark != nil {
         // handle response
     }

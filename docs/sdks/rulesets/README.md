@@ -41,7 +41,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.RulesetPaginatedResult != nil {
         // handle response
     }

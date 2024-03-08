@@ -11,7 +11,7 @@ generation:
     oAuth2ClientCredentialsEnabled: false
   baseServerURL: ""
 go:
-  version: 2.1.4
+  version: 2.2.0
   additionalDependencies: {}
   clientServerStatusCodesAsErrors: true
   flattenGlobalSecurity: true
@@ -27,3 +27,4 @@ go:
   maxMethodParams: 5
   outputModelSuffix: output
   packageName: github.com/speakeasy-sdks/hookdeck-go
+  responseFormat: envelope

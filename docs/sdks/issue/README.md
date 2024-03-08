@@ -41,7 +41,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.Issue != nil {
         // handle response
     }
@@ -98,7 +97,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.IssueWithData != nil {
         // handle response
     }
@@ -160,7 +158,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.Issue != nil {
         // handle response
     }

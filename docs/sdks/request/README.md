@@ -40,7 +40,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.Request != nil {
         // handle response
     }
@@ -104,7 +103,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.RetryRequest != nil {
         // handle response
     }

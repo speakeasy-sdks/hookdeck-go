@@ -46,7 +46,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.AttachedIntegrationToSource != nil {
         // handle response
     }
@@ -102,7 +101,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.Integration != nil {
         // handle response
     }
@@ -159,7 +157,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.DeletedIntegration != nil {
         // handle response
     }
@@ -218,7 +215,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.DetachedIntegrationFromSource != nil {
         // handle response
     }
@@ -276,7 +272,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.Integration != nil {
         // handle response
     }
@@ -336,7 +331,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.Integration != nil {
         // handle response
     }

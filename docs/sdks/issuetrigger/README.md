@@ -46,7 +46,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.IssueTrigger != nil {
         // handle response
     }
@@ -103,7 +102,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.DeletedIssueTriggerResponse != nil {
         // handle response
     }
@@ -160,7 +158,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.IssueTrigger != nil {
         // handle response
     }
@@ -217,7 +214,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.IssueTrigger != nil {
         // handle response
     }
@@ -274,7 +270,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.IssueTrigger != nil {
         // handle response
     }
@@ -334,7 +329,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.IssueTrigger != nil {
         // handle response
     }
@@ -394,7 +388,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.IssueTrigger != nil {
         // handle response
     }
