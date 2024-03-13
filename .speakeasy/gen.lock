@@ -3,10 +3,10 @@ id: 4a8f69de-9313-42b5-887e-d821365591f4
 management:
   docChecksum: d830a406b2443ec8c3f767c5da86b8c3
   docVersion: 1.0.0
-  speakeasyVersion: 1.204.1
-  generationVersion: 2.279.1
-  releaseVersion: 2.2.0
-  configChecksum: 5f1dbe718f3294ce3f4f8bef3df866ef
+  speakeasyVersion: 1.207.1
+  generationVersion: 2.280.6
+  releaseVersion: 2.2.1
+  configChecksum: f6980fc412252aa5faf132bb3c4609c0
   repoURL: https://github.com/speakeasy-sdks/hookdeck-go.git
   repoSubDirectory: .
   installationURL: https://github.com/speakeasy-sdks/hookdeck-go
@@ -18,7 +18,7 @@ features:
     errors: 2.81.8
     flattening: 2.81.1
     globalSecurity: 2.82.8
-    globalServerURLs: 2.82.1
+    globalServerURLs: 2.82.2
     groups: 2.81.2
     ignores: 2.81.1
     nameOverrides: 2.81.1
