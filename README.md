@@ -20,64 +20,67 @@ To include your API key in requests, use either Bearer Token Authentication or B
 **Bearer Token Authentication**: Include the header Authorization: Bearer `$API_KEY`, replacing `$API_KEY` with your personal key
 **Basic Authentication** : Set the username as your API key, and supply an empty password
 
-<!-- Start SDK Installation -->
+<!-- Start SDK Installation [installation] -->
 ## SDK Installation
 
 ```bash
 go get github.com/speakeasy-sdks/hookdeck-go
 ```
-<!-- End SDK Installation -->
+<!-- End SDK Installation [installation] -->
 
+<!-- Start SDK Example Usage [usage] -->
 ## SDK Example Usage
-<!-- Start SDK Example Usage -->
 
+### Example
 
 ```go
 package main
 
-import(
+import (
 	"context"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go/v2"
+	"github.com/speakeasy-sdks/hookdeck-go/v2/models/components"
+	"github.com/speakeasy-sdks/hookdeck-go/v2/models/operations"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
-            BasicAuth: &shared.SchemeBasicAuth{
-                Password: "",
-                Username: "",
-            },
-        }),
-    )
-    id := "corrupti"
+	s := hookdeckgo.New(
+		hookdeckgo.WithSecurity(components.Security{
+			BasicAuth: &components.SchemeBasicAuth{
+				Password: "<YOUR_PASSWORD_HERE>",
+				Username: "<YOUR_USERNAME_HERE>",
+			},
+		}),
+	)
 
-    ctx := context.Background()
-    res, err := s.Attempt.Get(ctx, id)
-    if err != nil {
-        log.Fatal(err)
-    }
-
-    if res.EventAttempt != nil {
-        // handle response
-    }
+	ctx := context.Background()
+	res, err := s.Attempts.Get(ctx, operations.GetAttemptsRequest{})
+	if err != nil {
+		log.Fatal(err)
+	}
+	if res.EventAttemptPaginatedResult != nil {
+		// handle response
+	}
 }
-```
-<!-- End SDK Example Usage -->
 
-<!-- Start SDK Available Operations -->
+```
+<!-- End SDK Example Usage [usage] -->
+
+<!-- Start Available Resources and Operations [operations] -->
 ## Available Resources and Operations
 
+### [Attempts](docs/sdks/attempts/README.md)
+
+* [Get](docs/sdks/attempts/README.md#get) - Get Attempts
 
 ### [Attempt](docs/sdks/attempt/README.md)
 
 * [Get](docs/sdks/attempt/README.md#get) - Get a Single Attempt
 
-### [Attempts](docs/sdks/attempts/README.md)
+### [Bookmarks](docs/sdks/bookmarks/README.md)
 
-* [Get](docs/sdks/attempts/README.md#get) - Get Attempts
+* [Get](docs/sdks/bookmarks/README.md#get) - Get Bookmarks
 
 ### [Bookmark](docs/sdks/bookmark/README.md)
 
@@ -87,15 +90,15 @@ func main() {
 * [Trigger](docs/sdks/bookmark/README.md#trigger) - Trigger a Bookmark
 * [Update](docs/sdks/bookmark/README.md#update) - Update a Bookmark
 
-### [Bookmarks](docs/sdks/bookmarks/README.md)
-
-* [Get](docs/sdks/bookmarks/README.md#get) - Get Bookmarks
-
 ### [BulkRetryEvent](docs/sdks/bulkretryevent/README.md)
 
 * [Cancel](docs/sdks/bulkretryevent/README.md#cancel) - Cancel an events bulk retry
 * [Create](docs/sdks/bulkretryevent/README.md#create) - Create an events bulk retry
 * [Get](docs/sdks/bulkretryevent/README.md#get) - Get an events bulk retry
+
+### [BulkRetryIgnoredEvents](docs/sdks/bulkretryignoredevents/README.md)
+
+* [Get](docs/sdks/bulkretryignoredevents/README.md#get) - Get ignored events bulk retries
 
 ### [BulkRetryIgnoredEvent](docs/sdks/bulkretryignoredevent/README.md)
 
@@ -104,13 +107,168 @@ func main() {
 * [Generate](docs/sdks/bulkretryignoredevent/README.md#generate) - Generate an ignored events bulk retry plan
 * [Get](docs/sdks/bulkretryignoredevent/README.md#get) - Get an ignored events bulk retry
 
-### [BulkRetryIgnoredEvents](docs/sdks/bulkretryignoredevents/README.md)
-
-* [Get](docs/sdks/bulkretryignoredevents/README.md#get) - Get ignored events bulk retries
-
 ### [BulkRetryRequests](docs/sdks/bulkretryrequests/README.md)
 
 * [Create](docs/sdks/bulkretryrequests/README.md#create) - Create a requests bulk retry
+
+### [RequestBulkRetry](docs/sdks/requestbulkretry/README.md)
+
+* [Cancel](docs/sdks/requestbulkretry/README.md#cancel) - Cancel a requests bulk retry
+* [Get](docs/sdks/requestbulkretry/README.md#get) - Get a requests bulk retry
+
+### [Destinations](docs/sdks/destinations/README.md)
+
+* [Get](docs/sdks/destinations/README.md#get) - Get Destinations
+
+### [Destination](docs/sdks/destination/README.md)
+
+* [Archive](docs/sdks/destination/README.md#archive) - Archive a Destination
+* [Create](docs/sdks/destination/README.md#create) - Create a Destination
+* [Delete](docs/sdks/destination/README.md#delete) - Delete a Destination
+* [Get](docs/sdks/destination/README.md#get) - Get a Destination
+* [Unarchive](docs/sdks/destination/README.md#unarchive) - Unarchive a Destination
+* [Update](docs/sdks/destination/README.md#update) - Update a Destination
+* [Upsert](docs/sdks/destination/README.md#upsert) - Update or Create a Destination
+
+### [Events](docs/sdks/events/README.md)
+
+* [Get](docs/sdks/events/README.md#get) - Get Events
+
+### [Event](docs/sdks/event/README.md)
+
+* [Get](docs/sdks/event/README.md#get) - Get an Event
+* [MuteEvent](docs/sdks/event/README.md#muteevent) - Mute an Event
+* [Retry](docs/sdks/event/README.md#retry) - Retry an Event
+
+### [EventRawBody](docs/sdks/eventrawbody/README.md)
+
+* [Get](docs/sdks/eventrawbody/README.md#get) - Get an Event Raw Body Data
+
+### [Integrations](docs/sdks/integrations/README.md)
+
+* [Get](docs/sdks/integrations/README.md#get) - Get integrations
+
+### [Integration](docs/sdks/integration/README.md)
+
+* [AttachIntegrationToSource](docs/sdks/integration/README.md#attachintegrationtosource) - Attach an integration to a source
+* [Create](docs/sdks/integration/README.md#create) - Create an integration
+* [Delete](docs/sdks/integration/README.md#delete) - Delete an integration
+* [DetachIntegrationToSource](docs/sdks/integration/README.md#detachintegrationtosource) - Detach an integration from a source
+* [Get](docs/sdks/integration/README.md#get) - Get an integration
+* [Update](docs/sdks/integration/README.md#update) - Update an integration
+
+### [IssueTriggers](docs/sdks/issuetriggers/README.md)
+
+* [Get](docs/sdks/issuetriggers/README.md#get) - Get Issue Triggers
+
+### [IssueTrigger](docs/sdks/issuetrigger/README.md)
+
+* [Create](docs/sdks/issuetrigger/README.md#create) - Create an Issue Trigger
+* [Delete](docs/sdks/issuetrigger/README.md#delete) - Delete an Issue Trigger
+* [Disable](docs/sdks/issuetrigger/README.md#disable) - Disable an Issue Trigger
+* [Enable](docs/sdks/issuetrigger/README.md#enable) - Enable an Issue Trigger
+* [Get](docs/sdks/issuetrigger/README.md#get) - Get an Issue Trigger
+* [Update](docs/sdks/issuetrigger/README.md#update) - Update an Issue Trigger
+* [Upsert](docs/sdks/issuetrigger/README.md#upsert) - Create or Update an Issue Trigger
+
+### [Issues](docs/sdks/issues/README.md)
+
+* [Get](docs/sdks/issues/README.md#get) - Get issues
+
+### [IssuesCount](docs/sdks/issuescount/README.md)
+
+* [Get](docs/sdks/issuescount/README.md#get) - Get the number of issues
+
+### [Issue](docs/sdks/issue/README.md)
+
+* [Dismiss](docs/sdks/issue/README.md#dismiss) - Dismiss an issue
+* [Get](docs/sdks/issue/README.md#get) - Get a single issue
+* [Update](docs/sdks/issue/README.md#update) - Update issue
+
+### [WebhookNotifications](docs/sdks/webhooknotifications/README.md)
+
+* [Toggle](docs/sdks/webhooknotifications/README.md#toggle) - Toggle webhook notifications for the workspace
+
+### [Requests](docs/sdks/requests/README.md)
+
+* [Get](docs/sdks/requests/README.md#get) - Get requests
+
+### [Request](docs/sdks/request/README.md)
+
+* [Get](docs/sdks/request/README.md#get) - Get a request
+* [Retry](docs/sdks/request/README.md#retry) - Retry a request
+
+### [RequestEvents](docs/sdks/requestevents/README.md)
+
+* [Get](docs/sdks/requestevents/README.md#get) - Get request events
+
+### [RequestIgnoredEvents](docs/sdks/requestignoredevents/README.md)
+
+* [Get](docs/sdks/requestignoredevents/README.md#get) - Get request ignored events
+
+### [RequestRawBody](docs/sdks/requestrawbody/README.md)
+
+* [Get](docs/sdks/requestrawbody/README.md#get) - Get a request raw body data
+
+### [Rulesets](docs/sdks/rulesets/README.md)
+
+* [Get](docs/sdks/rulesets/README.md#get) - Get rulesets
+
+### [Ruleset](docs/sdks/ruleset/README.md)
+
+* [Archive](docs/sdks/ruleset/README.md#archive) - Archive a ruleset
+* [Create](docs/sdks/ruleset/README.md#create) - Create a ruleset
+* [Get](docs/sdks/ruleset/README.md#get) - Get a ruleset
+* [Unarchive](docs/sdks/ruleset/README.md#unarchive) - Unarchive a ruleset
+* [Update](docs/sdks/ruleset/README.md#update) - Update a ruleset
+* [Upsert](docs/sdks/ruleset/README.md#upsert) - Update or create a ruleset
+
+### [Sources](docs/sdks/sources/README.md)
+
+* [Get](docs/sdks/sources/README.md#get) - Get sources
+
+### [Source](docs/sdks/source/README.md)
+
+* [Archive](docs/sdks/source/README.md#archive) - Archive a source
+* [Create](docs/sdks/source/README.md#create) - Create a source
+* [Delete](docs/sdks/source/README.md#delete) - Delete a source
+* [Get](docs/sdks/source/README.md#get) - Get a source
+* [Unarchive](docs/sdks/source/README.md#unarchive) - Unarchive a source
+* [Update](docs/sdks/source/README.md#update) - Update a source
+* [Upsert](docs/sdks/source/README.md#upsert) - Update or create a source
+
+### [CustomDomains](docs/sdks/customdomains/README.md)
+
+* [List](docs/sdks/customdomains/README.md#list) - List all custom domains and their verification statuses for the workspace
+
+### [CustomDomain](docs/sdks/customdomain/README.md)
+
+* [Add](docs/sdks/customdomain/README.md#add) - Add a custom domain to the workspace
+* [Delete](docs/sdks/customdomain/README.md#delete) - Removes a custom domain from the workspace
+
+### [Transformations](docs/sdks/transformations/README.md)
+
+* [Get](docs/sdks/transformations/README.md#get) - Get transformations
+
+### [Transformation](docs/sdks/transformation/README.md)
+
+* [Create](docs/sdks/transformation/README.md#create) - Create a transformation
+* [Get](docs/sdks/transformation/README.md#get) - Get a transformation
+* [Test](docs/sdks/transformation/README.md#test) - Test a transformation code
+* [Update](docs/sdks/transformation/README.md#update) - Update a transformation
+* [Upsert](docs/sdks/transformation/README.md#upsert) - Update or create a transformation
+
+### [TransformationExecutions](docs/sdks/transformationexecutions/README.md)
+
+* [Get](docs/sdks/transformationexecutions/README.md#get) - Get transformation executions
+
+### [TransformationExecution](docs/sdks/transformationexecution/README.md)
+
+* [Get](docs/sdks/transformationexecution/README.md#get) - Get a transformation execution
+
+### [Connections](docs/sdks/connections/README.md)
+
+* [Get](docs/sdks/connections/README.md#get) - Get connections
 
 ### [Connection](docs/sdks/connection/README.md)
 
@@ -126,166 +284,239 @@ func main() {
 ### [ConnectionNumberUpdate](docs/sdks/connectionnumberupdate/README.md)
 
 * [Upsert](docs/sdks/connectionnumberupdate/README.md#upsert) - Update or create a connection
+<!-- End Available Resources and Operations [operations] -->
 
-### [Connections](docs/sdks/connections/README.md)
+<!-- Start Error Handling [errors] -->
+## Error Handling
 
-* [Get](docs/sdks/connections/README.md#get) - Get connections
+Handling errors in this SDK should largely match your expectations.  All operations return a response object or an error, they will never return both.  When specified by the OpenAPI spec document, the SDK will return the appropriate subclass.
 
-### [CustomDomain](docs/sdks/customdomain/README.md)
+| Error Object               | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| sdkerrors.APIErrorResponse | 400,422                    | application/json           |
+| sdkerrors.SDKError         | 4xx-5xx                    | */*                        |
 
-* [Add](docs/sdks/customdomain/README.md#add) - Add a custom domain to the workspace
-* [Delete](docs/sdks/customdomain/README.md#delete) - Removes a custom domain from the workspace
+### Example
 
-### [CustomDomains](docs/sdks/customdomains/README.md)
+```go
+package main
 
-* [List](docs/sdks/customdomains/README.md#list) - List all custom domains and their verification statuses for the workspace
+import (
+	"context"
+	"errors"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go/v2"
+	"github.com/speakeasy-sdks/hookdeck-go/v2/models/components"
+	"github.com/speakeasy-sdks/hookdeck-go/v2/models/operations"
+	"github.com/speakeasy-sdks/hookdeck-go/v2/models/sdkerrors"
+	"log"
+)
 
-### [Destination](docs/sdks/destination/README.md)
+func main() {
+	s := hookdeckgo.New(
+		hookdeckgo.WithSecurity(components.Security{
+			BasicAuth: &components.SchemeBasicAuth{
+				Password: "<YOUR_PASSWORD_HERE>",
+				Username: "<YOUR_USERNAME_HERE>",
+			},
+		}),
+	)
 
-* [Archive](docs/sdks/destination/README.md#archive) - Archive a Destination
-* [Create](docs/sdks/destination/README.md#create) - Create a Destination
-* [Delete](docs/sdks/destination/README.md#delete) - Delete a Destination
-* [Get](docs/sdks/destination/README.md#get) - Get a Destination
-* [Unarchive](docs/sdks/destination/README.md#unarchive) - Unarchive a Destination
-* [Update](docs/sdks/destination/README.md#update) - Update a Destination
-* [Upsert](docs/sdks/destination/README.md#upsert) - Update or Create a Destination
+	ctx := context.Background()
+	res, err := s.Attempts.Get(ctx, operations.GetAttemptsRequest{})
+	if err != nil {
 
-### [Destinations](docs/sdks/destinations/README.md)
+		var e *sdkerrors.APIErrorResponse
+		if errors.As(err, &e) {
+			// handle error
+			log.Fatal(e.Error())
+		}
 
-* [Get](docs/sdks/destinations/README.md#get) - Get Destinations
+		var e *sdkerrors.SDKError
+		if errors.As(err, &e) {
+			// handle error
+			log.Fatal(e.Error())
+		}
+	}
+}
 
-### [Event](docs/sdks/event/README.md)
+```
+<!-- End Error Handling [errors] -->
 
-* [Get](docs/sdks/event/README.md#get) - Get an Event
-* [MuteEvent](docs/sdks/event/README.md#muteevent) - Mute an Event
-* [Retry](docs/sdks/event/README.md#retry) - Retry an Event
+<!-- Start Server Selection [server] -->
+## Server Selection
 
-### [EventRawBody](docs/sdks/eventrawbody/README.md)
+### Select Server by Index
 
-* [Get](docs/sdks/eventrawbody/README.md#get) - Get an Event Raw Body Data
+You can override the default server globally using the `WithServerIndex` option when initializing the SDK client instance. The selected server will then be used as the default on the operations that use it. This table lists the indexes associated with the available servers:
 
-### [Events](docs/sdks/events/README.md)
+| # | Server | Variables |
+| - | ------ | --------- |
+| 0 | `https://api.hookdeck.com/{version}` | `version` (default is `2023-01-01`) |
 
-* [Get](docs/sdks/events/README.md#get) - Get Events
+#### Example
 
-### [Integration](docs/sdks/integration/README.md)
+```go
+package main
 
-* [AttachIntegrationToSource](docs/sdks/integration/README.md#attachintegrationtosource) - Attach an integration to a source
-* [Create](docs/sdks/integration/README.md#create) - Create an integration
-* [Delete](docs/sdks/integration/README.md#delete) - Delete an integration
-* [DetachIntegrationToSource](docs/sdks/integration/README.md#detachintegrationtosource) - Detach an integration from a source
-* [Get](docs/sdks/integration/README.md#get) - Get an integration
-* [Update](docs/sdks/integration/README.md#update) - Update an integration
+import (
+	"context"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go/v2"
+	"github.com/speakeasy-sdks/hookdeck-go/v2/models/components"
+	"github.com/speakeasy-sdks/hookdeck-go/v2/models/operations"
+	"log"
+)
 
-### [Integrations](docs/sdks/integrations/README.md)
+func main() {
+	s := hookdeckgo.New(
+		hookdeckgo.WithServerIndex(0),
+		hookdeckgo.WithSecurity(components.Security{
+			BasicAuth: &components.SchemeBasicAuth{
+				Password: "<YOUR_PASSWORD_HERE>",
+				Username: "<YOUR_USERNAME_HERE>",
+			},
+		}),
+	)
 
-* [Get](docs/sdks/integrations/README.md#get) - Get integrations
+	ctx := context.Background()
+	res, err := s.Attempts.Get(ctx, operations.GetAttemptsRequest{})
+	if err != nil {
+		log.Fatal(err)
+	}
+	if res.EventAttemptPaginatedResult != nil {
+		// handle response
+	}
+}
 
-### [Issue](docs/sdks/issue/README.md)
+```
 
-* [Dismiss](docs/sdks/issue/README.md#dismiss) - Dismiss an issue
-* [Get](docs/sdks/issue/README.md#get) - Get a single issue
-* [Update](docs/sdks/issue/README.md#update) - Update issue
+#### Variables
 
-### [IssueTrigger](docs/sdks/issuetrigger/README.md)
+Some of the server options above contain variables. If you want to set the values of those variables, the following options are provided for doing so:
+ * `WithVersion hookdeckgo.ServerVersion`
 
-* [Create](docs/sdks/issuetrigger/README.md#create) - Create an Issue Trigger
-* [Delete](docs/sdks/issuetrigger/README.md#delete) - Delete an Issue Trigger
-* [Disable](docs/sdks/issuetrigger/README.md#disable) - Disable an Issue Trigger
-* [Enable](docs/sdks/issuetrigger/README.md#enable) - Enable an Issue Trigger
-* [Get](docs/sdks/issuetrigger/README.md#get) - Get an Issue Trigger
-* [Update](docs/sdks/issuetrigger/README.md#update) - Update an Issue Trigger
-* [Upsert](docs/sdks/issuetrigger/README.md#upsert) - Create or Update an Issue Trigger
+### Override Server URL Per-Client
 
-### [IssueTriggers](docs/sdks/issuetriggers/README.md)
+The default server can also be overridden globally using the `WithServerURL` option when initializing the SDK client instance. For example:
+```go
+package main
 
-* [Get](docs/sdks/issuetriggers/README.md#get) - Get Issue Triggers
+import (
+	"context"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go/v2"
+	"github.com/speakeasy-sdks/hookdeck-go/v2/models/components"
+	"github.com/speakeasy-sdks/hookdeck-go/v2/models/operations"
+	"log"
+)
 
-### [Issues](docs/sdks/issues/README.md)
+func main() {
+	s := hookdeckgo.New(
+		hookdeckgo.WithServerURL("https://api.hookdeck.com/{version}"),
+		hookdeckgo.WithSecurity(components.Security{
+			BasicAuth: &components.SchemeBasicAuth{
+				Password: "<YOUR_PASSWORD_HERE>",
+				Username: "<YOUR_USERNAME_HERE>",
+			},
+		}),
+	)
 
-* [Get](docs/sdks/issues/README.md#get) - Get issues
+	ctx := context.Background()
+	res, err := s.Attempts.Get(ctx, operations.GetAttemptsRequest{})
+	if err != nil {
+		log.Fatal(err)
+	}
+	if res.EventAttemptPaginatedResult != nil {
+		// handle response
+	}
+}
 
-### [IssuesCount](docs/sdks/issuescount/README.md)
+```
+<!-- End Server Selection [server] -->
 
-* [Get](docs/sdks/issuescount/README.md#get) - Get the number of issues
+<!-- Start Custom HTTP Client [http-client] -->
+## Custom HTTP Client
 
-### [Request](docs/sdks/request/README.md)
+The Go SDK makes API calls that wrap an internal HTTP client. The requirements for the HTTP client are very simple. It must match this interface:
 
-* [Get](docs/sdks/request/README.md#get) - Get a request
-* [Retry](docs/sdks/request/README.md#retry) - Retry a request
+```go
+type HTTPClient interface {
+	Do(req *http.Request) (*http.Response, error)
+}
+```
 
-### [RequestBulkRetry](docs/sdks/requestbulkretry/README.md)
+The built-in `net/http` client satisfies this interface and a default client based on the built-in is provided by default. To replace this default with a client of your own, you can implement this interface yourself or provide your own client configured as desired. Here's a simple example, which adds a client with a 30 second timeout.
 
-* [Cancel](docs/sdks/requestbulkretry/README.md#cancel) - Cancel a requests bulk retry
-* [Get](docs/sdks/requestbulkretry/README.md#get) - Get a requests bulk retry
+```go
+import (
+	"net/http"
+	"time"
+	"github.com/myorg/your-go-sdk"
+)
 
-### [RequestEvents](docs/sdks/requestevents/README.md)
+var (
+	httpClient = &http.Client{Timeout: 30 * time.Second}
+	sdkClient  = sdk.New(sdk.WithClient(httpClient))
+)
+```
 
-* [Get](docs/sdks/requestevents/README.md#get) - Get request events
+This can be a convenient way to configure timeouts, cookies, proxies, custom headers, and other low-level configuration.
+<!-- End Custom HTTP Client [http-client] -->
 
-### [RequestIgnoredEvents](docs/sdks/requestignoredevents/README.md)
+<!-- Start Authentication [security] -->
+## Authentication
 
-* [Get](docs/sdks/requestignoredevents/README.md#get) - Get request ignored events
+### Per-Client Security Schemes
 
-### [RequestRawBody](docs/sdks/requestrawbody/README.md)
+This SDK supports the following security schemes globally:
 
-* [Get](docs/sdks/requestrawbody/README.md#get) - Get a request raw body data
+| Name         | Type         | Scheme       |
+| ------------ | ------------ | ------------ |
+| `BasicAuth`  | http         | HTTP Basic   |
+| `BearerAuth` | http         | HTTP Bearer  |
 
-### [Requests](docs/sdks/requests/README.md)
+You can set the security parameters through the `WithSecurity` option when initializing the SDK client instance. The selected scheme will be used by default to authenticate with the API for all operations that support it. For example:
+```go
+package main
 
-* [Get](docs/sdks/requests/README.md#get) - Get requests
+import (
+	"context"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go/v2"
+	"github.com/speakeasy-sdks/hookdeck-go/v2/models/components"
+	"github.com/speakeasy-sdks/hookdeck-go/v2/models/operations"
+	"log"
+)
 
-### [Ruleset](docs/sdks/ruleset/README.md)
+func main() {
+	s := hookdeckgo.New(
+		hookdeckgo.WithSecurity(components.Security{
+			BasicAuth: &components.SchemeBasicAuth{
+				Password: "<YOUR_PASSWORD_HERE>",
+				Username: "<YOUR_USERNAME_HERE>",
+			},
+		}),
+	)
 
-* [Archive](docs/sdks/ruleset/README.md#archive) - Archive a ruleset
-* [Create](docs/sdks/ruleset/README.md#create) - Create a ruleset
-* [Get](docs/sdks/ruleset/README.md#get) - Get a ruleset
-* [Unarchive](docs/sdks/ruleset/README.md#unarchive) - Unarchive a ruleset
-* [Update](docs/sdks/ruleset/README.md#update) - Update a ruleset
-* [Upsert](docs/sdks/ruleset/README.md#upsert) - Update or create a ruleset
+	ctx := context.Background()
+	res, err := s.Attempts.Get(ctx, operations.GetAttemptsRequest{})
+	if err != nil {
+		log.Fatal(err)
+	}
+	if res.EventAttemptPaginatedResult != nil {
+		// handle response
+	}
+}
 
-### [Rulesets](docs/sdks/rulesets/README.md)
+```
+<!-- End Authentication [security] -->
 
-* [Get](docs/sdks/rulesets/README.md#get) - Get rulesets
+<!-- Start Special Types [types] -->
+## Special Types
 
-### [Source](docs/sdks/source/README.md)
 
-* [Archive](docs/sdks/source/README.md#archive) - Archive a source
-* [Create](docs/sdks/source/README.md#create) - Create a source
-* [Delete](docs/sdks/source/README.md#delete) - Delete a source
-* [Get](docs/sdks/source/README.md#get) - Get a source
-* [Unarchive](docs/sdks/source/README.md#unarchive) - Unarchive a source
-* [Update](docs/sdks/source/README.md#update) - Update a source
-* [Upsert](docs/sdks/source/README.md#upsert) - Update or create a source
+<!-- End Special Types [types] -->
 
-### [Sources](docs/sdks/sources/README.md)
+<!-- Placeholder for Future Speakeasy SDK Sections -->
 
-* [Get](docs/sdks/sources/README.md#get) - Get sources
 
-### [Transformation](docs/sdks/transformation/README.md)
-
-* [Create](docs/sdks/transformation/README.md#create) - Create a transformation
-* [Get](docs/sdks/transformation/README.md#get) - Get a transformation
-* [Test](docs/sdks/transformation/README.md#test) - Test a transformation code
-* [Update](docs/sdks/transformation/README.md#update) - Update a transformation
-* [Upsert](docs/sdks/transformation/README.md#upsert) - Update or create a transformation
-
-### [TransformationExecution](docs/sdks/transformationexecution/README.md)
-
-* [Get](docs/sdks/transformationexecution/README.md#get) - Get a transformation execution
-
-### [TransformationExecutions](docs/sdks/transformationexecutions/README.md)
-
-* [Get](docs/sdks/transformationexecutions/README.md#get) - Get transformation executions
-
-### [Transformations](docs/sdks/transformations/README.md)
-
-* [Get](docs/sdks/transformations/README.md#get) - Get transformations
-
-### [WebhookNotifications](docs/sdks/webhooknotifications/README.md)
-
-* [Toggle](docs/sdks/webhooknotifications/README.md#toggle) - Toggle webhook notifications for the workspace
-<!-- End SDK Available Operations -->
 
 ### Maturity
 

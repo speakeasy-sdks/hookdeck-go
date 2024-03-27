@@ -1,4 +1,5 @@
 # CustomDomain
+(*CustomDomain*)
 
 ### Available Operations
 
@@ -15,33 +16,34 @@ Add a custom domain to the workspace
 package main
 
 import(
+	"github.com/speakeasy-sdks/hookdeck-go/v2/models/components"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go/v2"
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
-            BasicAuth: &shared.SchemeBasicAuth{
-                Password: "",
-                Username: "",
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(components.Security{
+            BasicAuth: &components.SchemeBasicAuth{
+                Password: "<YOUR_PASSWORD_HERE>",
+                Username: "<YOUR_USERNAME_HERE>",
             },
         }),
     )
-    addCustomHostname := shared.AddCustomHostname{
-        Hostname: "sandy-spruce.biz",
+
+
+    addCustomHostname := components.AddCustomHostname{
+        Hostname: "murky-sole.name",
     }
-    teamID := "modi"
+
+    var teamID string = "<value>"
 
     ctx := context.Background()
     res, err := s.CustomDomain.Add(ctx, addCustomHostname, teamID)
     if err != nil {
         log.Fatal(err)
     }
-
     if res.AddCustomHostname != nil {
         // handle response
     }
@@ -50,17 +52,19 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                            | Type                                                                 | Required                                                             | Description                                                          |
-| -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- |
-| `ctx`                                                                | [context.Context](https://pkg.go.dev/context#Context)                | :heavy_check_mark:                                                   | The context to use for the request.                                  |
-| `addCustomHostname`                                                  | [shared.AddCustomHostname](../../models/shared/addcustomhostname.md) | :heavy_check_mark:                                                   | N/A                                                                  |
-| `teamID`                                                             | *string*                                                             | :heavy_check_mark:                                                   | N/A                                                                  |
+| Parameter                                                                    | Type                                                                         | Required                                                                     | Description                                                                  |
+| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| `ctx`                                                                        | [context.Context](https://pkg.go.dev/context#Context)                        | :heavy_check_mark:                                                           | The context to use for the request.                                          |
+| `addCustomHostname`                                                          | [components.AddCustomHostname](../../models/components/addcustomhostname.md) | :heavy_check_mark:                                                           | N/A                                                                          |
+| `teamID`                                                                     | *string*                                                                     | :heavy_check_mark:                                                           | N/A                                                                          |
 
 
 ### Response
 
 **[*operations.AddCustomDomainResponse](../../models/operations/addcustomdomainresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## Delete
 
@@ -72,31 +76,32 @@ Removes a custom domain from the workspace
 package main
 
 import(
+	"github.com/speakeasy-sdks/hookdeck-go/v2/models/components"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go/v2"
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
-            BasicAuth: &shared.SchemeBasicAuth{
-                Password: "",
-                Username: "",
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(components.Security{
+            BasicAuth: &components.SchemeBasicAuth{
+                Password: "<YOUR_PASSWORD_HERE>",
+                Username: "<YOUR_USERNAME_HERE>",
             },
         }),
     )
-    domainID := "qui"
-    teamID := "aliquid"
+
+
+    var domainID string = "<value>"
+
+    var teamID string = "<value>"
 
     ctx := context.Background()
     res, err := s.CustomDomain.Delete(ctx, domainID, teamID)
     if err != nil {
         log.Fatal(err)
     }
-
     if res.DeleteCustomDomainSchema != nil {
         // handle response
     }
@@ -115,4 +120,6 @@ func main() {
 ### Response
 
 **[*operations.DeleteCustomDomainResponse](../../models/operations/deletecustomdomainresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |

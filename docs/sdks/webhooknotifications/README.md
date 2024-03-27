@@ -1,4 +1,5 @@
 # WebhookNotifications
+(*WebhookNotifications*)
 
 ### Available Operations
 
@@ -14,38 +15,28 @@ Toggle webhook notifications for the workspace
 package main
 
 import(
+	"github.com/speakeasy-sdks/hookdeck-go/v2/models/components"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go/v2"
 	"context"
+	"github.com/speakeasy-sdks/hookdeck-go/v2/models/operations"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
-            BasicAuth: &shared.SchemeBasicAuth{
-                Password: "",
-                Username: "",
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(components.Security{
+            BasicAuth: &components.SchemeBasicAuth{
+                Password: "<YOUR_PASSWORD_HERE>",
+                Username: "<YOUR_USERNAME_HERE>",
             },
         }),
     )
 
     ctx := context.Background()
-    res, err := s.WebhookNotifications.Toggle(ctx, operations.ToggleWebhookNotificationsRequestBody{
-        Enabled: hookdeck.Bool(false),
-        SourceID: hookdeck.String("voluptatibus"),
-        Topics: []shared.TopicsValue{
-            shared.TopicsValueEventSuccessful,
-            shared.TopicsValueDeprecatedAttemptFailed,
-            shared.TopicsValueIssueUpdated,
-            shared.TopicsValueIssueOpened,
-        },
-    })
+    res, err := s.WebhookNotifications.Toggle(ctx, operations.ToggleWebhookNotificationsRequestBody{})
     if err != nil {
         log.Fatal(err)
     }
-
     if res.ToggleWebhookNotifications != nil {
         // handle response
     }
@@ -63,4 +54,6 @@ func main() {
 ### Response
 
 **[*operations.ToggleWebhookNotificationsResponse](../../models/operations/togglewebhooknotificationsresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |

@@ -1,4 +1,5 @@
 # Requests
+(*Requests*)
 
 ## Overview
 
@@ -18,52 +19,28 @@ Get requests
 package main
 
 import(
+	"github.com/speakeasy-sdks/hookdeck-go/v2/models/components"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go/v2"
 	"context"
+	"github.com/speakeasy-sdks/hookdeck-go/v2/models/operations"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/types"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
-            BasicAuth: &shared.SchemeBasicAuth{
-                Password: "",
-                Username: "",
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(components.Security{
+            BasicAuth: &components.SchemeBasicAuth{
+                Password: "<YOUR_PASSWORD_HERE>",
+                Username: "<YOUR_USERNAME_HERE>",
             },
         }),
     )
 
     ctx := context.Background()
-    res, err := s.Requests.Get(ctx, operations.GetRequestsRequest{
-        Body: &operations.GetRequestsBody{},
-        BulkRetryID: &operations.GetRequestsBulkRetryID{},
-        CreatedAt: &operations.GetRequestsCreatedAt{},
-        Dir: &operations.GetRequestsDir{},
-        EventsCount: &operations.GetRequestsEventsCount{},
-        Headers: &operations.GetRequestsHeaders{},
-        ID: &operations.GetRequestsID{},
-        IgnoredCount: &operations.GetRequestsIgnoredCount{},
-        Include: operations.GetRequestsIncludeData.ToPointer(),
-        IngestedAt: &operations.GetRequestsIngestedAt{},
-        Limit: hookdeck.Int64(793698),
-        Next: hookdeck.String("quam"),
-        OrderBy: &operations.GetRequestsOrderBy{},
-        ParsedQuery: &operations.GetRequestsParsedQuery{},
-        Path: hookdeck.String("dolor"),
-        Prev: hookdeck.String("vero"),
-        RejectionCause: &operations.GetRequestsRejectionCause{},
-        SearchTerm: hookdeck.String("nostrum"),
-        SourceID: &operations.GetRequestsSourceID{},
-        Status: operations.GetRequestsStatusRejected.ToPointer(),
-        Verified: hookdeck.Bool(false),
-    })
+    res, err := s.Requests.Get(ctx, operations.GetRequestsRequest{})
     if err != nil {
         log.Fatal(err)
     }
-
     if res.RequestPaginatedResult != nil {
         // handle response
     }
@@ -81,4 +58,7 @@ func main() {
 ### Response
 
 **[*operations.GetRequestsResponse](../../models/operations/getrequestsresponse.md), error**
-
+| Error Object               | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| sdkerrors.APIErrorResponse | 400,422                    | application/json           |
+| sdkerrors.SDKError         | 4xx-5xx                    | */*                        |

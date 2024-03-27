@@ -1,4 +1,5 @@
 # Sources
+(*Sources*)
 
 ## Overview
 
@@ -18,41 +19,28 @@ Get sources
 package main
 
 import(
+	"github.com/speakeasy-sdks/hookdeck-go/v2/models/components"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go/v2"
 	"context"
+	"github.com/speakeasy-sdks/hookdeck-go/v2/models/operations"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/types"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
-            BasicAuth: &shared.SchemeBasicAuth{
-                Password: "",
-                Username: "",
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(components.Security{
+            BasicAuth: &components.SchemeBasicAuth{
+                Password: "<YOUR_PASSWORD_HERE>",
+                Username: "<YOUR_USERNAME_HERE>",
             },
         }),
     )
 
     ctx := context.Background()
-    res, err := s.Sources.Get(ctx, operations.GetSourcesRequest{
-        Archived: hookdeck.Bool(false),
-        ArchivedAt: &operations.GetSourcesArchivedAt{},
-        Dir: &operations.GetSourcesDir{},
-        ID: &operations.GetSourcesID{},
-        IntegrationID: &operations.GetSourcesIntegrationID{},
-        Limit: hookdeck.Int64(311860),
-        Name: &operations.GetSourcesName{},
-        Next: hookdeck.String("tempora"),
-        OrderBy: &operations.GetSourcesOrderBy{},
-        Prev: hookdeck.String("vel"),
-    })
+    res, err := s.Sources.Get(ctx, operations.GetSourcesRequest{})
     if err != nil {
         log.Fatal(err)
     }
-
     if res.SourcePaginatedResult != nil {
         // handle response
     }
@@ -70,4 +58,7 @@ func main() {
 ### Response
 
 **[*operations.GetSourcesResponse](../../models/operations/getsourcesresponse.md), error**
-
+| Error Object               | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| sdkerrors.APIErrorResponse | 400,422                    | application/json           |
+| sdkerrors.SDKError         | 4xx-5xx                    | */*                        |

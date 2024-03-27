@@ -1,4 +1,5 @@
 # TransformationExecutions
+(*TransformationExecutions*)
 
 ### Available Operations
 
@@ -14,41 +15,30 @@ Get transformation executions
 package main
 
 import(
+	"github.com/speakeasy-sdks/hookdeck-go/v2/models/components"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go/v2"
 	"context"
+	"github.com/speakeasy-sdks/hookdeck-go/v2/models/operations"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/types"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
-            BasicAuth: &shared.SchemeBasicAuth{
-                Password: "",
-                Username: "",
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(components.Security{
+            BasicAuth: &components.SchemeBasicAuth{
+                Password: "<YOUR_PASSWORD_HERE>",
+                Username: "<YOUR_USERNAME_HERE>",
             },
         }),
     )
 
     ctx := context.Background()
     res, err := s.TransformationExecutions.Get(ctx, operations.GetTransformationExecutionsRequest{
-        CreatedAt: &operations.GetTransformationExecutionsCreatedAt{},
-        Dir: &operations.GetTransformationExecutionsDir{},
-        ID: "0cbb1e31-b8b9-40f3-843a-1108e0adcf4b",
-        IssueID: &operations.GetTransformationExecutionsIssueID{},
-        Limit: hookdeck.Int64(586410),
-        LogLevel: &operations.GetTransformationExecutionsLogLevel{},
-        Next: hookdeck.String("qui"),
-        OrderBy: &operations.GetTransformationExecutionsOrderBy{},
-        Prev: hookdeck.String("quae"),
-        WebhookID: &operations.GetTransformationExecutionsWebhookID{},
+        ID: "<id>",
     })
     if err != nil {
         log.Fatal(err)
     }
-
     if res.TransformationExecutionPaginatedResult != nil {
         // handle response
     }
@@ -66,4 +56,7 @@ func main() {
 ### Response
 
 **[*operations.GetTransformationExecutionsResponse](../../models/operations/gettransformationexecutionsresponse.md), error**
-
+| Error Object               | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| sdkerrors.APIErrorResponse | 400,422                    | application/json           |
+| sdkerrors.SDKError         | 4xx-5xx                    | */*                        |

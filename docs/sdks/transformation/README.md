@@ -1,4 +1,5 @@
 # Transformation
+(*Transformation*)
 
 ### Available Operations
 
@@ -18,38 +19,31 @@ Create a transformation
 package main
 
 import(
+	"github.com/speakeasy-sdks/hookdeck-go/v2/models/components"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go/v2"
 	"context"
+	"github.com/speakeasy-sdks/hookdeck-go/v2/models/operations"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
-            BasicAuth: &shared.SchemeBasicAuth{
-                Password: "",
-                Username: "",
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(components.Security{
+            BasicAuth: &components.SchemeBasicAuth{
+                Password: "<YOUR_PASSWORD_HERE>",
+                Username: "<YOUR_USERNAME_HERE>",
             },
         }),
     )
 
     ctx := context.Background()
     res, err := s.Transformation.Create(ctx, operations.CreateTransformationRequestBody{
-        Code: "quod",
-        Env: map[string]interface{}{
-            "qui": "dolorum",
-            "a": "esse",
-            "harum": "iusto",
-            "ipsum": "quisquam",
-        },
-        Name: "Marvin Renner",
+        Code: "<value>",
+        Name: "<value>",
     })
     if err != nil {
         log.Fatal(err)
     }
-
     if res.Transformation != nil {
         // handle response
     }
@@ -67,7 +61,10 @@ func main() {
 ### Response
 
 **[*operations.CreateTransformationResponse](../../models/operations/createtransformationresponse.md), error**
-
+| Error Object               | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| sdkerrors.APIErrorResponse | 400,422                    | application/json           |
+| sdkerrors.SDKError         | 4xx-5xx                    | */*                        |
 
 ## Get
 
@@ -79,30 +76,30 @@ Get a transformation
 package main
 
 import(
+	"github.com/speakeasy-sdks/hookdeck-go/v2/models/components"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go/v2"
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
-            BasicAuth: &shared.SchemeBasicAuth{
-                Password: "",
-                Username: "",
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(components.Security{
+            BasicAuth: &components.SchemeBasicAuth{
+                Password: "<YOUR_PASSWORD_HERE>",
+                Username: "<YOUR_USERNAME_HERE>",
             },
         }),
     )
-    id := "enim"
+
+
+    var id string = "<value>"
 
     ctx := context.Background()
     res, err := s.Transformation.Get(ctx, id)
     if err != nil {
         log.Fatal(err)
     }
-
     if res.Transformation != nil {
         // handle response
     }
@@ -120,7 +117,10 @@ func main() {
 ### Response
 
 **[*operations.GetTransformationResponse](../../models/operations/gettransformationresponse.md), error**
-
+| Error Object               | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| sdkerrors.APIErrorResponse | 404                        | application/json           |
+| sdkerrors.SDKError         | 4xx-5xx                    | */*                        |
 
 ## Test
 
@@ -132,46 +132,28 @@ Test a transformation code
 package main
 
 import(
+	"github.com/speakeasy-sdks/hookdeck-go/v2/models/components"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go/v2"
 	"context"
+	"github.com/speakeasy-sdks/hookdeck-go/v2/models/operations"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
-            BasicAuth: &shared.SchemeBasicAuth{
-                Password: "",
-                Username: "",
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(components.Security{
+            BasicAuth: &components.SchemeBasicAuth{
+                Password: "<YOUR_PASSWORD_HERE>",
+                Username: "<YOUR_USERNAME_HERE>",
             },
         }),
     )
 
     ctx := context.Background()
-    res, err := s.Transformation.Test(ctx, operations.TestTransformationRequestBody{
-        Code: hookdeck.String("dolorem"),
-        Env: &operations.TestTransformationRequestBodyEnv{},
-        EventID: hookdeck.String("sapiente"),
-        Request: &operations.TestTransformationRequestBodyRequest{
-            Body: &operations.TestTransformationRequestBodyRequestBody{},
-            Headers: map[string]string{
-                "nihil": "sit",
-                "expedita": "neque",
-                "sed": "vel",
-            },
-            ParsedQuery: &operations.TestTransformationRequestBodyRequestParsedQuery{},
-            Path: hookdeck.String("libero"),
-            Query: hookdeck.String("voluptas"),
-        },
-        TransformationID: hookdeck.String("deserunt"),
-        WebhookID: hookdeck.String("quam"),
-    })
+    res, err := s.Transformation.Test(ctx, operations.TestTransformationRequestBody{})
     if err != nil {
         log.Fatal(err)
     }
-
     if res.TransformationExecutorOutput != nil {
         // handle response
     }
@@ -189,7 +171,10 @@ func main() {
 ### Response
 
 **[*operations.TestTransformationResponse](../../models/operations/testtransformationresponse.md), error**
-
+| Error Object               | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| sdkerrors.APIErrorResponse | 400,422                    | application/json           |
+| sdkerrors.SDKError         | 4xx-5xx                    | */*                        |
 
 ## Update
 
@@ -201,38 +186,33 @@ Update a transformation
 package main
 
 import(
+	"github.com/speakeasy-sdks/hookdeck-go/v2/models/components"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go/v2"
+	"github.com/speakeasy-sdks/hookdeck-go/v2/models/operations"
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
-            BasicAuth: &shared.SchemeBasicAuth{
-                Password: "",
-                Username: "",
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(components.Security{
+            BasicAuth: &components.SchemeBasicAuth{
+                Password: "<YOUR_PASSWORD_HERE>",
+                Username: "<YOUR_USERNAME_HERE>",
             },
         }),
     )
-    requestBody := operations.UpdateTransformationRequestBody{
-        Code: hookdeck.String("ipsum"),
-        Env: map[string]interface{}{
-            "qui": "cupiditate",
-            "maxime": "pariatur",
-        },
-        Name: hookdeck.String("Keith Padberg"),
-    }
-    id := "aspernatur"
+
+
+    requestBody := operations.UpdateTransformationRequestBody{}
+
+    var id string = "<value>"
 
     ctx := context.Background()
     res, err := s.Transformation.Update(ctx, requestBody, id)
     if err != nil {
         log.Fatal(err)
     }
-
     if res.Transformation != nil {
         // handle response
     }
@@ -251,7 +231,10 @@ func main() {
 ### Response
 
 **[*operations.UpdateTransformationResponse](../../models/operations/updatetransformationresponse.md), error**
-
+| Error Object               | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| sdkerrors.APIErrorResponse | 400,404,422                | application/json           |
+| sdkerrors.SDKError         | 4xx-5xx                    | */*                        |
 
 ## Upsert
 
@@ -263,37 +246,31 @@ Update or create a transformation
 package main
 
 import(
+	"github.com/speakeasy-sdks/hookdeck-go/v2/models/components"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go/v2"
 	"context"
+	"github.com/speakeasy-sdks/hookdeck-go/v2/models/operations"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
-            BasicAuth: &shared.SchemeBasicAuth{
-                Password: "",
-                Username: "",
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(components.Security{
+            BasicAuth: &components.SchemeBasicAuth{
+                Password: "<YOUR_PASSWORD_HERE>",
+                Username: "<YOUR_USERNAME_HERE>",
             },
         }),
     )
 
     ctx := context.Background()
     res, err := s.Transformation.Upsert(ctx, operations.UpsertTransformationRequestBody{
-        Code: "dolores",
-        Env: map[string]interface{}{
-            "facilis": "aliquid",
-            "quam": "molestias",
-            "temporibus": "qui",
-        },
-        Name: "Beverly Cummerata II",
+        Code: "<value>",
+        Name: "<value>",
     })
     if err != nil {
         log.Fatal(err)
     }
-
     if res.Transformation != nil {
         // handle response
     }
@@ -311,4 +288,7 @@ func main() {
 ### Response
 
 **[*operations.UpsertTransformationResponse](../../models/operations/upserttransformationresponse.md), error**
-
+| Error Object               | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| sdkerrors.APIErrorResponse | 400,422                    | application/json           |
+| sdkerrors.SDKError         | 4xx-5xx                    | */*                        |

@@ -1,4 +1,5 @@
 # EventRawBody
+(*EventRawBody*)
 
 ### Available Operations
 
@@ -14,30 +15,30 @@ Retrieve a raw body data of a request that Hookdeck receives from a source.
 package main
 
 import(
+	"github.com/speakeasy-sdks/hookdeck-go/v2/models/components"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go/v2"
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
-            BasicAuth: &shared.SchemeBasicAuth{
-                Password: "",
-                Username: "",
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(components.Security{
+            BasicAuth: &components.SchemeBasicAuth{
+                Password: "<YOUR_PASSWORD_HERE>",
+                Username: "<YOUR_USERNAME_HERE>",
             },
         }),
     )
-    id := "deleniti"
+
+
+    var id string = "<value>"
 
     ctx := context.Background()
     res, err := s.EventRawBody.Get(ctx, id)
     if err != nil {
         log.Fatal(err)
     }
-
     if res.RawBody != nil {
         // handle response
     }
@@ -55,4 +56,7 @@ func main() {
 ### Response
 
 **[*operations.GetEventRawBodyResponse](../../models/operations/geteventrawbodyresponse.md), error**
-
+| Error Object               | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| sdkerrors.APIErrorResponse | 404                        | application/json           |
+| sdkerrors.SDKError         | 4xx-5xx                    | */*                        |

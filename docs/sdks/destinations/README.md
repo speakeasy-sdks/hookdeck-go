@@ -1,4 +1,5 @@
 # Destinations
+(*Destinations*)
 
 ## Overview
 
@@ -18,42 +19,28 @@ Retrieve a list of endpoints to which your webhooks can be routed.
 package main
 
 import(
+	"github.com/speakeasy-sdks/hookdeck-go/v2/models/components"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go/v2"
 	"context"
+	"github.com/speakeasy-sdks/hookdeck-go/v2/models/operations"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/types"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
-            BasicAuth: &shared.SchemeBasicAuth{
-                Password: "",
-                Username: "",
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(components.Security{
+            BasicAuth: &components.SchemeBasicAuth{
+                Password: "<YOUR_PASSWORD_HERE>",
+                Username: "<YOUR_USERNAME_HERE>",
             },
         }),
     )
 
     ctx := context.Background()
-    res, err := s.Destinations.Get(ctx, operations.GetDestinationsRequest{
-        Archived: hookdeck.Bool(false),
-        ArchivedAt: &operations.GetDestinationsArchivedAt{},
-        CliPath: &operations.GetDestinationsCliPath{},
-        Dir: &operations.GetDestinationsDir{},
-        ID: &operations.GetDestinationsID{},
-        Limit: hookdeck.Int64(965417),
-        Name: &operations.GetDestinationsName{},
-        Next: hookdeck.String("quidem"),
-        OrderBy: &operations.GetDestinationsOrderBy{},
-        Prev: hookdeck.String("provident"),
-        URL: &operations.GetDestinationsURL{},
-    })
+    res, err := s.Destinations.Get(ctx, operations.GetDestinationsRequest{})
     if err != nil {
         log.Fatal(err)
     }
-
     if res.DestinationPaginatedResult != nil {
         // handle response
     }
@@ -71,4 +58,7 @@ func main() {
 ### Response
 
 **[*operations.GetDestinationsResponse](../../models/operations/getdestinationsresponse.md), error**
-
+| Error Object               | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| sdkerrors.APIErrorResponse | 400,422                    | application/json           |
+| sdkerrors.SDKError         | 4xx-5xx                    | */*                        |

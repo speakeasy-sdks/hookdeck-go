@@ -1,4 +1,5 @@
 # CustomDomains
+(*CustomDomains*)
 
 ### Available Operations
 
@@ -14,30 +15,30 @@ List all custom domains and their verification statuses for the workspace
 package main
 
 import(
+	"github.com/speakeasy-sdks/hookdeck-go/v2/models/components"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go/v2"
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
-            BasicAuth: &shared.SchemeBasicAuth{
-                Password: "",
-                Username: "",
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(components.Security{
+            BasicAuth: &components.SchemeBasicAuth{
+                Password: "<YOUR_PASSWORD_HERE>",
+                Username: "<YOUR_USERNAME_HERE>",
             },
         }),
     )
-    teamID := "cupiditate"
+
+
+    var teamID string = "<value>"
 
     ctx := context.Background()
     res, err := s.CustomDomains.List(ctx, teamID)
     if err != nil {
         log.Fatal(err)
     }
-
     if res.ListCustomDomainSchema != nil {
         // handle response
     }
@@ -55,4 +56,6 @@ func main() {
 ### Response
 
 **[*operations.ListCustomDomainsResponse](../../models/operations/listcustomdomainsresponse.md), error**
-
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |

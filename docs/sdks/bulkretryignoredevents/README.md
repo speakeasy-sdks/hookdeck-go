@@ -1,4 +1,5 @@
 # BulkRetryIgnoredEvents
+(*BulkRetryIgnoredEvents*)
 
 ### Available Operations
 
@@ -14,47 +15,28 @@ Get ignored events bulk retries
 package main
 
 import(
+	"github.com/speakeasy-sdks/hookdeck-go/v2/models/components"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go/v2"
 	"context"
+	"github.com/speakeasy-sdks/hookdeck-go/v2/models/operations"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/types"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
-            BasicAuth: &shared.SchemeBasicAuth{
-                Password: "",
-                Username: "",
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(components.Security{
+            BasicAuth: &components.SchemeBasicAuth{
+                Password: "<YOUR_PASSWORD_HERE>",
+                Username: "<YOUR_USERNAME_HERE>",
             },
         }),
     )
 
     ctx := context.Background()
-    res, err := s.BulkRetryIgnoredEvents.Get(ctx, operations.GetIgnoredEventBulkRetriesRequest{
-        CancelledAt: &operations.GetIgnoredEventBulkRetriesCancelledAt{},
-        CompletedAt: &operations.GetIgnoredEventBulkRetriesCompletedAt{},
-        CreatedAt: &operations.GetIgnoredEventBulkRetriesCreatedAt{},
-        Dir: &operations.GetIgnoredEventBulkRetriesDir{},
-        ID: &operations.GetIgnoredEventBulkRetriesID{},
-        InProgress: hookdeck.Bool(false),
-        Limit: hookdeck.Int64(140350),
-        Next: hookdeck.String("at"),
-        OrderBy: &operations.GetIgnoredEventBulkRetriesOrderBy{},
-        Prev: hookdeck.String("at"),
-        Query: &operations.GetIgnoredEventBulkRetriesQuery{
-            Cause: &operations.GetIgnoredEventBulkRetriesQueryCause{},
-            TransformationID: hookdeck.String("maiores"),
-            WebhookID: &operations.GetIgnoredEventBulkRetriesQueryWebhookID{},
-        },
-        QueryPartialMatch: hookdeck.Bool(false),
-    })
+    res, err := s.BulkRetryIgnoredEvents.Get(ctx, operations.GetIgnoredEventBulkRetriesRequest{})
     if err != nil {
         log.Fatal(err)
     }
-
     if res.BatchOperationPaginatedResult != nil {
         // handle response
     }
@@ -72,4 +54,7 @@ func main() {
 ### Response
 
 **[*operations.GetIgnoredEventBulkRetriesResponse](../../models/operations/getignoredeventbulkretriesresponse.md), error**
-
+| Error Object               | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| sdkerrors.APIErrorResponse | 400,422                    | application/json           |
+| sdkerrors.SDKError         | 4xx-5xx                    | */*                        |

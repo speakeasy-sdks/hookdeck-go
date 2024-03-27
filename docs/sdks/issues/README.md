@@ -1,4 +1,5 @@
 # Issues
+(*Issues*)
 
 ## Overview
 
@@ -18,50 +19,28 @@ Get issues
 package main
 
 import(
+	"github.com/speakeasy-sdks/hookdeck-go/v2/models/components"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go/v2"
 	"context"
+	"github.com/speakeasy-sdks/hookdeck-go/v2/models/operations"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/types"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
-            BasicAuth: &shared.SchemeBasicAuth{
-                Password: "",
-                Username: "",
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(components.Security{
+            BasicAuth: &components.SchemeBasicAuth{
+                Password: "<YOUR_PASSWORD_HERE>",
+                Username: "<YOUR_USERNAME_HERE>",
             },
         }),
     )
 
     ctx := context.Background()
-    res, err := s.Issues.Get(ctx, operations.GetIssuesRequest{
-        AggregationKeys: &operations.GetIssuesAggregationKeys{
-            ErrorCode: &operations.GetIssuesAggregationKeysErrorCode{},
-            ResponseStatus: &operations.GetIssuesAggregationKeysResponseStatus{},
-            WebhookID: &operations.GetIssuesAggregationKeysWebhookID{},
-        },
-        CreatedAt: &operations.GetIssuesCreatedAt{},
-        Dir: &operations.GetIssuesDir{},
-        DismissedAt: &operations.GetIssuesDismissedAt{},
-        FirstSeenAt: &operations.GetIssuesFirstSeenAt{},
-        ID: &operations.GetIssuesID{},
-        IssueTriggerID: &operations.GetIssuesIssueTriggerID{},
-        LastSeenAt: &operations.GetIssuesLastSeenAt{},
-        Limit: hookdeck.Int64(50588),
-        MergedWith: &operations.GetIssuesMergedWith{},
-        Next: hookdeck.String("pariatur"),
-        OrderBy: &operations.GetIssuesOrderBy{},
-        Prev: hookdeck.String("nemo"),
-        Status: &operations.GetIssuesStatus{},
-        Type: &operations.GetIssuesType{},
-    })
+    res, err := s.Issues.Get(ctx, operations.GetIssuesRequest{})
     if err != nil {
         log.Fatal(err)
     }
-
     if res.IssueWithDataPaginatedResult != nil {
         // handle response
     }
@@ -79,4 +58,7 @@ func main() {
 ### Response
 
 **[*operations.GetIssuesResponse](../../models/operations/getissuesresponse.md), error**
-
+| Error Object               | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| sdkerrors.APIErrorResponse | 400,422                    | application/json           |
+| sdkerrors.SDKError         | 4xx-5xx                    | */*                        |

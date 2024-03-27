@@ -1,4 +1,5 @@
 # Bookmark
+(*Bookmark*)
 
 ### Available Operations
 
@@ -18,34 +19,32 @@ Create a new bookmark.
 package main
 
 import(
+	"github.com/speakeasy-sdks/hookdeck-go/v2/models/components"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go/v2"
 	"context"
+	"github.com/speakeasy-sdks/hookdeck-go/v2/models/operations"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
-            BasicAuth: &shared.SchemeBasicAuth{
-                Password: "",
-                Username: "",
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(components.Security{
+            BasicAuth: &components.SchemeBasicAuth{
+                Password: "<YOUR_PASSWORD_HERE>",
+                Username: "<YOUR_USERNAME_HERE>",
             },
         }),
     )
 
     ctx := context.Background()
     res, err := s.Bookmark.Create(ctx, operations.CreateBookmarkRequestBody{
-        EventDataID: "nulla",
-        Label: "corrupti",
-        Name: hookdeck.String("Ben Mueller"),
-        WebhookID: "iure",
+        EventDataID: "<value>",
+        Label: "<value>",
+        WebhookID: "<value>",
     })
     if err != nil {
         log.Fatal(err)
     }
-
     if res.Bookmark != nil {
         // handle response
     }
@@ -63,7 +62,10 @@ func main() {
 ### Response
 
 **[*operations.CreateBookmarkResponse](../../models/operations/createbookmarkresponse.md), error**
-
+| Error Object               | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| sdkerrors.APIErrorResponse | 400,422                    | application/json           |
+| sdkerrors.SDKError         | 4xx-5xx                    | */*                        |
 
 ## Delete
 
@@ -75,30 +77,30 @@ Delete an existing bookmark
 package main
 
 import(
+	"github.com/speakeasy-sdks/hookdeck-go/v2/models/components"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go/v2"
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
-            BasicAuth: &shared.SchemeBasicAuth{
-                Password: "",
-                Username: "",
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(components.Security{
+            BasicAuth: &components.SchemeBasicAuth{
+                Password: "<YOUR_PASSWORD_HERE>",
+                Username: "<YOUR_USERNAME_HERE>",
             },
         }),
     )
-    id := "magnam"
+
+
+    var id string = "<value>"
 
     ctx := context.Background()
     res, err := s.Bookmark.Delete(ctx, id)
     if err != nil {
         log.Fatal(err)
     }
-
     if res.DeletedBookmarkResponse != nil {
         // handle response
     }
@@ -116,7 +118,10 @@ func main() {
 ### Response
 
 **[*operations.DeleteBookmarkResponse](../../models/operations/deletebookmarkresponse.md), error**
-
+| Error Object               | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| sdkerrors.APIErrorResponse | 404                        | application/json           |
+| sdkerrors.SDKError         | 4xx-5xx                    | */*                        |
 
 ## Get
 
@@ -128,30 +133,30 @@ Retrieve an existing bookmark details.
 package main
 
 import(
+	"github.com/speakeasy-sdks/hookdeck-go/v2/models/components"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go/v2"
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
-            BasicAuth: &shared.SchemeBasicAuth{
-                Password: "",
-                Username: "",
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(components.Security{
+            BasicAuth: &components.SchemeBasicAuth{
+                Password: "<YOUR_PASSWORD_HERE>",
+                Username: "<YOUR_USERNAME_HERE>",
             },
         }),
     )
-    id := "debitis"
+
+
+    var id string = "<value>"
 
     ctx := context.Background()
     res, err := s.Bookmark.Get(ctx, id)
     if err != nil {
         log.Fatal(err)
     }
-
     if res.Bookmark != nil {
         // handle response
     }
@@ -169,7 +174,10 @@ func main() {
 ### Response
 
 **[*operations.GetBookmarkResponse](../../models/operations/getbookmarkresponse.md), error**
-
+| Error Object               | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| sdkerrors.APIErrorResponse | 404                        | application/json           |
+| sdkerrors.SDKError         | 4xx-5xx                    | */*                        |
 
 ## Trigger
 
@@ -181,33 +189,33 @@ Trigger a bookmark operation to store and replay a specific request.
 package main
 
 import(
+	"github.com/speakeasy-sdks/hookdeck-go/v2/models/components"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go/v2"
+	"github.com/speakeasy-sdks/hookdeck-go/v2/models/operations"
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
-            BasicAuth: &shared.SchemeBasicAuth{
-                Password: "",
-                Username: "",
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(components.Security{
+            BasicAuth: &components.SchemeBasicAuth{
+                Password: "<YOUR_PASSWORD_HERE>",
+                Username: "<YOUR_USERNAME_HERE>",
             },
         }),
     )
-    requestBody := operations.TriggerBookmarkRequestBody{
-        Target: operations.TriggerBookmarkRequestBodyTargetHTTP.ToPointer(),
-    }
-    id := "delectus"
+
+
+    requestBody := operations.TriggerBookmarkRequestBody{}
+
+    var id string = "<value>"
 
     ctx := context.Background()
     res, err := s.Bookmark.Trigger(ctx, requestBody, id)
     if err != nil {
         log.Fatal(err)
     }
-
     if res.EventArray != nil {
         // handle response
     }
@@ -226,7 +234,10 @@ func main() {
 ### Response
 
 **[*operations.TriggerBookmarkResponse](../../models/operations/triggerbookmarkresponse.md), error**
-
+| Error Object               | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| sdkerrors.APIErrorResponse | 400,404,422                | application/json           |
+| sdkerrors.SDKError         | 4xx-5xx                    | */*                        |
 
 ## Update
 
@@ -238,36 +249,33 @@ Update an existing bookmark information.
 package main
 
 import(
+	"github.com/speakeasy-sdks/hookdeck-go/v2/models/components"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go/v2"
+	"github.com/speakeasy-sdks/hookdeck-go/v2/models/operations"
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
-            BasicAuth: &shared.SchemeBasicAuth{
-                Password: "",
-                Username: "",
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(components.Security{
+            BasicAuth: &components.SchemeBasicAuth{
+                Password: "<YOUR_PASSWORD_HERE>",
+                Username: "<YOUR_USERNAME_HERE>",
             },
         }),
     )
-    requestBody := operations.UpdateBookmarkRequestBody{
-        EventDataID: hookdeck.String("tempora"),
-        Label: hookdeck.String("suscipit"),
-        Name: hookdeck.String("Alexandra Schulist"),
-        WebhookID: hookdeck.String("excepturi"),
-    }
-    id := "nisi"
+
+
+    requestBody := operations.UpdateBookmarkRequestBody{}
+
+    var id string = "<value>"
 
     ctx := context.Background()
     res, err := s.Bookmark.Update(ctx, requestBody, id)
     if err != nil {
         log.Fatal(err)
     }
-
     if res.Bookmark != nil {
         // handle response
     }
@@ -286,4 +294,7 @@ func main() {
 ### Response
 
 **[*operations.UpdateBookmarkResponse](../../models/operations/updatebookmarkresponse.md), error**
-
+| Error Object               | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| sdkerrors.APIErrorResponse | 400,404,422                | application/json           |
+| sdkerrors.SDKError         | 4xx-5xx                    | */*                        |

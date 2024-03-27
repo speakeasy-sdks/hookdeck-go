@@ -1,4 +1,5 @@
 # Bookmarks
+(*Bookmarks*)
 
 ## Overview
 
@@ -18,42 +19,28 @@ Retrieve a list of bookmarks.
 package main
 
 import(
+	"github.com/speakeasy-sdks/hookdeck-go/v2/models/components"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go/v2"
 	"context"
+	"github.com/speakeasy-sdks/hookdeck-go/v2/models/operations"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/types"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
-            BasicAuth: &shared.SchemeBasicAuth{
-                Password: "",
-                Username: "",
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(components.Security{
+            BasicAuth: &components.SchemeBasicAuth{
+                Password: "<YOUR_PASSWORD_HERE>",
+                Username: "<YOUR_USERNAME_HERE>",
             },
         }),
     )
 
     ctx := context.Background()
-    res, err := s.Bookmarks.Get(ctx, operations.GetBookmarksRequest{
-        Dir: &operations.GetBookmarksDir{},
-        EventDataID: &operations.GetBookmarksEventDataID{},
-        ID: &operations.GetBookmarksID{},
-        Label: &operations.GetBookmarksLabel{},
-        LastUsedAt: &operations.GetBookmarksLastUsedAt{},
-        Limit: hookdeck.Int64(925597),
-        Name: &operations.GetBookmarksName{},
-        Next: hookdeck.String("temporibus"),
-        OrderBy: &operations.GetBookmarksOrderBy{},
-        Prev: hookdeck.String("ab"),
-        WebhookID: &operations.GetBookmarksWebhookID{},
-    })
+    res, err := s.Bookmarks.Get(ctx, operations.GetBookmarksRequest{})
     if err != nil {
         log.Fatal(err)
     }
-
     if res.BookmarkPaginatedResult != nil {
         // handle response
     }
@@ -71,4 +58,7 @@ func main() {
 ### Response
 
 **[*operations.GetBookmarksResponse](../../models/operations/getbookmarksresponse.md), error**
-
+| Error Object               | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| sdkerrors.APIErrorResponse | 400,422                    | application/json           |
+| sdkerrors.SDKError         | 4xx-5xx                    | */*                        |

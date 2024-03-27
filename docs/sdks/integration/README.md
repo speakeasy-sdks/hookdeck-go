@@ -1,4 +1,5 @@
 # Integration
+(*Integration*)
 
 ### Available Operations
 
@@ -19,31 +20,32 @@ Attach an integration to a source
 package main
 
 import(
+	"github.com/speakeasy-sdks/hookdeck-go/v2/models/components"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go/v2"
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
-            BasicAuth: &shared.SchemeBasicAuth{
-                Password: "",
-                Username: "",
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(components.Security{
+            BasicAuth: &components.SchemeBasicAuth{
+                Password: "<YOUR_PASSWORD_HERE>",
+                Username: "<YOUR_USERNAME_HERE>",
             },
         }),
     )
-    id := "natus"
-    sourceID := "omnis"
+
+
+    var id string = "<value>"
+
+    var sourceID string = "<value>"
 
     ctx := context.Background()
     res, err := s.Integration.AttachIntegrationToSource(ctx, id, sourceID)
     if err != nil {
         log.Fatal(err)
     }
-
     if res.AttachedIntegrationToSource != nil {
         // handle response
     }
@@ -62,7 +64,10 @@ func main() {
 ### Response
 
 **[*operations.AttachIntegrationToSourceResponse](../../models/operations/attachintegrationtosourceresponse.md), error**
-
+| Error Object               | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| sdkerrors.APIErrorResponse | 400,404                    | application/json           |
+| sdkerrors.SDKError         | 4xx-5xx                    | */*                        |
 
 ## Create
 
@@ -74,40 +79,28 @@ Create an integration
 package main
 
 import(
+	"github.com/speakeasy-sdks/hookdeck-go/v2/models/components"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go/v2"
 	"context"
+	"github.com/speakeasy-sdks/hookdeck-go/v2/models/operations"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
-            BasicAuth: &shared.SchemeBasicAuth{
-                Password: "",
-                Username: "",
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(components.Security{
+            BasicAuth: &components.SchemeBasicAuth{
+                Password: "<YOUR_PASSWORD_HERE>",
+                Username: "<YOUR_USERNAME_HERE>",
             },
         }),
     )
 
     ctx := context.Background()
-    res, err := s.Integration.Create(ctx, operations.CreateIntegrationRequestBody{
-        Configs: &shared.APIKeyIntegrationConfigs{
-            APIKey: "perferendis",
-            HeaderKey: "nihil",
-        },
-        Features: []shared.IntegrationFeature{
-            shared.IntegrationFeaturePolling,
-            shared.IntegrationFeatureHandshake,
-        },
-        Label: hookdeck.String("labore"),
-        Provider: shared.IntegrationProviderHmac.ToPointer(),
-    })
+    res, err := s.Integration.Create(ctx, operations.CreateIntegrationRequestBody{})
     if err != nil {
         log.Fatal(err)
     }
-
     if res.Integration != nil {
         // handle response
     }
@@ -125,7 +118,10 @@ func main() {
 ### Response
 
 **[*operations.CreateIntegrationResponse](../../models/operations/createintegrationresponse.md), error**
-
+| Error Object               | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| sdkerrors.APIErrorResponse | 400,422                    | application/json           |
+| sdkerrors.SDKError         | 4xx-5xx                    | */*                        |
 
 ## Delete
 
@@ -137,30 +133,30 @@ Delete an integration
 package main
 
 import(
+	"github.com/speakeasy-sdks/hookdeck-go/v2/models/components"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go/v2"
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
-            BasicAuth: &shared.SchemeBasicAuth{
-                Password: "",
-                Username: "",
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(components.Security{
+            BasicAuth: &components.SchemeBasicAuth{
+                Password: "<YOUR_PASSWORD_HERE>",
+                Username: "<YOUR_USERNAME_HERE>",
             },
         }),
     )
-    id := "suscipit"
+
+
+    var id string = "<value>"
 
     ctx := context.Background()
     res, err := s.Integration.Delete(ctx, id)
     if err != nil {
         log.Fatal(err)
     }
-
     if res.DeletedIntegration != nil {
         // handle response
     }
@@ -178,7 +174,10 @@ func main() {
 ### Response
 
 **[*operations.DeleteIntegrationResponse](../../models/operations/deleteintegrationresponse.md), error**
-
+| Error Object               | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| sdkerrors.APIErrorResponse | 404                        | application/json           |
+| sdkerrors.SDKError         | 4xx-5xx                    | */*                        |
 
 ## DetachIntegrationToSource
 
@@ -190,31 +189,32 @@ Detach an integration from a source
 package main
 
 import(
+	"github.com/speakeasy-sdks/hookdeck-go/v2/models/components"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go/v2"
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
-            BasicAuth: &shared.SchemeBasicAuth{
-                Password: "",
-                Username: "",
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(components.Security{
+            BasicAuth: &components.SchemeBasicAuth{
+                Password: "<YOUR_PASSWORD_HERE>",
+                Username: "<YOUR_USERNAME_HERE>",
             },
         }),
     )
-    id := "natus"
-    sourceID := "nobis"
+
+
+    var id string = "<value>"
+
+    var sourceID string = "<value>"
 
     ctx := context.Background()
     res, err := s.Integration.DetachIntegrationToSource(ctx, id, sourceID)
     if err != nil {
         log.Fatal(err)
     }
-
     if res.DetachedIntegrationFromSource != nil {
         // handle response
     }
@@ -233,7 +233,10 @@ func main() {
 ### Response
 
 **[*operations.DetachIntegrationToSourceResponse](../../models/operations/detachintegrationtosourceresponse.md), error**
-
+| Error Object               | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| sdkerrors.APIErrorResponse | 400,404                    | application/json           |
+| sdkerrors.SDKError         | 4xx-5xx                    | */*                        |
 
 ## Get
 
@@ -245,30 +248,30 @@ Get an integration
 package main
 
 import(
+	"github.com/speakeasy-sdks/hookdeck-go/v2/models/components"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go/v2"
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
-            BasicAuth: &shared.SchemeBasicAuth{
-                Password: "",
-                Username: "",
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(components.Security{
+            BasicAuth: &components.SchemeBasicAuth{
+                Password: "<YOUR_PASSWORD_HERE>",
+                Username: "<YOUR_USERNAME_HERE>",
             },
         }),
     )
-    id := "eum"
+
+
+    var id string = "<value>"
 
     ctx := context.Background()
     res, err := s.Integration.Get(ctx, id)
     if err != nil {
         log.Fatal(err)
     }
-
     if res.Integration != nil {
         // handle response
     }
@@ -286,7 +289,10 @@ func main() {
 ### Response
 
 **[*operations.GetIntegrationResponse](../../models/operations/getintegrationresponse.md), error**
-
+| Error Object               | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| sdkerrors.APIErrorResponse | 404                        | application/json           |
+| sdkerrors.SDKError         | 4xx-5xx                    | */*                        |
 
 ## Update
 
@@ -298,47 +304,33 @@ Update an integration
 package main
 
 import(
+	"github.com/speakeasy-sdks/hookdeck-go/v2/models/components"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go/v2"
+	"github.com/speakeasy-sdks/hookdeck-go/v2/models/operations"
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
-            BasicAuth: &shared.SchemeBasicAuth{
-                Password: "",
-                Username: "",
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(components.Security{
+            BasicAuth: &components.SchemeBasicAuth{
+                Password: "<YOUR_PASSWORD_HERE>",
+                Username: "<YOUR_USERNAME_HERE>",
             },
         }),
     )
-    requestBody := operations.UpdateIntegrationRequestBody{
-        Configs: &shared.ShopifyIntegrationConfigs{
-            APIKey: hookdeck.String("aspernatur"),
-            APISecret: hookdeck.String("architecto"),
-            RateLimit: hookdeck.Float32(2982.82),
-            RateLimitPeriod: shared.ShopifyIntegrationConfigsRateLimitPeriodLessThanNilGreaterThan.ToPointer(),
-            Shop: hookdeck.String("excepturi"),
-            WebhookSecretKey: "ullam",
-        },
-        Features: []shared.IntegrationFeature{
-            shared.IntegrationFeatureHandshake,
-            shared.IntegrationFeatureHandshake,
-            shared.IntegrationFeatureVerification,
-        },
-        Label: hookdeck.String("mollitia"),
-        Provider: shared.IntegrationProviderAwsSns.ToPointer(),
-    }
-    id := "mollitia"
+
+
+    requestBody := operations.UpdateIntegrationRequestBody{}
+
+    var id string = "<value>"
 
     ctx := context.Background()
     res, err := s.Integration.Update(ctx, requestBody, id)
     if err != nil {
         log.Fatal(err)
     }
-
     if res.Integration != nil {
         // handle response
     }
@@ -357,4 +349,7 @@ func main() {
 ### Response
 
 **[*operations.UpdateIntegrationResponse](../../models/operations/updateintegrationresponse.md), error**
-
+| Error Object               | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| sdkerrors.APIErrorResponse | 400,404,422                | application/json           |
+| sdkerrors.SDKError         | 4xx-5xx                    | */*                        |

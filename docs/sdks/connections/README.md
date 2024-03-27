@@ -1,4 +1,5 @@
 # Connections
+(*Connections*)
 
 ## Overview
 
@@ -18,41 +19,28 @@ Get connections
 package main
 
 import(
+	"github.com/speakeasy-sdks/hookdeck-go/v2/models/components"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go/v2"
 	"context"
+	"github.com/speakeasy-sdks/hookdeck-go/v2/models/operations"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/types"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
-            BasicAuth: &shared.SchemeBasicAuth{
-                Password: "",
-                Username: "",
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(components.Security{
+            BasicAuth: &components.SchemeBasicAuth{
+                Password: "<YOUR_PASSWORD_HERE>",
+                Username: "<YOUR_USERNAME_HERE>",
             },
         }),
     )
 
     ctx := context.Background()
-    res, err := s.Connections.Get(ctx, operations.GetConnectionsRequest{
-        Archived: hookdeck.Bool(false),
-        ArchivedAt: &operations.GetConnectionsArchivedAt{},
-        DestinationID: &operations.GetConnectionsDestinationID{},
-        Dir: &operations.GetConnectionsDir{},
-        FullName: hookdeck.String("deserunt"),
-        ID: &operations.GetConnectionsID{},
-        Name: &operations.GetConnectionsName{},
-        OrderBy: &operations.GetConnectionsOrderBy{},
-        PausedAt: &operations.GetConnectionsPausedAt{},
-        SourceID: &operations.GetConnectionsSourceID{},
-    })
+    res, err := s.Connections.Get(ctx, operations.GetConnectionsRequest{})
     if err != nil {
         log.Fatal(err)
     }
-
     if res.ConnectionPaginatedResult != nil {
         // handle response
     }
@@ -70,4 +58,7 @@ func main() {
 ### Response
 
 **[*operations.GetConnectionsResponse](../../models/operations/getconnectionsresponse.md), error**
-
+| Error Object               | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| sdkerrors.APIErrorResponse | 400,422                    | application/json           |
+| sdkerrors.SDKError         | 4xx-5xx                    | */*                        |

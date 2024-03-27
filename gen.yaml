@@ -1,18 +1,30 @@
-configVersion: 1.0.0
-management:
-  docChecksum: f5f85e261a0dc111ffa34c18736669e6
-  docVersion: 1.0.0
-  speakeasyVersion: 1.65.2
-  generationVersion: 2.75.1
+configVersion: 2.0.0
 generation:
-  comments:
-    disableComments: false
-    omitDescriptionIfSummaryPresent: false
-  baseServerURL: ""
   sdkClassName: hookdeck
-  singleTagPerOp: false
-  tagNamespacingDisabled: false
+  usageSnippets:
+    optionalPropertyRendering: withExample
+  fixes:
+    nameResolutionDec2023: false
+    parameterOrderingFeb2024: false
+    requestResponseComponentNamesFeb2024: false
+  auth:
+    oAuth2ClientCredentialsEnabled: false
+  baseServerURL: ""
 go:
-  version: 1.5.0
+  version: 2.2.3
+  additionalDependencies: {}
+  clientServerStatusCodesAsErrors: true
+  flattenGlobalSecurity: true
+  imports:
+    option: openapi
+    paths:
+      callbacks: models/callbacks
+      errors: models/sdkerrors
+      operations: models/operations
+      shared: models/components
+      webhooks: models/webhooks
+  inputModelSuffix: input
   maxMethodParams: 5
+  outputModelSuffix: output
   packageName: github.com/speakeasy-sdks/hookdeck-go
+  responseFormat: envelope

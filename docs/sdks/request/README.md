@@ -1,4 +1,5 @@
 # Request
+(*Request*)
 
 ### Available Operations
 
@@ -15,30 +16,30 @@ Get a request
 package main
 
 import(
+	"github.com/speakeasy-sdks/hookdeck-go/v2/models/components"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go/v2"
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
-            BasicAuth: &shared.SchemeBasicAuth{
-                Password: "",
-                Username: "",
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(components.Security{
+            BasicAuth: &components.SchemeBasicAuth{
+                Password: "<YOUR_PASSWORD_HERE>",
+                Username: "<YOUR_USERNAME_HERE>",
             },
         }),
     )
-    id := "amet"
+
+
+    var id string = "<value>"
 
     ctx := context.Background()
     res, err := s.Request.Get(ctx, id)
     if err != nil {
         log.Fatal(err)
     }
-
     if res.Request != nil {
         // handle response
     }
@@ -56,7 +57,10 @@ func main() {
 ### Response
 
 **[*operations.GetRequestResponse](../../models/operations/getrequestresponse.md), error**
-
+| Error Object               | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| sdkerrors.APIErrorResponse | 404                        | application/json           |
+| sdkerrors.SDKError         | 4xx-5xx                    | */*                        |
 
 ## Retry
 
@@ -68,35 +72,37 @@ Retry a request
 package main
 
 import(
+	"github.com/speakeasy-sdks/hookdeck-go/v2/models/components"
+	hookdeckgo "github.com/speakeasy-sdks/hookdeck-go/v2"
+	"github.com/speakeasy-sdks/hookdeck-go/v2/models/operations"
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/hookdeck-go"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/shared"
-	"github.com/speakeasy-sdks/hookdeck-go/pkg/models/operations"
 )
 
 func main() {
-    s := hookdeck.New(
-        hookdeck.WithSecurity(shared.Security{
-            BasicAuth: &shared.SchemeBasicAuth{
-                Password: "",
-                Username: "",
+    s := hookdeckgo.New(
+        hookdeckgo.WithSecurity(components.Security{
+            BasicAuth: &components.SchemeBasicAuth{
+                Password: "<YOUR_PASSWORD_HERE>",
+                Username: "<YOUR_USERNAME_HERE>",
             },
         }),
     )
+
+
     requestBody := operations.RetryRequestRequestBody{
         WebhookIds: []string{
-            "cumque",
+            "<value>",
         },
     }
-    id := "corporis"
+
+    var id string = "<value>"
 
     ctx := context.Background()
     res, err := s.Request.Retry(ctx, requestBody, id)
     if err != nil {
         log.Fatal(err)
     }
-
     if res.RetryRequest != nil {
         // handle response
     }
@@ -115,4 +121,7 @@ func main() {
 ### Response
 
 **[*operations.RetryRequestResponse](../../models/operations/retryrequestresponse.md), error**
-
+| Error Object               | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| sdkerrors.APIErrorResponse | 400,404,422                | application/json           |
+| sdkerrors.SDKError         | 4xx-5xx                    | */*                        |

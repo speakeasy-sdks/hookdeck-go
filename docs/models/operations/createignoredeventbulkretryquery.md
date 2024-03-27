@@ -1,0 +1,12 @@
+# CreateIgnoredEventBulkRetryQuery
+
+Filter by the bulk retry ignored event query object
+
+
+## Fields
+
+| Field                                                                                                               | Type                                                                                                                | Required                                                                                                            | Description                                                                                                         |
+| ------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- |
+| `Cause`                                                                                                             | [*operations.Cause](../../models/operations/cause.md)                                                               | :heavy_minus_sign:                                                                                                  | The cause of the ignored event                                                                                      |
+| `TransformationID`                                                                                                  | **string*                                                                                                           | :heavy_minus_sign:                                                                                                  | The associated transformation ID (only applicable to the cause `TRANSFORMATION_FAILED`)                             |
+| `WebhookID`                                                                                                         | [*operations.CreateIgnoredEventBulkRetryWebhookID](../../models/operations/createignoredeventbulkretrywebhookid.md) | :heavy_minus_sign:                                                                                                  | Connection ID of the ignored event                                                                                  |
