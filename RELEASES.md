@@ -253,3 +253,13 @@ Based on:
 - [go v2.2.2] .
 ### Releases
 - [Go v2.2.2] https://github.com/speakeasy-sdks/hookdeck-go/releases/tag/v2.2.2 - .
+
+## 2024-03-27 01:20:17
+### Changes
+Based on:
+- OpenAPI Doc 1.0.0 
+- Speakeasy CLI 1.227.0 (2.291.0) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [go v2.2.3] .
+### Releases
+- [Go v2.2.3] https://github.com/speakeasy-sdks/hookdeck-go/releases/tag/v2.2.3 - .
